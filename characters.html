@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Characters — OldRoot</title>
+  <link rel="stylesheet" href="site.css" />
+</head>
+<body>
+  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav>
+    <a href="index.html">Home</a><a class="active" href="characters.html">Characters</a><a href="dpi.html">DPI Analytics</a><a href="organizations.html">Organizations</a><a href="about.html">About OldRoot</a>
+  </nav></div></header>
+  <main class="site-shell">
+    <section class="page-head">
+      <div class="front-label">OLDROOT / CHARACTER REGISTRY</div>
+      <h1>CHARACTERS</h1>
+      <p>Every character appears once. Categories are filters, not duplicate lists. Organization, affiliation, origin, geography, and analytics bands can all change the view without cloning the same character across the page.</p>
+    </section>
+
+    <div class="filterbar" id="filters">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="hero">Heroes</button>
+      <button data-filter="villain">Villains</button>
+      <button data-filter="non-ascendant">Non-Ascendants</button>
+      <button data-filter="low-metahuman">Low Metahuman</button>
+      <button data-filter="tucson">Tucson</button>
+    </div>
+
+    <section class="character-grid">
+      <article class="character-card" data-tags="hero non-ascendant low-metahuman tucson">
+        <div class="class">Hero · Non-Ascendant</div>
+        <h3>Gila Monster</h3>
+        <div class="civil">Adrián Zúñiga</div>
+        <p>Tucson-based TPD detective and nocturnal subterranean metahuman with desert-specialized movement and equipment-driven offense.</p>
+        <div class="meta-row">
+          <span class="meta-pill">Tucson</span>
+          <span class="meta-pill">ASC-altered</span>
+          <span class="meta-pill">Baseline mean 17.67</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="content-block">
+      <p style="font-size:12px;color:#72746d">Power-band filtering uses the analytics mean only as a browsing aid. It is not a canonical overall power score.</p>
+    </section>
+  </main>
+  <footer class="site-footer">OLDROOT · CHARACTER REGISTRY</footer>
+  <script>
+    const buttons=[...document.querySelectorAll('[data-filter]')];
+    const cards=[...document.querySelectorAll('.character-card')];
+    buttons.forEach(btn=>btn.addEventListener('click',()=>{
+      buttons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+      const f=btn.dataset.filter;
+      cards.forEach(c=>c.style.display=(f==='all'||c.dataset.tags.split(' ').includes(f))?'flex':'none');
+    }));
+  </script>
+</body>
+</html>
