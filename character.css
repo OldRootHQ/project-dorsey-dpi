@@ -1,0 +1,40 @@
+body{font-family:Georgia,"Times New Roman",serif}
+.character-shell{max-width:1360px;margin:auto;padding:28px}
+.character-art-slot,.character-identity,.wiki-section,.character-infobox,.character-links{background:var(--cream);color:var(--ink);border:1px solid rgba(183,190,197,.9);border-radius:22px;box-shadow:0 16px 42px var(--green-shadow)}
+.character-art-slot{min-height:210px;margin-bottom:16px;padding:28px;display:grid;place-items:center;text-align:center;border-style:dashed;border-width:2px;border-color:var(--old-gold);background:linear-gradient(135deg,rgba(197,162,74,.11),transparent 45%),var(--cream)}
+.character-art-slot span,.logo-slot span{display:block;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--bark);margin-bottom:8px}
+.character-art-slot strong{font-family:Arial,Helvetica,sans-serif;font-size:clamp(22px,4vw,44px);letter-spacing:.04em;color:var(--deep-root)}
+.character-identity{padding:26px 28px;margin-bottom:16px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px;align-items:center}
+.character-kicker{font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:var(--root-green)}
+.character-identity h1{margin:7px 0 4px;font-size:clamp(48px,7vw,88px);line-height:.88;letter-spacing:-.06em;color:var(--deep-root)}
+.character-subtitle{font-size:20px;margin:0;color:#4d5049}
+.character-thesis{margin:18px 0 0;font-size:17px;line-height:1.5;font-style:italic;color:#3d413b}
+.logo-slot{min-height:120px;border:1px dashed var(--cafe);border-radius:16px;background:var(--parchment);display:grid;place-items:center;text-align:center;padding:18px}
+.logo-slot strong{font-family:Arial,Helvetica,sans-serif;font-size:16px;letter-spacing:.06em}
+.dossier-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(300px,.78fr);gap:16px;align-items:start}
+.lore-column{display:grid;gap:16px}
+.wiki-section{padding:26px 28px}
+.wiki-section h2{font-size:30px;letter-spacing:-.03em;color:var(--deep-root);margin:0 0 15px;padding-bottom:10px;border-bottom:3px solid var(--old-gold)}
+.wiki-section h3{font-size:20px;color:var(--root-green);margin:22px 0 8px}
+.wiki-section p,.wiki-section li{font-size:16px;line-height:1.62}
+.wiki-section p:first-of-type{margin-top:0}.wiki-section ul{padding-left:20px}
+.character-infobox{padding:16px;position:sticky;top:94px}
+.character-portrait{margin:0 0 16px}.character-portrait img{display:block;width:100%;height:auto;border-radius:15px;border:1px solid var(--slate-silver);background:var(--parchment)}
+.character-portrait figcaption{font-family:Arial,Helvetica,sans-serif;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#64665f;margin-top:8px}
+.infobox-title{font-family:Arial,Helvetica,sans-serif;font-size:26px;font-weight:950;letter-spacing:-.04em;color:var(--deep-root);margin:4px 0 12px}
+.info-list{margin:0}.info-row{display:grid;grid-template-columns:105px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid #d5cab9}
+.info-row dt{font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--bark)}
+.info-row dd{margin:0;font-size:13px;line-height:1.35;font-weight:700}
+.quick-link{display:block;margin-top:14px;padding:10px 12px;text-align:center;background:var(--parchment);border:1px solid var(--old-gold);border-radius:999px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;text-decoration:none}
+.quick-link:hover{background:#fff8ed}
+.quote-box{background:var(--parchment);border-left:5px solid var(--old-gold);border-radius:12px;padding:15px 17px;margin:16px 0;font-size:18px;font-weight:700}
+.dpi-note{font-size:12px!important;color:#575a53}
+.dpi-grid{display:grid;gap:8px;margin-top:16px}.dpi-row{display:grid;grid-template-columns:115px 1fr 44px;gap:10px;align-items:center}
+.dpi-name{font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:800}.dpi-track{height:9px;background:#d6ccbe;border-radius:999px;overflow:hidden}
+.dpi-fill{height:100%;width:var(--score);background:linear-gradient(90deg,var(--root-green),var(--old-gold));border-radius:999px}.dpi-value{font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:900;text-align:right}
+.dpi-summary{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.dpi-pill{background:var(--parchment);border:1px solid var(--cafe);border-radius:999px;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900}
+.conditional-box{margin-top:16px;padding:15px;background:var(--parchment);border:1px solid #d1c3ae;border-radius:14px}.conditional-box strong{color:var(--deep-root)}
+.character-links{margin-top:16px;padding:16px 20px;display:flex;gap:10px;flex-wrap:wrap}
+.character-links a{background:var(--parchment);border:1px solid var(--old-gold);border-radius:999px;padding:9px 12px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;text-decoration:none}
+@media(max-width:900px){.character-identity{grid-template-columns:1fr}.logo-slot{min-height:90px}.dossier-grid{grid-template-columns:1fr}.character-infobox{position:static}}
+@media(max-width:620px){.character-shell{padding:16px}.character-art-slot{min-height:145px;padding:20px}.character-identity,.wiki-section{padding:21px}.dpi-row{grid-template-columns:92px 1fr 38px}.info-row{grid-template-columns:92px 1fr}}

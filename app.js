@@ -31,7 +31,7 @@
 
   function matches(c){
     const q=search.value.trim().toLowerCase();
-    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin} ${c.status}`.toLowerCase();
+    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin}`.toLowerCase();
     return (!q || hay.includes(q)) && (!origin.value || c.origin===origin.value) && (!location.value || c.location===location.value);
   }
 
@@ -49,9 +49,7 @@
     const x=v=>hi===lo?m.left+iw/2:m.left+((v-lo)/(hi-lo))*iw;
     const y=v=>m.top+ih-(v/50)*ih;
 
-    tiers.forEach(([a,b,label])=>{
-      svg.appendChild(node("text",{x:m.left+iw+10,y:(y(a)+y(b))/2+3,class:"tier"},label));
-    });
+    tiers.forEach(([a,b,label])=>svg.appendChild(node("text",{x:m.left+iw+10,y:(y(a)+y(b))/2+3,class:"tier"},label)));
     for(let v=0;v<=50;v+=5){
       svg.appendChild(node("line",{x1:m.left,y1:y(v),x2:m.left+iw,y2:y(v),class:`gridline ${v%10===0?"major":""}`}));
       svg.appendChild(node("text",{x:m.left-12,y:y(v)+3,"text-anchor":"end",class:"tick"},String(v)));
@@ -93,6 +91,9 @@
 
   function select(c){
     const top=Object.entries(c.baseline).reduce((a,b)=>a[1]>b[1]?a:b);
+    const conditional=(c.conditional && c.conditional.length)
+      ? c.conditional.map(d=>`<div class="conditional"><span>${d.category} · ${d.condition}</span><b>${d.value.toFixed(1)}</b></div>`).join("")
+      : '<div class="conditional-empty">No conditional values established.</div>';
     detail.innerHTML=`
       <div class="name-row"><div class="name">${c.codename}</div><span class="badge">${c.classification}</span></div>
       <div class="civilian">${c.civilian}</div>
@@ -100,15 +101,15 @@
       <div class="meta">
         <div><span>Location</span><b>${c.location}</b></div>
         <div><span>Origin</span><b>${c.origin}</b></div>
-        <div><span>Registry</span><b>#${c.registryOrder}</b></div>
+        <div><span>DPI registry</span><b>#${c.registryOrder}</b></div>
         <div><span>Top baseline</span><b>${top[0]} · ${top[1].toFixed(1)}</b></div>
       </div>
       <div class="mean"><span>Analytics-only<br>baseline mean</span><b>${mean(c).toFixed(2)}</b></div>
+      ${c.page ? `<a class="dossier-link" href="${c.page}">Open character dossier →</a>` : ""}
       <div class="section-label">Baseline DPI</div>
       ${Object.entries(c.baseline).map(([k,v])=>`<div class="stat"><div class="stat-name">${k}</div><div class="track"><div class="fill" style="width:${v/50*100}%"></div></div><div class="stat-val">${v.toFixed(1)}</div></div>`).join("")}
       <div class="section-label">Conditional modifiers</div>
-      ${c.conditional.length ? c.conditional.map(d=>`<div class="conditional"><span>${d.category} · ${d.condition}</span><b>${d.value.toFixed(1)}</b></div>`).join("") : '<div class="conditional"><span>None established</span><b>—</b></div>'}
-      <a class="dossier-link" href="${c.page}">Open character dossier →</a>
+      ${conditional}
     `;
   }
 

@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>DPI Analytics — OldRoot</title>
-  
-  <link rel="stylesheet" href="brand.css?v=6" />
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="brand.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=5" />
 </head>
 <body>
   <header class="masthead">
@@ -31,7 +30,7 @@
         <p>Interactive hero capability visualization. Hover a point for a quick card. Click or tap it for the complete DPI profile.</p>
       </div>
       <div class="status">
-        <span>LIVE PROTOTYPE</span><span id="count">1 HERO</span>
+        <span>LIVE PROTOTYPE</span><span id="count">2 HEROES</span>
       </div>
     </header>
 
@@ -47,7 +46,7 @@
         <div class="panel-head">
           <div>
             <h2>Hero DPI scatter plot</h2>
-            <p>X = DPI registry order. Y = arithmetic mean of the eleven baseline DPI categories. Scale remains fixed at 0–50. Registry order is a website/development aid when formal publication introduction order remains open.</p>
+            <p>X = DPI registry order. Y = arithmetic mean of the eleven baseline DPI categories. Scale remains fixed at 0–50.</p>
           </div>
           <div class="legend"><i></i> Hero</div>
         </div>
@@ -56,18 +55,13 @@
           <div id="no-results" class="no-results">No matching heroes.</div>
         </div>
       </article>
-
-      <aside class="panel detail-panel">
-        <div id="detail"></div>
-      </aside>
+      <aside class="panel detail-panel"><div id="detail"></div></aside>
     </section>
 
-    <footer>
-      Baseline mean is an analytics-only visualization statistic. It is not a canonical overall power score. Conditional values are excluded from the baseline mean. Registry order is also a website/development aid, not an in-story first-appearance claim.
-    </footer>
+    <footer>Baseline mean is an analytics-only visualization statistic. It is not a canonical overall power score. Conditional values are excluded from the baseline mean. DPI registry order is a website indexing aid.</footer>
   </main>
   <div id="tooltip" class="tooltip"></div>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
