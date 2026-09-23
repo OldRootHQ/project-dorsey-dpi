@@ -76,3 +76,5 @@ footer{
 ::selection{background:var(--old-gold);color:var(--ink)}
 @media(max-width:980px){.grid{grid-template-columns:1fr}.detail-panel{min-height:auto}.controls{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.shell{padding:16px}.hero{display:block}.status{justify-content:flex-start;margin-top:14px}.controls{grid-template-columns:1fr}.panel-head{display:block}.legend{margin-top:8px}.chart-panel{padding:12px;min-height:610px}#chart{height:525px}.detail-panel{min-height:auto}}
+
+.dossier-link{display:block;margin-top:16px;border:1px solid var(--old-gold);background:var(--parchment);color:var(--ink);border-radius:12px;padding:11px 12px;text-align:center;text-decoration:none;font-weight:850;font-size:11px;text-transform:uppercase;letter-spacing:.06em}.dossier-link:hover{background:#f0deac}

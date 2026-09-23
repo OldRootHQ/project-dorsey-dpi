@@ -4,9 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
-  
-  <link rel="stylesheet" href="brand.css?v=4" />
-  <link rel="stylesheet" href="site.css?v=4" />
+  <link rel="stylesheet" href="brand.css?v=6" />
+  <link rel="stylesheet" href="site.css?v=6" />
 </head>
 <body>
   <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav>
@@ -16,7 +15,7 @@
     <section class="page-head">
       <div class="front-label">OLDROOT / CHARACTER REGISTRY</div>
       <h1>CHARACTERS</h1>
-      <p>Every character appears once. Categories are filters, not duplicate lists. Organization, affiliation, origin, geography, and analytics bands can all change the view without cloning the same character across the page.</p>
+      <p>Every character appears once. Categories are filters, not duplicate lists. Each registry card leads to a dedicated character dossier.</p>
     </section>
 
     <div class="filterbar" id="filters">
@@ -24,12 +23,14 @@
       <button data-filter="hero">Heroes</button>
       <button data-filter="villain">Villains</button>
       <button data-filter="non-ascendant">Non-Ascendants</button>
+      <button data-filter="human">Human</button>
       <button data-filter="low-metahuman">Low Metahuman</button>
       <button data-filter="tucson">Tucson</button>
+      <button data-filter="chicago">Chicago</button>
     </div>
 
     <section class="character-grid">
-      <article class="character-card" data-tags="hero non-ascendant low-metahuman tucson">
+      <a class="character-card character-link" href="characters/gila-monster/" data-tags="hero non-ascendant low-metahuman tucson">
         <div class="class">Hero · Non-Ascendant</div>
         <h3>Gila Monster</h3>
         <div class="civil">Adrián Zúñiga</div>
@@ -39,11 +40,23 @@
           <span class="meta-pill">ASC-altered</span>
           <span class="meta-pill">Baseline mean 17.67</span>
         </div>
-      </article>
+      </a>
+
+      <a class="character-card character-link" href="characters/commotion/" data-tags="hero non-ascendant human chicago">
+        <div class="class">Hero · Human · Non-Ascendant</div>
+        <h3>Commotion</h3>
+        <div class="civil">Ja’Kori Benson</div>
+        <p>Chicago street-level vigilante, former professional boxer, and environmental dirty fighter whose weapon is the room.</p>
+        <div class="meta-row">
+          <span class="meta-pill">Chicago</span>
+          <span class="meta-pill">Fully Human</span>
+          <span class="meta-pill">Baseline mean 6.88</span>
+        </div>
+      </a>
     </section>
 
     <section class="content-block">
-      <p style="font-size:12px;color:#72746d">Power-band filtering uses the analytics mean only as a browsing aid. It is not a canonical overall power score.</p>
+      <p style="font-size:12px;color:#4f514c">Power-band filtering uses the analytics mean only as a browsing aid. It is not a canonical overall power score.</p>
     </section>
   </main>
   <footer class="site-footer">OLDROOT · CHARACTER REGISTRY</footer>

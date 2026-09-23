@@ -31,7 +31,7 @@
 
   function matches(c){
     const q=search.value.trim().toLowerCase();
-    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin}`.toLowerCase();
+    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin} ${c.status}`.toLowerCase();
     return (!q || hay.includes(q)) && (!origin.value || c.origin===origin.value) && (!location.value || c.location===location.value);
   }
 
@@ -45,7 +45,7 @@
     const W=Math.max(760,svg.clientWidth||980), H=Math.max(520,svg.clientHeight||590);
     svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
     const m={top:34,right:154,bottom:62,left:62}, iw=W-m.left-m.right, ih=H-m.top-m.bottom;
-    const orders=data.map(c=>c.introductionOrder), lo=Math.min(...orders), hi=Math.max(...orders);
+    const orders=data.map(c=>c.registryOrder), lo=Math.min(...orders), hi=Math.max(...orders);
     const x=v=>hi===lo?m.left+iw/2:m.left+((v-lo)/(hi-lo))*iw;
     const y=v=>m.top+ih-(v/50)*ih;
 
@@ -59,12 +59,12 @@
     svg.appendChild(node("line",{x1:m.left,y1:m.top,x2:m.left,y2:m.top+ih,class:"axis"}));
     svg.appendChild(node("line",{x1:m.left,y1:m.top+ih,x2:m.left+iw,y2:m.top+ih,class:"axis"}));
     svg.appendChild(node("text",{x:16,y:m.top+ih/2,transform:`rotate(-90 16 ${m.top+ih/2})`,"text-anchor":"middle",class:"axis-label"},"Baseline DPI mean"));
-    svg.appendChild(node("text",{x:m.left+iw/2,y:H-16,"text-anchor":"middle",class:"axis-label"},"Hero introduction order"));
+    svg.appendChild(node("text",{x:m.left+iw/2,y:H-16,"text-anchor":"middle",class:"axis-label"},"DPI registry order"));
 
     data.forEach(c=>{
-      const cx=x(c.introductionOrder), cy=y(mean(c));
+      const cx=x(c.registryOrder), cy=y(mean(c));
       svg.appendChild(node("line",{x1:cx,y1:m.top+ih,x2:cx,y2:cy,class:"gridline"}));
-      svg.appendChild(node("text",{x:cx,y:m.top+ih+22,"text-anchor":"middle",class:"tick"},String(c.introductionOrder)));
+      svg.appendChild(node("text",{x:cx,y:m.top+ih+22,"text-anchor":"middle",class:"tick"},String(c.registryOrder)));
       const g=node("g",{tabindex:"0",role:"button","aria-label":`${c.codename}, DPI mean ${mean(c).toFixed(2)}`});
       g.appendChild(node("circle",{cx,cy,r:16,fill:"none",stroke:"#C5A24A","stroke-width":"8",opacity:".1"}));
       g.appendChild(node("circle",{cx,cy,r:8,fill:"#C5A24A",stroke:"#173428","stroke-width":"1.3",class:"point"}));
@@ -100,14 +100,15 @@
       <div class="meta">
         <div><span>Location</span><b>${c.location}</b></div>
         <div><span>Origin</span><b>${c.origin}</b></div>
-        <div><span>Introduction</span><b>#${c.introductionOrder}</b></div>
+        <div><span>Registry</span><b>#${c.registryOrder}</b></div>
         <div><span>Top baseline</span><b>${top[0]} · ${top[1].toFixed(1)}</b></div>
       </div>
       <div class="mean"><span>Analytics-only<br>baseline mean</span><b>${mean(c).toFixed(2)}</b></div>
       <div class="section-label">Baseline DPI</div>
       ${Object.entries(c.baseline).map(([k,v])=>`<div class="stat"><div class="stat-name">${k}</div><div class="track"><div class="fill" style="width:${v/50*100}%"></div></div><div class="stat-val">${v.toFixed(1)}</div></div>`).join("")}
       <div class="section-label">Conditional modifiers</div>
-      ${c.conditional.map(d=>`<div class="conditional"><span>${d.category} · ${d.condition}</span><b>${d.value.toFixed(1)}</b></div>`).join("")}
+      ${c.conditional.length ? c.conditional.map(d=>`<div class="conditional"><span>${d.category} · ${d.condition}</span><b>${d.value.toFixed(1)}</b></div>`).join("") : '<div class="conditional"><span>None established</span><b>—</b></div>'}
+      <a class="dossier-link" href="${c.page}">Open character dossier →</a>
     `;
   }
 
