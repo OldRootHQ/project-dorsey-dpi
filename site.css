@@ -146,68 +146,95 @@ h1{font-size:clamp(54px,8vw,118px);line-height:.82;letter-spacing:-.075em;margin
 body.lightbox-open{overflow:hidden}
 @media(max-width:620px){.image-lightbox{padding:12px}.image-lightbox img{max-width:96vw;max-height:84vh}.image-lightbox-close{top:6px;right:6px}}
 
-/* Registry filter drawer */
-.registry-tools{
-  margin:0 0 18px;
-}
+
+/* Registry filter drawer — OldRoot / dispensary-style accordion */
+.registry-tools{margin:0 0 18px}
 .filter-toggle{
-  display:inline-flex;align-items:center;gap:10px;
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
   background:var(--cream);color:var(--ink);
-  border:1px solid var(--old-gold);border-radius:999px;
-  padding:11px 15px;
-  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:900;
+  border:1px solid rgba(183,190,197,.9);border-radius:18px;
+  padding:14px 16px;
+  font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:950;
   text-transform:uppercase;letter-spacing:.06em;cursor:pointer;
-  box-shadow:0 10px 26px var(--green-shadow);
+  box-shadow:0 12px 30px var(--green-shadow);
 }
-.filter-toggle:hover{background:#fff8ed}
-.filter-toggle-icon{font-size:16px;line-height:1;color:var(--root-green)}
+.filter-toggle:hover{background:#fff8ed;border-color:var(--old-gold)}
+.filter-toggle-left{display:flex;align-items:center;gap:9px}
+.filter-sliders{font-size:16px;color:var(--root-green)}
+.filter-toggle-icon{font-size:18px;color:var(--root-green)}
+.filter-count{
+  margin-left:auto;margin-right:4px;min-width:24px;height:24px;border-radius:999px;
+  display:inline-grid;place-items:center;background:var(--old-gold);color:var(--ink);
+  font-size:10px;line-height:1
+}
 .filter-drawer[hidden]{display:none}
 .filter-drawer{
-  margin-top:10px;
-  display:grid;
-  grid-template-columns:auto repeat(4,minmax(150px,1fr)) auto;
-  gap:10px;align-items:end;
-  background:var(--cream);color:var(--ink);
+  margin-top:10px;background:var(--cream);color:var(--ink);
   border:1px solid rgba(183,190,197,.9);border-radius:20px;
-  padding:15px;
-  box-shadow:0 14px 34px var(--green-shadow);
+  box-shadow:0 16px 38px var(--green-shadow);overflow:hidden;
 }
-.filter-drawer-label{
-  align-self:center;
-  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:950;
-  text-transform:uppercase;letter-spacing:.08em;color:var(--deep-root);
-  padding:0 4px 8px 2px;
+.filter-drawer-top{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:18px 20px;border-bottom:1px solid #d8cebf;background:#fff8ed;
 }
-.filter-group{display:grid;gap:6px}
-.filter-group span{
-  font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:900;
-  text-transform:uppercase;letter-spacing:.09em;color:var(--bark);
+.filter-drawer-title{
+  font-family:Arial,Helvetica,sans-serif;font-size:19px;font-weight:950;
+  letter-spacing:-.03em;color:var(--deep-root)
 }
-.filter-group select{
-  width:100%;min-height:41px;
-  background:var(--parchment);color:var(--ink);
-  border:1px solid var(--slate-silver);border-radius:11px;
-  padding:0 34px 0 11px;
-  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:750;
-  outline:none;cursor:pointer;
+.filter-drawer-sub{
+  margin-top:3px;font-family:Arial,Helvetica,sans-serif;font-size:9px;
+  font-weight:900;text-transform:uppercase;letter-spacing:.11em;color:var(--bark)
 }
-.filter-group select:focus{border-color:var(--old-gold);box-shadow:0 0 0 3px rgba(197,162,74,.16)}
-.filter-reset{
-  min-height:41px;
-  background:var(--root-green);color:var(--cream);
-  border:1px solid var(--deep-root);border-radius:11px;
-  padding:0 14px;
+.filter-actions{display:flex;align-items:center;gap:8px}
+.filter-clear,.filter-apply{
+  min-height:38px;border-radius:999px;padding:0 14px;
   font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;
-  text-transform:uppercase;letter-spacing:.06em;cursor:pointer;
+  text-transform:uppercase;letter-spacing:.05em;cursor:pointer
 }
-.filter-reset:hover{background:var(--deep-root)}
-@media(max-width:1080px){
-  .filter-drawer{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .filter-drawer-label{grid-column:1/-1;padding-bottom:0}
-  .filter-reset{width:100%}
+.filter-clear{background:transparent;color:var(--root-green);border:1px solid var(--slate-silver)}
+.filter-clear:hover{background:var(--parchment);border-color:var(--cafe)}
+.filter-apply{background:var(--root-green);color:var(--cream);border:1px solid var(--deep-root)}
+.filter-apply:hover{background:var(--deep-root)}
+.filter-sections{padding:0 20px}
+.filter-section{border-bottom:1px solid #d8cebf}
+.filter-section:last-child{border-bottom:0}
+.filter-section summary{
+  list-style:none;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 2px;cursor:pointer;
+  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:950;
+  text-transform:uppercase;letter-spacing:.075em;color:var(--deep-root)
+}
+.filter-section summary::-webkit-details-marker{display:none}
+.filter-chevron{font-size:15px;color:var(--root-green)}
+.filter-options{
+  display:flex;flex-wrap:wrap;gap:9px 14px;
+  padding:0 2px 17px
+}
+.filter-options-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px 14px}
+.filter-check{
+  display:flex;align-items:center;gap:9px;min-height:34px;
+  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:750;
+  cursor:pointer;color:var(--ink)
+}
+.filter-check input{
+  appearance:none;width:18px;height:18px;margin:0;flex:0 0 18px;
+  border:1.5px solid var(--slate-silver);border-radius:4px;background:#fffdf8;
+  display:grid;place-items:center;cursor:pointer
+}
+.filter-check input:checked{background:var(--root-green);border-color:var(--root-green)}
+.filter-check input:checked::after{
+  content:"";width:8px;height:4px;border-left:2px solid var(--cream);border-bottom:2px solid var(--cream);
+  transform:rotate(-45deg) translateY(-1px)
+}
+.filter-check:hover span{color:var(--root-green)}
+.filter-check input:focus-visible{outline:3px solid rgba(197,162,74,.35);outline-offset:2px}
+@media(max-width:900px){
+  .filter-options-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:620px){
-  .filter-toggle{width:100%;justify-content:space-between}
-  .filter-drawer{grid-template-columns:1fr;padding:13px;border-radius:16px}
-  .filter-drawer-label{grid-column:auto}
+  .filter-drawer-top{align-items:flex-start;flex-direction:column;padding:16px}
+  .filter-actions{width:100%}
+  .filter-clear,.filter-apply{flex:1}
+  .filter-sections{padding:0 16px}
+  .filter-options-grid{grid-template-columns:1fr}
 }
