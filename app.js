@@ -67,7 +67,7 @@
       svg.appendChild(node("text",{x:cx,y:m.top+ih+22,"text-anchor":"middle",class:"tick"},String(c.introductionOrder)));
       const g=node("g",{tabindex:"0",role:"button","aria-label":`${c.codename}, DPI mean ${mean(c).toFixed(2)}`});
       g.appendChild(node("circle",{cx,cy,r:16,fill:"none",stroke:"#C5A24A","stroke-width":"8",opacity:".1"}));
-      g.appendChild(node("circle",{cx,cy,r:8,fill:"#C5A24A",stroke:"#F3EBDD","stroke-width":"1.3",class:"point"}));
+      g.appendChild(node("circle",{cx,cy,r:8,fill:"#C5A24A",stroke:"#173428","stroke-width":"1.3",class:"point"}));
       g.appendChild(node("text",{x:cx,y:cy-18,"text-anchor":"middle",class:"point-label"},c.codename.toUpperCase()));
       g.addEventListener("mousemove",e=>showTip(e,c));
       g.addEventListener("mouseenter",e=>showTip(e,c));

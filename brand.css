@@ -1,0 +1,65 @@
+:root{
+  --root-green:#244C3A;
+  --deep-root:#173428;
+  --cream:#F3EBDD;
+  --parchment:#E7DCCB;
+  --cafe:#8C6A4A;
+  --bark:#5F4633;
+  --silver:#B7BEC5;
+  --slate-silver:#8E979F;
+  --old-gold:#C5A24A;
+  --ink:#151515;
+  --green-shadow:rgba(7,28,20,.24);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  background:
+    radial-gradient(circle at 12% -8%,rgba(197,162,74,.13),transparent 25rem),
+    radial-gradient(circle at 92% 4%,rgba(183,190,197,.11),transparent 24rem),
+    linear-gradient(180deg,var(--root-green) 0%,var(--deep-root) 100%) fixed;
+  color:var(--ink);
+}
+a{color:inherit}
+.masthead{
+  position:sticky;top:0;z-index:30;
+  background:rgba(23,52,40,.96);
+  border-bottom:1px solid rgba(197,162,74,.55);
+  box-shadow:0 9px 28px rgba(0,0,0,.16);
+  backdrop-filter:blur(12px);
+}
+.mast-inner{
+  max-width:1480px;margin:auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:22px;
+}
+.brand{
+  display:inline-flex;align-items:center;
+  background:var(--cream);color:var(--ink);
+  border:1px solid var(--old-gold);border-radius:999px;
+  padding:9px 15px;
+  font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:950;letter-spacing:-.055em;
+  text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.10);
+}
+nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+nav a{
+  display:inline-flex;align-items:center;
+  background:var(--cream);color:var(--ink);
+  border:1px solid rgba(183,190,197,.9);border-radius:999px;
+  padding:8px 11px;
+  font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:850;
+  text-transform:uppercase;letter-spacing:.045em;text-decoration:none;
+  transition:transform .12s ease,border-color .12s ease,background .12s ease;
+}
+nav a:hover{transform:translateY(-1px);border-color:var(--old-gold);background:#fff8ed}
+nav a.active{border-color:var(--old-gold);box-shadow:inset 0 -3px 0 var(--old-gold)}
+.brand:focus-visible,nav a:focus-visible{outline:3px solid var(--old-gold);outline-offset:2px}
+@media(max-width:900px){
+  .mast-inner{align-items:flex-start;flex-direction:column}
+  nav{justify-content:flex-start}
+}
+@media(max-width:640px){
+  .mast-inner{padding:12px 16px}
+  .brand{font-size:21px}
+  nav{gap:6px}
+  nav a{font-size:9px;padding:7px 9px}
+}
