@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=5" />
-  <link rel="stylesheet" href="site.css?v=8" />
+  <link rel="stylesheet" href="site.css?v=9" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
@@ -136,16 +136,42 @@
       return groups;
     }
 
+    function cardMatchesGroups(card,groups){
+      const tags=card.dataset.tags.split(' ');
+      return Object.values(groups).every(values=>values.some(value=>tags.includes(value)));
+    }
+
+    function updateOptionCounts(){
+      const groups=selectedGroups();
+      filterInputs.forEach(input=>{
+        const otherGroups={};
+        Object.entries(groups).forEach(([group,values])=>{
+          if(group!==input.dataset.filterGroup) otherGroups[group]=values;
+        });
+        const count=cards.filter(card=>{
+          const tags=card.dataset.tags.split(' ');
+          return tags.includes(input.value)&&cardMatchesGroups(card,otherGroups);
+        }).length;
+        const label=input.closest('.filter-check');
+        let badge=label.querySelector('.option-count');
+        if(!badge){
+          badge=document.createElement('span');
+          badge.className='option-count';
+          label.appendChild(badge);
+        }
+        badge.textContent=count;
+      });
+    }
+
     function applyFilters(){
       const groups=selectedGroups();
       cards.forEach(card=>{
-        const tags=card.dataset.tags.split(' ');
-        const matches=Object.values(groups).every(values=>values.some(value=>tags.includes(value)));
-        card.style.display=matches?'flex':'none';
+        card.style.display=cardMatchesGroups(card,groups)?'flex':'none';
       });
       const count=filterInputs.filter(input=>input.checked).length;
       filterCount.textContent=count;
       filterCount.hidden=count===0;
+      updateOptionCounts();
     }
 
     function closeDrawer(){
@@ -159,7 +185,10 @@
       filterDrawer.hidden=!opening;
       filterToggle.setAttribute('aria-expanded',String(opening));
       filterIcon.textContent=opening?'−':'＋';
+      if(opening) updateOptionCounts();
     });
+
+    filterInputs.forEach(input=>input.addEventListener('change',updateOptionCounts));
 
     filterApply.addEventListener('click',()=>{
       applyFilters();
@@ -177,6 +206,8 @@
         chevron.textContent=section.open?'⌃':'⌄';
       });
     });
+
+    updateOptionCounts();
   </script>
   <script src="lightbox.js?v=7"></script>\n</body>
 </html>
