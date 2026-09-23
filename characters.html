@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=5" />
-  <link rel="stylesheet" href="site.css?v=6" />
+  <link rel="stylesheet" href="site.css?v=7" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
@@ -22,23 +22,72 @@
     <section class="page-head">
       <div class="front-label">OLDROOT / CHARACTER REGISTRY</div>
       <h1>CHARACTERS</h1>
-      <p>Every character appears once. Categories are filters, not duplicate lists. Organization, affiliation, origin, geography, and analytics bands can all change the view without cloning the same character across the page.</p>
+      <p>Every character appears once. Categories are filters, not duplicate lists. Role, power classification, origin, geography, and other registry data can change the view without cloning the same character across the page.</p>
+    </section>
+    <section class="registry-tools" aria-label="Character registry filters">
+      <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterDrawer">
+        <span>Filters</span><span class="filter-toggle-icon" aria-hidden="true">＋</span>
+      </button>
+
+      <div class="filter-drawer" id="filterDrawer" hidden>
+        <div class="filter-drawer-label">Filter by:</div>
+
+        <label class="filter-group">
+          <span>Role</span>
+          <select id="filterRole">
+            <option value="">All roles</option>
+            <option value="hero">Heroes</option>
+            <option value="villain">Villains</option>
+          </select>
+        </label>
+
+        <label class="filter-group filter-group-wide">
+          <span>Power Classification</span>
+          <select id="filterPower">
+            <option value="">All classifications</option>
+            <option value="non-fit-human">Non-Fit Human</option>
+            <option value="base-human">Base Human</option>
+            <option value="fit-human">Fit Human</option>
+            <option value="exceptional-human">Exceptional Human</option>
+            <option value="superior-human">Superior Human</option>
+            <option value="slightly-enhanced-human">Slightly Enhanced Human</option>
+            <option value="enhanced-human">Enhanced Human</option>
+            <option value="ea-human">E&amp;A Human</option>
+            <option value="superhuman">Superhuman</option>
+            <option value="advanced-superhuman">Advanced Superhuman</option>
+            <option value="superior-superhuman">Superior Superhuman</option>
+            <option value="demi-god">Demi-God</option>
+            <option value="god">God</option>
+            <option value="cosmic-god">Cosmic God</option>
+            <option value="multi-dimensional-god">Multi-Dimensional God</option>
+          </select>
+        </label>
+
+        <label class="filter-group">
+          <span>Origin</span>
+          <select id="filterOrigin">
+            <option value="">All origins</option>
+            <option value="non-ascendant">Non-Ascendants</option>
+            <option value="ascendant">Ascendants</option>
+            <option value="asc-altered">ASC-altered</option>
+          </select>
+        </label>
+
+        <label class="filter-group">
+          <span>Location</span>
+          <select id="filterLocation">
+            <option value="">All locations</option>
+            <option value="tucson">Tucson</option>
+            <option value="chicago">Chicago</option>
+          </select>
+        </label>
+
+        <button class="filter-reset" id="filterReset" type="button">Reset</button>
+      </div>
     </section>
 
-    <div class="filterbar" id="filters">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="hero">Heroes</button>
-      <button data-filter="villain">Villains</button>
-      <button data-filter="non-ascendant">Non-Ascendants</button>
-      <button data-filter="human">Human</button>
-      <button data-filter="exceptional-human">Exceptional Human</button>
-      <button data-filter="low-metahuman">Low Metahuman</button>
-      <button data-filter="tucson">Tucson</button>
-      <button data-filter="chicago">Chicago</button>
-    </div>
-
     <section class="character-grid">
-      <a class="character-card" data-tags="hero non-ascendant asc-altered low-metahuman tucson" href="characters/gila-monster/">
+      <a class="character-card" data-tags="hero non-ascendant asc-altered tucson" href="characters/gila-monster/">
         <img class="character-thumb" src="assets/characters/gila-monster.webp" alt="Approved Gila Monster character design reference" loading="lazy" data-lightbox data-full-src="assets/characters/gila-monster.webp" data-caption="Gila Monster · approved primary visual reference" title="Click to view full design sheet" tabindex="0" />
         <div class="class">Hero · Non-Ascendant</div>
         <h3>Gila Monster</h3>
@@ -59,17 +108,41 @@
       </a>
     </section>
 
-    <section class="content-block"><p class="registry-note">Power-band filtering uses the analytics mean only as a browsing aid. It is not a canonical overall power score.</p></section>
+    <section class="content-block"><p class="registry-note">Power Classification is a registry field separate from DPI. Characters without an assigned classification will remain visible in the full registry but will not appear under a classification-specific filter.</p></section>
   </main>
   <footer class="site-footer">OLDROOT · CHARACTER REGISTRY</footer>
   <script>
-    const buttons=[...document.querySelectorAll('[data-filter]')];
+    const filterToggle=document.querySelector('#filterToggle');
+    const filterDrawer=document.querySelector('#filterDrawer');
+    const filterIcon=document.querySelector('.filter-toggle-icon');
+    const filterRole=document.querySelector('#filterRole');
+    const filterPower=document.querySelector('#filterPower');
+    const filterOrigin=document.querySelector('#filterOrigin');
+    const filterLocation=document.querySelector('#filterLocation');
+    const filterReset=document.querySelector('#filterReset');
     const cards=[...document.querySelectorAll('.character-card')];
-    buttons.forEach(btn=>btn.addEventListener('click',()=>{
-      buttons.forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-      const f=btn.dataset.filter;
-      cards.forEach(c=>c.style.display=(f==='all'||c.dataset.tags.split(' ').includes(f))?'flex':'none');
-    }));
+
+    function applyFilters(){
+      const selected=[filterRole.value,filterPower.value,filterOrigin.value,filterLocation.value].filter(Boolean);
+      cards.forEach(card=>{
+        const tags=card.dataset.tags.split(' ');
+        card.style.display=selected.every(value=>tags.includes(value))?'flex':'none';
+      });
+    }
+
+    [filterRole,filterPower,filterOrigin,filterLocation].forEach(select=>select.addEventListener('change',applyFilters));
+
+    filterToggle.addEventListener('click',()=>{
+      const opening=filterDrawer.hidden;
+      filterDrawer.hidden=!opening;
+      filterToggle.setAttribute('aria-expanded',String(opening));
+      filterIcon.textContent=opening?'−':'＋';
+    });
+
+    filterReset.addEventListener('click',()=>{
+      [filterRole,filterPower,filterOrigin,filterLocation].forEach(select=>select.value='');
+      applyFilters();
+    });
   </script>
   <script src="lightbox.js?v=7"></script>\n</body>
 </html>
