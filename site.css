@@ -247,3 +247,26 @@ body.lightbox-open{overflow:hidden}
   font-size:9px;font-weight:900;line-height:1;
 }
 .filter-check>span:not(.option-count){flex:1}
+
+
+/* OldRoot branded surfaces */
+.home-primary-mark{
+  float:right;width:min(300px,31%);margin:-6px 0 20px 30px;padding:14px;
+  border:1px solid rgba(197,162,74,.72);border-radius:20px;
+  background:linear-gradient(145deg,rgba(23,52,40,.98),rgba(10,24,18,.98));
+  box-shadow:0 16px 36px rgba(7,28,20,.28);
+}
+.home-primary-mark img{display:block;width:100%;height:auto}
+.lead-story .rule{clear:both}
+.page-head,.content-block{position:relative;overflow:hidden}
+.page-head::after,.content-block::after{
+  content:"";position:absolute;right:14px;bottom:12px;width:42px;height:42px;
+  background:url("assets/branding/oldroot-monogram.png") center/contain no-repeat;
+  opacity:.11;pointer-events:none;
+}
+.page-head>*,.content-block>*{position:relative;z-index:1}
+.site-footer.oldroot-signature{gap:14px}
+@media(max-width:620px){
+  .home-primary-mark{float:none;width:min(330px,100%);margin:4px auto 20px;padding:11px}
+  .page-head::after,.content-block::after{width:34px;height:34px;right:10px;bottom:9px}
+}
