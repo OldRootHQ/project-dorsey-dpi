@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=5" />
-  <link rel="stylesheet" href="site.css?v=7" />
+  <link rel="stylesheet" href="site.css?v=8" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
@@ -26,63 +26,70 @@
     </section>
     <section class="registry-tools" aria-label="Character registry filters">
       <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterDrawer">
-        <span>Filters</span><span class="filter-toggle-icon" aria-hidden="true">＋</span>
+        <span class="filter-toggle-left"><span class="filter-sliders" aria-hidden="true">☷</span> Filters</span>
+        <span class="filter-count" id="filterCount" hidden>0</span>
+        <span class="filter-toggle-icon" aria-hidden="true">＋</span>
       </button>
 
       <div class="filter-drawer" id="filterDrawer" hidden>
-        <div class="filter-drawer-label">Filter by:</div>
+        <div class="filter-drawer-top">
+          <div>
+            <div class="filter-drawer-title">Filters</div>
+            <div class="filter-drawer-sub">Filter by:</div>
+          </div>
+          <div class="filter-actions">
+            <button class="filter-clear" id="filterClear" type="button">Clear all</button>
+            <button class="filter-apply" id="filterApply" type="button">Apply filters</button>
+          </div>
+        </div>
 
-        <label class="filter-group">
-          <span>Role</span>
-          <select id="filterRole">
-            <option value="">All roles</option>
-            <option value="hero">Heroes</option>
-            <option value="villain">Villains</option>
-          </select>
-        </label>
+        <div class="filter-sections">
+          <details class="filter-section" open>
+            <summary><span>Role</span><span class="filter-chevron">⌃</span></summary>
+            <div class="filter-options">
+              <label class="filter-check"><input type="checkbox" data-filter-group="role" value="hero"><span>Heroes</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="role" value="villain"><span>Villains</span></label>
+            </div>
+          </details>
 
-        <label class="filter-group filter-group-wide">
-          <span>Power Classification</span>
-          <select id="filterPower">
-            <option value="">All classifications</option>
-            <option value="non-fit-human">Non-Fit Human</option>
-            <option value="base-human">Base Human</option>
-            <option value="fit-human">Fit Human</option>
-            <option value="exceptional-human">Exceptional Human</option>
-            <option value="superior-human">Superior Human</option>
-            <option value="slightly-enhanced-human">Slightly Enhanced Human</option>
-            <option value="enhanced-human">Enhanced Human</option>
-            <option value="ea-human">E&amp;A Human</option>
-            <option value="superhuman">Superhuman</option>
-            <option value="advanced-superhuman">Advanced Superhuman</option>
-            <option value="superior-superhuman">Superior Superhuman</option>
-            <option value="demi-god">Demi-God</option>
-            <option value="god">God</option>
-            <option value="cosmic-god">Cosmic God</option>
-            <option value="multi-dimensional-god">Multi-Dimensional God</option>
-          </select>
-        </label>
+          <details class="filter-section" open>
+            <summary><span>Power Classification</span><span class="filter-chevron">⌃</span></summary>
+            <div class="filter-options filter-options-grid">
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="non-fit-human"><span>Non-Fit Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="base-human"><span>Base Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="fit-human"><span>Fit Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="exceptional-human"><span>Exceptional Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="superior-human"><span>Superior Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="slightly-enhanced-human"><span>Slightly Enhanced Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="enhanced-human"><span>Enhanced Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="ea-human"><span>E&amp;A Human</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="superhuman"><span>Superhuman</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="advanced-superhuman"><span>Advanced Superhuman</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="superior-superhuman"><span>Superior Superhuman</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="demi-god"><span>Demi-God</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="god"><span>God</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="cosmic-god"><span>Cosmic God</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="power" value="multi-dimensional-god"><span>Multi-Dimensional God</span></label>
+            </div>
+          </details>
 
-        <label class="filter-group">
-          <span>Origin</span>
-          <select id="filterOrigin">
-            <option value="">All origins</option>
-            <option value="non-ascendant">Non-Ascendants</option>
-            <option value="ascendant">Ascendants</option>
-            <option value="asc-altered">ASC-altered</option>
-          </select>
-        </label>
+          <details class="filter-section">
+            <summary><span>Origin</span><span class="filter-chevron">⌄</span></summary>
+            <div class="filter-options">
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="non-ascendant"><span>Non-Ascendants</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="ascendant"><span>Ascendants</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="asc-altered"><span>ASC-altered</span></label>
+            </div>
+          </details>
 
-        <label class="filter-group">
-          <span>Location</span>
-          <select id="filterLocation">
-            <option value="">All locations</option>
-            <option value="tucson">Tucson</option>
-            <option value="chicago">Chicago</option>
-          </select>
-        </label>
-
-        <button class="filter-reset" id="filterReset" type="button">Reset</button>
+          <details class="filter-section">
+            <summary><span>Location</span><span class="filter-chevron">⌄</span></summary>
+            <div class="filter-options">
+              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="tucson"><span>Tucson</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="chicago"><span>Chicago</span></label>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
 
@@ -115,22 +122,37 @@
     const filterToggle=document.querySelector('#filterToggle');
     const filterDrawer=document.querySelector('#filterDrawer');
     const filterIcon=document.querySelector('.filter-toggle-icon');
-    const filterRole=document.querySelector('#filterRole');
-    const filterPower=document.querySelector('#filterPower');
-    const filterOrigin=document.querySelector('#filterOrigin');
-    const filterLocation=document.querySelector('#filterLocation');
-    const filterReset=document.querySelector('#filterReset');
+    const filterCount=document.querySelector('#filterCount');
+    const filterApply=document.querySelector('#filterApply');
+    const filterClear=document.querySelector('#filterClear');
+    const filterInputs=[...document.querySelectorAll('[data-filter-group]')];
     const cards=[...document.querySelectorAll('.character-card')];
 
-    function applyFilters(){
-      const selected=[filterRole.value,filterPower.value,filterOrigin.value,filterLocation.value].filter(Boolean);
-      cards.forEach(card=>{
-        const tags=card.dataset.tags.split(' ');
-        card.style.display=selected.every(value=>tags.includes(value))?'flex':'none';
+    function selectedGroups(){
+      const groups={};
+      filterInputs.filter(input=>input.checked).forEach(input=>{
+        (groups[input.dataset.filterGroup]??=[]).push(input.value);
       });
+      return groups;
     }
 
-    [filterRole,filterPower,filterOrigin,filterLocation].forEach(select=>select.addEventListener('change',applyFilters));
+    function applyFilters(){
+      const groups=selectedGroups();
+      cards.forEach(card=>{
+        const tags=card.dataset.tags.split(' ');
+        const matches=Object.values(groups).every(values=>values.some(value=>tags.includes(value)));
+        card.style.display=matches?'flex':'none';
+      });
+      const count=filterInputs.filter(input=>input.checked).length;
+      filterCount.textContent=count;
+      filterCount.hidden=count===0;
+    }
+
+    function closeDrawer(){
+      filterDrawer.hidden=true;
+      filterToggle.setAttribute('aria-expanded','false');
+      filterIcon.textContent='＋';
+    }
 
     filterToggle.addEventListener('click',()=>{
       const opening=filterDrawer.hidden;
@@ -139,9 +161,21 @@
       filterIcon.textContent=opening?'−':'＋';
     });
 
-    filterReset.addEventListener('click',()=>{
-      [filterRole,filterPower,filterOrigin,filterLocation].forEach(select=>select.value='');
+    filterApply.addEventListener('click',()=>{
       applyFilters();
+      closeDrawer();
+    });
+
+    filterClear.addEventListener('click',()=>{
+      filterInputs.forEach(input=>input.checked=false);
+      applyFilters();
+    });
+
+    document.querySelectorAll('.filter-section').forEach(section=>{
+      section.addEventListener('toggle',()=>{
+        const chevron=section.querySelector('.filter-chevron');
+        chevron.textContent=section.open?'⌃':'⌄';
+      });
     });
   </script>
   <script src="lightbox.js?v=7"></script>\n</body>
