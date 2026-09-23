@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=5" />
-  <link rel="stylesheet" href="site.css?v=9" />
+  <link rel="stylesheet" href="site.css?v=10" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
@@ -79,6 +79,7 @@
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="non-ascendant"><span>Non-Ascendants</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="ascendant"><span>Ascendants</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="asc-altered"><span>ASC-altered</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="external-anomaly"><span>External anomaly</span></label>
             </div>
           </details>
 
@@ -87,6 +88,7 @@
             <div class="filter-options">
               <label class="filter-check"><input type="checkbox" data-filter-group="location" value="tucson"><span>Tucson</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="location" value="chicago"><span>Chicago</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="san-juan"><span>San Juan</span></label>
             </div>
           </details>
         </div>
@@ -113,6 +115,18 @@
         <div class="meta-row"><span class="meta-pill">Chicago</span><span class="meta-pill">Exceptional Human</span><span class="meta-pill">No powers</span><span class="meta-pill">Baseline mean 6.88</span></div>
         <span class="card-open">Open dossier →</span>
       </a>
+      <a class="character-card" data-tags="hero non-ascendant anomalous-human external-anomaly spatial-anomaly san-juan puerto-rico santurce independent" href="characters/aftermark/">
+        <div class="character-thumb character-thumb-placeholder" aria-label="Aftermark approved character image file pending">
+          <span>APPROVED ART<br>FILE NEEDED</span>
+        </div>
+        <div class="class">Hero · Non-Ascendant · Anomalous Human</div>
+        <h3>Aftermark</h3>
+        <div class="civil">Nicolás “Nico” Vélez Rosado</div>
+        <p>Santurce-based hero and elevator technician who stores his own physical actions in space and triggers them again as delayed attacks, traps, and movement paths.</p>
+        <div class="meta-row"><span class="meta-pill">San Juan</span><span class="meta-pill">External anomaly</span><span class="meta-pill">Classification pending</span><span class="meta-pill">Baseline mean 8.37</span></div>
+        <span class="card-open">Open dossier →</span>
+      </a>
+
     </section>
 
     <section class="content-block"><p class="registry-note">Power Classification is a registry field separate from DPI. Characters without an assigned classification will remain visible in the full registry but will not appear under a classification-specific filter.</p></section>
