@@ -3,56 +3,71 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="dark" />
-  <title>Project Dorsey — DPI Analytics</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>OldRoot</title>
+  <link rel="stylesheet" href="site.css" />
 </head>
 <body>
-  <main class="shell">
-    <header class="hero">
-      <div>
-        <div class="eyebrow">PROJECT DORSEY / ANALYTICS</div>
-        <h1>DORSEY POWER INDEX</h1>
-        <p>Interactive hero capability visualization. Hover a point for a quick card. Click or tap it for the complete DPI profile.</p>
-      </div>
-      <div class="status">
-        <span>LIVE PROTOTYPE</span><span id="count">1 HERO</span>
-      </div>
-    </header>
+  <header class="masthead">
+    <div class="mast-inner">
+      <a class="brand" href="index.html">OLDROOT</a>
+      <nav>
+        <a class="active" href="index.html">Home</a>
+        <a href="characters.html">Characters</a>
+        <a href="dpi.html">DPI Analytics</a>
+        <a href="organizations.html">Organizations</a>
+        <a href="about.html">About OldRoot</a>
+      </nav>
+    </div>
+  </header>
 
-    <section class="controls">
-      <input id="search" type="search" placeholder="Search hero, identity, location…" />
-      <select id="origin"><option value="">All origins</option></select>
-      <select id="location"><option value="">All locations</option></select>
-      <button id="reset">Reset</button>
+  <main class="site-shell">
+    <section class="front-label">OLDROOT / FOUNDING DISPATCH</section>
+
+    <section class="lead-story">
+      <div class="lead-kicker">THE BEGINNING</div>
+      <h1>OLDROOT TAKES ROOT.</h1>
+      <p class="dek">A new creative brand begins with a simple mandate: build original worlds that can grow without becoming generic, disposable, or trapped by their own continuity.</p>
+      <div class="rule"></div>
+      <div class="article-grid">
+        <article>
+          <p>OldRoot is the brand behind the work currently taking shape here. The first active universe is <strong>Project Dorsey</strong>, a superhero setting designed to support a large cast, distinct origins, strong visual identity, and stories that can expand for years without forcing every character through the same mythology.</p>
+          <p>This site is not the Master Bible. It is the public-facing layer around the work: character discovery, organizations, interactive analytics, and eventually the pieces of the universe that are meant to be explored rather than buried in development documents.</p>
+        </article>
+        <aside class="pullquote">“Build deep roots.<br>Grow strange branches.”</aside>
+      </div>
     </section>
 
-    <section class="grid">
-      <article class="panel chart-panel">
-        <div class="panel-head">
-          <div>
-            <h2>Hero DPI scatter plot</h2>
-            <p>X = introduction order. Y = arithmetic mean of the eleven baseline DPI categories. Scale remains fixed at 0–50.</p>
-          </div>
-          <div class="legend"><i></i> Hero</div>
-        </div>
-        <div class="chart-wrap">
-          <svg id="chart" role="img" aria-label="Interactive DPI scatter plot"></svg>
-          <div id="no-results" class="no-results">No matching heroes.</div>
-        </div>
-      </article>
+    <section class="news-grid">
+      <a class="news-card feature" href="characters.html">
+        <span class="tag">CHARACTERS</span>
+        <h2>Meet the registry.</h2>
+        <p>One character, one canonical listing. Browse the universe without duplicate entries cluttering every category.</p>
+        <span class="read">Explore characters →</span>
+      </a>
 
-      <aside class="panel detail-panel">
-        <div id="detail"></div>
-      </aside>
+      <a class="news-card" href="dpi.html">
+        <span class="tag">ANALYTICS</span>
+        <h2>Dorsey Power Index</h2>
+        <p>The interactive DPI scatter plot remains the live capability-analytics layer for completed hero profiles.</p>
+        <span class="read">Open analytics →</span>
+      </a>
+
+      <a class="news-card" href="organizations.html">
+        <span class="tag">ORGANIZATIONS</span>
+        <h2>Who stands together?</h2>
+        <p>Heroic and villainous organizations will get their own space as the universe expands.</p>
+        <span class="read">View organizations →</span>
+      </a>
+
+      <a class="news-card" href="about.html">
+        <span class="tag">OLDROOT</span>
+        <h2>What is OldRoot?</h2>
+        <p>The brand, the creative direction, and the structure behind the worlds being built.</p>
+        <span class="read">About OldRoot →</span>
+      </a>
     </section>
-
-    <footer>
-      Baseline mean is an analytics-only visualization statistic. It is not a canonical overall power score. Conditional values are excluded from the baseline mean.
-    </footer>
   </main>
-  <div id="tooltip" class="tooltip"></div>
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+
+  <footer class="site-footer">OLDROOT · PROTOTYPE SITE</footer>
 </body>
 </html>
