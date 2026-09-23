@@ -32,6 +32,7 @@ window.DORSEY_CHARACTERS = [
     codename: "Aftermark",
     civilian: "Nicolás “Nico” Vélez Rosado",
     classification: "Hero",
+    powerClass: "Slightly Enhanced Human",
     registryOrder: 3,
     location: "Santurce, San Juan, Puerto Rico",
     origin: "External spatial anomaly / Non-Ascendant",
