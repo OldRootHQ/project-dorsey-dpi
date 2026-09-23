@@ -238,3 +238,12 @@ body.lightbox-open{overflow:hidden}
   .filter-sections{padding:0 16px}
   .filter-options-grid{grid-template-columns:1fr}
 }
+
+.option-count{
+  margin-left:auto;min-width:24px;height:22px;padding:0 7px;
+  display:inline-grid;place-items:center;
+  border-radius:999px;background:var(--parchment);border:1px solid #d8cebf;
+  color:var(--bark);font-family:Arial,Helvetica,sans-serif;
+  font-size:9px;font-weight:900;line-height:1;
+}
+.filter-check>span:not(.option-count){flex:1}
