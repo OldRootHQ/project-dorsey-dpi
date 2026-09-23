@@ -31,7 +31,7 @@
 
   function matches(c){
     const q=search.value.trim().toLowerCase();
-    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin}`.toLowerCase();
+    const hay=`${c.codename} ${c.civilian} ${c.location} ${c.origin} ${c.powerClass||""}`.toLowerCase();
     return (!q || hay.includes(q)) && (!origin.value || c.origin===origin.value) && (!location.value || c.location===location.value);
   }
 
@@ -100,7 +100,7 @@
       <div class="summary">${c.summary}</div>
       <div class="meta">
         <div><span>Location</span><b>${c.location}</b></div>
-        <div><span>Origin</span><b>${c.origin}</b></div>
+        <div><span>Origin / Class</span><b>${c.origin}${c.powerClass?` · ${c.powerClass}`:""}</b></div>
         <div><span>DPI registry</span><b>#${c.registryOrder}</b></div>
         <div><span>Top baseline</span><b>${top[0]} · ${top[1].toFixed(1)}</b></div>
       </div>
