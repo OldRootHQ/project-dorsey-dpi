@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=5" />
-  <link rel="stylesheet" href="site.css?v=5" />
+  <link rel="stylesheet" href="site.css?v=6" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
@@ -39,7 +39,7 @@
 
     <section class="character-grid">
       <a class="character-card" data-tags="hero non-ascendant asc-altered low-metahuman tucson" href="characters/gila-monster/">
-        <img class="character-thumb" src="assets/characters/gila-monster.webp" alt="Approved Gila Monster character design reference" loading="lazy" />
+        <img class="character-thumb" src="assets/characters/gila-monster.webp" alt="Approved Gila Monster character design reference" loading="lazy" data-lightbox data-full-src="assets/characters/gila-monster.webp" data-caption="Gila Monster · approved primary visual reference" title="Click to view full design sheet" tabindex="0" />
         <div class="class">Hero · Non-Ascendant</div>
         <h3>Gila Monster</h3>
         <div class="civil">Adrián Zúñiga</div>
@@ -49,7 +49,7 @@
       </a>
 
       <a class="character-card" data-tags="hero non-ascendant human exceptional-human chicago" href="characters/commotion/">
-        <img class="character-thumb" src="assets/characters/commotion.webp" alt="Approved Commotion character design reference" loading="lazy" />
+        <img class="character-thumb" src="assets/characters/commotion.webp" alt="Approved Commotion character design reference" loading="lazy" data-lightbox data-full-src="assets/characters/commotion.webp" data-caption="Commotion · approved primary visual reference" title="Click to view full design sheet" tabindex="0" />
         <div class="class">Hero · Human · Non-Ascendant</div>
         <h3>Commotion</h3>
         <div class="civil">Ja’Kori Benson</div>
@@ -71,5 +71,5 @@
       cards.forEach(c=>c.style.display=(f==='all'||c.dataset.tags.split(' ').includes(f))?'flex':'none');
     }));
   </script>
-</body>
+  <script src="lightbox.js?v=7"></script>\n</body>
 </html>
