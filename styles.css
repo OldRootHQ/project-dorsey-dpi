@@ -44,3 +44,17 @@ footer{margin:14px 0 0;padding:14px 16px;background:var(--cream);color:var(--ink
 ::selection{background:var(--old-gold);color:var(--ink)}
 @media(max-width:980px){.grid{grid-template-columns:1fr}.detail-panel{min-height:auto}.controls{grid-template-columns:1fr 1fr}.axis-controls{grid-template-columns:1fr 44px 1fr}.comparison-chip{grid-column:1/-1}}
 @media(max-width:640px){.shell{padding:16px}.hero{display:block}.status{justify-content:flex-start;margin-top:14px}.controls{grid-template-columns:1fr}.panel-head{display:block}.legend{margin-top:8px}.axis-controls{grid-template-columns:1fr 44px 1fr;padding:9px}.axis-controls select{font-size:12px}.comparison-chip{grid-column:1/-1}.chart-panel{padding:12px;min-height:650px}#chart{height:525px}.detail-panel{min-height:auto}}
+
+
+/* OldRoot DPI branding */
+.hero,.panel{position:relative;overflow:hidden}
+.hero::after,.panel::after{
+  content:"";position:absolute;right:13px;bottom:11px;width:38px;height:38px;
+  background:url("assets/branding/oldroot-monogram.png") center/contain no-repeat;
+  opacity:.09;pointer-events:none;
+}
+.hero>*,.panel>*{position:relative;z-index:1}
+.dpi-footer.oldroot-signature{gap:14px}
+@media(max-width:640px){
+  .hero::after,.panel::after{width:32px;height:32px;right:10px;bottom:9px}
+}
