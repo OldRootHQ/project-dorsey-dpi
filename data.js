@@ -31,8 +31,8 @@ window.DORSEY_CHARACTERS = [
   },
   {
     codename:"Kincast", civilian:"Micah Ellison & Naomi Ellison", classification:"Hero", role:"Hero",
-    powerClass:null, registryOrder:4, location:"Baltimore, Maryland", locationKey:"Baltimore",
-    origin:"Unresolved twin-shadow phenomenon", originType:"Metaphysical / Unexplained", ascendantStatus:"Unresolved",
+    powerClass:"Superhuman", registryOrder:4, location:"Baltimore, Maryland", locationKey:"Baltimore",
+    origin:"Unresolved twin-shadow phenomenon / Non-Ascendant", originType:"Metaphysical / Unexplained", ascendantStatus:"Non-Ascendant",
     affiliation:"Unaffiliated", page:"characters/kincast/", image:"assets/characters/kincast-full.png",
     age:26, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Twin siblings sharing one heroic identity: elite human gunfighter Micah Ellison and Naomi, his independently conscious two-dimensional shadow sister.",

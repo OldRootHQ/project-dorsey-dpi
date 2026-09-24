@@ -11,7 +11,9 @@
     .character-thumb{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
     .character-card:hover{transform:translateY(-2px);border-top-color:var(--old-gold);background:#fff8ed}
     .card-open{margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--root-green)}
-    .registry-note{font-size:12px;color:#575a53;margin:0}\n    .character-thumb.kincast-thumb{object-position:left top}\n  </style>
+    .registry-note{font-size:12px;color:#575a53;margin:0}
+    .character-thumb.kincast-thumb{object-position:left top}
+  </style>
 </head>
 <body>
   <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav>
@@ -83,7 +85,10 @@
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="non-ascendant"><span>Non-Ascendants</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="ascendant"><span>Ascendants</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="asc-altered"><span>ASC-altered</span></label>
-              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="external-anomaly"><span>External anomaly</span></label>\n              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="unresolved-origin"><span>Unresolved / unexplained</span></label>\n              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="unresolved-status"><span>Ascendant status unresolved</span></label>\n            </div>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="external-anomaly"><span>External anomaly</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="unresolved-origin"><span>Unresolved / unexplained</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="origin" value="unresolved-status"><span>Ascendant status unresolved</span></label>
+            </div>
           </details>
 
           <details class="filter-section">
@@ -91,7 +96,9 @@
             <div class="filter-options">
               <label class="filter-check"><input type="checkbox" data-filter-group="location" value="tucson"><span>Tucson</span></label>
               <label class="filter-check"><input type="checkbox" data-filter-group="location" value="chicago"><span>Chicago</span></label>
-              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="san-juan"><span>San Juan</span></label>\n              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="baltimore"><span>Baltimore</span></label>\n            </div>
+              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="san-juan"><span>San Juan</span></label>
+              <label class="filter-check"><input type="checkbox" data-filter-group="location" value="baltimore"><span>Baltimore</span></label>
+            </div>
           </details>
         </div>
       </div>
@@ -127,17 +134,19 @@
         <span class="card-open">Open dossier →</span>
       </a>
 
-      <a class="character-card" data-tags="hero unresolved-status unresolved-origin metaphysical baltimore independent" href="characters/kincast/">
+      <a class="character-card" data-tags="hero non-ascendant unresolved-origin metaphysical superhuman baltimore independent" href="characters/kincast/">
         <img class="character-thumb kincast-thumb" src="assets/characters/kincast-full.png" alt="Approved Kincast character design reference" loading="lazy" data-lightbox data-full-src="assets/characters/kincast-full.png" data-caption="Kincast · approved primary visual reference" title="Click to view full design sheet" tabindex="0" />
-        <div class="class">Hero · Power Classification Unassigned · Origin Unresolved</div>
+        <div class="class">Hero · Superhuman · Non-Ascendant</div>
         <h3>Kincast</h3>
         <div class="civil">Micah Ellison & Naomi Ellison</div>
         <p>Baltimore twin heroes sharing one identity: elite human gunfighter Micah and Naomi, his independently conscious two-dimensional shadow sister.</p>
-        <div class="meta-row"><span class="meta-pill">Baltimore</span><span class="meta-pill">Shared identity</span><span class="meta-pill">Origin unresolved</span><span class="meta-pill">Baseline mean 21.10</span></div>
+        <div class="meta-row"><span class="meta-pill">Baltimore</span><span class="meta-pill">Superhuman</span><span class="meta-pill">Non-Ascendant</span><span class="meta-pill">Baseline mean 21.10</span></div>
         <span class="card-open">Open dossier →</span>
       </a>
 
-    </section>\n\n    <section class="content-block"><p class="registry-note">Power Classification is a registry field separate from DPI. Characters without an assigned classification will remain visible in the full registry but will not appear under a classification-specific filter.</p></section>
+    </section>
+
+    <section class="content-block"><p class="registry-note">Power Classification is a registry field separate from DPI. Characters without an assigned classification will remain visible in the full registry but will not appear under a classification-specific filter.</p></section>
   </main>
   <footer class="oldroot-footer">
     <div class="oldroot-footer-inner">
@@ -240,5 +249,6 @@
 
     updateOptionCounts();
   </script>
-  <script src="lightbox.js?v=8"></script>\n</body>
+  <script src="lightbox.js?v=8"></script>
+</body>
 </html>
