@@ -113,3 +113,51 @@ body.lightbox-open{overflow:hidden}
   .character-footer{margin:0 16px 18px}
   .character-identity::after,.wiki-section::after,.character-infobox::after{width:32px;height:32px;right:10px;bottom:9px}
 }
+
+
+/* OldRoot dossier modernization */
+body{font-family:var(--font-sans)}
+.character-shell{max-width:1400px;padding:34px 28px 46px}
+.character-art-slot,.character-identity,.wiki-section,.character-infobox,.character-links{
+  border-color:var(--line);box-shadow:var(--surface-shadow)
+}
+.character-art-slot{
+  position:relative;overflow:hidden;min-height:250px;border-style:solid;border-width:1px;border-radius:18px;
+  background:
+    radial-gradient(circle at 76% 28%,rgba(197,162,74,.20),transparent 22rem),
+    repeating-linear-gradient(90deg,transparent 0 79px,rgba(243,235,221,.06) 79px 80px),
+    repeating-linear-gradient(0deg,transparent 0 79px,rgba(243,235,221,.05) 79px 80px),
+    linear-gradient(145deg,#102f23,#29543f);
+  color:var(--cream)
+}
+.character-art-slot span{color:var(--old-gold);font-family:var(--font-sans)}
+.character-art-slot strong{color:var(--cream);font-family:var(--font-display);font-weight:900;letter-spacing:-.03em}
+.character-identity{border-radius:18px;padding:32px 34px;background:linear-gradient(180deg,var(--paper-bright),var(--cream))}
+.character-kicker,.character-art-slot span,.logo-slot span,.infobox-title,.info-row dt,.quick-link,.dpi-name,.dpi-value,.dpi-pill,
+.character-portrait figcaption,.portrait-zoom-hint,.image-lightbox-caption{font-family:var(--font-sans)}
+.character-identity h1{font-family:var(--font-display);font-weight:920;font-size:clamp(58px,8vw,108px);letter-spacing:-.075em}
+.character-subtitle{font-family:var(--font-sans);font-size:18px}
+.character-thesis{font-family:var(--font-sans);font-style:normal;font-size:16px;line-height:1.62;max-width:760px;color:#505650}
+.logo-slot{border-color:var(--line-strong);border-radius:13px;background:rgba(231,220,203,.55)}
+.logo-slot strong{font-family:var(--font-display)}
+.wiki-section,.character-infobox{border-radius:15px;background:var(--paper-bright)}
+.wiki-section{padding:30px 32px}
+.wiki-section h2{font-family:var(--font-display);font-size:34px;font-weight:880;letter-spacing:-.045em;border-bottom:1px solid var(--line);padding-bottom:13px}
+.wiki-section h2::after{content:"";display:block;width:42px;height:3px;background:var(--old-gold);border-radius:999px;margin-top:12px}
+.wiki-section h3{font-family:var(--font-display);font-weight:820;letter-spacing:-.02em}
+.wiki-section p,.wiki-section li{font-family:var(--font-sans);font-size:14px;line-height:1.72;color:#454b46}
+.character-infobox{padding:14px;top:88px}
+.character-portrait img{border-color:var(--line);border-radius:11px}
+.infobox-title{font-size:24px;font-weight:880}
+.info-row{border-top-color:var(--line)}
+.info-row dd{font-family:var(--font-sans);font-size:12px;line-height:1.45}
+.quick-link,.character-links a{border-radius:9px;background:rgba(231,220,203,.55);border-color:var(--line-strong)}
+.quote-box{font-family:var(--font-display);font-size:17px;font-weight:760;border-radius:10px;background:rgba(231,220,203,.55)}
+.dpi-track{height:8px;background:#ded4c6}.dpi-fill{background:linear-gradient(90deg,var(--root-green),var(--old-gold))}
+.character-links{border-radius:14px;padding:14px;background:rgba(247,240,229,.96)}
+@media(max-width:620px){
+  .character-shell{padding:20px 14px 34px}
+  .character-art-slot{min-height:180px}
+  .character-identity,.wiki-section{padding:23px 20px}
+  .character-identity h1{font-size:56px}
+}

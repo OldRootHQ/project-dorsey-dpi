@@ -120,3 +120,36 @@ footer{margin:14px 0 0;padding:14px 16px;background:var(--cream);color:var(--ink
   .filter-grid{grid-template-columns:1fr}.display-controls{grid-template-columns:1fr}
   .compare-head{align-items:flex-start;flex-direction:column}.detail-portrait{max-height:260px}
 }
+
+
+/* OldRoot DPI modernization */
+body{font-family:var(--font-sans)}
+.shell{max-width:1480px;padding:34px 28px 46px}
+.hero,.panel,.analytics-toolbar,.filter-drawer{
+  border-color:var(--line);box-shadow:var(--surface-shadow)
+}
+.hero{
+  border-radius:18px;padding:30px 32px;
+  background:
+    linear-gradient(120deg,rgba(197,162,74,.09),transparent 40%),
+    linear-gradient(180deg,var(--paper-bright),var(--cream))
+}
+.eyebrow,.status span,.panel-head h2,.panel-head p,.analytics-search label,.display-controls span,
+.filter-drawer-head span,.filter-group h3,.filter-check,.plot-count,.section-label,.compare-head span,
+.compare-table,.compare-footnote{font-family:var(--font-sans)}
+h1{font-family:var(--font-display);font-weight:920;font-size:clamp(48px,6.5vw,92px);letter-spacing:-.072em}
+.hero p{font-size:13px;line-height:1.65;max-width:820px}
+.status span{border-color:var(--line-strong);background:rgba(231,220,203,.55)}
+.analytics-toolbar,.filter-drawer{border-radius:14px;background:rgba(247,240,229,.97)}
+.analytics-search input,.analytics-toolbar button,.display-controls select,.filter-drawer button,
+.axis-controls select,.axis-controls button{border-color:var(--line-strong);background:var(--paper-bright);border-radius:9px}
+.grid{gap:12px}.panel{border-radius:15px;background:var(--paper-bright)}
+.chart-panel,.detail-panel{padding:20px}
+.axis-controls,.display-controls,.filter-group,.meta div,.comparison-readout,.top-baseline,.conditional,.conditional-empty{
+  border-color:var(--line);background:rgba(231,220,203,.42);border-radius:10px
+}
+.name{font-family:var(--font-display);font-weight:900}
+.compare-tray{border-radius:15px}
+.compare-head h2{font-family:var(--font-display)}
+.tooltip{border-color:rgba(197,162,74,.7);background:var(--paper-bright)}
+@media(max-width:640px){.shell{padding:20px 14px 34px}.hero{padding:24px 20px}}

@@ -16,3 +16,21 @@
 .cart-layout,.checkout-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px}.cart-main,.cart-summary,.checkout-form,.checkout-summary{padding:26px}.cart-main h2,.cart-summary h2,.checkout-form h2,.checkout-summary h2{margin:0 0 14px;color:var(--deep-root);font-size:28px}.cart-empty{padding:38px 22px;border:1px dashed var(--cafe);border-radius:16px;background:var(--parchment);text-align:center}.cart-empty p{color:#5e615a}.shop-primary,.shop-secondary{display:inline-flex;justify-content:center;border-radius:999px;padding:11px 14px;text-decoration:none;font:900 10px/1 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.06em}.shop-primary{background:var(--root-green);color:var(--cream)}.shop-secondary{border:1px solid var(--old-gold);background:var(--parchment)}.summary-row{display:flex;justify-content:space-between;gap:15px;padding:11px 0;border-bottom:1px solid #d8cebf;font:800 12px/1.2 Arial,Helvetica,sans-serif}.summary-row.total{font-size:15px;border-bottom:0}.summary-note{font-size:11px;line-height:1.5;color:#62645d}.checkout-unavailable{padding:14px;border:1px solid var(--old-gold);background:#f0deac;border-radius:12px;font:850 10px/1.45 Arial,Helvetica,sans-serif;color:var(--deep-root);margin-bottom:18px}.checkout-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checkout-fields label{display:grid;gap:6px}.checkout-fields label.full{grid-column:1/-1}.checkout-fields span{font:900 8px/1 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.09em;color:var(--bark)}.checkout-fields input,.checkout-fields select{height:44px;border:1px solid #cfc4b4;border-radius:10px;background:#ede6db;padding:0 12px;color:#797871}.checkout-place{width:100%;margin-top:18px;padding:13px;border:1px solid #b8ad9e;border-radius:999px;background:#d8d0c4;color:#777;font:900 10px/1 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.07em}.confirmation-card{padding:38px;text-align:center}.confirmation-mark{width:72px;height:72px;margin:0 auto 18px;background:url("assets/branding/oldroot-monogram.png") center/contain no-repeat;opacity:.65}.confirmation-card h1{font-size:clamp(46px,7vw,82px);margin:0 0 14px}.confirmation-card p{max-width:680px;margin:0 auto 22px;line-height:1.6;color:#555950}
 @media(max-width:900px){.product-hero,.cart-layout,.checkout-layout{grid-template-columns:1fr}.product-buybox{position:static}.publication-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,.checkout-form,.checkout-summary{padding:20px}.product-book{min-height:330px}.product-two-col{grid-template-columns:1fr}.publication-grid{grid-template-columns:1fr 1fr}.checkout-fields{grid-template-columns:1fr}.checkout-fields label.full{grid-column:auto}.product-pagination{flex-direction:column}.product-pagination a{text-align:center}}
+
+/* OldRoot library / commerce modernization */
+.product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,.checkout-form,.checkout-summary,.confirmation-card{
+  border-color:var(--line);border-radius:16px;box-shadow:var(--surface-shadow);background:var(--paper-bright)
+}
+.product-buybox h1,.product-panel h2,.cart-main h2,.cart-summary h2,.checkout-form h2,.checkout-summary h2,.confirmation-card h1{
+  font-family:var(--font-display);font-weight:880;letter-spacing:-.05em
+}
+.product-format,.product-quickfacts dt,.product-disabled,.product-buy-note,.library-view-link,
+.bag-actions a,.shop-primary,.shop-secondary,.checkout-fields span,.checkout-place,.product-pagination a{
+  font-family:var(--font-sans)
+}
+.product-gallery,.product-buybox,.product-panel{padding:26px}
+.product-media-strip div,.publication-grid div,.checkout-unavailable{border-color:var(--line);border-radius:10px;background:rgba(231,220,203,.45)}
+.product-buybox{top:88px}
+.bag-drawer{background:var(--paper-bright)}
+.library-view-link,.product-disabled,.shop-primary,.shop-secondary,.product-pagination a{border-radius:9px}
+@media(max-width:620px){.product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,.checkout-form,.checkout-summary{padding:20px}}
