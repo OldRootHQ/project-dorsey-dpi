@@ -435,7 +435,7 @@ body.lightbox-open{overflow:hidden}
 .location-terminal dd{margin:0;font-size:13px;font-weight:800}
 .location-terminal dd a{color:var(--root-green)}
 .terminal-note{margin-top:20px!important;padding:14px;border:1px solid #d7ccbc;border-radius:12px;background:var(--parchment);font-size:12px!important}
-.location-index{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.location-index{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
 .location-index button{
   display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:9px;text-align:left;
   padding:12px;border-radius:14px;border:1px solid rgba(183,190,197,.27);background:rgba(243,235,221,.06);color:var(--cream);cursor:pointer
@@ -512,7 +512,7 @@ body.lightbox-open{overflow:hidden}
   text-transform:uppercase;letter-spacing:.06em;color:var(--ink)
 }
 .home-character-links a:first-child,.location-explore{background:var(--root-green);border-color:var(--deep-root);color:var(--cream)}
-.home-world-grid,.location-dossier-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.home-world-grid,.location-dossier-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
 .home-world-grid a,.location-dossier-cards a{
   min-height:150px;padding:18px;border:1px solid #d6cbbb;border-top:4px solid var(--root-green);
   border-radius:18px;background:#fff8ed;text-decoration:none;transition:.14s
@@ -615,3 +615,13 @@ body.lightbox-open{overflow:hidden}
 .donate-disclosure a{font:900 10px/1 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.06em;color:var(--root-green)}
 @media(max-width:820px){.donate-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.donate-primary,.donate-note{padding:22px}.donate-use-grid{grid-template-columns:1fr}}
+
+
+/* Kincast site refinements */
+.kincast-home-art img{object-position:left top}
+@media(max-width:1180px){
+  .location-index{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .location-index{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

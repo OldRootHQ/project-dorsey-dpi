@@ -6,19 +6,15 @@
   <meta name="color-scheme" content="dark" />
   <title>DPI Analytics — OldRoot</title>
   <link rel="stylesheet" href="brand.css?v=7" />
-  <link rel="stylesheet" href="styles.css?v=7" />
+  <link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
   <header class="masthead">
     <div class="mast-inner">
       <a class="brand" href="index.html">OLDROOT</a>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="characters.html">Characters</a>
-        <a href="locations.html">Locations</a>
-        <a href="library.html">Library</a>
-        <a class="active" href="dpi.html">DPI Analytics</a>
-        <a href="organizations.html">Organizations</a>
+        <a href="index.html">Home</a><a href="characters.html">Characters</a><a href="locations.html">Locations</a>
+        <a href="library.html">Library</a><a class="active" href="dpi.html">DPI Analytics</a><a href="organizations.html">Organizations</a>
       </nav>
     </div>
   </header>
@@ -28,56 +24,81 @@
       <div>
         <div class="eyebrow">OLDROOT / PROJECT DORSEY / ANALYTICS</div>
         <h1>DORSEY POWER INDEX</h1>
-        <p>Interactive hero capability visualization. Hover a point for a quick card. Click or tap it for the complete DPI profile.</p>
+        <p>Compare measurable character attributes, filter the registry, and inspect DPI profiles without reducing characters to a canonical overall score.</p>
       </div>
-      <div class="status">
-        <span>LIVE PROTOTYPE</span><span id="count">3 HEROES</span>
-      </div>
+      <div class="status"><span>ANALYTICS 2.0</span><span id="count">4 CHARACTERS</span></div>
     </header>
 
-    <section class="controls">
-      <input id="search" type="search" placeholder="Search hero, identity, location…" />
-      <select id="origin"><option value="">All origins</option></select>
-      <select id="location"><option value="">All locations</option></select>
-      <button id="reset">Reset</button>
+    <section class="analytics-toolbar">
+      <div class="analytics-search"><label for="search">SEARCH</label><input id="search" type="search" placeholder="Character, identity, location, origin…" /></div>
+      <button class="filter-open" id="filter-open" type="button" aria-expanded="false" aria-controls="filter-drawer">Filters <span id="filter-count" hidden>0</span></button>
+      <button class="compare-toggle" id="compare-toggle" type="button" aria-pressed="false">Compare Mode</button>
+      <button class="toolbar-reset" id="reset" type="button">Reset</button>
     </section>
+
+    <section class="filter-drawer" id="filter-drawer" hidden>
+      <div class="filter-drawer-head">
+        <div><span>FILTERS</span><strong>Choose who appears on the graph.</strong></div>
+        <div><button id="filter-clear" type="button">Clear all</button><button id="filter-apply" type="button">Apply</button></div>
+      </div>
+      <div class="filter-grid" id="filter-groups"></div>
+    </section>
+
+    <div class="active-filters" id="active-filters" hidden></div>
 
     <section class="grid">
       <article class="panel chart-panel">
         <div class="panel-head">
-          <div>
-            <h2>Hero DPI comparison scatter plot</h2>
-            <p>Choose any two baseline DPI categories and compare them directly on the fixed 0–50 scale. Baseline mean remains informational only.</p>
-          </div>
-          <div class="legend"><i></i> Hero</div>
+          <div><h2>Character comparison scatter plot</h2><p>Axes can use DPI, physical profile, career data, or analytics-only derived variables. Missing values are never guessed.</p></div>
+          <div class="plot-count" id="plot-count">4 plotted</div>
         </div>
-        <div class="axis-controls" aria-label="DPI comparison axes">
-          <label><span>X axis</span><select id="x-metric" aria-label="Select X axis DPI category"></select></label>
+
+        <div class="axis-controls">
+          <label><span>X axis</span><select id="x-metric"></select></label>
           <button id="swap-axes" type="button" title="Swap X and Y axes" aria-label="Swap X and Y axes">⇄</button>
-          <label><span>Y axis</span><select id="y-metric" aria-label="Select Y axis DPI category"></select></label>
+          <label><span>Y axis</span><select id="y-metric"></select></label>
           <div class="comparison-chip"><span>Viewing</span><b id="comparison-label">Offense vs Durability</b></div>
         </div>
-        <div class="chart-wrap">
-          <svg id="chart" role="img" aria-label="Interactive DPI scatter plot"></svg>
-          <div id="no-results" class="no-results">No matching heroes.</div>
+
+        <div class="display-controls">
+          <label><span>Color by</span><select id="color-by">
+            <option value="powerClass">Power Classification</option><option value="role">Role</option>
+            <option value="originType">Origin Type</option><option value="locationKey">Location</option><option value="none">Single Color</option>
+          </select></label>
+          <label><span>Size by</span><select id="size-by">
+            <option value="fixed">Fixed</option><option value="mean">Baseline Mean</option><option value="x">X Variable</option><option value="y">Y Variable</option>
+          </select></label>
+          <label><span>Labels</span><select id="label-by">
+            <option value="codename">Codename</option><option value="civilian">Civilian Name</option><option value="none">None</option>
+          </select></label>
         </div>
+
+        <div class="chart-wrap"><svg id="chart" role="img" aria-label="Interactive character comparison scatter plot"></svg><div id="no-results" class="no-results">No characters have values for this filtered comparison.</div></div>
+        <div class="chart-note" id="chart-note"></div>
       </article>
+
       <aside class="panel detail-panel"><div id="detail"></div></aside>
     </section>
 
+    <section class="compare-tray panel" id="compare-tray" hidden>
+      <div class="compare-head"><div><span>COMPARE MODE</span><h2>Selected Characters</h2></div><button id="compare-clear" type="button">Clear comparison</button></div>
+      <div id="compare-content" class="compare-content"></div>
+    </section>
+
     <footer class="oldroot-footer">
-    <div class="oldroot-footer-inner">
-      <div class="footer-brand oldroot-signature"><div><strong>OLDROOT STUDIOS</strong><span>Original worlds. Independent publishing.</span></div></div>
-      <div class="footer-links">
-        <div><b>Explore</b><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="library.html">Library</a><a href="organizations.html">Organizations</a><a href="dpi.html">DPI Analytics</a></div>
-        <div><b>OldRoot</b><a href="about.html">About OldRoot</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a></div>
+      <div class="oldroot-footer-inner">
+        <div class="footer-brand oldroot-signature"><div><strong>OLDROOT STUDIOS</strong><span>Original worlds. Independent publishing.</span></div></div>
+        <div class="footer-links">
+          <div><b>Explore</b><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="library.html">Library</a><a href="organizations.html">Organizations</a><a href="dpi.html">DPI Analytics</a></div>
+          <div><b>OldRoot</b><a href="about.html">About OldRoot</a><a href="contact.html">Contact Us</a><a href="donate.html">Donate</a></div>
+        </div>
       </div>
-    </div>
-    <div class="footer-bottom">© 2026 OldRoot Studios</div>
-  </footer>
+      <div class="footer-bottom">© 2026 OldRoot Studios</div>
+    </footer>
   </main>
+
   <div id="tooltip" class="tooltip"></div>
-  <script src="data.js?v=7"></script>
-  <script src="app.js?v=7"></script>
+  <script src="data.js?v=8"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>
