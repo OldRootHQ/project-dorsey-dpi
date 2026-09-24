@@ -135,7 +135,8 @@ nav a.active{border-color:var(--old-gold);box-shadow:inset 0 -3px 0 var(--old-go
   position:absolute;
   width:204px;
   height:96px;
-  margin-left:18px;
+  left:18px;
+  top:11px;
   background:url("assets/branding/oldroot-primary.png") center/contain no-repeat;
   pointer-events:none;
 }
@@ -152,6 +153,7 @@ nav a.active{border-color:var(--old-gold);box-shadow:inset 0 -3px 0 var(--old-go
   .oldroot-footer .footer-brand.oldroot-signature::after{
     width:186px;
     height:88px;
-    margin-left:17px;
+    left:17px;
+    top:10px;
   }
 }
