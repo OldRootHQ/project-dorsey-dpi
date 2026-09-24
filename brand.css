@@ -111,3 +111,47 @@ nav a.active{border-color:var(--old-gold);box-shadow:inset 0 -3px 0 var(--old-go
   .oldroot-footer-inner{grid-template-columns:1fr}
   .footer-links{gap:32px;flex-wrap:wrap}
 }
+
+
+/* Footer primary logo upgrade */
+.oldroot-footer .footer-brand.oldroot-signature{
+  display:grid;
+  grid-template-columns:240px minmax(180px,1fr);
+  align-items:center;
+  gap:18px;
+}
+.oldroot-footer .footer-brand.oldroot-signature::before{
+  width:240px;
+  height:118px;
+  flex:0 0 auto;
+  background:
+    linear-gradient(145deg,rgba(23,52,40,.98),rgba(10,24,18,.98));
+  border:1px solid rgba(197,162,74,.55);
+  border-radius:16px;
+  box-shadow:0 10px 24px rgba(7,28,20,.14);
+}
+.oldroot-footer .footer-brand.oldroot-signature::after{
+  content:"";
+  position:absolute;
+  width:204px;
+  height:96px;
+  margin-left:18px;
+  background:url("assets/branding/oldroot-primary.png") center/contain no-repeat;
+  pointer-events:none;
+}
+.oldroot-footer .footer-brand{position:relative}
+@media(max-width:760px){
+  .oldroot-footer .footer-brand.oldroot-signature{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+  .oldroot-footer .footer-brand.oldroot-signature::before{
+    width:220px;
+    height:108px;
+  }
+  .oldroot-footer .footer-brand.oldroot-signature::after{
+    width:186px;
+    height:88px;
+    margin-left:17px;
+  }
+}
