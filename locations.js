@@ -1,9 +1,9 @@
 (() => {
   const locations = {
-    tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226]},
-    chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781]},
-    sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655]},
-    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",note:"Map placement is approximate. St. Dorsey is established as a Washington, D.C.-area island; exact public coordinates are not established.",coords:[-77.0369,38.9072]}
+    tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226]},
+    chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781]},
+    sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655]},
+    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"Map placement is approximate. St. Dorsey is established as a Washington, D.C.-area island; exact public coordinates are not established.",coords:[-77.0369,38.9072]}
   };
 
   const svg=d3.select("#techGlobe");
@@ -14,7 +14,7 @@
     id:document.querySelector("#locationId"),name:document.querySelector("#locationName"),
     type:document.querySelector("#locationType"),character:document.querySelector("#locationCharacter"),
     region:document.querySelector("#locationRegion"),status:document.querySelector("#locationStatus"),
-    note:document.querySelector("#locationNote")
+    note:document.querySelector("#locationNote"),explore:document.querySelector("#locationExplore")
   };
 
   let width=0,height=0,baseScale=0,space=false,world=null;
@@ -72,6 +72,7 @@
     terminal.region.textContent=item.region;
     terminal.status.textContent=item.status;
     terminal.note.textContent=item.note;
+    if(terminal.explore) terminal.explore.href=item.dossierUrl;
     terminal.character.innerHTML=item.characterUrl?`<a href="${item.characterUrl}">${item.character}</a>`:item.character;
     document.querySelectorAll("[data-location]").forEach(b=>b.classList.toggle("active",b.dataset.location===key));
     nodesLayer.selectAll(".location-node").classed("active",d=>d[0]===key);
