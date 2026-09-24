@@ -131,5 +131,12 @@
 
   window.addEventListener("resize",resize);
   resize();
-  selectLocation("tucson");
+  const initialKey=location.hash.replace("#","");
+  if(locations[initialKey]){
+    selectLocation(initialKey);
+    projection.rotate([-locations[initialKey].coords[0],-locations[initialKey].coords[1],0]);
+    render();
+  }else{
+    selectLocation("tucson");
+  }
 })();
