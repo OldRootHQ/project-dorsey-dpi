@@ -10,7 +10,7 @@
 
   // Local-site nodes are intentionally schematic until exact public coordinates exist.
   const stDorseyGeography = {
-    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-77.0510,38.8910],[-77.0400,38.8870],[-77.0340,38.8770],[-77.0320,38.8610],[-77.0340,38.8440],[-77.0380,38.8270],[-77.0440,38.8100],[-77.0510,38.7930],[-77.0600,38.7790],[-77.0710,38.7750],[-77.0830,38.7810],[-77.0870,38.7940],[-77.0820,38.8110],[-77.0750,38.8280],[-77.0690,38.8450],[-77.0640,38.8620],[-77.0610,38.8770],[-77.0570,38.8870],[-77.0510,38.8910]]]}},
+    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-77.0510,38.8910],[-77.0400,38.8870],[-77.0340,38.8770],[-77.0320,38.8610],[-77.0340,38.8440],[-77.0380,38.8270],[-77.0440,38.8100],[-77.0510,38.7930],[-77.0600,38.7790],[-77.0730,38.7720],[-77.0970,38.7700],[-77.1120,38.7790],[-77.1060,38.7900],[-77.0900,38.7950],[-77.0870,38.7940],[-77.0820,38.8110],[-77.0750,38.8280],[-77.0690,38.8450],[-77.0640,38.8620],[-77.0610,38.8770],[-77.0570,38.8870],[-77.0510,38.8910]]]}},
     bridges:[
       {name:"WEST HIGHWAY",line:{type:"LineString",coordinates:[[-77.0610,38.8990],[-77.0750,38.8960],[-77.0800,38.8880],[-77.0750,38.8780],[-77.0630,38.8710]]}},
       {name:"EAST HIGHWAY",line:{type:"LineString",coordinates:[[-77.0300,38.8980],[-77.0160,38.8940],[-77.0110,38.8850],[-77.0180,38.8740],[-77.0350,38.8620]]}}
@@ -19,8 +19,8 @@
   };
 
   const landmarks = {
-    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. It occupies an isolated secured tract on the far southern side of St. Dorsey, opposite the island's primary D.C. entrance.",coords:[-77.0352,38.8448],calloutOffset:[48,28]},
-    university:{id:"SITE-002",name:"University of Dorsey",parent:"stdorsey",type:"University",region:"St. Dorsey Island",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"University of Dorsey occupies a separate coastal site on St. Dorsey, well away from Hampton Dynamics.",coords:[-77.0319,38.8508],calloutOffset:[46,-24]}
+    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its isolated coastal campus occupies the island's large outward-projecting southern tract, far from the primary D.C. approaches.",coords:[-77.1010,38.7810],calloutOffset:[44,28]},
+    university:{id:"SITE-002",name:"University of Dorsey",parent:"stdorsey",type:"University",region:"St. Dorsey Island",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"University of Dorsey occupies a separate coastal site on St. Dorsey, well away from Hampton Dynamics.",coords:[-77.0335,38.8460],calloutOffset:[46,-24]}
   };
 
   const svg=d3.select("#techGlobe");
