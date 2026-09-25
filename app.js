@@ -1,5 +1,5 @@
 (() => {
-  const chars=window.DORSEY_CHARACTERS||[];
+  const chars=window.OLDROOT_CHARACTERS||[];
   const $=s=>document.querySelector(s);
   const svg=$("#chart"),detail=$("#detail"),tip=$("#tooltip"),search=$("#search");
   const xMetric=$("#x-metric"),yMetric=$("#y-metric"),swapAxes=$("#swap-axes"),reset=$("#reset");
@@ -12,16 +12,16 @@
 
   const dpiMetrics=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
   const defs={
-    ...Object.fromEntries(dpiMetrics.map(k=>[k,{label:k,group:"DPI",kind:"dpi",format:v=>v.toFixed(1)}])),
+    ...Object.fromEntries(dpiMetrics.map(k=>[k,{label:k,group:"OPI",kind:"dpi",format:v=>v.toFixed(1)}])),
     age:{label:"Age",group:"Physical Profile",kind:"age",format:v=>String(Math.round(v))},
     heightIn:{label:"Height",group:"Physical Profile",kind:"height",format:formatHeight},
     weightLb:{label:"Weight",group:"Physical Profile",kind:"weight",format:v=>Math.round(v)+" lb"},
     yearsActive:{label:"Years Active",group:"Career",kind:"years",format:v=>v.toFixed(1).replace(".0","")},
     mean:{label:"Baseline Mean",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(2)},
-    high:{label:"Highest DPI Value",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
-    low:{label:"Lowest DPI Value",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
-    spread:{label:"DPI Spread",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
-    conditionalCount:{label:"Conditional DPI Count",group:"Derived Analytics",kind:"count",format:v=>String(Math.round(v))}
+    high:{label:"Highest OPI Value",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
+    low:{label:"Lowest OPI Value",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
+    spread:{label:"OPI Spread",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
+    conditionalCount:{label:"Conditional OPI Count",group:"Derived Analytics",kind:"count",format:v=>String(Math.round(v))}
   };
   const metricOrder=[...dpiMetrics,"age","heightIn","weightLb","yearsActive","mean","high","low","spread","conditionalCount"];
   const filterDefs=[
@@ -30,7 +30,7 @@
     {key:"originType",label:"Origin Type"},
     {key:"ascendantStatus",label:"Ascendant Status"},
     {key:"locationKey",label:"Location"},
-    {key:"conditionalStatus",label:"Conditional DPI"}
+    {key:"conditionalStatus",label:"Conditional OPI"}
   ];
   const filterState={};
   const compareSet=new Set();
@@ -57,7 +57,7 @@
   function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
   function node(name,attrs={},text=""){const n=document.createElementNS(NS,name);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(text)n.textContent=text;return n}
   function unique(key){
-    if(key==="conditionalStatus")return["Has conditional DPI","No conditional DPI"];
+    if(key==="conditionalStatus")return["Has conditional OPI","No conditional OPI"];
     return[...new Set(chars.map(c=>c[key]||"Unassigned"))].sort((a,b)=>String(a).localeCompare(String(b)));
   }
 
@@ -94,7 +94,7 @@
   buildFilters();
 
   function getFilterValue(c,key){
-    if(key==="conditionalStatus")return(c.conditional&&c.conditional.length)?"Has conditional DPI":"No conditional DPI";
+    if(key==="conditionalStatus")return(c.conditional&&c.conditional.length)?"Has conditional OPI":"No conditional OPI";
     return c[key]||"Unassigned";
   }
   function draftState(){
@@ -249,7 +249,7 @@
       '<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+mean(c).toFixed(2)+'</b></div>'+
       '<div class="top-baseline"><span>Highest baseline category</span><b>'+esc(top[0])+' · '+top[1].toFixed(1)+'</b></div>'+
       (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"")+
-      '<div class="section-label">Baseline DPI</div>'+
+      '<div class="section-label">Baseline OPI</div>'+
       Object.entries(c.baseline).map(([k,v])=>'<div class="stat"><div class="stat-name">'+k+'</div><div class="track"><div class="fill" style="width:'+(v/50*100)+'%"></div></div><div class="stat-val">'+v.toFixed(1)+'</div></div>').join("")+
       '<div class="section-label">Conditional modifiers</div>'+conditional;
   }

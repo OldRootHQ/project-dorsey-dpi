@@ -1,6 +1,6 @@
-# Project Dorsey — DPI Analytics
+# OldRoot — OPI Analytics
 
-Interactive companion visualization for Project Dorsey.
+Interactive companion visualization for OldRoot.
 
 ## Current scope
 - Hero DPI scatter plot
@@ -11,7 +11,7 @@ Interactive companion visualization for Project Dorsey.
 - Search and filters prepared for future characters
 
 ## Canon note
-This repository is a presentation/analytics layer only. It does not replace the Project Dorsey Master Bible. The plotted mean is analytics-only and is not a canonical overall power score.
+This repository contains the public OldRoot website and analytics layer. The plotted mean is analytics-only and is not a canonical overall power score.
 
 ## Current character data
 Gila Monster / Adrián Zúñiga

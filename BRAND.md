@@ -1,6 +1,6 @@
 # OldRoot Visual Identity — Working Brand Guide v0.1
 
-This is a website/brand design reference. It is not Project Dorsey story canon.
+This is the public website and brand design reference for OldRoot Studios.
 
 ## Core palette
 

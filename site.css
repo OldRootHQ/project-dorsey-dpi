@@ -852,3 +852,16 @@ body{font-family:var(--font-sans)}
 .discovery-card{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}
 @media(max-width:1040px){.start-intro-grid>.origin-lanes{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:760px){.start-intro-grid>.origin-lanes{grid-template-columns:1fr}}
+
+
+/* Local-detail globe layer */
+.hud-top-right{top:14px;right:16px;text-align:right}
+.landmark-node{cursor:pointer}
+.landmark-link{stroke:rgba(197,162,74,.46);stroke-width:1;stroke-dasharray:3 4;pointer-events:none}
+.landmark-core{fill:#f3ebdd;stroke:var(--old-gold);stroke-width:1.6;filter:drop-shadow(0 0 6px rgba(197,162,74,.72))}
+.landmark-node.active .landmark-core{fill:var(--old-gold);stroke:#fff2c3;stroke-width:2}
+.landmark-label{fill:#f3ebdd;font:900 8px/1 var(--font-sans);letter-spacing:.055em;paint-order:stroke;stroke:#07140f;stroke-width:3px;stroke-linejoin:round}
+@media(max-width:640px){
+  .hud-top-right{top:30px;right:12px}
+  .landmark-label{font-size:7px}
+}
