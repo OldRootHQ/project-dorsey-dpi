@@ -95,13 +95,19 @@
       outFields:"*",
       returnGeometry:"true",
       outSR:"4326",
-      f:"geojson"
+      f:"geojson",
+      geometryPrecision:"5"
     });
     boundaryRequests[key]=fetch(`${base}/${spec.layer}/query?${params}`)
       .then(r=>r.ok?r.json():Promise.reject(new Error("Boundary request failed")))
       .then(data=>{
         const feature=data&&data.features&&data.features[0]?data.features[0]:null;
-        if(feature)boundaryCache[key]=feature;
+        if(feature){
+          boundaryCache[key]=feature;
+          const props=feature.properties||{};
+          const lon=parseFloat(props.CENTLON),lat=parseFloat(props.CENTLAT);
+          if(Number.isFinite(lon)&&Number.isFinite(lat))locations[key].coords=[lon,lat];
+        }
         delete boundaryRequests[key];
         if(cityViewKey===key||hoveredLocationKey===key)render();
         return feature;
