@@ -272,11 +272,24 @@
 
   nodesLayer.on("mousemove",event=>{
     const node=event.target.closest(".location-node"); if(!node)return;
-    showTooltip(event,locations[node.dataset.key].name);
-  }).on("mouseleave",()=>tooltip.classList.remove("show"))
-    .on("click",event=>{
-      const node=event.target.closest(".location-node"); if(node)selectLocation(node.dataset.key);
-    });
+    const key=node.dataset.key;
+    if(hoveredLocationKey!==key){
+      hoveredLocationKey=key;
+      loadBoundary(key);
+      render();
+    }
+    showTooltip(event,locations[key].name);
+  }).on("mouseout",event=>{
+    const from=event.target.closest&&event.target.closest(".location-node");
+    const to=event.relatedTarget&&event.relatedTarget.closest?event.relatedTarget.closest(".location-node"):null;
+    if(from&&from!==to){
+      hoveredLocationKey=null;
+      tooltip.classList.remove("show");
+      if(!cityViewKey)render();
+    }
+  }).on("click",event=>{
+    const node=event.target.closest(".location-node"); if(node)selectLocation(node.dataset.key);
+  });
 
   landmarkLayer.on("mousemove",event=>{
     const node=event.target.closest(".landmark-node");if(!node)return;
