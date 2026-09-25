@@ -100,8 +100,11 @@
     points.each(function([key,item]){
       const p=projection(item.coords);
       const visible=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-      d3.select(this).attr("transform",p?`translate(${p[0]},${p[1]})`:"translate(-999,-999)").style("display",visible?"":"none");
-      d3.select(this).select("text").text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
+      const g=d3.select(this).attr("transform",p?`translate(${p[0]},${p[1]})`:"translate(-999,-999)").style("display",visible?"":"none");
+      const ratio=zoomRatio();
+      g.select(".node-pulse").attr("r",ratio>=8?9:13);
+      g.select(".node-core").attr("r",ratio>=8?3.5:5);
+      g.select("text").style("display",(ratio>=1.7||key===selectedLocationKey)?"":"none").text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
     }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
 
     renderLandmarks();
@@ -112,16 +115,16 @@
     const ratio=zoomRatio();
     const center=locations.stdorsey.coords;
     const front=d3.geoDistance(center,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-    const visible=ratio>=3.15&&front;
+    const visible=ratio>=5.5&&front;
     fictionLayer.style("display",visible?"":"none");
     if(!visible)return;
 
     islandPath.attr("d",path);
     const centerPoint=projection(center);
-    if(centerPoint) islandLabel.attr("x",centerPoint[0]).attr("y",centerPoint[1]+4);
+    if(centerPoint) islandLabel.attr("x",centerPoint[0]).attr("y",centerPoint[1]+4).style("display",ratio>=8?"":"none");
 
     const ep=projection(stDorseyGeography.entrance);
-    if(ep) entranceMarker.attr("transform",`translate(${ep[0]},${ep[1]})`);
+    if(ep) entranceMarker.attr("transform",`translate(${ep[0]},${ep[1]})`).style("display",ratio>=9?"":"none");
 
     bridgeLayer.selectAll("g.st-dorsey-bridge").data(stDorseyGeography.bridges,d=>d.name).join(enter=>{
       const g=enter.append("g").attr("class","st-dorsey-bridge");
