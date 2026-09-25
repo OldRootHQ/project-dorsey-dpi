@@ -394,7 +394,7 @@
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
-    .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();})
+    .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();Object.keys(locations).forEach(key=>loadBoundary(key));})
     .catch(()=>{loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";render();});
 
   window.addEventListener("resize",resize);
