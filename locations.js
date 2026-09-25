@@ -256,10 +256,48 @@
 
   function focusLocation(key){
     const item=locations[key];if(!item)return;
+    cityViewKey=null;
+    stage.classList.remove("city-view");
     selectLocation(key);
     projection.rotate([-item.coords[0],-item.coords[1],0]);
     const target=key==="stdorsey"?12:7;
     projection.scale(Math.max(projection.scale(),baseScale*target));
+    render();
+  }
+
+  function cityFitRatio(feature){
+    if(!feature||!baseScale)return 45;
+    const bounds=d3.geoBounds(feature);
+    const midLat=(bounds[0][1]+bounds[1][1])/2;
+    const lonSpan=Math.abs(bounds[1][0]-bounds[0][0])*Math.max(.25,Math.cos(midLat*Math.PI/180));
+    const latSpan=Math.abs(bounds[1][1]-bounds[0][1]);
+    const spanDeg=Math.max(lonSpan,latSpan,.015);
+    const desiredPixels=Math.min(width,height)*.72;
+    const targetScale=desiredPixels/(spanDeg*Math.PI/180);
+    return Math.max(35,Math.min(380,targetScale/baseScale));
+  }
+
+  async function enterCityView(key){
+    const item=locations[key];if(!item)return;
+    selectLocation(key);
+    const feature=await loadBoundary(key);
+    if(selectedLocationKey!==key)return;
+    cityViewKey=key;
+    stage.classList.add("city-view");
+    let center=item.coords;
+    if(feature&&!d3.geoContains(feature,center)){
+      const centroid=d3.geoCentroid(feature);
+      if(Number.isFinite(centroid[0])&&Number.isFinite(centroid[1]))center=centroid;
+    }
+    projection.rotate([-center[0],-center[1],0]);
+    projection.scale(baseScale*cityFitRatio(feature));
+    render();
+  }
+
+  function exitCityView(){
+    if(!cityViewKey)return;
+    cityViewKey=null;
+    stage.classList.remove("city-view");
     render();
   }
 
@@ -288,7 +326,7 @@
       if(!cityViewKey)render();
     }
   }).on("click",event=>{
-    const node=event.target.closest(".location-node"); if(node)selectLocation(node.dataset.key);
+    const node=event.target.closest(".location-node"); if(node)enterCityView(node.dataset.key);
   });
 
   landmarkLayer.on("mousemove",event=>{
@@ -334,7 +372,7 @@
     setView(false);
     selectLocation("tucson");
   });
-  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>focusLocation(btn.dataset.location)));
+  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
     .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();})
