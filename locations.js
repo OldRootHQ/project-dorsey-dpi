@@ -151,10 +151,8 @@
     const marks=landmarkLayer.selectAll("g.landmark-node").data(data,d=>d[0]).join(
       enter=>{
         const g=enter.append("g").attr("class","landmark-node").attr("data-landmark",d=>d[0]);
-        g.append("circle").attr("class","landmark-anchor").attr("r",2.5);
-        g.append("line").attr("class","landmark-link");
-        g.append("rect").attr("class","landmark-core").attr("x",-4).attr("y",-4).attr("width",8).attr("height",8).attr("rx",1.5);
-        g.append("text").attr("class","landmark-label").attr("x",10).attr("y",-8);
+        g.append("circle").attr("class","landmark-core").attr("r",4);
+        g.append("text").attr("class","landmark-label").attr("x",9).attr("y",-7);
         return g;
       },
       update=>update,
@@ -164,13 +162,7 @@
     marks.each(function([key,item]){
       const anchor=projection(item.coords||parent.coords);
       if(!anchor)return;
-      const multiplier=Math.min(1.45,.82+ratio*.07);
-      const offset=item.calloutOffset||[48,30];
-      const dx=offset[0]*multiplier,dy=offset[1]*multiplier;
-      const x=anchor[0]+dx,y=anchor[1]+dy;
-      const g=d3.select(this).attr("transform",`translate(${x},${y})`);
-      g.select(".landmark-anchor").attr("cx",-dx).attr("cy",-dy);
-      g.select(".landmark-link").attr("x1",-dx).attr("y1",-dy).attr("x2",0).attr("y2",0);
+      const g=d3.select(this).attr("transform",`translate(${anchor[0]},${anchor[1]})`);
       g.select(".landmark-label").text(item.name);
       g.classed("active",selectedLandmarkKey===key);
     });
