@@ -3,13 +3,22 @@
     tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226]},
     chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781]},
     sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655]},
-    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is a fictional developed island in the Potomac immediately south of Washington, D.C., connected to the regional road network by multiple bridges and highway approaches. The map anchor is a canonical fictional placement within the real Potomac corridor.",coords:[-77.0345,38.8505]},
+    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is a fictional developed island branching from Washington, D.C. into the tidal Potomac. Multiple bridge and highway approaches connect the island to the D.C. road network; Hampton Dynamics occupies the isolated far side of the island.",coords:[-77.0345,38.8505]},
     baltimore:{id:"LOC-005",name:"Baltimore, Maryland",type:"Primary operating location",region:"United States",status:"Established",character:"Kincast",characterUrl:"characters/kincast/",dossierUrl:"locations/baltimore/",note:"Baltimore is the established home base and primary operating city of Kincast.",coords:[-76.6122,39.2904]}
   };
 
   // Local-site nodes are intentionally schematic until exact public coordinates exist.
+  const stDorseyGeography = {
+    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-77.0367,38.8562],[-77.0327,38.8555],[-77.0309,38.8528],[-77.0312,38.8489],[-77.0331,38.8440],[-77.0362,38.8434],[-77.0382,38.8462],[-77.0384,38.8510],[-77.0367,38.8562]]]}},
+    bridges:[
+      {name:"NORTH D.C. ACCESS",line:{type:"LineString",coordinates:[[-77.0329,38.8551],[-77.0248,38.8580]]}},
+      {name:"SOUTH D.C. ACCESS",line:{type:"LineString",coordinates:[[-77.0313,38.8490],[-77.0234,38.8480]]}}
+    ],
+    entrance:[-77.0328,38.8550]
+  };
+
   const landmarks = {
-    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its geographic anchor is on St. Dorsey Island; the square callout is offset only so the site remains readable at globe scale.",coords:[-77.0328,38.8493],calloutOffset:[52,32]}
+    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. It occupies an isolated secured tract on the far southern side of St. Dorsey, opposite the island's primary D.C. entrance.",coords:[-77.0352,38.8448],calloutOffset:[48,28]}
   };
 
   const svg=d3.select("#techGlobe");
@@ -35,6 +44,13 @@
   root.append("path").attr("class","earth-grid").datum(d3.geoGraticule10());
   const landPath=root.append("path").attr("class","earth-land");
   const borderPath=root.append("path").attr("class","earth-borders");
+  const fictionLayer=root.append("g").attr("class","fiction-geography");
+  const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
+  const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
+  const islandLabel=fictionLayer.append("text").attr("class","st-dorsey-label").text("ST. DORSEY");
+  const entranceMarker=fictionLayer.append("g").attr("class","st-dorsey-entrance");
+  entranceMarker.append("circle").attr("r",3.5);
+  entranceMarker.append("text").attr("x",8).attr("y",-7).text("D.C. ENTRANCE");
   const nodesLayer=root.append("g").attr("class","earth-nodes");
   const landmarkLayer=root.append("g").attr("class","earth-landmarks");
 
@@ -69,6 +85,8 @@
       borderPath.datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr("d",path);
     }
 
+    renderStDorseyGeography();
+
     const data=Object.entries(locations);
     const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(enter=>{
       const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
@@ -86,6 +104,35 @@
 
     renderLandmarks();
     updateZoomHud();
+  }
+
+  function renderStDorseyGeography(){
+    const ratio=zoomRatio();
+    const center=locations.stdorsey.coords;
+    const front=d3.geoDistance(center,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
+    const visible=ratio>=3.15&&front;
+    fictionLayer.style("display",visible?"":"none");
+    if(!visible)return;
+
+    islandPath.attr("d",path);
+    const centerPoint=projection(center);
+    if(centerPoint) islandLabel.attr("x",centerPoint[0]).attr("y",centerPoint[1]+4);
+
+    const ep=projection(stDorseyGeography.entrance);
+    if(ep) entranceMarker.attr("transform",`translate(${ep[0]},${ep[1]})`);
+
+    bridgeLayer.selectAll("g.st-dorsey-bridge").data(stDorseyGeography.bridges,d=>d.name).join(enter=>{
+      const g=enter.append("g").attr("class","st-dorsey-bridge");
+      g.append("path").attr("class","st-dorsey-bridge-line");
+      g.append("text").attr("class","st-dorsey-bridge-label");
+      return g;
+    }).each(function(item){
+      const g=d3.select(this);
+      g.select("path").datum(item.line).attr("d",path);
+      const mid=d3.geoInterpolate(item.line.coordinates[0],item.line.coordinates[1])(.56);
+      const mp=projection(mid);
+      if(mp)g.select("text").attr("x",mp[0]).attr("y",mp[1]-5).text(item.name);
+    });
   }
 
   function renderLandmarks(){
