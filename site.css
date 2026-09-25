@@ -865,3 +865,29 @@ body{font-family:var(--font-sans)}
   .hud-top-right{top:30px;right:12px}
   .landmark-label{font-size:7px}
 }
+
+
+/* St. Dorsey fictional geography — local globe overlay */
+.fiction-geography{pointer-events:none}
+.st-dorsey-island{
+  fill:#315f47;stroke:#d7b85d;stroke-width:1.35;
+  filter:drop-shadow(0 0 7px rgba(197,162,74,.34));
+}
+.st-dorsey-label{
+  fill:#f3ebdd;font:900 7px/1 var(--font-sans);letter-spacing:.16em;
+  text-anchor:middle;paint-order:stroke;stroke:#10271d;stroke-width:2.6px
+}
+.st-dorsey-bridge-line{
+  fill:none;stroke:#c5a24a;stroke-width:2;stroke-linecap:round;
+  stroke-dasharray:2 2;filter:drop-shadow(0 0 3px rgba(197,162,74,.35))
+}
+.st-dorsey-bridge-label{
+  fill:#c9d2cb;font:800 5.5px/1 var(--font-sans);letter-spacing:.08em;
+  text-anchor:middle;paint-order:stroke;stroke:#07140f;stroke-width:2px
+}
+.st-dorsey-entrance circle{fill:#f3ebdd;stroke:#c5a24a;stroke-width:1.5}
+.st-dorsey-entrance text{
+  fill:#f3ebdd;font:850 6px/1 var(--font-sans);letter-spacing:.08em;
+  paint-order:stroke;stroke:#07140f;stroke-width:2px
+}
+.landmark-anchor{fill:#c5a24a;stroke:#fff2c3;stroke-width:1}
