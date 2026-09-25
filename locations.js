@@ -72,7 +72,52 @@
   function updateZoomHud(){
     if(!zoomReadout)return;
     const r=zoomRatio();
-    zoomReadout.textContent="ZOOM "+r.toFixed(1)+"× // "+zoomMode(r);
+    const mode=cityViewKey?"CITY / "+locations[cityViewKey].name.toUpperCase():zoomMode(r);
+    zoomReadout.textContent="ZOOM "+r.toFixed(1)+"× // "+mode;
+  }
+
+  function loadBoundary(key){
+    if(boundaryCache[key])return Promise.resolve(boundaryCache[key]);
+    if(boundaryRequests[key])return boundaryRequests[key];
+    const item=locations[key],spec=item&&item.boundary;
+    if(!spec)return Promise.resolve(null);
+    if(spec.service==="fictional"){
+      boundaryCache[key]=stDorseyGeography.island;
+      return Promise.resolve(boundaryCache[key]);
+    }
+    const base=boundaryServices[spec.service];
+    if(!base)return Promise.resolve(null);
+    const where=spec.service==="states"
+      ?`STATE='${spec.state}'`
+      :`STATE='${spec.state}' AND BASENAME='${spec.name.replace(/'/g,"''")}'`;
+    const params=new URLSearchParams({
+      where,
+      outFields:"*",
+      returnGeometry:"true",
+      outSR:"4326",
+      f:"geojson"
+    });
+    boundaryRequests[key]=fetch(`${base}/${spec.layer}/query?${params}`)
+      .then(r=>r.ok?r.json():Promise.reject(new Error("Boundary request failed")))
+      .then(data=>{
+        const feature=data&&data.features&&data.features[0]?data.features[0]:null;
+        if(feature)boundaryCache[key]=feature;
+        delete boundaryRequests[key];
+        if(cityViewKey===key||hoveredLocationKey===key)render();
+        return feature;
+      })
+      .catch(()=>{
+        delete boundaryRequests[key];
+        return null;
+      });
+    return boundaryRequests[key];
+  }
+
+  function renderBoundary(){
+    const key=cityViewKey||hoveredLocationKey;
+    const feature=key&&boundaryCache[key];
+    boundaryLayer.style("display",feature?"":"none").classed("city-view",!!cityViewKey);
+    if(feature)boundaryPath.datum(feature).attr("d",path);
   }
 
   function resize(){
@@ -98,6 +143,7 @@
       borderPath.datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr("d",path);
     }
 
+    renderBoundary();
     renderStDorseyGeography();
 
     const data=Object.entries(locations);
