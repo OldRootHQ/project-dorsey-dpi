@@ -37,7 +37,7 @@
 
   let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
-  const localZoomThreshold=3.4;
+  const localZoomThreshold=6.5;
   const projection=d3.geoOrthographic().clipAngle(90).precision(.4).rotate([96,-28,0]);
   const path=d3.geoPath(projection);
   const root=svg.append("g");
@@ -57,7 +57,7 @@
   const landmarkLayer=root.append("g").attr("class","earth-landmarks");
 
   function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
-  function zoomMode(r=zoomRatio()){return r>=6?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
+  function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
   function updateZoomHud(){
     if(!zoomReadout)return;
     const r=zoomRatio();
@@ -71,7 +71,7 @@
     height=Math.max(430,rect.height);
     svg.attr("viewBox",`0 0 ${width} ${height}`);
     baseScale=Math.min(width,height)*.37;
-    const target=Math.max(baseScale*.45,Math.min(baseScale*10,baseScale*priorRatio));
+    const target=Math.max(baseScale*.45,Math.min(baseScale*55,baseScale*priorRatio));
     projection.translate([width/2,height/2]).scale(target);
     render();
   }
@@ -206,7 +206,8 @@
     const item=locations[key];if(!item)return;
     selectLocation(key);
     projection.rotate([-item.coords[0],-item.coords[1],0]);
-    projection.scale(Math.max(projection.scale(),baseScale*4.2));
+    const target=key==="stdorsey"?12:7;
+    projection.scale(Math.max(projection.scale(),baseScale*target));
     render();
   }
 
@@ -241,14 +242,14 @@
   }));
 
   function applyZoom(factor){
-    const min=baseScale*.45,max=baseScale*10;
+    const min=baseScale*.45,max=baseScale*55;
     projection.scale(Math.max(min,Math.min(max,projection.scale()*factor)));
     render();
   }
 
   svg.on("wheel",event=>{
     event.preventDefault();
-    applyZoom(event.deltaY>0?.88:1.14);
+    applyZoom(event.deltaY>0?.82:1.22);
   },{passive:false});
 
   function setView(isSpace){
@@ -261,8 +262,8 @@
   }
   document.querySelector("#earthView").addEventListener("click",()=>setView(false));
   document.querySelector("#spaceView").addEventListener("click",()=>setView(true));
-  document.querySelector("#zoomInGlobe").addEventListener("click",()=>applyZoom(1.35));
-  document.querySelector("#zoomOutGlobe").addEventListener("click",()=>applyZoom(.74));
+  document.querySelector("#zoomInGlobe").addEventListener("click",()=>applyZoom(1.65));
+  document.querySelector("#zoomOutGlobe").addEventListener("click",()=>applyZoom(.61));
   document.querySelector("#resetGlobe").addEventListener("click",()=>{
     projection.rotate([96,-28,0]);
     setView(false);
