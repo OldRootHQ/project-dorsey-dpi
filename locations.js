@@ -35,8 +35,17 @@
     note:document.querySelector("#locationNote"),explore:document.querySelector("#locationExplore")
   };
 
+  const boundaryServices={
+    places:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer",
+    counties:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer",
+    states:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
+  };
+  const boundaryCache={stdorsey:stDorseyGeography.island};
+  const boundaryRequests={};
+
   let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
+  let hoveredLocationKey=null,cityViewKey=null;
   const localZoomThreshold=6.5;
   const projection=d3.geoOrthographic().clipAngle(90).precision(.4).rotate([96,-28,0]);
   const path=d3.geoPath(projection);
@@ -46,6 +55,8 @@
   root.append("path").attr("class","earth-grid").datum(d3.geoGraticule10());
   const landPath=root.append("path").attr("class","earth-land");
   const borderPath=root.append("path").attr("class","earth-borders");
+  const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
+  const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   const fictionLayer=root.append("g").attr("class","fiction-geography");
   const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
   const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
