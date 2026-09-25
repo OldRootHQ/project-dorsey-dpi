@@ -3,13 +3,13 @@
     tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226]},
     chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781]},
     sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655]},
-    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"Map placement is approximate. St. Dorsey is positioned in the Potomac corridor south of Washington to keep the fictional island visibly separated from the mainland at regional zoom; exact public coordinates are not published.",coords:[-77.0355,38.7905]},
+    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is a fictional developed island in the Potomac immediately south of Washington, D.C., connected to the regional road network by multiple bridges and highway approaches. The map anchor is a canonical fictional placement within the real Potomac corridor.",coords:[-77.0345,38.8505]},
     baltimore:{id:"LOC-005",name:"Baltimore, Maryland",type:"Primary operating location",region:"United States",status:"Established",character:"Kincast",characterUrl:"characters/kincast/",dossierUrl:"locations/baltimore/",note:"Baltimore is the established home base and primary operating city of Kincast.",coords:[-76.6122,39.2904]}
   };
 
   // Local-site nodes are intentionally schematic until exact public coordinates exist.
   const landmarks = {
-    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its local map placement is schematic because exact public coordinates are not published.",screenOffset:[48,30]}
+    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its geographic anchor is on St. Dorsey Island; the square callout is offset only so the site remains readable at globe scale.",coords:[-77.0328,38.8493],calloutOffset:[52,32]}
   };
 
   const svg=d3.select("#techGlobe");
@@ -99,6 +99,7 @@
     const marks=landmarkLayer.selectAll("g.landmark-node").data(data,d=>d[0]).join(
       enter=>{
         const g=enter.append("g").attr("class","landmark-node").attr("data-landmark",d=>d[0]);
+        g.append("circle").attr("class","landmark-anchor").attr("r",2.5);
         g.append("line").attr("class","landmark-link");
         g.append("rect").attr("class","landmark-core").attr("x",-4).attr("y",-4).attr("width",8).attr("height",8).attr("rx",1.5);
         g.append("text").attr("class","landmark-label").attr("x",10).attr("y",-8);
@@ -109,10 +110,14 @@
     );
 
     marks.each(function([key,item]){
-      const multiplier=Math.min(1.55,.82+ratio*.08);
-      const dx=item.screenOffset[0]*multiplier,dy=item.screenOffset[1]*multiplier;
-      const x=parentPoint[0]+dx,y=parentPoint[1]+dy;
+      const anchor=projection(item.coords||parent.coords);
+      if(!anchor)return;
+      const multiplier=Math.min(1.45,.82+ratio*.07);
+      const offset=item.calloutOffset||[48,30];
+      const dx=offset[0]*multiplier,dy=offset[1]*multiplier;
+      const x=anchor[0]+dx,y=anchor[1]+dy;
       const g=d3.select(this).attr("transform",`translate(${x},${y})`);
+      g.select(".landmark-anchor").attr("cx",-dx).attr("cy",-dy);
       g.select(".landmark-link").attr("x1",-dx).attr("y1",-dy).attr("x2",0).attr("y2",0);
       g.select(".landmark-label").text(item.name);
       g.classed("active",selectedLandmarkKey===key);
