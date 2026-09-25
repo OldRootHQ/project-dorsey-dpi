@@ -173,6 +173,18 @@
     return 6+((v-lo)/(hi-lo))*8;
   }
 
+  function clearTarget(){svg.querySelectorAll(".tactical-target").forEach(n=>n.remove())}
+  function showTarget(cx,cy,m,iw,ih,r){
+    clearTarget();
+    const parts=[
+      node("line",{x1:m.left,y1:cy,x2:m.left+iw,y2:cy,class:"chart-crosshair tactical-target"}),
+      node("line",{x1:cx,y1:m.top,x2:cx,y2:m.top+ih,class:"chart-crosshair tactical-target"}),
+      node("circle",{cx,cy,r:r+13,class:"target-ring tactical-target"}),
+      node("circle",{cx,cy,r:r+21,class:"target-ring outer tactical-target"})
+    ];
+    parts.forEach(n=>svg.appendChild(n));
+  }
+
   function render(){
     const filtered=chars.filter(appliedMatches),xKey=xMetric.value,yKey=yMetric.value;
     const data=filtered.filter(c=>Number.isFinite(valueFor(c,xKey))&&Number.isFinite(valueFor(c,yKey)));
@@ -197,6 +209,20 @@
     svg.appendChild(node("text",{x:m.left+iw/2,y:H-20,"text-anchor":"middle",class:"axis-label"},defs[xKey].label));
 
     const cmap=colorMap(data);
+
+    // Tactical plot legend
+    if(colorBy.value!=="none"){
+      const legendValues=[...new Set(data.map(paletteValue))];
+      const lx=m.left+12,ly=m.top+12,lw=Math.min(210,Math.max(132,...legendValues.map(v=>String(v).length*6+48))),lh=30+legendValues.length*18;
+      svg.appendChild(node("rect",{x:lx,y:ly,width:lw,height:lh,rx:8,class:"chart-legend-bg"}));
+      svg.appendChild(node("text",{x:lx+12,y:ly+17,class:"chart-legend-title"},"COLOR / "+colorBy.options[colorBy.selectedIndex].text.toUpperCase()));
+      legendValues.forEach((v,i)=>{
+        const yy=ly+35+i*18;
+        svg.appendChild(node("circle",{cx:lx+15,cy:yy-3,r:4,fill:cmap[v],class:"chart-legend-dot"}));
+        svg.appendChild(node("text",{x:lx+27,y:yy,class:"chart-legend-text"},v));
+      });
+    }
+
     data.forEach(c=>{
       const xv=valueFor(c,xKey),yv=valueFor(c,yKey),cx=sx(xv),cy=sy(yv),r=radiusFor(c,data),chosen=compareSet.has(c.codename);
       const g=node("g",{tabindex:"0",role:"button","aria-label":c.codename+", "+defs[xKey].label+" "+formatMetric(xKey,xv)+", "+defs[yKey].label+" "+formatMetric(yKey,yv)});
