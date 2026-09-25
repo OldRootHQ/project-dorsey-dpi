@@ -127,7 +127,7 @@
     height=Math.max(430,rect.height);
     svg.attr("viewBox",`0 0 ${width} ${height}`);
     baseScale=Math.min(width,height)*.37;
-    const target=Math.max(baseScale*.45,Math.min(baseScale*55,baseScale*priorRatio));
+    const target=Math.max(baseScale*.45,Math.min(baseScale*450,baseScale*priorRatio));
     projection.translate([width/2,height/2]).scale(target);
     render();
   }
@@ -340,13 +340,24 @@
   svg.call(d3.drag().on("drag",event=>{
     const r=projection.rotate();
     const k=75/projection.scale();
-    projection.rotate([r[0]+event.dx*k,r[1]-event.dy*k,r[2]]);
+    const next=[r[0]+event.dx*k,r[1]-event.dy*k,r[2]];
+    if(cityViewKey){
+      const feature=boundaryCache[cityViewKey];
+      const center=[-next[0],-next[1]];
+      if(feature&&!d3.geoContains(feature,center))return;
+    }
+    projection.rotate(next);
     render();
   }));
 
   function applyZoom(factor){
-    const min=baseScale*.45,max=baseScale*55;
-    projection.scale(Math.max(min,Math.min(max,projection.scale()*factor)));
+    const min=baseScale*.45,max=baseScale*450;
+    const next=Math.max(min,Math.min(max,projection.scale()*factor));
+    projection.scale(next);
+    if(cityViewKey&&next/baseScale<14){
+      cityViewKey=null;
+      stage.classList.remove("city-view");
+    }
     render();
   }
 
@@ -356,6 +367,8 @@
   },{passive:false});
 
   function setView(isSpace){
+    cityViewKey=null;
+    stage.classList.remove("city-view");
     space=isSpace;
     document.querySelector("#earthView").classList.toggle("active",!space);
     document.querySelector("#spaceView").classList.toggle("active",space);
