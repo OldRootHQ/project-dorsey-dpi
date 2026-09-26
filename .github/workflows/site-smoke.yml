@@ -8,6 +8,14 @@ name: Site smoke tests
       - '**/*.css'
       - 'tests/**'
       - '.github/workflows/site-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+      - '**/*.js'
+      - '**/*.css'
+      - 'tests/**'
+      - '.github/workflows/site-smoke.yml'
   workflow_dispatch:
 
 permissions:
