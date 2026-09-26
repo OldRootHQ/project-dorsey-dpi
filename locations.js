@@ -55,11 +55,11 @@
   root.append("path").attr("class","earth-grid").datum(d3.geoGraticule10());
   const landPath=root.append("path").attr("class","earth-land");
   const borderPath=root.append("path").attr("class","earth-borders");
-  const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
-  const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   const fictionLayer=root.append("g").attr("class","fiction-geography");
   const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
   const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
+  const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
+  const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   const nodesLayer=root.append("g").attr("class","earth-nodes");
   const landmarkLayer=root.append("g").attr("class","earth-landmarks");
 
