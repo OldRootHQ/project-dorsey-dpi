@@ -60,10 +60,6 @@
   const fictionLayer=root.append("g").attr("class","fiction-geography");
   const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
   const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
-  const islandLabel=fictionLayer.append("text").attr("class","st-dorsey-label").text("ST. DORSEY");
-  const entranceMarker=fictionLayer.append("g").attr("class","st-dorsey-entrance");
-  entranceMarker.append("circle").attr("r",3.5);
-  entranceMarker.append("text").attr("x",8).attr("y",-7).text("D.C. ENTRANCE");
   const nodesLayer=root.append("g").attr("class","earth-nodes");
   const landmarkLayer=root.append("g").attr("class","earth-landmarks");
 
@@ -183,23 +179,13 @@
     if(!visible)return;
 
     islandPath.attr("d",path);
-    const centerPoint=projection(center);
-    if(centerPoint) islandLabel.attr("x",centerPoint[0]).attr("y",centerPoint[1]+4).style("display",ratio>=8?"":"none");
-
-    const ep=projection(stDorseyGeography.entrance);
-    if(ep) entranceMarker.attr("transform",`translate(${ep[0]},${ep[1]})`).style("display",ratio>=9?"":"none");
-
     bridgeLayer.selectAll("g.st-dorsey-bridge").data(stDorseyGeography.bridges,d=>d.name).join(enter=>{
       const g=enter.append("g").attr("class","st-dorsey-bridge");
       g.append("path").attr("class","st-dorsey-bridge-line");
-      g.append("text").attr("class","st-dorsey-bridge-label");
       return g;
     }).each(function(item){
       const g=d3.select(this);
       g.select("path").datum(item.line).attr("d",path);
-      const mid=d3.geoInterpolate(item.line.coordinates[0],item.line.coordinates[1])(.56);
-      const mp=projection(mid);
-      if(mp)g.select("text").attr("x",mp[0]).attr("y",mp[1]-5).text(item.name);
     });
   }
 
