@@ -83,9 +83,12 @@
     }
     const base=boundaryServices[spec.service];
     if(!base)return Promise.resolve(null);
+    const safeName=spec.name.replace(/'/g,"''");
     const where=spec.service==="states"
       ?`STATE='${spec.state}'`
-      :`STATE='${spec.state}' AND BASENAME='${spec.name.replace(/'/g,"''")}'`;
+      :spec.service==="counties"
+        ?`STATE='${spec.state}' AND NAME='${safeName}'`
+        :`STATE='${spec.state}' AND BASENAME='${safeName}'`;
     const params=new URLSearchParams({
       where,
       outFields:"*",
