@@ -3,32 +3,32 @@
     tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226],boundary:{service:"places",layer:4,state:"04",name:"Tucson"}},
     chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781],boundary:{service:"places",layer:4,state:"17",name:"Chicago"}},
     sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655],boundary:{service:"counties",layer:1,state:"72",name:"San Juan"}},
-    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is the fictional island where Genesis occurred.",coords:[-74.8650,37.8200],boundary:{service:"fictional"}},
+    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is the fictional island where Genesis occurred.",coords:[-75.0850,37.7400],boundary:{service:"fictional"}},
     baltimore:{id:"LOC-005",name:"Baltimore, Maryland",type:"Primary operating location",region:"United States",status:"Established",character:"Kincast",characterUrl:"characters/kincast/",dossierUrl:"locations/baltimore/",note:"Baltimore is the established home base and primary operating city of Kincast.",coords:[-76.6122,39.2904],boundary:{service:"places",layer:4,state:"24",name:"Baltimore"}},
     washington:{id:"REF-001",name:"Washington, D.C.",type:"Geographic reference",region:"United States",status:"Reference",character:"—",characterUrl:"",dossierUrl:"locations.html",note:"Washington, D.C. is shown as a geographic reference point.",coords:[-77.0369,38.9072],boundary:{service:"states",layer:0,state:"11",name:"District of Columbia"}}
   };
 
   const stDorseyGeography={
-    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-74.9250,37.8720],[-74.8950,37.8810],[-74.8580,37.8830],[-74.8240,37.8760],[-74.7980,37.8620],[-74.7830,37.8430],[-74.7780,37.8210],[-74.7830,37.8010],[-74.7730,37.7860],[-74.7790,37.7700],[-74.7970,37.7620],[-74.8170,37.7650],[-74.8340,37.7770],[-74.8560,37.7730],[-74.8820,37.7740],[-74.9040,37.7820],[-74.9180,37.7940],[-74.9230,37.8080],[-74.9160,37.8200],[-74.9250,37.8330],[-74.9340,37.8480],[-74.9330,37.8600],[-74.9250,37.8720]]]}},
+    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-74.9250,37.8720],[-75.1150,37.8010],[-75.0780,37.8030],[-75.0440,37.7960],[-75.0180,37.7820],[-75.0030,37.7630],[-74.9980,37.7410],[-75.0030,37.7210],[-74.9930,37.7060],[-74.9990,37.6900],[-75.0170,37.6820],[-75.0370,37.6850],[-75.0540,37.6970],[-75.0760,37.6930],[-75.1020,37.6940],[-75.1240,37.7020],[-75.1380,37.7140],[-75.1430,37.7280],[-75.1360,37.7400],[-75.1450,37.7530],[-75.1540,37.7680],[-75.1530,37.7800],[-74.9250,37.8720]]]}},
     bridges:[
       {line:{type:"LineString",coordinates:[
         [-75.3902,38.0115],
-        [-75.3250,37.9990],
-        [-75.2550,37.9800],
-        [-75.1850,37.9530],
-        [-75.1150,37.9210],
-        [-75.0450,37.8890],
-        [-74.9250,37.8580]
+        [-75.3600,37.9800],
+        [-75.3200,37.9400],
+        [-75.2750,37.8950],
+        [-75.2250,37.8550],
+        [-75.1800,37.8100],
+        [-75.1450,37.7780]
       ]}},
       {line:{type:"LineString",coordinates:[
         [-75.6896,37.6063],
-        [-75.6000,37.6230],
-        [-75.5100,37.6460],
-        [-75.4150,37.6780],
-        [-75.3150,37.7160],
-        [-75.2050,37.7520],
-        [-75.0950,37.7850],
-        [-74.9190,37.8080]
+        [-75.6100,37.6150],
+        [-75.5200,37.6300],
+        [-75.4300,37.6520],
+        [-75.3400,37.6800],
+        [-75.2500,37.7050],
+        [-75.1800,37.7220],
+        [-75.1390,37.7280]
       ]}}
     ]
   };
