@@ -435,7 +435,7 @@ body.lightbox-open{overflow:hidden}
 .location-terminal dd{margin:0;font-size:13px;font-weight:800}
 .location-terminal dd a{color:var(--root-green)}
 .terminal-note{margin-top:20px!important;padding:14px;border:1px solid #d7ccbc;border-radius:12px;background:var(--parchment);font-size:12px!important}
-.location-index{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:12px}
+.location-index{position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-top:12px}
 .location-index button{
   display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:9px;text-align:left;
   padding:12px;border-radius:14px;border:1px solid rgba(183,190,197,.27);background:rgba(243,235,221,.06);color:var(--cream);cursor:pointer
