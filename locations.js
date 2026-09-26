@@ -269,7 +269,7 @@
     return Math.max(35,Math.min(380,targetScale/baseScale));
   }
 
-  async function enterCityView(key){
+  async function enterCityView(key,bringIntoView=false){
     const item=locations[key];if(!item)return;
     selectLocation(key);
     const feature=await loadBoundary(key);
@@ -284,6 +284,9 @@
     projection.rotate([-center[0],-center[1],0]);
     projection.scale(baseScale*cityFitRatio(feature));
     render();
+    if(bringIntoView){
+      requestAnimationFrame(()=>stage.scrollIntoView({behavior:"smooth",block:"center"}));
+    }
   }
 
   function exitCityView(){
@@ -377,7 +380,7 @@
     setView(false);
     selectLocation("tucson");
   });
-  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
+  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location,true)));
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
     .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();Object.keys(locations).forEach(key=>loadBoundary(key));})
