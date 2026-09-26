@@ -76,7 +76,8 @@
     counties:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer",
     states:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
   };
-  const boundaryCache={stdorsey:stDorseyGeography.island};
+  const normalizedStDorseyIsland=normalizeFeatureForD3(stDorseyGeography.island);
+  const boundaryCache={stdorsey:normalizedStDorseyIsland};
   const boundaryRequests={};
   const globeLocationKeys=["tucson","chicago","sanjuan","stdorsey","baltimore","washington"];
 
@@ -241,7 +242,7 @@
     renderStDorseyGeography();
 
     const ratio=zoomRatio();
-    const localMode=!!cityViewKey||ratio>=5;
+    const localMode=ratio>=8;
     const data=localMode
       ? [[selectedLocationKey,locations[selectedLocationKey]]]
       : globeLocationKeys.map(key=>[key,locations[key]]);
@@ -300,17 +301,18 @@
   function renderStDorseyGeography(){
     const ratio=zoomRatio();
     const selected=selectedLocationKey==="stdorsey";
-    const islandD=path(stDorseyGeography.island);
-    const visible=!!islandD&&(selected||ratio>=12);
+    const feature=boundaryCache.stdorsey||stDorseyGeography.island;
+    const islandD=path(feature);
+    const visible=selected||ratio>=12;
 
     fictionLayer.style("display",visible?"":"none");
     if(!visible)return;
 
     islandPath
-      .datum(stDorseyGeography.island)
-      .attr("d",islandD);
+      .datum(feature)
+      .attr("d",islandD||"");
 
-    const bridgeVisible=selected?ratio>=18:ratio>=24;
+    const bridgeVisible=selected||ratio>=24;
     bridgeLayer.style("display",bridgeVisible?"":"none");
 
     if(bridgeVisible){
@@ -318,7 +320,7 @@
         .data(stDorseyGeography.bridges)
         .join("path")
         .attr("class","st-dorsey-bridge-line")
-        .attr("d",d=>path(d.line));
+        .attr("d",d=>path(d.line)||"");
     }
   }
 
