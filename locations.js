@@ -87,7 +87,7 @@
   const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
   const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
   const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
-  const nodesLayer=root.append("g").attr("class","earth-nodes");
+  let nodesLayer=root.append("g").attr("class","earth-nodes");
 
   function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
   function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
@@ -188,6 +188,21 @@
     render();
   }
 
+  function shortLocationName(item){
+    return item.name
+      .replace(", Arizona","")
+      .replace(", Illinois","")
+      .replace(", Puerto Rico","")
+      .replace(", Maryland","");
+  }
+
+  function enforceSelectedMarkerLabel(){
+    const item=locations[selectedLocationKey];
+    if(!item)return;
+    const label=nodesLayer.select(".node-label");
+    if(!label.empty())label.text(shortLocationName(item));
+  }
+
   function render(){
     root.select(".earth-halo")
       .attr("cx",width/2).attr("cy",height/2)
@@ -208,10 +223,10 @@
       ? [[selectedLocationKey,locations[selectedLocationKey]]]
       : globeLocationKeys.map(key=>[key,locations[key]]);
 
-    // Rebuild pins from current geographic state every frame.
-    // There are only a few locations, and this prevents a reused SVG node
-    // from carrying Tucson/Chicago/etc. text or interaction state forward.
-    nodesLayer.selectAll("*").remove();
+    // Replace the entire marker layer, not just its children.
+    // This prevents stale SVG text/pointer state from surviving a city change.
+    nodesLayer.remove();
+    nodesLayer=root.append("g").attr("class","earth-nodes");
 
     data.forEach(([key,item])=>{
       if(!item)return;
@@ -242,13 +257,25 @@
           .attr("class","node-label")
           .attr("x",p[0]+10)
           .attr("y",p[1]-9)
-          .text(item.name
-            .replace(", Arizona","")
-            .replace(", Illinois","")
-            .replace(", Puerto Rico","")
-            .replace(", Maryland",""));
+          .text(shortLocationName(item));
       }
+
+      g.on("pointerenter pointermove",event=>{
+        hoveredLocationKey=key;
+        showTooltip(event,item.name);
+        loadBoundary(key);
+      }).on("pointerleave",()=>{
+        if(hoveredLocationKey===key)hoveredLocationKey=null;
+        tooltip.classList.remove("show");
+        if(!cityViewKey)renderBoundary();
+      }).on("click",event=>{
+        event.stopPropagation();
+        tooltip.classList.remove("show");
+        enterCityView(key);
+      });
     });
+
+    if(localMode)enforceSelectedMarkerLabel();
 
     updateZoomHud();
   }
@@ -286,6 +313,8 @@
 
   function fillSelectionState(key){
     const item=locations[key];if(!item)return false;
+    tooltip.classList.remove("show");
+    tooltip.textContent="";
     selectedLocationKey=key;
     selectedLandmarkKey=null;
     fillTerminal(item);
@@ -322,6 +351,11 @@
 
     centerOnLocation(key,key==="stdorsey"?22:18);
     render();
+    requestAnimationFrame(()=>{
+      if(token===navigationToken&&selectedLocationKey===key){
+        enforceSelectedMarkerLabel();
+      }
+    });
 
     const feature=await loadBoundary(key);
     if(token!==navigationToken||selectedLocationKey!==key)return;
@@ -346,26 +380,7 @@
     tooltip.classList.add("show");
   }
 
-  nodesLayer.on("mousemove",event=>{
-    const node=event.target.closest(".location-node"); if(!node)return;
-    const key=node.dataset.key;
-    if(hoveredLocationKey!==key){
-      hoveredLocationKey=key;
-      loadBoundary(key);
-      render();
-    }
-    showTooltip(event,locations[key].name);
-  }).on("mouseout",event=>{
-    const from=event.target.closest&&event.target.closest(".location-node");
-    const to=event.relatedTarget&&event.relatedTarget.closest?event.relatedTarget.closest(".location-node"):null;
-    if(from&&from!==to){
-      hoveredLocationKey=null;
-      tooltip.classList.remove("show");
-      if(!cityViewKey)render();
-    }
-  }).on("click",event=>{
-    const node=event.target.closest(".location-node"); if(node)enterCityView(node.dataset.key);
-  });
+
 
   svg.call(d3.drag().on("drag",event=>{
     const r=projection.rotate();
