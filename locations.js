@@ -73,7 +73,7 @@
 
   let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
-  let hoveredLocationKey=null,cityViewKey=null;
+  let hoveredLocationKey=null,cityViewKey=null,navigationToken=0;
   const projection=d3.geoOrthographic().clipAngle(90).precision(.4).rotate([96,-28,0]);
   const path=d3.geoPath(projection);
   const root=svg.append("g");
@@ -207,12 +207,13 @@
     const data=localMode
       ? [[selectedLocationKey,locations[selectedLocationKey]]]
       : globeLocationKeys.map(key=>[key,locations[key]]);
+
     const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(
       enter=>{
         const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
-        g.append("circle").attr("class","node-pulse").attr("r",13);
-        g.append("circle").attr("class","node-core").attr("r",5);
-        g.append("text").attr("class","node-label").attr("x",10).attr("y",-9);
+        g.append("path").attr("class","node-pulse");
+        g.append("path").attr("class","node-core");
+        g.append("text").attr("class","node-label");
         return g;
       },
       update=>update,
@@ -220,15 +221,20 @@
     );
 
     points.each(function([key,item]){
+      const point={type:"Point",coordinates:item.coords};
+      const coreRadius=key===selectedLocationKey?7:(ratio>=8?3.5:5);
+      const pulseRadius=ratio>=8?9:13;
+      const coreD=d3.geoPath(projection).pointRadius(coreRadius)(point);
+      const pulseD=d3.geoPath(projection).pointRadius(pulseRadius)(point);
       const p=projection(item.coords);
-      const front=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-      const visible=!!p&&front;
-      const g=d3.select(this)
-        .attr("transform",visible?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
-        .style("display",visible?"":"none");
-      g.select(".node-pulse").attr("r",ratio>=8?9:13);
-      g.select(".node-core").attr("r",ratio>=8?3.5:5);
-      g.select("text")
+      const visible=!!coreD&&!!pulseD&&!!p;
+
+      const g=d3.select(this).style("display",visible?"":"none");
+      g.select(".node-core").attr("d",coreD||null);
+      g.select(".node-pulse").attr("d",pulseD||null);
+      g.select(".node-label")
+        .attr("x",visible?p[0]+10:-999)
+        .attr("y",visible?p[1]-9:-999)
         .style("display",(visible&&(ratio>=1.7||key===selectedLocationKey))?"":"none")
         .text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
     }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
@@ -276,46 +282,38 @@
     return true;
   }
 
-  function centerExact(key,targetRatio){
+  function centerOnLocation(key,targetRatio){
     const item=locations[key];if(!item)return;
     projection
       .center([0,0])
+      .translate([width/2,height/2])
       .rotate([-item.coords[0],-item.coords[1],0])
-      .scale(baseScale*targetRatio)
-      .translate([width/2,height/2]);
-
-    // Force the selected coordinate to the exact pixel center.
-    const p=projection(item.coords);
-    if(p&&Number.isFinite(p[0])&&Number.isFinite(p[1])){
-      const t=projection.translate();
-      projection.translate([
-        t[0]+(width/2-p[0]),
-        t[1]+(height/2-p[1])
-      ]);
-    }
+      .scale(baseScale*targetRatio);
   }
 
   function focusLocation(key){
     if(!fillSelectionState(key))return;
+    navigationToken++;
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
-    centerExact(key,key==="stdorsey"?12:7);
+    centerOnLocation(key,key==="stdorsey"?12:7);
     render();
   }
 
   async function enterCityView(key){
     if(!fillSelectionState(key))return;
+    const token=++navigationToken;
 
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
 
-    centerExact(key,key==="stdorsey"?22:18);
+    centerOnLocation(key,key==="stdorsey"?22:18);
     render();
 
     const feature=await loadBoundary(key);
-    if(selectedLocationKey!==key)return;
+    if(token!==navigationToken||selectedLocationKey!==key)return;
     if(feature){
       cityViewKey=key;
       stage.classList.add("city-view");
