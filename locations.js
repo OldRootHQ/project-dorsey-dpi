@@ -202,23 +202,29 @@
     renderBoundary();
     renderStDorseyGeography();
 
-    const data=globeLocationKeys.map(key=>[key,locations[key]]);
-    const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(enter=>{
-      const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
-      g.append("circle").attr("class","node-pulse").attr("r",13);
-      g.append("circle").attr("class","node-core").attr("r",5);
-      g.append("text").attr("class","node-label").attr("x",10).attr("y",-9);
-      return g;
-    });
-
     const ratio=zoomRatio();
+    const localMode=ratio>=8;
+    const data=localMode
+      ? [[selectedLocationKey,locations[selectedLocationKey]]]
+      : globeLocationKeys.map(key=>[key,locations[key]]);
+    const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(
+      enter=>{
+        const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
+        g.append("circle").attr("class","node-pulse").attr("r",13);
+        g.append("circle").attr("class","node-core").attr("r",5);
+        g.append("text").attr("class","node-label").attr("x",10).attr("y",-9);
+        return g;
+      },
+      update=>update,
+      exit=>exit.remove()
+    );
+
     points.each(function([key,item]){
       const p=projection(item.coords);
       const front=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-      const localMode=ratio>=8;
-      const visible=front&&(!localMode||key===selectedLocationKey);
+      const visible=!!p&&front;
       const g=d3.select(this)
-        .attr("transform",visible&&p?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
+        .attr("transform",visible?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
         .style("display",visible?"":"none");
       g.select(".node-pulse").attr("r",ratio>=8?9:13);
       g.select(".node-core").attr("r",ratio>=8?3.5:5);
@@ -261,44 +267,51 @@
     terminal.character.innerHTML=item.characterUrl?`<a href="${item.characterUrl}">${item.character}</a>`:item.character;
   }
 
-  function selectLocation(key){
-    const item=locations[key]; if(!item)return;
+  function fillSelectionState(key){
+    const item=locations[key];if(!item)return false;
     selectedLocationKey=key;
     selectedLandmarkKey=null;
     fillTerminal(item);
     document.querySelectorAll("[data-location]").forEach(b=>b.classList.toggle("active",b.dataset.location===key));
-    render();
+    return true;
+  }
+
+  function centerExact(key,targetRatio){
+    const item=locations[key];if(!item)return;
+    projection
+      .center([0,0])
+      .rotate([-item.coords[0],-item.coords[1],0])
+      .scale(baseScale*targetRatio)
+      .translate([width/2,height/2]);
+
+    // Force the selected coordinate to the exact pixel center.
+    const p=projection(item.coords);
+    if(p&&Number.isFinite(p[0])&&Number.isFinite(p[1])){
+      const t=projection.translate();
+      projection.translate([
+        t[0]+(width/2-p[0]),
+        t[1]+(height/2-p[1])
+      ]);
+    }
   }
 
   function focusLocation(key){
-    const item=locations[key];if(!item)return;
+    if(!fillSelectionState(key))return;
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
-    selectLocation(key);
-    projection
-      .center([0,0])
-      .translate([width/2,height/2])
-      .rotate([-item.coords[0],-item.coords[1],0]);
-    const target=key==="stdorsey"?12:7;
-    projection.scale(Math.max(projection.scale(),baseScale*target));
+    centerExact(key,key==="stdorsey"?12:7);
     render();
   }
 
   async function enterCityView(key){
-    const item=locations[key];if(!item)return;
+    if(!fillSelectionState(key))return;
 
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
-    selectLocation(key);
 
-    const target=key==="stdorsey"?22:18;
-    projection
-      .center([0,0])
-      .translate([width/2,height/2])
-      .rotate([-item.coords[0],-item.coords[1],0])
-      .scale(baseScale*target);
+    centerExact(key,key==="stdorsey"?22:18);
     render();
 
     const feature=await loadBoundary(key);
@@ -389,9 +402,8 @@
   document.querySelector("#zoomInGlobe").addEventListener("click",()=>applyZoom(1.65));
   document.querySelector("#zoomOutGlobe").addEventListener("click",()=>applyZoom(.61));
   document.querySelector("#resetGlobe").addEventListener("click",()=>{
-    projection.rotate([96,-28,0]);
     setView(false);
-    selectLocation("tucson");
+    focusLocation("tucson");
   });
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
@@ -412,6 +424,6 @@
   if(globeLocationKeys.includes(initialKey)){
     focusLocation(initialKey);
   }else{
-    selectLocation("tucson");
+    focusLocation("tucson");
   }
 })();
