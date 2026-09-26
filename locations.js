@@ -1,474 +1,394 @@
 (() => {
+  "use strict";
+
   const locations = {
-    tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226],boundary:{service:"places",layer:4,state:"04",name:"Tucson"}},
-    chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781],boundary:{service:"places",layer:4,state:"17",name:"Chicago"}},
-    sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655],boundary:{service:"counties",layer:1,state:"72",name:"San Juan"}},
-    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is the fictional island where Genesis occurred.",coords:[-75.5400,37.6400],boundary:{service:"fictional"}},
-    baltimore:{id:"LOC-005",name:"Baltimore, Maryland",type:"Primary operating location",region:"United States",status:"Established",character:"Kincast",characterUrl:"characters/kincast/",dossierUrl:"locations/baltimore/",note:"Baltimore is the established home base and primary operating city of Kincast.",coords:[-76.6122,39.2904],boundary:{service:"places",layer:4,state:"24",name:"Baltimore"}},
-    washington:{id:"REF-001",name:"Washington, D.C.",type:"Geographic reference",region:"United States",status:"Reference",character:"—",characterUrl:"",dossierUrl:"locations.html",note:"Washington, D.C. is shown as a geographic reference point.",coords:[-77.0369,38.9072],boundary:{service:"states",layer:0,state:"11",name:"District of Columbia"}}
+    tucson: {
+      id: "LOC-001",
+      name: "Tucson, Arizona",
+      shortName: "Tucson",
+      type: "Primary operating location",
+      region: "United States",
+      status: "Established",
+      character: "Gila Monster",
+      characterUrl: "characters/gila-monster/",
+      dossierUrl: "locations/tucson/",
+      note: "Tucson is the established operating city of Gila Monster.",
+      coords: [-110.9747, 32.2226],
+      labelOffset: [11, -10]
+    },
+    chicago: {
+      id: "LOC-002",
+      name: "Chicago, Illinois",
+      shortName: "Chicago",
+      type: "Primary operating location",
+      region: "United States",
+      status: "Established",
+      character: "Commotion",
+      characterUrl: "characters/commotion/",
+      dossierUrl: "locations/chicago/",
+      note: "Chicago is the established operating city of Commotion.",
+      coords: [-87.6298, 41.8781],
+      labelOffset: [11, -10]
+    },
+    sanjuan: {
+      id: "LOC-003",
+      name: "San Juan, Puerto Rico",
+      shortName: "San Juan",
+      type: "Primary operating location",
+      region: "Puerto Rico",
+      status: "Established",
+      character: "Aftermark",
+      characterUrl: "characters/aftermark/",
+      dossierUrl: "locations/san-juan/",
+      note: "Santurce, San Juan is the established home and operating location of Aftermark.",
+      coords: [-66.1057, 18.4655],
+      labelOffset: [11, -10]
+    },
+    stdorsey: {
+      id: "LOC-004",
+      name: "St. Dorsey Island",
+      shortName: "St. Dorsey",
+      type: "Genesis location",
+      region: "Greater Washington, D.C. area",
+      status: "Established / schematic placement",
+      character: "—",
+      characterUrl: "",
+      dossierUrl: "locations/st-dorsey/",
+      note: "St. Dorsey is a fictional island associated with the greater Washington, D.C. area. Its globe marker is schematic; exact public coordinates are not established.",
+      coords: [-77.0369, 38.9072],
+      approximate: true,
+      labelOffset: [-72, 18]
+    },
+    baltimore: {
+      id: "LOC-005",
+      name: "Baltimore, Maryland",
+      shortName: "Baltimore",
+      type: "Primary operating location",
+      region: "United States",
+      status: "Established",
+      character: "Kincast",
+      characterUrl: "characters/kincast/",
+      dossierUrl: "locations/baltimore/",
+      note: "Baltimore is the established home base and primary operating city of Kincast.",
+      coords: [-76.6122, 39.2904],
+      labelOffset: [13, -14]
+    }
   };
 
-  const stDorseyGeography={
-    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[
-      [-75.6150,37.6840],
-      [-75.5960,37.6950],
-      [-75.5710,37.7010],
-      [-75.5430,37.7000],
-      [-75.5130,37.6940],
-      [-75.4860,37.6830],
-      [-75.4650,37.6690],
-      [-75.4500,37.6510],
-      [-75.4410,37.6320],
-      [-75.4380,37.6120],
-      [-75.4420,37.5950],
-      [-75.4490,37.5800],
-      [-75.4440,37.5680],
-      [-75.4500,37.5550],
-      [-75.4650,37.5480],
-      [-75.4850,37.5490],
-      [-75.5030,37.5570],
-      [-75.5200,37.5680],
-      [-75.5430,37.5660],
-      [-75.5690,37.5700],
-      [-75.5890,37.5790],
-      [-75.6040,37.5920],
-      [-75.6150,37.6060],
-      [-75.6210,37.6220],
-      [-75.6220,37.6390],
-      [-75.6200,37.6550],
-      [-75.6170,37.6700],
-      [-75.6150,37.6840]
-    ]]]}},
-    bridges:[
-      {line:{type:"LineString",coordinates:[
-        [-75.6460,37.6760],
-        [-75.6400,37.6810],
-        [-75.6320,37.6850],
-        [-75.6230,37.6860],
-        [-75.6150,37.6840],
-        [-75.6090,37.6790]
-      ]}},
-      {line:{type:"LineString",coordinates:[
-        [-75.6450,37.6120],
-        [-75.6380,37.6090],
-        [-75.6300,37.6100],
-        [-75.6220,37.6140],
-        [-75.6160,37.6200],
-        [-75.6130,37.6270]
-      ]}}
-    ]
+  const locationKeys = Object.keys(locations);
+  const HOME_ROTATION = [96, -28, 0];
+  const EARTH_RATIO = 1;
+  const SPACE_RATIO = 0.66;
+  const FOCUS_RATIO = 1.55;
+  const MIN_RATIO = 0.58;
+  const MAX_RATIO = 2.2;
+
+  const svgElement = document.querySelector("#techGlobe");
+  const stage = document.querySelector("#globeStage");
+  if (!svgElement || !stage || typeof d3 === "undefined") return;
+
+  const svg = d3.select(svgElement);
+  const loading = document.querySelector("#globeLoading");
+  const tooltip = document.querySelector("#globeTooltip");
+  const zoomReadout = document.querySelector("#globeZoomReadout");
+  const earthViewButton = document.querySelector("#earthView");
+  const spaceViewButton = document.querySelector("#spaceView");
+  const zoomInButton = document.querySelector("#zoomInGlobe");
+  const zoomOutButton = document.querySelector("#zoomOutGlobe");
+  const resetButton = document.querySelector("#resetGlobe");
+  const locationButtons = [...document.querySelectorAll("[data-location]")];
+  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+
+  const terminal = {
+    id: document.querySelector("#locationId"),
+    name: document.querySelector("#locationName"),
+    type: document.querySelector("#locationType"),
+    character: document.querySelector("#locationCharacter"),
+    region: document.querySelector("#locationRegion"),
+    status: document.querySelector("#locationStatus"),
+    note: document.querySelector("#locationNote"),
+    explore: document.querySelector("#locationExplore")
   };
 
-  const svg=d3.select("#techGlobe");
-  const stage=document.querySelector("#globeStage");
-  const loading=document.querySelector("#globeLoading");
-  const tooltip=document.querySelector("#globeTooltip");
-  const zoomReadout=document.querySelector("#globeZoomReadout");
-  const terminal={
-    id:document.querySelector("#locationId"),name:document.querySelector("#locationName"),
-    type:document.querySelector("#locationType"),character:document.querySelector("#locationCharacter"),
-    region:document.querySelector("#locationRegion"),status:document.querySelector("#locationStatus"),
-    note:document.querySelector("#locationNote"),explore:document.querySelector("#locationExplore")
-  };
+  let width = 0;
+  let height = 0;
+  let baseScale = 0;
+  let world = null;
+  let selectedKey = "tucson";
+  let mode = "earth";
 
-  const boundaryServices={
-    places:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/Places_CouSub_ConCity_SubMCD/MapServer",
-    counties:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer",
-    states:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
-  };
-  const normalizedStDorseyIsland=normalizeFeatureForD3(stDorseyGeography.island);
-  const boundaryCache={stdorsey:normalizedStDorseyIsland};
-  const boundaryRequests={};
-  const globeLocationKeys=["tucson","chicago","sanjuan","stdorsey","baltimore","washington"];
+  const projection = d3.geoOrthographic()
+    .clipAngle(90)
+    .precision(0.45)
+    .rotate(HOME_ROTATION.slice());
+  const path = d3.geoPath(projection);
 
-  let width=0,height=0,baseScale=0,space=false,world=null;
-  let selectedLocationKey="tucson",selectedLandmarkKey=null;
-  let hoveredLocationKey=null,cityViewKey=null,navigationToken=0;
-  const projection=d3.geoOrthographic().clipAngle(90).precision(.4).rotate([96,-28,0]);
-  const path=d3.geoPath(projection);
-  const root=svg.append("g");
-  root.append("circle").attr("class","earth-halo");
-  root.append("path").attr("class","earth-sphere").datum({type:"Sphere"});
-  root.append("path").attr("class","earth-grid").datum(d3.geoGraticule10());
-  const landPath=root.append("path").attr("class","earth-land");
-  const borderPath=root.append("path").attr("class","earth-borders");
-  const fictionLayer=root.append("g").attr("class","fiction-geography");
-  const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
-  const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
-  const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
-  const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
-  let nodesLayer=root.append("g").attr("class","earth-nodes");
-  const selectedLabelLayer=root.append("g").attr("class","selected-location-label-layer");
-  const selectedLabel=selectedLabelLayer.append("text").attr("class","node-label selected-location-label").style("pointer-events","none");
+  const root = svg.append("g").attr("class", "globe-root");
+  root.append("circle").attr("class", "earth-halo");
+  root.append("path").attr("class", "earth-sphere").datum({ type: "Sphere" });
+  root.append("path").attr("class", "earth-grid").datum(d3.geoGraticule10());
+  const landPath = root.append("path").attr("class", "earth-land");
+  const borderPath = root.append("path").attr("class", "earth-borders");
+  const nodesLayer = root.append("g").attr("class", "earth-nodes");
 
-  function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
-  function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
-  function updateZoomHud(){
-    if(!zoomReadout)return;
-    const r=zoomRatio();
-    const mode=cityViewKey?"CITY / "+locations[cityViewKey].name.toUpperCase():zoomMode(r);
-    zoomReadout.textContent="ZOOM "+r.toFixed(1)+"× // "+mode;
-  }
+  const nodeSelection = nodesLayer
+    .selectAll("g.location-node")
+    .data(locationKeys.map(key => [key, locations[key]]), d => d[0])
+    .join(enter => {
+      const g = enter.append("g")
+        .attr("class", d => `location-node${d[1].approximate ? " approximate" : ""}`)
+        .attr("data-key", d => d[0])
+        .attr("role", "button")
+        .attr("tabindex", 0)
+        .attr("aria-label", d => `Open ${d[1].name}`);
 
-  function ringArea(ring){
-    let area=0;
-    for(let i=0,j=ring.length-1;i<ring.length;j=i++){
-      area+=(ring[j][0]*ring[i][1])-(ring[i][0]*ring[j][1]);
-    }
-    return area/2;
-  }
-
-  function normalizePolygonRings(rings){
-    return rings.map((ring,index)=>{
-      const area=ringArea(ring);
-      const shouldBeClockwise=index===0;
-      const isClockwise=area<0;
-      return shouldBeClockwise===isClockwise?ring:ring.slice().reverse();
-    });
-  }
-
-  function normalizeFeatureForD3(feature){
-    if(!feature||!feature.geometry)return feature;
-    const clone=JSON.parse(JSON.stringify(feature));
-    const geom=clone.geometry;
-    if(geom.type==="Polygon"){
-      geom.coordinates=normalizePolygonRings(geom.coordinates);
-    }else if(geom.type==="MultiPolygon"){
-      geom.coordinates=geom.coordinates.map(normalizePolygonRings);
-    }
-    return clone;
-  }
-
-  function loadBoundary(key){
-    if(boundaryCache[key])return Promise.resolve(boundaryCache[key]);
-    if(boundaryRequests[key])return boundaryRequests[key];
-    const item=locations[key],spec=item&&item.boundary;
-    if(!spec)return Promise.resolve(null);
-    if(spec.service==="fictional"){
-      boundaryCache[key]=stDorseyGeography.island;
-      return Promise.resolve(boundaryCache[key]);
-    }
-    const base=boundaryServices[spec.service];
-    if(!base)return Promise.resolve(null);
-    const safeName=spec.name.replace(/'/g,"''");
-    const where=spec.service==="states"
-      ?`STATE='${spec.state}'`
-      :spec.service==="counties"
-        ?`STATE='${spec.state}' AND NAME='${safeName}'`
-        :`STATE='${spec.state}' AND BASENAME='${safeName}'`;
-    const params=new URLSearchParams({
-      where,
-      outFields:"*",
-      returnGeometry:"true",
-      outSR:"4326",
-      f:"geojson",
-      geometryPrecision:"5"
-    });
-    boundaryRequests[key]=fetch(`${base}/${spec.layer}/query?${params}`)
-      .then(r=>r.ok?r.json():Promise.reject(new Error("Boundary request failed")))
-      .then(data=>{
-        const rawFeature=data&&data.features&&data.features[0]?data.features[0]:null;
-        const feature=normalizeFeatureForD3(rawFeature);
-        if(feature)boundaryCache[key]=feature;
-        delete boundaryRequests[key];
-        if(cityViewKey===key||hoveredLocationKey===key)render();
-        return feature;
-      })
-      .catch(()=>{
-        delete boundaryRequests[key];
-        return null;
-      });
-    return boundaryRequests[key];
-  }
-
-  function renderBoundary(){
-    const key=cityViewKey||hoveredLocationKey;
-    const feature=key&&boundaryCache[key];
-    boundaryLayer.style("display",feature?"":"none").classed("city-view",!!cityViewKey);
-    if(feature)boundaryPath.datum(feature).attr("d",path);
-  }
-
-  function resize(){
-    const priorRatio=baseScale?zoomRatio():(space?.63:1);
-    const rect=stage.getBoundingClientRect();
-    width=Math.max(320,rect.width);
-    height=Math.max(430,rect.height);
-    svg.attr("viewBox",`0 0 ${width} ${height}`);
-    baseScale=Math.min(width,height)*.37;
-    const target=Math.max(baseScale*.45,Math.min(baseScale*450,baseScale*priorRatio));
-    projection.translate([width/2,height/2]).scale(target);
-    render();
-  }
-
-  function shortLocationName(item){
-    return item.name
-      .replace(", Arizona","")
-      .replace(", Illinois","")
-      .replace(", Puerto Rico","")
-      .replace(", Maryland","");
-  }
-
-  function updateSelectedLabelText(){
-    const item=locations[selectedLocationKey];
-    if(!item)return;
-    selectedLabel.text(shortLocationName(item));
-  }
-
-  function positionSelectedLabel(){
-    const item=locations[selectedLocationKey];
-    if(!item)return;
-    const p=projection(item.coords);
-    const point={type:"Point",coordinates:item.coords};
-    const pointD=d3.geoPath(projection).pointRadius(1)(point);
-    const visible=!!p&&!!pointD&&zoomRatio()>=1.7;
-    selectedLabel
-      .style("display",visible?"":"none")
-      .attr("x",visible?p[0]+10:-999)
-      .attr("y",visible?p[1]-9:-999);
-  }
-
-  function render(){
-    root.select(".earth-halo")
-      .attr("cx",width/2).attr("cy",height/2)
-      .attr("r",projection.scale()*1.08);
-    root.select(".earth-sphere").attr("d",path);
-    root.select(".earth-grid").attr("d",path);
-    if(world){
-      landPath.datum(topojson.feature(world,world.objects.land)).attr("d",path);
-      borderPath.datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr("d",path);
-    }
-
-    renderBoundary();
-    renderStDorseyGeography();
-
-    const ratio=zoomRatio();
-    const localMode=ratio>=8;
-    const data=localMode
-      ? [[selectedLocationKey,locations[selectedLocationKey]]]
-      : globeLocationKeys.map(key=>[key,locations[key]]);
-
-    // Replace the entire marker layer, not just its children.
-    // This prevents stale SVG text/pointer state from surviving a city change.
-    nodesLayer.remove();
-    nodesLayer=root.append("g").attr("class","earth-nodes");
-
-    data.forEach(([key,item])=>{
-      if(!item)return;
-
-      const point={type:"Point",coordinates:item.coords};
-      const coreRadius=key===selectedLocationKey?7:(ratio>=8?3.5:5);
-      const pulseRadius=ratio>=8?9:13;
-      const pointPath=d3.geoPath(projection);
-      const coreD=pointPath.pointRadius(coreRadius)(point);
-      const pulseD=pointPath.pointRadius(pulseRadius)(point);
-      const p=projection(item.coords);
-      if(!coreD||!pulseD||!p)return;
-
-      const g=nodesLayer.append("g")
-        .attr("class","location-node"+(key===selectedLocationKey?" active":""))
-        .attr("data-key",key);
-
-      g.append("path")
-        .attr("class","node-pulse")
-        .attr("d",pulseD);
-
-      g.append("path")
-        .attr("class","node-core")
-        .attr("d",coreD);
-
-
-      g.on("mousedown touchstart",event=>{
-        event.stopPropagation();
-      }).on("pointerenter pointermove",event=>{
-        hoveredLocationKey=key;
-        showTooltip(event,item.name);
-        loadBoundary(key);
-      }).on("pointerleave",()=>{
-        if(hoveredLocationKey===key)hoveredLocationKey=null;
-        tooltip.classList.remove("show");
-        if(!cityViewKey)renderBoundary();
-      }).on("click",event=>{
-        event.stopPropagation();
-        tooltip.classList.remove("show");
-        enterCityView(key);
-      });
+      g.append("circle").attr("class", "node-pulse").attr("r", 13);
+      g.append("circle").attr("class", "node-core").attr("r", 5);
+      g.append("text").attr("class", "node-label");
+      return g;
     });
 
-    positionSelectedLabel();
-    updateZoomHud();
+  function ratio() {
+    return baseScale ? projection.scale() / baseScale : EARTH_RATIO;
   }
 
-  function renderStDorseyGeography(){
-    const ratio=zoomRatio();
-    const selected=selectedLocationKey==="stdorsey";
-    const feature=boundaryCache.stdorsey||stDorseyGeography.island;
-    const islandD=path(feature);
-    const visible=selected||ratio>=12;
+  function clampRatio(value) {
+    return Math.max(MIN_RATIO, Math.min(MAX_RATIO, value));
+  }
 
-    fictionLayer.style("display",visible?"":"none");
-    if(!visible)return;
+  function isFrontFacing(coords) {
+    const center = [-projection.rotate()[0], -projection.rotate()[1]];
+    return d3.geoDistance(coords, center) < Math.PI / 2;
+  }
 
-    islandPath
-      .datum(feature)
-      .attr("d",islandD||"");
+  function updateModeButtons() {
+    earthViewButton?.classList.toggle("active", mode === "earth");
+    spaceViewButton?.classList.toggle("active", mode === "space");
+    stage.classList.toggle("space-view", mode === "space");
+  }
 
-    const bridgeVisible=selected||ratio>=24;
-    bridgeLayer.style("display",bridgeVisible?"":"none");
+  function updateZoomReadout() {
+    if (!zoomReadout) return;
+    const current = ratio();
+    const label = mode === "space" ? "SPACE" : current > 1.25 ? "FOCUSED" : "GLOBAL";
+    zoomReadout.textContent = `ZOOM ${current.toFixed(1)}× // ${label}`;
+  }
 
-    if(bridgeVisible){
-      bridgeLayer.selectAll("path.st-dorsey-bridge-line")
-        .data(stDorseyGeography.bridges)
-        .join("path")
-        .attr("class","st-dorsey-bridge-line")
-        .attr("d",d=>path(d.line)||"");
+  function fillTerminal(item) {
+    if (terminal.id) terminal.id.textContent = item.id;
+    if (terminal.name) terminal.name.textContent = item.name;
+    if (terminal.type) terminal.type.textContent = item.type;
+    if (terminal.region) terminal.region.textContent = item.region;
+    if (terminal.status) terminal.status.textContent = item.status;
+    if (terminal.note) terminal.note.textContent = item.note;
+    if (terminal.explore) terminal.explore.href = item.dossierUrl;
+
+    if (terminal.character) {
+      terminal.character.textContent = "";
+      if (item.characterUrl) {
+        const link = document.createElement("a");
+        link.href = item.characterUrl;
+        link.textContent = item.character;
+        terminal.character.appendChild(link);
+      } else {
+        terminal.character.textContent = item.character;
+      }
     }
   }
 
-  function fillTerminal(item){
-    terminal.id.textContent=item.id;
-    terminal.name.textContent=item.name;
-    terminal.type.textContent=item.type;
-    terminal.region.textContent=item.region;
-    terminal.status.textContent=item.status;
-    terminal.note.textContent=item.note;
-    if(terminal.explore) terminal.explore.href=item.dossierUrl;
-    terminal.character.innerHTML=item.characterUrl?`<a href="${item.characterUrl}">${item.character}</a>`:item.character;
-  }
-
-  function fillSelectionState(key){
-    const item=locations[key];if(!item)return false;
-    tooltip.classList.remove("show");
-    tooltip.textContent="";
-    selectedLocationKey=key;
-    selectedLandmarkKey=null;
-    updateSelectedLabelText();
+  function syncSelectionUI() {
+    const item = locations[selectedKey];
     fillTerminal(item);
-    document.querySelectorAll("[data-location]").forEach(b=>b.classList.toggle("active",b.dataset.location===key));
-    return true;
+
+    locationButtons.forEach(button => {
+      const active = button.dataset.location === selectedKey;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+
+    nodeSelection.classed("active", d => d[0] === selectedKey);
   }
 
-  function centerOnLocation(key,targetRatio){
-    const item=locations[key];if(!item)return;
-    projection
-      .center([0,0])
-      .translate([width/2,height/2])
-      .rotate([-item.coords[0],-item.coords[1],0])
-      .scale(baseScale*targetRatio);
+  function updateHash(key) {
+    const next = `#${key}`;
+    if (location.hash === next) return;
+    history.replaceState(null, "", next);
   }
 
-  function focusLocation(key){
-    if(!fillSelectionState(key))return;
-    navigationToken++;
-    cityViewKey=null;
-    hoveredLocationKey=null;
-    stage.classList.remove("city-view");
-    centerOnLocation(key,key==="stdorsey"?12:7);
-    render();
+  function renderNodes() {
+    nodeSelection.each(function([key, item]) {
+      const projected = projection(item.coords);
+      const visible = Boolean(projected) && isFrontFacing(item.coords);
+      const node = d3.select(this);
+
+      node
+        .style("display", visible ? null : "none")
+        .attr("transform", visible ? `translate(${projected[0]},${projected[1]})` : "translate(-999,-999)");
+
+      node.select(".node-label")
+        .text(item.shortName)
+        .attr("x", item.labelOffset?.[0] ?? 11)
+        .attr("y", item.labelOffset?.[1] ?? -10);
+    });
   }
 
-  async function enterCityView(key){
-    if(!fillSelectionState(key))return;
-    const token=++navigationToken;
+  function render() {
+    root.select(".earth-halo")
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .attr("r", projection.scale() * 1.08);
 
-    cityViewKey=null;
-    hoveredLocationKey=null;
-    stage.classList.remove("city-view");
+    root.select(".earth-sphere").attr("d", path);
+    root.select(".earth-grid").attr("d", path);
 
-    centerOnLocation(key,key==="stdorsey"?22:18);
-    render();
-    const feature=await loadBoundary(key);
-    if(token!==navigationToken||selectedLocationKey!==key)return;
-    if(feature){
-      cityViewKey=key;
-      stage.classList.add("city-view");
-      render();
+    if (world && typeof topojson !== "undefined") {
+      landPath.datum(topojson.feature(world, world.objects.land)).attr("d", path);
+      borderPath.datum(topojson.mesh(world, world.objects.countries, (a, b) => a !== b)).attr("d", path);
     }
+
+    renderNodes();
+    updateZoomReadout();
   }
 
-  function exitCityView(){
-    if(!cityViewKey)return;
-    cityViewKey=null;
-    stage.classList.remove("city-view");
+  function resize() {
+    const previousRatio = baseScale ? ratio() : (mode === "space" ? SPACE_RATIO : EARTH_RATIO);
+    const rect = stage.getBoundingClientRect();
+    width = Math.max(320, rect.width);
+    height = Math.max(430, rect.height);
+    svg.attr("viewBox", `0 0 ${width} ${height}`);
+    baseScale = Math.min(width, height) * 0.37;
+    projection.translate([width / 2, height / 2]).scale(baseScale * clampRatio(previousRatio));
     render();
   }
 
-  function showTooltip(event,text){
-    tooltip.textContent=text;
-    tooltip.style.left=(event.offsetX+16)+"px";
-    tooltip.style.top=(event.offsetY+12)+"px";
+  function setScaleRatio(nextRatio) {
+    if (!baseScale) return;
+    const next = clampRatio(nextRatio);
+    projection.scale(baseScale * next);
+    mode = next <= SPACE_RATIO + 0.02 ? "space" : "earth";
+    updateModeButtons();
+    render();
+  }
+
+  function setMode(nextMode) {
+    mode = nextMode === "space" ? "space" : "earth";
+    updateModeButtons();
+    setScaleRatio(mode === "space" ? SPACE_RATIO : EARTH_RATIO);
+  }
+
+  function focusLocation(key, { updateUrl = true } = {}) {
+    const item = locations[key];
+    if (!item) return;
+
+    selectedKey = key;
+    mode = "earth";
+    projection
+      .rotate([-item.coords[0], -item.coords[1], 0])
+      .scale(baseScale * FOCUS_RATIO);
+
+    syncSelectionUI();
+    updateModeButtons();
+    if (updateUrl) updateHash(key);
+    render();
+  }
+
+  function showTooltip(event, item) {
+    if (!tooltip) return;
+    const stageRect = stage.getBoundingClientRect();
+    const x = event.clientX - stageRect.left + 14;
+    const y = event.clientY - stageRect.top + 14;
+    tooltip.textContent = item.approximate ? `${item.name} · schematic position` : item.name;
+    tooltip.style.left = `${x}px`;
+    tooltip.style.top = `${y}px`;
     tooltip.classList.add("show");
   }
 
-
-
-  svg.call(d3.drag().on("drag",event=>{
-    const r=projection.rotate();
-    const k=75/projection.scale();
-    const next=[r[0]+event.dx*k,r[1]-event.dy*k,r[2]];
-    if(cityViewKey){
-      const feature=boundaryCache[cityViewKey];
-      const center=[-next[0],-next[1]];
-      if(feature&&!d3.geoContains(feature,center))return;
-    }
-    projection.rotate(next);
-    render();
-  }));
-
-  function applyZoom(factor){
-    const min=baseScale*.45,max=baseScale*450;
-    const next=Math.max(min,Math.min(max,projection.scale()*factor));
-    projection.scale(next);
-    if(cityViewKey&&next/baseScale<5){
-      cityViewKey=null;
-      stage.classList.remove("city-view");
-    }
-    render();
+  function hideTooltip() {
+    tooltip?.classList.remove("show");
   }
 
-  svg.on("wheel",event=>{
-    event.preventDefault();
-    applyZoom(event.deltaY>0?.82:1.22);
-  },{passive:false});
-
-  function setView(isSpace){
-    cityViewKey=null;
-    stage.classList.remove("city-view");
-    space=isSpace;
-    document.querySelector("#earthView").classList.toggle("active",!space);
-    document.querySelector("#spaceView").classList.toggle("active",space);
-    stage.classList.toggle("space-view",space);
-    projection.scale(baseScale*(space?.63:1));
-    render();
-  }
-  document.querySelector("#earthView").addEventListener("click",()=>setView(false));
-  document.querySelector("#spaceView").addEventListener("click",()=>setView(true));
-  document.querySelector("#zoomInGlobe").addEventListener("click",()=>applyZoom(1.65));
-  document.querySelector("#zoomOutGlobe").addEventListener("click",()=>applyZoom(.61));
-  document.querySelector("#resetGlobe").addEventListener("click",()=>{
-    setView(false);
-    focusLocation("tucson");
-  });
-  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
-
-  updateSelectedLabelText();
-
-  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
-    .then(r=>r.json()).then(data=>{
-      world=data;
-      loading.hidden=true;
-      render();
+  nodeSelection
+    .on("pointerenter pointermove", (event, [, item]) => showTooltip(event, item))
+    .on("pointerleave", hideTooltip)
+    .on("click", (event, [key]) => {
+      event.stopPropagation();
+      hideTooltip();
+      focusLocation(key);
     })
-    .catch(()=>{
-      loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
-      render();
+    .on("keydown", (event, [key]) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      focusLocation(key);
     });
 
-  window.addEventListener("resize",resize);
+  svg.call(d3.drag()
+    .filter(event => event.button === undefined || event.button === 0)
+    .on("start", () => stage.classList.add("is-dragging"))
+    .on("drag", event => {
+      const current = projection.rotate();
+      const sensitivity = 72 / Math.max(1, projection.scale());
+      projection.rotate([
+        current[0] + event.dx * sensitivity,
+        Math.max(-80, Math.min(80, current[1] - event.dy * sensitivity)),
+        0
+      ]);
+      render();
+    })
+    .on("end", () => stage.classList.remove("is-dragging"))
+  );
+
+  svg.on("wheel", event => {
+    event.preventDefault();
+    const factor = event.deltaY > 0 ? 0.9 : 1.1;
+    setScaleRatio(ratio() * factor);
+  }, { passive: false });
+
+  earthViewButton?.addEventListener("click", () => setMode("earth"));
+  spaceViewButton?.addEventListener("click", () => setMode("space"));
+  zoomInButton?.addEventListener("click", () => setScaleRatio(ratio() * 1.2));
+  zoomOutButton?.addEventListener("click", () => setScaleRatio(ratio() / 1.2));
+  resetButton?.addEventListener("click", () => {
+    selectedKey = "tucson";
+    mode = "earth";
+    projection.rotate(HOME_ROTATION.slice()).scale(baseScale * EARTH_RATIO);
+    syncSelectionUI();
+    updateModeButtons();
+    updateHash("tucson");
+    render();
+  });
+
+  locationButtons.forEach(button => {
+    button.addEventListener("click", () => focusLocation(button.dataset.location));
+  });
+
+  window.addEventListener("hashchange", () => {
+    const key = location.hash.replace("#", "");
+    if (locations[key]) focusLocation(key, { updateUrl: false });
+  });
+
+  window.addEventListener("resize", () => requestAnimationFrame(resize));
+
+  if (reduceMotion) stage.classList.add("reduce-motion");
   resize();
-  const initialKey=location.hash.replace("#","");
-  if(globeLocationKeys.includes(initialKey)){
-    focusLocation(initialKey);
-  }else{
-    focusLocation("tucson");
+
+  const initialKey = location.hash.replace("#", "");
+  if (locations[initialKey]) {
+    focusLocation(initialKey, { updateUrl: false });
+  } else {
+    syncSelectionUI();
+    updateModeButtons();
+    render();
   }
+
+  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
+    .then(response => response.ok ? response.json() : Promise.reject(new Error("World atlas request failed")))
+    .then(data => {
+      world = data;
+      if (loading) loading.hidden = true;
+      render();
+    })
+    .catch(() => {
+      if (loading) loading.textContent = "EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
+      render();
+    });
 })();
