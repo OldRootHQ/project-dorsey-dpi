@@ -26,3 +26,13 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Internal location/dossier links required before merge.
 - Branch diff review required before merge.
 - Live deployment verification required after merge.
+
+## 2026-09-26 — OR-WEB-0002 — Automated site smoke-test gate
+
+### Changed
+- Added a GitHub Actions smoke-test workflow for website changes.
+- Added Chromium tests for the Locations globe covering all five public location nodes, keyboard selection, controlled zoom limits, Earth/Space modes, St. Dorsey schematic status, mobile touch behavior, and world-atlas failure fallback.
+- Added JavaScript syntax checks for the site's shared scripts before browser tests run.
+
+### Validation
+- The workflow must pass on the repair code before this test gate is merged to main.
