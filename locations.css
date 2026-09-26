@@ -143,9 +143,8 @@
   stroke:var(--old-gold);
   stroke-width:1.5;
   opacity:.44;
-  transform-box:fill-box;
-  transform-origin:center;
-  animation:nodePulse 2.1s ease-out infinite
+  stroke-dasharray:3 3;
+  opacity:.52
 }
 .cluster-core{
   fill:var(--deep-root);
@@ -181,8 +180,8 @@
   pointer-events:none
 }
 @keyframes nodePulse{0%{transform:scale(.6);opacity:.65}100%{transform:scale(1.5);opacity:0}}
-.reduce-motion .node-pulse,.reduce-motion .cluster-pulse{animation:none;opacity:.38}
-@media(prefers-reduced-motion:reduce){.node-pulse,.cluster-pulse{animation:none;opacity:.38}}
+.reduce-motion .node-pulse{animation:none;opacity:.38}
+@media(prefers-reduced-motion:reduce){.node-pulse{animation:none;opacity:.38}}
 
 .globe-hud{
   position:absolute;
