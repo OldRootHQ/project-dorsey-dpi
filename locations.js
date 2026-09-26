@@ -98,7 +98,7 @@
   const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   let nodesLayer=root.append("g").attr("class","earth-nodes");
   const selectedLabelLayer=root.append("g").attr("class","selected-location-label-layer");
-  const selectedLabel=selectedLabelLayer.append("text").attr("class","node-label selected-location-label");
+  const selectedLabel=selectedLabelLayer.append("text").attr("class","node-label selected-location-label").style("pointer-events","none");
 
   function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
   function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
@@ -241,7 +241,7 @@
     renderStDorseyGeography();
 
     const ratio=zoomRatio();
-    const localMode=ratio>=8;
+    const localMode=!!cityViewKey||ratio>=5;
     const data=localMode
       ? [[selectedLocationKey,locations[selectedLocationKey]]]
       : globeLocationKeys.map(key=>[key,locations[key]]);
@@ -276,7 +276,9 @@
         .attr("d",coreD);
 
 
-      g.on("pointerenter pointermove",event=>{
+      g.on("mousedown touchstart",event=>{
+        event.stopPropagation();
+      }).on("pointerenter pointermove",event=>{
         hoveredLocationKey=key;
         showTooltip(event,item.name);
         loadBoundary(key);
@@ -297,17 +299,16 @@
 
   function renderStDorseyGeography(){
     const ratio=zoomRatio();
-    const center=locations.stdorsey.coords;
-    const front=d3.geoDistance(center,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
     const selected=selectedLocationKey==="stdorsey";
-    const visible=front&&(selected||ratio>=12);
+    const islandD=path(stDorseyGeography.island);
+    const visible=!!islandD&&(selected||ratio>=12);
 
     fictionLayer.style("display",visible?"":"none");
     if(!visible)return;
 
     islandPath
       .datum(stDorseyGeography.island)
-      .attr("d",path);
+      .attr("d",islandD);
 
     const bridgeVisible=selected?ratio>=18:ratio>=24;
     bridgeLayer.style("display",bridgeVisible?"":"none");
@@ -317,8 +318,7 @@
         .data(stDorseyGeography.bridges)
         .join("path")
         .attr("class","st-dorsey-bridge-line")
-        .datum(d=>d.line)
-        .attr("d",path);
+        .attr("d",d=>path(d.line));
     }
   }
 
