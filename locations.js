@@ -304,11 +304,7 @@
     if(selectedLocationKey!==key)return;
     cityViewKey=key;
     stage.classList.add("city-view");
-    let center=item.coords;
-    if(feature&&!d3.geoContains(feature,center)){
-      const centroid=d3.geoCentroid(feature);
-      if(Number.isFinite(centroid[0])&&Number.isFinite(centroid[1]))center=centroid;
-    }
+    const center=item.coords;
     projection.rotate([-center[0],-center[1],0]);
     projection.scale(baseScale*cityFitRatio(feature));
     render();
