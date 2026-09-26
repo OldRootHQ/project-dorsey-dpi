@@ -10,17 +10,17 @@
 
   // Local-site nodes are intentionally schematic until exact public coordinates exist.
   const stDorseyGeography = {
-    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-76.3920,38.6610],[-76.3690,38.6700],[-76.3440,38.6720],[-76.3190,38.6670],[-76.2970,38.6570],[-76.2810,38.6420],[-76.2700,38.6230],[-76.2650,38.6030],[-76.2670,38.5830],[-76.2740,38.5660],[-76.2820,38.5520],[-76.2750,38.5430],[-76.2680,38.5340],[-76.2780,38.5270],[-76.2920,38.5280],[-76.3040,38.5360],[-76.3130,38.5460],[-76.3310,38.5420],[-76.3510,38.5430],[-76.3680,38.5500],[-76.3810,38.5610],[-76.3890,38.5740],[-76.3900,38.5850],[-76.3840,38.5940],[-76.3760,38.6020],[-76.3820,38.6110],[-76.3950,38.6200],[-76.4060,38.6310],[-76.4100,38.6420],[-76.4060,38.6520],[-76.3990,38.6580],[-76.3920,38.6610]]]}},
+    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-76.3920,38.6488],[-76.3690,38.6560],[-76.3440,38.6576],[-76.3190,38.6536],[-76.2970,38.6456],[-76.2810,38.6336],[-76.2700,38.6184],[-76.2650,38.6024],[-76.2670,38.5864],[-76.2740,38.5728],[-76.2820,38.5616],[-76.2750,38.5544],[-76.2680,38.5472],[-76.2780,38.5416],[-76.2920,38.5424],[-76.3040,38.5488],[-76.3130,38.5568],[-76.3310,38.5536],[-76.3510,38.5544],[-76.3680,38.5600],[-76.3810,38.5688],[-76.3890,38.5792],[-76.3900,38.5880],[-76.3840,38.5952],[-76.3760,38.6016],[-76.3820,38.6088],[-76.3950,38.6160],[-76.4060,38.6248],[-76.4100,38.6336],[-76.4060,38.6416],[-76.3990,38.6464],[-76.3920,38.6488]]]}},
     bridges:[
-      {name:"WEST HIGHWAY",line:{type:"LineString",coordinates:[[-76.5030,38.5750],[-76.4780,38.5730],[-76.4520,38.5800],[-76.4300,38.5920],[-76.3890,38.6030]]}},
-      {name:"NORTH HIGHWAY",line:{type:"LineString",coordinates:[[-76.5000,38.6920],[-76.4730,38.6870],[-76.4460,38.6770],[-76.4210,38.6650],[-76.3920,38.6580]]}}
+      {name:"WEST HIGHWAY",line:{type:"LineString",coordinates:[[-76.5030,38.5750],[-76.4780,38.5730],[-76.4520,38.5800],[-76.4300,38.5920],[-76.3890,38.6024]]}},
+      {name:"NORTH HIGHWAY",line:{type:"LineString",coordinates:[[-76.5000,38.6920],[-76.4730,38.6870],[-76.4460,38.6770],[-76.4210,38.6650],[-76.3920,38.6464]]}}
     ],
-    entrance:[-76.3910,38.6180]
+    entrance:[-76.3910,38.6144]
   };
 
   const landmarks = {
-    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its isolated coastal campus occupies the island's large outward-projecting southern tract, far from the primary D.C. approaches.",coords:[-76.2790,38.5350],calloutOffset:[44,28]},
-    university:{id:"SITE-002",name:"University of Dorsey",parent:"stdorsey",type:"University",region:"St. Dorsey Island",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"University of Dorsey occupies a separate coastal site on St. Dorsey, well away from Hampton Dynamics.",coords:[-76.2870,38.6460],calloutOffset:[46,-24]}
+    hampton:{id:"SITE-001",name:"Hampton Dynamics Facility",parent:"stdorsey",type:"Historic research facility",region:"St. Dorsey Island",status:"Genesis strike site",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"The Hampton Dynamics facility struck during Genesis. Its isolated coastal campus occupies the island's large outward-projecting southern tract, far from the primary D.C. approaches.",coords:[-76.2790,38.5480],calloutOffset:[44,28]},
+    university:{id:"SITE-002",name:"University of Dorsey",parent:"stdorsey",type:"University",region:"St. Dorsey Island",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"University of Dorsey occupies a separate coastal site on St. Dorsey, well away from Hampton Dynamics.",coords:[-76.2870,38.6368],calloutOffset:[46,-24]}
   };
 
   const svg=d3.select("#techGlobe");
