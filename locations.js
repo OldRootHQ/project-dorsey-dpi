@@ -208,36 +208,47 @@
       ? [[selectedLocationKey,locations[selectedLocationKey]]]
       : globeLocationKeys.map(key=>[key,locations[key]]);
 
-    const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(
-      enter=>{
-        const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
-        g.append("path").attr("class","node-pulse");
-        g.append("path").attr("class","node-core");
-        g.append("text").attr("class","node-label");
-        return g;
-      },
-      update=>update,
-      exit=>exit.remove()
-    );
+    // Rebuild pins from current geographic state every frame.
+    // There are only a few locations, and this prevents a reused SVG node
+    // from carrying Tucson/Chicago/etc. text or interaction state forward.
+    nodesLayer.selectAll("*").remove();
 
-    points.each(function([key,item]){
+    data.forEach(([key,item])=>{
+      if(!item)return;
+
       const point={type:"Point",coordinates:item.coords};
       const coreRadius=key===selectedLocationKey?7:(ratio>=8?3.5:5);
       const pulseRadius=ratio>=8?9:13;
-      const coreD=d3.geoPath(projection).pointRadius(coreRadius)(point);
-      const pulseD=d3.geoPath(projection).pointRadius(pulseRadius)(point);
+      const pointPath=d3.geoPath(projection);
+      const coreD=pointPath.pointRadius(coreRadius)(point);
+      const pulseD=pointPath.pointRadius(pulseRadius)(point);
       const p=projection(item.coords);
-      const visible=!!coreD&&!!pulseD&&!!p;
+      if(!coreD||!pulseD||!p)return;
 
-      const g=d3.select(this).style("display",visible?"":"none");
-      g.select(".node-core").attr("d",coreD||null);
-      g.select(".node-pulse").attr("d",pulseD||null);
-      g.select(".node-label")
-        .attr("x",visible?p[0]+10:-999)
-        .attr("y",visible?p[1]-9:-999)
-        .style("display",(visible&&(ratio>=1.7||key===selectedLocationKey))?"":"none")
-        .text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
-    }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
+      const g=nodesLayer.append("g")
+        .attr("class","location-node"+(key===selectedLocationKey?" active":""))
+        .attr("data-key",key);
+
+      g.append("path")
+        .attr("class","node-pulse")
+        .attr("d",pulseD);
+
+      g.append("path")
+        .attr("class","node-core")
+        .attr("d",coreD);
+
+      if(ratio>=1.7||key===selectedLocationKey){
+        g.append("text")
+          .attr("class","node-label")
+          .attr("x",p[0]+10)
+          .attr("y",p[1]-9)
+          .text(item.name
+            .replace(", Arizona","")
+            .replace(", Illinois","")
+            .replace(", Puerto Rico","")
+            .replace(", Maryland",""));
+      }
+    });
 
     updateZoomHud();
   }
