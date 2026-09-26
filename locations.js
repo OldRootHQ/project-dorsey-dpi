@@ -291,8 +291,6 @@
       });
     });
 
-    if(localMode)enforceSelectedMarkerLabel();
-
     positionSelectedLabel();
     updateZoomHud();
   }
@@ -301,12 +299,19 @@
     const ratio=zoomRatio();
     const center=locations.stdorsey.coords;
     const front=d3.geoDistance(center,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-    const visible=ratio>=12&&front;
+    const selected=selectedLocationKey==="stdorsey";
+    const visible=front&&(selected||ratio>=12);
+
     fictionLayer.style("display",visible?"":"none");
     if(!visible)return;
-    islandPath.attr("d",path);
-    const bridgeVisible=ratio>=24;
+
+    islandPath
+      .datum(stDorseyGeography.island)
+      .attr("d",path);
+
+    const bridgeVisible=selected?ratio>=18:ratio>=24;
     bridgeLayer.style("display",bridgeVisible?"":"none");
+
     if(bridgeVisible){
       bridgeLayer.selectAll("path.st-dorsey-bridge-line")
         .data(stDorseyGeography.bridges)
