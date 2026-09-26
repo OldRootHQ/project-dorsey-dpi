@@ -71,7 +71,7 @@
   const boundaryRequests={};
   const globeLocationKeys=["tucson","chicago","sanjuan","stdorsey","baltimore","washington"];
 
-  let width=0,height=0,baseScale=0,space=false,worldLand=null,worldBorders=null,usDetail=null,renderQueued=false;
+  let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
   let hoveredLocationKey=null,cityViewKey=null;
   const projection=d3.geoOrthographic().clipAngle(90).precision(.4).rotate([96,-28,0]);
@@ -90,14 +90,6 @@
   const nodesLayer=root.append("g").attr("class","earth-nodes");
 
   function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
-  function scheduleRender(){
-    if(renderQueued)return;
-    renderQueued=true;
-    requestAnimationFrame(()=>{
-      renderQueued=false;
-      render();
-    });
-  }
   function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
   function updateZoomHud(){
     if(!zoomReadout)return;
@@ -202,18 +194,13 @@
       .attr("r",projection.scale()*1.08);
     root.select(".earth-sphere").attr("d",path);
     root.select(".earth-grid").attr("d",path);
-    const ratio=zoomRatio();
-    if(ratio>=5&&usDetail){
-      landPath.datum(usDetail).attr("d",path);
-      borderPath.style("display","none");
-    }else if(worldLand){
-      landPath.datum(worldLand).attr("d",path);
-      borderPath.style("display","").datum(worldBorders).attr("d",path);
+    if(world){
+      landPath.datum(topojson.feature(world,world.objects.land)).attr("d",path);
+      borderPath.datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr("d",path);
     }
-    root.select(".earth-grid").style("display",ratio>=8?"none":"").attr("d",path);
 
-    renderStDorseyGeography();
     renderBoundary();
+    renderStDorseyGeography();
 
     const data=globeLocationKeys.map(key=>[key,locations[key]]);
     const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(enter=>{
@@ -223,20 +210,21 @@
       g.append("text").attr("class","node-label").attr("x",10).attr("y",-9);
       return g;
     });
+
+    const ratio=zoomRatio();
     points.each(function([key,item]){
       const p=projection(item.coords);
       const front=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-      const margin=32;
-      const inViewport=!!p&&p[0]>=-margin&&p[0]<=width+margin&&p[1]>=-margin&&p[1]<=height+margin;
-      const ratio=zoomRatio();
-      const localVisible=ratio<8||key===selectedLocationKey||inViewport;
-      const visible=front&&inViewport&&localVisible;
+      const localMode=ratio>=8;
+      const visible=front&&(!localMode||key===selectedLocationKey);
       const g=d3.select(this)
-        .attr("transform",visible?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
+        .attr("transform",visible&&p?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
         .style("display",visible?"":"none");
       g.select(".node-pulse").attr("r",ratio>=8?9:13);
       g.select(".node-core").attr("r",ratio>=8?3.5:5);
-      g.select("text").style("display",(visible&&(ratio>=1.7||key===selectedLocationKey))?"":"none").text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
+      g.select("text")
+        .style("display",(visible&&(ratio>=1.7||key===selectedLocationKey))?"":"none")
+        .text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
     }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
 
     updateZoomHud();
@@ -282,23 +270,19 @@
     render();
   }
 
-  function centerCameraOnLocation(key,targetRatio){
-    const item=locations[key];if(!item)return;
-    projection
-      .center([0,0])
-      .translate([width/2,height/2])
-      .rotate([-item.coords[0],-item.coords[1],0]);
-    if(Number.isFinite(targetRatio))projection.scale(baseScale*targetRatio);
-    render();
-  }
-
   function focusLocation(key){
     const item=locations[key];if(!item)return;
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
     selectLocation(key);
-    centerCameraOnLocation(key,Math.max(7,zoomRatio()));
+    projection
+      .center([0,0])
+      .translate([width/2,height/2])
+      .rotate([-item.coords[0],-item.coords[1],0]);
+    const target=key==="stdorsey"?12:7;
+    projection.scale(Math.max(projection.scale(),baseScale*target));
+    render();
   }
 
   async function enterCityView(key){
@@ -309,8 +293,13 @@
     stage.classList.remove("city-view");
     selectLocation(key);
 
-    const target=key==="stdorsey"?75:18;
-    centerCameraOnLocation(key,target);
+    const target=key==="stdorsey"?22:18;
+    projection
+      .center([0,0])
+      .translate([width/2,height/2])
+      .rotate([-item.coords[0],-item.coords[1],0])
+      .scale(baseScale*target);
+    render();
 
     const feature=await loadBoundary(key);
     if(selectedLocationKey!==key)return;
@@ -366,7 +355,7 @@
       if(feature&&!d3.geoContains(feature,center))return;
     }
     projection.rotate(next);
-    scheduleRender();
+    render();
   }));
 
   function applyZoom(factor){
@@ -377,7 +366,7 @@
       cityViewKey=null;
       stage.classList.remove("city-view");
     }
-    scheduleRender();
+    render();
   }
 
   svg.on("wheel",event=>{
@@ -406,20 +395,16 @@
   });
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
-  Promise.all([
-    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json").then(r=>r.json()),
-    fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-10m.json").then(r=>r.json())
-  ]).then(([globalData,detailData])=>{
-    worldLand=topojson.feature(globalData,globalData.objects.land);
-    worldBorders=topojson.mesh(globalData,globalData.objects.countries,(a,b)=>a!==b);
-    const detailedCountries=topojson.feature(detailData,detailData.objects.countries).features;
-    usDetail=detailedCountries.find(feature=>String(feature.id)==="840")||null;
-    loading.hidden=true;
-    render();
-  }).catch(()=>{
-    loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
-    render();
-  });
+  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
+    .then(r=>r.json()).then(data=>{
+      world=data;
+      loading.hidden=true;
+      render();
+    })
+    .catch(()=>{
+      loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
+      render();
+    });
 
   window.addEventListener("resize",resize);
   resize();
