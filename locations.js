@@ -88,6 +88,8 @@
   const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
   const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   let nodesLayer=root.append("g").attr("class","earth-nodes");
+  const selectedLabelLayer=root.append("g").attr("class","selected-location-label-layer");
+  const selectedLabel=selectedLabelLayer.append("text").attr("class","node-label selected-location-label");
 
   function zoomRatio(){return baseScale?projection.scale()/baseScale:1}
   function zoomMode(r=zoomRatio()){return r>=22?"SITE":r>=8?"LOCAL":r>=2.5?"REGIONAL":"GLOBAL"}
@@ -196,11 +198,23 @@
       .replace(", Maryland","");
   }
 
-  function enforceSelectedMarkerLabel(){
+  function updateSelectedLabelText(){
     const item=locations[selectedLocationKey];
     if(!item)return;
-    const label=nodesLayer.select(".node-label");
-    if(!label.empty())label.text(shortLocationName(item));
+    selectedLabel.text(shortLocationName(item));
+  }
+
+  function positionSelectedLabel(){
+    const item=locations[selectedLocationKey];
+    if(!item)return;
+    const p=projection(item.coords);
+    const point={type:"Point",coordinates:item.coords};
+    const pointD=d3.geoPath(projection).pointRadius(1)(point);
+    const visible=!!p&&!!pointD&&zoomRatio()>=1.7;
+    selectedLabel
+      .style("display",visible?"":"none")
+      .attr("x",visible?p[0]+10:-999)
+      .attr("y",visible?p[1]-9:-999);
   }
 
   function render(){
@@ -252,13 +266,6 @@
         .attr("class","node-core")
         .attr("d",coreD);
 
-      if(ratio>=1.7||key===selectedLocationKey){
-        g.append("text")
-          .attr("class","node-label")
-          .attr("x",p[0]+10)
-          .attr("y",p[1]-9)
-          .text(shortLocationName(item));
-      }
 
       g.on("pointerenter pointermove",event=>{
         hoveredLocationKey=key;
@@ -277,6 +284,7 @@
 
     if(localMode)enforceSelectedMarkerLabel();
 
+    positionSelectedLabel();
     updateZoomHud();
   }
 
@@ -317,6 +325,7 @@
     tooltip.textContent="";
     selectedLocationKey=key;
     selectedLandmarkKey=null;
+    updateSelectedLabelText();
     fillTerminal(item);
     document.querySelectorAll("[data-location]").forEach(b=>b.classList.toggle("active",b.dataset.location===key));
     return true;
@@ -351,12 +360,6 @@
 
     centerOnLocation(key,key==="stdorsey"?22:18);
     render();
-    requestAnimationFrame(()=>{
-      if(token===navigationToken&&selectedLocationKey===key){
-        enforceSelectedMarkerLabel();
-      }
-    });
-
     const feature=await loadBoundary(key);
     if(token!==navigationToken||selectedLocationKey!==key)return;
     if(feature){
@@ -430,6 +433,8 @@
     focusLocation("tucson");
   });
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
+
+  updateSelectedLabelText();
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
     .then(r=>r.json()).then(data=>{
