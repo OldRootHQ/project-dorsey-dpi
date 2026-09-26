@@ -72,6 +72,35 @@
     zoomReadout.textContent="ZOOM "+r.toFixed(1)+"× // "+mode;
   }
 
+  function ringArea(ring){
+    let area=0;
+    for(let i=0,j=ring.length-1;i<ring.length;j=i++){
+      area+=(ring[j][0]*ring[i][1])-(ring[i][0]*ring[j][1]);
+    }
+    return area/2;
+  }
+
+  function normalizePolygonRings(rings){
+    return rings.map((ring,index)=>{
+      const area=ringArea(ring);
+      const shouldBeClockwise=index===0;
+      const isClockwise=area<0;
+      return shouldBeClockwise===isClockwise?ring:ring.slice().reverse();
+    });
+  }
+
+  function normalizeFeatureForD3(feature){
+    if(!feature||!feature.geometry)return feature;
+    const clone=JSON.parse(JSON.stringify(feature));
+    const geom=clone.geometry;
+    if(geom.type==="Polygon"){
+      geom.coordinates=normalizePolygonRings(geom.coordinates);
+    }else if(geom.type==="MultiPolygon"){
+      geom.coordinates=geom.coordinates.map(normalizePolygonRings);
+    }
+    return clone;
+  }
+
   function loadBoundary(key){
     if(boundaryCache[key])return Promise.resolve(boundaryCache[key]);
     if(boundaryRequests[key])return boundaryRequests[key];
@@ -100,13 +129,9 @@
     boundaryRequests[key]=fetch(`${base}/${spec.layer}/query?${params}`)
       .then(r=>r.ok?r.json():Promise.reject(new Error("Boundary request failed")))
       .then(data=>{
-        const feature=data&&data.features&&data.features[0]?data.features[0]:null;
-        if(feature){
-          boundaryCache[key]=feature;
-          const props=feature.properties||{};
-          const lon=parseFloat(props.CENTLON),lat=parseFloat(props.CENTLAT);
-          if(Number.isFinite(lon)&&Number.isFinite(lat))locations[key].coords=[lon,lat];
-        }
+        const rawFeature=data&&data.features&&data.features[0]?data.features[0]:null;
+        const feature=normalizeFeatureForD3(rawFeature);
+        if(feature)boundaryCache[key]=feature;
         delete boundaryRequests[key];
         if(cityViewKey===key||hoveredLocationKey===key)render();
         return feature;
