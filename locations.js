@@ -3,8 +3,17 @@
     tucson:{id:"LOC-001",name:"Tucson, Arizona",type:"Primary operating location",region:"United States",status:"Established",character:"Gila Monster",characterUrl:"characters/gila-monster/",dossierUrl:"locations/tucson/",note:"Tucson is the established operating city of Gila Monster.",coords:[-110.9747,32.2226],boundary:{service:"places",layer:4,state:"04",name:"Tucson"}},
     chicago:{id:"LOC-002",name:"Chicago, Illinois",type:"Primary operating location",region:"United States",status:"Established",character:"Commotion",characterUrl:"characters/commotion/",dossierUrl:"locations/chicago/",note:"Chicago is the established operating city of Commotion.",coords:[-87.6298,41.8781],boundary:{service:"places",layer:4,state:"17",name:"Chicago"}},
     sanjuan:{id:"LOC-003",name:"San Juan, Puerto Rico",type:"Primary operating location",region:"Puerto Rico",status:"Established",character:"Aftermark",characterUrl:"characters/aftermark/",dossierUrl:"locations/san-juan/",note:"Santurce, San Juan is the established home and operating location of Aftermark.",coords:[-66.1057,18.4655],boundary:{service:"counties",layer:1,state:"72",name:"San Juan"}},
+    stdorsey:{id:"LOC-004",name:"St. Dorsey Island",type:"Genesis location",region:"Washington, D.C. area",status:"Established",character:"—",characterUrl:"",dossierUrl:"locations/st-dorsey/",note:"St. Dorsey is the fictional island where Genesis occurred.",coords:[-74.8650,37.8200],boundary:{service:"fictional"}},
     baltimore:{id:"LOC-005",name:"Baltimore, Maryland",type:"Primary operating location",region:"United States",status:"Established",character:"Kincast",characterUrl:"characters/kincast/",dossierUrl:"locations/baltimore/",note:"Baltimore is the established home base and primary operating city of Kincast.",coords:[-76.6122,39.2904],boundary:{service:"places",layer:4,state:"24",name:"Baltimore"}},
     washington:{id:"REF-001",name:"Washington, D.C.",type:"Geographic reference",region:"United States",status:"Reference",character:"—",characterUrl:"",dossierUrl:"locations.html",note:"Washington, D.C. is shown as a geographic reference point.",coords:[-77.0369,38.9072],boundary:{service:"states",layer:0,state:"11",name:"District of Columbia"}}
+  };
+
+  const stDorseyGeography={
+    island:{type:"Feature",geometry:{type:"Polygon",coordinates:[[[-74.9250,37.8720],[-74.8950,37.8810],[-74.8580,37.8830],[-74.8240,37.8760],[-74.7980,37.8620],[-74.7830,37.8430],[-74.7780,37.8210],[-74.7830,37.8010],[-74.7730,37.7860],[-74.7790,37.7700],[-74.7970,37.7620],[-74.8170,37.7650],[-74.8340,37.7770],[-74.8560,37.7730],[-74.8820,37.7740],[-74.9040,37.7820],[-74.9180,37.7940],[-74.9230,37.8080],[-74.9160,37.8200],[-74.9250,37.8330],[-74.9340,37.8480],[-74.9330,37.8600],[-74.9250,37.8720]]]}},
+    bridges:[
+      {line:{type:"LineString",coordinates:[[-75.2350,38.0050],[-75.1750,37.9870],[-75.1150,37.9580],[-75.0600,37.9230],[-75.0100,37.8950],[-74.9250,37.8580]]}},
+      {line:{type:"LineString",coordinates:[[-75.3150,37.6750],[-75.2550,37.7040],[-75.1900,37.7380],[-75.1250,37.7650],[-75.0600,37.7870],[-74.9190,37.8080]]}}
+    ]
   };
 
   const svg=d3.select("#techGlobe");
@@ -24,9 +33,9 @@
     counties:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer",
     states:"https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/State_County/MapServer"
   };
-  const boundaryCache={};
+  const boundaryCache={stdorsey:stDorseyGeography.island};
   const boundaryRequests={};
-  const globeLocationKeys=["tucson","chicago","sanjuan","baltimore","washington"];
+  const globeLocationKeys=["tucson","chicago","sanjuan","stdorsey","baltimore","washington"];
 
   let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
@@ -39,6 +48,9 @@
   root.append("path").attr("class","earth-grid").datum(d3.geoGraticule10());
   const landPath=root.append("path").attr("class","earth-land");
   const borderPath=root.append("path").attr("class","earth-borders");
+  const fictionLayer=root.append("g").attr("class","fiction-geography");
+  const islandPath=fictionLayer.append("path").attr("class","st-dorsey-island").datum(stDorseyGeography.island);
+  const bridgeLayer=fictionLayer.append("g").attr("class","st-dorsey-bridges");
   const boundaryLayer=root.append("g").attr("class","city-boundary-layer");
   const boundaryPath=boundaryLayer.append("path").attr("class","city-boundary");
   const nodesLayer=root.append("g").attr("class","earth-nodes");
@@ -86,6 +98,10 @@
     if(boundaryRequests[key])return boundaryRequests[key];
     const item=locations[key],spec=item&&item.boundary;
     if(!spec)return Promise.resolve(null);
+    if(spec.service==="fictional"){
+      boundaryCache[key]=stDorseyGeography.island;
+      return Promise.resolve(boundaryCache[key]);
+    }
     const base=boundaryServices[spec.service];
     if(!base)return Promise.resolve(null);
     const safeName=spec.name.replace(/'/g,"''");
@@ -149,6 +165,7 @@
       borderPath.datum(topojson.mesh(world,world.objects.countries,(a,b)=>a!==b)).attr("d",path);
     }
 
+    renderStDorseyGeography();
     renderBoundary();
 
     const data=globeLocationKeys.map(key=>[key,locations[key]]);
@@ -170,6 +187,26 @@
     }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
 
     updateZoomHud();
+  }
+
+  function renderStDorseyGeography(){
+    const ratio=zoomRatio();
+    const center=locations.stdorsey.coords;
+    const front=d3.geoDistance(center,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
+    const visible=ratio>=12&&front;
+    fictionLayer.style("display",visible?"":"none");
+    if(!visible)return;
+    islandPath.attr("d",path);
+    const bridgeVisible=ratio>=24;
+    bridgeLayer.style("display",bridgeVisible?"":"none");
+    if(bridgeVisible){
+      bridgeLayer.selectAll("path.st-dorsey-bridge-line")
+        .data(stDorseyGeography.bridges)
+        .join("path")
+        .attr("class","st-dorsey-bridge-line")
+        .datum(d=>d.line)
+        .attr("d",path);
+    }
   }
 
   function fillTerminal(item){
@@ -213,7 +250,7 @@
     stage.classList.remove("city-view");
     selectLocation(key);
 
-    const target=18;
+    const target=key==="stdorsey"?75:18;
     projection
       .center([0,0])
       .translate([width/2,height/2])
