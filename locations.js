@@ -42,6 +42,7 @@
   };
   const boundaryCache={stdorsey:stDorseyGeography.island};
   const boundaryRequests={};
+  const globeLocationKeys=["tucson","chicago","sanjuan","baltimore","washington"];
 
   let width=0,height=0,baseScale=0,space=false,world=null;
   let selectedLocationKey="tucson",selectedLandmarkKey=null;
@@ -174,9 +175,9 @@
     }
 
     renderBoundary();
-    renderStDorseyGeography();
+    fictionLayer.style("display","none");
 
-    const data=Object.entries(locations);
+    const data=globeLocationKeys.map(key=>[key,locations[key]]);
     const points=nodesLayer.selectAll("g.location-node").data(data,d=>d[0]).join(enter=>{
       const g=enter.append("g").attr("class","location-node").attr("data-key",d=>d[0]);
       g.append("circle").attr("class","node-pulse").attr("r",13);
@@ -406,13 +407,13 @@
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
-    .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();Object.keys(locations).forEach(key=>loadBoundary(key));})
+    .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();globeLocationKeys.forEach(key=>loadBoundary(key));})
     .catch(()=>{loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";render();});
 
   window.addEventListener("resize",resize);
   resize();
   const initialKey=location.hash.replace("#","");
-  if(locations[initialKey]){
+  if(globeLocationKeys.includes(initialKey)){
     focusLocation(initialKey);
   }else{
     selectLocation("tucson");
