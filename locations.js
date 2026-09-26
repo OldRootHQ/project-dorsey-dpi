@@ -285,31 +285,30 @@
     render();
   }
 
-  function cityFitRatio(feature){
-    if(!feature||!baseScale)return 45;
-    const bounds=d3.geoBounds(feature);
-    const midLat=(bounds[0][1]+bounds[1][1])/2;
-    const lonSpan=Math.abs(bounds[1][0]-bounds[0][0])*Math.max(.25,Math.cos(midLat*Math.PI/180));
-    const latSpan=Math.abs(bounds[1][1]-bounds[0][1]);
-    const spanDeg=Math.max(lonSpan,latSpan,.015);
-    const desiredPixels=Math.min(width,height)*.72;
-    const targetScale=desiredPixels/(spanDeg*Math.PI/180);
-    return Math.max(35,Math.min(380,targetScale/baseScale));
-  }
-
-  async function enterCityView(key,bringIntoView=false){
+  async function enterCityView(key){
     const item=locations[key];if(!item)return;
+
+    // Camera movement is intentionally independent from boundary geometry.
+    // This guarantees every location opens on its canonical coordinates.
+    cityViewKey=null;
+    hoveredLocationKey=null;
+    stage.classList.remove("city-view");
     selectLocation(key);
+
+    const target=key==="stdorsey"?22:18;
+    projection
+      .center([0,0])
+      .translate([width/2,height/2])
+      .rotate([-item.coords[0],-item.coords[1],0])
+      .scale(baseScale*target);
+    render();
+
     const feature=await loadBoundary(key);
     if(selectedLocationKey!==key)return;
-    cityViewKey=key;
-    stage.classList.add("city-view");
-    const center=item.coords;
-    projection.rotate([-center[0],-center[1],0]);
-    projection.scale(baseScale*cityFitRatio(feature));
-    render();
-    if(bringIntoView){
-      requestAnimationFrame(()=>stage.scrollIntoView({behavior:"smooth",block:"center"}));
+    if(feature){
+      cityViewKey=key;
+      stage.classList.add("city-view");
+      render();
     }
   }
 
@@ -373,7 +372,7 @@
     const min=baseScale*.45,max=baseScale*450;
     const next=Math.max(min,Math.min(max,projection.scale()*factor));
     projection.scale(next);
-    if(cityViewKey&&next/baseScale<14){
+    if(cityViewKey&&next/baseScale<5){
       cityViewKey=null;
       stage.classList.remove("city-view");
     }
@@ -404,7 +403,7 @@
     setView(false);
     selectLocation("tucson");
   });
-  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location,true)));
+  document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
   fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
     .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();Object.keys(locations).forEach(key=>loadBoundary(key));})
