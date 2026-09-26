@@ -269,34 +269,35 @@
     render();
   }
 
+  function centerCameraOnLocation(key,targetRatio){
+    const item=locations[key];if(!item)return;
+    projection
+      .center([0,0])
+      .translate([width/2,height/2])
+      .rotate([-item.coords[0],-item.coords[1],0]);
+    if(Number.isFinite(targetRatio))projection.scale(baseScale*targetRatio);
+    render();
+  }
+
   function focusLocation(key){
     const item=locations[key];if(!item)return;
     cityViewKey=null;
+    hoveredLocationKey=null;
     stage.classList.remove("city-view");
     selectLocation(key);
-    projection.rotate([-item.coords[0],-item.coords[1],0]);
-    const target=7;
-    projection.scale(Math.max(projection.scale(),baseScale*target));
-    render();
+    centerCameraOnLocation(key,Math.max(7,zoomRatio()));
   }
 
   async function enterCityView(key){
     const item=locations[key];if(!item)return;
 
-    // Camera movement is intentionally independent from boundary geometry.
-    // This guarantees every location opens on its canonical coordinates.
     cityViewKey=null;
     hoveredLocationKey=null;
     stage.classList.remove("city-view");
     selectLocation(key);
 
     const target=key==="stdorsey"?75:18;
-    projection
-      .center([0,0])
-      .translate([width/2,height/2])
-      .rotate([-item.coords[0],-item.coords[1],0])
-      .scale(baseScale*target);
-    render();
+    centerCameraOnLocation(key,target);
 
     const feature=await loadBoundary(key);
     if(selectedLocationKey!==key)return;
