@@ -212,12 +212,18 @@
     });
     points.each(function([key,item]){
       const p=projection(item.coords);
-      const visible=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
-      const g=d3.select(this).attr("transform",p?`translate(${p[0]},${p[1]})`:"translate(-999,-999)").style("display",visible?"":"none");
+      const front=d3.geoDistance(item.coords,[-projection.rotate()[0],-projection.rotate()[1]])<Math.PI/2;
+      const margin=32;
+      const inViewport=!!p&&p[0]>=-margin&&p[0]<=width+margin&&p[1]>=-margin&&p[1]<=height+margin;
       const ratio=zoomRatio();
+      const localVisible=ratio<8||key===selectedLocationKey||inViewport;
+      const visible=front&&inViewport&&localVisible;
+      const g=d3.select(this)
+        .attr("transform",visible?`translate(${p[0]},${p[1]})`:"translate(-999,-999)")
+        .style("display",visible?"":"none");
       g.select(".node-pulse").attr("r",ratio>=8?9:13);
       g.select(".node-core").attr("r",ratio>=8?3.5:5);
-      g.select("text").style("display",(ratio>=1.7||key===selectedLocationKey)?"":"none").text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
+      g.select("text").style("display",(visible&&(ratio>=1.7||key===selectedLocationKey))?"":"none").text(item.name.replace(", Arizona","").replace(", Illinois","").replace(", Puerto Rico","").replace(", Maryland",""));
     }).classed("active",d=>d[0]===selectedLocationKey&&!selectedLandmarkKey);
 
     updateZoomHud();
@@ -386,7 +392,7 @@
   });
   document.querySelectorAll("[data-location]").forEach(btn=>btn.addEventListener("click",()=>enterCityView(btn.dataset.location)));
 
-  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json")
+  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-10m.json")
     .then(r=>r.json()).then(data=>{world=data;loading.hidden=true;render();globeLocationKeys.forEach(key=>loadBoundary(key));})
     .catch(()=>{loading.textContent="EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";render();});
 
