@@ -23,6 +23,8 @@ test('Commotion artwork stays purposeful and distinct across the site', async ({
   const primary = page.locator('.character-feature-art img');
   const primaryState = await expectImageLoaded(primary);
   expect(primaryState.src).toBe('../../assets/characters/commotion/commotion-primary.webp');
+  const primaryObjectPosition = await primary.evaluate(img => getComputedStyle(img).objectPosition);
+  expect(primaryObjectPosition).toBe('50% 0%');
 
   const dossierArt = page.locator('.dossier-illustration img');
   await expect(dossierArt).toHaveCount(2);
