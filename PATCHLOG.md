@@ -74,3 +74,13 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Browser smoke tests verify the three-art dossier layout, distinct homepage feature art, registry art, image decode/load success, OPI image reference, and the absence of Commotion artwork on the Chicago dossier.
 - Static validation rejects legacy Commotion dummy-image references before merge.
+
+
+## 2026-09-27 — OR-WEB-0005 — Commotion dossier cover reframing
+
+### Fixed
+- Shifted Commotion's dossier cover focal point upward so his mask and face, rather than his chest, anchor the wide desktop crop.
+- Scoped the adjustment specifically to Commotion's cover image so shared character artwork framing remains unchanged.
+
+### Validation
+- Browser smoke coverage now verifies Commotion's cover uses the intended top-centered focal position.
