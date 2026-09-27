@@ -3,17 +3,15 @@ const { test, expect } = require('@playwright/test');
 const BASE = 'http://127.0.0.1:8000';
 
 async function expectImageLoaded(locator) {
+  await locator.scrollIntoViewIfNeeded();
+  await expect.poll(async () => locator.evaluate(img => img.complete && img.naturalWidth > 0 && img.naturalHeight > 0)).toBe(true);
   await expect(locator).toBeVisible();
-  const state = await locator.evaluate(img => ({
+  return locator.evaluate(img => ({
     complete: img.complete,
     naturalWidth: img.naturalWidth,
     naturalHeight: img.naturalHeight,
     src: img.getAttribute('src')
   }));
-  expect(state.complete).toBe(true);
-  expect(state.naturalWidth).toBeGreaterThan(0);
-  expect(state.naturalHeight).toBeGreaterThan(0);
-  return state;
 }
 
 test('Commotion artwork stays purposeful and distinct across the site', async ({ page }) => {
@@ -40,14 +38,15 @@ test('Commotion artwork stays purposeful and distinct across the site', async ({
   await expect(page.locator('.dossier-illustration').last()).toContainText('Equipment illustration');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
+  await page.locator('[data-home-character="commotion"]').click();
   const featured = page.locator('[data-home-slide="commotion"] .home-character-art img');
   await expect(featured).toHaveAttribute('src', 'assets/characters/commotion/commotion-featured-rooftop.webp');
-  expect((await featured.evaluate(img => img.naturalWidth))).toBeGreaterThan(0);
+  await expectImageLoaded(featured);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const registry = page.locator('.character-card[href="characters/commotion/"] .character-thumb');
   await expect(registry).toHaveAttribute('src', 'assets/characters/commotion/commotion-primary.webp');
-  expect((await registry.evaluate(img => img.naturalWidth))).toBeGreaterThan(0);
+  await expectImageLoaded(registry);
 
   const dataText = await page.evaluate(async () => (await fetch('data.js')).text());
   expect(dataText).toContain('image:"assets/characters/commotion/commotion-primary.webp"');
