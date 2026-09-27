@@ -138,6 +138,7 @@
 .location-node.reference .node-pulse{stroke:#c9d2cb;stroke-dasharray:1.5 3}
 
 .location-cluster{cursor:pointer}
+.cluster-hit{fill:rgba(197,162,74,.001);stroke:none;pointer-events:all}
 .cluster-pulse{
   fill:none;
   stroke:var(--old-gold);
@@ -154,6 +155,7 @@
 }
 .location-cluster:hover .cluster-core,
 .location-cluster.active .cluster-core{fill:var(--root-green);stroke:#fff2c3}
+.cluster-pulse,.cluster-count,.cluster-label{pointer-events:none}
 .cluster-count{
   fill:#fff2c3;
   font:900 10px/1 Arial,Helvetica,sans-serif;
