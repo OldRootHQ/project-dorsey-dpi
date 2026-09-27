@@ -54,3 +54,23 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Browser smoke tests cover cluster creation, three-option D.C. membership, direct selection, next/previous cycling, mouse-wheel cycling, keyboard cycling, reference-state handling, and closing behavior.
+
+
+## 2026-09-27 — OR-WEB-0004 — Commotion final comic-art integration
+
+### Changed
+- Replaced Commotion's temporary website imagery with four final comic-style illustrations assigned to distinct editorial roles.
+- Added a primary visual reference to the dossier opening and Character Registry.
+- Added a separate stairwell illustration to Combat Style and a separate gun-jammer crowd illustration to Equipment.
+- Added a different rooftop illustration to the homepage Character Spotlight so featured art does not repeat the dossier opener.
+- Kept the Chicago location dossier focused on the location instead of scattering Commotion artwork into another surface.
+- Updated OPI character data to use the primary Commotion visual reference.
+
+### Performance & accessibility
+- Created full-resolution WebP derivatives of the supplied artwork for the website, reducing each image from roughly 3.7–4.0 MB PNG source files to roughly 370–421 KB while preserving the 1122 × 1402 display resolution.
+- Added descriptive alt text, contextual captions, keyboard-focus treatment, and lightbox access to dossier illustrations.
+- Preserved the OldRoot green, cream, parchment, and old-gold interface instead of recoloring the dossier around Commotion's purple costume accents.
+
+### Validation
+- Browser smoke tests verify the three-art dossier layout, distinct homepage feature art, registry art, image decode/load success, OPI image reference, and the absence of Commotion artwork on the Chicago dossier.
+- Static validation rejects legacy Commotion dummy-image references before merge.
