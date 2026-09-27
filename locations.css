@@ -404,6 +404,7 @@
   text-transform:uppercase;
   text-decoration:none
 }
+.location-explore[hidden]{display:none!important}
 .location-explore:hover{text-decoration:underline}
 
 .location-index{
