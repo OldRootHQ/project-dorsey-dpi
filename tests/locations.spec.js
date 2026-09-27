@@ -35,7 +35,7 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await expect(dcCluster).toHaveCount(1);
   await expect(dcCluster.locator('.cluster-count')).toHaveText('3');
 
-  await dcCluster.click();
+  await dcCluster.locator('.cluster-core').click();
   await expect(page.locator('#globeClusterPanel')).toBeVisible();
   await expect(page.locator('#clusterOptions .cluster-option')).toHaveCount(3);
   await expect(page.locator('#clusterOptions')).toContainText('St. Dorsey');
