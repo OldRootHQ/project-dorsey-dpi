@@ -36,3 +36,21 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - The workflow must pass on the repair code before this test gate is merged to main.
+
+
+## 2026-09-26 — OR-WEB-0003 — Nearby location cluster navigation
+
+### Changed
+- Added screen-space proximity clustering for globe locations that render too close together to select reliably.
+- Added an OldRoot-styled cluster marker with a visible location count.
+- Added a nearby-location navigator with mouse-wheel cycling, arrow-key cycling, Previous/Next controls, direct option selection, and Escape-to-close behavior.
+- Reintroduced Washington, D.C. as a geographic reference inside the greater D.C. cluster without adding it to the five established public location dossiers.
+- The greater D.C. cluster now resolves Baltimore, St. Dorsey, and Washington, D.C. without overlapping selectable pins.
+- Cluster behavior is generic and will automatically apply to future dense regions.
+
+### Styling
+- Kept the cluster marker and selector within the existing Root Green, Deep Root Green, Cream, Parchment, and Old Gold console system.
+- Added reduced-motion handling for cluster pulse animation.
+
+### Validation
+- Browser smoke tests cover cluster creation, three-option D.C. membership, direct selection, next/previous cycling, mouse-wheel cycling, keyboard cycling, reference-state handling, and closing behavior.

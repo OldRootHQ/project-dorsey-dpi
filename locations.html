@@ -7,7 +7,7 @@
   <meta name="description" content="Explore established OldRoot locations through the interactive global index and open their location dossiers." />
   <link rel="stylesheet" href="brand.css?v=8" />
   <link rel="stylesheet" href="site.css?v=22" />
-  <link rel="stylesheet" href="locations.css?v=1" />
+  <link rel="stylesheet" href="locations.css?v=2" />
 </head>
 <body>
   <header class="masthead">
@@ -29,7 +29,7 @@
     <section class="page-head">
       <div class="front-label">OLDROOT / WORLD INDEX</div>
       <h1>LOCATIONS</h1>
-      <p>Explore established places across the OldRoot universe. Drag the globe, select a location pin or index entry, use controlled global zoom, and open the location dossier for deeper context.</p>
+      <p>Explore established places across the OldRoot universe. Drag the globe, select a location pin, cluster, or index entry, use controlled global zoom, and open location dossiers for deeper context.</p>
     </section>
 
     <section class="world-console" aria-label="OldRoot global location index">
@@ -52,9 +52,22 @@
           <svg id="techGlobe" role="img" aria-label="Interactive globe showing established OldRoot locations"></svg>
           <div class="globe-hud hud-top-left">EARTH // OR-LOC-01</div>
           <div class="globe-hud hud-top-right" id="globeZoomReadout">ZOOM 1.0× // GLOBAL</div>
-          <div class="globe-hud hud-bottom-left">DRAG TO ROTATE · SELECT A PIN · USE CONTROLS TO ZOOM</div>
+          <div class="globe-hud hud-bottom-left">DRAG TO ROTATE · SELECT A PIN OR CLUSTER · USE CONTROLS TO ZOOM</div>
           <div class="globe-hud hud-bottom-right">GLOBAL INDEX // DOSSIERS HOLD LOCAL DETAIL</div>
           <div class="globe-loading" id="globeLoading">INITIALIZING EARTH INDEX…</div>
+          <div class="globe-cluster-panel" id="globeClusterPanel" tabindex="0" aria-label="Nearby location selector" hidden>
+            <div class="cluster-panel-head">
+              <div><span id="clusterCounter">1 / 3 · NEARBY</span><strong>LOCATION CLUSTER</strong></div>
+              <button type="button" id="clusterClose" aria-label="Close nearby location selector">×</button>
+            </div>
+            <div class="cluster-panel-current" id="clusterCurrent">St. Dorsey Island</div>
+            <div class="cluster-panel-nav">
+              <button type="button" id="clusterPrev" aria-label="Previous nearby location">← Prev</button>
+              <span>Scroll / arrows to cycle</span>
+              <button type="button" id="clusterNext" aria-label="Next nearby location">Next →</button>
+            </div>
+            <div class="cluster-options" id="clusterOptions" role="listbox" aria-label="Nearby locations"></div>
+          </div>
           <div class="globe-tooltip" id="globeTooltip"></div>
         </div>
 
@@ -113,6 +126,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-  <script src="locations.js?v=50"></script>
+  <script src="locations.js?v=51"></script>
 </body>
 </html>

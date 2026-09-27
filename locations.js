@@ -72,6 +72,21 @@
       note: "Baltimore is the established home base and primary operating city of Kincast.",
       coords: [-76.6122, 39.2904],
       labelOffset: [13, -14]
+    },
+    washington: {
+      id: "REF-001",
+      name: "Washington, D.C.",
+      shortName: "Washington, D.C.",
+      type: "Geographic reference",
+      region: "United States",
+      status: "Reference",
+      character: "—",
+      characterUrl: "",
+      dossierUrl: "",
+      note: "Washington, D.C. is shown as a geographic reference for the greater D.C. cluster and St. Dorsey's schematic placement.",
+      coords: [-77.0369, 38.9072],
+      reference: true,
+      labelOffset: [12, 18]
     }
   };
 
@@ -82,6 +97,7 @@
   const FOCUS_RATIO = 1.55;
   const MIN_RATIO = 0.58;
   const MAX_RATIO = 2.2;
+  const CLUSTER_DISTANCE = 34;
 
   const svgElement = document.querySelector("#techGlobe");
   const stage = document.querySelector("#globeStage");
@@ -96,6 +112,13 @@
   const zoomInButton = document.querySelector("#zoomInGlobe");
   const zoomOutButton = document.querySelector("#zoomOutGlobe");
   const resetButton = document.querySelector("#resetGlobe");
+  const clusterPanel = document.querySelector("#globeClusterPanel");
+  const clusterCounter = document.querySelector("#clusterCounter");
+  const clusterCurrent = document.querySelector("#clusterCurrent");
+  const clusterOptions = document.querySelector("#clusterOptions");
+  const clusterPrevButton = document.querySelector("#clusterPrev");
+  const clusterNextButton = document.querySelector("#clusterNext");
+  const clusterCloseButton = document.querySelector("#clusterClose");
   const locationButtons = [...document.querySelectorAll("[data-location]")];
   const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
 
@@ -116,6 +139,9 @@
   let world = null;
   let selectedKey = "tucson";
   let mode = "earth";
+  let activeClusterKeys = [];
+  let clusterCursor = 0;
+  let lastClusterWheelAt = 0;
 
   const projection = d3.geoOrthographic()
     .clipAngle(90)
@@ -130,13 +156,14 @@
   const landPath = root.append("path").attr("class", "earth-land");
   const borderPath = root.append("path").attr("class", "earth-borders");
   const nodesLayer = root.append("g").attr("class", "earth-nodes");
+  const clusterLayer = root.append("g").attr("class", "earth-clusters");
 
   const nodeSelection = nodesLayer
     .selectAll("g.location-node")
     .data(locationKeys.map(key => [key, locations[key]]), d => d[0])
     .join(enter => {
       const g = enter.append("g")
-        .attr("class", d => `location-node${d[1].approximate ? " approximate" : ""}`)
+        .attr("class", d => `location-node${d[1].approximate ? " approximate" : ""}${d[1].reference ? " reference" : ""}`)
         .attr("data-key", d => d[0])
         .attr("role", "button")
         .attr("tabindex", 0)
@@ -161,6 +188,140 @@
     return d3.geoDistance(coords, center) < Math.PI / 2;
   }
 
+  function visibleProjectedLocations() {
+    return locationKeys
+      .map(key => {
+        const item = locations[key];
+        const projected = projection(item.coords);
+        if (!projected || !isFrontFacing(item.coords)) return null;
+        return { key, item, x: projected[0], y: projected[1] };
+      })
+      .filter(Boolean);
+  }
+
+  function buildClusters(points) {
+    const visited = new Set();
+    const clusters = [];
+
+    points.forEach(point => {
+      if (visited.has(point.key)) return;
+      const queue = [point];
+      const members = [];
+      visited.add(point.key);
+
+      while (queue.length) {
+        const current = queue.shift();
+        members.push(current);
+
+        points.forEach(candidate => {
+          if (visited.has(candidate.key)) return;
+          const dx = current.x - candidate.x;
+          const dy = current.y - candidate.y;
+          if (Math.hypot(dx, dy) <= CLUSTER_DISTANCE) {
+            visited.add(candidate.key);
+            queue.push(candidate);
+          }
+        });
+      }
+
+      if (members.length > 1) {
+        clusters.push({
+          keys: members.map(member => member.key),
+          x: members.reduce((sum, member) => sum + member.x, 0) / members.length,
+          y: members.reduce((sum, member) => sum + member.y, 0) / members.length
+        });
+      }
+    });
+
+    return clusters;
+  }
+
+  function sameClusterKeys(a, b) {
+    return a.length === b.length && a.every(key => b.includes(key));
+  }
+
+  function closeClusterPanel() {
+    activeClusterKeys = [];
+    clusterCursor = 0;
+    if (clusterPanel) clusterPanel.hidden = true;
+  }
+
+  function positionClusterPanel(cluster) {
+    if (!clusterPanel || clusterPanel.hidden) return;
+    const panelWidth = Math.min(300, Math.max(240, width - 24));
+    const panelHeight = 250;
+    const left = Math.max(12, Math.min(width - panelWidth - 12, cluster.x + 22));
+    const top = Math.max(12, Math.min(height - panelHeight - 12, cluster.y - 54));
+    clusterPanel.style.left = `${left}px`;
+    clusterPanel.style.top = `${top}px`;
+  }
+
+  function renderClusterPanel() {
+    if (!clusterPanel || !activeClusterKeys.length) return;
+
+    clusterCursor = ((clusterCursor % activeClusterKeys.length) + activeClusterKeys.length) % activeClusterKeys.length;
+    const currentKey = activeClusterKeys[clusterCursor];
+    const currentItem = locations[currentKey];
+
+    if (clusterCounter) {
+      clusterCounter.textContent = `${clusterCursor + 1} / ${activeClusterKeys.length} · NEARBY`;
+    }
+    if (clusterCurrent) clusterCurrent.textContent = currentItem.name;
+
+    if (clusterOptions) {
+      clusterOptions.textContent = "";
+      activeClusterKeys.forEach((key, index) => {
+        const item = locations[key];
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "cluster-option";
+        button.setAttribute("role", "option");
+        button.setAttribute("aria-selected", String(index === clusterCursor));
+        button.dataset.clusterLocation = key;
+
+        const number = document.createElement("span");
+        number.textContent = String(index + 1).padStart(2, "0");
+        const copy = document.createElement("span");
+        const title = document.createElement("b");
+        title.textContent = item.shortName;
+        const detail = document.createElement("small");
+        detail.textContent = item.reference ? "Geographic reference" : item.approximate ? "Schematic placement" : item.region;
+        copy.append(title, detail);
+        button.append(number, copy);
+        button.addEventListener("click", () => selectClusterIndex(index));
+        clusterOptions.appendChild(button);
+      });
+    }
+  }
+
+  function selectClusterIndex(index, { updateUrl = true } = {}) {
+    if (!activeClusterKeys.length) return;
+    clusterCursor = ((index % activeClusterKeys.length) + activeClusterKeys.length) % activeClusterKeys.length;
+    selectedKey = activeClusterKeys[clusterCursor];
+    syncSelectionUI();
+    if (updateUrl) updateHash(selectedKey);
+    renderClusterPanel();
+    render();
+  }
+
+  function cycleCluster(step) {
+    selectClusterIndex(clusterCursor + step);
+  }
+
+  function openCluster(cluster) {
+    activeClusterKeys = cluster.keys.slice();
+    const selectedIndex = activeClusterKeys.indexOf(selectedKey);
+    clusterCursor = selectedIndex >= 0 ? selectedIndex : 0;
+    if (clusterPanel) {
+      clusterPanel.hidden = false;
+      clusterPanel.dataset.clusterKeys = activeClusterKeys.join(",");
+    }
+    selectClusterIndex(clusterCursor);
+    renderClusterPanel();
+    positionClusterPanel(cluster);
+    clusterPanel?.focus({ preventScroll: true });
+  }
+
   function updateModeButtons() {
     earthViewButton?.classList.toggle("active", mode === "earth");
     spaceViewButton?.classList.toggle("active", mode === "space");
@@ -181,7 +342,12 @@
     if (terminal.region) terminal.region.textContent = item.region;
     if (terminal.status) terminal.status.textContent = item.status;
     if (terminal.note) terminal.note.textContent = item.note;
-    if (terminal.explore) terminal.explore.href = item.dossierUrl;
+    if (terminal.explore) {
+      const hasDossier = Boolean(item.dossierUrl);
+      terminal.explore.hidden = !hasDossier;
+      if (hasDossier) terminal.explore.href = item.dossierUrl;
+      else terminal.explore.removeAttribute("href");
+    }
 
     if (terminal.character) {
       terminal.character.textContent = "";
@@ -216,20 +382,76 @@
   }
 
   function renderNodes() {
+    const points = visibleProjectedLocations();
+    const clusters = buildClusters(points);
+    const clusteredKeys = new Set(clusters.flatMap(cluster => cluster.keys));
+    const pointMap = new Map(points.map(point => [point.key, point]));
+
     nodeSelection.each(function([key, item]) {
-      const projected = projection(item.coords);
-      const visible = Boolean(projected) && isFrontFacing(item.coords);
+      const point = pointMap.get(key);
+      const visible = Boolean(point) && !clusteredKeys.has(key);
       const node = d3.select(this);
 
       node
         .style("display", visible ? null : "none")
-        .attr("transform", visible ? `translate(${projected[0]},${projected[1]})` : "translate(-999,-999)");
+        .attr("transform", visible ? `translate(${point.x},${point.y})` : "translate(-999,-999)");
 
       node.select(".node-label")
         .text(item.shortName)
         .attr("x", item.labelOffset?.[0] ?? 11)
         .attr("y", item.labelOffset?.[1] ?? -10);
     });
+
+    const clusterSelection = clusterLayer
+      .selectAll("g.location-cluster")
+      .data(clusters, cluster => cluster.keys.join("|"))
+      .join(
+        enter => {
+          const g = enter.append("g")
+            .attr("class", "location-cluster")
+            .attr("role", "button")
+            .attr("tabindex", 0);
+          g.append("circle").attr("class", "cluster-hit").attr("r", 25);
+          g.append("circle").attr("class", "cluster-pulse").attr("r", 19);
+          g.append("circle").attr("class", "cluster-core").attr("r", 12);
+          g.append("text").attr("class", "cluster-count").attr("text-anchor", "middle").attr("dy", "0.34em");
+          g.append("text").attr("class", "cluster-label").attr("x", 18).attr("y", -13).text("NEARBY");
+          return g;
+        },
+        update => update,
+        exit => exit.remove()
+      )
+      .attr("transform", cluster => `translate(${cluster.x},${cluster.y})`)
+      .attr("data-keys", cluster => cluster.keys.join(","))
+      .attr("aria-label", cluster => `${cluster.keys.length} nearby locations: ${cluster.keys.map(key => locations[key].name).join(", ")}`)
+      .classed("active", cluster => cluster.keys.includes(selectedKey));
+
+    clusterSelection.select(".cluster-count").text(cluster => cluster.keys.length);
+
+    clusterSelection
+      .on("click", (event, cluster) => {
+        event.stopPropagation();
+        hideTooltip();
+        openCluster(cluster);
+      })
+      .on("keydown", (event, cluster) => {
+        if (event.key !== "Enter" && event.key !== " ") return;
+        event.preventDefault();
+        openCluster(cluster);
+      });
+
+    if (activeClusterKeys.length) {
+      const active = clusters.find(cluster => sameClusterKeys(cluster.keys, activeClusterKeys));
+      if (active) {
+        activeClusterKeys = active.keys.slice();
+        const selectedIndex = activeClusterKeys.indexOf(selectedKey);
+        if (selectedIndex >= 0) clusterCursor = selectedIndex;
+        renderClusterPanel();
+        positionClusterPanel(active);
+      } else {
+        closeClusterPanel();
+      }
+    }
   }
 
   function render() {
@@ -271,6 +493,7 @@
   }
 
   function setMode(nextMode) {
+    closeClusterPanel();
     mode = nextMode === "space" ? "space" : "earth";
     updateModeButtons();
     setScaleRatio(mode === "space" ? SPACE_RATIO : EARTH_RATIO);
@@ -280,6 +503,7 @@
     const item = locations[key];
     if (!item) return;
 
+    closeClusterPanel();
     selectedKey = key;
     mode = "earth";
     projection
@@ -323,7 +547,10 @@
 
   svg.call(d3.drag()
     .filter(event => event.button === undefined || event.button === 0)
-    .on("start", () => stage.classList.add("is-dragging"))
+    .on("start", () => {
+      closeClusterPanel();
+      stage.classList.add("is-dragging");
+    })
     .on("drag", event => {
       const current = projection.rotate();
       const sensitivity = 72 / Math.max(1, projection.scale());
@@ -348,6 +575,7 @@
   zoomInButton?.addEventListener("click", () => setScaleRatio(ratio() * 1.2));
   zoomOutButton?.addEventListener("click", () => setScaleRatio(ratio() / 1.2));
   resetButton?.addEventListener("click", () => {
+    closeClusterPanel();
     selectedKey = "tucson";
     mode = "earth";
     projection.rotate(HOME_ROTATION.slice()).scale(baseScale * EARTH_RATIO);
@@ -355,6 +583,32 @@
     updateModeButtons();
     updateHash("tucson");
     render();
+  });
+
+  clusterPrevButton?.addEventListener("click", () => cycleCluster(-1));
+  clusterNextButton?.addEventListener("click", () => cycleCluster(1));
+  clusterCloseButton?.addEventListener("click", closeClusterPanel);
+
+  clusterPanel?.addEventListener("wheel", event => {
+    event.preventDefault();
+    event.stopPropagation();
+    const now = performance.now();
+    if (now - lastClusterWheelAt < 160 || Math.abs(event.deltaY) < 4) return;
+    lastClusterWheelAt = now;
+    cycleCluster(event.deltaY > 0 ? 1 : -1);
+  }, { passive: false });
+
+  clusterPanel?.addEventListener("keydown", event => {
+    if (event.key === "ArrowDown" || event.key === "ArrowRight") {
+      event.preventDefault();
+      cycleCluster(1);
+    } else if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
+      event.preventDefault();
+      cycleCluster(-1);
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeClusterPanel();
+    }
   });
 
   locationButtons.forEach(button => {

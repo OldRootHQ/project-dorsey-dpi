@@ -10,7 +10,7 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(5);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(6);
   await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
   await expect(page.locator('[data-location="tucson"]')).toHaveAttribute('aria-pressed', 'true');
 
@@ -30,6 +30,36 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await page.locator('.location-node[data-key="chicago"]').focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('#locationName')).toHaveText('Chicago, Illinois');
+
+  const dcCluster = page.locator('.location-cluster[data-keys*="stdorsey"][data-keys*="baltimore"][data-keys*="washington"]');
+  await expect(dcCluster).toHaveCount(1);
+  await expect(dcCluster.locator('.cluster-count')).toHaveText('3');
+
+  await dcCluster.locator('.cluster-core').click();
+  await expect(page.locator('#globeClusterPanel')).toBeVisible();
+  await expect(page.locator('#clusterOptions .cluster-option')).toHaveCount(3);
+  await expect(page.locator('#clusterOptions')).toContainText('St. Dorsey');
+  await expect(page.locator('#clusterOptions')).toContainText('Baltimore');
+  await expect(page.locator('#clusterOptions')).toContainText('Washington, D.C.');
+
+  await page.locator('[data-cluster-location="stdorsey"]').click();
+  await expect(page.locator('#locationName')).toHaveText('St. Dorsey Island');
+  await expect(page.locator('#locationStatus')).toContainText('schematic');
+
+  await page.locator('#clusterNext').click();
+  await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');
+
+  await page.locator('#globeClusterPanel').dispatchEvent('wheel', { deltaY: 120 });
+  await expect(page.locator('#locationName')).toHaveText('Washington, D.C.');
+  await expect(page.locator('#locationStatus')).toHaveText('Reference');
+  await expect(page.locator('#locationExplore')).toBeHidden();
+
+  await page.locator('#globeClusterPanel').focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(page.locator('#locationName')).toHaveText('St. Dorsey Island');
+
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#globeClusterPanel')).toBeHidden();
 
   for (let i = 0; i < 20; i += 1) await page.locator('#zoomInGlobe').click();
   await expect(page.locator('#globeZoomReadout')).toContainText('ZOOM 2.2×');
@@ -58,7 +88,7 @@ test('Locations globe survives world-atlas failure', async ({ page }) => {
   await page.route('**/world-atlas@2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html');
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(5);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(6);
   await expect(page.locator('#globeLoading')).toContainText('MAP DETAIL UNAVAILABLE');
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');
