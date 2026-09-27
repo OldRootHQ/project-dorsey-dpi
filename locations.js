@@ -411,6 +411,7 @@
             .attr("class", "location-cluster")
             .attr("role", "button")
             .attr("tabindex", 0);
+          g.append("circle").attr("class", "cluster-hit").attr("r", 25);
           g.append("circle").attr("class", "cluster-pulse").attr("r", 19);
           g.append("circle").attr("class", "cluster-core").attr("r", 12);
           g.append("text").attr("class", "cluster-count").attr("text-anchor", "middle").attr("dy", "0.34em");
