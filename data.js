@@ -13,7 +13,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Commotion", civilian:"Ja’Kori Benson", classification:"Hero", role:"Hero",
     powerClass:"Exceptional Human", registryOrder:2, location:"Chicago", locationKey:"Chicago",
     origin:"Human / Non-Ascendant", originType:"Human / Training", ascendantStatus:"Non-Ascendant",
-    affiliation:"Walker extended family", page:"characters/commotion/", image:"assets/characters/commotion/commotion-primary.avif",
+    affiliation:"Walker extended family", page:"characters/commotion/", image:"assets/characters/commotion/commotion-primary.webp",
     age:null, heightIn:71, weightLb:185, yearsActive:null,
     summary:"Fully human Chicago vigilante who turns close-quarters chaos, exceptional agility, dirty fighting, and the environment itself into his advantage.",
     baseline:{Strength:4.7,Durability:5.4,Speed:5.6,Agility:9.7,Regeneration:5.0,Senses:7.8,Offense:6.8,Intellect:6.6,Combat:8.9,Mobility:7.6,Stamina:7.6},
