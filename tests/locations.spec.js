@@ -16,8 +16,7 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
 
   const cases = [
     ['chicago', 'Chicago, Illinois', /characters\/commotion\//],
-    ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//],
-    ['baltimore', 'Baltimore, Maryland', /characters\/kincast\//]
+    ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//]
   ];
 
   for (const [key, name, characterHref] of cases) {
@@ -26,6 +25,15 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
     await expect(page).toHaveURL(new RegExp(`#${key}$`));
     await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', characterHref);
   }
+
+  await page.locator('[data-location="baltimore"]').click();
+  await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');
+  await expect(page.locator('#locationCharacter a')).toHaveCount(2);
+  await expect(page.locator('#locationCharacter a').nth(0)).toHaveText('Kincast');
+  await expect(page.locator('#locationCharacter a').nth(0)).toHaveAttribute('href', 'characters/kincast/');
+  await expect(page.locator('#locationCharacter a').nth(1)).toHaveText('Anchorage');
+  await expect(page.locator('#locationCharacter a').nth(1)).toHaveAttribute('href', 'characters/anchorage/');
+  await expect(page.locator('#locationCharacterLabel')).toHaveText('Known characters');
 
   await page.locator('.location-node[data-key="chicago"]').focus();
   await page.keyboard.press('Enter');
