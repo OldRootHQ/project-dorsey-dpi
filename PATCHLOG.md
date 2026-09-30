@@ -158,3 +158,20 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Anchorage regression coverage now requires `powerClass: "Superhuman"` and verifies the Superhuman analytics filter is available.
+
+
+## 2026-09-30 — OR-WEB-0010 — Homepage character carousel scroll pass
+
+### Changed
+- Moved the five-character Character Spotlight directly below the main OldRoot hero so the cast appears substantially earlier on the homepage.
+- Converted the spotlight into a native horizontal scroll-snap rail so visitors can swipe or horizontally scroll through all five character slides.
+- Kept the existing character tabs, Previous / Next controls, slide counter, and timed advancement synchronized with manual scrolling.
+- Made the character tabs themselves horizontally scrollable when space is tight rather than forcing awkward wrapping.
+
+### Accessibility & interaction
+- Offscreen carousel panels are marked inactive until they become the selected slide.
+- Manual swipe / pointer interaction pauses automatic advancement until interaction ends.
+- Reduced-motion behavior remains respected.
+
+### Validation
+- Browser coverage verifies that the Character Spotlight appears before Discover OldRoot, contains five slides, has actual horizontal overflow, and advances its scroll position when Next is used.
