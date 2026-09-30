@@ -225,3 +225,27 @@ body{font-family:var(--font-sans)}
 @media(prefers-reduced-motion:reduce){
   .character-feature-art-trigger img,.dossier-illustration img{transition:none}
 }
+
+
+/* OR-WEB-0007 — mobile dossier consistency */
+@media(max-width:680px){
+  .character-shell{padding:14px}
+  .character-feature-art-trigger{height:auto;min-height:0;aspect-ratio:4/5}
+  .character-feature-art-trigger img{object-position:center top}
+  .character-identity{padding:22px 18px}
+  .character-identity h1{font-size:clamp(42px,14vw,60px);line-height:.9;overflow-wrap:anywhere}
+  .character-subtitle{font-size:15px;line-height:1.45}
+  .character-thesis{font-size:14px}
+  .wiki-section{padding:22px 18px}
+  .wiki-section h2{font-size:29px}
+  .character-infobox{width:100%;padding:12px}
+  .dossier-illustration img{max-height:none;height:auto;object-fit:contain;object-position:center top}
+  .character-links{padding:12px}
+}
+@media(max-width:430px){
+  .character-shell{padding:12px}
+  .character-identity,.wiki-section{padding:19px 16px}
+  .info-row{grid-template-columns:1fr;gap:4px}
+  .dpi-row{grid-template-columns:78px minmax(0,1fr) 34px;gap:7px}
+  .character-links a{width:100%;text-align:center}
+}
