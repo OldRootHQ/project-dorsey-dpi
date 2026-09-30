@@ -84,3 +84,24 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Browser smoke coverage now verifies Commotion's cover uses the intended top-centered focal position.
+
+
+## 2026-09-30 — OR-WEB-0006 — Anchorage villain import
+
+### Added
+- Added Anchorage / Gilmer Simpson as the first Villain-classified character in the public Character Registry.
+- Added a complete Anchorage dossier covering his pre-transformation life, forced experimentation, chosen loyalty to his unnamed creators, identity psychology, personality, criminal code, Baltimore underworld role, powers, suppression limits, combat style, movement limitations, and current visual-canon notes.
+- Added Anchorage to Baltimore as a known villain and recurring underworld presence without changing Kincast's established status as Baltimore's primary hero.
+- Added Anchorage to OPI Analytics with the creator-supplied eleven category values: Strength 32.7, Durability 37.4, Speed 2.5, Agility 2.4, Regeneration 11.8, Senses 5.5, Offense 26.3, Intellect 6.7, Combat 17.1, Mobility 1.6, and Stamina 9.7.
+- Added Experimental Enhancement as a registry origin filter.
+
+### Canon safeguards
+- Anchorage is explicitly Non-Ascendant and receives no slot among the 77 Ascendants.
+- His power origin is preserved as pre-Genesis experimental enhancement occurring approximately one year before Genesis.
+- No Power Classification was assigned because the supplied character brief does not establish one.
+- No exact organization, scientists, facility, inhalant compound, public civilian-identity status, criminal empire structure, takeover chronology, definitive arch-enemy, supporting cast, romance, future ending, additional metal weakness, new power, transformation, or ultimate form was invented.
+- Artwork fields remain empty / placeholder-only by creator instruction.
+- Approximate two-ton weight is displayed textually in the dossier but is not converted into a false exact numeric analytics weight.
+
+### Validation
+- Dedicated browser coverage verifies registry filtering, Baltimore links, Non-Ascendant status, empty artwork data, exact OPI values, and preservation of the existing Kincast record.

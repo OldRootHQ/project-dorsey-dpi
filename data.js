@@ -38,5 +38,15 @@ window.OLDROOT_CHARACTERS = [
     summary:"Twin siblings sharing one heroic identity: elite human gunfighter Micah Ellison and Naomi, his independently conscious two-dimensional shadow sister.",
     baseline:{Strength:16.8,Durability:28.2,Speed:20.8,Agility:25.2,Regeneration:5.9,Senses:22.0,Offense:29.3,Intellect:14.6,Combat:31.6,Mobility:21.3,Stamina:16.4},
     conditional:[]
+  },
+  {
+    codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
+    powerClass:null, registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
+    origin:"Pre-Genesis experimental enhancement / Non-Ascendant", originType:"Experimental Enhancement", ascendantStatus:"Non-Ascendant",
+    affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"",
+    age:37, heightIn:82, weightLb:null, yearsActive:null,
+    summary:"Recurring Baltimore underworld villain, mercenary, and powerhouse antagonist transformed roughly one year before Genesis through forced experimental enhancement.",
+    baseline:{Strength:32.7,Durability:37.4,Speed:2.5,Agility:2.4,Regeneration:11.8,Senses:5.5,Offense:26.3,Intellect:6.7,Combat:17.1,Mobility:1.6,Stamina:9.7},
+    conditional:[]
   }
 ];

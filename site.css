@@ -560,6 +560,8 @@ body.lightbox-open{overflow:hidden}
 .dossier-facts dd{margin:0;font-size:13px;font-weight:800}
 .known-character-card{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:center;padding:10px;border:1px solid #d8cebf;border-radius:14px;background:var(--parchment);text-decoration:none}
 .known-character-card img{width:72px;height:72px;object-fit:cover;object-position:center top;border-radius:10px}
+.known-character-placeholder{width:72px;height:72px;display:grid;place-items:center;text-align:center;padding:7px;border:1px dashed var(--cafe);border-radius:10px;background:rgba(231,220,203,.72);color:var(--bark);font:900 7px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.known-character-card+.known-character-card{margin-top:8px}
 .known-character-card span{display:grid;gap:4px}.known-character-card b{font-size:16px;color:var(--deep-root)}.known-character-card small{font-size:11px;color:#60635c}
 .related-records{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .related-records a{padding:12px;border-radius:12px;background:var(--parchment);border:1px solid #d8cebf;text-decoration:none;font:900 10px/1.3 Arial,Helvetica,sans-serif;color:var(--root-green)}
