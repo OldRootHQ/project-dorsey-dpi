@@ -1,17 +1,13 @@
-# OldRoot — OPI Analytics
+# OldRoot — Public Website & OPI Analytics
 
-Interactive companion visualization for OldRoot.
+Static public website for the OldRoot universe, including character dossiers, locations, lore, events, organizations, publishing pages, and the interactive OldRoot Power Index analytics layer.
 
-## Current scope
-- Hero DPI scatter plot
-- X-axis: hero introduction order
-- Y-axis: arithmetic mean of the eleven baseline DPI categories
-- Hover card for quick character information
-- Click/tap detail panel for full baseline DPI and conditional modifiers
-- Search and filters prepared for future characters
+## Current public character registry
+- Gila Monster / Adrián Zúñiga
+- Commotion / Ja’Kori Benson
+- Aftermark / Nicolás “Nico” Vélez Rosado
+- Kincast / Micah Ellison & Naomi Ellison
+- Anchorage / Gilmer Simpson
 
 ## Canon note
-This repository contains the public OldRoot website and analytics layer. The plotted mean is analytics-only and is not a canonical overall power score.
-
-## Current character data
-Gila Monster / Adrián Zúñiga
+The analytics layer uses the eleven established OPI categories. Any displayed baseline mean is an analytics-only visualization statistic, not a canonical overall power score.

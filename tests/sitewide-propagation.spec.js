@@ -1,0 +1,61 @@
+const { test, expect } = require('@playwright/test');
+const fs = require('fs');
+const path = require('path');
+
+const BASE = 'http://127.0.0.1:8000';
+
+test('Anchorage is propagated across discovery surfaces and the homepage has five slides', async ({ page }) => {
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('[data-home-character]')).toHaveCount(5);
+  await expect(page.locator('[data-home-slide]')).toHaveCount(5);
+  await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
+  await expect(page.locator('[data-home-slide="anchorage"] img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-art-pending.svg');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 5');
+  await page.locator('#homeCharacterNext').click();
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 5');
+  await page.locator('[data-home-character="anchorage"]').click();
+  await expect(page.locator('[data-home-slide="anchorage"]')).toHaveClass(/active/);
+  await expect(page.locator('[data-home-slide="anchorage"] a[href="characters/anchorage/"]')).toHaveCount(1);
+  await expect(page.locator('.home-world-grid a[href="locations/baltimore/"]')).toContainText('Anchorage');
+
+  await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.start-stat-panel')).toContainText('5 active records');
+  await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
+  await expect(page.locator('text=Five ways into the cast.')).toHaveCount(1);
+
+  await page.goto(BASE + '/locations.html', { waitUntil: 'domcontentloaded' });
+  await page.locator('[data-location="baltimore"]').click();
+  await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
+  await expect(page.locator('.location-dossier-cards a[href="locations/baltimore/"]')).toContainText('Anchorage');
+
+  await page.goto(BASE + '/locations/baltimore/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('a[href="../../characters/anchorage/"]')).toHaveCount(2);
+
+  await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#count')).toHaveText('5 CHARACTERS');
+});
+
+test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
+  const root = process.cwd();
+  const htmlFiles = [];
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name === '.git' || entry.name === 'node_modules') continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.isFile() && entry.name.endsWith('.html')) htmlFiles.push(full);
+    }
+  }
+  walk(root);
+
+  const missing = [];
+  for (const file of htmlFiles) {
+    const html = fs.readFileSync(file, 'utf8');
+    if (!html.includes('class="masthead"')) continue;
+    const relative = path.relative(root, file).replace(/\\/g, '/');
+    const expected = relative.includes('/') ? 'href="../../index.html">Home</a>' : 'href="index.html">Home</a>';
+    const homeActive = relative === 'index.html' && html.includes('class="active" href="index.html">Home</a>');
+    if (!html.includes(expected) && !homeActive) missing.push(relative);
+  }
+  expect(missing).toEqual([]);
+});

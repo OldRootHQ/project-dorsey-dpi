@@ -952,3 +952,21 @@ body{font-family:var(--font-sans)}
   .known-character-card{grid-template-columns:56px minmax(0,1fr);gap:10px}
   .known-character-card img,.known-character-placeholder{width:56px;height:56px}
 }
+
+
+/* OR-WEB-0008 — five-character homepage carousel */
+.home-carousel-controls{
+  display:flex;align-items:center;justify-content:center;gap:12px;margin-top:22px;padding-top:16px;
+  border-top:1px solid #d8cebf
+}
+.home-carousel-controls button{
+  border:1px solid var(--old-gold);border-radius:999px;background:var(--parchment);color:var(--ink);
+  padding:9px 13px;font:900 9px/1 Arial,Helvetica,sans-serif;text-transform:uppercase;letter-spacing:.06em;cursor:pointer
+}
+.home-carousel-controls button:hover,.home-carousel-controls button:focus-visible{background:var(--old-gold)}
+.home-carousel-controls span{min-width:54px;text-align:center;font:900 9px/1 Arial,Helvetica,sans-serif;letter-spacing:.12em;color:var(--bark)}
+.anchorage-home-art img{object-position:center center}
+@media(max-width:680px){
+  .home-carousel-controls{justify-content:space-between}
+  .home-carousel-controls button{flex:1}
+}
