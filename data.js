@@ -41,7 +41,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
-    powerClass:null, registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
+    powerClass:"Superhuman", registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
     origin:"Pre-Genesis experimental enhancement / Non-Ascendant", originType:"Experimental Enhancement", ascendantStatus:"Non-Ascendant",
     affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"",
     age:37, heightIn:82, weightLb:null, yearsActive:null,
