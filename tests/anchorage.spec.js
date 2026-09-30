@@ -30,7 +30,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.character-image-placeholder')).toContainText('artwork pending creator upload');
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
-  await expect(page.locator('.info-list')).toContainText('Not assigned');
+  await expect(page.locator('.info-list')).toContainText('Superhuman');
   await expect(page.locator('.info-list')).toContainText('Non-Ascendant');
   await expect(page.locator('.info-list')).toContainText('Approximately 2 tons');
   await expect(page.locator('.info-list')).toContainText('approximately one year before Genesis');
