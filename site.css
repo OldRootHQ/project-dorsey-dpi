@@ -970,3 +970,52 @@ body{font-family:var(--font-sans)}
   .home-carousel-controls{justify-content:space-between}
   .home-carousel-controls button{flex:1}
 }
+
+
+/* OR-WEB-0010 — scrollable homepage character rail */
+.editorial-hero + .home-featured{margin-top:12px}
+.home-character-track{
+  display:flex;
+  width:100%;
+  min-width:0;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:var(--old-gold) rgba(140,106,74,.14);
+  border-radius:18px;
+  touch-action:pan-x pan-y
+}
+.home-character-track::-webkit-scrollbar{height:8px}
+.home-character-track::-webkit-scrollbar-track{background:rgba(140,106,74,.12);border-radius:999px}
+.home-character-track::-webkit-scrollbar-thumb{background:var(--old-gold);border-radius:999px}
+.home-character-track .home-character-slide{
+  display:grid!important;
+  flex:0 0 100%;
+  width:100%;
+  min-width:100%;
+  box-sizing:border-box;
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  padding:2px 2px 12px
+}
+.home-character-tabs{
+  max-width:min(100%,760px);
+  overflow-x:auto;
+  flex-wrap:nowrap;
+  scrollbar-width:none;
+  overscroll-behavior-x:contain
+}
+.home-character-tabs::-webkit-scrollbar{display:none}
+.home-character-tabs button{flex:0 0 auto}
+@media(max-width:680px){
+  .editorial-hero + .home-featured{margin-top:10px}
+  .home-character-track{margin-inline:-2px;width:calc(100% + 4px)}
+}
+@media(max-width:430px){
+  .home-character-tabs{display:flex;grid-template-columns:none;width:100%}
+  .home-character-tabs button{width:auto}
+}

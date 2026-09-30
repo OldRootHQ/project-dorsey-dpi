@@ -8,11 +8,24 @@ test('Anchorage is propagated across discovery surfaces and the homepage has fiv
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('[data-home-character]')).toHaveCount(5);
   await expect(page.locator('[data-home-slide]')).toHaveCount(5);
+  await expect(page.locator('#homeCharacterTrack')).toHaveCount(1);
+  const carouselLayout = await page.evaluate(() => {
+    const featured = document.querySelector('.home-featured');
+    const discover = [...document.querySelectorAll('.section-band')].find(section => section.textContent.includes('DISCOVER OLDROOT'));
+    const track = document.querySelector('#homeCharacterTrack');
+    return {
+      featuredBeforeDiscover: Boolean(featured && discover && (featured.compareDocumentPosition(discover) & Node.DOCUMENT_POSITION_FOLLOWING)),
+      scrollable: Boolean(track && track.scrollWidth > track.clientWidth)
+    };
+  });
+  expect(carouselLayout.featuredBeforeDiscover).toBe(true);
+  expect(carouselLayout.scrollable).toBe(true);
   await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
   await expect(page.locator('[data-home-slide="anchorage"] img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-art-pending.svg');
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 5');
   await page.locator('#homeCharacterNext').click();
   await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 5');
+  await expect.poll(() => page.locator('#homeCharacterTrack').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
   await page.locator('[data-home-character="anchorage"]').click();
   await expect(page.locator('[data-home-slide="anchorage"]')).toHaveClass(/active/);
   await expect(page.locator('[data-home-slide="anchorage"] a[href="characters/anchorage/"]')).toHaveCount(1);
