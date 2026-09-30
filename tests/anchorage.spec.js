@@ -15,6 +15,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card.locator('img')).toHaveCount(0);
   await expect(card.locator('.character-thumb-placeholder')).toContainText('artwork pending');
 
+  await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="villain"]').check();
   await page.locator('#filterApply').click();
   await expect(page.locator('.character-card:visible')).toHaveCount(1);
