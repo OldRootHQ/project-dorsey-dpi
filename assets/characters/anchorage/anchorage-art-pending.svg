@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="t d">
+<title id="t">Anchorage artwork pending</title>
+<desc id="d">OldRoot placeholder used until the supplied Anchorage artwork is available to the repository workflow.</desc>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#173428"/>
+    <stop offset="1" stop-color="#244C3A"/>
+  </linearGradient>
+  <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+    <path d="M64 0H0V64" fill="none" stroke="#C5A24A" stroke-opacity=".12" stroke-width="2"/>
+  </pattern>
+</defs>
+<rect width="1200" height="1500" fill="url(#g)"/>
+<rect width="1200" height="1500" fill="url(#grid)"/>
+<rect x="80" y="80" width="1040" height="1340" rx="38" fill="none" stroke="#C5A24A" stroke-width="4"/>
+<text x="110" y="180" fill="#C5A24A" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="900" letter-spacing="8">OLDROOT / CHARACTER 005</text>
+<text x="110" y="820" fill="#F3EBDD" font-family="Arial,Helvetica,sans-serif" font-size="124" font-weight="900" letter-spacing="-5">ANCHORAGE</text>
+<text x="110" y="900" fill="#E7DCCB" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" letter-spacing="5">VILLAIN · BALTIMORE</text>
+<line x1="110" y1="970" x2="1090" y2="970" stroke="#C5A24A" stroke-width="5"/>
+<text x="110" y="1050" fill="#B7BEC5" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">FINAL CREATOR ARTWORK PENDING REPOSITORY SYNC</text>
+</svg>
