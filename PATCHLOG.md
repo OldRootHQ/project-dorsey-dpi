@@ -105,3 +105,17 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Dedicated browser coverage verifies registry filtering, Baltimore links, Non-Ascendant status, empty artwork data, exact OPI values, and preservation of the existing Kincast record.
+
+
+## 2026-09-30 — OR-WEB-0007 — Mobile responsive consistency pass
+
+### Fixed
+- Reworked the mobile masthead so the OldRoot wordmark and navigation stack cleanly instead of compressing the navigation into a narrow desktop-style strip.
+- Added narrow-screen sizing and spacing for primary page headers, homepage character modules, registry cards, location dossiers, and shared footer content.
+- Reflowed character dossiers for phone widths, including safer title sizing, single-column fact rows on very narrow screens, full-width dossier links, and non-chopped editorial illustrations.
+- Reworked the Locations console controls for phones, reduced the globe stage to a viewport-appropriate height, simplified mobile HUD clutter, and made the location index a true single-column phone list.
+- Reworked OPI Analytics controls so axis selectors, toolbar controls, metadata, and comparison elements stack rather than compress into desktop grids.
+
+### Validation
+- Added Playwright phone-width coverage at 390 × 844 across the homepage, registry, Anchorage and Commotion dossiers, Locations, Baltimore, OPI Analytics, Library, and Dispatches.
+- The mobile regression gate rejects horizontal document overflow and verifies that the header, globe controls, and OPI axis controls enter their intended phone layouts.
