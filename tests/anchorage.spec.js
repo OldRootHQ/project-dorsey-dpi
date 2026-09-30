@@ -12,6 +12,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card).toContainText('Anchorage');
   await expect(card).toContainText('Villain');
   await expect(card).toContainText('Superhuman');
+  await expect(card).toHaveAttribute('data-tags', /superhuman/);
   await expect(card.locator('img')).toHaveCount(0);
   await expect(card.locator('.character-thumb-placeholder')).toContainText('artwork pending');
 
