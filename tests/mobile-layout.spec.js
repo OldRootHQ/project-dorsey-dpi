@@ -1,0 +1,65 @@
+const { test, expect } = require('@playwright/test');
+
+const BASE = 'http://127.0.0.1:8000';
+const pages = [
+  '/',
+  '/characters.html',
+  '/characters/anchorage/',
+  '/characters/commotion/',
+  '/locations.html',
+  '/locations/baltimore/',
+  '/dpi.html',
+  '/library.html',
+  '/news.html'
+];
+
+test.use({ viewport: { width: 390, height: 844 } });
+
+test('core OldRoot pages stay inside the phone viewport', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+
+  for (const path of pages) {
+    await page.goto(`${BASE}${path}`, { waitUntil: 'domcontentloaded' });
+
+    const layout = await page.evaluate(() => ({
+      viewport: window.innerWidth,
+      htmlWidth: document.documentElement.scrollWidth,
+      bodyWidth: document.body.scrollWidth,
+      mastDirection: getComputedStyle(document.querySelector('.mast-inner')).flexDirection,
+      mastWidth: document.querySelector('.masthead').getBoundingClientRect().width,
+      main: (() => {
+        const el = document.querySelector('main');
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { left: r.left, right: r.right, width: r.width };
+      })()
+    }));
+
+    expect(layout.htmlWidth, `${path} html overflowed horizontally`).toBeLessThanOrEqual(layout.viewport + 2);
+    expect(layout.bodyWidth, `${path} body overflowed horizontally`).toBeLessThanOrEqual(layout.viewport + 2);
+    expect(layout.mastWidth, `${path} masthead exceeded viewport`).toBeLessThanOrEqual(layout.viewport + 1);
+    expect(layout.mastDirection, `${path} mobile header did not stack`).toBe('column');
+
+    if (layout.main) {
+      expect(layout.main.left, `${path} main content starts off-screen`).toBeGreaterThanOrEqual(-1);
+      expect(layout.main.right, `${path} main content ends off-screen`).toBeLessThanOrEqual(layout.viewport + 1);
+    }
+  }
+
+  expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
+});
+
+test('mobile-specific complex controls reflow instead of compressing desktop grids', async ({ page }) => {
+  await page.goto(`${BASE}/locations.html`, { waitUntil: 'domcontentloaded' });
+  const globeControlColumns = await page.locator('.world-controls').evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+  expect(globeControlColumns).toBeLessThanOrEqual(2);
+
+  await page.goto(`${BASE}/dpi.html`, { waitUntil: 'domcontentloaded' });
+  const axisColumns = await page.locator('.axis-controls').evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+  expect(axisColumns).toBe(1);
+
+  await page.goto(`${BASE}/characters/anchorage/`, { waitUntil: 'domcontentloaded' });
+  const titleSize = parseFloat(await page.locator('.character-identity h1').evaluate(el => getComputedStyle(el).fontSize));
+  expect(titleSize).toBeLessThanOrEqual(60);
+});

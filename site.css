@@ -917,3 +917,38 @@ body{font-family:var(--font-sans)}
 
 .hud-bottom-right{right:16px;bottom:14px;text-align:right;opacity:.72}
 @media(max-width:640px){.hud-bottom-right{right:12px;bottom:30px;font-size:8px}}
+
+
+/* OR-WEB-0007 — mobile responsive consistency */
+@media(max-width:680px){
+  .site-shell{padding:14px}
+  .lead-story,.page-head,.content-block,.home-featured,.home-world-section,.home-library-section,.location-dossier-list{
+    padding:18px;border-radius:16px
+  }
+  h1,.page-head h1{font-size:clamp(42px,14vw,58px);line-height:.9;letter-spacing:-.06em;overflow-wrap:anywhere}
+  .dek,.page-head p{font-size:15px;line-height:1.5}
+  .home-section-heading h2{font-size:32px}
+  .home-character-slide{grid-template-columns:1fr;gap:18px}
+  .home-character-art{height:auto;aspect-ratio:4/5}
+  .home-character-copy h3{font-size:clamp(40px,13vw,56px)}
+  .home-character-copy p{font-size:15px}
+  .home-world-grid,.location-dossier-cards,.home-library-grid{grid-template-columns:1fr}
+  .location-dossier-hero,.org-dossier-hero{grid-template-columns:1fr;padding:20px;border-radius:18px}
+  .location-dossier-hero h1,.org-dossier-hero h1{font-size:clamp(42px,13vw,58px);line-height:.9;overflow-wrap:anywhere}
+  .location-dossier-hero aside,.org-dossier-hero aside{padding:16px}
+  .location-dossier-grid,.org-dossier-grid{grid-template-columns:1fr}
+  .location-section,.location-facts{padding:20px;border-radius:16px}
+  .known-character-card{grid-template-columns:64px minmax(0,1fr)}
+  .known-character-card img,.known-character-placeholder{width:64px;height:64px}
+  .related-records{grid-template-columns:1fr}
+  .character-card h3{font-size:28px}
+}
+@media(max-width:430px){
+  .site-shell{padding:12px}
+  .lead-story,.page-head,.content-block,.home-featured,.home-world-section,.home-library-section,.location-dossier-list{padding:16px}
+  .home-character-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .home-character-tabs button{width:100%}
+  .location-dossier-hero aside strong,.org-dossier-hero aside strong{font-size:23px}
+  .known-character-card{grid-template-columns:56px minmax(0,1fr);gap:10px}
+  .known-character-card img,.known-character-placeholder{width:56px;height:56px}
+}
