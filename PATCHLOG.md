@@ -119,3 +119,26 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added Playwright phone-width coverage at 390 × 844 across the homepage, registry, Anchorage and Commotion dossiers, Locations, Baltimore, OPI Analytics, Library, and Dispatches.
 - The mobile regression gate rejects horizontal document overflow and verifies that the header, globe controls, and OPI axis controls enter their intended phone layouts.
+
+
+## 2026-09-30 — OR-WEB-0008 — Anchorage sitewide propagation & homepage carousel
+
+### Fixed
+- Propagated Anchorage beyond his initial dossier/registry import into all relevant public discovery surfaces.
+- Updated the Locations globe data model so one location can expose multiple known characters; Baltimore now links both Kincast and Anchorage in the terminal.
+- Updated Baltimore location copy in the homepage world index and Locations dossier index to acknowledge both established characters.
+- Updated Start Here from four to five public character records and added Anchorage as the fifth cast-entry route.
+- Refreshed the repository README to list all five current public character records.
+
+### Added
+- Expanded the homepage Character Spotlight from four entries to a five-slide carousel: Gila Monster, Commotion, Aftermark, Kincast, and Anchorage.
+- Added Previous / Next controls, tab selection, a 1–5 slide counter, timed advancement, reduced-motion handling, and pause-on-hover behavior.
+- Added an explicit Home tab to the masthead across every static website page, including nested character, location, organization, and library dossiers.
+- Added sitewide regression coverage for the five-slide homepage, Anchorage discovery propagation, Baltimore globe links, and Home navigation.
+
+### Artwork status
+- The Anchorage homepage slide uses an explicit OldRoot artwork-sync placeholder only. It is not presented as final character art and does not alter Anchorage's empty canonical image field.
+- The six creator-supplied Anchorage illustrations remain reserved for the dedicated artwork integration pass once the exact source files are available to the repository workflow.
+
+### Validation
+- Browser coverage verifies the five homepage slides, Anchorage links on Start Here / Locations / Baltimore / OPI, multi-character Baltimore globe behavior, and Home navigation across all mastheads.
