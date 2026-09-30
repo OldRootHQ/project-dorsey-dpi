@@ -11,7 +11,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Anchorage');
   await expect(card).toContainText('Villain');
-  await expect(card).toContainText('Power Classification Unassigned');
+  await expect(card).toContainText('Superhuman');
   await expect(card.locator('img')).toHaveCount(0);
   await expect(card.locator('.character-thumb-placeholder')).toContainText('artwork pending');
 
@@ -47,7 +47,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(anchorage.civilian).toBe('Gilmer Simpson');
   expect(anchorage.classification).toBe('Villain');
   expect(anchorage.role).toBe('Villain');
-  expect(anchorage.powerClass).toBeNull();
+  expect(anchorage.powerClass).toBe('Superhuman');
   expect(anchorage.location).toBe('Baltimore, Maryland');
   expect(anchorage.locationKey).toBe('Baltimore');
   expect(anchorage.origin).toBe('Pre-Genesis experimental enhancement / Non-Ascendant');
@@ -93,7 +93,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
 
   await page.locator('#filter-open').click();
   await expect(page.locator('[data-filter-key="role"][value="Villain"]')).toHaveCount(1);
-  await expect(page.locator('[data-filter-key="powerClass"][value="Unassigned"]')).toHaveCount(1);
+  await expect(page.locator('[data-filter-key="powerClass"][value="Superhuman"]')).toHaveCount(1);
   await expect(page.locator('[data-filter-key="originType"][value="Experimental Enhancement"]')).toHaveCount(1);
 
   await page.goto(`${BASE}/locations/baltimore/`, { waitUntil: 'domcontentloaded' });
