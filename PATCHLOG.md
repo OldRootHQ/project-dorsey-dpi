@@ -142,3 +142,19 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Browser coverage verifies the five homepage slides, Anchorage links on Start Here / Locations / Baltimore / OPI, multi-character Baltimore globe behavior, and Home navigation across all mastheads.
+
+
+## 2026-09-30 — OR-WEB-0009 — Anchorage Power Classification correction
+
+### Corrected
+- Anchorage's official Power Classification is **Superhuman**.
+- Updated the Character Registry, Anchorage dossier, homepage character slide, Start Here entry, and shared character analytics record to use Superhuman consistently.
+- OPI Analytics now exposes Anchorage under the existing Superhuman Power Class filter through the corrected shared data record.
+
+### Canon safeguards
+- This changes only Anchorage's Power Classification.
+- Anchorage remains a Villain, Non-Ascendant, Baltimore character with a pre-Genesis experimental-enhancement origin.
+- No OPI category values, powers, biography, relationships, affiliation details, or unrelated character records were changed.
+
+### Validation
+- Anchorage regression coverage now requires `powerClass: "Superhuman"` and verifies the Superhuman analytics filter is available.
