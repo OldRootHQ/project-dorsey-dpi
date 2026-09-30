@@ -11,6 +11,7 @@
       status: "Established",
       character: "Gila Monster",
       characterUrl: "characters/gila-monster/",
+      characters: [{ name: "Gila Monster", url: "characters/gila-monster/", role: "Hero" }],
       dossierUrl: "locations/tucson/",
       note: "Tucson is the established operating city of Gila Monster.",
       coords: [-110.9747, 32.2226],
@@ -25,6 +26,7 @@
       status: "Established",
       character: "Commotion",
       characterUrl: "characters/commotion/",
+      characters: [{ name: "Commotion", url: "characters/commotion/", role: "Hero" }],
       dossierUrl: "locations/chicago/",
       note: "Chicago is the established operating city of Commotion.",
       coords: [-87.6298, 41.8781],
@@ -39,6 +41,7 @@
       status: "Established",
       character: "Aftermark",
       characterUrl: "characters/aftermark/",
+      characters: [{ name: "Aftermark", url: "characters/aftermark/", role: "Hero" }],
       dossierUrl: "locations/san-juan/",
       note: "Santurce, San Juan is the established home and operating location of Aftermark.",
       coords: [-66.1057, 18.4655],
@@ -53,6 +56,7 @@
       status: "Established / schematic placement",
       character: "—",
       characterUrl: "",
+      characters: [],
       dossierUrl: "locations/st-dorsey/",
       note: "St. Dorsey is a fictional island associated with the greater Washington, D.C. area. Its globe marker is schematic; exact public coordinates are not established.",
       coords: [-77.0369, 38.9072],
@@ -66,10 +70,14 @@
       type: "Primary operating location",
       region: "United States",
       status: "Established",
-      character: "Kincast",
-      characterUrl: "characters/kincast/",
+      character: "Kincast · Anchorage",
+      characterUrl: "",
+      characters: [
+        { name: "Kincast", url: "characters/kincast/", role: "Hero" },
+        { name: "Anchorage", url: "characters/anchorage/", role: "Villain" }
+      ],
       dossierUrl: "locations/baltimore/",
-      note: "Baltimore is the established home base and primary operating city of Kincast.",
+      note: "Baltimore is the established home base and primary operating city of Kincast and an established operating city of Anchorage.",
       coords: [-76.6122, 39.2904],
       labelOffset: [13, -14]
     },
@@ -82,6 +90,7 @@
       status: "Reference",
       character: "—",
       characterUrl: "",
+      characters: [],
       dossierUrl: "",
       note: "Washington, D.C. is shown as a geographic reference for the greater D.C. cluster and St. Dorsey's schematic placement.",
       coords: [-77.0369, 38.9072],
@@ -127,6 +136,7 @@
     name: document.querySelector("#locationName"),
     type: document.querySelector("#locationType"),
     character: document.querySelector("#locationCharacter"),
+    characterLabel: document.querySelector("#locationCharacterLabel"),
     region: document.querySelector("#locationRegion"),
     status: document.querySelector("#locationStatus"),
     note: document.querySelector("#locationNote"),
@@ -351,7 +361,20 @@
 
     if (terminal.character) {
       terminal.character.textContent = "";
-      if (item.characterUrl) {
+      const knownCharacters = Array.isArray(item.characters) ? item.characters : [];
+      if (terminal.characterLabel) {
+        terminal.characterLabel.textContent = knownCharacters.length === 1 ? "Known character" : "Known characters";
+      }
+      if (knownCharacters.length) {
+        knownCharacters.forEach((character, index) => {
+          if (index) terminal.character.appendChild(document.createTextNode(" · "));
+          const link = document.createElement("a");
+          link.href = character.url;
+          link.textContent = character.name;
+          link.setAttribute("data-character-role", character.role || "");
+          terminal.character.appendChild(link);
+        });
+      } else if (item.characterUrl) {
         const link = document.createElement("a");
         link.href = item.characterUrl;
         link.textContent = item.character;
