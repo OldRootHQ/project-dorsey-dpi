@@ -34,6 +34,7 @@ jobs:
         run: |
           node --check locations.js
           node --check app.js
+          node --check data.js
           node --check shop.js
           node --check lightbox.js
           node --check nav.js
@@ -47,6 +48,13 @@ jobs:
         run: |
           if grep -R -E 'commotion-full\.png|assets/characters/commotion\.webp' --include='*.html' --include='*.js' --include='*.css' --include='*.md' --exclude-dir=.git .; then
             echo "Legacy Commotion image reference found."
+            exit 1
+          fi
+
+      - name: Reject legacy Gila and Kincast image references
+        run: |
+          if grep -R -E 'gila-monster-full\.png|assets/characters/gila-monster\.webp|kincast-full\.png|Kincast\.png\.png|ChatGPT Image Sep 23, 2026, 09_21_01 PM\.png' --include='*.html' --include='*.js' --include='*.css' --exclude-dir=.git .; then
+            echo "Legacy Gila or Kincast image reference found."
             exit 1
           fi
 
