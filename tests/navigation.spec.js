@@ -30,6 +30,7 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await page.keyboard.press('ArrowDown');
   await expect(lore).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#nav-lore-menu')).toBeVisible();
+  await page.keyboard.press('Tab');
   await expect(page.locator('#nav-lore-menu a').first()).toBeFocused();
   await expect(page.locator('#nav-lore-menu a').first()).toHaveText('Start Here');
   await page.keyboard.press('ArrowDown');
