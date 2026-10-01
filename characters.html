@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title>
-  <link rel="stylesheet" href="brand.css?v=9" />
+  <link rel="stylesheet" href="brand.css?v=10" />
   <link rel="stylesheet" href="site.css?v=26" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
@@ -19,7 +19,33 @@
   </style>
 </head>
 <body>
-  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a class="active" href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="events.html">Events</a><a href="lore.html">Lore</a><a href="library.html">Library</a><a href="news.html">Dispatches</a></nav></div></header>
+  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <div class="nav-group">
+          <button type="button" class="nav-menu-button active" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-characters-menu">Characters <span class="nav-caret" aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown" id="nav-characters-menu" data-nav-menu role="menu">
+            <a class="active" role="menuitem" href="characters.html">Character Registry</a>
+            <a role="menuitem" href="dpi.html">OPI Analytics</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-world-menu">World <span class="nav-caret" aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown" id="nav-world-menu" data-nav-menu role="menu">
+            <a role="menuitem" href="locations.html">Locations</a>
+            <a role="menuitem" href="events.html">Events</a>
+            <a role="menuitem" href="organizations.html">Organizations</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-lore-menu">Lore <span class="nav-caret" aria-hidden="true">⌄</span></button>
+          <div class="nav-dropdown" id="nav-lore-menu" data-nav-menu role="menu">
+            <a role="menuitem" href="start-here.html">Start Here</a>
+            <a role="menuitem" href="lore.html">Lore Index</a>
+          </div>
+        </div>
+        <a href="library.html">Library</a>
+        <a href="news.html">Dispatches</a>
+      </nav></div></header>
   <main class="site-shell">
     <section class="page-head">
       <div class="front-label">OLDROOT / CHARACTER REGISTRY</div>
@@ -248,5 +274,6 @@
     updateOptionCounts();
   </script>
   <script src="lightbox.js?v=8"></script>
+  <script src="nav.js?v=1"></script>
 </body>
 </html>

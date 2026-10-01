@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dispatches — OldRoot</title>
   <meta name="description" content="OldRoot Studios development notes, character reveals, site updates, and public website patch notes." />
-  <link rel="stylesheet" href="brand.css?v=9" />
+  <link rel="stylesheet" href="brand.css?v=10" />
   <link rel="stylesheet" href="site.css?v=24" />
 </head>
 <body>
-  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="events.html">Events</a><a href="lore.html">Lore</a><a href="library.html">Library</a><a class="active" href="news.html">Dispatches</a></nav></div></header>
+  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
+<a href="index.html">Home</a>
+<div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-characters-menu">Characters <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-characters-menu" data-nav-menu role="menu"><a role="menuitem" href="characters.html">Character Registry</a><a role="menuitem" href="dpi.html">OPI Analytics</a></div></div>
+<div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-world-menu">World <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-world-menu" data-nav-menu role="menu"><a role="menuitem" href="locations.html">Locations</a><a role="menuitem" href="events.html">Events</a><a role="menuitem" href="organizations.html">Organizations</a></div></div>
+<div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-lore-menu">Lore <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-lore-menu" data-nav-menu role="menu"><a role="menuitem" href="start-here.html">Start Here</a><a role="menuitem" href="lore.html">Lore Index</a></div></div>
+<a href="library.html">Library</a><a class="active" href="news.html">Dispatches</a>
+</nav></div></header>
   <main class="site-shell">
     <section class="page-head"><div class="front-label">OLDROOT / DISPATCH DESK</div><h1>DISPATCHES</h1><p>Character reveals, design notes, site expansions, publishing updates, and development milestones from OldRoot Studios. No filler feed; when something meaningful changes, it gets a dispatch.</p></section>
 
@@ -24,6 +30,11 @@
     <section class="section-band" id="patch-log">
       <div class="section-band-head"><div><span>SITE PATCH LOG</span><h2>Public change record.</h2><p>Meaningful website repairs and system changes are logged here as they ship.</p></div></div>
       <div class="dispatch-grid">
+        <article class="dispatch-card">
+          <div class="dispatch-meta">OR-WEB-0014 · October 1, 2026 · Navigation</div>
+          <h3>OldRoot's masthead now uses grouped navigation.</h3>
+          <p>Characters now exposes the Character Registry and OPI Analytics, World groups Locations, Events, and Organizations, and Lore has its own menu for Start Here and the Lore Index. Desktop hover, click, keyboard, and mobile tap interactions are supported.</p>
+        </article>
         <article class="dispatch-card">
           <div class="dispatch-meta">OR-WEB-0013 · October 1, 2026 · Locations Globe</div>
           <h3>The OldRoot globe now supports mobile pinch zoom.</h3>
@@ -78,5 +89,6 @@
     <section class="section-band"><div class="section-band-head"><div><span>DISPATCH CATEGORIES</span><h2>What belongs on this desk.</h2></div></div><div class="origin-lanes"><div class="origin-lane"><b>Character Reveals</b><p>Public dossier launches, major visual updates, and newly established registry material.</p></div><div class="origin-lane"><b>Development Notes</b><p>Meaningful design decisions, worldbuilding systems, format experiments, and behind-the-scenes process.</p></div><div class="origin-lane"><b>OldRoot Updates</b><p>Publishing, website, library, infrastructure, and patch-log changes that materially improve how the work is presented.</p></div></div></section>
   </main>
   <footer class="oldroot-footer"><div class="oldroot-footer-inner"><div class="footer-brand oldroot-signature"><div><strong>OLDROOT STUDIOS</strong><span>Original worlds. Independent publishing.</span></div></div><div class="footer-links"><div><b>Explore</b><a href="start-here.html">Start Here</a><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="events.html">Events</a><a href="lore.html">Lore Index</a></div><div><b>Systems</b><a href="dpi.html">OPI Analytics</a><a href="organizations.html">Organizations</a><a href="library.html">Library</a><a href="news.html">Dispatches</a></div><div><b>OldRoot</b><a href="about.html">About OldRoot</a><a href="contact.html">Contact Us</a><a href="donate.html">Support OldRoot</a></div></div></div><div class="footer-bottom">© 2026 OldRoot Studios · Original worlds. Independent publishing.</div></footer>
+<script src="nav.js?v=1"></script>
 </body>
 </html>
