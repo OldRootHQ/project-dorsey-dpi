@@ -213,3 +213,19 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Browser coverage verifies both corrected images use centered `contain` framing and are geometrically centered within their containers.
+
+
+## 2026-10-01 — OR-WEB-0013 — Mobile globe pinch zoom
+
+### Fixed
+- Added native two-finger pinch control for the OldRoot Locations globe on touch devices.
+- Pinching now changes the globe's own projection scale within the established 0.58×–2.2× zoom limits instead of handing the gesture to browser/page zoom.
+- Preserved one-finger horizontal globe rotation with a touch-specific gesture path.
+- Preserved normal one-finger vertical page scrolling so the globe does not trap mobile visitors.
+- Kept Earth View, Space View, Zoom +, Zoom −, and Reset controls fully available.
+
+### Interface
+- Updated Locations guidance to advertise pinch zoom alongside the existing controls.
+
+### Validation
+- Phone-width browser coverage verifies `pan-y` page-scroll behavior, touch rotation, synthetic two-pointer pinch zoom, zoom-readout changes, and clean gesture teardown.
