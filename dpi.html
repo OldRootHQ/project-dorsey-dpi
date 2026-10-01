@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>OPI Analytics — OldRoot</title>
-  <link rel="stylesheet" href="brand.css?v=9" />
+  <link rel="stylesheet" href="brand.css?v=10" />
   <link rel="stylesheet" href="styles.css?v=11" />
 </head>
 <body>
-  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav><a href="index.html">Home</a><a href="start-here.html">Start Here</a><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="events.html">Events</a><a href="lore.html">Lore</a><a href="library.html">Library</a><a href="news.html">Dispatches</a></nav></div></header>
+  <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <div class="nav-group"><button type="button" class="nav-menu-button active" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-characters-menu">Characters <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-characters-menu" data-nav-menu role="menu"><a role="menuitem" href="characters.html">Character Registry</a><a class="active" role="menuitem" href="dpi.html">OPI Analytics</a></div></div>
+        <div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-world-menu">World <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-world-menu" data-nav-menu role="menu"><a role="menuitem" href="locations.html">Locations</a><a role="menuitem" href="events.html">Events</a><a role="menuitem" href="organizations.html">Organizations</a></div></div>
+        <div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-lore-menu">Lore <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-lore-menu" data-nav-menu role="menu"><a role="menuitem" href="start-here.html">Start Here</a><a role="menuitem" href="lore.html">Lore Index</a></div></div>
+        <a href="library.html">Library</a><a href="news.html">Dispatches</a>
+      </nav></div></header>
 
   <main class="shell">
     <header class="hero">
@@ -83,5 +89,6 @@
   <div id="tooltip" class="tooltip"></div>
   <script src="data.js?v=9"></script>
   <script src="app.js?v=9"></script>
+  <script src="nav.js?v=1"></script>
 </body>
 </html>
