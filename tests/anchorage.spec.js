@@ -13,8 +13,9 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card).toContainText('Villain');
   await expect(card).toContainText('Superhuman');
   await expect(card).toHaveAttribute('data-tags', /superhuman/);
-  await expect(card.locator('img')).toHaveCount(0);
-  await expect(card.locator('.character-thumb-placeholder')).toContainText('artwork pending');
+  await expect(card.locator('img')).toHaveCount(1);
+  await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-registry.png');
+  await expect.poll(() => card.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="villain"]').check();
@@ -25,9 +26,10 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await page.goto(`${BASE}/characters/anchorage/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('ANCHORAGE');
   await expect(page.locator('.character-kicker')).toContainText('VILLAIN');
-  await expect(page.locator('.character-art-slot')).toContainText('ARTWORK PENDING CREATOR UPLOAD');
-  await expect(page.locator('.character-infobox img')).toHaveCount(0);
-  await expect(page.locator('.character-image-placeholder')).toContainText('artwork pending creator upload');
+  await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-primary.png');
+  await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-registry.png');
+  await expect(page.locator('.dossier-illustration img')).toHaveCount(2);
+  await expect.poll(() => page.locator('.character-feature-art img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
   await expect(page.locator('.info-list')).toContainText('Superhuman');
@@ -54,7 +56,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(anchorage.origin).toBe('Pre-Genesis experimental enhancement / Non-Ascendant');
   expect(anchorage.originType).toBe('Experimental Enhancement');
   expect(anchorage.ascendantStatus).toBe('Non-Ascendant');
-  expect(anchorage.image).toBe('');
+  expect(anchorage.image).toBe('assets/characters/anchorage/anchorage-registry.png');
   expect(anchorage.age).toBe(37);
   expect(anchorage.heightIn).toBe(82);
   expect(anchorage.weightLb).toBeNull();
@@ -103,7 +105,9 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.dossier-facts')).toContainText('Kincast');
   await expect(page.locator('.dossier-facts')).toContainText('Known villain');
   await expect(page.locator('.dossier-facts')).toContainText('Anchorage');
-  await expect(page.locator('.known-character-placeholder')).toContainText('Artwork pending');
+  const baltimoreArt = page.locator('.known-character-card[href="../../characters/anchorage/"] img');
+  await expect(baltimoreArt).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-registry.png');
+  await expect.poll(() => baltimoreArt.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
 });
