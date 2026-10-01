@@ -6,8 +6,8 @@ window.OLDROOT_CHARACTERS = [
     affiliation:"Tucson Police Department", page:"characters/gila-monster/", image:"assets/characters/gila-monster/gila-registry.webp",
     age:33, heightIn:70, weightLb:165, yearsActive:null,
     summary:"TPD detective and nocturnal subterranean metahuman specialized for desert operations.",
-    baseline:{Strength:13.2,Durability:23.3,Speed:9.8,Agility:23.7,Regeneration:17.9,Senses:15.2,Offense:17.4,Intellect:13.6,Combat:18.8,Mobility:16.1,Stamina:25.4},
-    conditional:[{category:"Senses",condition:"Nocturnal",value:20.2},{category:"Mobility",condition:"Desert",value:22.2}]
+    baseline:{Strength:13.2,Durability:23.3,Speed:9.8,Agility:23.7,Regeneration:17.9,Senses:22.2,Offense:17.4,Intellect:13.6,Combat:18.8,Mobility:16.1,Stamina:25.4},
+    conditional:[{category:"Senses",condition:"Nocturnal",value:31.7},{category:"Mobility",condition:"Desert",value:22.2}]
   },
   {
     codename:"Commotion", civilian:"Ja’Kori Benson", classification:"Hero", role:"Hero",
