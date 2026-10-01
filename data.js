@@ -43,7 +43,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
     powerClass:"Superhuman", registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
     origin:"Pre-Genesis experimental enhancement / Non-Ascendant", originType:"Experimental Enhancement", ascendantStatus:"Non-Ascendant",
-    affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"",
+    affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"assets/characters/anchorage/anchorage-registry.png",
     age:37, heightIn:82, weightLb:null, yearsActive:null,
     summary:"Recurring Baltimore underworld villain, mercenary, and powerhouse antagonist transformed roughly one year before Genesis through forced experimental enhancement.",
     baseline:{Strength:32.7,Durability:37.4,Speed:2.5,Agility:2.4,Regeneration:11.8,Senses:5.5,Offense:26.3,Intellect:6.7,Combat:17.1,Mobility:1.6,Stamina:9.7},
