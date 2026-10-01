@@ -229,3 +229,23 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Phone-width browser coverage verifies `pan-y` page-scroll behavior, touch rotation, synthetic two-pointer pinch zoom, zoom-readout changes, and clean gesture teardown.
+
+
+## 2026-10-01 — OR-WEB-0014 — Grouped primary navigation
+
+### Changed
+- Rebuilt the site masthead into six primary choices: Home, Characters, World, Lore, Library, and Dispatches.
+- Added a Characters dropdown containing Character Registry and OPI Analytics.
+- Added a World dropdown containing Locations, Events, and Organizations.
+- Added a dedicated Lore dropdown containing Start Here and Lore Index, removing both from the crowded top-level row.
+- Applied the grouped masthead consistently across all 37 static website pages, including character, location, organization, and library dossiers.
+
+### Interaction
+- Desktop users can open category menus by hover or click.
+- Touch users can tap a category to open its menu without relying on hover.
+- Keyboard users can open menus with Enter / Space or Arrow keys, move through submenu links with Arrow Up / Arrow Down, and close with Escape.
+- Active categories and submenu records follow the current section.
+
+### Validation
+- Added dedicated browser regression coverage for OPI discoverability, Lore grouping, desktop hover/click/keyboard interaction, mobile tap behavior, active states, nested-page paths, and mobile horizontal-overflow protection.
+- Added `nav.js` to the JavaScript syntax validation gate.
