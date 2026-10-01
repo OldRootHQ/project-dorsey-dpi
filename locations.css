@@ -102,11 +102,12 @@
   height:650px;
   display:block;
   cursor:grab;
-  touch-action:pan-y pinch-zoom;
+  touch-action:pan-y;
   user-select:none;
   -webkit-user-select:none
 }
 .globe-stage.is-dragging #techGlobe{cursor:grabbing}
+.globe-stage.is-pinching #techGlobe{cursor:zoom-in}
 
 .earth-halo{fill:none;stroke:rgba(197,162,74,.12);stroke-width:18}
 .earth-sphere{fill:#0f2f23;stroke:rgba(197,162,74,.78);stroke-width:1.4}
