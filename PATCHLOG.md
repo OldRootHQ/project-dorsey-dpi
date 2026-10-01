@@ -175,3 +175,30 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Browser coverage verifies that the Character Spotlight appears before Discover OldRoot, contains five slides, has actual horizontal overflow, and advances its scroll position when Next is used.
+
+
+## 2026-09-30 — OR-WEB-0011 — Anchorage creator-art integration
+
+### Added
+- Integrated all five Anchorage PNGs currently present in the repository into the public site.
+- Organized the uploaded artwork under `assets/characters/anchorage/` with stable production names for primary, registry, featured, and dossier use.
+- Replaced the Anchorage homepage placeholder with a dedicated featured image.
+- Replaced the Character Registry placeholder with Anchorage artwork and connected the same compact reference image to OPI Analytics.
+- Replaced the Anchorage dossier header and infobox placeholders with creator-supplied artwork.
+- Added two additional Anchorage dossier illustrations so the main biography uses three distinct visuals rather than repeating one image.
+- Added Anchorage artwork to Baltimore's Known Characters card.
+
+### Asset roles
+- `anchorage-primary.png` — dossier opening visual.
+- `anchorage-registry.png` — Character Registry, OPI Analytics, and compact Baltimore reference.
+- `anchorage-featured.png` — homepage Character Spotlight.
+- `anchorage-dossier-01.png` — dossier illustration.
+- `anchorage-dossier-02.png` — dossier combat visual reference.
+
+### Cleanup
+- Removed the temporary `anchorage-art-pending.svg` asset.
+- Replaced the generic uploaded `ChatGPT Image...` repository filenames with organized Anchorage-specific asset paths while retaining the original image blobs unchanged.
+
+### Validation
+- Browser coverage verifies the Anchorage registry, homepage, dossier, OPI data, and Baltimore artwork references load successfully.
+- Existing mobile, globe, Commotion, sitewide-navigation, and carousel regressions remain in the full test gate.
