@@ -324,3 +324,21 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Added regression assertions for the exact baseline and nocturnal Senses values plus the recalculated dossier summary.
+
+
+## 2026-10-01 — OR-WEB-0019 — Cache and dead-asset maintenance pass
+
+### Cache consistency
+- Standardized every character dossier using the shared image lightbox on `lightbox.js?v=9`; Aftermark, Anchorage, and Commotion were still carrying older cache keys.
+- Expanded static regression coverage to enforce the current cache keys for shared lightbox, navigation, shop, Locations, and OPI JavaScript.
+- Added `data.js` to the JavaScript syntax gate.
+
+### Cleanup
+- Removed five legacy Gila Monster / Kincast image files totaling 9,079,966 bytes (about 8.66 MiB) from the current production tree.
+- Removed two duplicate Kincast copies plus one stray duplicate character image outside the production asset folders.
+- Found and replaced the final live `gila-monster-full.png` reference on the Los Moralistas dossier with Gila Monster's current registry artwork before deleting the legacy file.
+- Preserved all active optimized Gila Monster and Kincast production artwork and all current page references.
+
+### Validation
+- Legacy Gila Monster / Kincast asset names are now rejected from active HTML, JavaScript, and CSS during CI.
+- No page layout, lore, OPI value, navigation behavior, commerce behavior, or user-facing feature is intentionally changed by this maintenance pass.
