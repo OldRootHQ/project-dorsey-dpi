@@ -276,3 +276,132 @@ body{font-family:var(--font-sans)}
   .anchorage-infobox-art,
   .anchorage-abduction-art img{object-position:center center}
 }
+
+
+/* =========================================================
+   OR-WEB-0016 · AFTER DARK · CHARACTER DOSSIERS
+   ========================================================= */
+body.oldroot-after-dark .character-shell{max-width:1450px}
+body.oldroot-after-dark .character-identity,
+body.oldroot-after-dark .wiki-section,
+body.oldroot-after-dark .character-infobox,
+body.oldroot-after-dark .character-links{
+  color:var(--after-text);
+  border-color:var(--after-line);
+  background:
+    radial-gradient(circle at 100% 0%,rgba(52,126,88,.09),transparent 18rem),
+    rgba(6,22,15,.80);
+  box-shadow:0 24px 68px rgba(0,0,0,.22);
+}
+body.oldroot-after-dark .character-identity{
+  background:
+    radial-gradient(circle at 88% 0%,rgba(197,162,74,.08),transparent 18rem),
+    linear-gradient(145deg,rgba(9,30,21,.92),rgba(4,17,12,.82));
+}
+body.oldroot-after-dark .character-kicker,
+body.oldroot-after-dark .character-art-slot span,
+body.oldroot-after-dark .logo-slot span,
+body.oldroot-after-dark .info-row dt,
+body.oldroot-after-dark .character-portrait figcaption{
+  color:var(--old-gold);
+}
+body.oldroot-after-dark .character-identity h1,
+body.oldroot-after-dark .wiki-section h2,
+body.oldroot-after-dark .wiki-section h3,
+body.oldroot-after-dark .infobox-title,
+body.oldroot-after-dark .conditional-box strong{
+  color:var(--after-text);
+}
+body.oldroot-after-dark .character-subtitle,
+body.oldroot-after-dark .character-thesis,
+body.oldroot-after-dark .wiki-section p,
+body.oldroot-after-dark .wiki-section li,
+body.oldroot-after-dark .info-row dd,
+body.oldroot-after-dark .dpi-note{
+  color:var(--after-muted);
+}
+body.oldroot-after-dark .character-thesis{font-style:normal}
+body.oldroot-after-dark .wiki-section h2{
+  border-bottom-color:rgba(243,235,221,.09);
+}
+body.oldroot-after-dark .wiki-section h2::after{
+  background:linear-gradient(90deg,var(--old-gold),transparent);
+  box-shadow:0 0 16px rgba(197,162,74,.15);
+}
+body.oldroot-after-dark .character-identity::after,
+body.oldroot-after-dark .wiki-section::after,
+body.oldroot-after-dark .character-infobox::after{
+  opacity:.055;
+  filter:grayscale(1) brightness(2.1);
+}
+body.oldroot-after-dark .logo-slot,
+body.oldroot-after-dark .quote-box,
+body.oldroot-after-dark .dpi-pill,
+body.oldroot-after-dark .conditional-box,
+body.oldroot-after-dark .quick-link,
+body.oldroot-after-dark .character-links a{
+  color:var(--after-text);
+  border-color:rgba(243,235,221,.11);
+  background:rgba(12,38,26,.62);
+}
+body.oldroot-after-dark .quick-link,
+body.oldroot-after-dark .character-links a{
+  color:var(--old-gold);
+  border-color:rgba(197,162,74,.26);
+}
+body.oldroot-after-dark .quick-link:hover,
+body.oldroot-after-dark .character-links a:hover{
+  color:var(--cream);
+  background:rgba(197,162,74,.14);
+}
+body.oldroot-after-dark .quote-box{
+  color:var(--after-text);
+  border-left-color:var(--old-gold);
+}
+body.oldroot-after-dark .info-row{
+  border-top-color:rgba(243,235,221,.085);
+}
+body.oldroot-after-dark .character-portrait img,
+body.oldroot-after-dark .anchorage-infobox-art{
+  border-color:rgba(243,235,221,.12);
+  background:#071b12;
+}
+body.oldroot-after-dark .dpi-name,
+body.oldroot-after-dark .dpi-value{color:var(--after-muted)}
+body.oldroot-after-dark .dpi-track{background:#173629}
+body.oldroot-after-dark .dpi-fill{background:linear-gradient(90deg,#5d8e72,var(--old-gold))}
+body.oldroot-after-dark .conditional-box{color:var(--after-muted)}
+body.oldroot-after-dark .character-footer{
+  color:var(--after-faint);
+  border-color:var(--after-line);
+  background:rgba(5,19,13,.78);
+  box-shadow:0 18px 48px rgba(0,0,0,.18);
+}
+body.oldroot-after-dark .character-feature-art,
+body.oldroot-after-dark .dossier-illustration{
+  border-color:rgba(197,162,74,.20);
+  background:#071b12;
+  box-shadow:0 26px 70px rgba(0,0,0,.25);
+}
+body.oldroot-after-dark .dossier-illustration figcaption{
+  color:var(--after-faint);
+  background:rgba(4,17,12,.92);
+  border-top:1px solid rgba(243,235,221,.07);
+}
+body.oldroot-after-dark .character-image-placeholder{
+  color:var(--after-faint);
+  border-color:rgba(197,162,74,.26);
+  background:
+    linear-gradient(135deg,rgba(197,162,74,.07),transparent 52%),
+    rgba(7,24,16,.62);
+}
+body.oldroot-after-dark .image-lightbox-close{
+  color:#06110d;
+  background:var(--old-gold);
+  border-color:var(--old-gold);
+}
+@media(max-width:680px){
+  body.oldroot-after-dark .character-shell{padding:14px}
+  body.oldroot-after-dark .character-identity,
+  body.oldroot-after-dark .wiki-section{border-radius:18px}
+}

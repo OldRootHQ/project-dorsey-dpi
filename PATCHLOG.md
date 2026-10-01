@@ -268,3 +268,28 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added desktop browser coverage for the dark canvas, hero scale, enlarged character artwork, and dark discovery surfaces.
 - Added phone-width containment coverage to prevent horizontal overflow from the new atmospheric and root-network layers.
+
+
+## 2026-10-01 — OR-WEB-0016 — OldRoot After Dark sitewide rollout
+
+### Expanded
+- Promoted the approved OldRoot After Dark homepage prototype into the shared visual system across all 37 static pages.
+- Applied the near-black green atmospheric canvas, faint root/network traces, restrained gold signal marks, grain, vignette, darker layered surfaces, and cream-forward typography sitewide.
+- Kept page-specific identities instead of flattening every experience into the same card layout.
+
+### Page systems
+- Character Registry and character dossiers now use dark translucent registry/dossier surfaces while preserving artwork, OPI bars, lightbox behavior, and readable long-form lore.
+- Locations retains its technical globe identity while the terminal, controls, index, and surrounding world surfaces now align with After Dark.
+- OPI remains a tactical analytics workstation but now shares the same deeper green canvas and atmospheric framing.
+- Start Here, Lore, Events, Organizations, About, Dispatches, Contact, and Support now use the shared cinematic editorial language.
+- Library, individual book/product pages, cart, checkout, order confirmation, and bag surfaces now use the dark commerce treatment.
+- Masthead and footer are aligned globally with the new dark visual system.
+
+### Delivery
+- Added the `oldroot-after-dark` theme marker to every static page.
+- Bumped shared stylesheet cache keys across the entire site so mobile and desktop browsers receive the redesign immediately.
+
+### Validation
+- Added browser coverage across 17 representative page families to verify dark surfaces are actually rendered.
+- Added mobile viewport checks across the major site families.
+- Added a static audit requiring all 37 HTML pages to opt into the new theme and current stylesheet versions.
