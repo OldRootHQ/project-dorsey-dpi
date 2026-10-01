@@ -309,3 +309,5 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added browser coverage for asset loading, page placement, lightbox behavior, and removal of legacy filler references.
 - Existing sitewide smoke coverage remains part of the merge gate.
+- Propagated `site.css?v=29` and `character.css?v=18` cache keys across all pages consuming those shared styles so deployed clients do not mix old and new CSS.
+- Updated carousel validation to activate the lazy-loaded Kincast slide before checking decoded image dimensions.
