@@ -293,3 +293,21 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added browser coverage across 17 representative page families to verify dark surfaces are actually rendered.
 - Added mobile viewport checks across the major site families.
 - Added a static audit requiring all 37 HTML pages to opt into the new theme and current stylesheet versions.
+
+
+## 2026-10-01 — OR-WEB-0017 — Gila Monster and Kincast creator-art integration
+
+### Added
+- Integrated final creator-supplied artwork for Gila Monster and Kincast across the homepage, Character Registry, OPI Analytics, character dossiers, Tucson, and Baltimore.
+- Added dedicated production assets for primary, registry, featured, and dossier roles under each character's asset directory.
+- Added lightbox access to newly integrated homepage, registry, OPI, dossier, and location artwork.
+- Replaced the legacy `gila-monster-full.png` and `kincast-full.png` filler references in active site surfaces.
+
+### Performance
+- Production artwork is delivered as optimized WebP files to reduce transfer weight while preserving the creator originals outside the public-site bundle.
+
+### Validation
+- Added browser coverage for asset loading, page placement, lightbox behavior, and removal of legacy filler references.
+- Existing sitewide smoke coverage remains part of the merge gate.
+- Propagated `site.css?v=29` and `character.css?v=18` cache keys across all pages consuming those shared styles so deployed clients do not mix old and new CSS.
+- Updated carousel validation to activate the lazy-loaded Kincast slide before checking decoded image dimensions.
