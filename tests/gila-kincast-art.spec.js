@@ -12,6 +12,8 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   await expect(gilaHome).toHaveAttribute('src', 'assets/characters/gila-monster/gila-featured.webp');
   await expect(kincastHome).toHaveAttribute('src', 'assets/characters/kincast/kincast-featured.webp');
   await expect.poll(() => gilaHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  await page.locator('[data-home-character="kincast"]').click();
+  await expect(kincastHome).toBeVisible();
   await expect.poll(() => kincastHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
