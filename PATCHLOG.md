@@ -334,8 +334,9 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added `data.js` to the JavaScript syntax gate.
 
 ### Cleanup
-- Removed five unreferenced legacy Gila Monster / Kincast image files totaling 9,079,966 bytes (about 8.66 MiB) from the current production tree.
+- Removed five legacy Gila Monster / Kincast image files totaling 9,079,966 bytes (about 8.66 MiB) from the current production tree.
 - Removed two duplicate Kincast copies plus one stray duplicate character image outside the production asset folders.
+- Found and replaced the final live `gila-monster-full.png` reference on the Los Moralistas dossier with Gila Monster's current registry artwork before deleting the legacy file.
 - Preserved all active optimized Gila Monster and Kincast production artwork and all current page references.
 
 ### Validation
