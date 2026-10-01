@@ -36,6 +36,7 @@ jobs:
           node --check app.js
           node --check shop.js
           node --check lightbox.js
+          node --check nav.js
 
       - name: Install browser test runner
         run: |
