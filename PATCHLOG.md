@@ -202,3 +202,14 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Browser coverage verifies the Anchorage registry, homepage, dossier, OPI data, and Baltimore artwork references load successfully.
 - Existing mobile, globe, Commotion, sitewide-navigation, and carousel regressions remain in the full test gate.
+
+
+## 2026-10-01 — OR-WEB-0012 — Anchorage dossier image centering
+
+### Fixed
+- Centered Anchorage's right-side dossier reference image within the infobox instead of allowing the raw image dimensions to control its placement.
+- Changed the Anchorage illustration in the Abduction & Experimentation section from the shared cover crop to a full centered presentation.
+- Kept Anchorage's primary cover image framing unchanged.
+
+### Validation
+- Browser coverage verifies both corrected images use centered `contain` framing and are geometrically centered within their containers.
