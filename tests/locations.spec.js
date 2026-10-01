@@ -103,10 +103,50 @@ test('Locations globe survives world-atlas failure', async ({ page }) => {
   await assertNoPageErrors(page, errors);
 });
 
-test('Locations globe preserves mobile page scrolling behavior', async ({ page }) => {
+test('Locations globe supports mobile drag and pinch while preserving page scrolling', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'domcontentloaded' });
-  const touchAction = await page.locator('#techGlobe').evaluate(el => getComputedStyle(el).touchAction);
+  await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
+
+  const globe = page.locator('#techGlobe');
+  const touchAction = await globe.evaluate(el => getComputedStyle(el).touchAction);
   expect(touchAction).toContain('pan-y');
+  expect(touchAction).not.toContain('pinch-zoom');
   await expect(page.locator('.location-index button')).toHaveCount(5);
+
+  const gridBeforeDrag = await page.locator('.earth-grid').getAttribute('d');
+  await globe.dispatchEvent('pointerdown', {
+    pointerId: 11, pointerType: 'touch', isPrimary: true, clientX: 90, clientY: 250, buttons: 1
+  });
+  await globe.dispatchEvent('pointermove', {
+    pointerId: 11, pointerType: 'touch', isPrimary: true, clientX: 170, clientY: 252, buttons: 1
+  });
+  await globe.dispatchEvent('pointerup', {
+    pointerId: 11, pointerType: 'touch', isPrimary: true, clientX: 170, clientY: 252, buttons: 0
+  });
+  const gridAfterDrag = await page.locator('.earth-grid').getAttribute('d');
+  expect(gridAfterDrag).not.toBe(gridBeforeDrag);
+
+  await page.locator('#resetGlobe').click();
+  await expect(page.locator('#globeZoomReadout')).toContainText('ZOOM 1.0×');
+
+  await globe.dispatchEvent('pointerdown', {
+    pointerId: 21, pointerType: 'touch', isPrimary: true, clientX: 90, clientY: 240, buttons: 1
+  });
+  await globe.dispatchEvent('pointerdown', {
+    pointerId: 22, pointerType: 'touch', isPrimary: false, clientX: 230, clientY: 240, buttons: 1
+  });
+  await globe.dispatchEvent('pointermove', {
+    pointerId: 22, pointerType: 'touch', isPrimary: false, clientX: 330, clientY: 240, buttons: 1
+  });
+
+  await expect(page.locator('#globeZoomReadout')).not.toContainText('ZOOM 1.0×');
+
+  await globe.dispatchEvent('pointerup', {
+    pointerId: 22, pointerType: 'touch', isPrimary: false, clientX: 330, clientY: 240, buttons: 0
+  });
+  await globe.dispatchEvent('pointerup', {
+    pointerId: 21, pointerType: 'touch', isPrimary: true, clientX: 90, clientY: 240, buttons: 0
+  });
+
+  await expect(page.locator('#globeStage')).not.toHaveClass(/is-pinching/);
 });

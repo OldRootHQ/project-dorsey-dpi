@@ -7,7 +7,7 @@
   <meta name="description" content="Explore established OldRoot locations through the interactive global index and open their location dossiers." />
   <link rel="stylesheet" href="brand.css?v=9" />
   <link rel="stylesheet" href="site.css?v=24" />
-  <link rel="stylesheet" href="locations.css?v=3" />
+  <link rel="stylesheet" href="locations.css?v=4" />
 </head>
 <body>
   <header class="masthead">
@@ -29,7 +29,7 @@
     <section class="page-head">
       <div class="front-label">OLDROOT / WORLD INDEX</div>
       <h1>LOCATIONS</h1>
-      <p>Explore established places across the OldRoot universe. Drag the globe, select a location pin, cluster, or index entry, use controlled global zoom, and open location dossiers for deeper context.</p>
+      <p>Explore established places across the OldRoot universe. Drag the globe, pinch or use the zoom controls, select a location pin, cluster, or index entry, and open location dossiers for deeper context.</p>
     </section>
 
     <section class="world-console" aria-label="OldRoot global location index">
@@ -52,7 +52,7 @@
           <svg id="techGlobe" role="img" aria-label="Interactive globe showing established OldRoot locations"></svg>
           <div class="globe-hud hud-top-left">EARTH // OR-LOC-01</div>
           <div class="globe-hud hud-top-right" id="globeZoomReadout">ZOOM 1.0× // GLOBAL</div>
-          <div class="globe-hud hud-bottom-left">DRAG TO ROTATE · SELECT A PIN OR CLUSTER · USE CONTROLS TO ZOOM</div>
+          <div class="globe-hud hud-bottom-left">DRAG TO ROTATE · PINCH / CONTROLS TO ZOOM · SELECT A PIN OR CLUSTER</div>
           <div class="globe-hud hud-bottom-right">GLOBAL INDEX // DOSSIERS HOLD LOCAL DETAIL</div>
           <div class="globe-loading" id="globeLoading">INITIALIZING EARTH INDEX…</div>
           <div class="globe-cluster-panel" id="globeClusterPanel" tabindex="0" aria-label="Nearby location selector" hidden>
@@ -126,6 +126,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
   <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-  <script src="locations.js?v=52"></script>
+  <script src="locations.js?v=53"></script>
 </body>
 </html>

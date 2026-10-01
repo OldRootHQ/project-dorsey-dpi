@@ -152,6 +152,15 @@
   let activeClusterKeys = [];
   let clusterCursor = 0;
   let lastClusterWheelAt = 0;
+  const touchPointers = new Map();
+  const TOUCH_DRAG_THRESHOLD = 8;
+  let touchDragPointerId = null;
+  let touchDragOrigin = null;
+  let touchDragLast = null;
+  let touchDragActive = false;
+  let pinchActive = false;
+  let pinchStartDistance = 0;
+  let pinchStartRatio = EARTH_RATIO;
 
   const projection = d3.geoOrthographic()
     .clipAngle(90)
@@ -568,24 +577,127 @@
       focusLocation(key);
     });
 
+  function rotateByDelta(dx, dy) {
+    const current = projection.rotate();
+    const sensitivity = 72 / Math.max(1, projection.scale());
+    projection.rotate([
+      current[0] + dx * sensitivity,
+      Math.max(-80, Math.min(80, current[1] - dy * sensitivity)),
+      0
+    ]);
+    render();
+  }
+
   svg.call(d3.drag()
-    .filter(event => event.button === undefined || event.button === 0)
+    .filter(event => !event.touches && (event.button === undefined || event.button === 0))
     .on("start", () => {
       closeClusterPanel();
       stage.classList.add("is-dragging");
     })
-    .on("drag", event => {
-      const current = projection.rotate();
-      const sensitivity = 72 / Math.max(1, projection.scale());
-      projection.rotate([
-        current[0] + event.dx * sensitivity,
-        Math.max(-80, Math.min(80, current[1] - event.dy * sensitivity)),
-        0
-      ]);
-      render();
-    })
+    .on("drag", event => rotateByDelta(event.dx, event.dy))
     .on("end", () => stage.classList.remove("is-dragging"))
   );
+
+  function currentPinchDistance() {
+    const points = [...touchPointers.values()];
+    if (points.length < 2) return 0;
+    return Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y);
+  }
+
+  function beginPinch() {
+    if (touchPointers.size < 2) return;
+    pinchActive = true;
+    pinchStartDistance = Math.max(1, currentPinchDistance());
+    pinchStartRatio = ratio();
+    touchDragPointerId = null;
+    touchDragOrigin = null;
+    touchDragLast = null;
+    touchDragActive = false;
+    closeClusterPanel();
+    hideTooltip();
+    stage.classList.remove("is-dragging");
+    stage.classList.add("is-pinching");
+  }
+
+  function releaseTouchPointer(event) {
+    touchPointers.delete(event.pointerId);
+
+    if (pinchActive && touchPointers.size < 2) {
+      pinchActive = false;
+      pinchStartDistance = 0;
+      stage.classList.remove("is-pinching");
+    }
+
+    if (!touchPointers.size) {
+      touchDragPointerId = null;
+      touchDragOrigin = null;
+      touchDragLast = null;
+      touchDragActive = false;
+      stage.classList.remove("is-dragging", "is-touch-dragging", "is-pinching");
+    }
+  }
+
+  svgElement.addEventListener("pointerdown", event => {
+    if (event.pointerType !== "touch") return;
+
+    const point = { x: event.clientX, y: event.clientY };
+    touchPointers.set(event.pointerId, point);
+
+    if (touchPointers.size === 1) {
+      touchDragPointerId = event.pointerId;
+      touchDragOrigin = point;
+      touchDragLast = point;
+      touchDragActive = false;
+      return;
+    }
+
+    if (touchPointers.size === 2) {
+      event.preventDefault();
+      beginPinch();
+      for (const pointerId of touchPointers.keys()) {
+        try { svgElement.setPointerCapture?.(pointerId); } catch {}
+      }
+    }
+  }, { passive: false });
+
+  svgElement.addEventListener("pointermove", event => {
+    if (event.pointerType !== "touch" || !touchPointers.has(event.pointerId)) return;
+
+    const previous = touchPointers.get(event.pointerId);
+    const point = { x: event.clientX, y: event.clientY };
+    touchPointers.set(event.pointerId, point);
+
+    if (touchPointers.size >= 2) {
+      event.preventDefault();
+      if (!pinchActive) beginPinch();
+      const distance = currentPinchDistance();
+      if (pinchStartDistance > 0 && distance > 0) {
+        setScaleRatio(pinchStartRatio * (distance / pinchStartDistance));
+      }
+      return;
+    }
+
+    if (pinchActive || event.pointerId !== touchDragPointerId || !touchDragOrigin || !touchDragLast) return;
+
+    const totalDx = point.x - touchDragOrigin.x;
+    const totalDy = point.y - touchDragOrigin.y;
+
+    if (!touchDragActive) {
+      if (Math.hypot(totalDx, totalDy) < TOUCH_DRAG_THRESHOLD) return;
+      if (Math.abs(totalDy) >= Math.abs(totalDx)) return;
+      touchDragActive = true;
+      closeClusterPanel();
+      hideTooltip();
+      stage.classList.add("is-dragging", "is-touch-dragging");
+    }
+
+    event.preventDefault();
+    rotateByDelta(point.x - previous.x, point.y - previous.y);
+    touchDragLast = point;
+  }, { passive: false });
+
+  svgElement.addEventListener("pointerup", releaseTouchPointer);
+  svgElement.addEventListener("pointercancel", releaseTouchPointer);
 
   svg.on("wheel", event => {
     event.preventDefault();
