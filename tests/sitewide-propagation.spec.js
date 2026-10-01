@@ -21,7 +21,9 @@ test('Anchorage is propagated across discovery surfaces and the homepage has fiv
   expect(carouselLayout.featuredBeforeDiscover).toBe(true);
   expect(carouselLayout.scrollable).toBe(true);
   await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
-  await expect(page.locator('[data-home-slide="anchorage"] img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-art-pending.svg');
+  const featuredArt = page.locator('[data-home-slide="anchorage"] img');
+  await expect(featuredArt).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-featured.png');
+  await expect.poll(() => featuredArt.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 5');
   await page.locator('#homeCharacterNext').click();
   await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 5');
