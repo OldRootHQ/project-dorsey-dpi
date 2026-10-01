@@ -7,21 +7,13 @@
   const groups = [...nav.querySelectorAll(".nav-group")];
   const fineHover = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ?? false;
 
-  function setGroup(group, open, { focus = false, last = false } = {}) {
+  function setGroup(group, open) {
     const button = group.querySelector("[data-nav-toggle]");
     const menu = group.querySelector("[data-nav-menu]");
     if (!button || !menu) return;
 
     group.classList.toggle("is-open", open);
     button.setAttribute("aria-expanded", String(open));
-
-    if (open && focus) {
-      const links = [...menu.querySelectorAll("a")];
-      const target = last ? links.at(-1) : links[0];
-      if (target) {
-        requestAnimationFrame(() => target.focus({ preventScroll: true }));
-      }
-    }
   }
 
   function closeAll(except = null) {
@@ -43,14 +35,10 @@
     });
 
     button.addEventListener("keydown", event => {
-      if (event.key === "ArrowDown") {
+      if (event.key === "ArrowDown" || event.key === "ArrowUp") {
         event.preventDefault();
         closeAll(group);
-        setGroup(group, true, { focus: true });
-      } else if (event.key === "ArrowUp") {
-        event.preventDefault();
-        closeAll(group);
-        setGroup(group, true, { focus: true, last: true });
+        setGroup(group, true);
       } else if (event.key === "Escape") {
         event.preventDefault();
         setGroup(group, false);
