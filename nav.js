@@ -17,7 +17,10 @@
 
     if (open && focus) {
       const links = [...menu.querySelectorAll("a")];
-      (last ? links.at(-1) : links[0])?.focus();
+      const target = last ? links.at(-1) : links[0];
+      if (target) {
+        requestAnimationFrame(() => target.focus({ preventScroll: true }));
+      }
     }
   }
 
