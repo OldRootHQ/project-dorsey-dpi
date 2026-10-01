@@ -30,6 +30,31 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-registry.png');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(2);
   await expect.poll(() => page.locator('.character-feature-art img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+
+  const framing = await page.evaluate(() => {
+    const infobox = document.querySelector('.character-infobox');
+    const side = document.querySelector('.anchorage-infobox-art');
+    const abductionFigure = document.querySelector('.anchorage-abduction-art');
+    const abduction = document.querySelector('.anchorage-abduction-art img');
+    const sideRect = side.getBoundingClientRect();
+    const infoboxRect = infobox.getBoundingClientRect();
+    const abductionRect = abduction.getBoundingClientRect();
+    const figureRect = abductionFigure.getBoundingClientRect();
+    return {
+      sideObjectFit: getComputedStyle(side).objectFit,
+      sideObjectPosition: getComputedStyle(side).objectPosition,
+      sideCenterDelta: Math.abs((sideRect.left + sideRect.width / 2) - (infoboxRect.left + infoboxRect.width / 2)),
+      abductionObjectFit: getComputedStyle(abduction).objectFit,
+      abductionObjectPosition: getComputedStyle(abduction).objectPosition,
+      abductionCenterDelta: Math.abs((abductionRect.left + abductionRect.width / 2) - (figureRect.left + figureRect.width / 2))
+    };
+  });
+  expect(framing.sideObjectFit).toBe('contain');
+  expect(framing.sideObjectPosition).toBe('50% 50%');
+  expect(framing.sideCenterDelta).toBeLessThanOrEqual(2);
+  expect(framing.abductionObjectFit).toBe('contain');
+  expect(framing.abductionObjectPosition).toBe('50% 50%');
+  expect(framing.abductionCenterDelta).toBeLessThanOrEqual(2);
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
   await expect(page.locator('.info-list')).toContainText('Superhuman');

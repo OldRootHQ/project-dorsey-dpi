@@ -249,3 +249,30 @@ body{font-family:var(--font-sans)}
   .dpi-row{grid-template-columns:78px minmax(0,1fr) 34px;gap:7px}
   .character-links a{width:100%;text-align:center}
 }
+
+
+/* OR-WEB-0012 — Anchorage dossier image centering */
+.anchorage-infobox-art{
+  display:block;
+  width:100%;
+  height:auto;
+  margin:0 auto 14px;
+  object-fit:contain;
+  object-position:center center;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--parchment)
+}
+.anchorage-abduction-art img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:none;
+  object-fit:contain;
+  object-position:center center;
+  background:var(--deep-root)
+}
+@media(max-width:680px){
+  .anchorage-infobox-art,
+  .anchorage-abduction-art img{object-position:center center}
+}
