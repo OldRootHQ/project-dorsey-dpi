@@ -249,3 +249,22 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added dedicated browser regression coverage for OPI discoverability, Lore grouping, desktop hover/click/keyboard interaction, mobile tap behavior, active states, nested-page paths, and mobile horizontal-overflow protection.
 - Added `nav.js` to the JavaScript syntax validation gate.
+
+
+## 2026-10-01 — OR-WEB-0015 — OldRoot After Dark homepage prototype
+
+### Prototype
+- Rebuilt the homepage visual system around a near-black green canvas instead of cream-dominant surfaces.
+- Added layered atmospheric green light, faint network/root traces, restrained gold nodes, film-grain texture, and viewport vignette effects without changing established lore.
+- Reworked the opening hero into a large cinematic split composition with a living-index visual field and factual site counters for five public characters, five established places, and eleven OPI axes.
+- Enlarged Character Spotlight artwork and converted its surrounding surfaces to dark translucent panels while preserving the existing five-character scroll carousel and navigation behavior.
+- Restyled discovery cards, World Index, Dispatch lead, Library, and supporting homepage sections as dark layered surfaces rather than cream cards.
+- Preserved the existing OldRoot green / cream / gold brand palette by shifting cream primarily into typography and selective highlights.
+
+### Scope
+- This release intentionally prototypes the redesign on the homepage only.
+- Character dossiers, registries, Locations, OPI Analytics, Library detail pages, and other site surfaces retain their existing visual systems pending creator review.
+
+### Validation
+- Added desktop browser coverage for the dark canvas, hero scale, enlarged character artwork, and dark discovery surfaces.
+- Added phone-width containment coverage to prevent horizontal overflow from the new atmospheric and root-network layers.
