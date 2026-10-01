@@ -311,3 +311,16 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Existing sitewide smoke coverage remains part of the merge gate.
 - Propagated `site.css?v=29` and `character.css?v=18` cache keys across all pages consuming those shared styles so deployed clients do not mix old and new CSS.
 - Updated carousel validation to activate the lazy-loaded Kincast slide before checking decoded image dimensions.
+
+
+## 2026-10-01 — OR-WEB-0018 — Gila Monster OPI senses recalibration
+
+### Updated
+- Raised Gila Monster baseline Senses from 15.2 to 22.2.
+- Raised Gila Monster conditional Nocturnal Senses from 20.2 to 31.7.
+- Recalculated the dossier baseline total to 201.4 and baseline mean to 18.31.
+- Updated the Senses bar visualization to 44.4% on the 50-point OPI display scale.
+- Bumped the OPI data cache key so the revised values propagate immediately to Analytics.
+
+### Validation
+- Added regression assertions for the exact baseline and nocturnal Senses values plus the recalculated dossier summary.
