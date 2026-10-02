@@ -455,3 +455,24 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Regression coverage verifies Agent Emerald's title appears before the cover, the desktop cover remains under the new compact height limit, the image uses contained framing, and the phone layout remains contained.
+
+
+## 2026-10-02 — OR-WEB-0026 — Sitewide character dossier cover correction
+
+### Changed
+- Standardized all six active character dossiers so the identity/title panel appears before the opening artwork.
+- Replaced the oversized generic dossier-cover treatment with one shared compact editorial frame across Commotion, Aftermark, Anchorage, Gila Monster, Kincast, and Agent Emerald.
+- Opening artwork now uses contained framing, remains fully available through the lightbox, and is capped at approximately 430px on desktop and 330px on phone-width layouts.
+- This supersedes the Agent Emerald-only sizing exception from OR-WEB-0025.
+
+### Aftermark
+- Replaced the disliked Santurce-sunrise opening cover with the existing horizontal **Invisible Counterpunch** artwork, which more directly communicates Aftermark's stored-action ability.
+- Deleted the rejected `aftermark-cover.webp` production asset and its `aftermark-cover-source.png` creator-source file.
+- Preserved Aftermark's remaining uploaded artwork and their existing homepage, registry, OPI, San Juan, primary-portrait, and dossier roles.
+
+### Cache
+- Bumped all character dossiers to `character.css?v=21`.
+
+### Validation
+- Added sitewide browser coverage for title-before-cover ordering, compact desktop/mobile cover dimensions, contained image framing, loaded artwork, and phone-width containment on every active character dossier.
+- Added explicit regression coverage requiring Aftermark's opening cover to use the Invisible Counterpunch asset and requiring the rejected sunrise files to remain deleted.

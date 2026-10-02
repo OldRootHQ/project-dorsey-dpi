@@ -30,8 +30,8 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
 
   await page.goto(`${BASE}/characters/aftermark/`, { waitUntil: 'domcontentloaded' });
   const afterCover = page.locator('.character-feature-art img');
-  await expect(afterCover).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-cover.webp');
-  await expect(page.locator('.character-feature-art [data-lightbox]')).toHaveAttribute('data-full-src', '../../assets/characters/aftermark/aftermark-cover.webp');
+  await expect(afterCover).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-location-cover.webp');
+  await expect(page.locator('.character-feature-art [data-lightbox]')).toHaveAttribute('data-full-src', '../../assets/characters/aftermark/aftermark-location-cover.webp');
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-primary.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(1);
   await expect(page.locator('.dossier-illustration img')).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-dossier-01.webp');
@@ -79,7 +79,11 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
 test('Aftermark horizontal artwork stays on cover-card surfaces and the filler is gone', async () => {
   const root = process.cwd();
   const filler = path.join(root, 'assets/characters/aftermark-full.png');
+  const rejectedCover = path.join(root, 'assets/characters/aftermark/aftermark-cover.webp');
+  const rejectedCoverSource = path.join(root, 'assets/characters/aftermark/source/aftermark-cover-source.png');
   expect(fs.existsSync(filler)).toBe(false);
+  expect(fs.existsSync(rejectedCover)).toBe(false);
+  expect(fs.existsSync(rejectedCoverSource)).toBe(false);
 
   const genericUploads = fs.readdirSync(root).filter(name => /^ChatGPT Image Oct 1, 2026, 07_57_/.test(name));
   expect(genericUploads).toEqual([]);
@@ -92,7 +96,6 @@ test('Aftermark horizontal artwork stays on cover-card surfaces and the filler i
 
   const afterSource = path.join(root, 'assets/characters/aftermark/source');
   const horizontal = [
-    'aftermark-cover-source.png',
     'aftermark-featured-source.png',
     'aftermark-registry-source.png',
     'aftermark-opi-cover-source.png',
@@ -108,14 +111,14 @@ test('Aftermark horizontal artwork stays on cover-card surfaces and the filler i
   }
 
   const afterDossier = fs.readFileSync(path.join(root, 'characters/aftermark/index.html'), 'utf8');
-  expect(afterDossier).toContain('aftermark-cover.webp');
+  expect(afterDossier).toContain('aftermark-location-cover.webp');
+  expect(afterDossier).not.toContain('aftermark-cover.webp');
   expect(afterDossier).toContain('aftermark-primary.webp');
   expect(afterDossier).toContain('aftermark-dossier-01.webp');
   for (const coverOnly of [
     'aftermark-featured.webp',
     'aftermark-registry.webp',
     'aftermark-opi-cover.webp',
-    'aftermark-location-cover.webp'
   ]) {
     expect(afterDossier).not.toContain(coverOnly);
   }
@@ -129,7 +132,6 @@ test('Aftermark horizontal artwork stays on cover-card surfaces and the filler i
     'assets/characters/agent-emerald/agent-emerald-dossier-03.webp',
     'assets/characters/agent-emerald/agent-emerald-dossier-04.webp',
     'assets/characters/agent-emerald/agent-emerald-dossier-05.webp',
-    'assets/characters/aftermark/aftermark-cover.webp',
     'assets/characters/aftermark/aftermark-primary.webp',
     'assets/characters/aftermark/aftermark-featured.webp',
     'assets/characters/aftermark/aftermark-registry.webp',

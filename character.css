@@ -177,7 +177,6 @@ body{font-family:var(--font-sans)}
   transition:transform .22s ease,filter .22s ease
 }
 .commotion-feature-cover .character-feature-art-trigger img,.anchorage-feature-cover .character-feature-art-trigger img,.gila-feature-cover .character-feature-art-trigger img,.kincast-feature-cover .character-feature-art-trigger img,.agent-emerald-feature-cover .character-feature-art-trigger img{object-position:center top}
-.aftermark-feature-cover .character-feature-art-trigger{height:auto;min-height:0;aspect-ratio:16/9}
 .aftermark-feature-cover .character-feature-art-trigger img{object-position:center center}
 .character-feature-art-trigger:hover img,.character-feature-art-trigger:focus-visible img{transform:scale(1.008);filter:brightness(.96)}
 .character-feature-art-trigger:focus-visible,.dossier-illustration button:focus-visible{outline:3px solid var(--old-gold);outline-offset:-5px}
@@ -413,31 +412,39 @@ body.oldroot-after-dark .image-lightbox-close{
 
 /* OR-WEB-0017 — Gila Monster / Kincast final art */
 .gila-biography-art img,.gila-combat-art img,.kincast-dynamic-art img,.kincast-combat-art img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center;background:var(--deep-root)}
-.gila-feature-cover .character-feature-art-trigger,.kincast-feature-cover .character-feature-art-trigger{min-height:360px}
-@media(max-width:680px){.gila-feature-cover .character-feature-art-trigger,.kincast-feature-cover .character-feature-art-trigger{min-height:300px}.gila-biography-art img,.gila-combat-art img,.kincast-dynamic-art img,.kincast-combat-art img{object-position:center center}}
+@media(max-width:680px){.gila-biography-art img,.gila-combat-art img,.kincast-dynamic-art img,.kincast-combat-art img{object-position:center center}}
 
 
-/* OR-WEB-0025 — Agent Emerald dossier intro scale */
-.agent-emerald-feature-cover{
+
+/* OR-WEB-0026 — Sitewide dossier intro and cover scale */
+.character-feature-art{
   max-width:980px;
   margin:0 auto 16px;
 }
-.agent-emerald-feature-cover .character-feature-art-trigger{
-  height:clamp(320px,36vw,460px);
+.character-feature-art .character-feature-art-trigger{
+  height:clamp(300px,32vw,430px);
   min-height:0;
   aspect-ratio:auto;
   background:
     radial-gradient(circle at 50% 18%,rgba(45,111,76,.18),transparent 22rem),
     #071b12;
 }
-.agent-emerald-feature-cover .character-feature-art-trigger img{
+.character-feature-art .character-feature-art-trigger img{
   object-fit:contain;
+  object-position:center center;
+}
+.commotion-feature-cover .character-feature-art-trigger img,
+.anchorage-feature-cover .character-feature-art-trigger img,
+.gila-feature-cover .character-feature-art-trigger img,
+.kincast-feature-cover .character-feature-art-trigger img,
+.agent-emerald-feature-cover .character-feature-art-trigger img{
   object-position:center top;
 }
+.aftermark-feature-cover .character-feature-art-trigger img{object-position:center center}
 @media(max-width:680px){
-  .agent-emerald-feature-cover{max-width:none}
-  .agent-emerald-feature-cover .character-feature-art-trigger{
-    height:clamp(280px,88vw,360px);
+  .character-feature-art{max-width:none}
+  .character-feature-art .character-feature-art-trigger{
+    height:clamp(240px,72vw,330px);
     min-height:0;
     aspect-ratio:auto;
   }
