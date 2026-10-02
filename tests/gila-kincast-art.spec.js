@@ -29,7 +29,8 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   await page.locator('.image-lightbox-close').click();
 
   await page.goto(`${BASE}/characters/gila-monster/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/gila-monster/gila-primary.webp');
+  await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/gila-monster/gila-featured.webp');
+  await expect(page.locator('.character-feature-art [data-lightbox]')).toHaveAttribute('data-full-src', '../../assets/characters/gila-monster/gila-featured.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(2);
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', /assets\/characters\/gila-monster\//);
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('22.2');
