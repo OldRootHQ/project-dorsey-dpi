@@ -363,6 +363,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added Seattle / Puget Sound as LOC-006 in the public Locations index and globe, with a dedicated location dossier.
 - Updated St. Dorsey to identify the Hampton facility there specifically as specialized sonar and submarine systems storage and development, distinct from the Seattle / Puget Sound logistics and fabrication annex.
 - Added Dunamis Dynamics to the Organization Registry with a dedicated company dossier.
+- Fixed organization registry filtering so category/search-hidden cards cannot remain visible under the shared card display rules.
 - Propagated Agent Emerald to the homepage Character Spotlight, Start Here, Character Registry, OPI Analytics, README registry, Locations, Organizations, and Dispatches.
 
 ### OPI
