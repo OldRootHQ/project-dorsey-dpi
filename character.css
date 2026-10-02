@@ -176,7 +176,9 @@ body{font-family:var(--font-sans)}
   display:block;width:100%;height:100%;object-fit:cover;object-position:center 34%;
   transition:transform .22s ease,filter .22s ease
 }
-.commotion-feature-cover .character-feature-art-trigger img,.anchorage-feature-cover .character-feature-art-trigger img,.gila-feature-cover .character-feature-art-trigger img,.kincast-feature-cover .character-feature-art-trigger img{object-position:center top}
+.commotion-feature-cover .character-feature-art-trigger img,.anchorage-feature-cover .character-feature-art-trigger img,.gila-feature-cover .character-feature-art-trigger img,.kincast-feature-cover .character-feature-art-trigger img,.agent-emerald-feature-cover .character-feature-art-trigger img{object-position:center top}
+.aftermark-feature-cover .character-feature-art-trigger{height:auto;min-height:0;aspect-ratio:16/9}
+.aftermark-feature-cover .character-feature-art-trigger img{object-position:center center}
 .character-feature-art-trigger:hover img,.character-feature-art-trigger:focus-visible img{transform:scale(1.008);filter:brightness(.96)}
 .character-feature-art-trigger:focus-visible,.dossier-illustration button:focus-visible{outline:3px solid var(--old-gold);outline-offset:-5px}
 .character-feature-art::after{
@@ -215,6 +217,8 @@ body{font-family:var(--font-sans)}
   letter-spacing:.06em;text-transform:uppercase
 }
 .dossier-illustration-wide img{object-position:center 27%}
+.dossier-illustration-portrait button{background:var(--deep-root)}
+.dossier-illustration-portrait img{height:auto;max-height:720px;object-fit:contain;object-position:center top;background:var(--deep-root)}
 @media(max-width:620px){
   .character-feature-art-trigger{height:500px;min-height:0}
   .character-feature-art-trigger img{object-position:center 30%}
