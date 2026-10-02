@@ -51,7 +51,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Agent Emerald", civilian:"Remington James “Remy” Hampton", classification:"Vigilante", role:"Vigilante",
-    powerClass:null, registryOrder:6, location:"Seattle, Washington / Puget Sound", locationKey:"Seattle",
+    powerClass:"Superior Human", registryOrder:6, location:"Seattle, Washington / Puget Sound", locationKey:"Seattle",
     origin:"Human / Technology / Training", originType:"Human / Technology / Training", ascendantStatus:null,
     affiliation:"Dunamis Dynamics", page:"characters/agent-emerald/", image:null,
     age:25, heightIn:73, weightLb:185, yearsActive:null,
