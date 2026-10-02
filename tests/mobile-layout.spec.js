@@ -6,8 +6,11 @@ const pages = [
   '/characters.html',
   '/characters/anchorage/',
   '/characters/commotion/',
+  '/characters/agent-emerald/',
   '/locations.html',
   '/locations/baltimore/',
+  '/locations/seattle/',
+  '/organizations/dunamis-dynamics/',
   '/dpi.html',
   '/library.html',
   '/news.html'
