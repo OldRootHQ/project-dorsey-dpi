@@ -10,13 +10,14 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(6);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(7);
   await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
   await expect(page.locator('[data-location="tucson"]')).toHaveAttribute('aria-pressed', 'true');
 
   const cases = [
     ['chicago', 'Chicago, Illinois', /characters\/commotion\//],
-    ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//]
+    ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//],
+    ['seattle', 'Seattle / Puget Sound', /characters\/agent-emerald\//]
   ];
 
   for (const [key, name, characterHref] of cases) {
@@ -96,7 +97,7 @@ test('Locations globe survives world-atlas failure', async ({ page }) => {
   await page.route('**/world-atlas@2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html');
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(6);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(7);
   await expect(page.locator('#globeLoading')).toContainText('MAP DETAIL UNAVAILABLE');
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');
@@ -111,7 +112,7 @@ test('Locations globe supports mobile drag and pinch while preserving page scrol
   const touchAction = await globe.evaluate(el => getComputedStyle(el).touchAction);
   expect(touchAction).toContain('pan-y');
   expect(touchAction).not.toContain('pinch-zoom');
-  await expect(page.locator('.location-index button')).toHaveCount(5);
+  await expect(page.locator('.location-index button')).toHaveCount(6);
 
   const gridBeforeDrag = await page.locator('.earth-grid').getAttribute('d');
   await globe.dispatchEvent('pointerdown', {
