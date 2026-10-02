@@ -381,3 +381,21 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added dedicated browser regression coverage for Agent Emerald’s exact profile, OPI values, conditional Senses handling, missing artwork/logo state, Seattle propagation, Dunamis Dynamics propagation, homepage/Start Here discovery, and phone-width containment.
 - Updated sitewide character, location, cache-key, static-page, and mobile regression expectations for the expanded public registry.
+
+
+## 2026-10-01 — OR-WEB-0022 — Agent Emerald Power Classification correction
+
+### Corrected
+- Agent Emerald / Remington James “Remy” Hampton is officially classified as **Superior Human**.
+- Agent Emerald is the first public OldRoot character assigned to the Superior Human Power Classification.
+- Updated the Character Registry, Agent Emerald dossier, homepage Character Spotlight, Start Here, and OPI Analytics shared record to use Superior Human consistently.
+- Added the `superior-human` registry tag so the existing Superior Human filter returns Agent Emerald.
+
+### Canon safeguards
+- This correction changes only Agent Emerald’s Power Classification and related discovery labels.
+- His species remains Human, his role remains Vigilante, and his existing OPI values are unchanged.
+- His Ascendant status remains unassigned; no Ascendant status is inferred from the Superior Human classification.
+
+### Validation
+- Agent Emerald regression coverage now requires `powerClass: "Superior Human"`.
+- The OPI data cache key was bumped so the corrected classification propagates immediately.
