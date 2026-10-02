@@ -476,3 +476,20 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Added sitewide browser coverage for title-before-cover ordering, compact desktop/mobile cover dimensions, contained image framing, loaded artwork, and phone-width containment on every active character dossier.
 - Added explicit regression coverage requiring Aftermark's opening cover to use the Invisible Counterpunch asset and requiring the rejected sunrise files to remain deleted.
+
+
+## 2026-10-02 — OR-WEB-0027 — Framed inline dossier artwork
+
+### Changed
+- Slimmed the inline artwork embedded inside character lore sections so illustrations no longer dominate the text column.
+- Centered dossier-body figures at a maximum width of 760px on desktop while preserving responsive full-width behavior on phones.
+- Added a premium dossier frame treatment using restrained OldRoot gold borders, dark inset framing, corner accents, deeper shadow, and a cleaner caption divider.
+- Kept all existing lightbox behavior and full-resolution viewing intact.
+- Applied the treatment consistently to Commotion, Aftermark, Anchorage, Gila Monster, Kincast, and Agent Emerald.
+- Top dossier covers and right-side infobox portraits are intentionally unaffected.
+
+### Cache
+- Bumped all character dossiers to `character.css?v=22`.
+
+### Validation
+- Added browser regression coverage requiring inline dossier figures to remain centered, below the desktop width cap, visibly framed, decorated with corner accents, image-loaded, and phone-width safe across all six active character dossiers.
