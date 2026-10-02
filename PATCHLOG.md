@@ -399,3 +399,28 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Agent Emerald regression coverage now requires `powerClass: "Superior Human"`.
 - The OPI data cache key was bumped so the corrected classification propagates immediately.
+
+
+## 2026-10-01 — OR-WEB-0023 — Agent Emerald and Aftermark creator-art integration
+
+### Added
+- Integrated the full uploaded Agent Emerald artwork set across his dossier, Character Registry, homepage Character Spotlight, OPI Analytics, Seattle location dossier, and Dunamis Dynamics record.
+- Added distinct Agent Emerald visuals for his primary dossier cover, registry/profile use, homepage feature, tactical operation, Vector Talons combat, aerial repositioning, close-quarters control, and armored-target combat.
+- Integrated the new Aftermark artwork set across his dossier, Character Registry, homepage Character Spotlight, OPI Analytics, and San Juan location record.
+- Assigned Aftermark's horizontal artwork only to cover/card surfaces; his vertical Santurce rooftop image serves the infobox/primary portrait and his vertical stairwell image is the dossier-body illustration.
+
+### Cleanup
+- Removed the former `assets/characters/aftermark-full.png` filler image after replacing every active reference.
+- Removed the generic root-level Agent Emerald `ChatGPT Image...` upload names and the duplicate copied upload after organizing the creator sources under `assets/characters/agent-emerald/source/`.
+- Organized the new Aftermark creator sources under `assets/characters/aftermark/source/`.
+- Created stable, optimized WebP production derivatives for all active Agent Emerald and Aftermark artwork.
+
+### Performance & accessibility
+- Production WebP assets are each under 600 KB while preserving the uploaded source dimensions.
+- Added descriptive alt text, contextual captions, lazy loading where appropriate, and lightbox access on dossier, registry, location, organization, and homepage artwork.
+- Updated the shared character-art stylesheet cache and OPI data cache to propagate the new visuals cleanly.
+
+### Validation
+- Added browser coverage for both characters across homepage, registry, dossiers, OPI, Seattle, San Juan, and Dunamis Dynamics.
+- Added static assertions that Aftermark's former filler file is gone, generic Agent Emerald upload names are absent from production code, horizontal Aftermark source art stays off inline dossier-body slots, and all optimized production files remain below 600 KB.
+- CI now rejects reintroduction of the deleted Aftermark filler path or the generic Agent Emerald upload filenames.

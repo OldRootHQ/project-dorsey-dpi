@@ -58,6 +58,13 @@ jobs:
             exit 1
           fi
 
+      - name: Reject legacy Aftermark and Agent Emerald upload references
+        run: |
+          if grep -R -E 'aftermark-full\.png|ChatGPT Image Oct 1, 2026, 07_57_' --include='*.html' --include='*.js' --include='*.css' --exclude-dir=.git --exclude-dir=tests --exclude-dir=source .; then
+            echo "Legacy Aftermark filler or generic Agent Emerald upload reference found."
+            exit 1
+          fi
+
       - name: Start static site
         run: |
           python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/oldroot-http.log 2>&1 &
