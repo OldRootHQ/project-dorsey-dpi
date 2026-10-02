@@ -86,6 +86,10 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(page.locator('h1')).toHaveText('SEATTLE / PUGET SOUND');
   await expect(page.locator('a[href="../../characters/agent-emerald/"]')).toHaveCount(2);
 
+  await page.goto(`${BASE}/locations/st-dorsey/`, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.location-main')).toContainText('specialized sonar and submarine systems');
+  await expect(page.locator('.location-main')).toContainText('not the separate Seattle / Puget Sound logistics and fabrication annex');
+
   await page.goto(`${BASE}/organizations.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.org-card[href="organizations/dunamis-dynamics/"]')).toContainText('Dunamis Dynamics');
 
