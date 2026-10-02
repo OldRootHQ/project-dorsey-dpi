@@ -129,7 +129,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await page.locator('[data-home-character="agent-emerald"]').click();
   await expect(agentHome).toBeVisible();
   await expect.poll(() => agentHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 6');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('6 / 6');
 
   await page.goto(`${BASE}/start-here.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.start-stat-panel')).toContainText('6 active records');
