@@ -48,5 +48,15 @@ window.OLDROOT_CHARACTERS = [
     summary:"Recurring Baltimore underworld villain, mercenary, and powerhouse antagonist transformed roughly one year before Genesis through forced experimental enhancement.",
     baseline:{Strength:32.7,Durability:37.4,Speed:2.5,Agility:2.4,Regeneration:11.8,Senses:5.5,Offense:26.3,Intellect:6.7,Combat:17.1,Mobility:1.6,Stamina:9.7},
     conditional:[]
+  },
+  {
+    codename:"Agent Emerald", civilian:"Remington James “Remy” Hampton", classification:"Vigilante", role:"Vigilante",
+    powerClass:null, registryOrder:6, location:"Seattle, Washington / Puget Sound", locationKey:"Seattle",
+    origin:"Human / Technology / Training", originType:"Human / Technology / Training", ascendantStatus:null,
+    affiliation:"Dunamis Dynamics", page:"characters/agent-emerald/", image:null,
+    age:25, heightIn:73, weightLb:185, yearsActive:null,
+    summary:"Seattle / Puget Sound vigilante and engineering prodigy whose precision combat system combines guided Vector Talons, integrated mobility, and advanced tactical planning.",
+    baseline:{Strength:7.7,Durability:10.9,Speed:8.1,Agility:12.0,Regeneration:5.5,Senses:11.7,Offense:18.5,Intellect:14.8,Combat:19.0,Mobility:15.3,Stamina:9.2},
+    conditional:[{category:"Senses",condition:"Precision Pill Active",value:16.1}]
   }
 ];
