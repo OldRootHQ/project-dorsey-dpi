@@ -55,6 +55,7 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
     '../../assets/characters/agent-emerald/agent-emerald-dossier-05.webp'
   ]);
   for (let i = 0; i < 5; i += 1) {
+    await agentDossier.nth(i).scrollIntoViewIfNeeded();
     await expect.poll(() => agentDossier.nth(i).evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   }
 
