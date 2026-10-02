@@ -103,8 +103,8 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(page.locator('.org-main')).toContainText('VX-11 belongs to Remy personally');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.hero-signal-row')).toContainText('Characters06');
-  await expect(page.locator('.hero-signal-row')).toContainText('Places06');
+  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*06/);
+  await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*06/);
   await expect(page.locator('[data-home-character="agent-emerald"]')).toHaveCount(1);
   await expect(page.locator('[data-home-slide="agent-emerald"]')).toContainText('Visual reference pending');
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 6');
