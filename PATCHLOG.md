@@ -342,3 +342,14 @@ This file is the release ledger for meaningful public website changes. Each depl
 ### Validation
 - Legacy Gila Monster / Kincast asset names are now rejected from active HTML, JavaScript, and CSS during CI.
 - No page layout, lore, OPI value, navigation behavior, commerce behavior, or user-facing feature is intentionally changed by this maintenance pass.
+
+
+## 2026-10-01 — OR-WEB-0020 — Gila Monster dossier cover correction
+
+### Fixed
+- Replaced Gila Monster's dossier top cover image with the final non-bible featured artwork.
+- Updated the top-cover lightbox source, caption, badge, title, and alt text to match the replacement artwork.
+- Kincast and all other character dossiers remain unchanged.
+
+### Validation
+- Updated browser regression coverage to require `gila-featured.webp` for both the visible Gila dossier cover and its full-size lightbox source.
