@@ -12,6 +12,7 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(card.locator('img')).toHaveCount(0);
   await expect(card.locator('.character-thumb-placeholder')).toContainText('Visual reference pending');
 
+  await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="vigilante"]').check();
   await page.locator('#filterApply').click();
   await expect(page.locator('.character-card:visible')).toHaveCount(1);
