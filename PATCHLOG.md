@@ -361,6 +361,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added Agent Emerald / Remington James “Remy” Hampton as the sixth public character record.
 - Added a complete Agent Emerald dossier covering identity, Hampton family conflict, Neegan Walters, Lace Bo Hughes, origin, Dunamis Dynamics, VX-11, Precision / Reflex Stimulant, suit, Vector Talons, Line Driver, combat profile, and exact OPI values.
 - Added Seattle / Puget Sound as LOC-006 in the public Locations index and globe, with a dedicated location dossier.
+- Updated St. Dorsey to identify the Hampton facility there specifically as specialized sonar and submarine systems storage and development, distinct from the Seattle / Puget Sound logistics and fabrication annex.
 - Added Dunamis Dynamics to the Organization Registry with a dedicated company dossier.
 - Propagated Agent Emerald to the homepage Character Spotlight, Start Here, Character Registry, OPI Analytics, README registry, Locations, Organizations, and Dispatches.
 
