@@ -1,0 +1,54 @@
+const { test, expect } = require('@playwright/test');
+
+const BASE = 'http://127.0.0.1:8000';
+const UPCOMING = ['Latch', 'Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom'];
+
+async function expectUpcomingSection(page) {
+  const section = page.locator('#upcoming-characters');
+  await expect(section).toBeVisible();
+  await expect(section.locator('h2')).toHaveText('Upcoming Characters');
+  await expect(section.locator('.discovery-card')).toHaveCount(6);
+  await expect(section.locator('.discovery-card h3')).toHaveText(UPCOMING);
+  await expect(section.locator('.discovery-card').filter({ hasText: 'Mark Hampton' }).locator('b')).toHaveText('NO OPI LISTING');
+  await expect(section.locator('.discovery-card').filter({ hasText: 'Neegan Walters' }).locator('b')).toHaveText('NO OPI LISTING');
+  for (const name of ['Latch', 'Ballestera', 'Makari', 'Akuaom']) {
+    await expect(section.locator('.discovery-card').filter({ hasText: name }).locator('b')).toHaveText('IN DEVELOPMENT');
+  }
+}
+
+test('Upcoming Characters preview is synchronized on home and Dispatches', async ({ page }) => {
+  await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
+  await expectUpcomingSection(page);
+  await expect(page.locator('#upcoming-characters a[href="news.html#upcoming-characters"]')).toHaveCount(1);
+
+  await page.goto(`${BASE}/news.html#upcoming-characters`, { waitUntil: 'domcontentloaded' });
+  await expectUpcomingSection(page);
+  await expect(page.locator('#upcoming-characters')).toContainText('preview only');
+});
+
+test('Upcoming Characters do not become active registry or OPI records', async ({ page }) => {
+  await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
+  const records = await page.evaluate(() => window.OLDROOT_CHARACTERS.map(c => c.codename));
+  for (const name of UPCOMING) expect(records).not.toContain(name);
+
+  await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
+  for (const name of UPCOMING) {
+    await expect(page.locator('.character-card').filter({ hasText: name })).toHaveCount(0);
+  }
+});
+
+test('Upcoming Characters sections remain contained on phone width', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const path of ['/index.html', '/news.html#upcoming-characters']) {
+    await page.goto(BASE + path, { waitUntil: 'domcontentloaded' });
+    const dims = await page.evaluate(() => ({
+      viewport: innerWidth,
+      html: document.documentElement.scrollWidth,
+      body: document.body.scrollWidth,
+      section: document.querySelector('#upcoming-characters').getBoundingClientRect().width
+    }));
+    expect(dims.html, path).toBeLessThanOrEqual(dims.viewport + 2);
+    expect(dims.body, path).toBeLessThanOrEqual(dims.viewport + 2);
+    expect(dims.section, path).toBeLessThanOrEqual(dims.viewport);
+  }
+});

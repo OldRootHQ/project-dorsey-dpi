@@ -424,3 +424,19 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added browser coverage for both characters across homepage, registry, dossiers, OPI, Seattle, San Juan, and Dunamis Dynamics.
 - Added static assertions that Aftermark's former filler file is gone, generic Agent Emerald upload names are absent from production code, horizontal Aftermark source art stays off inline dossier-body slots, and all optimized production files remain below 600 KB.
 - CI now rejects reintroduction of the deleted Aftermark filler path or the generic Agent Emerald upload filenames.
+
+
+## 2026-10-02 — OR-WEB-0024 — Upcoming Characters preview
+
+### Added
+- Added an **Upcoming Characters / In Development** section to the homepage and Dispatches page.
+- Added the creator-supplied names: Latch, Mark Hampton, Neegan Walters, Ballestera, Makari, and Akuaom.
+- Mark Hampton and Neegan Walters are explicitly labeled **No OPI Listing**.
+
+### Canon safeguards
+- Upcoming-character cards do not invent powers, Power Classifications, locations, affiliations, identities, origins, artwork, or release dates.
+- Upcoming names are previews only and are not added to the active Character Registry or OPI Analytics dataset.
+- No OPI listing is created for Mark Hampton or Neegan Walters.
+
+### Validation
+- Added regression coverage requiring the same six upcoming names on both public preview surfaces and verifying that Mark Hampton and Neegan Walters remain absent from OPI Analytics.
