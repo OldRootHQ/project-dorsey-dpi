@@ -141,3 +141,48 @@ body.oldroot-after-dark .panel{
 @media(prefers-reduced-motion:reduce){
   body.oldroot-after-dark::before{animation:none}
 }
+
+
+/* Major homepage/editorial bubbles get a larger root bleed at the edge. */
+body.oldroot-after-dark .home-featured,
+body.oldroot-after-dark .home-world-section,
+body.oldroot-after-dark .home-library-section,
+body.oldroot-after-dark .section-band{
+  position:relative;
+  isolation:isolate;
+}
+body.oldroot-after-dark .home-featured::after,
+body.oldroot-after-dark .home-world-section::after,
+body.oldroot-after-dark .home-library-section::after,
+body.oldroot-after-dark .section-band::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:185px;
+  right:-42px;
+  bottom:-46px;
+  z-index:0;
+  pointer-events:none;
+  opacity:.40;
+  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  mix-blend-mode:screen;
+}
+body.oldroot-after-dark .home-featured>*,
+body.oldroot-after-dark .home-world-section>*,
+body.oldroot-after-dark .home-library-section>*,
+body.oldroot-after-dark .section-band>*{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:680px){
+  body.oldroot-after-dark .home-featured::after,
+  body.oldroot-after-dark .home-world-section::after,
+  body.oldroot-after-dark .home-library-section::after,
+  body.oldroot-after-dark .section-band::after{
+    width:190px;
+    height:120px;
+    right:-28px;
+    bottom:-28px;
+    opacity:.27;
+  }
+}
