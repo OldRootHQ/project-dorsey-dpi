@@ -2,15 +2,15 @@ const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Agent Emerald canon is propagated as the first Superior Human without invented artwork', async ({ page }) => {
+test('Agent Emerald canon is propagated as the first Superior Human with creator artwork', async ({ page }) => {
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const card = page.locator('.character-card[href="characters/agent-emerald/"]');
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Agent Emerald');
   await expect(card).toContainText('Remington James “Remy” Hampton');
   await expect(card).toContainText('Superior Human');
-  await expect(card.locator('img')).toHaveCount(0);
-  await expect(card.locator('.character-thumb-placeholder')).toContainText('Visual reference pending');
+  await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect.poll(() => card.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="vigilante"]').check();
@@ -27,7 +27,9 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
 
   await page.goto(`${BASE}/characters/agent-emerald/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('AGENT EMERALD');
-  await expect(page.locator('.character-art-slot')).toContainText('CHARACTER ART — PENDING');
+  await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-primary.webp');
+  await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
   await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
   await expect(page.locator('.character-infobox')).toContainText('Superior Human');
@@ -66,7 +68,7 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
   expect(remy.location).toBe('Seattle, Washington / Puget Sound');
   expect(remy.locationKey).toBe('Seattle');
   expect(remy.affiliation).toBe('Dunamis Dynamics');
-  expect(remy.image).toBeNull();
+  expect(remy.image).toBe('assets/characters/agent-emerald/agent-emerald-registry.webp');
   expect(remy.age).toBe(25);
   expect(remy.heightIn).toBe(73);
   expect(remy.weightLb).toBe(185);
@@ -100,6 +102,7 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
   await page.goto(`${BASE}/locations/seattle/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('SEATTLE / PUGET SOUND');
   await expect(page.locator('a[href="../../characters/agent-emerald/"]')).toHaveCount(2);
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/locations/st-dorsey/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.location-main')).toContainText('specialized sonar and submarine systems');
@@ -115,12 +118,17 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
   await expect(page.locator('h1')).toHaveText('DUNAMIS DYNAMICS');
   await expect(page.locator('.dossier-facts')).toContainText('Mark Hampton');
   await expect(page.locator('.org-main')).toContainText('VX-11 belongs to Remy personally');
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*06/);
   await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*06/);
   await expect(page.locator('[data-home-character="agent-emerald"]')).toHaveCount(1);
-  await expect(page.locator('[data-home-slide="agent-emerald"]')).toContainText('Visual reference pending');
+  const agentHome = page.locator('[data-home-slide="agent-emerald"] img');
+  await expect(agentHome).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-featured.webp');
+  await page.locator('[data-home-character="agent-emerald"]').click();
+  await expect(agentHome).toBeVisible();
+  await expect.poll(() => agentHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 6');
 
   await page.goto(`${BASE}/start-here.html`, { waitUntil: 'domcontentloaded' });
