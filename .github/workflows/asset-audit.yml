@@ -1,0 +1,42 @@
+name: Asset audit
+
+on:
+  push:
+    branches:
+      - feat/agent-emerald-aftermark-art
+
+jobs:
+  inspect-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Pillow
+        run: python3 -m pip install --quiet pillow
+      - name: Emit image metadata and thumbnails
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import base64, io
+
+          paths = [
+            *sorted(Path('.').glob('ChatGPT Image Oct 1, 2026, 07_57_*.png')),
+            *sorted(Path('assets/characters').glob('Aftermark*.png')),
+            *sorted(Path('assets/characters').glob('Aftermark’s*.png')),
+            Path('assets/characters/aftermark-full.png'),
+          ]
+          seen = set()
+          for path in paths:
+              if not path.exists() or str(path) in seen:
+                  continue
+              seen.add(str(path))
+              with Image.open(path) as im:
+                  w,h=im.size
+                  print(f"META|{path}|{w}|{h}")
+                  thumb=im.convert('RGB')
+                  thumb.thumbnail((320,320))
+                  buf=io.BytesIO()
+                  thumb.save(buf,format='JPEG',quality=52,optimize=True)
+                  b64=base64.b64encode(buf.getvalue()).decode()
+                  print(f"THUMB|{path}|{b64}")
+          PY
