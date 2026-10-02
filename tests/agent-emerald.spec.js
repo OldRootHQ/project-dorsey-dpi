@@ -28,6 +28,22 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await page.goto(`${BASE}/characters/agent-emerald/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('AGENT EMERALD');
   await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-primary.webp');
+  const introLayout = await page.evaluate(() => {
+    const identity = document.querySelector('.character-identity').getBoundingClientRect();
+    const cover = document.querySelector('.agent-emerald-feature-cover').getBoundingClientRect();
+    const image = document.querySelector('.agent-emerald-feature-cover img');
+    return {
+      identityTop: identity.top,
+      identityBottom: identity.bottom,
+      coverTop: cover.top,
+      coverHeight: cover.height,
+      imageFit: getComputedStyle(image).objectFit
+    };
+  });
+  expect(introLayout.identityTop).toBeLessThan(introLayout.coverTop);
+  expect(introLayout.identityBottom).toBeLessThanOrEqual(introLayout.coverTop);
+  expect(introLayout.coverHeight).toBeLessThanOrEqual(500);
+  expect(introLayout.imageFit).toBe('contain');
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
   await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
@@ -147,5 +163,9 @@ test('Agent Emerald pages stay inside a phone viewport', async ({ page }) => {
     }));
     expect(dims.html, path).toBeLessThanOrEqual(dims.viewport + 2);
     expect(dims.body, path).toBeLessThanOrEqual(dims.viewport + 2);
+    if (path === '/characters/agent-emerald/') {
+      const coverHeight = await page.locator('.agent-emerald-feature-cover').evaluate(el => el.getBoundingClientRect().height);
+      expect(coverHeight).toBeLessThanOrEqual(390);
+    }
   }
 });
