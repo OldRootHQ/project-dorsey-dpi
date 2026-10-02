@@ -415,3 +415,30 @@ body.oldroot-after-dark .image-lightbox-close{
 .gila-biography-art img,.gila-combat-art img,.kincast-dynamic-art img,.kincast-combat-art img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;object-position:center center;background:var(--deep-root)}
 .gila-feature-cover .character-feature-art-trigger,.kincast-feature-cover .character-feature-art-trigger{min-height:360px}
 @media(max-width:680px){.gila-feature-cover .character-feature-art-trigger,.kincast-feature-cover .character-feature-art-trigger{min-height:300px}.gila-biography-art img,.gila-combat-art img,.kincast-dynamic-art img,.kincast-combat-art img{object-position:center center}}
+
+
+/* OR-WEB-0025 — Agent Emerald dossier intro scale */
+.agent-emerald-feature-cover{
+  max-width:980px;
+  margin:0 auto 16px;
+}
+.agent-emerald-feature-cover .character-feature-art-trigger{
+  height:clamp(320px,36vw,460px);
+  min-height:0;
+  aspect-ratio:auto;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(45,111,76,.18),transparent 22rem),
+    #071b12;
+}
+.agent-emerald-feature-cover .character-feature-art-trigger img{
+  object-fit:contain;
+  object-position:center top;
+}
+@media(max-width:680px){
+  .agent-emerald-feature-cover{max-width:none}
+  .agent-emerald-feature-cover .character-feature-art-trigger{
+    height:clamp(280px,88vw,360px);
+    min-height:0;
+    aspect-ratio:auto;
+  }
+}
