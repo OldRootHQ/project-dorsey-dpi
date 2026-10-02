@@ -18,6 +18,13 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
   await expect(page.locator('.character-card:visible')).toHaveCount(1);
   await expect(card).toBeVisible();
 
+  await page.locator('#filterToggle').click();
+  await page.locator('#filterClear').click();
+  await page.locator('[data-filter-group="power"][value="superior-human"]').check();
+  await page.locator('#filterApply').click();
+  await expect(page.locator('.character-card:visible')).toHaveCount(1);
+  await expect(card).toBeVisible();
+
   await page.goto(`${BASE}/characters/agent-emerald/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('AGENT EMERALD');
   await expect(page.locator('.character-art-slot')).toContainText('CHARACTER ART — PENDING');
@@ -77,6 +84,12 @@ test('Agent Emerald canon is propagated as the first Superior Human without inve
     Stamina:9.2
   });
   expect(remy.conditional).toEqual([{ category:'Senses', condition:'Precision Pill Active', value:16.1 }]);
+
+  await page.locator('#filter-open').click();
+  await page.locator('[data-filter-key="powerClass"][value="Superior Human"]').check();
+  await page.locator('#filter-apply').click();
+  await expect(page.locator('#count')).toHaveText('1 CHARACTER');
+  await expect(page.locator('#detail')).toContainText('Agent Emerald');
 
   await page.goto(`${BASE}/locations.html#seattle`, { waitUntil: 'domcontentloaded' });
   await page.locator('[data-location="seattle"]').click();
