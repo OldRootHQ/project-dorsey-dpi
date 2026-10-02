@@ -353,3 +353,31 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Updated browser regression coverage to require `gila-featured.webp` for both the visible Gila dossier cover and its full-size lightbox source.
+
+
+## 2026-10-01 — OR-WEB-0021 — Agent Emerald canon import
+
+### Added
+- Added Agent Emerald / Remington James “Remy” Hampton as the sixth public character record.
+- Added a complete Agent Emerald dossier covering identity, Hampton family conflict, Neegan Walters, Lace Bo Hughes, origin, Dunamis Dynamics, VX-11, Precision / Reflex Stimulant, suit, Vector Talons, Line Driver, combat profile, and exact OPI values.
+- Added Seattle / Puget Sound as LOC-006 in the public Locations index and globe, with a dedicated location dossier.
+- Updated St. Dorsey to identify the Hampton facility there specifically as specialized sonar and submarine systems storage and development, distinct from the Seattle / Puget Sound logistics and fabrication annex.
+- Added Dunamis Dynamics to the Organization Registry with a dedicated company dossier.
+- Fixed organization registry filtering so category/search-hidden cards cannot remain visible under the shared card display rules.
+- Propagated Agent Emerald to the homepage Character Spotlight, Start Here, Character Registry, OPI Analytics, README registry, Locations, Organizations, and Dispatches.
+
+### OPI
+- Added the locked baseline categories: Strength 7.7, Durability 10.9, Speed 8.1, Agility 12.0, Regeneration 5.5, Senses 11.7, Offense 18.5, Intellect 14.8, Combat 19.0, Mobility 15.3, and Stamina 9.2.
+- Added Senses — Precision Pill Active at 16.1 as a conditional value only.
+- Natural and stimulant-enhanced Senses remain separate; no overall OPI score is published on the Agent Emerald dossier.
+
+### Canon safeguards
+- Agent Emerald is recorded as a human vigilante. No Power Classification was invented because the supplied canon does not assign one.
+- Ascendant status remains unassigned rather than being inferred.
+- No character artwork or personal emblem was invented. The dossier and discovery surfaces use explicit pending placeholders until creator-supplied visuals are available.
+- VX-11 remains Remy’s personal design and intellectual property rather than being presented as automatically owned by Dunamis Dynamics.
+- Unresolved Neegan Walters history, Monica Hampton divorce timing, Lace Bo Hughes future role, and other intentionally open material remain unresolved.
+
+### Validation
+- Added dedicated browser regression coverage for Agent Emerald’s exact profile, OPI values, conditional Senses handling, missing artwork/logo state, Seattle propagation, Dunamis Dynamics propagation, homepage/Start Here discovery, and phone-width containment.
+- Updated sitewide character, location, cache-key, static-page, and mobile regression expectations for the expanded public registry.

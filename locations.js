@@ -81,6 +81,21 @@
       coords: [-76.6122, 39.2904],
       labelOffset: [13, -14]
     },
+    seattle: {
+      id: "LOC-006",
+      name: "Seattle / Puget Sound",
+      shortName: "Seattle",
+      type: "Primary operating location",
+      region: "United States",
+      status: "Established",
+      character: "Agent Emerald",
+      characterUrl: "characters/agent-emerald/",
+      characters: [{ name: "Agent Emerald", url: "characters/agent-emerald/", role: "Vigilante" }],
+      dossierUrl: "locations/seattle/",
+      note: "Seattle and the Puget Sound region are the established primary location of Agent Emerald.",
+      coords: [-122.3321, 47.6062],
+      labelOffset: [11, -10]
+    },
     washington: {
       id: "REF-001",
       name: "Washington, D.C.",
