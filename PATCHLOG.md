@@ -493,3 +493,29 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Added browser regression coverage requiring inline dossier figures to remain centered, below the desktop width cap, visibly framed, decorated with corner accents, image-loaded, and phone-width safe across all six active character dossiers.
+
+
+## 2026-10-02 — OR-WEB-0028 — Root Atmosphere visual experiment
+
+### Experiment
+- Added a reversible sitewide **Root Atmosphere** layer over the existing OldRoot After Dark visual system.
+- Deepened the page canvas toward near-black / ultra-dark green while retaining the established cream, gold, and green content hierarchy.
+- Added a translucent branching root network with embedded code-like glyph fragments and subtle green signal nodes.
+- Added faint root tendrils inside major content bubbles so cards and dossier panels visually feel connected to the larger root system rather than floating on an empty canvas.
+- Kept the decorative network behind readable content and set every atmospheric layer to ignore pointer input.
+
+### Motion & performance
+- The global root network uses a very slow low-amplitude drift only on larger screens.
+- Mobile disables the drift and lowers root opacity.
+- `prefers-reduced-motion: reduce` disables the drift completely.
+- The effect uses two lightweight SVG assets plus CSS only; no JavaScript or lore/data changes were introduced.
+
+### Reversibility
+- The experiment is isolated in `root-atmosphere.css`, loaded by one import at the top of `brand.css`.
+- Removing that import and the two decorative SVG assets restores the previous After Dark background system without touching character content, OPI data, artwork, navigation, or layout logic.
+
+### Cache
+- Bumped all static pages to `brand.css?v=12`.
+
+### Validation
+- Added browser coverage for the root network, panel tendrils, pointer transparency, reduced-motion behavior, lower mobile intensity, viewport containment, shared cache propagation, and the experiment's single removable dependency.
