@@ -440,3 +440,18 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Added regression coverage requiring the same six upcoming names on both public preview surfaces and verifying that Mark Hampton and Neegan Walters remain absent from OPI Analytics.
+
+
+## 2026-10-02 — OR-WEB-0025 — Agent Emerald dossier cover scale correction
+
+### Changed
+- Moved Agent Emerald's identity/title panel above his opening artwork so the dossier identifies the character before presenting the visual.
+- Reduced Agent Emerald's opening artwork from the generic oversized character-cover treatment to a dedicated compact editorial frame.
+- Switched the opening image to contained framing so the full creator artwork remains visible without making the image feel like the entire page.
+- Kept the change scoped to Agent Emerald; other character cover dimensions are unchanged.
+
+### Cache
+- Bumped the shared character stylesheet cache key to `character.css?v=20`.
+
+### Validation
+- Regression coverage verifies Agent Emerald's title appears before the cover, the desktop cover remains under the new compact height limit, the image uses contained framing, and the phone layout remains contained.
