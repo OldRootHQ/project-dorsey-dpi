@@ -2,13 +2,13 @@ const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Agent Emerald canon is propagated without invented power classification or artwork', async ({ page }) => {
+test('Agent Emerald canon is propagated as the first Superior Human without invented artwork', async ({ page }) => {
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const card = page.locator('.character-card[href="characters/agent-emerald/"]');
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Agent Emerald');
   await expect(card).toContainText('Remington James “Remy” Hampton');
-  await expect(card).toContainText('Power class not established');
+  await expect(card).toContainText('Superior Human');
   await expect(card.locator('img')).toHaveCount(0);
   await expect(card.locator('.character-thumb-placeholder')).toContainText('Visual reference pending');
 
@@ -23,7 +23,7 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(page.locator('.character-art-slot')).toContainText('CHARACTER ART — PENDING');
   await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
-  await expect(page.locator('.character-infobox')).toContainText('Not established');
+  await expect(page.locator('.character-infobox')).toContainText('Superior Human');
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
   await expect(page.locator('.conditional-box')).toContainText('Senses — Precision Pill Active: 16.1');
   await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('50.0 — Theoretical ceiling');
@@ -54,7 +54,7 @@ test('Agent Emerald canon is propagated without invented power classification or
   expect(remy.civilian).toBe('Remington James “Remy” Hampton');
   expect(remy.classification).toBe('Vigilante');
   expect(remy.role).toBe('Vigilante');
-  expect(remy.powerClass).toBeNull();
+  expect(remy.powerClass).toBe('Superior Human');
   expect(remy.ascendantStatus).toBeNull();
   expect(remy.location).toBe('Seattle, Washington / Puget Sound');
   expect(remy.locationKey).toBe('Seattle');
