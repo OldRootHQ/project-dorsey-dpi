@@ -25,6 +25,7 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(page.locator('.character-infobox')).toContainText('Not established');
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
   await expect(page.locator('.conditional-box')).toContainText('Senses — Precision Pill Active: 16.1');
+  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('50.0 — Theoretical ceiling');
   await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('No overall OPI score is published');
 
   const values = await page.locator('.dpi-row').evaluateAll(rows => Object.fromEntries(rows.map(row => [
@@ -92,6 +93,9 @@ test('Agent Emerald canon is propagated without invented power classification or
 
   await page.goto(`${BASE}/organizations.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.org-card[href="organizations/dunamis-dynamics/"]')).toContainText('Dunamis Dynamics');
+  await page.locator('[data-org-filter="corporate"]').click();
+  await expect(page.locator('.org-card:visible')).toHaveCount(1);
+  await expect(page.locator('.org-card[href="organizations/dunamis-dynamics/"]')).toBeVisible();
 
   await page.goto(`${BASE}/organizations/dunamis-dynamics/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('DUNAMIS DYNAMICS');
@@ -99,6 +103,8 @@ test('Agent Emerald canon is propagated without invented power classification or
   await expect(page.locator('.org-main')).toContainText('VX-11 belongs to Remy personally');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.hero-signal-row')).toContainText('Characters06');
+  await expect(page.locator('.hero-signal-row')).toContainText('Places06');
   await expect(page.locator('[data-home-character="agent-emerald"]')).toHaveCount(1);
   await expect(page.locator('[data-home-slide="agent-emerald"]')).toContainText('Visual reference pending');
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 6');
