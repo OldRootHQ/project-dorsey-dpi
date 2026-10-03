@@ -125,10 +125,15 @@
 
   const svgElement = document.querySelector("#techGlobe");
   const stage = document.querySelector("#globeStage");
-  if (!svgElement || !stage || typeof d3 === "undefined") return;
+  const loading = document.querySelector("#globeLoading");
+  if (!svgElement || !stage) return;
+  if (typeof d3 === "undefined" || typeof topojson === "undefined") {
+    stage.classList.add("engine-unavailable");
+    if (loading) loading.textContent = "MAP ENGINE UNAVAILABLE · LOCATION RECORDS REMAIN ACCESSIBLE";
+    return;
+  }
 
   const svg = d3.select(svgElement);
-  const loading = document.querySelector("#globeLoading");
   const tooltip = document.querySelector("#globeTooltip");
   const zoomReadout = document.querySelector("#globeZoomReadout");
   const earthViewButton = document.querySelector("#earthView");
@@ -784,15 +789,30 @@
     render();
   }
 
-  fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json")
-    .then(response => response.ok ? response.json() : Promise.reject(new Error("World atlas request failed")))
-    .then(data => {
-      world = data;
-      if (loading) loading.hidden = true;
-      render();
-    })
-    .catch(() => {
-      if (loading) loading.textContent = "EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
-      render();
-    });
+  async function loadWorldTopology() {
+    const sources = [
+      "assets/data/world-110m.json",
+      "https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json"
+    ];
+
+    for (const source of sources) {
+      try {
+        const response = await fetch(source, { cache: "force-cache" });
+        if (!response.ok) throw new Error("World topology request failed");
+        const data = await response.json();
+        if (!data?.objects?.land || !data?.objects?.countries) throw new Error("World topology is incomplete");
+        world = data;
+        if (loading) loading.hidden = true;
+        render();
+        return;
+      } catch (error) {
+        // Try the next source. Local repository data is preferred.
+      }
+    }
+
+    if (loading) loading.textContent = "EARTH OUTLINE ONLINE · MAP DETAIL UNAVAILABLE";
+    render();
+  }
+
+  loadWorldTopology();
 })();
