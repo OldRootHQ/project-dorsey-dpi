@@ -34,7 +34,7 @@ test('Root Atmosphere renders as a dark decorative layer without blocking conten
   expect(atmosphere.cardRoot).toContain('root-corner.svg');
   expect(atmosphere.cardRootPointerEvents).toBe('none');
 
-  await expect(page.locator('.site-nav a[href="characters.html"]').or(page.locator('.site-nav a[href="./characters.html"]')).first()).toBeVisible();
+  await expect(page.locator('.site-nav > a[href="index.html"]').first()).toBeVisible();
 });
 
 test('Root Atmosphere connects into dossier bubbles while preserving readable surfaces', async ({ page }) => {
