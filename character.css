@@ -724,3 +724,84 @@ body.oldroot-after-dark .character-identity{
   .character-network-grid a{transition:none}
 }
 
+/* =========================================================
+   OR-WEB-0029 · CHARACTER DOSSIER MOBILE / PERFORMANCE PASS
+   ========================================================= */
+.character-shell{
+  overflow-wrap:anywhere;
+}
+.wiki-section{
+  content-visibility:auto;
+  contain-intrinsic-size:1px 520px;
+}
+.logo-slot{
+  position:relative;
+  overflow:hidden;
+  border-style:dashed!important;
+}
+.logo-slot::after{
+  content:"UNREVEALED MARK";
+  position:absolute;
+  right:12px;
+  bottom:10px;
+  color:rgba(197,162,74,.52);
+  font:850 7px/1 var(--font-sans);
+  letter-spacing:.13em;
+}
+.quick-link,
+.character-links a,
+.character-network-grid a{
+  min-height:44px;
+}
+.character-feature-art-trigger,
+.dossier-illustration button{
+  touch-action:manipulation;
+}
+@media(max-width:760px){
+  .character-shell{padding-inline:12px}
+  .character-identity{
+    gap:16px;
+    padding:22px 18px;
+  }
+  .character-identity h1{
+    font-size:clamp(44px,15vw,72px);
+    line-height:.86;
+  }
+  .character-subtitle{font-size:15px}
+  .character-thesis{font-size:13px;line-height:1.55}
+  .dossier-grid{grid-template-columns:1fr}
+  .character-infobox{
+    position:static;
+    order:-1;
+  }
+  .wiki-section{padding:20px 18px}
+  .wiki-section h2{font-size:30px}
+  .wiki-section h3{font-size:21px}
+  .wiki-section p,
+  .wiki-section li{font-size:14px;line-height:1.62}
+  .character-links{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .character-links a{
+    width:100%;
+    justify-content:center;
+  }
+  .quick-link{
+    display:flex;
+    align-items:center;
+  }
+}
+@media(max-width:520px){
+  .character-identity{grid-template-columns:1fr}
+  .logo-slot{min-height:96px}
+  .character-network-grid{grid-template-columns:1fr}
+  .dpi-row{
+    grid-template-columns:minmax(86px,.9fr) minmax(0,1.4fr) 34px;
+    gap:7px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .wiki-section{content-visibility:visible}
+}
+
