@@ -1,17 +1,17 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke'];
+const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Duke'];
 
 async function expectUpcomingSection(page) {
   const section = page.locator('#upcoming-characters');
   await expect(section).toBeVisible();
   await expect(section.locator('h2')).toHaveText('Upcoming Characters');
-  await expect(section.locator('.discovery-card')).toHaveCount(7);
+  await expect(section.locator('.discovery-card')).toHaveCount(6);
   await expect(section.locator('.discovery-card h3')).toHaveText(UPCOMING);
   await expect(section.locator('.discovery-card').filter({ hasText: 'Mark Hampton' }).locator('b')).toHaveText('NO OPI LISTING');
   await expect(section.locator('.discovery-card').filter({ hasText: 'Neegan Walters' }).locator('b')).toHaveText('NO OPI LISTING');
-  for (const name of ['Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke']) {
+  for (const name of ['Ballestera', 'Makari', 'Akuaom', 'Duke']) {
     await expect(section.locator('.discovery-card').filter({ hasText: name }).locator('b')).toHaveText('IN DEVELOPMENT');
   }
 }

@@ -9,9 +9,9 @@ const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 const indexable = [
   'index.html','characters.html',
   'characters/gila-monster/index.html','characters/commotion/index.html','characters/aftermark/index.html',
-  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html',
+  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/kokio/index.html',
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
-  'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html',
+  'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
   'start-here.html','lore.html','library.html','news.html','dpi.html','about.html','contact.html','donate.html'
 ];
@@ -86,7 +86,7 @@ test('World Index topology is local-first with a pinned remote fallback', async 
   const html = read('locations.html');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/d3@7.9.0');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/topojson-client@3.1.0');
-  expect(html).toContain('locations.js?v=2');
+  expect(html).toContain('locations.js?v=3');
 });
 
 test('local page links resolve to repository files', async () => {

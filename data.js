@@ -58,5 +58,15 @@ window.OLDROOT_CHARACTERS = [
     summary:"Seattle / Puget Sound vigilante and engineering prodigy whose precision combat system combines guided Vector Talons, integrated mobility, and advanced tactical planning.",
     baseline:{Strength:7.7,Durability:10.9,Speed:8.1,Agility:12.0,Regeneration:5.5,Senses:11.7,Offense:18.5,Intellect:14.8,Combat:19.0,Mobility:15.3,Stamina:9.2},
     conditional:[{category:"Senses",condition:"Precision Pill Active",value:16.1}]
+  },
+  {
+    codename:"Kokio", civilian:"Kalani Kane", classification:"Hero", role:"Hero",
+    powerClass:"Superhuman", registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
+    origin:"Ancient Tiki ritual / Takaro bond", originType:"Supernatural / Ritual", ascendantStatus:null,
+    affiliation:null, page:"characters/kokio/", image:"assets/characters/kokio/kokio-casual.webp",
+    age:26, heightIn:67, weightLb:175, yearsActive:null,
+    summary:"Hilo-based hero empowered through an ancient Tiki ritual bond with Takaro, combining juggernaut physicality, mystical force control, and dual ritual hatchets.",
+    baseline:{Strength:33.0,Durability:32.1,Speed:28.4,Agility:26.7,Regeneration:13.1,Senses:13.8,Offense:35.6,Intellect:6.2,Combat:23.7,Mobility:16.7,Stamina:26.8},
+    conditional:[]
   }
 ];

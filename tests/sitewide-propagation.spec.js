@@ -4,10 +4,10 @@ const path = require('path');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('public registry is propagated across discovery surfaces and the homepage has seven slides', async ({ page }) => {
+test('public registry is propagated across discovery surfaces and the homepage has eight slides', async ({ page }) => {
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-home-character]')).toHaveCount(7);
-  await expect(page.locator('[data-home-slide]')).toHaveCount(7);
+  await expect(page.locator('[data-home-character]')).toHaveCount(8);
+  await expect(page.locator('[data-home-slide]')).toHaveCount(8);
   await expect(page.locator('#homeCharacterTrack')).toHaveCount(1);
   const carouselLayout = await page.evaluate(() => {
     const featured = document.querySelector('.home-featured');
@@ -23,20 +23,22 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
   const featuredArt = page.locator('[data-home-slide="anchorage"] img');
   await expect(featuredArt).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-featured.png');
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 7');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 8');
   await page.locator('#homeCharacterNext').click();
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 7');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 8');
   await expect.poll(() => page.locator('#homeCharacterTrack').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
   await page.locator('[data-home-character="anchorage"]').click();
   await expect(page.locator('[data-home-slide="anchorage"]')).toHaveClass(/active/);
   await expect.poll(() => featuredArt.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
   await expect(page.locator('[data-home-slide="anchorage"] a[href="characters/anchorage/"]')).toHaveCount(1);
   await expect(page.locator('.home-world-grid a[href="locations/baltimore/"]')).toContainText('Anchorage');
+  await expect(page.locator('[data-home-character="kokio"]')).toHaveCount(1);
+  await expect(page.locator('.home-world-grid a[href="locations/hilo/"]')).toContainText('Kokio');
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('7 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('8 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
-  await expect(page.locator('text=Seven ways into the cast.')).toHaveCount(1);
+  await expect(page.locator('text=Eight ways into the cast.')).toHaveCount(1);
 
   await page.goto(BASE + '/locations.html', { waitUntil: 'domcontentloaded' });
   await page.locator('[data-location="baltimore"]').click();
@@ -47,7 +49,7 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('a[href="../../characters/anchorage/"]')).toHaveCount(2);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('6 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('7 CHARACTERS');
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {

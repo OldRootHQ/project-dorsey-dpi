@@ -96,6 +96,21 @@
       coords: [-122.3321, 47.6062],
       labelOffset: [11, -10]
     },
+    hilo: {
+      id: "LOC-007",
+      name: "Hilo, Hawaiʻi Island",
+      shortName: "Hilo",
+      type: "Home base / primary operating location",
+      region: "Hawaiʻi, United States",
+      status: "Established",
+      character: "Kokio",
+      characterUrl: "characters/kokio/",
+      characters: [{ name: "Kokio", url: "characters/kokio/", role: "Hero" }],
+      dossierUrl: "locations/hilo/",
+      note: "Hilo and eastern Hawaiʻi Island are Kokio’s established home base and primary operating region.",
+      coords: [-155.09, 19.7074],
+      labelOffset: [11, -10]
+    },
     washington: {
       id: "REF-001",
       name: "Washington, D.C.",
