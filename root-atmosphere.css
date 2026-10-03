@@ -1,0 +1,188 @@
+/* OR-WEB-0028 — Root Atmosphere experiment
+   Single-file reversible visual layer. Remove this stylesheet import to revert. */
+
+html body.oldroot-after-dark{
+  background:
+    radial-gradient(circle at 14% 7%,rgba(38,118,76,.16),transparent 32rem),
+    radial-gradient(circle at 88% 15%,rgba(32,92,62,.11),transparent 34rem),
+    radial-gradient(circle at 48% 72%,rgba(23,78,51,.10),transparent 50rem),
+    linear-gradient(180deg,#010705 0%,#020a07 42%,#010503 100%) fixed;
+}
+
+html body.oldroot-after-dark::before{
+  content:"";
+  position:fixed;
+  inset:-5vh -5vw;
+  z-index:-2;
+  pointer-events:none;
+  opacity:.56;
+  background:
+    url("assets/branding/root-network.svg") center top / min(1800px,120vw) auto repeat-y,
+    radial-gradient(circle at 18% 22%,rgba(67,161,105,.12),transparent 24rem),
+    radial-gradient(circle at 78% 70%,rgba(38,112,72,.10),transparent 28rem);
+  filter:saturate(112%) drop-shadow(0 0 18px rgba(51,145,91,.08));
+  animation:oldroot-root-drift 52s ease-in-out infinite alternate;
+}
+
+html body.oldroot-after-dark::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.26;
+  background:
+    repeating-linear-gradient(180deg,rgba(126,224,164,.018) 0 1px,transparent 1px 5px),
+    repeating-radial-gradient(circle at 0 0,rgba(255,255,255,.032) 0 .65px,transparent .8px 3px),
+    radial-gradient(ellipse at center,transparent 38%,rgba(0,0,0,.72) 100%);
+  background-size:auto,8px 8px,auto;
+  mix-blend-mode:screen;
+}
+
+@keyframes oldroot-root-drift{
+  from{transform:translate3d(-1.1%,0,0) scale(1.01)}
+  to{transform:translate3d(1.1%,-1.4%,0) scale(1.025)}
+}
+
+/* Root tendrils visually bleed into major content bubbles without covering text. */
+body.oldroot-after-dark .character-identity,
+body.oldroot-after-dark .wiki-section,
+body.oldroot-after-dark .character-infobox,
+body.oldroot-after-dark .location-section,
+body.oldroot-after-dark .location-facts,
+body.oldroot-after-dark .org-card,
+body.oldroot-after-dark .lore-entry,
+body.oldroot-after-dark .dispatch-card,
+body.oldroot-after-dark .discovery-card,
+body.oldroot-after-dark .panel{
+  position:relative;
+  isolation:isolate;
+}
+
+body.oldroot-after-dark .character-identity::before,
+body.oldroot-after-dark .wiki-section::before,
+body.oldroot-after-dark .character-infobox::before,
+body.oldroot-after-dark .location-section::before,
+body.oldroot-after-dark .location-facts::before,
+body.oldroot-after-dark .org-card::after,
+body.oldroot-after-dark .lore-entry::after,
+body.oldroot-after-dark .dispatch-card::after,
+body.oldroot-after-dark .discovery-card::after,
+body.oldroot-after-dark .panel::after{
+  content:"";
+  position:absolute;
+  width:210px;
+  height:130px;
+  right:-28px;
+  bottom:-28px;
+  z-index:0;
+  pointer-events:none;
+  opacity:.46;
+  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  mix-blend-mode:screen;
+}
+
+body.oldroot-after-dark .character-identity>*,
+body.oldroot-after-dark .wiki-section>*,
+body.oldroot-after-dark .character-infobox>*,
+body.oldroot-after-dark .location-section>*,
+body.oldroot-after-dark .location-facts>*,
+body.oldroot-after-dark .org-card>*,
+body.oldroot-after-dark .lore-entry>*,
+body.oldroot-after-dark .dispatch-card>*,
+body.oldroot-after-dark .discovery-card>*,
+body.oldroot-after-dark .panel>*{
+  position:relative;
+  z-index:1;
+}
+
+/* Slight glass separation so the darker canvas and roots stay behind content. */
+body.oldroot-after-dark .character-identity,
+body.oldroot-after-dark .wiki-section,
+body.oldroot-after-dark .character-infobox,
+body.oldroot-after-dark .location-section,
+body.oldroot-after-dark .location-facts,
+body.oldroot-after-dark .org-card,
+body.oldroot-after-dark .lore-entry,
+body.oldroot-after-dark .dispatch-card,
+body.oldroot-after-dark .discovery-card,
+body.oldroot-after-dark .panel{
+  backdrop-filter:blur(10px) saturate(108%);
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.30),
+    0 0 0 1px rgba(106,205,145,.025) inset;
+}
+
+@media(max-width:680px){
+  html body.oldroot-after-dark::before{
+    opacity:.34;
+    animation:none;
+    background-size:1280px auto,auto,auto;
+  }
+  html body.oldroot-after-dark::after{opacity:.20}
+  body.oldroot-after-dark .character-identity::before,
+  body.oldroot-after-dark .wiki-section::before,
+  body.oldroot-after-dark .character-infobox::before,
+  body.oldroot-after-dark .location-section::before,
+  body.oldroot-after-dark .location-facts::before,
+  body.oldroot-after-dark .org-card::after,
+  body.oldroot-after-dark .lore-entry::after,
+  body.oldroot-after-dark .dispatch-card::after,
+  body.oldroot-after-dark .discovery-card::after,
+  body.oldroot-after-dark .panel::after{
+    width:150px;
+    height:95px;
+    right:0;
+    bottom:0;
+    opacity:.32;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html body.oldroot-after-dark::before{animation:none}
+}
+
+
+/* Major homepage/editorial bubbles get a larger root bleed at the edge. */
+body.oldroot-after-dark .home-featured,
+body.oldroot-after-dark .home-world-section,
+body.oldroot-after-dark .home-library-section,
+body.oldroot-after-dark .section-band{
+  position:relative;
+  isolation:isolate;
+}
+body.oldroot-after-dark .home-featured::after,
+body.oldroot-after-dark .home-world-section::after,
+body.oldroot-after-dark .home-library-section::after,
+body.oldroot-after-dark .section-band::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:185px;
+  right:-42px;
+  bottom:-46px;
+  z-index:0;
+  pointer-events:none;
+  opacity:.40;
+  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  mix-blend-mode:screen;
+}
+body.oldroot-after-dark .home-featured>*,
+body.oldroot-after-dark .home-world-section>*,
+body.oldroot-after-dark .home-library-section>*,
+body.oldroot-after-dark .section-band>*{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:680px){
+  body.oldroot-after-dark .home-featured::after,
+  body.oldroot-after-dark .home-world-section::after,
+  body.oldroot-after-dark .home-library-section::after,
+  body.oldroot-after-dark .section-band::after{
+    width:190px;
+    height:120px;
+    right:0;
+    bottom:0;
+    opacity:.27;
+  }
+}

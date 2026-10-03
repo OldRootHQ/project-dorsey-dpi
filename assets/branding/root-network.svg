@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1500" viewBox="0 0 1800 1500" fill="none">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="root" x1="0" y1="0" x2="1800" y2="1500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#79D39C" stop-opacity=".18"/>
+      <stop offset=".5" stop-color="#4DAD75" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#8EE1AD" stop-opacity=".14"/>
+    </linearGradient>
+    <linearGradient id="rootSoft" x1="1800" y1="0" x2="0" y2="1500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4AA56F" stop-opacity=".08"/>
+      <stop offset=".55" stop-color="#79D39C" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#4AA56F" stop-opacity=".07"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-40 90C120 160 150 310 310 365C430 406 480 335 590 430C670 500 650 620 760 680C880 744 995 665 1110 760C1210 842 1192 982 1320 1055C1450 1128 1610 1046 1840 1195" stroke="url(#root)" stroke-width="4"/>
+    <path d="M188 215C270 252 330 235 398 300C455 353 448 422 515 465" stroke="url(#root)" stroke-width="2"/>
+    <path d="M388 390C300 460 270 560 315 652C348 718 405 748 420 820" stroke="url(#rootSoft)" stroke-width="2.2"/>
+    <path d="M612 445C730 390 810 405 900 488C972 555 990 640 1060 690" stroke="url(#rootSoft)" stroke-width="2.1"/>
+    <path d="M770 680C710 780 720 875 790 944C860 1014 940 1000 1000 1084" stroke="url(#root)" stroke-width="2.6"/>
+    <path d="M1110 760C1178 702 1252 710 1325 766C1390 816 1404 902 1470 938" stroke="url(#rootSoft)" stroke-width="2.2"/>
+    <path d="M1320 1055C1260 1148 1265 1235 1320 1302C1360 1350 1414 1362 1460 1412" stroke="url(#root)" stroke-width="2.6"/>
+
+    <path d="M1810 130C1620 182 1550 300 1445 350C1338 400 1258 360 1170 445C1088 525 1110 615 1010 678C900 748 820 718 720 800C620 884 650 1000 520 1060C390 1120 238 1058 -30 1260" stroke="url(#rootSoft)" stroke-width="3.5"/>
+    <path d="M1540 308C1480 248 1415 230 1348 265C1288 296 1265 352 1202 390" stroke="url(#root)" stroke-width="2"/>
+    <path d="M1174 447C1114 390 1044 372 980 410C928 440 910 495 860 530" stroke="url(#rootSoft)" stroke-width="2"/>
+    <path d="M1012 677C1072 742 1082 818 1045 878C1013 930 960 948 927 1000" stroke="url(#root)" stroke-width="2.4"/>
+    <path d="M719 800C650 742 574 730 515 773C465 810 452 865 405 905" stroke="url(#rootSoft)" stroke-width="2"/>
+    <path d="M520 1060C590 1128 610 1215 565 1282C535 1326 488 1344 455 1395" stroke="url(#root)" stroke-width="2.2"/>
+
+    <g opacity=".45" filter="url(#glow)" fill="#7FE0A3">
+      <circle cx="310" cy="365" r="3"/><circle cx="590" cy="430" r="3"/><circle cx="760" cy="680" r="3"/>
+      <circle cx="1110" cy="760" r="3"/><circle cx="1320" cy="1055" r="3"/>
+      <circle cx="1445" cy="350" r="3"/><circle cx="1170" cy="445" r="3"/><circle cx="1010" cy="678" r="3"/>
+      <circle cx="720" cy="800" r="3"/><circle cx="520" cy="1060" r="3"/>
+    </g>
+  </g>
+
+  <g fill="#80DDA4" opacity=".14" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" letter-spacing="3">
+    <text x="92" y="150">01 // ROOT.NODE // 7A</text>
+    <text x="462" y="338">Δ 11 01 10 00</text>
+    <text x="836" y="602">BRANCH_04 / 0101</text>
+    <text x="1194" y="922">0x17 // OLDROOT</text>
+    <text x="1458" y="1128">0110 0011 01</text>
+    <text x="1328" y="238">VEIN://ACTIVE</text>
+    <text x="988" y="360">001101 / NODE</text>
+    <text x="610" y="920">ROOT.SYS 0100</text>
+    <text x="236" y="1146">BRANCH_09</text>
+  </g>
+</svg>
