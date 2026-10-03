@@ -248,6 +248,28 @@ body.oldroot-after-dark:not(.home-after-dark) .filter-toggle:hover{
     radial-gradient(circle at 86% 20%,rgba(75,172,112,.18),transparent 20rem),
     linear-gradient(145deg,rgba(10,34,23,.98),rgba(4,18,12,.95));
 }
+body.oldroot-after-dark:not(.home-after-dark) .registry-sort{
+  color:var(--after-text);
+  border-color:rgba(197,162,74,.36);
+  background:
+    radial-gradient(circle at 90% 10%,rgba(62,148,98,.14),transparent 13rem),
+    linear-gradient(145deg,rgba(8,28,19,.95),rgba(3,15,10,.92));
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.30),
+    0 0 0 1px rgba(97,188,132,.035) inset;
+  backdrop-filter:blur(14px) saturate(112%);
+}
+body.oldroot-after-dark:not(.home-after-dark) .registry-sort>span{
+  color:var(--old-gold);
+}
+body.oldroot-after-dark:not(.home-after-dark) .registry-sort select{
+  color:var(--after-text);
+  background:transparent;
+}
+body.oldroot-after-dark:not(.home-after-dark) .registry-sort select option{
+  color:var(--after-text);
+  background:#071b12;
+}
 body.oldroot-after-dark:not(.home-after-dark) .filter-sliders,
 body.oldroot-after-dark:not(.home-after-dark) .filter-toggle-icon{
   color:var(--old-gold);
