@@ -90,7 +90,7 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
   const brand = fs.readFileSync(path.join(root, 'brand.css'), 'utf8');
   const atmosphere = fs.readFileSync(path.join(root, 'root-atmosphere.css'), 'utf8');
 
-  expect(brand.startsWith('@import url("root-atmosphere.css?v=1");')).toBe(true);
+  expect(brand.startsWith('@import url("root-atmosphere.css?v=2");')).toBe(true);
   expect(atmosphere).toContain('OR-WEB-0028 — Root Atmosphere experiment');
   expect(fs.existsSync(path.join(root, 'assets/branding/root-network.svg'))).toBe(true);
   expect(fs.existsSync(path.join(root, 'assets/branding/root-corner.svg'))).toBe(true);
@@ -108,7 +108,41 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf8');
-    expect(html, path.relative(root, file)).toContain('brand.css?v=12');
-    expect(html, path.relative(root, file)).not.toContain('brand.css?v=11');
+    expect(html, path.relative(root, file)).toContain('brand.css?v=13');
+    expect(html, path.relative(root, file)).not.toContain('brand.css?v=12');
   }
+});
+
+
+test('character registry filter control is integrated into the finalized dark atmosphere', async ({ page }) => {
+  await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
+
+  const state = await page.locator('#filterToggle').evaluate(el => {
+    const s = getComputedStyle(el);
+    const sliders = getComputedStyle(el.querySelector('.filter-sliders'));
+    return {
+      background: s.backgroundImage,
+      color: s.color,
+      borderColor: s.borderTopColor,
+      rootVisible: s.backgroundImage.includes('root-corner.svg'),
+      iconColor: sliders.color
+    };
+  });
+
+  expect(state.rootVisible).toBe(true);
+  expect(state.background).toContain('linear-gradient');
+  expect(state.color).not.toBe('rgb(23, 52, 40)');
+
+  const cardRoot = await page.locator('.character-card').first().evaluate(el => {
+    const after = getComputedStyle(el, '::after');
+    return {
+      image: after.backgroundImage,
+      opacity: Number(after.opacity),
+      pointerEvents: after.pointerEvents
+    };
+  });
+
+  expect(cardRoot.image).toContain('root-corner.svg');
+  expect(cardRoot.opacity).toBeGreaterThan(0.35);
+  expect(cardRoot.pointerEvents).toBe('none');
 });
