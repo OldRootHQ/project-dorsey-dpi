@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0033 · October 3, 2026 · Character Release
+
+- Promoted Latch Boswell from Upcoming Characters into the public Character Registry and homepage Character Spotlight.
+- Added a complete Latch dossier preserving his Australian military background, 2nd Commando Regiment service, permanent eye injury, recruitment/security role, post-Genesis field work, technical intelligence, combat profile, moral code, and intentionally unresolved first major defeat.
+- Integrated the supplied Latch artwork package as optimized WebP assets with full-image lightbox access.
+- Added Latch to the public sitemap and automated visual-QA surface.
+- Removed Latch from both Upcoming Characters previews.
+- Kept Latch out of numeric OPI comparisons because no creator-approved OPI values are present in the current source of truth; no scores were inferred.
+
 ## OR-WEB-0032 · October 3, 2026 · Registry Framing Fix
 
 - Replaced the desktop Character Registry’s ratio-only image sizing with an explicit capped thumbnail height.
