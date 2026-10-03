@@ -2851,3 +2851,28 @@ body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
   }
 }
 
+/* OR-WEB-0030 · mobile carousel containment hardening */
+@media(max-width:680px){
+  .home-after-dark .home-character-track{
+    max-width:100%;
+    margin-inline:0;
+    width:100%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    contain:inline-size;
+  }
+  .home-after-dark .home-character-track .home-character-slide,
+  .home-after-dark .home-character-art,
+  .home-after-dark .home-character-copy,
+  .home-after-dark .home-character-links{
+    min-width:0;
+    max-width:100%;
+  }
+  .home-after-dark .home-character-art img{
+    display:block;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+}
+
