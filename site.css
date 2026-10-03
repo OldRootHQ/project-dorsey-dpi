@@ -2132,3 +2132,165 @@ body.oldroot-after-dark:not(.home-after-dark) .rule{
     border-radius:22px
   }
 }
+
+/* =========================================================
+   OR-WEB-0025 · LIVING ROOT FIELD · DEPTH + CONTINUITY PASS
+   Shared organic root system, ambient network motion, and
+   selective open-section rhythm across After Dark surfaces.
+   ========================================================= */
+
+body.oldroot-after-dark{
+  position:relative;
+  isolation:isolate;
+  min-height:100%;
+  background:
+    radial-gradient(circle at 12% 5%,rgba(45,118,78,.17),transparent 34rem),
+    radial-gradient(circle at 91% 19%,rgba(197,162,74,.045),transparent 30rem),
+    radial-gradient(circle at 48% 64%,rgba(27,88,59,.12),transparent 50rem),
+    linear-gradient(180deg,#04100b 0%,#020a07 48%,#010604 100%) fixed;
+}
+
+/* Keep all real page content above the environmental layers. */
+body.oldroot-after-dark > *{
+  position:relative;
+  z-index:1;
+}
+
+/* Far depth: one organic system that continues down the whole document. */
+body.oldroot-after-dark::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.46;
+  background-image:
+    url("assets/branding/oldroot-root-field.svg"),
+    url("assets/branding/oldroot-root-field.svg");
+  background-repeat:repeat-y,repeat-y;
+  background-size:
+    min(1840px,145vw) 2760px,
+    min(2320px,178vw) 3480px;
+  background-position:
+    50% 0,
+    68% 1260px;
+  filter:saturate(.78) contrast(1.03);
+}
+
+/* Middle depth: sparse nodes, fine traces, haze, and a very slow living drift. */
+body.oldroot-after-dark::after{
+  content:"";
+  position:fixed;
+  inset:-4%;
+  z-index:0;
+  pointer-events:none;
+  opacity:.52;
+  background:
+    radial-gradient(circle at 16% 22%,rgba(197,162,74,.42) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 76% 18%,rgba(94,174,130,.34) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 88% 67%,rgba(94,174,130,.28) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 31% 79%,rgba(197,162,74,.24) 0 1px,transparent 1.5px),
+    repeating-linear-gradient(116deg,transparent 0 122px,rgba(104,161,131,.022) 122px 123px),
+    repeating-linear-gradient(27deg,transparent 0 178px,rgba(197,162,74,.016) 178px 179px),
+    radial-gradient(ellipse at 48% 45%,transparent 38%,rgba(0,0,0,.38) 100%);
+  background-size:
+    520px 520px,
+    680px 680px,
+    760px 760px,
+    620px 620px,
+    auto,
+    auto,
+    auto;
+  mix-blend-mode:screen;
+  animation:oldrootAmbientDrift 38s ease-in-out infinite alternate;
+}
+
+/* Foreground surfaces remain legible while allowing the root field to breathe through. */
+body.oldroot-after-dark:not(.home-after-dark) .page-head,
+body.oldroot-after-dark:not(.home-after-dark) .lead-story,
+body.oldroot-after-dark:not(.home-after-dark) .content-block,
+body.oldroot-after-dark:not(.home-after-dark) .section-band{
+  background:
+    radial-gradient(circle at 92% 0%,rgba(52,126,88,.10),transparent 22rem),
+    linear-gradient(145deg,rgba(8,27,19,.82),rgba(3,14,10,.72));
+  box-shadow:
+    0 30px 86px rgba(0,0,0,.25),
+    inset 0 1px rgba(243,235,221,.018);
+}
+
+.home-after-dark .home-featured,
+.home-after-dark .home-library-section,
+.home-after-dark .section-band{
+  background:
+    radial-gradient(circle at 92% 0%,rgba(53,127,88,.11),transparent 22rem),
+    linear-gradient(145deg,rgba(8,27,19,.76),rgba(4,16,11,.66));
+}
+
+/* Break the stacked-card rhythm: the world index opens directly into the shared root field. */
+.home-after-dark .home-world-section{
+  overflow:visible;
+  border-color:transparent;
+  background:transparent;
+  box-shadow:none;
+  backdrop-filter:none;
+  padding-inline:clamp(10px,2vw,24px);
+}
+.home-after-dark .home-world-section::before{
+  opacity:.72;
+  inset:-36px -5vw;
+  background:
+    radial-gradient(circle at 18% 42%,rgba(62,139,96,.075),transparent 18rem),
+    linear-gradient(90deg,transparent 0 9%,rgba(197,162,74,.14) 9.05% 9.10%,transparent 9.15% 100%) top / 100% 1px no-repeat;
+}
+.home-after-dark .home-world-grid{
+  position:relative;
+  z-index:2;
+}
+
+/* Give the hero map and key nodes a barely perceptible pulse rather than overt animation. */
+.root-node::after{
+  animation:oldrootNodePulse 7.5s ease-in-out infinite;
+}
+.root-node-b::after{animation-delay:-1.6s}
+.root-node-c::after{animation-delay:-3.4s}
+.root-node-d::after{animation-delay:-5.2s}
+.root-node-e::after{animation-delay:-6.3s}
+
+@keyframes oldrootAmbientDrift{
+  0%{
+    transform:translate3d(-.35%,-.2%,0) scale(1.006);
+    background-position:0 0,0 0,0 0,0 0,0 0,0 0,center;
+  }
+  100%{
+    transform:translate3d(.45%,.3%,0) scale(1.012);
+    background-position:13px -9px,-11px 8px,8px 12px,-7px -10px,9px 4px,-6px 5px,center;
+  }
+}
+@keyframes oldrootNodePulse{
+  0%,100%{opacity:.72;transform:scale(.72)}
+  50%{opacity:1;transform:scale(1)}
+}
+
+/* Keep the environmental system subtle and inexpensive on smaller screens. */
+@media(max-width:760px){
+  body.oldroot-after-dark::before{
+    opacity:.32;
+    background-image:url("assets/branding/oldroot-root-field.svg");
+    background-size:1120px 1680px;
+    background-position:52% 0;
+  }
+  body.oldroot-after-dark::after{
+    inset:-2%;
+    opacity:.38;
+    background-size:420px 420px,520px 520px,600px 600px,480px 480px,auto,auto,auto;
+  }
+  .home-after-dark .home-world-section::before{inset:-20px -18px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  body.oldroot-after-dark::after,
+  .root-node::after{
+    animation:none!important;
+  }
+}
+
