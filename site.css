@@ -2285,7 +2285,7 @@ body.oldroot-after-dark:not(.home-after-dark) .section-band{
     background-position:52% 0;
   }
   body.oldroot-after-dark::after{
-    inset:-2%;
+    inset:0;
     opacity:.38;
     background-size:420px 420px,520px 520px,600px 600px,480px 480px,auto,auto,auto;
   }
