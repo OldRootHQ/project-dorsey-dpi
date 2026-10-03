@@ -51,13 +51,6 @@ test('OldRoot After Dark homepage remains contained on phone width', async ({ pa
   }));
 
   expect(layout.htmlWidth).toBeLessThanOrEqual(layout.viewport + 2);
-  if (layout.bodyWidth > layout.viewport + 2) {
-    const offenders = await page.evaluate(() => [...document.querySelectorAll('body *')].map(el => {
-      const r = el.getBoundingClientRect();
-      return { tag: el.tagName, id: el.id, cls: String(el.className || '').slice(0,120), left: Math.round(r.left), right: Math.round(r.right), width: Math.round(r.width) };
-    }).filter(x => x.right > innerWidth + 2 || x.left < -2).sort((a,b) => Math.max(b.right-innerWidth,-b.left)-Math.max(a.right-innerWidth,-a.left)).slice(0,12));
-    console.log('MOBILE_OVERFLOW_OFFENDERS', JSON.stringify(offenders));
-  }
   expect(layout.bodyWidth).toBeLessThanOrEqual(layout.viewport + 2);
   expect(layout.heroWidth).toBeLessThanOrEqual(layout.viewport);
   expect(layout.rootMapWidth).toBeLessThan(layout.viewport);
