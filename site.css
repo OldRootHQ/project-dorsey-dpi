@@ -2836,4 +2836,18 @@ body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
   .book-placeholder,
   .dispatch-filters button{scroll-behavior:auto}
 }
+@media(max-width:520px){
+  .home-carousel-controls{flex-wrap:wrap}
+  #homeCharacterCounter{
+    order:-1;
+    flex:0 0 100%;
+    min-height:24px;
+    display:grid;
+    place-items:center;
+  }
+  #homeCharacterPause:disabled{
+    opacity:.62;
+    cursor:default;
+  }
+}
 
