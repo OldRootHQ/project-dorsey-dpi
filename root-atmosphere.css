@@ -17,7 +17,7 @@ html body.oldroot-after-dark::before{
   pointer-events:none;
   opacity:.67;
   background:
-    url("assets/branding/root-network.svg") center top / min(1800px,120vw) auto repeat-y,
+    url("assets/branding/root-network.svg?v=2") center top / min(1800px,120vw) auto repeat-y,
     radial-gradient(circle at 18% 22%,rgba(67,161,105,.12),transparent 24rem),
     radial-gradient(circle at 78% 70%,rgba(38,112,72,.10),transparent 28rem);
   filter:saturate(118%) drop-shadow(0 0 22px rgba(51,145,91,.12));
@@ -78,7 +78,7 @@ body.oldroot-after-dark .panel::after{
   z-index:0;
   pointer-events:none;
   opacity:.58;
-  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  background:url("assets/branding/root-corner.svg?v=2") right bottom / contain no-repeat;
   mix-blend-mode:screen;
 }
 
@@ -164,7 +164,7 @@ body.oldroot-after-dark .section-band::after{
   z-index:0;
   pointer-events:none;
   opacity:.52;
-  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  background:url("assets/branding/root-corner.svg?v=2") right bottom / contain no-repeat;
   mix-blend-mode:screen;
 }
 body.oldroot-after-dark .home-featured>*,
@@ -193,7 +193,7 @@ body.oldroot-after-dark .section-band>*{
 /* Give the registry and editorial intro panels visible roots of their own. */
 body.oldroot-after-dark:not(.home-after-dark) .page-head{
   background:
-    url("assets/branding/root-corner.svg") right -18px bottom -26px / 330px auto no-repeat,
+    url("assets/branding/root-corner.svg?v=2") right -18px bottom -26px / 330px auto no-repeat,
     radial-gradient(circle at 92% 0%,rgba(52,126,88,.15),transparent 22rem),
     linear-gradient(145deg,rgba(7,25,17,.94),rgba(3,14,10,.86));
   border-color:rgba(112,201,145,.14);
@@ -217,7 +217,7 @@ body.oldroot-after-dark:not(.home-after-dark) .character-card::after{
   z-index:0;
   pointer-events:none;
   opacity:.44;
-  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  background:url("assets/branding/root-corner.svg?v=2") right bottom / contain no-repeat;
   mix-blend-mode:screen;
 }
 body.oldroot-after-dark:not(.home-after-dark) .character-card>*{
@@ -232,7 +232,7 @@ body.oldroot-after-dark:not(.home-after-dark) .filter-toggle{
   color:var(--after-text);
   border-color:rgba(197,162,74,.36);
   background:
-    url("assets/branding/root-corner.svg") right -18px bottom -38px / 260px auto no-repeat,
+    url("assets/branding/root-corner.svg?v=2") right -18px bottom -38px / 260px auto no-repeat,
     radial-gradient(circle at 86% 20%,rgba(64,151,99,.14),transparent 20rem),
     linear-gradient(145deg,rgba(8,28,19,.95),rgba(3,15,10,.92));
   box-shadow:
@@ -244,7 +244,7 @@ body.oldroot-after-dark:not(.home-after-dark) .filter-toggle:hover{
   color:var(--cream);
   border-color:rgba(197,162,74,.66);
   background:
-    url("assets/branding/root-corner.svg") right -18px bottom -38px / 260px auto no-repeat,
+    url("assets/branding/root-corner.svg?v=2") right -18px bottom -38px / 260px auto no-repeat,
     radial-gradient(circle at 86% 20%,rgba(75,172,112,.18),transparent 20rem),
     linear-gradient(145deg,rgba(10,34,23,.98),rgba(4,18,12,.95));
 }
@@ -349,7 +349,7 @@ body.oldroot-after-dark:not(.home-after-dark) .filter-apply:hover{
   }
   body.oldroot-after-dark:not(.home-after-dark) .page-head{
     background:
-      url("assets/branding/root-corner.svg") right -10px bottom -12px / 210px auto no-repeat,
+      url("assets/branding/root-corner.svg?v=2") right -10px bottom -12px / 210px auto no-repeat,
       radial-gradient(circle at 92% 0%,rgba(52,126,88,.12),transparent 18rem),
       linear-gradient(145deg,rgba(7,25,17,.95),rgba(3,14,10,.90));
   }
