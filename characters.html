@@ -276,8 +276,8 @@
       const count=filterInputs.filter(input=>input.checked).length;
       filterCount.textContent=count;
       filterCount.hidden=count===0;
-      sortCards('alphabetical');
-    updateOptionCounts();
+      sortCards(sortSelect.value);
+      updateOptionCounts();
     }
 
     function closeDrawer(){
@@ -314,6 +314,7 @@
       });
     });
 
+    sortCards(sortSelect.value);
     updateOptionCounts();
   </script>
   <script src="lightbox.js?v=9"></script>
