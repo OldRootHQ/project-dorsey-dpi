@@ -137,18 +137,18 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*07/);
-  await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*06/);
+  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*08/);
+  await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*07/);
   await expect(page.locator('[data-home-character="agent-emerald"]')).toHaveCount(1);
   const agentHome = page.locator('[data-home-slide="agent-emerald"] img');
   await expect(agentHome).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-featured.webp');
   await page.locator('[data-home-character="agent-emerald"]').click();
   await expect(agentHome).toBeVisible();
   await expect.poll(() => agentHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('6 / 7');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('6 / 8');
 
   await page.goto(`${BASE}/start-here.html`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('7 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('8 active records');
   await expect(page.locator('a[href="characters/agent-emerald/"]')).toHaveCount(1);
 });
 

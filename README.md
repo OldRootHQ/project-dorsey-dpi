@@ -10,6 +10,7 @@ Static public website for the OldRoot universe, including character dossiers, lo
 - Anchorage / Gilmer Simpson
 - Agent Emerald / Remington James “Remy” Hampton
 - Latch / Latch Boswell
+- Kokio / Kalani Kane
 
 ## Canon note
 The analytics layer uses the eleven established OPI categories. Any displayed baseline mean is an analytics-only visualization statistic, not a canonical overall power score.

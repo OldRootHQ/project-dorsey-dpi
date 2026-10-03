@@ -8,6 +8,7 @@ const DARK_PAGES = [
   ['characters.html', '.character-card'],
   ['characters/anchorage/', '.wiki-section'],
   ['characters/agent-emerald/', '.wiki-section'],
+  ['characters/kokio/', '.wiki-section'],
   ['start-here.html', '.section-band'],
   ['lore.html', '.lore-entry'],
   ['events.html', '.event-feature'],
@@ -16,6 +17,7 @@ const DARK_PAGES = [
   ['locations.html', '.location-terminal'],
   ['locations/baltimore/', '.location-section'],
   ['locations/seattle/', '.location-section'],
+  ['locations/hilo/', '.location-section'],
   ['library.html', '.library-card'],
   ['library/oldroot-book-1/', '.product-buybox'],
   ['news.html', '.dispatch-card'],
@@ -60,6 +62,7 @@ test('After Dark major pages remain viewport-safe on mobile', async ({ page }) =
     '/characters.html',
     '/characters/anchorage/',
     '/characters/agent-emerald/',
+    '/characters/kokio/',
     '/start-here.html',
     '/lore.html',
     '/events.html',
@@ -68,6 +71,7 @@ test('After Dark major pages remain viewport-safe on mobile', async ({ page }) =
     '/locations.html',
     '/locations/baltimore/',
     '/locations/seattle/',
+    '/locations/hilo/',
     '/library.html',
     '/library/oldroot-book-1/',
     '/news.html',
@@ -119,11 +123,11 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (html.includes('lightbox.js') && !html.includes('lightbox.js?v=9')) failures.push(relative + ': lightbox cache key stale');
     if (html.includes('nav.js') && !html.includes('nav.js?v=3')) failures.push(relative + ': nav cache key stale');
     if (html.includes('shop.js') && !html.includes('shop.js?v=1')) failures.push(relative + ': shop script cache key stale');
-    if (html.includes('locations.js') && !html.includes('locations.js?v=2')) failures.push(relative + ': locations script cache key stale');
-    if (relative === 'dpi.html' && !html.includes('data.js?v=14')) failures.push(relative + ': OPI data cache key stale');
+    if (html.includes('locations.js') && !html.includes('locations.js?v=3')) failures.push(relative + ': locations script cache key stale');
+    if (relative === 'dpi.html' && !html.includes('data.js?v=15')) failures.push(relative + ': OPI data cache key stale');
     if (relative === 'dpi.html' && !html.includes('app.js?v=10')) failures.push(relative + ': OPI app cache key stale');
   }
 
-  expect(htmlFiles.length).toBe(42);
+  expect(htmlFiles.length).toBe(44);
   expect(failures).toEqual([]);
 });

@@ -2,6 +2,17 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0034 · October 3, 2026 · Character Release
+
+- Promoted Kalani Kane from the development seed list into the public registry under her canon hero alias, Kokio.
+- Added a complete Kokio dossier preserving her Hilo home base, family and Duke Decker relationships, shared ritual origin, Takaro bond, physical/mystical combat system, dual ritual hatchets, durability limits, locked visual identity, and intentionally open canon boundaries.
+- Integrated six creator-supplied Kokio illustrations as optimized WebP assets with full-image lightbox access.
+- Added Kokio's exact creator-approved eleven-category OPI values without publishing a canonical overall OPI score.
+- Added Hilo / eastern Hawaiʻi Island as an established public location and connected it to Kokio across the World Index.
+- Removed Kalani from Upcoming Characters while leaving Duke in development.
+- Added Kokio and Hilo to sitemap, public counts, discovery surfaces, regression coverage, and automated visual QA.
+- Cleaned the stray escaped newline left in the Character Registry stylesheet during the prior Latch release.
+
 ## OR-WEB-0033 · October 3, 2026 · Character Release
 
 - Promoted Latch Boswell from Upcoming Characters into the public Character Registry and homepage Character Spotlight.
