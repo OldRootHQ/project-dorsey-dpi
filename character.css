@@ -544,3 +544,83 @@ body.oldroot-after-dark .dossier-illustration figcaption{
     max-height:none;
   }
 }
+
+/* =========================================================
+   OR-WEB-0025 · CHARACTER DOSSIER LIVING ROOT FIELD
+   ========================================================= */
+body.oldroot-after-dark{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 14% 5%,rgba(49,124,84,.15),transparent 32rem),
+    radial-gradient(circle at 90% 12%,rgba(197,162,74,.04),transparent 28rem),
+    radial-gradient(circle at 50% 68%,rgba(27,88,59,.10),transparent 48rem),
+    linear-gradient(180deg,#04100b 0%,#020a07 48%,#010604 100%) fixed;
+}
+body.oldroot-after-dark > *{
+  position:relative;
+  z-index:1;
+}
+body.oldroot-after-dark::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.40;
+  background-image:
+    url("assets/branding/oldroot-root-field.svg"),
+    url("assets/branding/oldroot-root-field.svg");
+  background-repeat:repeat-y,repeat-y;
+  background-size:min(1840px,145vw) 2760px,min(2320px,178vw) 3480px;
+  background-position:50% 0,68% 1260px;
+  filter:saturate(.76) contrast(1.03);
+}
+body.oldroot-after-dark::after{
+  content:"";
+  position:fixed;
+  inset:-4%;
+  z-index:0;
+  pointer-events:none;
+  opacity:.34;
+  background:
+    radial-gradient(circle at 16% 22%,rgba(197,162,74,.38) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 76% 18%,rgba(94,174,130,.30) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 88% 67%,rgba(94,174,130,.22) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 31% 79%,rgba(197,162,74,.18) 0 1px,transparent 1.5px),
+    repeating-linear-gradient(116deg,transparent 0 132px,rgba(104,161,131,.018) 132px 133px),
+    radial-gradient(ellipse at 48% 45%,transparent 38%,rgba(0,0,0,.34) 100%);
+  background-size:520px 520px,680px 680px,760px 760px,620px 620px,auto,auto;
+  mix-blend-mode:screen;
+  animation:characterRootAmbientDrift 40s ease-in-out infinite alternate;
+}
+body.oldroot-after-dark .character-identity,
+body.oldroot-after-dark .wiki-section,
+body.oldroot-after-dark .character-infobox,
+body.oldroot-after-dark .character-links{
+  background:
+    radial-gradient(circle at 100% 0%,rgba(52,126,88,.08),transparent 18rem),
+    rgba(5,20,14,.74);
+}
+body.oldroot-after-dark .character-identity{
+  background:
+    radial-gradient(circle at 88% 0%,rgba(197,162,74,.065),transparent 18rem),
+    linear-gradient(145deg,rgba(8,28,19,.87),rgba(3,15,10,.76));
+}
+@keyframes characterRootAmbientDrift{
+  0%{transform:translate3d(-.25%,-.15%,0) scale(1.004)}
+  100%{transform:translate3d(.35%,.24%,0) scale(1.009)}
+}
+@media(max-width:680px){
+  body.oldroot-after-dark::before{
+    opacity:.28;
+    background-image:url("assets/branding/oldroot-root-field.svg");
+    background-size:1120px 1680px;
+    background-position:52% 0;
+  }
+  body.oldroot-after-dark::after{opacity:.22}
+}
+@media(prefers-reduced-motion:reduce){
+  body.oldroot-after-dark::after{animation:none!important}
+}
+
