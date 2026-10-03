@@ -115,7 +115,6 @@ body.oldroot-after-dark .panel{
 
 @media(max-width:680px){
   html body.oldroot-after-dark::before{
-    inset:0;
     opacity:.34;
     animation:none;
     background-size:1280px auto,auto,auto;
