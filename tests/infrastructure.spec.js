@@ -9,7 +9,7 @@ const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 const indexable = [
   'index.html','characters.html',
   'characters/gila-monster/index.html','characters/commotion/index.html','characters/aftermark/index.html',
-  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html',
+  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html',
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
   'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
