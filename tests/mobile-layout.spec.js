@@ -99,3 +99,23 @@ test('mobile primary navigation expands cleanly and registry art uses editorial 
   await toggle.click();
   await expect(nav).toBeHidden();
 });
+
+
+test('desktop Character Registry artwork stays within editorial card framing', async ({ browser }) => {
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
+
+  const metrics = await page.locator('.character-thumb').evaluateAll(images => images.map(img => {
+    const r = img.getBoundingClientRect();
+    return { width: r.width, height: r.height };
+  }));
+
+  expect(metrics.length).toBe(6);
+  for (const metric of metrics) {
+    expect(metric.height).toBeGreaterThanOrEqual(255);
+    expect(metric.height).toBeLessThanOrEqual(365);
+    expect(metric.height / metric.width).toBeLessThan(0.9);
+  }
+
+  await page.close();
+});

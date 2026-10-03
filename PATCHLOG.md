@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0032 · October 3, 2026 · Registry Framing Fix
+
+- Replaced the desktop Character Registry’s ratio-only image sizing with an explicit capped thumbnail height.
+- Preserved character-specific object-position crops, full-art lightbox access, and OR-WEB-0031 phone-width framing.
+- Added desktop browser regression coverage so portrait source dimensions cannot expand registry cards into full-poster panels again.
+
 ## OR-WEB-0031 · October 3, 2026 · Mobile Registry Framing
 
 - Collapsed the phone-width primary navigation behind an accessible Menu control while preserving full desktop navigation and no-JavaScript fallback behavior.
