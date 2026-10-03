@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0031 · October 3, 2026 · Mobile Registry Framing
+
+- Collapsed the phone-width primary navigation behind an accessible Menu control while preserving full desktop navigation and no-JavaScript fallback behavior.
+- Reframed Character Registry artwork into consistent mobile editorial crops while keeping full-resolution lightbox access.
+- Reduced mobile sticky-header obstruction and adjusted anchor offsets to match the compact masthead.
+- Added browser regression coverage for the collapsed/expanded mobile navigation state and registry artwork crop height.
+
 ## 2026-09-26 — OR-WEB-0001 — Locations globe stability rebuild
 
 ### Changed
