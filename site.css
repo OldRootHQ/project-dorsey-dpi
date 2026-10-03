@@ -2584,7 +2584,7 @@ body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
   background-size:34px 34px!important;
 }
 .dev-state > *{position:relative;z-index:1}
-.dev-state::before{
+.dev-state:not(.dev-state-book)::before{
   content:"PUBLIC PREVIEW";
   position:absolute;
   z-index:1;
@@ -2596,7 +2596,6 @@ body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
   text-transform:uppercase;
 }
 .dev-state.dev-state-empty::before{content:"INDEX RESERVED"}
-.dev-state.dev-state-book::before{content:"UNREVEALED EDITION"}
 .home-after-dark .dev-state{
   background:
     linear-gradient(135deg,rgba(197,162,74,.028) 0 12px,transparent 12px 24px),
