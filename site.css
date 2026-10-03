@@ -2151,9 +2151,13 @@ body.oldroot-after-dark{
 }
 
 /* Keep all real page content above the environmental layers. */
-body.oldroot-after-dark > *{
+body.oldroot-after-dark > main,
+body.oldroot-after-dark > footer{
   position:relative;
   z-index:1;
+}
+body.oldroot-after-dark > .masthead{
+  z-index:30;
 }
 
 /* Far depth: one organic system that continues down the whole document. */
