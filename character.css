@@ -551,6 +551,7 @@ body.oldroot-after-dark .dossier-illustration figcaption{
 body.oldroot-after-dark{
   position:relative;
   isolation:isolate;
+  overflow-x:clip;
   background:
     radial-gradient(circle at 14% 5%,rgba(49,124,84,.15),transparent 32rem),
     radial-gradient(circle at 90% 12%,rgba(197,162,74,.04),transparent 28rem),
