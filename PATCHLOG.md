@@ -551,3 +551,24 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added regression coverage for alphabetical default sorting, release order, newest-added order, filter/sort interoperability, and phone-width safety.
 - Updated artwork tests to require the new Aftermark registry image and require the rejected punching-bag production/source files to remain deleted.
 - Expanded Root Atmosphere tests to verify the integrated dark filter control and visible card-root connections.
+
+## 2026-10-03 — OR-WEB-0030 — Production infrastructure
+
+### Changed
+- Added canonical URLs, page descriptions, Open Graph metadata, Twitter card metadata, theme color metadata, and homepage WebSite/Organization structured data across the public indexable site.
+- Added `sitemap.xml`, `robots.txt`, and a branded noindex OldRoot 404 page.
+- Marked cart, checkout, order-confirmation, and generic unrevealed Library title placeholders as noindex.
+- Added measured intrinsic width/height attributes to WebP artwork used in public HTML to reduce layout shift without changing presentation.
+- Moved World Index topology data into the repository as the primary source, pinned the remote world-atlas fallback, pinned D3/TopoJSON CDN versions, and added a graceful map-engine unavailable state.
+- Upgraded the existing GitHub Actions QA workflow rather than adding a competing pipeline.
+- Added production-infrastructure smoke tests for metadata, sitemap/noindex boundaries, internal links, local topology, and image markup.
+- Added full-page desktop/mobile visual QA captures for core OldRoot surfaces and a 14-day GitHub Actions artifact.
+- Repaired stale smoke-test cache assertions left from earlier stylesheet/navigation versions.
+
+### Validation
+- Public sitemap boundary: 27 indexable URLs.
+- Utility/unrevealed placeholders remain outside search indexing.
+- Local topology contains both required `land` and `countries` objects.
+- Measurable WebP image markup reserves intrinsic dimensions.
+- Final branch requires JavaScript syntax, Playwright smoke coverage, infrastructure checks, visual captures, and diff review before merge.
+

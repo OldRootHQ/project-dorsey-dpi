@@ -91,10 +91,23 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await assertNoPageErrors(page, errors);
 });
 
-test('Locations globe survives world-atlas failure', async ({ page }) => {
+test('Locations globe prefers local world topology when the remote fallback is unavailable', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.route('**/world-atlas@2/countries-110m.json', route => route.abort());
+  await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
+
+  await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(7);
+  await expect(page.locator('#globeLoading')).toBeHidden();
+  await expect(page.locator('.earth-land')).toHaveAttribute('d', /.+/);
+  await assertNoPageErrors(page, errors);
+});
+
+test('Locations globe keeps location records usable when both topology sources fail', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.route('**/assets/data/world-110m.json', route => route.abort());
+  await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html');
   await expect(page.locator('#techGlobe .location-node')).toHaveCount(7);

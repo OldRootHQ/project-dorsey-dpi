@@ -44,7 +44,7 @@
 
     button.addEventListener("click", event => {
       event.preventDefault();
-      const nextOpen = button.getAttribute("aria-expanded") !== "true";
+      const nextOpen = fineHover ? true : button.getAttribute("aria-expanded") !== "true";
       closeAll(group);
       setGroup(group, nextOpen);
     });

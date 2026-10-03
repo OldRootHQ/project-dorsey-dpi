@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://oldroothq.github.io/project-dorsey-dpi/sitemap.xml
