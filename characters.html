@@ -18,6 +18,10 @@
     .character-thumb.aftermark-thumb{object-position:center center}
     .character-thumb.agent-emerald-thumb{object-position:center top}
     .character-thumb-placeholder{display:grid;place-items:center;text-align:center;padding:18px;border-style:dashed;color:var(--bark);font:900 10px/1.35 Arial,Helvetica,sans-serif;letter-spacing:.10em;text-transform:uppercase;background:linear-gradient(135deg,rgba(197,162,74,.10),transparent 52%),var(--parchment)}
+    .registry-control-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch}
+    .registry-sort{min-width:230px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;padding:0 14px;border:1px solid rgba(183,190,197,.9);border-radius:18px;background:var(--cream);box-shadow:0 12px 30px var(--green-shadow);font:950 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+    .registry-sort select{min-width:138px;height:100%;border:0;background:transparent;color:inherit;font:900 11px/1 Arial,Helvetica,sans-serif;outline:none;cursor:pointer}
+    @media(max-width:680px){.registry-control-row{grid-template-columns:1fr}.registry-sort{min-height:48px;min-width:0}.registry-sort select{min-height:46px}}
   </style>
 </head>
 <body class="oldroot-after-dark">
@@ -54,12 +58,22 @@
       <h1>CHARACTERS</h1>
       <p>Every character appears once. Categories are filters, not duplicate lists. Role, power classification, origin, geography, and other registry data can change the view without cloning the same character across the page.</p>
     </section>
-    <section class="registry-tools" aria-label="Character registry filters">
-      <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterDrawer">
-        <span class="filter-toggle-left"><span class="filter-sliders" aria-hidden="true">☷</span> Filters</span>
-        <span class="filter-count" id="filterCount" hidden>0</span>
-        <span class="filter-toggle-icon" aria-hidden="true">＋</span>
-      </button>
+    <section class="registry-tools" aria-label="Character registry controls">
+      <div class="registry-control-row">
+        <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterDrawer">
+          <span class="filter-toggle-left"><span class="filter-sliders" aria-hidden="true">☷</span> Filters</span>
+          <span class="filter-count" id="filterCount" hidden>0</span>
+          <span class="filter-toggle-icon" aria-hidden="true">＋</span>
+        </button>
+        <label class="registry-sort" for="registrySort">
+          <span>Sort by</span>
+          <select id="registrySort" aria-label="Sort characters">
+            <option value="alphabetical" selected>Alphabetical</option>
+            <option value="release">Release order</option>
+            <option value="newest">Newest added</option>
+          </select>
+        </label>
+      </div>
 
       <div class="filter-drawer" id="filterDrawer" hidden>
         <div class="filter-drawer-top">
@@ -132,7 +146,7 @@
     </section>
 
     <section class="character-grid">
-      <a class="character-card" data-tags="hero non-ascendant bioengineered enhanced-human tucson" href="characters/gila-monster/">
+      <a class="character-card" data-release-order="1" data-tags="hero non-ascendant bioengineered enhanced-human tucson" href="characters/gila-monster/">
         <img class="character-thumb" src="assets/characters/gila-monster/gila-registry.webp" alt="Gila Monster overlooking Tucson at twilight" loading="lazy" data-lightbox data-full-src="assets/characters/gila-monster/gila-registry.webp" data-caption="Gila Monster · registry visual reference" title="View character artwork" tabindex="0" />
         <div class="class">Hero · Enhanced Human · Non-Ascendant</div>
         <h3>Gila Monster</h3>
@@ -142,7 +156,7 @@
         <span class="card-open">Open dossier →</span>
       </a>
 
-      <a class="character-card" data-tags="hero non-ascendant human exceptional-human chicago" href="characters/commotion/">
+      <a class="character-card" data-release-order="2" data-tags="hero non-ascendant human exceptional-human chicago" href="characters/commotion/">
         <img class="character-thumb commotion-thumb" src="assets/characters/commotion/commotion-primary.webp" alt="Commotion in his purple mask and gray jacket beneath Chicago elevated tracks" loading="lazy" data-lightbox data-full-src="assets/characters/commotion/commotion-primary.webp" data-caption="Commotion · primary visual reference" title="View Commotion primary visual" tabindex="0" />
         <div class="class">Hero · Exceptional Human · Non-Ascendant</div>
         <h3>Commotion</h3>
@@ -151,7 +165,7 @@
         <div class="meta-row"><span class="meta-pill">Chicago</span><span class="meta-pill">Exceptional Human</span><span class="meta-pill">No powers</span><span class="meta-pill">Baseline mean 6.88</span></div>
         <span class="card-open">Open dossier →</span>
       </a>
-      <a class="character-card" data-tags="hero non-ascendant anomalous-human external-anomaly spatial-anomaly slightly-enhanced-human san-juan puerto-rico santurce independent" href="characters/aftermark/">
+      <a class="character-card" data-release-order="3" data-tags="hero non-ascendant anomalous-human external-anomaly spatial-anomaly slightly-enhanced-human san-juan puerto-rico santurce independent" href="characters/aftermark/">
         <img class="character-thumb aftermark-thumb" src="assets/characters/aftermark/aftermark-opi-cover.webp" alt="Aftermark during a rainy San Juan counter" loading="lazy" data-lightbox data-full-src="assets/characters/aftermark/aftermark-opi-cover.webp" data-caption="Aftermark · rainy San Juan counter" title="View Aftermark artwork" tabindex="0" />
         <div class="class">Hero · Slightly Enhanced Human · Non-Ascendant</div>
         <h3>Aftermark</h3>
@@ -161,7 +175,7 @@
         <span class="card-open">Open dossier →</span>
       </a>
 
-      <a class="character-card" data-tags="hero non-ascendant unresolved-origin metaphysical superhuman baltimore independent" href="characters/kincast/">
+      <a class="character-card" data-release-order="4" data-tags="hero non-ascendant unresolved-origin metaphysical superhuman baltimore independent" href="characters/kincast/">
         <img class="character-thumb kincast-thumb" src="assets/characters/kincast/kincast-registry.webp" alt="Kincast with Micah and Naomi in an emerald conservatory" loading="lazy" data-lightbox data-full-src="assets/characters/kincast/kincast-registry.webp" data-caption="Kincast · registry visual reference" title="View character artwork" tabindex="0" />
         <div class="class">Hero · Superhuman · Non-Ascendant</div>
         <h3>Kincast</h3>
@@ -171,7 +185,7 @@
         <span class="card-open">Open dossier →</span>
       </a>
 
-      <a class="character-card" data-tags="villain superhuman non-ascendant experimental-enhancement baltimore mercenary" href="characters/anchorage/">
+      <a class="character-card" data-release-order="5" data-tags="villain superhuman non-ascendant experimental-enhancement baltimore mercenary" href="characters/anchorage/">
         <img class="character-thumb anchorage-thumb" src="assets/characters/anchorage/anchorage-registry.png" alt="Anchorage in his current blue-and-ivory design" loading="lazy" data-lightbox data-full-src="assets/characters/anchorage/anchorage-registry.png" data-caption="Anchorage · character registry visual" title="View Anchorage character art" tabindex="0" />
         <div class="class">Villain · Superhuman · Non-Ascendant</div>
         <h3>Anchorage</h3>
@@ -181,7 +195,7 @@
         <span class="card-open">Open dossier →</span>
       </a>
 
-      <a class="character-card" data-tags="vigilante human superior-human technology training seattle puget-sound dunamis-dynamics" href="characters/agent-emerald/">
+      <a class="character-card" data-release-order="6" data-tags="vigilante human superior-human technology training seattle puget-sound dunamis-dynamics" href="characters/agent-emerald/">
         <img class="character-thumb agent-emerald-thumb" src="assets/characters/agent-emerald/agent-emerald-registry.webp" alt="Agent Emerald in a rain-soaked Seattle industrial district" loading="lazy" data-lightbox data-full-src="assets/characters/agent-emerald/agent-emerald-registry.webp" data-caption="Agent Emerald · registry visual reference" title="View Agent Emerald artwork" tabindex="0" />
         <div class="class">Vigilante · Superior Human</div>
         <h3>Agent Emerald</h3>
@@ -203,8 +217,21 @@
     const filterCount=document.querySelector('#filterCount');
     const filterApply=document.querySelector('#filterApply');
     const filterClear=document.querySelector('#filterClear');
+    const sortSelect=document.querySelector('#registrySort');
+    const grid=document.querySelector('.character-grid');
     const filterInputs=[...document.querySelectorAll('[data-filter-group]')];
     const cards=[...document.querySelectorAll('.character-card')];
+
+    function sortCards(mode){
+      const sorted=[...cards].sort((a,b)=>{
+        if(mode==='release') return Number(a.dataset.releaseOrder)-Number(b.dataset.releaseOrder);
+        if(mode==='newest') return Number(b.dataset.releaseOrder)-Number(a.dataset.releaseOrder);
+        const aName=a.querySelector('h3').textContent.trim();
+        const bName=b.querySelector('h3').textContent.trim();
+        return aName.localeCompare(bName,undefined,{sensitivity:'base'});
+      });
+      sorted.forEach(card=>grid.appendChild(card));
+    }
 
     function selectedGroups(){
       const groups={};
@@ -249,7 +276,8 @@
       const count=filterInputs.filter(input=>input.checked).length;
       filterCount.textContent=count;
       filterCount.hidden=count===0;
-      updateOptionCounts();
+      sortCards('alphabetical');
+    updateOptionCounts();
     }
 
     function closeDrawer(){
@@ -267,6 +295,7 @@
     });
 
     filterInputs.forEach(input=>input.addEventListener('change',updateOptionCounts));
+    sortSelect.addEventListener('change',()=>sortCards(sortSelect.value));
 
     filterApply.addEventListener('click',()=>{
       applyFilters();
