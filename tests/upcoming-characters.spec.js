@@ -1,17 +1,17 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const UPCOMING = ['Latch', 'Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke'];
+const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke'];
 
 async function expectUpcomingSection(page) {
   const section = page.locator('#upcoming-characters');
   await expect(section).toBeVisible();
   await expect(section.locator('h2')).toHaveText('Upcoming Characters');
-  await expect(section.locator('.discovery-card')).toHaveCount(8);
+  await expect(section.locator('.discovery-card')).toHaveCount(7);
   await expect(section.locator('.discovery-card h3')).toHaveText(UPCOMING);
   await expect(section.locator('.discovery-card').filter({ hasText: 'Mark Hampton' }).locator('b')).toHaveText('NO OPI LISTING');
   await expect(section.locator('.discovery-card').filter({ hasText: 'Neegan Walters' }).locator('b')).toHaveText('NO OPI LISTING');
-  for (const name of ['Latch', 'Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke']) {
+  for (const name of ['Ballestera', 'Makari', 'Akuaom', 'Kalani', 'Duke']) {
     await expect(section.locator('.discovery-card').filter({ hasText: name }).locator('b')).toHaveText('IN DEVELOPMENT');
   }
 }
@@ -51,4 +51,15 @@ test('Upcoming Characters sections remain contained on phone width', async ({ pa
     expect(dims.body, path).toBeLessThanOrEqual(dims.viewport + 2);
     expect(dims.section, path).toBeLessThanOrEqual(dims.viewport);
   }
+});
+
+
+test('Latch is public in the registry but remains unscored in OPI', async ({ page }) => {
+  await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.character-card').filter({ hasText: 'Latch' })).toHaveCount(1);
+  await expect(page.locator('.character-card').filter({ hasText: 'Latch' })).toContainText('OPI unscored');
+
+  await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
+  const records = await page.evaluate(() => window.OLDROOT_CHARACTERS.map(c => c.codename));
+  expect(records).not.toContain('Latch');
 });
