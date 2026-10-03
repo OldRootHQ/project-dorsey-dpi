@@ -2142,6 +2142,7 @@ body.oldroot-after-dark:not(.home-after-dark) .rule{
 body.oldroot-after-dark{
   position:relative;
   isolation:isolate;
+  overflow-x:clip;
   min-height:100%;
   background:
     radial-gradient(circle at 12% 5%,rgba(45,118,78,.17),transparent 34rem),
