@@ -73,3 +73,15 @@ test('Latch dossier remains contained at phone width', async ({ page }) => {
   expect(dims.feature).toBeLessThanOrEqual(dims.viewport);
   expect(dims.header).toBeLessThanOrEqual(dims.viewport + 1);
 });
+
+test('Latch release updates public counts, README, and sitemap', async ({ page }) => {
+  await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.start-stat').filter({ hasText: 'Public character dossiers' })).toContainText('7 active records');
+
+  const sitemap = await (await page.request.get(BASE + '/sitemap.xml')).text();
+  expect(sitemap).toContain('/characters/latch/');
+  expect(sitemap).not.toContain('\\n');
+
+  const readme = await (await page.request.get(BASE + '/README.md')).text();
+  expect(readme).toContain('- Latch / Latch Boswell');
+});
