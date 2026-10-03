@@ -4,7 +4,7 @@ const path = require('path');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('public registry is propagated across discovery surfaces and the homepage has six slides', async ({ page }) => {
+test('public registry is propagated across discovery surfaces and the homepage has seven slides', async ({ page }) => {
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('[data-home-character]')).toHaveCount(7);
   await expect(page.locator('[data-home-slide]')).toHaveCount(7);
@@ -34,9 +34,9 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('.home-world-grid a[href="locations/baltimore/"]')).toContainText('Anchorage');
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('6 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('7 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
-  await expect(page.locator('text=Six ways into the cast.')).toHaveCount(1);
+  await expect(page.locator('text=Seven ways into the cast.')).toHaveCount(1);
 
   await page.goto(BASE + '/locations.html', { waitUntil: 'domcontentloaded' });
   await page.locator('[data-location="baltimore"]').click();
