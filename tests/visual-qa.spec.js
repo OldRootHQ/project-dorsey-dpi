@@ -6,6 +6,7 @@ const pages = [
   ['home','/'],
   ['characters','/characters.html'],
   ['gila','/characters/gila-monster/'],
+  ['latch','/characters/latch/'],
   ['locations','/locations.html'],
   ['lore','/lore.html'],
   ['library','/library.html'],

@@ -124,6 +124,6 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (relative === 'dpi.html' && !html.includes('app.js?v=10')) failures.push(relative + ': OPI app cache key stale');
   }
 
-  expect(htmlFiles.length).toBe(41);
+  expect(htmlFiles.length).toBe(42);
   expect(failures).toEqual([]);
 });
