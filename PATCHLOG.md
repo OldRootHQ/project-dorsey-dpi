@@ -519,3 +519,35 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Validation
 - Added browser coverage for the root network, panel tendrils, pointer transparency, reduced-motion behavior, lower mobile intensity, viewport containment, shared cache propagation, and the experiment's single removable dependency.
+
+
+## 2026-10-03 — OR-WEB-0029 — Root Atmosphere final polish and Character Registry sorting
+
+### Root Atmosphere finalized
+- Increased the visibility of the sitewide root network and its code-like glyph fragments without turning the background into a bright neon effect.
+- Strengthened root tendrils around major content bubbles and Character Registry cards so the interface feels connected to the larger root system.
+- Gave general editorial intro panels a more visible root edge treatment.
+- Reworked the Character Registry filter strip from the bright cream control into a dark translucent green-black control with restrained gold accents so it belongs to the finalized After Dark atmosphere.
+- Kept mobile intensity reduced and preserved reduced-motion behavior.
+
+### Character Registry sorting
+- Added a persistent **Sort by** control to the Character Registry.
+- Default order is **Alphabetical**.
+- Added **Release order**, using the existing canonical registry sequence from oldest public release to newest.
+- Added **Newest added**, which reverses that same registry sequence.
+- Sorting remains active when filters are applied and does not create duplicate character records.
+- No age sort was added; the control remains focused on stable registry metadata.
+
+### Aftermark artwork
+- Replaced Aftermark's punching-bag Character Registry image with the existing **rainy San Juan counter** artwork.
+- Deleted `assets/characters/aftermark/aftermark-registry.webp` and its creator-source file after removing the active registry reference.
+- Preserved Aftermark's other assigned artwork roles, including his dossier cover, homepage feature, OPI visual, San Juan cover, primary portrait, and dossier illustration.
+
+### Cache
+- Updated the Root Atmosphere import to `root-atmosphere.css?v=2`.
+- Bumped all static pages to `brand.css?v=13`.
+
+### Validation
+- Added regression coverage for alphabetical default sorting, release order, newest-added order, filter/sort interoperability, and phone-width safety.
+- Updated artwork tests to require the new Aftermark registry image and require the rejected punching-bag production/source files to remain deleted.
+- Expanded Root Atmosphere tests to verify the integrated dark filter control and visible card-root connections.
