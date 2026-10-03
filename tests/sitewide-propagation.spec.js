@@ -6,8 +6,8 @@ const BASE = 'http://127.0.0.1:8000';
 
 test('public registry is propagated across discovery surfaces and the homepage has six slides', async ({ page }) => {
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-home-character]')).toHaveCount(6);
-  await expect(page.locator('[data-home-slide]')).toHaveCount(6);
+  await expect(page.locator('[data-home-character]')).toHaveCount(7);
+  await expect(page.locator('[data-home-slide]')).toHaveCount(7);
   await expect(page.locator('#homeCharacterTrack')).toHaveCount(1);
   const carouselLayout = await page.evaluate(() => {
     const featured = document.querySelector('.home-featured');
@@ -23,7 +23,7 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
   const featuredArt = page.locator('[data-home-slide="anchorage"] img');
   await expect(featuredArt).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-featured.png');
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 6');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 7');
   await page.locator('#homeCharacterNext').click();
   await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 6');
   await expect.poll(() => page.locator('#homeCharacterTrack').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
