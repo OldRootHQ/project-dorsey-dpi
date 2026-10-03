@@ -2520,3 +2520,51 @@ body.oldroot-after-dark .location-index button[class*="place-"].active{
 }
 body.oldroot-after-dark .location-index button[class*="place-"].active span{color:var(--place-accent)}
 
+/* OR-WEB-0028 · Section-specific interaction signatures */
+body.oldroot-after-dark:not(.home-after-dark) .org-card{
+  border-top:2px solid rgba(197,162,74,.24);
+}
+body.oldroot-after-dark:not(.home-after-dark) .org-card .org-open{
+  display:inline-block;
+  transition:transform .16s ease,letter-spacing .16s ease,color .16s ease;
+}
+body.oldroot-after-dark:not(.home-after-dark) .org-card:hover .org-open,
+body.oldroot-after-dark:not(.home-after-dark) .org-card:focus-visible .org-open{
+  transform:translateX(4px);
+  letter-spacing:.085em;
+  color:var(--cream);
+}
+body.oldroot-after-dark:not(.home-after-dark) .org-card:hover{
+  border-top-color:var(--old-gold);
+}
+
+body.oldroot-after-dark:not(.home-after-dark) .library-card .book-placeholder,
+body.oldroot-after-dark:not(.home-after-dark) .feature-cover-link .book-placeholder{
+  transform-origin:center bottom;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .book-placeholder,
+body.oldroot-after-dark:not(.home-after-dark) .library-card:focus-visible .book-placeholder{
+  transform:translateY(-4px) rotate(-.35deg);
+  border-color:rgba(197,162,74,.46);
+  box-shadow:0 25px 54px rgba(0,0,0,.31),0 0 24px rgba(197,162,74,.055);
+}
+body.oldroot-after-dark:not(.home-after-dark) .feature-slide.active .book-placeholder.large{
+  box-shadow:0 28px 64px rgba(0,0,0,.32),0 0 34px rgba(52,126,88,.08);
+}
+body.oldroot-after-dark:not(.home-after-dark) .library-card .card-view{
+  transition:color .16s ease,letter-spacing .16s ease;
+}
+body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
+  color:var(--old-gold);
+  letter-spacing:.045em;
+}
+@media(prefers-reduced-motion:reduce){
+  body.oldroot-after-dark:not(.home-after-dark) .org-card .org-open,
+  body.oldroot-after-dark:not(.home-after-dark) .library-card .book-placeholder,
+  body.oldroot-after-dark:not(.home-after-dark) .feature-cover-link .book-placeholder,
+  body.oldroot-after-dark:not(.home-after-dark) .library-card .card-view{
+    transition:none!important;
+  }
+}
+
