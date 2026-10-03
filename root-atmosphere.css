@@ -339,7 +339,7 @@ body.oldroot-after-dark:not(.home-after-dark) .filter-apply:hover{
 
 /* Keep the stronger roots restrained on phones. */
 @media(max-width:680px){
-  html body.oldroot-after-dark::before{opacity:.36}
+  html body.oldroot-after-dark::before{opacity:.35}
   body.oldroot-after-dark:not(.home-after-dark) .character-card::after{
     width:156px;
     height:98px;
