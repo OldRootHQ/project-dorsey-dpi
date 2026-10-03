@@ -1,7 +1,7 @@
 /* OR-WEB-0028 — Root Atmosphere experiment
    Single-file reversible visual layer. Remove this stylesheet import to revert. */
 
-body.oldroot-after-dark{
+html body.oldroot-after-dark{
   background:
     radial-gradient(circle at 14% 7%,rgba(38,118,76,.16),transparent 32rem),
     radial-gradient(circle at 88% 15%,rgba(32,92,62,.11),transparent 34rem),
@@ -9,7 +9,7 @@ body.oldroot-after-dark{
     linear-gradient(180deg,#010705 0%,#020a07 42%,#010503 100%) fixed;
 }
 
-body.oldroot-after-dark::before{
+html body.oldroot-after-dark::before{
   content:"";
   position:fixed;
   inset:-5vh -5vw;
@@ -24,7 +24,7 @@ body.oldroot-after-dark::before{
   animation:oldroot-root-drift 52s ease-in-out infinite alternate;
 }
 
-body.oldroot-after-dark::after{
+html body.oldroot-after-dark::after{
   content:"";
   position:fixed;
   inset:0;
@@ -114,12 +114,12 @@ body.oldroot-after-dark .panel{
 }
 
 @media(max-width:680px){
-  body.oldroot-after-dark::before{
+  html body.oldroot-after-dark::before{
     opacity:.34;
     animation:none;
     background-size:1280px auto,auto,auto;
   }
-  body.oldroot-after-dark::after{opacity:.20}
+  html body.oldroot-after-dark::after{opacity:.20}
   body.oldroot-after-dark .character-identity::before,
   body.oldroot-after-dark .wiki-section::before,
   body.oldroot-after-dark .character-infobox::before,
@@ -132,14 +132,14 @@ body.oldroot-after-dark .panel{
   body.oldroot-after-dark .panel::after{
     width:150px;
     height:95px;
-    right:-18px;
-    bottom:-18px;
+    right:0;
+    bottom:0;
     opacity:.32;
   }
 }
 
 @media(prefers-reduced-motion:reduce){
-  body.oldroot-after-dark::before{animation:none}
+  html body.oldroot-after-dark::before{animation:none}
 }
 
 
@@ -181,8 +181,8 @@ body.oldroot-after-dark .section-band>*{
   body.oldroot-after-dark .section-band::after{
     width:190px;
     height:120px;
-    right:-28px;
-    bottom:-28px;
+    right:0;
+    bottom:0;
     opacity:.27;
   }
 }
