@@ -45,6 +45,12 @@ test('grouped navigation is tap-safe and viewport-safe on mobile', async ({ page
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
 
+  const mobileToggle = page.locator('.mobile-nav-toggle');
+  await expect(mobileToggle).toBeVisible();
+  await expect(mobileToggle).toHaveAttribute('aria-expanded', 'false');
+  await mobileToggle.click();
+  await expect(mobileToggle).toHaveAttribute('aria-expanded', 'true');
+
   const lore = page.locator('[aria-controls="nav-lore-menu"]');
   await expect(lore).toHaveClass(/active/);
   await lore.click();
@@ -110,7 +116,7 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('class="masthead"')) continue;
     const relative = path.relative(root, file).replace(/\\/g, '/');
     const nested = relative.includes('/');
-    const expectedScript = nested ? '../../nav.js?v=2' : 'nav.js?v=2';
+    const expectedScript = nested ? '../../nav.js?v=3' : 'nav.js?v=3';
 
     const toggleCount = (html.match(/data-nav-toggle/g) || []).length;
     if (!html.includes('class="site-nav"')) failures.push(relative + ': missing site-nav');
@@ -118,7 +124,7 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('>OPI Analytics</a>')) failures.push(relative + ': missing OPI link');
     if (!html.includes('>Start Here</a>') || !html.includes('>Lore Index</a>')) failures.push(relative + ': incomplete Lore menu');
     if (!html.includes(expectedScript)) failures.push(relative + ': missing nav controller');
-    if (!html.includes('brand.css?v=14')) failures.push(relative + ': stale brand stylesheet');
+    if (!html.includes('brand.css?v=15')) failures.push(relative + ': stale brand stylesheet');
   }
 
   expect(failures).toEqual([]);

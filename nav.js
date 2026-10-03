@@ -15,10 +15,24 @@
 
   if (!nav) return;
 
+  const masthead = nav.closest(".masthead");
+  const mastInner = nav.parentElement;
   const groups = [...nav.querySelectorAll(".nav-group")];
   const fineHover = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ?? false;
+  const mobileQuery = window.matchMedia("(max-width: 760px)");
 
+  nav.id ||= "primary-navigation";
   nav.querySelectorAll("a.active").forEach(link => link.setAttribute("aria-current", "page"));
+
+  const mobileToggle = document.createElement("button");
+  mobileToggle.type = "button";
+  mobileToggle.className = "mobile-nav-toggle";
+  mobileToggle.hidden = true;
+  mobileToggle.setAttribute("aria-controls", nav.id);
+  mobileToggle.setAttribute("aria-expanded", "false");
+  mobileToggle.setAttribute("aria-label", "Open primary navigation");
+  mobileToggle.innerHTML = '<span>Menu</span><span class="mobile-nav-icon" aria-hidden="true"><i></i><i></i></span>';
+  mastInner?.insertBefore(mobileToggle, nav);
 
   function setGroup(group, open) {
     const button = group.querySelector("[data-nav-toggle]");
@@ -35,6 +49,42 @@
     });
   }
 
+  function setMobileNav(open, focusToggle = false) {
+    if (!masthead || !mobileQuery.matches) {
+      nav.inert = false;
+      nav.removeAttribute("aria-hidden");
+      masthead?.classList.remove("nav-mobile-open");
+      mobileToggle.setAttribute("aria-expanded", "false");
+      mobileToggle.setAttribute("aria-label", "Open primary navigation");
+      return;
+    }
+
+    masthead.classList.toggle("nav-mobile-open", open);
+    mobileToggle.setAttribute("aria-expanded", String(open));
+    mobileToggle.setAttribute("aria-label", open ? "Close primary navigation" : "Open primary navigation");
+    nav.inert = !open;
+    nav.setAttribute("aria-hidden", String(!open));
+
+    if (!open) {
+      closeAll();
+      if (focusToggle) mobileToggle.focus();
+    }
+  }
+
+  function syncMobileNav() {
+    const mobile = mobileQuery.matches;
+    masthead?.classList.toggle("nav-mobile-ready", mobile);
+    mobileToggle.hidden = !mobile;
+    setMobileNav(false);
+  }
+
+  mobileToggle.addEventListener("click", () => {
+    const open = mobileToggle.getAttribute("aria-expanded") !== "true";
+    setMobileNav(open);
+  });
+
+  mobileQuery.addEventListener?.("change", syncMobileNav);
+
   groups.forEach(group => {
     const button = group.querySelector("[data-nav-toggle]");
     const menu = group.querySelector("[data-nav-menu]");
@@ -44,7 +94,7 @@
 
     button.addEventListener("click", event => {
       event.preventDefault();
-      const nextOpen = fineHover ? true : button.getAttribute("aria-expanded") !== "true";
+      const nextOpen = fineHover && !mobileQuery.matches ? true : button.getAttribute("aria-expanded") !== "true";
       closeAll(group);
       setGroup(group, nextOpen);
     });
@@ -58,6 +108,7 @@
         requestAnimationFrame(() => target?.focus());
       } else if (event.key === "Escape") {
         event.preventDefault();
+        event.stopPropagation();
         setGroup(group, false);
         button.focus();
       }
@@ -79,35 +130,59 @@
         links.at(-1)?.focus();
       } else if (event.key === "Escape") {
         event.preventDefault();
+        event.stopPropagation();
         setGroup(group, false);
         button.focus();
       }
     });
 
-    links.forEach(link => link.addEventListener("click", () => setGroup(group, false)));
+    links.forEach(link => link.addEventListener("click", () => {
+      setGroup(group, false);
+      if (mobileQuery.matches) setMobileNav(false);
+    }));
 
     group.addEventListener("focusin", () => closeAll(group));
 
     if (fineHover) {
       group.addEventListener("mouseenter", () => {
+        if (mobileQuery.matches) return;
         closeAll(group);
         setGroup(group, true);
       });
       group.addEventListener("mouseleave", () => {
+        if (mobileQuery.matches) return;
         if (!group.contains(document.activeElement)) setGroup(group, false);
       });
     }
   });
 
+  [...nav.children].forEach(item => {
+    if (item.matches?.(":scope > a")) {
+      item.addEventListener("click", () => {
+        if (mobileQuery.matches) setMobileNav(false);
+      });
+    }
+  });
+
   document.addEventListener("pointerdown", event => {
-    if (!nav.contains(event.target)) closeAll();
+    if (!nav.contains(event.target) && event.target !== mobileToggle && !mobileToggle.contains(event.target)) {
+      closeAll();
+      if (mobileQuery.matches && masthead?.classList.contains("nav-mobile-open")) setMobileNav(false);
+    }
   });
 
   document.addEventListener("focusin", event => {
-    if (!nav.contains(event.target)) closeAll();
+    if (!nav.contains(event.target) && event.target !== mobileToggle && !mobileToggle.contains(event.target)) closeAll();
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeAll();
+    if (event.key !== "Escape") return;
+    closeAll();
+    if (mobileQuery.matches && masthead?.classList.contains("nav-mobile-open")) {
+      event.preventDefault();
+      setMobileNav(false, true);
+    }
   });
+
+  syncMobileNav();
 })();

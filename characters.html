@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Characters — OldRoot</title><meta name="description" content="Browse the OldRoot character registry, public dossiers, origins, locations, artwork, and connected universe records."/><link rel="canonical" href="https://oldroothq.github.io/project-dorsey-dpi/characters.html"/><meta name="theme-color" content="#06110d"/><meta property="og:type" content="website"/><meta property="og:site_name" content="OldRoot Studios"/><meta property="og:title" content="Characters — OldRoot"/><meta property="og:description" content="Browse the OldRoot character registry, public dossiers, origins, locations, artwork, and connected universe records."/><meta property="og:url" content="https://oldroothq.github.io/project-dorsey-dpi/characters.html"/><meta property="og:image" content="https://oldroothq.github.io/project-dorsey-dpi/assets/branding/oldroot-primary.png"/><meta property="og:image:alt" content="OldRoot Studios"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Characters — OldRoot"/><meta name="twitter:description" content="Browse the OldRoot character registry, public dossiers, origins, locations, artwork, and connected universe records."/><meta name="twitter:image" content="https://oldroothq.github.io/project-dorsey-dpi/assets/branding/oldroot-primary.png"/>
-  <link rel="stylesheet" href="brand.css?v=14" />
+  <link rel="stylesheet" href="brand.css?v=15" />
   <link rel="stylesheet" href="site.css?v=33" />
   <style>
     .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
@@ -21,7 +21,26 @@
     .registry-control-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:stretch}
     .registry-sort{min-width:230px;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:10px;padding:0 14px;border:1px solid rgba(183,190,197,.9);border-radius:18px;background:var(--cream);box-shadow:0 12px 30px var(--green-shadow);font:950 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
     .registry-sort select{min-width:138px;height:100%;border:0;background:transparent;color:inherit;font:900 11px/1 Arial,Helvetica,sans-serif;outline:none;cursor:pointer}
-    @media(max-width:680px){.registry-control-row{grid-template-columns:1fr}.registry-sort{min-height:48px;min-width:0}.registry-sort select{min-height:46px}}
+    @media(max-width:680px){
+      .registry-control-row{grid-template-columns:1fr}
+      .registry-sort{min-height:48px;min-width:0}
+      .registry-sort select{min-height:46px}
+      .character-grid{gap:18px}
+      .character-card{padding:14px 14px 16px;border-radius:18px}
+      .character-thumb{
+        height:clamp(250px,72vw,285px);
+        aspect-ratio:auto;
+        object-fit:cover;
+        margin-bottom:14px;
+        border-radius:12px;
+      }
+      .character-card .class{font-size:9px;line-height:1.35}
+      .character-card h3{font-size:clamp(31px,9vw,38px);margin:9px 0 5px}
+      .character-card .civil{font-size:18px;line-height:1.3}
+      .character-card p{font-size:14px;line-height:1.55}
+      .meta-row{padding-top:14px}
+      .card-open{margin-top:16px}
+    }
   </style>
 </head>
 <body class="oldroot-after-dark">
@@ -318,6 +337,6 @@
     updateOptionCounts();
   </script>
   <script src="lightbox.js?v=9"></script>
-  <script src="nav.js?v=2"></script>
+  <script src="nav.js?v=3"></script>
 </body>
 </html>

@@ -29,8 +29,13 @@ test('core OldRoot pages stay inside the phone viewport', async ({ page }) => {
       viewport: window.innerWidth,
       htmlWidth: document.documentElement.scrollWidth,
       bodyWidth: document.body.scrollWidth,
-      mastDirection: getComputedStyle(document.querySelector('.mast-inner')).flexDirection,
       mastWidth: document.querySelector('.masthead').getBoundingClientRect().width,
+      mastHeight: document.querySelector('.masthead').getBoundingClientRect().height,
+      mobileToggleVisible: (() => {
+        const toggle = document.querySelector('.mobile-nav-toggle');
+        return !!toggle && getComputedStyle(toggle).display !== 'none';
+      })(),
+      navDisplay: getComputedStyle(document.querySelector('.site-nav')).display,
       main: (() => {
         const el = document.querySelector('main');
         if (!el) return null;
@@ -42,7 +47,9 @@ test('core OldRoot pages stay inside the phone viewport', async ({ page }) => {
     expect(layout.htmlWidth, `${path} html overflowed horizontally`).toBeLessThanOrEqual(layout.viewport + 2);
     expect(layout.bodyWidth, `${path} body overflowed horizontally`).toBeLessThanOrEqual(layout.viewport + 2);
     expect(layout.mastWidth, `${path} masthead exceeded viewport`).toBeLessThanOrEqual(layout.viewport + 1);
-    expect(layout.mastDirection, `${path} mobile header did not stack`).toBe('column');
+    expect(layout.mastHeight, `${path} compact mobile header is too tall`).toBeLessThanOrEqual(84);
+    expect(layout.mobileToggleVisible, `${path} mobile menu toggle is not visible`).toBe(true);
+    expect(layout.navDisplay, `${path} primary navigation should start collapsed on phones`).toBe('none');
 
     if (layout.main) {
       expect(layout.main.left, `${path} main content starts off-screen`).toBeGreaterThanOrEqual(-1);
@@ -65,4 +72,30 @@ test('mobile-specific complex controls reflow instead of compressing desktop gri
   await page.goto(`${BASE}/characters/anchorage/`, { waitUntil: 'domcontentloaded' });
   const titleSize = parseFloat(await page.locator('.character-identity h1').evaluate(el => getComputedStyle(el).fontSize));
   expect(titleSize).toBeLessThanOrEqual(60);
+});
+
+
+test('mobile primary navigation expands cleanly and registry art uses editorial crops', async ({ page }) => {
+  await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
+
+  const toggle = page.locator('.mobile-nav-toggle');
+  const nav = page.locator('.site-nav');
+
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  await expect(nav).toBeHidden();
+
+  await toggle.click();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(nav).toBeVisible();
+
+  const columns = await nav.evaluate(el => getComputedStyle(el).gridTemplateColumns.split(' ').length);
+  expect(columns).toBe(3);
+
+  const thumbHeight = await page.locator('.character-thumb').first().evaluate(el => el.getBoundingClientRect().height);
+  expect(thumbHeight).toBeGreaterThanOrEqual(245);
+  expect(thumbHeight).toBeLessThanOrEqual(290);
+
+  await toggle.click();
+  await expect(nav).toBeHidden();
 });
