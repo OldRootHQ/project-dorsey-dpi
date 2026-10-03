@@ -352,9 +352,13 @@ body.oldroot-after-dark{
     radial-gradient(circle at 52% 70%,rgba(27,88,59,.09),transparent 46rem),
     linear-gradient(180deg,#04100b 0%,#020a07 48%,#010604 100%) fixed;
 }
-body.oldroot-after-dark > *{
+body.oldroot-after-dark > main,
+body.oldroot-after-dark > footer{
   position:relative;
   z-index:1;
+}
+body.oldroot-after-dark > .masthead{
+  z-index:30;
 }
 body.oldroot-after-dark::before{
   content:"";
