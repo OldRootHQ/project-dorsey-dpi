@@ -30,6 +30,7 @@ test('Kokio dossier preserves locked canon, art package, and open boundaries', a
   await expect(page.locator('.character-subtitle')).toHaveText('Kalani Kane');
   await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
   await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-01.webp');
+  await expect(page.locator('.character-infobox > img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-07.webp');
 
   const required = [
     'kokio-casual.webp','kokio-combat-01.webp','kokio-combat-03.webp',

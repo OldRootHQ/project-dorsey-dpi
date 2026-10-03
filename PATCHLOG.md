@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0035 · October 3, 2026 · Kokio Dossier Visual Refinement
+
+- Replaced Kokio's Registry Data sidebar portrait with the stronger creator-supplied barrier combat image.
+- Preserved the seated ceremonial image as supporting dossier artwork and kept the primary dual-hatchet combat image as the dossier feature.
+- Added regression coverage so the Registry Data panel keeps the approved combat reference.
+
 ## OR-WEB-0034 · October 3, 2026 · Character Release
 
 - Promoted Kalani Kane from the development seed list into the public registry under her canon hero alias, Kokio.
