@@ -2299,3 +2299,47 @@ body.oldroot-after-dark:not(.home-after-dark) .section-band{
   }
 }
 
+/* =========================================================
+   OR-WEB-0026 · HOMEPAGE VISUAL REFINEMENT PASS
+   Improves micro-label readability, softens large section
+   boundaries, protects headline contrast, and strengthens
+   action affordances without changing the After Dark system.
+   ========================================================= */
+
+.home-after-dark .section-band{
+  border-color:rgba(243,235,221,.06);
+  background:
+    radial-gradient(ellipse at 18% 12%,rgba(2,10,7,.58) 0%,rgba(2,10,7,.26) 32%,transparent 60%),
+    radial-gradient(circle at 92% 0%,rgba(53,127,88,.105),transparent 22rem),
+    linear-gradient(145deg,rgba(8,27,19,.75),rgba(4,16,11,.65));
+}
+
+.home-after-dark .discovery-card span{
+  color:rgba(243,235,221,.56);
+  font-size:9px;
+  letter-spacing:.15em;
+}
+
+.home-after-dark .discovery-card b{
+  color:#d9b957;
+  font-size:10px;
+  letter-spacing:.075em;
+  text-shadow:0 0 16px rgba(197,162,74,.12);
+}
+
+.home-after-dark .home-section-link,
+.home-after-dark .section-band-head>a{
+  color:rgba(226,199,119,.80);
+}
+
+.home-after-dark .home-section-link:hover,
+.home-after-dark .section-band-head>a:hover{
+  color:var(--old-gold);
+  text-shadow:0 0 18px rgba(197,162,74,.14);
+}
+
+@media(max-width:760px){
+  .home-after-dark .discovery-card span{font-size:8.5px}
+  .home-after-dark .discovery-card b{font-size:9.5px}
+}
+
