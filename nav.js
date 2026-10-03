@@ -2,10 +2,23 @@
   "use strict";
 
   const nav = document.querySelector(".site-nav");
+  const main = document.querySelector("main");
+
+  if (main && !main.id) main.id = "main-content";
+  if (main && !document.querySelector(".skip-link")) {
+    const skip = document.createElement("a");
+    skip.className = "skip-link";
+    skip.href = "#main-content";
+    skip.textContent = "Skip to content";
+    document.body.prepend(skip);
+  }
+
   if (!nav) return;
 
   const groups = [...nav.querySelectorAll(".nav-group")];
   const fineHover = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ?? false;
+
+  nav.querySelectorAll("a.active").forEach(link => link.setAttribute("aria-current", "page"));
 
   function setGroup(group, open) {
     const button = group.querySelector("[data-nav-toggle]");
@@ -27,9 +40,11 @@
     const menu = group.querySelector("[data-nav-menu]");
     if (!button || !menu) return;
 
+    const links = [...menu.querySelectorAll("a")];
+
     button.addEventListener("click", event => {
       event.preventDefault();
-      const nextOpen = fineHover ? true : button.getAttribute("aria-expanded") !== "true";
+      const nextOpen = button.getAttribute("aria-expanded") !== "true";
       closeAll(group);
       setGroup(group, nextOpen);
     });
@@ -39,6 +54,8 @@
         event.preventDefault();
         closeAll(group);
         setGroup(group, true);
+        const target = event.key === "ArrowDown" ? links[0] : links.at(-1);
+        requestAnimationFrame(() => target?.focus());
       } else if (event.key === "Escape") {
         event.preventDefault();
         setGroup(group, false);
@@ -47,7 +64,6 @@
     });
 
     menu.addEventListener("keydown", event => {
-      const links = [...menu.querySelectorAll("a")];
       const current = links.indexOf(document.activeElement);
       if (current < 0) return;
 
@@ -68,16 +84,26 @@
       }
     });
 
+    links.forEach(link => link.addEventListener("click", () => setGroup(group, false)));
+
+    group.addEventListener("focusin", () => closeAll(group));
+
     if (fineHover) {
       group.addEventListener("mouseenter", () => {
         closeAll(group);
         setGroup(group, true);
       });
-      group.addEventListener("mouseleave", () => setGroup(group, false));
+      group.addEventListener("mouseleave", () => {
+        if (!group.contains(document.activeElement)) setGroup(group, false);
+      });
     }
   });
 
   document.addEventListener("pointerdown", event => {
+    if (!nav.contains(event.target)) closeAll();
+  });
+
+  document.addEventListener("focusin", event => {
     if (!nav.contains(event.target)) closeAll();
   });
 
