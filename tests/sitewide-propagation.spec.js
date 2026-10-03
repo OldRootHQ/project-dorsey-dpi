@@ -25,7 +25,7 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(featuredArt).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-featured.png');
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 7');
   await page.locator('#homeCharacterNext').click();
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 6');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 7');
   await expect.poll(() => page.locator('#homeCharacterTrack').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
   await page.locator('[data-home-character="anchorage"]').click();
   await expect(page.locator('[data-home-slide="anchorage"]')).toHaveClass(/active/);
