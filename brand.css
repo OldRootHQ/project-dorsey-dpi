@@ -520,3 +520,154 @@ body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::before{
   border-color:rgba(197,162,74,.28);
   box-shadow:0 16px 36px rgba(0,0,0,.22)
 }
+
+/* =========================================================
+   OR-WEB-0029 · GLOBAL PRODUCTION POLISH
+   Navigation, deep-link landing, footer convergence, and
+   mobile tap/focus behavior.
+   ========================================================= */
+html{
+  scroll-padding-top:112px;
+}
+body{
+  -webkit-tap-highlight-color:rgba(197,162,74,.16);
+}
+.skip-link{
+  position:fixed;
+  z-index:999;
+  left:14px;
+  top:12px;
+  padding:10px 13px;
+  border:1px solid var(--old-gold);
+  border-radius:9px;
+  background:#071b12;
+  color:var(--cream);
+  font:800 11px/1 var(--font-sans);
+  text-decoration:none;
+  transform:translateY(-160%);
+  transition:transform .14s ease;
+  box-shadow:0 14px 36px rgba(0,0,0,.28);
+}
+.skip-link:focus{
+  transform:translateY(0);
+}
+.masthead{
+  isolation:isolate;
+}
+.site-nav>a.active::before,
+.nav-menu-button.active::before{
+  content:"";
+  position:absolute;
+  top:5px;
+  left:50%;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:var(--old-gold);
+  transform:translateX(-50%);
+  box-shadow:0 0 10px rgba(197,162,74,.40);
+}
+.nav-dropdown{
+  transform-origin:top left;
+}
+.nav-dropdown::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  top:-1px;
+  width:42px;
+  height:1px;
+  background:linear-gradient(90deg,var(--old-gold),transparent);
+}
+.oldroot-footer{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+}
+.oldroot-footer::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  inset:-80px -5% -130px 28%;
+  pointer-events:none;
+  opacity:.16;
+  background:
+    url("assets/branding/oldroot-root-field.svg") center 44% / 820px 1230px no-repeat;
+  transform:rotate(9deg);
+  filter:saturate(.65) brightness(.84);
+}
+.oldroot-footer::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:50%;
+  top:0;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--old-gold);
+  transform:translate(-50%,-50%);
+  box-shadow:0 0 0 6px rgba(197,162,74,.065),0 0 24px rgba(197,162,74,.18);
+}
+.oldroot-footer-inner,
+.footer-bottom{
+  position:relative;
+  z-index:1;
+}
+.footer-links a{
+  min-height:28px;
+  display:inline-flex;
+  align-items:center;
+}
+main [id]{
+  scroll-margin-top:122px;
+}
+main [id]:target{
+  animation:oldrootTargetArrival 1.25s ease;
+}
+@keyframes oldrootTargetArrival{
+  0%,100%{outline:0 solid rgba(197,162,74,0);outline-offset:7px}
+  22%{outline:3px solid rgba(197,162,74,.25);outline-offset:4px}
+}
+
+@media(max-width:760px){
+  html{scroll-padding-top:154px}
+  main [id]{scroll-margin-top:164px}
+  .site-nav>a,
+  .nav-menu-button{
+    min-height:44px;
+    padding:10px 11px;
+    font-size:9px;
+  }
+  .site-nav .nav-dropdown a{
+    min-height:46px;
+    padding:12px 13px;
+  }
+  .nav-dropdown{
+    max-height:min(62vh,420px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+  }
+  .footer-links a{min-height:34px}
+  .oldroot-footer::before{
+    inset:-30px -55% -120px 2%;
+    opacity:.11;
+    background-size:720px 1080px;
+  }
+}
+@media(max-width:430px){
+  .site-nav>a,
+  .nav-menu-button{
+    min-height:42px;
+    padding:9px 9px;
+    font-size:8.5px;
+  }
+  .oldroot-footer .footer-brand.oldroot-signature::before{
+    width:min(190px,100%);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .skip-link{transition:none}
+  main [id]:target{animation:none}
+}
+

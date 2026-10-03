@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dispatches — OldRoot</title>
   <meta name="description" content="OldRoot Studios development notes, character reveals, site updates, and public website patch notes." />
-  <link rel="stylesheet" href="brand.css?v=13" />
-  <link rel="stylesheet" href="site.css?v=32" />
+  <link rel="stylesheet" href="brand.css?v=14" />
+  <link rel="stylesheet" href="site.css?v=33" />
 </head>
 <body class="oldroot-after-dark">
   <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
@@ -18,6 +18,24 @@
 </nav></div></header>
   <main class="site-shell">
     <section class="page-head"><div class="front-label">OLDROOT / DISPATCH DESK</div><h1>DISPATCHES</h1><p>Character reveals, design notes, site expansions, publishing updates, and development milestones from OldRoot Studios. No filler feed; when something meaningful changes, it gets a dispatch.</p></section>
+
+    <section class="dispatch-tools" aria-label="Dispatch archive filters">
+      <div class="dispatch-search">
+        <label for="dispatchSearch">SEARCH DISPATCHES</label>
+        <input id="dispatchSearch" type="search" placeholder="Search updates, characters, systems, or lore…" autocomplete="off" />
+      </div>
+      <div class="dispatch-filters" role="group" aria-label="Filter dispatches by category">
+        <button class="active" type="button" data-dispatch-filter="all" aria-pressed="true">All</button>
+        <button type="button" data-dispatch-filter="site" aria-pressed="false">Site</button>
+        <button type="button" data-dispatch-filter="characters" aria-pressed="false">Characters</button>
+        <button type="button" data-dispatch-filter="art" aria-pressed="false">Art</button>
+        <button type="button" data-dispatch-filter="lore" aria-pressed="false">Lore</button>
+        <button type="button" data-dispatch-filter="world" aria-pressed="false">World</button>
+        <button type="button" data-dispatch-filter="systems" aria-pressed="false">Systems</button>
+        <button type="button" data-dispatch-filter="publishing" aria-pressed="false">Publishing</button>
+      </div>
+    </section>
+    <div class="dispatch-empty" id="dispatchEmpty" hidden>No dispatch records match that search and filter.</div>
 
     <section class="dispatch-lead"><div class="dispatch-art"><span>FEATURED / SITE UPDATE</span></div><article class="dispatch-copy"><div class="dispatch-meta">September 2026 · OldRoot Studios</div><h2>The site is becoming the universe’s front door.</h2><p>OldRoot’s first public site began as a functional registry. The current rebuild pushes it toward something more deliberate: cleaner typography, stronger hierarchy, deeper world navigation, an actual lore index, an events registry, a guided Start Here page, and a modern dispatch desk.</p><p>The next visual phase will replace temporary and overly photoreal character imagery with a more intentional comic-editorial art direction.</p><a href="start-here.html">Enter through Start Here →</a></article></section>
 
@@ -36,20 +54,28 @@
         </div>
       </div>
       <div class="discovery-grid">
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Latch</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Mark Hampton</h3><p>In development.</p><b>NO OPI LISTING</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Neegan Walters</h3><p>In development.</p><b>NO OPI LISTING</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Ballestera</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Makari</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Akuaom</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Kalani</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
-        <article class="discovery-card"><span>Upcoming Character</span><h3>Duke</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Latch</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Mark Hampton</h3><p>In development.</p><b>NO OPI LISTING</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Neegan Walters</h3><p>In development.</p><b>NO OPI LISTING</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Ballestera</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Makari</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Akuaom</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Kalani</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
+        <article class="discovery-card dev-state dev-state-seed"><span>Upcoming Character</span><h3>Duke</h3><p>In development.</p><b>IN DEVELOPMENT</b></article>
       </div>
     </section>
 
     <section class="section-band" id="patch-log">
       <div class="section-band-head"><div><span>SITE PATCH LOG</span><h2>Public change record.</h2><p>Meaningful website repairs and system changes are logged here as they ship.</p></div></div>
       <div class="dispatch-grid">
+        <article class="dispatch-card">
+          <div class="dispatch-meta">OR-WEB-0029 · October 3, 2026 · Production Polish</div>
+          <h3>OldRoot gets a mobile, accessibility, archive, and performance hardening pass.</h3>
+          <p>Navigation now supports stronger keyboard behavior and skip-to-content access; deep links land below the sticky masthead with a visible arrival state; the footer visually converges the Living Root Field; mobile controls and tap targets are tightened across editorial pages, dossiers, the World Index, Library, and OPI; development and unrevealed states are intentionally branded; Character Spotlight gains Pause/Play and complete tab semantics; Library’s featured carousel exposes proper slide state; Dispatches gains searchable category filters; and non-critical images now use native lazy loading with asynchronous decoding where safe.</p>
+          <a href="index.html">View the homepage →</a>
+          <a href="news.html">Use Dispatch archive tools →</a>
+          <a href="library.html">View Library states →</a>
+        </article>
         <article class="dispatch-card">
           <div class="dispatch-meta">OR-WEB-0028 · October 3, 2026 · Connected Universe</div>
           <h3>OldRoot’s records begin behaving like the root system they represent.</h3>
@@ -159,6 +185,6 @@
     <section class="section-band"><div class="section-band-head"><div><span>DISPATCH CATEGORIES</span><h2>What belongs on this desk.</h2></div></div><div class="origin-lanes"><div class="origin-lane"><b>Character Reveals</b><p>Public dossier launches, major visual updates, and newly established registry material.</p></div><div class="origin-lane"><b>Development Notes</b><p>Meaningful design decisions, worldbuilding systems, format experiments, and behind-the-scenes process.</p></div><div class="origin-lane"><b>OldRoot Updates</b><p>Publishing, website, library, infrastructure, and patch-log changes that materially improve how the work is presented.</p></div></div></section>
   </main>
   <footer class="oldroot-footer"><div class="oldroot-footer-inner"><div class="footer-brand oldroot-signature"><div><strong>OLDROOT STUDIOS</strong><span>Original worlds. Independent publishing.</span></div></div><div class="footer-links"><div><b>Explore</b><a href="start-here.html">Start Here</a><a href="characters.html">Characters</a><a href="locations.html">Locations</a><a href="events.html">Events</a><a href="lore.html">Lore Index</a></div><div><b>Systems</b><a href="dpi.html">OPI Analytics</a><a href="organizations.html">Organizations</a><a href="library.html">Library</a><a href="news.html">Dispatches</a></div><div><b>OldRoot</b><a href="about.html">About OldRoot</a><a href="contact.html">Contact Us</a><a href="donate.html">Support OldRoot</a></div></div></div><div class="footer-bottom">© 2026 OldRoot Studios · Original worlds. Independent publishing.</div></footer>
-<script src="nav.js?v=1"></script>
+<script data-dispatch-runtime>(()=>{const q=document.querySelector("#dispatchSearch"),buttons=[...document.querySelectorAll("[data-dispatch-filter]")],cards=[...document.querySelectorAll(".dispatch-card")],empty=document.querySelector("#dispatchEmpty");if(!q||!buttons.length||!cards.length)return;const labels={site:"Site",characters:"Characters",art:"Art",lore:"Lore",world:"World",systems:"Systems",publishing:"Publishing"};function classify(card){const meta=(card.querySelector(".dispatch-meta")?.textContent||"").toLowerCase(),all=(card.textContent||"").toLowerCase();if(/artwork|\bart\b|visual reference|creator-art/.test(meta+" "+all))return"art";if(/publishing|library|book|release/.test(meta))return"publishing";if(/analytics|opi|power index|system/.test(meta)&&!/visual system/.test(meta))return"systems";if(/world index|location|geography/.test(meta))return"world";if(/lore|genesis/.test(meta)&&!/character/.test(meta))return"lore";if(/character|registry|development registry/.test(meta))return"characters";return"site"}cards.forEach(card=>{const kind=classify(card);card.dataset.dispatchKind=kind;const meta=card.querySelector(".dispatch-meta");if(meta&&!card.querySelector(".dispatch-tag")){const tag=document.createElement("span");tag.className="dispatch-tag";tag.textContent=labels[kind]||"Site";meta.insertAdjacentElement("afterend",tag)}});let filter="all";function run(){const term=q.value.trim().toLowerCase();let shown=0;cards.forEach(card=>{const matchFilter=filter==="all"||card.dataset.dispatchKind===filter;const matchTerm=!term||card.textContent.toLowerCase().includes(term);const show=matchFilter&&matchTerm;card.hidden=!show;if(show)shown++});empty.hidden=shown!==0}buttons.forEach(button=>button.addEventListener("click",()=>{filter=button.dataset.dispatchFilter;buttons.forEach(b=>{const active=b===button;b.classList.toggle("active",active);b.setAttribute("aria-pressed",String(active))});run()}));q.addEventListener("input",run);run()})();</script><script src="nav.js?v=2"></script>
 </body>
 </html>
