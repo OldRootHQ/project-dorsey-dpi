@@ -15,12 +15,12 @@ html body.oldroot-after-dark::before{
   inset:-5vh -5vw;
   z-index:-2;
   pointer-events:none;
-  opacity:.56;
+  opacity:.67;
   background:
     url("assets/branding/root-network.svg") center top / min(1800px,120vw) auto repeat-y,
     radial-gradient(circle at 18% 22%,rgba(67,161,105,.12),transparent 24rem),
     radial-gradient(circle at 78% 70%,rgba(38,112,72,.10),transparent 28rem);
-  filter:saturate(112%) drop-shadow(0 0 18px rgba(51,145,91,.08));
+  filter:saturate(118%) drop-shadow(0 0 22px rgba(51,145,91,.12));
   animation:oldroot-root-drift 52s ease-in-out infinite alternate;
 }
 
@@ -77,7 +77,7 @@ body.oldroot-after-dark .panel::after{
   bottom:-28px;
   z-index:0;
   pointer-events:none;
-  opacity:.46;
+  opacity:.58;
   background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
   mix-blend-mode:screen;
 }
@@ -163,7 +163,7 @@ body.oldroot-after-dark .section-band::after{
   bottom:-46px;
   z-index:0;
   pointer-events:none;
-  opacity:.40;
+  opacity:.52;
   background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
   mix-blend-mode:screen;
 }
@@ -184,5 +184,151 @@ body.oldroot-after-dark .section-band>*{
     right:0;
     bottom:0;
     opacity:.27;
+  }
+}
+
+
+/* OR-WEB-0029 — Root Atmosphere final polish */
+
+/* Give the registry and editorial intro panels visible roots of their own. */
+body.oldroot-after-dark:not(.home-after-dark) .page-head{
+  background:
+    url("assets/branding/root-corner.svg") right -18px bottom -26px / 330px auto no-repeat,
+    radial-gradient(circle at 92% 0%,rgba(52,126,88,.15),transparent 22rem),
+    linear-gradient(145deg,rgba(7,25,17,.94),rgba(3,14,10,.86));
+  border-color:rgba(112,201,145,.14);
+  box-shadow:
+    0 30px 86px rgba(0,0,0,.30),
+    0 0 0 1px rgba(96,190,132,.025) inset;
+}
+
+/* Character cards visibly connect back into the page root network. */
+body.oldroot-after-dark:not(.home-after-dark) .character-card{
+  position:relative;
+  isolation:isolate;
+}
+body.oldroot-after-dark:not(.home-after-dark) .character-card::after{
+  content:"";
+  position:absolute;
+  width:210px;
+  height:132px;
+  right:-8px;
+  bottom:-8px;
+  z-index:0;
+  pointer-events:none;
+  opacity:.44;
+  background:url("assets/branding/root-corner.svg") right bottom / contain no-repeat;
+  mix-blend-mode:screen;
+}
+body.oldroot-after-dark:not(.home-after-dark) .character-card>*{
+  position:relative;
+  z-index:1;
+}
+
+/* Replace the bright registry filter strip with an integrated dark glass control. */
+body.oldroot-after-dark:not(.home-after-dark) .filter-toggle{
+  position:relative;
+  overflow:hidden;
+  color:var(--after-text);
+  border-color:rgba(197,162,74,.36);
+  background:
+    url("assets/branding/root-corner.svg") right -18px bottom -38px / 260px auto no-repeat,
+    radial-gradient(circle at 86% 20%,rgba(64,151,99,.14),transparent 20rem),
+    linear-gradient(145deg,rgba(8,28,19,.95),rgba(3,15,10,.92));
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.30),
+    0 0 0 1px rgba(97,188,132,.035) inset;
+  backdrop-filter:blur(14px) saturate(112%);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-toggle:hover{
+  color:var(--cream);
+  border-color:rgba(197,162,74,.66);
+  background:
+    url("assets/branding/root-corner.svg") right -18px bottom -38px / 260px auto no-repeat,
+    radial-gradient(circle at 86% 20%,rgba(75,172,112,.18),transparent 20rem),
+    linear-gradient(145deg,rgba(10,34,23,.98),rgba(4,18,12,.95));
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-sliders,
+body.oldroot-after-dark:not(.home-after-dark) .filter-toggle-icon{
+  color:var(--old-gold);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-count{
+  background:var(--old-gold);
+  color:#07110d;
+  box-shadow:0 0 0 4px rgba(197,162,74,.08);
+}
+
+body.oldroot-after-dark:not(.home-after-dark) .filter-drawer{
+  color:var(--after-text);
+  border-color:rgba(197,162,74,.28);
+  background:
+    radial-gradient(circle at 92% 0%,rgba(55,142,94,.11),transparent 22rem),
+    linear-gradient(145deg,rgba(7,26,18,.98),rgba(3,15,10,.97));
+  box-shadow:0 24px 66px rgba(0,0,0,.38);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-drawer-top{
+  border-bottom-color:rgba(197,162,74,.20);
+  background:rgba(8,29,20,.90);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-drawer-title,
+body.oldroot-after-dark:not(.home-after-dark) .filter-section summary{
+  color:var(--after-text);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-drawer-sub,
+body.oldroot-after-dark:not(.home-after-dark) .filter-check{
+  color:var(--after-muted);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-section{
+  border-bottom-color:rgba(243,235,221,.09);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-chevron,
+body.oldroot-after-dark:not(.home-after-dark) .filter-check:hover span{
+  color:var(--old-gold);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-check input{
+  border-color:rgba(243,235,221,.28);
+  background:rgba(2,11,7,.80);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-check input:checked{
+  border-color:var(--old-gold);
+  background:var(--old-gold);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-check input:checked::after{
+  border-color:#07110d;
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-clear{
+  color:var(--after-muted);
+  border-color:rgba(197,162,74,.28);
+  background:rgba(10,35,24,.48);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-clear:hover{
+  color:var(--after-text);
+  border-color:rgba(197,162,74,.52);
+  background:rgba(16,48,33,.72);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-apply{
+  color:#07110d;
+  border-color:var(--old-gold);
+  background:var(--old-gold);
+}
+body.oldroot-after-dark:not(.home-after-dark) .filter-apply:hover{
+  background:#dcc06c;
+}
+
+/* Keep the stronger roots restrained on phones. */
+@media(max-width:680px){
+  html body.oldroot-after-dark::before{opacity:.36}
+  body.oldroot-after-dark:not(.home-after-dark) .character-card::after{
+    width:156px;
+    height:98px;
+    right:0;
+    bottom:0;
+    opacity:.30;
+  }
+  body.oldroot-after-dark:not(.home-after-dark) .page-head{
+    background:
+      url("assets/branding/root-corner.svg") right -10px bottom -12px / 210px auto no-repeat,
+      radial-gradient(circle at 92% 0%,rgba(52,126,88,.12),transparent 18rem),
+      linear-gradient(145deg,rgba(7,25,17,.95),rgba(3,14,10,.90));
   }
 }
