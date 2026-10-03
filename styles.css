@@ -337,3 +337,71 @@ body.oldroot-after-dark .conditional-empty{
 body.oldroot-after-dark .compare-table-wrap{border-color:rgba(243,235,221,.09)}
 body.oldroot-after-dark .compare-table thead th{background:#03100b}
 body.oldroot-after-dark .compare-table tbody tr:nth-child(even){background:rgba(12,38,26,.48)}
+
+/* =========================================================
+   OR-WEB-0025 · OPI LIVING ROOT FIELD ALIGNMENT
+   Matches the sitewide organic depth system without importing
+   editorial layout rules into the analytics workstation.
+   ========================================================= */
+body.oldroot-after-dark{
+  position:relative;
+  isolation:isolate;
+  background:
+    radial-gradient(circle at 14% 4%,rgba(49,124,84,.16),transparent 32rem),
+    radial-gradient(circle at 90% 10%,rgba(197,162,74,.04),transparent 28rem),
+    radial-gradient(circle at 52% 70%,rgba(27,88,59,.09),transparent 46rem),
+    linear-gradient(180deg,#04100b 0%,#020a07 48%,#010604 100%) fixed;
+}
+body.oldroot-after-dark > *{
+  position:relative;
+  z-index:1;
+}
+body.oldroot-after-dark::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.35;
+  background-image:
+    url("assets/branding/oldroot-root-field.svg"),
+    url("assets/branding/oldroot-root-field.svg");
+  background-repeat:repeat-y,repeat-y;
+  background-size:min(1840px,145vw) 2760px,min(2320px,178vw) 3480px;
+  background-position:50% 0,68% 1260px;
+  filter:saturate(.72) contrast(1.02);
+}
+body.oldroot-after-dark::after{
+  content:"";
+  position:fixed;
+  inset:-4%;
+  z-index:0;
+  pointer-events:none;
+  opacity:.30;
+  background:
+    radial-gradient(circle at 16% 22%,rgba(197,162,74,.38) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 76% 18%,rgba(94,174,130,.30) 0 1px,transparent 1.5px),
+    radial-gradient(circle at 88% 67%,rgba(94,174,130,.22) 0 1px,transparent 1.5px),
+    repeating-linear-gradient(116deg,transparent 0 138px,rgba(104,161,131,.017) 138px 139px),
+    radial-gradient(ellipse at 48% 45%,transparent 38%,rgba(0,0,0,.34) 100%);
+  background-size:520px 520px,680px 680px,760px 760px,auto,auto;
+  mix-blend-mode:screen;
+  animation:opiRootAmbientDrift 42s ease-in-out infinite alternate;
+}
+@keyframes opiRootAmbientDrift{
+  0%{transform:translate3d(-.25%,-.15%,0) scale(1.004)}
+  100%{transform:translate3d(.35%,.24%,0) scale(1.009)}
+}
+@media(max-width:640px){
+  body.oldroot-after-dark::before{
+    opacity:.25;
+    background-image:url("assets/branding/oldroot-root-field.svg");
+    background-size:1120px 1680px;
+    background-position:52% 0;
+  }
+  body.oldroot-after-dark::after{opacity:.22}
+}
+@media(prefers-reduced-motion:reduce){
+  body.oldroot-after-dark::after{animation:none!important}
+}
+
