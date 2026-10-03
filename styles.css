@@ -346,6 +346,7 @@ body.oldroot-after-dark .compare-table tbody tr:nth-child(even){background:rgba(
 body.oldroot-after-dark{
   position:relative;
   isolation:isolate;
+  overflow-x:clip;
   background:
     radial-gradient(circle at 14% 4%,rgba(49,124,84,.16),transparent 32rem),
     radial-gradient(circle at 90% 10%,rgba(197,162,74,.04),transparent 28rem),
