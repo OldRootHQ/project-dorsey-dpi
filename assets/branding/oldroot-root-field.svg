@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" preserveAspectRatio="xMidYMid slice">
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-120 120 C 90 230, 80 470, 270 620 C 430 745, 360 930, 545 1090 C 690 1215, 620 1445, 830 1595 C 1010 1725, 930 1970, 1165 2125 C 1290 2210, 1395 2280, 1690 2380" stroke="#173629" stroke-width="42" opacity=".78"/>
+    <path d="M155 410 C 330 465, 420 555, 485 710 C 545 850, 705 905, 820 975" stroke="#1f4634" stroke-width="23" opacity=".58"/>
+    <path d="M420 885 C 265 955, 215 1105, 125 1270 C 58 1390, 20 1510, -110 1630" stroke="#234d39" stroke-width="17" opacity=".50"/>
+    <path d="M660 1215 C 825 1160, 965 1210, 1065 1335 C 1165 1460, 1310 1500, 1515 1465" stroke="#2b5b43" stroke-width="14" opacity=".42"/>
+    <path d="M885 1620 C 765 1755, 775 1920, 675 2060 C 605 2160, 500 2250, 410 2435" stroke="#214936" stroke-width="21" opacity=".48"/>
+    <path d="M1140 2100 C 1220 1915, 1365 1810, 1545 1770 C 1660 1742, 1715 1695, 1780 1615" stroke="#25503c" stroke-width="19" opacity=".46"/>
+
+    <path d="M-60 220 C 185 330, 145 570, 350 710 C 545 845, 470 1040, 650 1185 C 840 1335, 765 1510, 940 1665 C 1125 1830, 1075 2040, 1370 2215" stroke="#4c8d67" stroke-width="4" opacity=".22"/>
+    <path d="M350 710 C 455 645, 565 640, 700 665 C 820 688, 915 650, 1035 555" stroke="#4a8964" stroke-width="3" opacity=".20"/>
+    <path d="M650 1185 C 545 1270, 480 1390, 480 1525 C 478 1630, 415 1720, 320 1795" stroke="#4a8964" stroke-width="3" opacity=".18"/>
+    <path d="M940 1665 C 1065 1585, 1185 1575, 1295 1650 C 1380 1708, 1480 1715, 1625 1665" stroke="#4a8964" stroke-width="3" opacity=".18"/>
+
+    <path d="M1685 210 C 1495 330, 1455 520, 1305 660 C 1170 785, 1205 930, 1060 1060" stroke="#173629" stroke-width="31" opacity=".62"/>
+    <path d="M1320 640 C 1450 720, 1515 850, 1530 1015 C 1540 1130, 1600 1225, 1705 1300" stroke="#224c38" stroke-width="15" opacity=".42"/>
+    <path d="M1070 1050 C 1170 1110, 1255 1210, 1285 1335" stroke="#4a8964" stroke-width="3" opacity=".18"/>
+  </g>
+
+  <g fill="#5ba97c" opacity=".26">
+    <circle cx="350" cy="710" r="5"/>
+    <circle cx="650" cy="1185" r="4"/>
+    <circle cx="940" cy="1665" r="5"/>
+    <circle cx="1305" cy="660" r="4"/>
+  </g>
+  <g fill="#c5a24a" opacity=".34">
+    <circle cx="820" cy="975" r="3.5"/>
+    <circle cx="1165" cy="2125" r="3.5"/>
+  </g>
+</svg>
