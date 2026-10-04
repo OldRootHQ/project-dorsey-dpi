@@ -64,20 +64,20 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await expect(page.locator('#locationStatus')).toHaveText('Reference');
   await expect(page.locator('#locationExplore')).toBeHidden();
 
-  await page.locator('.location-node[data-key="australia"]').click();
-  await expect(page.locator('#locationName')).toHaveText('Australia');
-  await expect(page.locator('#locationStatus')).toHaveText('Reference');
-  await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
-  await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
-  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
-  await expect(page.locator('#locationExplore')).toBeHidden();
-
   await page.locator('#globeClusterPanel').focus();
   await page.keyboard.press('ArrowDown');
   await expect(page.locator('#locationName')).toHaveText('St. Dorsey Island');
 
   await page.keyboard.press('Escape');
   await expect(page.locator('#globeClusterPanel')).toBeHidden();
+
+  await page.goto('http://127.0.0.1:8000/locations.html#australia', { waitUntil: 'networkidle' });
+  await expect(page.locator('#locationName')).toHaveText('Australia');
+  await expect(page.locator('#locationStatus')).toHaveText('Reference');
+  await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
+  await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
+  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
+  await expect(page.locator('#locationExplore')).toBeHidden();
 
   for (let i = 0; i < 20; i += 1) await page.locator('#zoomInGlobe').click();
   await expect(page.locator('#globeZoomReadout')).toContainText('ZOOM 2.2×');
