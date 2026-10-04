@@ -25,7 +25,7 @@ const DARK_PAGES = [
   ['donate.html', '.donate-primary'],
   ['cart.html', '.cart-main'],
   ['checkout.html', '.checkout-form'],
-  ['dpi.html', '.panel'],
+  ['dpi.html', '.chart-panel'],
   ['about.html', '.section-band']
 ];
 
