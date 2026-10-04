@@ -111,6 +111,22 @@
       coords: [-155.09, 19.7074],
       labelOffset: [11, -10]
     },
+    australia: {
+      id: "REF-002",
+      name: "Australia",
+      shortName: "Australia",
+      type: "Character geographic reference",
+      region: "Australia",
+      status: "Reference",
+      character: "Latch",
+      characterUrl: "characters/latch/",
+      characters: [{ name: "Latch", url: "characters/latch/", role: "Hero recruiter / field operative" }],
+      dossierUrl: "",
+      note: "Australia is Latch Boswell’s established nationality and military origin. No specific Australian hometown or present-day base is established.",
+      coords: [134.4896, -25.7349],
+      reference: true,
+      labelOffset: [11, -10]
+    },
     washington: {
       id: "REF-001",
       name: "Washington, D.C.",
