@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark" />
   <title>OPI Analytics — OldRoot</title><meta name="description" content="Explore OldRoot Power Index analytics and compare measurable character capabilities without a single overall power score."/><link rel="canonical" href="https://oldroothq.github.io/project-dorsey-dpi/dpi.html"/><meta name="theme-color" content="#06110d"/><meta property="og:type" content="website"/><meta property="og:site_name" content="OldRoot Studios"/><meta property="og:title" content="OPI Analytics — OldRoot"/><meta property="og:description" content="Explore OldRoot Power Index analytics and compare measurable character capabilities without a single overall power score."/><meta property="og:url" content="https://oldroothq.github.io/project-dorsey-dpi/dpi.html"/><meta property="og:image" content="https://oldroothq.github.io/project-dorsey-dpi/assets/branding/oldroot-primary.png"/><meta property="og:image:alt" content="OldRoot Studios"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OPI Analytics — OldRoot"/><meta name="twitter:description" content="Explore OldRoot Power Index analytics and compare measurable character capabilities without a single overall power score."/><meta name="twitter:image" content="https://oldroothq.github.io/project-dorsey-dpi/assets/branding/oldroot-primary.png"/>
   <link rel="stylesheet" href="brand.css?v=15" />
-  <link rel="stylesheet" href="styles.css?v=15" />
+  <link rel="stylesheet" href="styles.css?v=16" />
 </head>
 <body class="oldroot-after-dark">
   <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
@@ -24,7 +24,7 @@
         <h1>OLDROOT POWER INDEX</h1>
         <p>Compare measurable character attributes, filter the registry, and inspect OPI profiles without reducing characters to a canonical overall score.</p>
       </div>
-      <div class="status"><span>ANALYTICS 2.0</span><span id="count">7 CHARACTERS</span></div>
+      <div class="status"><span>ANALYTICS 2.0</span><span id="count">8 CHARACTERS</span></div>
     </header>
 
     <section class="analytics-toolbar">
@@ -36,13 +36,21 @@
 
     <section class="filter-drawer" id="filter-drawer" hidden>
       <div class="filter-drawer-head">
-        <div><span>FILTERS</span><strong>Choose who appears on the graph.</strong></div>
+        <div><span>FILTERS</span><strong>Choose which public OPI records are in scope.</strong></div>
         <div><button id="filter-clear" type="button">Clear all</button><button id="filter-apply" type="button">Apply</button></div>
       </div>
       <div class="filter-grid" id="filter-groups"></div>
     </section>
 
     <div class="active-filters" id="active-filters" hidden></div>
+
+    <section class="panel unscored-panel" id="unscored-panel" hidden>
+      <div class="panel-head">
+        <div><h2>Unscored public OPI records</h2><p>Public characters can remain discoverable in OPI Analytics before creator-approved numeric ratings exist. Missing capability values are never inferred.</p></div>
+        <div class="plot-count" id="unscored-count">0 UNSCORED</div>
+      </div>
+      <div class="unscored-list" id="unscored-list"></div>
+    </section>
 
     <section class="grid">
       <article class="panel chart-panel">
@@ -87,8 +95,8 @@
   </main>
 
   <div id="tooltip" class="tooltip"></div>
-  <script src="data.js?v=15"></script>
-  <script src="app.js?v=10"></script>
+  <script src="data.js?v=16"></script>
+  <script src="app.js?v=11"></script>
   <script src="lightbox.js?v=9"></script>
   <script src="nav.js?v=3"></script>
 </body>

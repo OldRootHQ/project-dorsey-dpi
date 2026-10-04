@@ -450,3 +450,31 @@ body.oldroot-after-dark::after{
   .panel{content-visibility:visible}
 }
 
+
+
+/* =========================================================
+   OR-WEB-0038 · UNSCORED OPI PUBLIC RECORDS
+   ========================================================= */
+.unscored-panel{margin:0 0 12px;padding:16px}
+.unscored-list{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.unscored-record{
+  min-width:250px;flex:1 1 280px;display:flex;align-items:center;justify-content:space-between;gap:14px;
+  border:1px solid var(--line-strong);border-radius:11px;background:rgba(231,220,203,.42);
+  color:var(--ink);padding:11px 12px;text-align:left;cursor:pointer
+}
+.unscored-record:hover,.unscored-record:focus-visible{border-color:var(--old-gold);background:rgba(240,222,172,.20);outline:none}
+.unscored-record span{display:grid;gap:2px}.unscored-record b{font-size:12px;color:var(--cream)}
+.unscored-record small{font-size:10px;color:rgba(243,235,221,.64)}
+.unscored-record strong{font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:var(--old-gold);text-align:right}
+.unscored-detail{
+  margin:12px 0;padding:13px;border:1px solid rgba(197,162,74,.30);border-radius:11px;
+  background:rgba(197,162,74,.07)
+}
+.unscored-detail span{display:block;font-size:9px;font-weight:900;letter-spacing:.11em;color:var(--old-gold);margin-bottom:4px}
+.unscored-detail strong{display:block;color:var(--cream);font-size:14px}
+.unscored-detail p{margin:7px 0 0;font-size:11px;line-height:1.55;color:rgba(243,235,221,.70)}
+@media(max-width:640px){
+  .unscored-panel{padding:12px}
+  .unscored-record{min-width:0;flex-basis:100%;align-items:flex-start;flex-direction:column}
+  .unscored-record strong{text-align:left}
+}

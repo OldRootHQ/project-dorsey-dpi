@@ -49,7 +49,7 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('a[href="../../characters/anchorage/"]')).toHaveCount(2);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('7 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('8 CHARACTERS');
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {

@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0038 · October 4, 2026 · Latch OPI Unscored Record
+
+- Added Latch to OPI Analytics as a public **unscored** character record instead of omitting him from the analytics dataset.
+- Preserved the canon boundary that Latch has no creator-approved numeric OPI profile; all eleven capability values remain unpublished rather than guessed.
+- Added an Unscored Public OPI Records panel and an OPI Status filter so public characters without numeric ratings remain visible and searchable.
+- Updated the analytics record count to eight public characters while numeric OPI-axis comparisons continue to plot only characters with established values.
+- Linked Latch's dossier directly to his OPI Analytics presence and added regression coverage for search, filtering, detail presentation, and missing-value handling.
+
 ## OR-WEB-0037 · October 4, 2026 · Latch World Index Connection
 
 - Added Australia to the interactive globe as a geographic reference connected to Latch.
