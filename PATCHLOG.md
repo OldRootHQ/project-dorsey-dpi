@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0037 · October 4, 2026 · Latch World Index Connection
+
+- Added Australia to the interactive globe as a geographic reference connected to Latch.
+- Used Australia only at the country level because Latch's Australian nationality and military background are established while no specific hometown or present-day Australian base is canon.
+- Linked Latch's dossier back to the Australia globe reference without creating a new location dossier or inventing city-level canon.
+- Updated globe cache keys and regression coverage for the ninth rendered globe node while preserving seven established location dossiers.
+
 ## OR-WEB-0036 · October 3, 2026 · Power Classification Corrections
 
 - Reclassified Anchorage from Superhuman to **E&A Human**, using the existing OldRoot Power Classification taxonomy.
