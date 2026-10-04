@@ -14,6 +14,7 @@
   const dpiMetrics=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
   const defs={
     ...Object.fromEntries(dpiMetrics.map(k=>[k,{label:k,group:"OPI",kind:"dpi",format:v=>v.toFixed(1)}])),
+    officialOPI:{label:"Official OPI",group:"OPI",kind:"dpi",format:v=>v.toFixed(2)},
     age:{label:"Age",group:"Physical Profile",kind:"age",format:v=>String(Math.round(v))},
     heightIn:{label:"Height",group:"Physical Profile",kind:"height",format:formatHeight},
     weightLb:{label:"Weight",group:"Physical Profile",kind:"weight",format:v=>Math.round(v)+" lb"},
@@ -24,7 +25,7 @@
     spread:{label:"OPI Spread",group:"Derived Analytics",kind:"dpi",format:v=>v.toFixed(1)},
     conditionalCount:{label:"Conditional OPI Count",group:"Derived Analytics",kind:"count",format:v=>String(Math.round(v))}
   };
-  const metricOrder=[...dpiMetrics,"age","heightIn","weightLb","yearsActive","mean","high","low","spread","conditionalCount"];
+  const metricOrder=[...dpiMetrics,"officialOPI","age","heightIn","weightLb","yearsActive","mean","high","low","spread","conditionalCount"];
   const filterDefs=[
     {key:"role",label:"Role"},
     {key:"powerClass",label:"Power Classification"},
@@ -279,6 +280,7 @@
     tip.innerHTML='<strong>'+esc(c.codename)+'</strong><small>'+esc(c.civilian)+'</small>'+
       '<div class="trow"><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div>'+
       '<div class="trow"><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
+      (Number.isFinite(c.officialOPI)?'<div class="trow"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':"")+
       '<div class="trow"><span>Baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>'+
       '<div class="trow"><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>';
     tip.classList.add("show");let left=e.clientX+16,top=e.clientY+16;if(left+320>innerWidth)left=e.clientX-320;if(top+200>innerHeight)top=e.clientY-210;
@@ -306,7 +308,7 @@
       '<div class="meta"><div><span>Location</span><b>'+esc(c.location)+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>'+
       '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
       '<div class="comparison-readout"><span>Current comparison</span><b>'+esc(defs[xKey].label)+' '+esc(formatMetric(xKey,valueFor(c,xKey)))+' <i>vs</i> '+esc(defs[yKey].label)+' '+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
-      '<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+mean(c).toFixed(2)+'</b></div>'+
+      (Number.isFinite(c.officialOPI)?'<div class="mean"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':'<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+mean(c).toFixed(2)+'</b></div>')+
       '<div class="top-baseline"><span>Highest baseline category</span><b>'+esc(top[0])+' · '+top[1].toFixed(1)+'</b></div>'+
       (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"")+
       '<div class="section-label">Baseline OPI</div>'+
@@ -321,8 +323,9 @@
     compareContent.innerHTML='<div class="compare-names">'+selected.map(c=>'<button type="button" data-remove-compare="'+esc(c.codename)+'">'+esc(c.codename)+' ×</button>').join("")+'</div>'+
       '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Category</th>'+selected.map(c=>'<th>'+esc(c.codename)+'</th>').join("")+'</tr></thead><tbody>'+
       dpiMetrics.map(k=>'<tr><td>'+k+'</td>'+selected.map(c=>'<td>'+(Number.isFinite(c.baseline?.[k])?c.baseline[k].toFixed(1):"—")+'</td>').join("")+'</tr>').join("")+
+      '<tr><td>Official OPI</td>'+selected.map(c=>'<td>'+(Number.isFinite(c.officialOPI)?c.officialOPI.toFixed(2):"—")+'</td>').join("")+'</tr>'+
       '<tr class="analytics-row"><td>Baseline Mean*</td>'+selected.map(c=>'<td>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</td>').join("")+'</tr></tbody></table></div>'+
-      '<p class="compare-footnote">* Analytics-only visualization statistic; not a canonical overall power score or fight rating.</p>';
+      '<p class="compare-footnote">* Baseline Mean remains an analytics-only statistic. Official OPI values are shown separately only when creator-established; Latch’s official OPI is 10.15.</p>';
     compareContent.querySelectorAll("[data-remove-compare]").forEach(b=>b.onclick=()=>{compareSet.delete(b.dataset.removeCompare);render()});
   }
 

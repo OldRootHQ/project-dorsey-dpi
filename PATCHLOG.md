@@ -2,10 +2,19 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
-## OR-WEB-0038 · October 4, 2026 · Latch OPI Unscored Record
+## OR-WEB-0039 · October 4, 2026 · Latch Official OPI Correction
 
-- Added Latch to OPI Analytics as a public **unscored** character record instead of omitting him from the analytics dataset.
-- Preserved the canon boundary that Latch has no creator-approved numeric OPI profile; all eleven capability values remain unpublished rather than guessed.
+- Published Latch Boswell's locked eleven-category DPI profile exactly as creator-supplied: Strength 9.7, Durability 7.7, Speed 9.3, Agility 8.4, Regeneration 5.3, Senses 7.9, Offense 15.4, Intellect 12.3, Combat 18.6, Mobility 6.0, and Stamina 11.1.
+- Established **10.15** as Latch Boswell's official OPI. The eleven locked values total 111.7 and average to 10.1545..., which displays as 10.15.
+- Added the official OPI to the Character Registry, Latch dossier, OPI Analytics detail view, metric selectors, tooltips, and character comparison tables.
+- Removed Latch's interim unscored state from current public presentation while retaining the generic unscored-record system for future characters who genuinely lack approved values.
+- Locked the exact values and official OPI in automated regression coverage. No individual DPI category value was altered.
+- OR-WEB-0038's unscored Latch state is superseded by this creator correction.
+
+## OR-WEB-0038 · October 4, 2026 · Latch OPI Unscored Record · Superseded
+
+- Interim state: Latch was added to OPI Analytics as an **unscored** public record. **Superseded by OR-WEB-0039** after creator-supplied locked values and official OPI 10.15 were restored.
+- The earlier assumption that Latch lacked creator-approved numeric values is no longer current canon; see OR-WEB-0039.
 - Added an Unscored Public OPI Records panel and an OPI Status filter so public characters without numeric ratings remain visible and searchable.
 - Updated the analytics record count to eight public characters while numeric OPI-axis comparisons continue to plot only characters with established values.
 - Linked Latch's dossier directly to his OPI Analytics presence and added regression coverage for search, filtering, detail presentation, and missing-value handling.
@@ -50,7 +59,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Integrated the supplied Latch artwork package as optimized WebP assets with full-image lightbox access.
 - Added Latch to the public sitemap and automated visual-QA surface.
 - Removed Latch from both Upcoming Characters previews.
-- Kept Latch out of numeric OPI comparisons because no creator-approved OPI values are present in the current source of truth; no scores were inferred.
+- Initial release state kept Latch out of numeric OPI comparisons because the values were missing from the then-current implementation. **Superseded by OR-WEB-0039**, which restores his locked DPI profile and official OPI 10.15.
 
 ## OR-WEB-0032 · October 3, 2026 · Registry Framing Fix
 

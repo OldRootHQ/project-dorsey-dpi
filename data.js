@@ -66,7 +66,8 @@ window.OLDROOT_CHARACTERS = [
     affiliation:"Post-Genesis hero-recruitment operation / core hero organization", page:"characters/latch/", image:"assets/characters/latch/latch-registry.webp",
     age:36, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Australian former 2nd Commando Regiment team leader serving as a post-Genesis recruiter, security operative, field agent, marksman, and practical right-hand operative.",
-    baseline:null,
+    officialOPI:10.15,
+    baseline:{Strength:9.7,Durability:7.7,Speed:9.3,Agility:8.4,Regeneration:5.3,Senses:7.9,Offense:15.4,Intellect:12.3,Combat:18.6,Mobility:6.0,Stamina:11.1},
     conditional:[]
   },
   {
