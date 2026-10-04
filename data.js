@@ -41,7 +41,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
-    powerClass:"Superhuman", registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
+    powerClass:"E&A Human", registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
     origin:"Pre-Genesis experimental enhancement / Non-Ascendant", originType:"Experimental Enhancement", ascendantStatus:"Non-Ascendant",
     affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"assets/characters/anchorage/anchorage-registry.png",
     age:37, heightIn:82, weightLb:null, yearsActive:null,
@@ -61,7 +61,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Kokio", civilian:"Kalani Kane", classification:"Hero", role:"Hero",
-    powerClass:"Superhuman", registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
+    powerClass:"Demi-God", registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
     origin:"Ancient Tiki ritual / Takaro bond", originType:"Supernatural / Ritual", ascendantStatus:null,
     affiliation:null, page:"characters/kokio/", image:"assets/characters/kokio/kokio-casual.webp",
     age:26, heightIn:67, weightLb:175, yearsActive:null,

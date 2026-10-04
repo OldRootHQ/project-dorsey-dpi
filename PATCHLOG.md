@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0036 · October 3, 2026 · Power Classification Corrections
+
+- Reclassified Anchorage from Superhuman to **E&A Human**, using the existing OldRoot Power Classification taxonomy.
+- Reclassified Kokio from Superhuman to **Demi-God**, using the existing OldRoot Power Classification taxonomy.
+- Propagated both corrections across Character Registry cards, dossiers, homepage Character Spotlight labels, Start Here, OPI Analytics data, and regression coverage.
+- Preserved Anchorage's Villain, Non-Ascendant, Baltimore, and pre-Genesis experimental-enhancement records.
+- Preserved Kokio's Hero role, human species record, Hilo base, Takaro ritual origin, and exact OPI values; this change affects Power Classification only.
+- OR-WEB-0009 remains in the historical ledger as the earlier Anchorage classification state and is superseded by this correction.
+
 ## OR-WEB-0035 · October 3, 2026 · Kokio Dossier Visual Refinement
 
 - Replaced Kokio's Registry Data sidebar portrait with the stronger creator-supplied barrier combat image.
