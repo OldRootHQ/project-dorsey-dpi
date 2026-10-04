@@ -8,6 +8,7 @@
   const filterClear=$("#filter-clear"),filterApply=$("#filter-apply"),activeFilters=$("#active-filters");
   const colorBy=$("#color-by"),sizeBy=$("#size-by"),labelBy=$("#label-by");
   const compareToggle=$("#compare-toggle"),compareTray=$("#compare-tray"),compareContent=$("#compare-content"),compareClear=$("#compare-clear");
+  const unscoredPanel=$("#unscored-panel"),unscoredList=$("#unscored-list"),unscoredCount=$("#unscored-count");
   const chartNote=$("#chart-note"),NS="http://www.w3.org/2000/svg";
 
   const dpiMetrics=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
@@ -30,21 +31,24 @@
     {key:"originType",label:"Origin Type"},
     {key:"ascendantStatus",label:"Ascendant Status"},
     {key:"locationKey",label:"Location"},
+    {key:"opiStatus",label:"OPI Status"},
     {key:"conditionalStatus",label:"Conditional OPI"}
   ];
   const filterState={};
   const compareSet=new Set();
   let compareMode=false,selectedCharacter=chars[0]||null;
 
-  function mean(c){const v=Object.values(c.baseline);return v.reduce((a,b)=>a+b,0)/v.length}
-  function high(c){return Math.max(...Object.values(c.baseline))}
-  function low(c){return Math.min(...Object.values(c.baseline))}
+  function baselineValues(c){return Object.values(c.baseline||{}).filter(Number.isFinite)}
+  function hasBaseline(c){return dpiMetrics.every(k=>Number.isFinite(c.baseline?.[k]))}
+  function mean(c){const v=baselineValues(c);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
+  function high(c){const v=baselineValues(c);return v.length?Math.max(...v):null}
+  function low(c){const v=baselineValues(c);return v.length?Math.min(...v):null}
   function valueFor(c,key){
-    if(dpiMetrics.includes(key))return c.baseline[key];
+    if(dpiMetrics.includes(key))return c.baseline?.[key]??null;
     if(key==="mean")return mean(c);
     if(key==="high")return high(c);
     if(key==="low")return low(c);
-    if(key==="spread")return high(c)-low(c);
+    if(key==="spread"){const hi=high(c),lo=low(c);return Number.isFinite(hi)&&Number.isFinite(lo)?hi-lo:null}
     if(key==="conditionalCount")return (c.conditional||[]).length;
     return c[key]??null;
   }
@@ -53,11 +57,12 @@
     if(inch===12){ft++;inch=0}
     return ft+"'"+inch+'"';
   }
-  function formatMetric(key,v){return v==null?"—":defs[key].format(v)}
+  function formatMetric(key,v){return Number.isFinite(v)?defs[key].format(v):"—"}
   function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
   function node(name,attrs={},text=""){const n=document.createElementNS(NS,name);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,v));if(text)n.textContent=text;return n}
   function unique(key){
     if(key==="conditionalStatus")return["Has conditional OPI","No conditional OPI"];
+    if(key==="opiStatus")return["Scored","Unscored"];
     return[...new Set(chars.map(c=>c[key]||"Unassigned"))].sort((a,b)=>String(a).localeCompare(String(b)));
   }
 
@@ -95,6 +100,7 @@
 
   function getFilterValue(c,key){
     if(key==="conditionalStatus")return(c.conditional&&c.conditional.length)?"Has conditional OPI":"No conditional OPI";
+    if(key==="opiStatus")return hasBaseline(c)?"Scored":"Unscored";
     return c[key]||"Unassigned";
   }
   function draftState(){
@@ -188,12 +194,28 @@
   function render(){
     const filtered=chars.filter(appliedMatches),xKey=xMetric.value,yKey=yMetric.value;
     const data=filtered.filter(c=>Number.isFinite(valueFor(c,xKey))&&Number.isFinite(valueFor(c,yKey)));
+    const unscored=filtered.filter(c=>!hasBaseline(c));
     count.textContent=filtered.length+" CHARACTER"+(filtered.length===1?"":"S");
     plotCount.textContent=data.length+" plotted"+(data.length!==filtered.length?" · "+(filtered.length-data.length)+" missing axis data":"");
     comparisonLabel.textContent=defs[xKey].label+" vs "+defs[yKey].label;
     chartNote.textContent=data.length!==filtered.length?(filtered.length-data.length)+" filtered character"+(filtered.length-data.length===1?" is":"s are")+" hidden from this plot because one or both selected values are not established.":"";
+    if(unscoredPanel&&unscoredList&&unscoredCount){
+      unscoredPanel.hidden=!unscored.length;
+      unscoredCount.textContent=unscored.length+" UNSCORED";
+      unscoredList.innerHTML=unscored.map(c=>'<button type="button" class="unscored-record" data-unscored-character="'+esc(c.codename)+'"><span><b>'+esc(c.codename)+'</b><small>'+esc(c.civilian)+'</small></span><strong>NUMERIC PROFILE NOT ESTABLISHED</strong></button>').join("");
+      unscoredList.querySelectorAll("[data-unscored-character]").forEach(button=>button.onclick=()=>{
+        const c=chars.find(item=>item.codename===button.dataset.unscoredCharacter);
+        if(c)select(c);
+      });
+    }
     noResults.classList.toggle("show",data.length===0);svg.innerHTML="";
-    if(!data.length){detail.innerHTML='<div class="detail-empty">Choose another comparison or clear filters.</div>';renderCompare();return}
+    if(!data.length){
+      if(filtered.length){
+        const choice=selectedCharacter&&filtered.includes(selectedCharacter)?selectedCharacter:filtered[0];
+        select(choice);
+      }else detail.innerHTML='<div class="detail-empty">Choose another comparison or clear filters.</div>';
+      renderCompare();return
+    }
 
     const W=Math.max(760,svg.clientWidth||980),H=Math.max(540,svg.clientHeight||610);
     svg.setAttribute("viewBox","0 0 "+W+" "+H);
@@ -257,13 +279,25 @@
     tip.innerHTML='<strong>'+esc(c.codename)+'</strong><small>'+esc(c.civilian)+'</small>'+
       '<div class="trow"><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div>'+
       '<div class="trow"><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
-      '<div class="trow"><span>Baseline mean</span><b>'+mean(c).toFixed(2)+'</b></div>'+
+      '<div class="trow"><span>Baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>'+
       '<div class="trow"><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>';
     tip.classList.add("show");let left=e.clientX+16,top=e.clientY+16;if(left+320>innerWidth)left=e.clientX-320;if(top+200>innerHeight)top=e.clientY-210;
     tip.style.left=Math.max(10,left)+"px";tip.style.top=Math.max(10,top)+"px";
   }
   function select(c){
-    selectedCharacter=c;const xKey=xMetric.value,yKey=yMetric.value,top=Object.entries(c.baseline).reduce((a,b)=>a[1]>b[1]?a:b);
+    selectedCharacter=c;const xKey=xMetric.value,yKey=yMetric.value;
+    if(!hasBaseline(c)){
+      detail.innerHTML=
+        (c.image?'<img class="detail-portrait" src="'+esc(c.image)+'" alt="'+esc(c.codename)+' visual reference" loading="lazy" data-lightbox data-full-src="'+esc(c.image)+'" data-caption="'+esc(c.codename)+' · OPI visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0" />':"")+
+        '<div class="name-row"><div class="name">'+esc(c.codename)+'</div><span class="badge">'+esc(c.classification)+'</span></div>'+
+        '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
+        '<div class="meta"><div><span>Location</span><b>'+esc(c.location||"Unassigned")+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Not separately assigned")+'</b></div>'+
+        '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
+        '<div class="unscored-detail"><span>OPI STATUS</span><strong>Numeric profile not established</strong><p>Latch remains a public OPI record, but no capability values are published until creator-approved ratings are established. Missing values are not guessed.</p></div>'+
+        (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"");
+      return
+    }
+    const top=Object.entries(c.baseline).reduce((a,b)=>a[1]>b[1]?a:b);
     const conditional=(c.conditional&&c.conditional.length)?c.conditional.map(d=>'<div class="conditional"><span>'+esc(d.category)+' · '+esc(d.condition)+'</span><b>'+d.value.toFixed(1)+'</b></div>').join(""):'<div class="conditional-empty">No conditional values established.</div>';
     detail.innerHTML=
       (c.image?'<img class="detail-portrait" src="'+esc(c.image)+'" alt="'+esc(c.codename)+' visual reference" loading="lazy" data-lightbox data-full-src="'+esc(c.image)+'" data-caption="'+esc(c.codename)+' · OPI visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0" />':"")+
@@ -286,8 +320,8 @@
     if(!selected.length){compareContent.innerHTML='<div class="compare-empty">Click up to four plotted characters to add them here.</div>';return}
     compareContent.innerHTML='<div class="compare-names">'+selected.map(c=>'<button type="button" data-remove-compare="'+esc(c.codename)+'">'+esc(c.codename)+' ×</button>').join("")+'</div>'+
       '<div class="compare-table-wrap"><table class="compare-table"><thead><tr><th>Category</th>'+selected.map(c=>'<th>'+esc(c.codename)+'</th>').join("")+'</tr></thead><tbody>'+
-      dpiMetrics.map(k=>'<tr><td>'+k+'</td>'+selected.map(c=>'<td>'+c.baseline[k].toFixed(1)+'</td>').join("")+'</tr>').join("")+
-      '<tr class="analytics-row"><td>Baseline Mean*</td>'+selected.map(c=>'<td>'+mean(c).toFixed(2)+'</td>').join("")+'</tr></tbody></table></div>'+
+      dpiMetrics.map(k=>'<tr><td>'+k+'</td>'+selected.map(c=>'<td>'+(Number.isFinite(c.baseline?.[k])?c.baseline[k].toFixed(1):"—")+'</td>').join("")+'</tr>').join("")+
+      '<tr class="analytics-row"><td>Baseline Mean*</td>'+selected.map(c=>'<td>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</td>').join("")+'</tr></tbody></table></div>'+
       '<p class="compare-footnote">* Analytics-only visualization statistic; not a canonical overall power score or fight rating.</p>';
     compareContent.querySelectorAll("[data-remove-compare]").forEach(b=>b.onclick=()=>{compareSet.delete(b.dataset.removeCompare);render()});
   }
