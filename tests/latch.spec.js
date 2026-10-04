@@ -62,10 +62,29 @@ test('Latch is connected to Australia on the World Index without inventing a cit
   await expect(page.locator('a[href="../../locations.html#australia"]')).toHaveCount(2);
 });
 
-test('Latch remains outside numeric OPI until creator-approved scores exist', async ({ page }) => {
+test('Latch appears in OPI Analytics as an unscored public record', async ({ page }) => {
   await page.goto(BASE + '/dpi.html', { waitUntil: 'networkidle' });
-  const records = await page.evaluate(() => window.OLDROOT_CHARACTERS.map(c => c.codename));
-  expect(records).not.toContain('Latch');
+  const latch = await page.evaluate(() => window.OLDROOT_CHARACTERS.find(c => c.codename === 'Latch'));
+  expect(latch).toBeTruthy();
+  expect(latch.baseline).toBeNull();
+  expect(latch.age).toBe(36);
+  expect(latch.location).toBe('Australia');
+  expect(latch.powerClass).toBeNull();
+
+  await expect(page.locator('#count')).toHaveText('8 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('7 plotted');
+  await expect(page.locator('#unscored-panel')).toBeVisible();
+  await expect(page.locator('[data-unscored-character="Latch"]')).toContainText('NUMERIC PROFILE NOT ESTABLISHED');
+
+  await page.locator('[data-unscored-character="Latch"]').click();
+  await expect(page.locator('#detail')).toContainText('Latch Boswell');
+  await expect(page.locator('#detail')).toContainText('Numeric profile not established');
+  await expect(page.locator('#detail')).toContainText('Missing values are not guessed');
+
+  await page.locator('#search').fill('Latch');
+  await expect(page.locator('#count')).toHaveText('1 CHARACTER');
+  await expect(page.locator('#plot-count')).toContainText('0 plotted');
+  await expect(page.locator('#detail')).toContainText('Numeric profile not established');
 });
 
 test('Latch dossier remains contained at phone width', async ({ page }) => {
