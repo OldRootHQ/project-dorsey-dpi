@@ -60,6 +60,16 @@ window.OLDROOT_CHARACTERS = [
     conditional:[{category:"Senses",condition:"Precision Pill Active",value:16.1}]
   },
   {
+    codename:"Latch", civilian:"Latch Boswell", classification:"Hero", role:"Hero",
+    powerClass:null, registryOrder:7, location:"Australia", locationKey:"Australia",
+    origin:"Human / Military Training", originType:"Human / Training", ascendantStatus:null,
+    affiliation:"Post-Genesis hero-recruitment operation / core hero organization", page:"characters/latch/", image:"assets/characters/latch/latch-registry.webp",
+    age:36, heightIn:null, weightLb:null, yearsActive:null,
+    summary:"Australian former 2nd Commando Regiment team leader serving as a post-Genesis recruiter, security operative, field agent, marksman, and practical right-hand operative.",
+    baseline:null,
+    conditional:[]
+  },
+  {
     codename:"Kokio", civilian:"Kalani Kane", classification:"Hero", role:"Hero",
     powerClass:"Demi-God", registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
     origin:"Ancient Tiki ritual / Takaro bond", originType:"Supernatural / Ritual", ascendantStatus:null,
