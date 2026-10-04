@@ -11,8 +11,8 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Anchorage');
   await expect(card).toContainText('Villain');
-  await expect(card).toContainText('Superhuman');
-  await expect(card).toHaveAttribute('data-tags', /superhuman/);
+  await expect(card).toContainText('E&A Human');
+  await expect(card).toHaveAttribute('data-tags', /ea-human/);
   await expect(card.locator('img')).toHaveCount(1);
   await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-registry.png');
   await expect.poll(() => card.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
@@ -57,7 +57,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(framing.abductionCenterDelta).toBeLessThanOrEqual(2);
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
-  await expect(page.locator('.info-list')).toContainText('Superhuman');
+  await expect(page.locator('.info-list')).toContainText('E&A Human');
   await expect(page.locator('.info-list')).toContainText('Non-Ascendant');
   await expect(page.locator('.info-list')).toContainText('Approximately 2 tons');
   await expect(page.locator('.info-list')).toContainText('approximately one year before Genesis');
@@ -75,7 +75,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(anchorage.civilian).toBe('Gilmer Simpson');
   expect(anchorage.classification).toBe('Villain');
   expect(anchorage.role).toBe('Villain');
-  expect(anchorage.powerClass).toBe('Superhuman');
+  expect(anchorage.powerClass).toBe('E&A Human');
   expect(anchorage.location).toBe('Baltimore, Maryland');
   expect(anchorage.locationKey).toBe('Baltimore');
   expect(anchorage.origin).toBe('Pre-Genesis experimental enhancement / Non-Ascendant');
@@ -121,7 +121,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
 
   await page.locator('#filter-open').click();
   await expect(page.locator('[data-filter-key="role"][value="Villain"]')).toHaveCount(1);
-  await expect(page.locator('[data-filter-key="powerClass"][value="Superhuman"]')).toHaveCount(1);
+  await expect(page.locator('[data-filter-key="powerClass"][value="E&A Human"]')).toHaveCount(1);
   await expect(page.locator('[data-filter-key="originType"][value="Experimental Enhancement"]')).toHaveCount(1);
 
   await page.goto(`${BASE}/locations/baltimore/`, { waitUntil: 'domcontentloaded' });
