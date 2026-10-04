@@ -10,7 +10,7 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
   await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
   await expect(page.locator('[data-location="tucson"]')).toHaveAttribute('aria-pressed', 'true');
 
@@ -71,6 +71,14 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await page.keyboard.press('Escape');
   await expect(page.locator('#globeClusterPanel')).toBeHidden();
 
+  await page.goto('http://127.0.0.1:8000/locations.html#australia', { waitUntil: 'networkidle' });
+  await expect(page.locator('#locationName')).toHaveText('Australia');
+  await expect(page.locator('#locationStatus')).toHaveText('Reference');
+  await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
+  await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
+  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
+  await expect(page.locator('#locationExplore')).toBeHidden();
+
   for (let i = 0; i < 20; i += 1) await page.locator('#zoomInGlobe').click();
   await expect(page.locator('#globeZoomReadout')).toContainText('ZOOM 2.2×');
 
@@ -98,7 +106,7 @@ test('Locations globe prefers local world topology when the remote fallback is u
   await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
   await expect(page.locator('#globeLoading')).toBeHidden();
   await expect(page.locator('.earth-land')).toHaveAttribute('d', /.+/);
   await assertNoPageErrors(page, errors);
@@ -111,7 +119,7 @@ test('Locations globe keeps location records usable when both topology sources f
   await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html');
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
   await expect(page.locator('#globeLoading')).toContainText('MAP DETAIL UNAVAILABLE');
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');

@@ -50,6 +50,18 @@ test('Latch dossier preserves supplied art package and unresolved canon boundari
   await expect(page.locator('body')).toContainText('Not yet numerically established.');
 });
 
+test('Latch is connected to Australia on the World Index without inventing a city', async ({ page }) => {
+  await page.goto(BASE + '/locations.html#australia', { waitUntil: 'networkidle' });
+  await expect(page.locator('#locationName')).toHaveText('Australia');
+  await expect(page.locator('#locationStatus')).toHaveText('Reference');
+  await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
+  await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
+  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
+
+  await page.goto(BASE + '/characters/latch/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('a[href="../../locations.html#australia"]')).toHaveCount(2);
+});
+
 test('Latch remains outside numeric OPI until creator-approved scores exist', async ({ page }) => {
   await page.goto(BASE + '/dpi.html', { waitUntil: 'networkidle' });
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS.map(c => c.codename));
