@@ -7,7 +7,7 @@ test('Kokio is promoted across public character discovery surfaces', async ({ pa
   const card = page.locator('.character-card[href="characters/kokio/"]');
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Kalani Kane');
-  await expect(card).toContainText('Superhuman');
+  await expect(card).toContainText('Demi-God');
   await expect(card).toHaveAttribute('data-release-order', '8');
   await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/kokio/kokio-casual.webp');
 
@@ -52,7 +52,7 @@ test('Kokio exact OPI profile is published without a canonical overall score', a
   const kokio = await page.evaluate(() => window.OLDROOT_CHARACTERS.find(c => c.codename === 'Kokio'));
   expect(kokio).toBeTruthy();
   expect(kokio.civilian).toBe('Kalani Kane');
-  expect(kokio.powerClass).toBe('Superhuman');
+  expect(kokio.powerClass).toBe('Demi-God');
   expect(kokio.location).toBe('Hilo, Hawaiʻi Island');
   expect(kokio.locationKey).toBe('Hilo');
   expect(kokio.ascendantStatus).toBeNull();
