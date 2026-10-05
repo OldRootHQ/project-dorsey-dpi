@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0040 · October 4, 2026 · Upcoming Character Addition
+
+- Added **Remedie** to the Upcoming Characters / In Development previews on the homepage and Dispatches.
+- Kept Remedie out of the active Character Registry and OPI Analytics dataset because no public dossier or numeric profile has been established.
+- Added no invented identity, role, powers, affiliation, location, biography, or other unrevealed canon.
+- Updated regression coverage so both public preview surfaces remain synchronized at seven upcoming characters.
+
 ## OR-WEB-0039 · October 4, 2026 · Latch Official OPI Correction
 
 - Published Latch Boswell's locked eleven-category DPI profile exactly as creator-supplied: Strength 9.7, Durability 7.7, Speed 9.3, Agility 8.4, Regeneration 5.3, Senses 7.9, Offense 15.4, Intellect 12.3, Combat 18.6, Mobility 6.0, and Stamina 11.1.
