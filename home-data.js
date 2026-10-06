@@ -85,7 +85,7 @@ window.OLDROOT_HOME = {
     label:"LATEST DISPATCH / OCTOBER 2026",
     meta:"OR-WEB-0041 · Homepage System",
     title:"The homepage becomes a rotating window into OldRoot.",
-    body:"OldRoot’s front page now samples the universe instead of trying to duplicate every registry: three characters, three established places, and three in-development names rotate with equal eligibility on each visit.",
+    body:"OldRoot’s front page now works as a changing window into the universe, surfacing different characters, places, and works in progress on each visit while the full registries stay complete.",
     href:"news.html#or-web-0041"
   }
 };
