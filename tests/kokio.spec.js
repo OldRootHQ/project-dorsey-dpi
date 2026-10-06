@@ -12,9 +12,15 @@ test('Kokio is promoted across public character discovery surfaces', async ({ pa
   await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/kokio/kokio-casual.webp');
 
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-home-character="kokio"]')).toHaveCount(1);
-  await expect(page.locator('[data-home-slide="kokio"]')).toHaveCount(1);
-  await expect(page.locator('#upcoming-characters')).not.toContainText('Kalani');
+  const kokioHome = await page.evaluate(() => ({
+    spotlight: window.OLDROOT_HOME.characterSpotlights.Kokio,
+    pool: window.OLDROOT_HOME_STATE.characterPool,
+    upcomingPool: window.OLDROOT_HOME_STATE.upcomingPool
+  }));
+  expect(kokioHome.pool).toContain('Kokio');
+  expect(kokioHome.upcomingPool).not.toContain('Kokio');
+  expect(kokioHome.spotlight.image).toBe('assets/characters/kokio/kokio-combat-01.webp');
+  expect(kokioHome.spotlight.teaser).toContain('Hilo warrior');
 
   await page.goto(BASE + '/news.html#upcoming-characters', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#upcoming-characters')).not.toContainText('Kalani');
