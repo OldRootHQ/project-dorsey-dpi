@@ -12,9 +12,15 @@ test('Latch is promoted across public character discovery surfaces', async ({ pa
   await expect(card).toHaveAttribute('data-release-order', '7');
 
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-home-character="latch"]')).toHaveCount(1);
-  await expect(page.locator('[data-home-slide="latch"]')).toHaveCount(1);
-  await expect(page.locator('#upcoming-characters')).not.toContainText('Latch');
+  const latchHome = await page.evaluate(() => ({
+    spotlight: window.OLDROOT_HOME.characterSpotlights.Latch,
+    pool: window.OLDROOT_HOME_STATE.characterPool,
+    upcomingPool: window.OLDROOT_HOME_STATE.upcomingPool
+  }));
+  expect(latchHome.pool).toContain('Latch');
+  expect(latchHome.upcomingPool).not.toContain('Latch');
+  expect(latchHome.spotlight.image).toBe('assets/characters/latch/latch-featured.webp');
+  expect(latchHome.spotlight.teaser).toContain('ordinary man');
 
   await page.goto(BASE + '/news.html#upcoming-characters', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#upcoming-characters')).not.toContainText('Latch');
