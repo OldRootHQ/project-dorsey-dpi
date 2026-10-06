@@ -2,6 +2,20 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0041 · October 6, 2026 · Scalable Rotating Homepage
+
+- Rebuilt the homepage around a scalable editorial-sampling model instead of mirroring complete registries.
+- Character Spotlight now selects exactly three public characters per visit from the complete public character dataset, without replacement and with equal eligibility for every character.
+- Replaced long homepage character summaries with shorter teaser copy while preserving artwork, dossier links, carousel controls, keyboard behavior, swipe/scroll behavior, Pause/Play, and lightbox access.
+- Added World Spotlight with exactly three randomly selected established location dossiers per visit. Country-level/reference-only globe records such as Australia and Washington, D.C. remain excluded from the homepage pool unless they become established location dossiers.
+- Reduced the homepage Upcoming Characters section to three randomly selected in-development names while keeping the complete seven-name development registry on Dispatches.
+- Consolidated overlapping Discover OldRoot and Registries & Systems blocks into one Explore OldRoot gateway with secondary links to Events, Organizations, OPI Analytics, About, and Contact.
+- Restored the homepage Latest Dispatch to the current public update instead of the stale September feature.
+- Replaced three duplicate Coming Soon book placeholders with one focused Library publishing teaser until finished releases exist.
+- Hero counters now derive from the live public character dataset, established-location dataset, and eleven OPI axes rather than relying on manually maintained homepage numbers.
+- Extracted location records into shared `location-data.js` so the World Index globe and homepage use the same source of truth.
+- Added dedicated homepage data/runtime/style files to keep future growth out of `index.html`, plus regression coverage for three-item sampling, uniqueness, eligibility, complete-registry preservation, cache keys, mobile containment, and World Index behavior.
+
 ## OR-WEB-0040 · October 4, 2026 · Upcoming Character Addition
 
 - Added **Remedie** to the Upcoming Characters / In Development previews on the homepage and Dispatches.
