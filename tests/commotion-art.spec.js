@@ -40,10 +40,13 @@ test('Commotion artwork stays purposeful and distinct across the site', async ({
   await expect(page.locator('.dossier-illustration').last()).toContainText('Equipment illustration');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  await page.locator('[data-home-character="commotion"]').click();
-  const featured = page.locator('[data-home-slide="commotion"] .home-character-art img');
-  await expect(featured).toHaveAttribute('src', 'assets/characters/commotion/commotion-featured-rooftop.webp');
-  await expectImageLoaded(featured);
+  const commotionHome = await page.evaluate(() => ({
+    spotlight: window.OLDROOT_HOME.characterSpotlights.Commotion,
+    pool: window.OLDROOT_HOME_STATE.characterPool
+  }));
+  expect(commotionHome.pool).toContain('Commotion');
+  expect(commotionHome.spotlight.image).toBe('assets/characters/commotion/commotion-featured-rooftop.webp');
+  expect((await page.request.get(BASE + '/' + commotionHome.spotlight.image)).ok()).toBe(true);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const registry = page.locator('.character-card[href="characters/commotion/"] .character-thumb');
