@@ -139,13 +139,15 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*08/);
   await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*07/);
-  await expect(page.locator('[data-home-character="agent-emerald"]')).toHaveCount(1);
-  const agentHome = page.locator('[data-home-slide="agent-emerald"] img');
-  await expect(agentHome).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-featured.webp');
-  await page.locator('[data-home-character="agent-emerald"]').click();
-  await expect(agentHome).toBeVisible();
-  await expect.poll(() => agentHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('6 / 8');
+  const agentHomeConfig = await page.evaluate(() => ({
+    spotlight: window.OLDROOT_HOME.characterSpotlights['Agent Emerald'],
+    pool: window.OLDROOT_HOME_STATE.characterPool
+  }));
+  expect(agentHomeConfig.pool).toContain('Agent Emerald');
+  expect(agentHomeConfig.spotlight.image).toBe('assets/characters/agent-emerald/agent-emerald-featured.webp');
+  expect(agentHomeConfig.spotlight.teaser).toContain('Seattle vigilante');
+  expect((await page.request.get(BASE + '/' + agentHomeConfig.spotlight.image)).ok()).toBe(true);
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
 
   await page.goto(`${BASE}/start-here.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.start-stat-panel')).toContainText('8 active records');
