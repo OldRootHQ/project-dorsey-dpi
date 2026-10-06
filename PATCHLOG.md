@@ -2,6 +2,17 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0043 · October 6, 2026 · Abyron Canon Integration
+
+- Replaced the retired **Hampton’s Matter** concept across active public lore with **Abyron — Element 126 / Ax / Ax-126**.
+- Added a dedicated Abyron lore dossier covering HVA-01, the deep-ocean discovery, sinking-bubble mechanism, four major known states, volumetric bloom, UMWR, permanent bloom degradation, engineering properties and weaknesses, supply scale, known reservoir systems, Genesis-state behavior, Genesis Dust, replication limits, and explicit canon boundaries.
+- Corrected Genesis so the exact villain / weapon / final attack mechanism remains unresolved rather than hard-locking the event to a missile.
+- Reframed the iconic black Genesis wave as the nearly black advancing phase boundary around brilliant orange Genesis-state Abyron and preserved the established roughly three-second delay.
+- Expanded the St. Dorsey Hampton site from the older narrow sonar/submarine-storage description into the established specialized deep-ocean research division/site tied to mapping, exploration, HVA-01, and Ax-126 research.
+- Connected Los Moralistas to later diverted Ax-126 supply without requiring a direct robbery of Hampton’s original source.
+- Updated Agent Emerald’s St. Dorsey reference, Start Here, the Lore Index, homepage St. Dorsey teaser, Latest Dispatch, sitemap, infrastructure registry, and automated canon regression coverage.
+- Preserved unresolved coordinates, reservoir locations, particle physics, military grade names, artificial-subject terminology, ultimate Abyron origin, and the exact Genesis trigger as intentionally open.
+
 ## OR-WEB-0042 · October 6, 2026 · Homepage Copy Polish
 
 - Smoothed homepage section language so the rotating showcase feels editorial rather than repeatedly announcing its three-item mechanics.
