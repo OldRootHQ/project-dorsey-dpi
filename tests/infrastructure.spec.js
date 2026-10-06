@@ -86,7 +86,8 @@ test('World Index topology is local-first with a pinned remote fallback', async 
   const html = read('locations.html');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/d3@7.9.0');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/topojson-client@3.1.0');
-  expect(html).toContain('locations.js?v=4');
+  expect(html).toContain('location-data.js?v=1');
+  expect(html).toContain('locations.js?v=5');
 });
 
 test('local page links resolve to repository files', async () => {
