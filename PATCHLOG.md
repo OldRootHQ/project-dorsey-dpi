@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0042 · October 6, 2026 · Homepage Copy Polish
+
+- Smoothed homepage section language so the rotating showcase feels editorial rather than repeatedly announcing its three-item mechanics.
+- Reframed Character Spotlight, World Spotlight, Explore OldRoot, Upcoming Characters, and the homepage dispatch summary with more natural copy.
+- Preserved all OR-WEB-0041 random-selection behavior, eligibility rules, layout, navigation, and registry coverage unchanged.
+
 ## OR-WEB-0041 · October 6, 2026 · Scalable Rotating Homepage
 
 - Rebuilt the homepage around a scalable editorial-sampling model instead of mirroring complete registries.

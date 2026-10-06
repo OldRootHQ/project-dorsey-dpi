@@ -54,6 +54,13 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
   await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0041');
+  await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
+  await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
+  await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
+  await expect(page.locator('#upcoming-characters')).toContainText('What’s taking shape next.');
+  await expect(page.locator('main')).not.toContainText('Three faces from the OldRoot universe.');
+  await expect(page.locator('main')).not.toContainText('Three places from the living index.');
+  await expect(page.locator('main')).not.toContainText('Three names still taking shape.');
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
