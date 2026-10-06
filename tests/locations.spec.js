@@ -11,6 +11,9 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
 
   await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  const sharedLocationData = await page.evaluate(() => window.OLDROOT_LOCATIONS);
+  expect(Object.keys(sharedLocationData)).toHaveLength(9);
+  expect(Object.values(sharedLocationData).filter(loc => loc.dossierUrl && !loc.reference)).toHaveLength(7);
   await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
   await expect(page.locator('[data-location="tucson"]')).toHaveAttribute('aria-pressed', 'true');
 

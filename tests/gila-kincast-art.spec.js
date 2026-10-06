@@ -7,14 +7,17 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   page.on('pageerror', error => errors.push(error.message));
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  const gilaHome = page.locator('[data-home-slide="gila"] img');
-  const kincastHome = page.locator('[data-home-slide="kincast"] img');
-  await expect(gilaHome).toHaveAttribute('src', 'assets/characters/gila-monster/gila-featured.webp');
-  await expect(kincastHome).toHaveAttribute('src', 'assets/characters/kincast/kincast-featured.webp');
-  await expect.poll(() => gilaHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await page.locator('[data-home-character="kincast"]').click();
-  await expect(kincastHome).toBeVisible();
-  await expect.poll(() => kincastHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  const homeArt = await page.evaluate(() => ({
+    gila: window.OLDROOT_HOME.characterSpotlights['Gila Monster'].image,
+    kincast: window.OLDROOT_HOME.characterSpotlights.Kincast.image,
+    pool: window.OLDROOT_HOME_STATE.characterPool
+  }));
+  expect(homeArt.pool).toContain('Gila Monster');
+  expect(homeArt.pool).toContain('Kincast');
+  expect(homeArt.gila).toBe('assets/characters/gila-monster/gila-featured.webp');
+  expect(homeArt.kincast).toBe('assets/characters/kincast/kincast-featured.webp');
+  expect((await page.request.get(BASE + '/' + homeArt.gila)).ok()).toBe(true);
+  expect((await page.request.get(BASE + '/' + homeArt.kincast)).ok()).toBe(true);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const gilaRegistry = page.locator('.character-card[href="characters/gila-monster/"] img');

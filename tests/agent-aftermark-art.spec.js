@@ -9,16 +9,17 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
   page.on('pageerror', error => errors.push(error.message));
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  const afterHome = page.locator('[data-home-slide="aftermark"] img');
-  const agentHome = page.locator('[data-home-slide="agent-emerald"] img');
-  await expect(afterHome).toHaveAttribute('src', 'assets/characters/aftermark/aftermark-featured.webp');
-  await page.locator('[data-home-character="aftermark"]').click();
-  await expect(afterHome).toBeVisible();
-  await expect.poll(() => afterHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(agentHome).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-featured.webp');
-  await page.locator('[data-home-character="agent-emerald"]').click();
-  await expect(agentHome).toBeVisible();
-  await expect.poll(() => agentHome.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  const homeArt = await page.evaluate(() => ({
+    aftermark: window.OLDROOT_HOME.characterSpotlights.Aftermark.image,
+    agentEmerald: window.OLDROOT_HOME.characterSpotlights['Agent Emerald'].image,
+    pool: window.OLDROOT_HOME_STATE.characterPool
+  }));
+  expect(homeArt.aftermark).toBe('assets/characters/aftermark/aftermark-featured.webp');
+  expect(homeArt.agentEmerald).toBe('assets/characters/agent-emerald/agent-emerald-featured.webp');
+  expect(homeArt.pool).toContain('Aftermark');
+  expect(homeArt.pool).toContain('Agent Emerald');
+  expect((await page.request.get(BASE + '/' + homeArt.aftermark)).ok()).toBe(true);
+  expect((await page.request.get(BASE + '/' + homeArt.agentEmerald)).ok()).toBe(true);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const afterRegistry = page.locator('.character-card[href="characters/aftermark/"] img');

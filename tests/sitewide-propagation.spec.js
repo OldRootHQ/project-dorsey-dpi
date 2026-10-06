@@ -4,36 +4,62 @@ const path = require('path');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('public registry is propagated across discovery surfaces and the homepage has eight slides', async ({ page }) => {
+test('homepage samples the universe while complete registries remain intact', async ({ page }) => {
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-home-character]')).toHaveCount(8);
-  await expect(page.locator('[data-home-slide]')).toHaveCount(8);
-  await expect(page.locator('#homeCharacterTrack')).toHaveCount(1);
-  const carouselLayout = await page.evaluate(() => {
-    const featured = document.querySelector('.home-featured');
-    const discover = [...document.querySelectorAll('.section-band')].find(section => section.textContent.includes('DISCOVER OLDROOT'));
+
+  await expect(page.locator('[data-home-character]')).toHaveCount(3);
+  await expect(page.locator('[data-home-slide]')).toHaveCount(3);
+  await expect(page.locator('[data-home-location]')).toHaveCount(3);
+  await expect(page.locator('[data-home-upcoming]')).toHaveCount(3);
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
+  await expect(page.locator('#homePublicCharacterCount')).toHaveText('08');
+  await expect(page.locator('#homeEstablishedPlaceCount')).toHaveText('07');
+  await expect(page.locator('#homeOpiAxisCount')).toHaveText('11');
+
+  const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
+  expect(state.characterPool).toHaveLength(8);
+  expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
+  expect(state.upcomingPool).toHaveLength(7);
+  expect(state.selectedCharacters).toHaveLength(3);
+  expect(state.selectedLocations).toHaveLength(3);
+  expect(state.selectedUpcoming).toHaveLength(3);
+  expect(new Set(state.selectedCharacters).size).toBe(3);
+  expect(new Set(state.selectedLocations).size).toBe(3);
+  expect(new Set(state.selectedUpcoming).size).toBe(3);
+  for (const name of state.selectedCharacters) expect(state.characterPool).toContain(name);
+  for (const key of state.selectedLocations) expect(state.locationPool).toContain(key);
+  for (const name of state.selectedUpcoming) expect(state.upcomingPool).toContain(name);
+
+  const layout = await page.evaluate(() => {
+    const character = document.querySelector('#character-spotlight');
+    const world = document.querySelector('#world-spotlight');
+    const explore = document.querySelector('#explore-oldroot');
     const track = document.querySelector('#homeCharacterTrack');
     return {
-      featuredBeforeDiscover: Boolean(featured && discover && (featured.compareDocumentPosition(discover) & Node.DOCUMENT_POSITION_FOLLOWING)),
+      characterBeforeWorld: Boolean(character && world && (character.compareDocumentPosition(world) & Node.DOCUMENT_POSITION_FOLLOWING)),
+      worldBeforeExplore: Boolean(world && explore && (world.compareDocumentPosition(explore) & Node.DOCUMENT_POSITION_FOLLOWING)),
       scrollable: Boolean(track && track.scrollWidth > track.clientWidth)
     };
   });
-  expect(carouselLayout.featuredBeforeDiscover).toBe(true);
-  expect(carouselLayout.scrollable).toBe(true);
-  await expect(page.locator('[data-home-character="anchorage"]')).toHaveCount(1);
-  const featuredArt = page.locator('[data-home-slide="anchorage"] img');
-  await expect(featuredArt).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-featured.png');
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 8');
+  expect(layout.characterBeforeWorld).toBe(true);
+  expect(layout.worldBeforeExplore).toBe(true);
+  expect(layout.scrollable).toBe(true);
+
   await page.locator('#homeCharacterNext').click();
-  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 8');
+  await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 3');
   await expect.poll(() => page.locator('#homeCharacterTrack').evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
-  await page.locator('[data-home-character="anchorage"]').click();
-  await expect(page.locator('[data-home-slide="anchorage"]')).toHaveClass(/active/);
-  await expect.poll(() => featuredArt.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
-  await expect(page.locator('[data-home-slide="anchorage"] a[href="characters/anchorage/"]')).toHaveCount(1);
-  await expect(page.locator('.home-world-grid a[href="locations/baltimore/"]')).toContainText('Anchorage');
-  await expect(page.locator('[data-home-character="kokio"]')).toHaveCount(1);
-  await expect(page.locator('.home-world-grid a[href="locations/hilo/"]')).toContainText('Kokio');
+
+  await expect(page.locator('#explore-oldroot')).toContainText('Start Here');
+  await expect(page.locator('#explore-oldroot')).toContainText('Characters');
+  await expect(page.locator('#explore-oldroot')).toContainText('World');
+  await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0041');
+  await expect(page.locator('.home-library-teaser')).toHaveCount(1);
+
+  await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.character-card')).toHaveCount(8);
+  await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
+  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.start-stat-panel')).toContainText('8 active records');
@@ -41,17 +67,13 @@ test('public registry is propagated across discovery surfaces and the homepage h
   await expect(page.locator('text=Eight ways into the cast.')).toHaveCount(1);
 
   await page.goto(BASE + '/locations.html', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.location-index button')).toHaveCount(7);
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
-  await expect(page.locator('.location-dossier-cards a[href="locations/baltimore/"]')).toContainText('Anchorage');
-
-  await page.goto(BASE + '/locations/baltimore/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('a[href="../../characters/anchorage/"]')).toHaveCount(2);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#count')).toHaveText('8 CHARACTERS');
 });
-
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
   const root = process.cwd();
   const htmlFiles = [];
