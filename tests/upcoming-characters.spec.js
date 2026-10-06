@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 const BASE = 'http://127.0.0.1:8000';
 const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Duke', 'Remedie'];
 
-async function expectUpcomingSection(page) {
+async function expectFullUpcomingSection(page) {
   const section = page.locator('#upcoming-characters');
   await expect(section).toBeVisible();
   await expect(section.locator('h2')).toHaveText('Upcoming Characters');
@@ -16,13 +16,18 @@ async function expectUpcomingSection(page) {
   }
 }
 
-test('Upcoming Characters preview is synchronized on home and Dispatches', async ({ page }) => {
+test('Homepage samples three upcoming characters while Dispatches keeps the full development registry', async ({ page }) => {
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  await expectUpcomingSection(page);
+  const homeSection = page.locator('#upcoming-characters');
+  await expect(homeSection).toBeVisible();
+  await expect(homeSection.locator('.discovery-card')).toHaveCount(3);
+  const sampled = await homeSection.locator('.discovery-card h3').allTextContents();
+  expect(new Set(sampled).size).toBe(3);
+  for (const name of sampled) expect(UPCOMING).toContain(name);
   await expect(page.locator('#upcoming-characters a[href="news.html#upcoming-characters"]')).toHaveCount(1);
 
   await page.goto(`${BASE}/news.html#upcoming-characters`, { waitUntil: 'domcontentloaded' });
-  await expectUpcomingSection(page);
+  await expectFullUpcomingSection(page);
   await expect(page.locator('#upcoming-characters')).toContainText('preview only');
 });
 
