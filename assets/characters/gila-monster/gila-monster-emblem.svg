@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Gila Monster emblem</title>
+  <desc id="desc">A black circular badge with a red-orange rim and three orange reptilian claw slashes tipped in ivory.</desc>
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff511f"/>
+      <stop offset="1" stop-color="#e82d22"/>
+    </linearGradient>
+    <linearGradient id="slashFill" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff5b0a"/>
+      <stop offset=".58" stop-color="#ff7a00"/>
+      <stop offset="1" stop-color="#ff4a14"/>
+    </linearGradient>
+    <linearGradient id="clawFill" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#f3dfaa"/>
+      <stop offset=".55" stop-color="#fff6d7"/>
+      <stop offset="1" stop-color="#fffdf2"/>
+    </linearGradient>
+    <g id="slash">
+      <path d="M154 600 L199 520 L182 501 L236 437 L218 417 L273 351 L255 331 L313 266 L295 245 L374 166 L350 246 L369 255 L333 305 L352 318 L310 369 L329 384 L284 438 L301 454 L258 508 L275 526 L220 600 Z"
+            fill="url(#slashFill)" stroke="#070707" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M350 247 C371 191 408 135 469 95 C429 153 404 213 369 270 C362 264 356 256 350 247 Z"
+            fill="url(#clawFill)" stroke="#070707" stroke-width="12" stroke-linejoin="round"/>
+      <path d="M370 220 C392 181 417 149 447 126" fill="none" stroke="#ecd79f" stroke-width="9" stroke-linecap="round" opacity=".75"/>
+      <g fill="#bf2d20" stroke="#070707" stroke-width="7">
+        <path d="M212 532 l24 -12 24 13 1 27 -25 12 -25 -13z"/>
+        <path d="M238 479 l26 -13 25 15 -2 28 -27 12 -24 -16z"/>
+        <path d="M266 425 l27 -12 26 16 -4 28 -27 11 -24 -17z"/>
+        <path d="M296 370 l26 -10 24 14 -4 27 -26 10 -23 -15z"/>
+      </g>
+      <g fill="#d83a1e" stroke="#070707" stroke-width="6">
+        <ellipse cx="227" cy="492" rx="12" ry="15"/>
+        <ellipse cx="256" cy="448" rx="11" ry="14"/>
+        <ellipse cx="284" cy="397" rx="10" ry="13"/>
+        <ellipse cx="319" cy="344" rx="9" ry="12"/>
+        <ellipse cx="340" cy="316" rx="8" ry="10"/>
+      </g>
+    </g>
+  </defs>
+
+  <circle cx="360" cy="360" r="329" fill="none" stroke="#050505" stroke-width="18"/>
+  <circle cx="360" cy="360" r="307" fill="#050505" stroke="url(#rim)" stroke-width="30"/>
+
+  <use href="#slash" transform="translate(-122 44) scale(.92)" />
+  <use href="#slash" transform="translate(0 0)" />
+  <use href="#slash" transform="translate(120 -44) scale(.92)" />
+</svg>
