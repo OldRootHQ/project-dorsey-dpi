@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0050 · October 7, 2026 · Gila Monster Character Emblem
+
+- Established Gila Monster’s first official character mark from the creator-selected three-claw concept: three orange reptilian slashes with scale texture and ivory tips inside a black circular field with a red-orange rim.
+- Added the emblem as a scalable transparent-background SVG production asset under Gila Monster’s character asset directory.
+- Replaced the dossier’s **CHARACTER LOGO — COMING** placeholder with the finished emblem while preserving the existing full character artwork package.
+- Reused the emblem as a compact identity mark on the Character Registry, homepage Character Spotlight, OPI Analytics detail panel, Start Here, Tucson, and Los Moralistas.
+- Kept full-body and narrative artwork in major visual roles; the emblem replaces or supplements only compact identity/branding placements where it improves clarity.
+- Added optional character-mark support to shared homepage and OPI data/rendering so future registered-character emblems can be added without redesigning those systems.
+- Advanced shared character, homepage, and OPI cache keys and added regression coverage for emblem loading, placement, responsive containment, and preservation of Gila Monster’s existing artwork.
+
 ## OR-WEB-0049 · October 6, 2026 · Abyron Periodic-Table Header
 
 - Replaced the Abyron dossier hero’s plain text-only technical box with a dedicated periodic-table visual.

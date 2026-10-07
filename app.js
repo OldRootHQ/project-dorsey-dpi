@@ -291,6 +291,7 @@
     if(!hasBaseline(c)){
       detail.innerHTML=
         (c.image?'<img class="detail-portrait" src="'+esc(c.image)+'" alt="'+esc(c.codename)+' visual reference" loading="lazy" data-lightbox data-full-src="'+esc(c.image)+'" data-caption="'+esc(c.codename)+' · OPI visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0" />':"")+
+        (c.mark?'<img class="detail-mark" src="'+esc(c.mark)+'" alt="'+esc(c.codename)+' emblem" loading="lazy" />':"")+
         '<div class="name-row"><div class="name">'+esc(c.codename)+'</div><span class="badge">'+esc(c.classification)+'</span></div>'+
         '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
         '<div class="meta"><div><span>Location</span><b>'+esc(c.location||"Unassigned")+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Not separately assigned")+'</b></div>'+
@@ -303,6 +304,7 @@
     const conditional=(c.conditional&&c.conditional.length)?c.conditional.map(d=>'<div class="conditional"><span>'+esc(d.category)+' · '+esc(d.condition)+'</span><b>'+d.value.toFixed(1)+'</b></div>').join(""):'<div class="conditional-empty">No conditional values established.</div>';
     detail.innerHTML=
       (c.image?'<img class="detail-portrait" src="'+esc(c.image)+'" alt="'+esc(c.codename)+' visual reference" loading="lazy" data-lightbox data-full-src="'+esc(c.image)+'" data-caption="'+esc(c.codename)+' · OPI visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0" />':"")+
+      (c.mark?'<img class="detail-mark" src="'+esc(c.mark)+'" alt="'+esc(c.codename)+' emblem" loading="lazy" />':"")+
       '<div class="name-row"><div class="name">'+esc(c.codename)+'</div><span class="badge">'+esc(c.classification)+'</span></div>'+
       '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
       '<div class="meta"><div><span>Location</span><b>'+esc(c.location)+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>'+
