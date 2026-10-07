@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0050 · Gila Monster Emblem",
-    title:"Gila Monster receives his official character mark.",
-    body:"The selected black, orange, and red three-claw emblem now anchors Gila Monster’s dossier and appears as a compact identity mark across the registry, homepage, OPI Analytics, Start Here, Tucson, and Los Moralistas.",
-    href:"news.html#or-web-0050"
+    meta:"OR-WEB-0051 · Abyron Powder Expansion",
+    title:"Abyron Powder now has a full lore subdivision.",
+    body:"The Abyron dossier now gives its Genesis residual material the space it needed: formation, distinction from intact Abyron, its role in Hampton’s second ocean search, and clearly preserved open canon boundaries.",
+    href:"news.html#or-web-0051"
   }
 };

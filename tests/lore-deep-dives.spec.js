@@ -64,7 +64,7 @@ test('Lore Index reflects the rewritten Ascendant, Genesis, and Abyron Powder re
   await expect(page.locator('#genesis')).toContainText('accidental HVA-01 containment failure');
   await expect(page.locator('#ascendant')).toContainText('small, finite Genesis-only category');
   await expect(page.locator('#abyron-powder')).toContainText('Abyron Powder');
-  await expect(page.locator('#abyron-powder a')).toHaveAttribute('href', 'lore/genesis/#powder');
+  await expect(page.locator('#abyron-powder a')).toHaveAttribute('href', 'lore/abyron/#powder');
   await expect(page.locator('#genesis-dust')).toHaveCount(0);
   await expect(page.locator('main')).not.toContainText('exactly 77');
 });
@@ -79,6 +79,12 @@ test('Abyron dossier remains intact while Genesis supply chronology moves post-e
   await expect(page.locator('#supply')).toContainText('Genesis destroys or alters');
   await expect(page.locator('#genesis')).toContainText('compromised Saint Dorsey containment seal');
   await expect(page.locator('#powder')).toContainText('Abyron Powder');
+  await expect(page.locator('#powder')).toContainText('second Abyron search');
+  await expect(page.locator('#powder')).toContainText('not the same thing as intact Abyron');
+  await expect(page.locator('#powder')).toContainText('should not automatically be equated with the older “Genesis Dust” terminology');
+  await expect(page.locator('#powder h3')).toHaveCount(4);
+  await expect(page.locator('#powder p')).toHaveCount(8);
+  await expect(page.locator('.location-facts a[href="#powder"]')).toHaveText('Abyron Powder');
   await expect(page.locator('a[href="../abyron-discovery/"]')).toHaveCount(2);
   await expect(page.locator('a[href="../genesis/"]')).toHaveCount(2);
 });
