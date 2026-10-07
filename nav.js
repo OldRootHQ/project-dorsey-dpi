@@ -25,6 +25,7 @@
       ["Genesis", "lore/genesis/"]
     ];
     const currentPath = window.location.pathname.replace(/index\.html$/, "");
+    let recordActive = false;
     records.forEach(([label, path]) => {
       if (loreMenu.querySelector(`a[href="${prefix}${path}"]`)) return;
       const link = document.createElement("a");
@@ -32,9 +33,13 @@
       link.href = prefix + path;
       link.textContent = label;
       const targetPath = new URL(link.href, window.location.href).pathname.replace(/index\.html$/, "");
-      if (currentPath === targetPath) link.classList.add("active");
+      if (currentPath === targetPath) {
+        link.classList.add("active");
+        recordActive = true;
+      }
       loreMenu.append(link);
     });
+    if (recordActive) loreIndexLink.classList.remove("active");
   }
 
   const masthead = nav.closest(".masthead");
