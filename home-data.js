@@ -83,9 +83,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0045 · Genesis Canon Rewrite",
-    title:"Genesis is rebuilt around the Saint Dorsey accident.",
-    body:"The Genesis record now follows the accidental containment failure, three-second transition, 14-hour orange cloud, 362 deaths, hidden Ascendant emergence, Abyron Powder, and Saint Dorsey’s post-disaster Hampton boom.",
-    href:"news.html#or-web-0045"
+    meta:"OR-WEB-0046 · Homepage Scale Correction",
+    title:"The homepage hero stops swallowing the screen.",
+    body:"The DEEP ROOTS / STRANGE BRANCHES hero now uses a smaller headline, shorter viewport footprint, and tighter spacing so more of OldRoot is visible immediately.",
+    href:"news.html#or-web-0046"
   }
 };
