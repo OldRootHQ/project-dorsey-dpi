@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0049 · Abyron Periodic Header",
-    title:"Ax-126 gets its own periodic-table signature.",
-    body:"The Abyron dossier now highlights 126 / Ax / ABYRON in a dedicated periodic-table visual while preserving the corrected title, menu label, and Element 126 canon.",
-    href:"news.html#or-web-0049"
+    meta:"OR-WEB-0050 · Gila Monster Emblem",
+    title:"Gila Monster receives his official character mark.",
+    body:"The selected black, orange, and red three-claw emblem now anchors Gila Monster’s dossier and appears as a compact identity mark across the registry, homepage, OPI Analytics, Start Here, Tucson, and Los Moralistas.",
+    href:"news.html#or-web-0050"
   }
 };
