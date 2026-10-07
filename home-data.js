@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0049 · Abyron Periodic Header",
-    title:"Ax-126 gets its own periodic-table signature.",
-    body:"The Abyron dossier now highlights 126 / Ax / ABYRON in a dedicated periodic-table visual while preserving the corrected title, menu label, and Element 126 canon.",
-    href:"news.html#or-web-0049"
+    meta:"OR-WEB-0050 · Abyron Powder Canon",
+    title:"Abyron Powder is now a complete canon system.",
+    body:"Dust now has a dedicated lore dossier covering its Genesis origin, amplification rule, Ascendant interaction, health costs, quality classes, finite supply, black markets, military use, detection, storage, and medical response.",
+    href:"news.html#or-web-0050"
   }
 };
