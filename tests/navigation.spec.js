@@ -31,7 +31,7 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await expect(lore).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#nav-lore-menu')).toBeVisible();
   await expect(page.locator('#nav-lore-menu a')).toHaveCount(5);
-  await expect(page.locator('#nav-lore-menu')).toContainText('Abyron');
+  await expect(page.locator('#nav-lore-menu a[href="lore/abyron/"]')).toHaveText('ELEMENT 126: ABYRON');
   await expect(page.locator('#nav-lore-menu')).toContainText('Discovery of Abyron');
   await expect(page.locator('#nav-lore-menu')).toContainText('Genesis');
   await page.keyboard.press('Tab');

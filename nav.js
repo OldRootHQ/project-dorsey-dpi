@@ -20,7 +20,7 @@
   if (loreMenu && loreIndexLink) {
     const prefix = loreIndexLink.getAttribute("href").replace(/lore\.html(?:[?#].*)?$/, "");
     const records = [
-      ["Abyron", "lore/abyron/"],
+      ["ELEMENT 126: ABYRON", "lore/abyron/"],
       ["Discovery of Abyron", "lore/abyron-discovery/"],
       ["Genesis", "lore/genesis/"]
     ];

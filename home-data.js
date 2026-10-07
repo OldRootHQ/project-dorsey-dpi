@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0047 · Abyron 116 / Malasangre",
-    title:"Abyron is Element 116, and Malasangre enters development.",
-    body:"The active Abyron canon now uses Element 116 / Ax-116, led by the revised ELEMENT 116: ABYRON lore title, while Malasangre joins the Upcoming Characters pool without invented details.",
-    href:"news.html#or-web-0047"
+    meta:"OR-WEB-0048 · Abyron Label Correction",
+    title:"Abyron returns to Element 126 in the correct place.",
+    body:"Abyron remains Element 126 / Ax-126. The dossier title is back to ABYRON, while the Lore dropdown now carries the requested ELEMENT 126: ABYRON label.",
+    href:"news.html#or-web-0048"
   }
 };

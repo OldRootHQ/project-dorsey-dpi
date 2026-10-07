@@ -15,4 +15,4 @@ Static public website for the OldRoot universe, including character dossiers, lo
 ## Canon note
 The analytics layer uses the eleven established OPI categories. Any displayed baseline mean is an analytics-only visualization statistic, not a canonical overall power score.
 
-Foundational material canon uses **Abyron — Element 116 / Ax / Ax-116**. The older “Hampton’s Matter” concept is retired and must not be reintroduced into active canon.
+Foundational material canon uses **Abyron — Element 126 / Ax / Ax-126**. The older “Hampton’s Matter” concept is retired and must not be reintroduced into active canon.
