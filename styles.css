@@ -478,3 +478,17 @@ body.oldroot-after-dark::after{
   .unscored-record{min-width:0;flex-basis:100%;align-items:flex-start;flex-direction:column}
   .unscored-record strong{text-align:left}
 }
+
+
+/* OR-WEB-0050 · character emblem support */
+.detail-mark{
+  display:block;
+  width:72px;
+  height:72px;
+  object-fit:contain;
+  margin:0 0 10px;
+  filter:drop-shadow(0 8px 14px rgba(0,0,0,.22));
+}
+@media(max-width:640px){
+  .detail-mark{width:62px;height:62px}
+}
