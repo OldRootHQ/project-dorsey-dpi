@@ -3,19 +3,19 @@ const fs = require('fs');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Abyron dossier publishes the locked Element 116 identity and state system', async ({ page }) => {
+test('Abyron dossier publishes the locked Element 126 identity and state system', async ({ page }) => {
   await page.goto(BASE + '/lore/abyron/', { waitUntil: 'domcontentloaded' });
 
-  await expect(page.locator('h1')).toHaveText('ELEMENT 116: ABYRON');
-  await expect(page.locator('main')).toContainText('Element 116');
-  await expect(page.locator('main')).toContainText('Ax-116');
+  await expect(page.locator('h1')).toHaveText('ABYRON');
+  await expect(page.locator('main')).toContainText('Element 126');
+  await expect(page.locator('main')).toContainText('Ax-126');
   await expect(page.locator('main')).toContainText('HVA-01');
   await expect(page.locator('main')).toContainText('Hydrothermal Vent Anomaly 01');
   await expect(page.locator('#discovery')).toContainText('bubbles move downward');
-  await expect(page.locator('#states')).toContainText('Liquid Ax-116');
-  await expect(page.locator('#states')).toContainText('Ceramic Ax-116');
-  await expect(page.locator('#states')).toContainText('Normal gaseous Ax-116');
-  await expect(page.locator('#states')).toContainText('Genesis-state Ax-116');
+  await expect(page.locator('#states')).toContainText('Liquid Ax-126');
+  await expect(page.locator('#states')).toContainText('Ceramic Ax-126');
+  await expect(page.locator('#states')).toContainText('Normal gaseous Ax-126');
+  await expect(page.locator('#states')).toContainText('Genesis-state Ax-126');
 });
 
 test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis chronology', async ({ page }) => {
@@ -38,7 +38,7 @@ test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis c
 test('active lore and Genesis surfaces use the rewritten accidental-event model', async ({ page }) => {
   await page.goto(BASE + '/lore.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#abyron')).toHaveCount(1);
-  await expect(page.locator('#abyron')).toContainText('Element 116');
+  await expect(page.locator('#abyron')).toContainText('Element 126');
   await expect(page.locator('.lore-index a[href="lore/abyron/"]')).toHaveCount(2);
   await expect(page.locator('#hamptons-matter')).toHaveCount(0);
   await expect(page.locator('#abyron-powder')).toHaveCount(1);
@@ -62,12 +62,12 @@ test('active lore and Genesis surfaces use the rewritten accidental-event model'
 
 test('Abyron propagates to connected Hampton and Los Moralistas records', async ({ page }) => {
   await page.goto(BASE + '/characters/agent-emerald/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('main')).toContainText('HVA-01 / Ax-116 research');
+  await expect(page.locator('main')).toContainText('HVA-01 / Ax-126 research');
   await expect(page.locator('main a[href="../../lore/abyron/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/organizations/los-moralistas/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('main')).toContainText('Ax-116 Access');
-  await expect(page.locator('main')).toContainText('international Ax-116 supply chain');
+  await expect(page.locator('main')).toContainText('Ax-126 Access');
+  await expect(page.locator('main')).toContainText('international Ax-126 supply chain');
 });
 
 test('retired Hampton material and retired Genesis framing are absent from active source surfaces', async () => {
