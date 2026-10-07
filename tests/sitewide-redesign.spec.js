@@ -11,6 +11,9 @@ const DARK_PAGES = [
   ['characters/kokio/', '.wiki-section'],
   ['start-here.html', '.section-band'],
   ['lore.html', '.lore-entry'],
+  ['lore/abyron/', '.location-section'],
+  ['lore/abyron-discovery/', '.location-section'],
+  ['lore/genesis/', '.location-section'],
   ['events.html', '.event-feature'],
   ['organizations.html', '.org-card'],
   ['organizations/dunamis-dynamics/', '.location-section'],
@@ -65,6 +68,9 @@ test('After Dark major pages remain viewport-safe on mobile', async ({ page }) =
     '/characters/kokio/',
     '/start-here.html',
     '/lore.html',
+    '/lore/abyron/',
+    '/lore/abyron-discovery/',
+    '/lore/genesis/',
     '/events.html',
     '/organizations.html',
     '/organizations/dunamis-dynamics/',
@@ -128,7 +134,7 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (relative === 'dpi.html' && !html.includes('data.js?v=17')) failures.push(relative + ': OPI data cache key stale');
     if (relative === 'dpi.html' && !html.includes('app.js?v=12')) failures.push(relative + ': OPI app cache key stale');
     if (relative === 'index.html' && !html.includes('home.css?v=1')) failures.push(relative + ': homepage stylesheet cache key stale');
-    if (relative === 'index.html' && !html.includes('home-data.js?v=1')) failures.push(relative + ': homepage data cache key stale');
+    if (relative === 'index.html' && !html.includes('home-data.js?v=2')) failures.push(relative + ': homepage data cache key stale');
     if (relative === 'index.html' && !html.includes('home.js?v=1')) failures.push(relative + ': homepage runtime cache key stale');
   }
 
