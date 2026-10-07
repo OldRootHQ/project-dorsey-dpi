@@ -64,7 +64,7 @@ test('Lore Index reflects the rewritten Ascendant, Genesis, and Abyron Powder re
   await expect(page.locator('#genesis')).toContainText('accidental HVA-01 containment failure');
   await expect(page.locator('#ascendant')).toContainText('small, finite Genesis-only category');
   await expect(page.locator('#abyron-powder')).toContainText('Abyron Powder');
-  await expect(page.locator('#abyron-powder a')).toHaveAttribute('href', 'lore/genesis/#powder');
+  await expect(page.locator('#abyron-powder a')).toHaveAttribute('href', 'lore/abyron-powder/');
   await expect(page.locator('#genesis-dust')).toHaveCount(0);
   await expect(page.locator('main')).not.toContainText('exactly 77');
 });
@@ -101,7 +101,8 @@ test('active public Genesis surfaces do not regress to retired canon', async () 
     'locations/st-dorsey/index.html',
     'lore.html',
     'lore/abyron/index.html',
-    'lore/genesis/index.html'
+    'lore/genesis/index.html',
+    'lore/abyron-powder/index.html'
   ];
   for (const file of files) {
     const source = fs.readFileSync(file, 'utf8');

@@ -2,6 +2,22 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0050 · October 7, 2026 · Abyron Powder Complete Canon
+
+- Replaced the unresolved Abyron Powder placeholder with the authoritative complete Powder system.
+- Added a dedicated public dossier at `lore/abyron-powder/` and added **Abyron Powder** to the Lore dropdown, Lore Index, sitemap, and Start Here core concepts.
+- Locked Powder’s Genesis origin: genuine Powder is damaged/recondensed Ax-126 fused with Saint Dorsey catastrophe debris, not ordinary crushed ceramic Abyron.
+- Locked material behavior: genuine Powder cannot properly volumetrically bloom, cannot be restored to virgin Ax-126, and exhibits fragmented / non-coherent UMWR behavior.
+- Locked the biological rule: **Abyron Powder does not give you something new—it forces more out of what is already there.**
+- Defined normal-human overclocking, existing-powered-user amplification, strong Ascendant affinity, latent-domain-expression reveals, and the hard rule that Powder cannot create a true Ascendant or Genesis domain.
+- Defined major exposure routes, seconds-to-minutes onset variability, the broad **10–30 minute** significant enhancement window, crash, tolerance, physiological/psychological dependency, overdose, power runaway, long-term damage, and internal microscopic Ax-derived crystal deposits.
+- Established Hampton’s **Abyron Exposure Protocol** as stabilization/decontamination rather than a universal antidote.
+- Established four broad quality classes: **Genesis-Origin Powder, Refined Genesis Powder, Synthetic Ax Powder, and Cut Dust**.
+- Established finite authentic Saint Dorsey supply, largest legitimate Hampton/U.S. government-research stockpiles, foreign/criminal leakage, Los Moralistas’ eventual participation, restricted military experimentation, aerosol/enclosed-space weaponization rules, detection, storage, and protection requirements.
+- Locked naming: **Abyron Powder** is formal, **Dust** is strong street slang, and **Genesis Dust** is a public/media nickname for the same underlying material rather than a second substance.
+- Preserved all creator-designated open story hooks, including first criminal/military/Ascendant users, exact stockpile sizes and prices, named programs, exact doses, and specific addiction/overdose incidents.
+- Updated Genesis, Abyron, Saint Dorsey, Los Moralistas, Events, homepage Dispatch, public patch history, navigation, SEO/sitemap coverage, and regression tests.
+
 ## OR-WEB-0049 · October 6, 2026 · Abyron Periodic-Table Header
 
 - Replaced the Abyron dossier hero’s plain text-only technical box with a dedicated periodic-table visual.

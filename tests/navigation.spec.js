@@ -30,10 +30,11 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await page.keyboard.press('ArrowDown');
   await expect(lore).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#nav-lore-menu')).toBeVisible();
-  await expect(page.locator('#nav-lore-menu a')).toHaveCount(5);
+  await expect(page.locator('#nav-lore-menu a')).toHaveCount(6);
   await expect(page.locator('#nav-lore-menu a[href="lore/abyron/"]')).toHaveText('ELEMENT 126: ABYRON');
   await expect(page.locator('#nav-lore-menu')).toContainText('Discovery of Abyron');
   await expect(page.locator('#nav-lore-menu')).toContainText('Genesis');
+  await expect(page.locator('#nav-lore-menu')).toContainText('Abyron Powder');
   await page.keyboard.press('Tab');
   await expect(page.locator('#nav-lore-menu a').first()).toBeFocused();
   await expect(page.locator('#nav-lore-menu a').first()).toHaveText('Start Here');
@@ -85,7 +86,8 @@ test('active grouped navigation follows the current section', async ({ page }) =
     ['/lore.html', 'nav-lore-menu', 'lore.html'],
     ['/lore/abyron/', 'nav-lore-menu', '../../lore/abyron/'],
     ['/lore/abyron-discovery/', 'nav-lore-menu', '../../lore/abyron-discovery/'],
-    ['/lore/genesis/', 'nav-lore-menu', '../../lore/genesis/']
+    ['/lore/genesis/', 'nav-lore-menu', '../../lore/genesis/'],
+    ['/lore/abyron-powder/', 'nav-lore-menu', '../../lore/abyron-powder/']
   ];
 
   for (const [url, menuId, activeHref] of cases) {

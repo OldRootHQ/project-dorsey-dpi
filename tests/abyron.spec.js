@@ -65,6 +65,8 @@ test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis c
   await expect(page.locator('#genesis')).toContainText('Approximately three seconds');
   await expect(page.locator('#genesis')).toContainText('small finite group');
   await expect(page.locator('#powder')).toContainText('Abyron Powder');
+  await expect(page.locator('#powder')).toContainText('temporarily amplifies');
+  await expect(page.locator('#powder a[href="../abyron-powder/"]')).toHaveCount(1);
   await expect(page.locator('#boundaries')).toContainText('Genesis itself is an accident');
 });
 
@@ -101,6 +103,7 @@ test('Abyron propagates to connected Hampton and Los Moralistas records', async 
   await page.goto(BASE + '/organizations/los-moralistas/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main')).toContainText('Ax-126 Access');
   await expect(page.locator('main')).toContainText('international Ax-126 supply chain');
+  await expect(page.locator('main')).toContainText('Abyron Powder / Dust');
 });
 
 test('retired Hampton material and retired Genesis framing are absent from active source surfaces', async () => {
