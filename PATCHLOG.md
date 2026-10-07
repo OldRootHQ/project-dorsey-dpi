@@ -2,7 +2,21 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
-## OR-WEB-0044 · October 6, 2026 · Dedicated Discovery & Genesis Lore
+## OR-WEB-0045 · October 6, 2026 · Genesis Canon Rewrite
+
+- Replaced the OR-WEB-0044 Genesis content with the new authoritative Genesis handoff rather than layering the rewrite on top of retired canon.
+- Established Genesis as an **accidental Saint Dorsey containment catastrophe**: compromised HVA-01 containment slowly loses pressure; Hampton safety systems rapidly cool and stabilize the sample; those reasonable procedures unknowingly complete volumetric-bloom conditions; crystallized Ax-126 shifts effective load distribution; the containment rig damages high-density Hampton energy infrastructure; normal dark-orange vapor appears; a major conventional explosion occurs; approximately three seconds later the remaining lattice enters catastrophic Genesis-state failure.
+- Retired the unknown-attacker / villain / weapon framing, giant **600–700 kg** preplanned Saint Dorsey stockpile, **77 Ascendants**, fixed immediate survivor discovery, **Genesis Dust** mechanics, and permanent-quarantine presentation.
+- Established the orange Genesis cloud as lasting approximately **14 hours**, with Saint Dorsey held under controlled exclusion for approximately **two days**, and locked the Genesis death toll at **362**.
+- Reframed Ascendants as a **small, finite, creator-controlled Genesis-only category** whose exact total is not public in-universe knowledge; public pages intentionally do not hardcode the creator-side ~16 target as an in-world statistic.
+- Established that routine post-Genesis medical screening does not reliably identify Ascendants and that manifestations can emerge immediately or months later.
+- Added **Abyron Powder** as the current residual-material term while explicitly leaving its detailed mechanics and any relationship to older Genesis Dust terminology unresolved.
+- Corrected the Abyron timeline so industrial control, major reservoir discovery, strategic supply, military demand, and black-market diversion develop **after Genesis**, not before it.
+- Updated Saint Dorsey as a functioning post-disaster location: Hampton rebuilds into the **Dorsey New General Facility**, growing its local workforce from approximately **400** to approximately **4,000** and driving a major economic/industrial boom.
+- Updated the Genesis lore page, Events summary, Lore Index, Abyron dossier, Discovery of Abyron timeline, Start Here, Saint Dorsey dossier, World Index card/data, homepage teaser/latest dispatch, public Dispatches, and regression coverage.
+- Preserved the hard three-second delay, brilliant-orange Genesis-state Abyron, nearly black advancing phase boundary, surface-bound cloud behavior, domain formation, first-power-versus-true-domain concept, and the rule that Genesis is one OldRoot origin branch among many.
+
+## OR-WEB-0044 · October 6, 2026 · Dedicated Discovery & Genesis Lore · Partially Superseded by OR-WEB-0045
 
 - Preserved the complete OR-WEB-0043 Abyron integration and added two complementary deep-dive lore records rather than replacing the Ax-126 science dossier.
 - Added **Discovery of Abyron** as the dedicated HVA-01 history: downward-moving bubbles, nearly invisible liquid membrane, initial designation, extraction, first recovery, accidental volumetric bloom, first ceramic crystallization, submarine failure, return to depth, liquid reversion, apparent quantity increase, controlled transport, and Hampton’s eventual controlled bloom process.
@@ -12,7 +26,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Updated the Lore Index, Start Here, St. Dorsey, Abyron connected records, sitemap, homepage Latest Dispatch, and regression coverage for the new lore architecture.
 - No OR-WEB-0043 canon was removed or retconned.
 
-## OR-WEB-0043 · October 6, 2026 · Abyron Canon Integration
+## OR-WEB-0043 · October 6, 2026 · Abyron Canon Integration · Genesis Portions Superseded by OR-WEB-0045
 
 - Replaced the retired **Hampton’s Matter** concept across active public lore with **Abyron — Element 126 / Ax / Ax-126**.
 - Added a dedicated Abyron lore dossier covering HVA-01, the deep-ocean discovery, sinking-bubble mechanism, four major known states, volumetric bloom, UMWR, permanent bloom degradation, engineering properties and weaknesses, supply scale, known reservoir systems, Genesis-state behavior, Genesis Dust, replication limits, and explicit canon boundaries.
