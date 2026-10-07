@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" role="img" aria-labelledby="title desc">
+  <title id="title">Periodic table highlight for Element 126, Abyron</title>
+  <desc id="desc">A dark technical periodic-table field with familiar element tiles fading into the background and a large orange-gold Ax 126 Abyron tile enlarged over them.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06170f"/>
+      <stop offset="1" stop-color="#020b07"/>
+    </linearGradient>
+    <linearGradient id="axTile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0b24f"/>
+      <stop offset=".52" stop-color="#d77b29"/>
+      <stop offset="1" stop-color="#8f3f16"/>
+    </linearGradient>
+    <radialGradient id="axGlow" cx=".5" cy=".45" r=".72">
+      <stop offset="0" stop-color="#ffbb52" stop-opacity=".34"/>
+      <stop offset=".6" stop-color="#ff7d24" stop-opacity=".12"/>
+      <stop offset="1" stop-color="#ff7d24" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000" flood-opacity=".42"/>
+    </filter>
+    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="500" rx="34" fill="url(#panel)"/>
+  <circle cx="570" cy="210" r="190" fill="url(#axGlow)"/>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="42" y="54" fill="#c5a24a" font-size="16" font-weight="700" letter-spacing="4">PERIODIC REFERENCE / HAMPTON MATERIALS</text>
+
+    <!-- recognizable background periodic tiles -->
+    <g fill="#0d2b1d" stroke="#6f7b70" stroke-opacity=".38" stroke-width="1.4">
+      <rect x="44" y="92" width="68" height="68" rx="7"/>
+      <rect x="620" y="92" width="68" height="68" rx="7"/>
+
+      <rect x="44" y="168" width="68" height="68" rx="7"/>
+      <rect x="120" y="168" width="68" height="68" rx="7"/>
+      <rect x="424" y="168" width="68" height="68" rx="7"/>
+      <rect x="500" y="168" width="68" height="68" rx="7"/>
+      <rect x="576" y="168" width="68" height="68" rx="7"/>
+      <rect x="652" y="168" width="68" height="68" rx="7"/>
+
+      <rect x="44" y="244" width="68" height="68" rx="7"/>
+      <rect x="120" y="244" width="68" height="68" rx="7"/>
+      <rect x="196" y="244" width="68" height="68" rx="7"/>
+      <rect x="272" y="244" width="68" height="68" rx="7"/>
+      <rect x="348" y="244" width="68" height="68" rx="7"/>
+      <rect x="424" y="244" width="68" height="68" rx="7"/>
+      <rect x="500" y="244" width="68" height="68" rx="7"/>
+      <rect x="576" y="244" width="68" height="68" rx="7"/>
+      <rect x="652" y="244" width="68" height="68" rx="7"/>
+
+      <rect x="44" y="320" width="68" height="68" rx="7"/>
+      <rect x="120" y="320" width="68" height="68" rx="7"/>
+      <rect x="196" y="320" width="68" height="68" rx="7"/>
+      <rect x="272" y="320" width="68" height="68" rx="7"/>
+      <rect x="348" y="320" width="68" height="68" rx="7"/>
+      <rect x="424" y="320" width="68" height="68" rx="7"/>
+      <rect x="500" y="320" width="68" height="68" rx="7"/>
+      <rect x="576" y="320" width="68" height="68" rx="7"/>
+      <rect x="652" y="320" width="68" height="68" rx="7"/>
+    </g>
+
+    <g fill="#d9d4c9" opacity=".5">
+      <text x="52" y="111" font-size="10">1</text><text x="78" y="143" text-anchor="middle" font-size="24" font-weight="700">H</text>
+      <text x="628" y="111" font-size="10">2</text><text x="654" y="143" text-anchor="middle" font-size="24" font-weight="700">He</text>
+      <text x="432" y="187" font-size="10">6</text><text x="458" y="219" text-anchor="middle" font-size="24" font-weight="700">C</text>
+      <text x="508" y="187" font-size="10">7</text><text x="534" y="219" text-anchor="middle" font-size="24" font-weight="700">N</text>
+      <text x="584" y="187" font-size="10">8</text><text x="610" y="219" text-anchor="middle" font-size="24" font-weight="700">O</text>
+      <text x="204" y="263" font-size="10">26</text><text x="230" y="295" text-anchor="middle" font-size="24" font-weight="700">Fe</text>
+      <text x="356" y="339" font-size="10">79</text><text x="382" y="371" text-anchor="middle" font-size="24" font-weight="700">Au</text>
+      <text x="584" y="339" font-size="10">92</text><text x="610" y="371" text-anchor="middle" font-size="24" font-weight="700">U</text>
+      <text x="660" y="339" font-size="10">118</text><text x="686" y="371" text-anchor="middle" font-size="24" font-weight="700">Og</text>
+    </g>
+
+    <!-- subdued continuation markers -->
+    <g fill="#b7c0b8" opacity=".19" font-size="11" font-weight="700">
+      <text x="54" y="188">3</text><text x="130" y="188">4</text>
+      <text x="54" y="264">11</text><text x="130" y="264">12</text><text x="282" y="264">27</text>
+      <text x="434" y="264">29</text><text x="510" y="264">30</text><text x="662" y="264">36</text>
+      <text x="54" y="340">55</text><text x="130" y="340">56</text><text x="206" y="340">72</text><text x="282" y="340">73</text><text x="434" y="340">80</text><text x="510" y="340">81</text>
+    </g>
+
+    <!-- speculative extension line, numbers only -->
+    <g opacity=".28">
+      <line x1="174" y1="424" x2="570" y2="424" stroke="#c5a24a" stroke-width="1.5" stroke-dasharray="7 8"/>
+      <text x="180" y="449" fill="#c5a24a" font-size="12" font-weight="700" letter-spacing="2">SUPERHEAVY EXTENSION</text>
+    </g>
+
+    <!-- enlarged Ax tile -->
+    <g filter="url(#shadow)">
+      <rect x="382" y="104" width="300" height="300" rx="26" fill="#081d14" stroke="#e2a346" stroke-width="2.4"/>
+      <rect x="397" y="119" width="270" height="270" rx="19" fill="url(#axTile)"/>
+      <rect x="407" y="129" width="250" height="250" rx="15" fill="none" stroke="#fff5dc" stroke-opacity=".28" stroke-width="1.4"/>
+    </g>
+
+    <g fill="#fff8ea">
+      <text x="424" y="165" font-size="26" font-weight="800">126</text>
+      <text x="532" y="283" text-anchor="middle" font-size="126" font-weight="900" letter-spacing="-8">Ax</text>
+      <text x="532" y="330" text-anchor="middle" font-size="32" font-weight="800" letter-spacing="2">ABYRON</text>
+      <text x="532" y="358" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="4" opacity=".82">HVA-01 / ELEMENT 126</text>
+    </g>
+  </g>
+</svg>
