@@ -83,9 +83,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0043 · Abyron Canon",
-    title:"Abyron replaces the retired Hampton’s Matter concept.",
-    body:"Element 126 — Ax — now has a complete public dossier covering its deep-ocean discovery, physical states, volumetric bloom, UMWR, engineering role, Genesis connection, and long-term world consequences.",
-    href:"news.html#or-web-0043"
+    meta:"OR-WEB-0044 · Lore Architecture",
+    title:"Abyron’s discovery and Genesis get dedicated lore records.",
+    body:"The Ax-126 science dossier stays intact while Discovery of Abyron and Genesis now have their own deep-dive pages under Lore, separating the material reference from the history and the catastrophe.",
+    href:"news.html#or-web-0044"
   }
 };
