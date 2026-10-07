@@ -91,8 +91,8 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
     const title = getComputedStyle(document.querySelector('.editorial-hero h1'));
     return { heroHeight: hero.height, titleSize: parseFloat(title.fontSize) };
   });
-  expect(desktop.heroHeight).toBeLessThan(690);
-  expect(desktop.titleSize).toBeLessThanOrEqual(128.5);
+  expect(desktop.heroHeight).toBeLessThan(650);
+  expect(desktop.titleSize).toBeLessThanOrEqual(112.5);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
@@ -104,7 +104,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
       viewport: innerWidth
     };
   });
-  expect(mobile.titleSize).toBeLessThanOrEqual(66.5);
+  expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
   await expect(page.locator('link[href="home.css?v=2"]')).toHaveCount(1);
 });
