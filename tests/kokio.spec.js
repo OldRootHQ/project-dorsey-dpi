@@ -43,7 +43,15 @@ test('Kokio dossier preserves locked canon, art package, and open boundaries', a
     'kokio-combat-04.webp','kokio-combat-05.webp','kokio-combat-07.webp'
   ];
   const sources = await page.locator('img').evaluateAll(images => images.map(img => img.getAttribute('src') || ''));
-  for (const asset of required) expect(sources.some(src => src.endsWith(asset)), asset).toBe(true);
+  for (const asset of required) {
+    expect(sources.some(src => src.endsWith(asset)), asset).toBe(true);
+    const image = page.locator(`img[src$="${asset}"]`).first();
+    await image.scrollIntoViewIfNeeded();
+    await expect.poll(
+      () => image.evaluate(el => el.naturalWidth),
+      { message: `${asset} should load after entering the viewport` }
+    ).toBeGreaterThan(0);
+  }
 
   await expect(page.locator('body')).toContainText('Takaro is not inside Kalani');
   await expect(page.locator('body')).toContainText('final direct interaction');
@@ -92,6 +100,15 @@ test('Kokio and Hilo remain contained at phone width', async ({ page }) => {
     expect(dims.html, path).toBeLessThanOrEqual(dims.viewport + 2);
     expect(dims.body, path).toBeLessThanOrEqual(dims.viewport + 2);
     expect(dims.mast, path).toBeLessThanOrEqual(dims.viewport + 1);
+
+    if (path === '/locations/hilo/') {
+      const flow = await page.evaluate(() => {
+        const facts = document.querySelector('.location-facts').getBoundingClientRect();
+        const footer = document.querySelector('.oldroot-footer').getBoundingClientRect();
+        return { factsBottom: facts.bottom, footerTop: footer.top };
+      });
+      expect(flow.factsBottom).toBeLessThanOrEqual(flow.footerTop + 1);
+    }
   }
 });
 
