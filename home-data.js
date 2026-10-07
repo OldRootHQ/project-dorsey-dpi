@@ -67,7 +67,7 @@ window.OLDROOT_HOME = {
     tucson:{teaser:"Desert nights, police corruption, and something moving beneath the city.",className:"place-tucson"},
     chicago:{teaser:"Human skill, family ties, and street-level chaos can matter here as much as raw power.",className:"place-chicago"},
     sanjuan:{teaser:"Rain-slick streets and impossible spatial echoes make Santurce difficult to predict.",className:"place-san-juan"},
-    stdorsey:{teaser:"Ground zero for Genesis, where high-grade Ax-126 became a brilliant energized vapor behind a black advancing front.",className:"place-st-dorsey"},
+    stdorsey:{teaser:"Ground zero for an accidental Abyron catastrophe—and later home to Hampton’s massive Dorsey New General expansion.",className:"place-st-dorsey"},
     baltimore:{teaser:"Heroes, mercenaries, shadows, and a criminal ecosystem learning to adapt.",className:"place-baltimore"},
     seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"},
     hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"}
@@ -83,9 +83,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0044 · Lore Architecture",
-    title:"Abyron’s discovery and Genesis get dedicated lore records.",
-    body:"The Ax-126 science dossier stays intact while Discovery of Abyron and Genesis now have their own deep-dive pages under Lore, separating the material reference from the history and the catastrophe.",
-    href:"news.html#or-web-0044"
+    meta:"OR-WEB-0045 · Genesis Canon Rewrite",
+    title:"Genesis is rebuilt around the Saint Dorsey accident.",
+    body:"The Genesis record now follows the accidental containment failure, three-second transition, 14-hour orange cloud, 362 deaths, hidden Ascendant emergence, Abyron Powder, and Saint Dorsey’s post-disaster Hampton boom.",
+    href:"news.html#or-web-0045"
   }
 };

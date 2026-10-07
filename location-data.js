@@ -56,7 +56,7 @@ window.OLDROOT_LOCATIONS = {
       characterUrl: "",
       characters: [],
       dossierUrl: "locations/st-dorsey/",
-      note: "St. Dorsey is a fictional island associated with the greater Washington, D.C. area. Its globe marker is schematic; exact public coordinates are not established.",
+      note: "St. Dorsey is the Genesis site and later home of Hampton’s rebuilt Dorsey New General Facility. Its globe marker is schematic; exact public coordinates are not established.",
       coords: [-77.0369, 38.9072],
       approximate: true,
       labelOffset: [-72, 18]
