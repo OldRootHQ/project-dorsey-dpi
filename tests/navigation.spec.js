@@ -94,6 +94,7 @@ test('active grouped navigation follows the current section', async ({ page }) =
     await expect(button).toHaveClass(/active/);
     await button.click();
     await expect(page.locator('#' + menuId + ' a[href="' + activeHref + '"]')).toHaveClass(/active/);
+    await expect(page.locator('#' + menuId + ' a.active')).toHaveCount(1);
   }
 
   await page.goto(BASE + '/library/oldroot-book-1/', { waitUntil: 'domcontentloaded' });
