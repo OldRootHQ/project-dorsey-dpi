@@ -2,7 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
-## OR-WEB-0047 · October 6, 2026 · Abyron Element 116 / Malasangre Preview
+## OR-WEB-0048 · October 6, 2026 · Abyron 126 Label Correction
+
+- Reverted the accidental OR-WEB-0047 Abyron renumbering: Abyron remains **Element 126 / Ax-126** across active canon and connected records.
+- Restored the Abyron dossier’s large top header to its original **ABYRON** presentation.
+- Changed only the dynamically generated Lore dropdown label to **ELEMENT 126: ABYRON**, which is the intended placement for the expanded wording.
+- Restored Element 126 / Ax-126 references through Abyron, Discovery of Abyron, Genesis, Events, Saint Dorsey, Start Here, Lore Index, Los Moralistas, Agent Emerald, README, and regression coverage.
+- Preserved **Malasangre** in Upcoming Characters from OR-WEB-0047; no other Malasangre details were changed or invented.
+- Updated navigation and canon regression coverage to prevent the title/menu placement from being mixed up again.
+
+## OR-WEB-0047 · October 6, 2026 · Abyron Element 116 / Malasangre Preview · Abyron Portion Superseded by OR-WEB-0048
 
 - Renumbered active Abyron canon from **Element 126 / Ax-126** to **Element 116 / Ax-116** so the dedicated lore title and connected records remain internally consistent.
 - Changed the Abyron dossier title to **ELEMENT 116: ABYRON** and updated its metadata, technical shorthand, atomic-number field, state terminology, engineering references, Genesis links, Discovery record, Lore Index, Start Here, Saint Dorsey, Events, Los Moralistas, and Agent Emerald references.
