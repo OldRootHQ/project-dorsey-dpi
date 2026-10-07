@@ -18,6 +18,39 @@ test('Abyron dossier publishes the locked Element 126 identity and state system'
   await expect(page.locator('#states')).toContainText('Genesis-state Ax-126');
 });
 
+test('Abyron hero highlights Ax-126 with the periodic-table artwork', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(BASE + '/lore/abyron/', { waitUntil: 'domcontentloaded' });
+
+  await expect(page.locator('.location-dossier-hero h1')).toHaveText('ABYRON');
+  const panel = page.locator('.abyron-periodic-panel');
+  const image = panel.locator('.abyron-periodic-image');
+  await expect(panel).toContainText('ELEMENT PROFILE');
+  await expect(panel).toContainText('HVA-01 → Abyron → Ax-126');
+  await expect(image).toHaveAttribute('src', '../../assets/lore/abyron-periodic-table.svg');
+  await expect(image).toHaveAttribute('alt', /Element 126.*Ax Abyron.*enlarged/i);
+  await expect.poll(() => image.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+
+  const desktop = await panel.evaluate(el => {
+    const rect = el.getBoundingClientRect();
+    const hero = el.closest('.location-dossier-hero').getBoundingClientRect();
+    return { width: rect.width, right: rect.right, heroRight: hero.right };
+  });
+  expect(desktop.width).toBeGreaterThan(280);
+  expect(desktop.right).toBeLessThanOrEqual(desktop.heroRight + 1);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(BASE + '/lore/abyron/', { waitUntil: 'domcontentloaded' });
+  const mobile = await page.evaluate(() => ({
+    viewport: innerWidth,
+    html: document.documentElement.scrollWidth,
+    body: document.body.scrollWidth
+  }));
+  expect(mobile.html).toBeLessThanOrEqual(mobile.viewport + 2);
+  expect(mobile.body).toBeLessThanOrEqual(mobile.viewport + 2);
+  await expect(page.locator('.abyron-periodic-image')).toBeVisible();
+});
+
 test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis chronology', async ({ page }) => {
   await page.goto(BASE + '/lore/abyron/', { waitUntil: 'domcontentloaded' });
 
