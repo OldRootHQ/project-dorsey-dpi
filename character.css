@@ -805,3 +805,29 @@ body.oldroot-after-dark .character-identity{
   .wiki-section{content-visibility:visible}
 }
 
+
+
+/* OR-WEB-0050 · established character marks */
+.logo-slot.has-logo{
+  min-height:170px;
+  padding:12px;
+  border-style:solid;
+  border-color:rgba(197,162,74,.62);
+  background:
+    radial-gradient(circle at 50% 45%,rgba(226,92,31,.10),transparent 58%),
+    var(--parchment);
+}
+.logo-slot.has-logo>div{display:grid;justify-items:center;gap:7px;width:100%}
+.logo-slot.has-logo span{margin:0}
+.character-logo{
+  display:block;
+  width:min(100%,210px);
+  height:auto;
+  aspect-ratio:1;
+  object-fit:contain;
+  filter:drop-shadow(0 9px 18px rgba(0,0,0,.18));
+}
+@media(max-width:760px){
+  .logo-slot.has-logo{min-height:145px}
+  .character-logo{width:min(46vw,180px)}
+}
