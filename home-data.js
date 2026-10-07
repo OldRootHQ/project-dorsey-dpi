@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0048 · Abyron Label Correction",
-    title:"Abyron returns to Element 126 in the correct place.",
-    body:"Abyron remains Element 126 / Ax-126. The dossier title is back to ABYRON, while the Lore dropdown now carries the requested ELEMENT 126: ABYRON label.",
-    href:"news.html#or-web-0048"
+    meta:"OR-WEB-0049 · Abyron Periodic Header",
+    title:"Ax-126 gets its own periodic-table signature.",
+    body:"The Abyron dossier now highlights 126 / Ax / ABYRON in a dedicated periodic-table visual while preserving the corrected title, menu label, and Element 126 canon.",
+    href:"news.html#or-web-0049"
   }
 };

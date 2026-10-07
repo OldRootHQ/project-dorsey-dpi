@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0049 · October 6, 2026 · Abyron Periodic-Table Header
+
+- Replaced the Abyron dossier hero’s plain text-only technical box with a dedicated periodic-table visual.
+- Added a scalable SVG artwork field of subdued element tiles with **Element 126 / Ax / ABYRON** enlarged in bright Abyron-orange over the surrounding table.
+- Kept the dossier’s main title **ABYRON**, the Lore dropdown label **ELEMENT 126: ABYRON**, and all Element 126 / Ax-126 canon unchanged.
+- Preserved the technical lineage caption **HVA-01 → Abyron → Ax-126** beneath the new visual.
+- Added a page-scoped Abyron stylesheet so the larger visual treatment does not change other location or lore dossier headers.
+- Added desktop and mobile regression coverage for asset loading, Ax-126 labeling, responsive containment, and the original ABYRON page title.
+
 ## OR-WEB-0048 · October 6, 2026 · Abyron 126 Label Correction
 
 - Reverted the accidental OR-WEB-0047 Abyron renumbering: Abyron remains **Element 126 / Ax-126** across active canon and connected records.
