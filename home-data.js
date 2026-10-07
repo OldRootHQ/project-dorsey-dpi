@@ -2,7 +2,7 @@
 window.OLDROOT_HOME = {
   characterSpotlights: {
     "Gila Monster": {
-      key:"gila", image:"assets/characters/gila-monster/gila-featured.webp",
+      key:"gila", image:"assets/characters/gila-monster/gila-featured.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg",
       alt:"Gila Monster moving across Tucson rooftops at sunset",
       meta:"ENHANCED HUMAN · TUCSON",
       teaser:"A Tucson detective changed by an experiment he was never meant to survive.",
