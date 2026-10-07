@@ -27,7 +27,7 @@ test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis c
   await expect(page.locator('#umwr')).toContainText('Nobody currently knows how to restore');
   await expect(page.locator('#engineering')).toContainText('concentrated blunt force');
   await expect(page.locator('#supply')).toContainText('Before Genesis');
-  await expect(page.locator('#supply')).toContainText('approximately five major known systems');
+  await expect(page.locator('#supply')).toContainText('Approximately five major known systems');
   await expect(page.locator('#genesis')).toContainText('compromised Saint Dorsey containment seal');
   await expect(page.locator('#genesis')).toContainText('Approximately three seconds');
   await expect(page.locator('#genesis')).toContainText('small finite group');
