@@ -19,7 +19,7 @@ test('homepage samples the universe while complete registries remain intact', as
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(8);
   expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
-  expect(state.upcomingPool).toHaveLength(7);
+  expect(state.upcomingPool).toHaveLength(8);
   expect(state.selectedCharacters).toHaveLength(3);
   expect(state.selectedLocations).toHaveLength(3);
   expect(state.selectedUpcoming).toHaveLength(3);
@@ -53,7 +53,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('Characters');
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
-  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0045');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0047');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
@@ -81,6 +81,34 @@ test('homepage samples the universe while complete registries remain intact', as
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#count')).toHaveText('8 CHARACTERS');
 });
+
+test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+
+  const desktop = await page.evaluate(() => {
+    const hero = document.querySelector('.editorial-hero').getBoundingClientRect();
+    const title = getComputedStyle(document.querySelector('.editorial-hero h1'));
+    return { heroHeight: hero.height, titleSize: parseFloat(title.fontSize) };
+  });
+  expect(desktop.heroHeight).toBeLessThan(650);
+  expect(desktop.titleSize).toBeLessThanOrEqual(112.5);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+  const mobile = await page.evaluate(() => {
+    const title = getComputedStyle(document.querySelector('.editorial-hero h1'));
+    return {
+      titleSize: parseFloat(title.fontSize),
+      width: document.documentElement.scrollWidth,
+      viewport: innerWidth
+    };
+  });
+  expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
+  expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
+  await expect(page.locator('link[href="home.css?v=2"]')).toHaveCount(1);
+});
+
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
   const root = process.cwd();
   const htmlFiles = [];

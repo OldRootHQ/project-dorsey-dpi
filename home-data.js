@@ -79,13 +79,14 @@ window.OLDROOT_HOME = {
     {name:"Makari",status:"IN DEVELOPMENT"},
     {name:"Akuaom",status:"IN DEVELOPMENT"},
     {name:"Duke",status:"IN DEVELOPMENT"},
-    {name:"Remedie",status:"IN DEVELOPMENT"}
+    {name:"Remedie",status:"IN DEVELOPMENT"},
+    {name:"Malasangre",status:"IN DEVELOPMENT"}
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0045 · Genesis Canon Rewrite",
-    title:"Genesis is rebuilt around the Saint Dorsey accident.",
-    body:"The Genesis record now follows the accidental containment failure, three-second transition, 14-hour orange cloud, 362 deaths, hidden Ascendant emergence, Abyron Powder, and Saint Dorsey’s post-disaster Hampton boom.",
-    href:"news.html#or-web-0045"
+    meta:"OR-WEB-0047 · Abyron 116 / Malasangre",
+    title:"Abyron is Element 116, and Malasangre enters development.",
+    body:"The active Abyron canon now uses Element 116 / Ax-116, led by the revised ELEMENT 116: ABYRON lore title, while Malasangre joins the Upcoming Characters pool without invented details.",
+    href:"news.html#or-web-0047"
   }
 };

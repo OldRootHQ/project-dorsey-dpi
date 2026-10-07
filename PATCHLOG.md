@@ -2,6 +2,23 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0047 · October 6, 2026 · Abyron Element 116 / Malasangre Preview
+
+- Renumbered active Abyron canon from **Element 126 / Ax-126** to **Element 116 / Ax-116** so the dedicated lore title and connected records remain internally consistent.
+- Changed the Abyron dossier title to **ELEMENT 116: ABYRON** and updated its metadata, technical shorthand, atomic-number field, state terminology, engineering references, Genesis links, Discovery record, Lore Index, Start Here, Saint Dorsey, Events, Los Moralistas, and Agent Emerald references.
+- Preserved historical patch records that originally shipped the Element 126 wording while marking OR-WEB-0043's atomic-number detail as superseded in the public Dispatches ledger.
+- Added **Malasangre** to the Upcoming Characters / In Development registry and homepage sampling pool.
+- Malasangre remains a preview only: no identity, powers, Power Classification, affiliation, location, OPI profile, artwork, or release date has been invented.
+- Updated regression coverage for Element 116 / Ax-116 and the eight-name Upcoming Characters pool.
+
+## OR-WEB-0046 · October 6, 2026 · Homepage Hero Scale Correction
+
+- Reduced the homepage **DEEP ROOTS. / STRANGE BRANCHES.** headline from an oversized 168 px ceiling to a more balanced 112 px desktop ceiling, with tighter tablet and phone scaling.
+- Reduced the homepage hero from an 82vh maximum presentation to a 66vh target with border-box sizing and tightened its padding, gap, CTA spacing, signal-row spacing, and decorative root-map height.
+- Kept the change scoped to the homepage hero so Start Here and other editorial headings retain their existing scale.
+- Bumped the homepage-only stylesheet cache key to ensure the corrected proportions reach returning visitors.
+- Added regression coverage for the compact desktop and mobile hero scale.
+
 ## OR-WEB-0045 · October 6, 2026 · Genesis Canon Rewrite
 
 - Replaced the OR-WEB-0044 Genesis content with the new authoritative Genesis handoff rather than layering the rewrite on top of retired canon.
