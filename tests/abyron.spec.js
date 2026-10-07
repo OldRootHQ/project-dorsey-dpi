@@ -46,7 +46,7 @@ test('active lore and Genesis surfaces use the rewritten accidental-event model'
 
   await page.goto(BASE + '/events.html#genesis', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#genesis')).toContainText('Genesis begins as an accident');
-  await expect(page.locator('#genesis')).toContainText('bright-orange Genesis-state Abyron');
+  await expect(page.locator('#genesis')).toContainText('brilliant orange Genesis-state Abyron');
   await expect(page.locator('#genesis')).toContainText('362');
   await expect(page.locator('#genesis')).not.toContainText('Exactly 77');
   await expect(page.locator('#genesis')).not.toContainText('600–700');
