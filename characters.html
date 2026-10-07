@@ -7,9 +7,11 @@
   <link rel="stylesheet" href="brand.css?v=15" />
   <link rel="stylesheet" href="site.css?v=33" />
   <style>
-    .character-card{text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
+    .character-card{position:relative;text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{display:block;width:100%;height:clamp(260px,22vw,360px);aspect-ratio:auto;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
     .character-card:hover{transform:translateY(-2px);border-top-color:var(--old-gold);background:#fff8ed}
+    .character-card-mark{position:absolute;top:22px;right:22px;width:68px;height:68px;object-fit:contain;z-index:2;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
+
     .card-open{margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--root-green)}
     .registry-note{font-size:12px;color:#575a53;margin:0}
     .character-thumb.kincast-thumb{object-position:center top}
@@ -29,6 +31,7 @@
       .registry-sort select{min-height:46px}
       .character-grid{gap:18px}
       .character-card{padding:14px 14px 16px;border-radius:18px}
+      .character-card-mark{top:20px;right:20px;width:56px;height:56px}
       .character-thumb{
         height:clamp(250px,72vw,285px);
         aspect-ratio:auto;
@@ -170,6 +173,7 @@
     <section class="character-grid">
       <a class="character-card" data-release-order="1" data-tags="hero non-ascendant bioengineered enhanced-human tucson" href="characters/gila-monster/">
         <img decoding="async" class="character-thumb" src="assets/characters/gila-monster/gila-registry.webp" width="733" height="1100" alt="Gila Monster overlooking Tucson at twilight" loading="lazy" data-lightbox data-full-src="assets/characters/gila-monster/gila-registry.webp" data-caption="Gila Monster · registry visual reference" title="View character artwork" tabindex="0" />
+        <img class="character-card-mark" src="assets/characters/gila-monster/gila-monster-emblem.svg" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
         <div class="class">Hero · Enhanced Human · Non-Ascendant</div>
         <h3>Gila Monster</h3>
         <div class="civil">Adrián Zúñiga</div>
