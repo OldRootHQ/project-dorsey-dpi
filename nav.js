@@ -22,7 +22,8 @@
     const records = [
       ["ELEMENT 126: ABYRON", "lore/abyron/"],
       ["Discovery of Abyron", "lore/abyron-discovery/"],
-      ["Genesis", "lore/genesis/"]
+      ["Genesis", "lore/genesis/"],
+      ["Abyron Powder", "lore/abyron-powder/"]
     ];
     const currentPath = window.location.pathname.replace(/index\.html$/, "");
     let recordActive = false;
