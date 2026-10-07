@@ -67,7 +67,7 @@ window.OLDROOT_HOME = {
     tucson:{teaser:"Desert nights, police corruption, and something moving beneath the city.",className:"place-tucson"},
     chicago:{teaser:"Human skill, family ties, and street-level chaos can matter here as much as raw power.",className:"place-chicago"},
     sanjuan:{teaser:"Rain-slick streets and impossible spatial echoes make Santurce difficult to predict.",className:"place-san-juan"},
-    stdorsey:{teaser:"A fictional island tied to Genesis and the moment the modern OldRoot world changed.",className:"place-st-dorsey"},
+    stdorsey:{teaser:"Ground zero for Genesis, where high-grade Ax-126 became a brilliant energized vapor behind a black advancing front.",className:"place-st-dorsey"},
     baltimore:{teaser:"Heroes, mercenaries, shadows, and a criminal ecosystem learning to adapt.",className:"place-baltimore"},
     seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"},
     hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"}
@@ -83,9 +83,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0041 · Homepage System",
-    title:"The homepage becomes a rotating window into OldRoot.",
-    body:"OldRoot’s front page now works as a changing window into the universe, surfacing different characters, places, and works in progress on each visit while the full registries stay complete.",
-    href:"news.html#or-web-0041"
+    meta:"OR-WEB-0043 · Abyron Canon",
+    title:"Abyron replaces the retired Hampton’s Matter concept.",
+    body:"Element 126 — Ax — now has a complete public dossier covering its deep-ocean discovery, physical states, volumetric bloom, UMWR, engineering role, Genesis connection, and long-term world consequences.",
+    href:"news.html#or-web-0043"
   }
 };

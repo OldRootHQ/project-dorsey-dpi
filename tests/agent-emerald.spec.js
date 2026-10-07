@@ -121,8 +121,8 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/locations/st-dorsey/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.location-main')).toContainText('specialized sonar and submarine systems');
-  await expect(page.locator('.location-main')).toContainText('not the separate Seattle / Puget Sound logistics and fabrication annex');
+  await expect(page.locator('.location-main')).toContainText('specialized division/site focused on sonar, deep-ocean research, advanced ocean mapping');
+  await expect(page.locator('.location-main')).toContainText('separate from the Seattle / Puget Sound logistics and fabrication annex');
 
   await page.goto(`${BASE}/organizations.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.org-card[href="organizations/dunamis-dynamics/"]')).toContainText('Dunamis Dynamics');
