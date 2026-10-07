@@ -72,7 +72,7 @@ test('Lore Index reflects the rewritten Ascendant, Genesis, and Abyron Powder re
 test('Abyron dossier remains intact while Genesis supply chronology moves post-event', async ({ page }) => {
   await page.goto(BASE + '/lore/abyron/', { waitUntil: 'domcontentloaded' });
 
-  await expect(page.locator('#identity')).toContainText('Element 126');
+  await expect(page.locator('#identity')).toContainText('Element 116');
   await expect(page.locator('#bloom')).toContainText('volumetric bloom');
   await expect(page.locator('#umwr')).toContainText('Unstable Maximum Weight Response');
   await expect(page.locator('#supply')).toContainText('Before Genesis');
