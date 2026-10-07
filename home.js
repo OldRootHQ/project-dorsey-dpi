@@ -48,13 +48,16 @@
       const spot=config.characterSpotlights?.[c.codename]||{};
       const key=spot.key||String(c.codename).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
       const image=spot.image||c.image||"";
+      const mark=spot.mark||c.mark||"";
       const meta=spot.meta||[c.powerClass,c.classification,c.locationKey].filter(Boolean).join(" · ").toUpperCase();
       const teaser=spot.teaser||c.summary||"Open the dossier to explore this character.";
       const links=(spot.links?.length?spot.links:[["Character Dossier →",c.page]]).filter(([,href])=>href);
       return '<div class="home-character-slide '+(n===0?"active":"")+'" data-home-slide="'+esc(key)+'">'+
         '<div class="home-character-art '+esc(spot.artClass||"")+'">'+
         (image?'<img decoding="async" src="'+esc(image)+'" alt="'+esc(spot.alt||c.codename+" visual reference")+'" loading="'+(n===0?"eager":"lazy")+'" data-lightbox data-full-src="'+esc(image)+'" data-caption="'+esc(c.codename)+' · spotlight visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0"/>':"")+
-        '</div><div class="home-character-copy"><span>'+esc(meta)+'</span><h3>'+esc(c.codename)+'</h3><p>'+esc(teaser)+'</p>'+
+        '</div><div class="home-character-copy">'+
+        (mark?'<img class="home-character-mark" src="'+esc(mark)+'" alt="" aria-hidden="true" loading="lazy"/>':"")+
+        '<span>'+esc(meta)+'</span><h3>'+esc(c.codename)+'</h3><p>'+esc(teaser)+'</p>'+
         '<div class="home-character-links">'+links.map(([label,href])=>'<a href="'+esc(href)+'">'+esc(label)+'</a>').join("")+'</div></div></div>'
     }).join("");
     track.setAttribute("aria-busy","false");
