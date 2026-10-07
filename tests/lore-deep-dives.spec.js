@@ -29,7 +29,7 @@ test('Genesis publishes the accidental Saint Dorsey failure chain and hard after
   await expect(page.locator('#before-genesis')).toContainText('not holding a giant premium stockpile');
   await expect(page.locator('#rally-point')).toContainText('Mark Hampton is in Washington state');
   await expect(page.locator('#rally-point')).toContainText('Hillfred');
-  await expect(page.locator('#containment')).toContainText('compromised containment');
+  await expect(page.locator('#containment')).toContainText('compromised seal');
   await expect(page.locator('#containment')).toContainText('declining pressure');
   await expect(page.locator('#load-shift')).toContainText('effective weight response');
   await expect(page.locator('#energy-system')).toContainText('dark-orange');
