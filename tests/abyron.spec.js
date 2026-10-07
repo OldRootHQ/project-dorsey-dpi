@@ -37,7 +37,7 @@ test('active lore and Genesis surfaces use Abyron rather than the retired materi
   await page.goto(BASE + '/lore.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('#abyron')).toHaveCount(1);
   await expect(page.locator('#abyron')).toContainText('Element 126');
-  await expect(page.locator('a[href="lore/abyron/"]')).toHaveCount(2);
+  await expect(page.locator('.lore-index a[href="lore/abyron/"]')).toHaveCount(2);
   await expect(page.locator('#hamptons-matter')).toHaveCount(0);
 
   await page.goto(BASE + '/events.html#genesis', { waitUntil: 'domcontentloaded' });
@@ -55,7 +55,7 @@ test('active lore and Genesis surfaces use Abyron rather than the retired materi
 test('Abyron propagates to connected Hampton and Los Moralistas records', async ({ page }) => {
   await page.goto(BASE + '/characters/agent-emerald/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main')).toContainText('HVA-01 / Ax-126 research');
-  await expect(page.locator('a[href="../../lore/abyron/"]')).toHaveCount(1);
+  await expect(page.locator('main a[href="../../lore/abyron/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/organizations/los-moralistas/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('main')).toContainText('Ax-126 Access');

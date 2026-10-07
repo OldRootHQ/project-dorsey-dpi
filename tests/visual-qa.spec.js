@@ -11,6 +11,9 @@ const pages = [
   ['locations','/locations.html'],
   ['hilo','/locations/hilo/'],
   ['lore','/lore.html'],
+  ['abyron','/lore/abyron/'],
+  ['abyron-discovery','/lore/abyron-discovery/'],
+  ['genesis-lore','/lore/genesis/'],
   ['library','/library.html'],
   ['dispatches','/news.html'],
   ['opi','/dpi.html']

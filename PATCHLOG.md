@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0044 · October 6, 2026 · Dedicated Discovery & Genesis Lore
+
+- Preserved the complete OR-WEB-0043 Abyron integration and added two complementary deep-dive lore records rather than replacing the Ax-126 science dossier.
+- Added **Discovery of Abyron** as the dedicated HVA-01 history: downward-moving bubbles, nearly invisible liquid membrane, initial designation, extraction, first recovery, accidental volumetric bloom, first ceramic crystallization, submarine failure, return to depth, liquid reversion, apparent quantity increase, controlled transport, and Hampton’s eventual controlled bloom process.
+- Added **Genesis** as the dedicated lore record for Saint Dorsey: the high-grade Ax-126 stockpile, unresolved initial trigger, three-second delay, Genesis-state Abyron, black advancing phase front, surface-hugging vapor, biological-catalyst behavior, exactly 77 Ascendants, domain formation, first-power-versus-true-domain logic, Ascendant potential, Genesis Dust, artificial replication, public-knowledge boundaries, and the rule that Genesis is only one OldRoot origin branch.
+- Kept events.html#genesis as the concise historical event summary while routing deeper Genesis reading to the new lore page.
+- Added **Abyron**, **Discovery of Abyron**, and **Genesis** directly to the Lore navigation menu and preserved desktop keyboard, mobile, active-state, and no-overflow behavior.
+- Updated the Lore Index, Start Here, St. Dorsey, Abyron connected records, sitemap, homepage Latest Dispatch, and regression coverage for the new lore architecture.
+- No OR-WEB-0043 canon was removed or retconned.
+
 ## OR-WEB-0043 · October 6, 2026 · Abyron Canon Integration
 
 - Replaced the retired **Hampton’s Matter** concept across active public lore with **Abyron — Element 126 / Ax / Ax-126**.

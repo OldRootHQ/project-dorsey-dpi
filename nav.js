@@ -15,6 +15,33 @@
 
   if (!nav) return;
 
+  const loreMenu = nav.querySelector("#nav-lore-menu");
+  const loreIndexLink = loreMenu?.querySelector('a[href$="lore.html"]');
+  if (loreMenu && loreIndexLink) {
+    const prefix = loreIndexLink.getAttribute("href").replace(/lore\.html(?:[?#].*)?$/, "");
+    const records = [
+      ["Abyron", "lore/abyron/"],
+      ["Discovery of Abyron", "lore/abyron-discovery/"],
+      ["Genesis", "lore/genesis/"]
+    ];
+    const currentPath = window.location.pathname.replace(/index\.html$/, "");
+    let recordActive = false;
+    records.forEach(([label, path]) => {
+      if (loreMenu.querySelector(`a[href="${prefix}${path}"]`)) return;
+      const link = document.createElement("a");
+      link.setAttribute("role", "menuitem");
+      link.href = prefix + path;
+      link.textContent = label;
+      const targetPath = new URL(link.href, window.location.href).pathname.replace(/index\.html$/, "");
+      if (currentPath === targetPath) {
+        link.classList.add("active");
+        recordActive = true;
+      }
+      loreMenu.append(link);
+    });
+    if (recordActive) loreIndexLink.classList.remove("active");
+  }
+
   const masthead = nav.closest(".masthead");
   const mastInner = nav.parentElement;
   const groups = [...nav.querySelectorAll(".nav-group")];
