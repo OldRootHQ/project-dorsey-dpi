@@ -30,6 +30,10 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await page.keyboard.press('ArrowDown');
   await expect(lore).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#nav-lore-menu')).toBeVisible();
+  await expect(page.locator('#nav-lore-menu a')).toHaveCount(5);
+  await expect(page.locator('#nav-lore-menu')).toContainText('Abyron');
+  await expect(page.locator('#nav-lore-menu')).toContainText('Discovery of Abyron');
+  await expect(page.locator('#nav-lore-menu')).toContainText('Genesis');
   await page.keyboard.press('Tab');
   await expect(page.locator('#nav-lore-menu a').first()).toBeFocused();
   await expect(page.locator('#nav-lore-menu a').first()).toHaveText('Start Here');
@@ -78,7 +82,10 @@ test('active grouped navigation follows the current section', async ({ page }) =
     ['/locations.html', 'nav-world-menu', 'locations.html'],
     ['/organizations.html', 'nav-world-menu', 'organizations.html'],
     ['/start-here.html', 'nav-lore-menu', 'start-here.html'],
-    ['/lore.html', 'nav-lore-menu', 'lore.html']
+    ['/lore.html', 'nav-lore-menu', 'lore.html'],
+    ['/lore/abyron/', 'nav-lore-menu', '../../lore/abyron/'],
+    ['/lore/abyron-discovery/', 'nav-lore-menu', '../../lore/abyron-discovery/'],
+    ['/lore/genesis/', 'nav-lore-menu', '../../lore/genesis/']
   ];
 
   for (const [url, menuId, activeHref] of cases) {
@@ -116,7 +123,7 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('class="masthead"')) continue;
     const relative = path.relative(root, file).replace(/\\/g, '/');
     const nested = relative.includes('/');
-    const expectedScript = nested ? '../../nav.js?v=3' : 'nav.js?v=3';
+    const expectedScript = nested ? '../../nav.js?v=4' : 'nav.js?v=4';
 
     const toggleCount = (html.match(/data-nav-toggle/g) || []).length;
     if (!html.includes('class="site-nav"')) failures.push(relative + ': missing site-nav');
