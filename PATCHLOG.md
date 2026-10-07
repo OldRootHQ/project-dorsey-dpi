@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0046 · October 6, 2026 · Homepage Hero Scale Correction
+
+- Reduced the homepage **DEEP ROOTS. / STRANGE BRANCHES.** headline from an oversized 168 px ceiling to a more balanced 128 px desktop ceiling, with tighter tablet and phone scaling.
+- Reduced the homepage hero from an 82vh maximum presentation to a 70vh target and tightened its padding, gap, CTA spacing, signal-row spacing, and decorative root-map height.
+- Kept the change scoped to the homepage hero so Start Here and other editorial headings retain their existing scale.
+- Bumped the homepage-only stylesheet cache key to ensure the corrected proportions reach returning visitors.
+- Added regression coverage for the compact desktop and mobile hero scale.
+
 ## OR-WEB-0045 · October 6, 2026 · Genesis Canon Rewrite
 
 - Replaced the OR-WEB-0044 Genesis content with the new authoritative Genesis handoff rather than layering the rewrite on top of retired canon.
