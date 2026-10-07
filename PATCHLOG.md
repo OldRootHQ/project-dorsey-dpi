@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0051 · October 7, 2026 · Abyron Powder Lore Expansion
+
+- Expanded Abyron Powder from a two-paragraph glossary treatment into a full canon subdivision inside the Abyron dossier.
+- Established the complete currently locked relationship between Genesis and the residual material: the original useful HVA-01 / Abyron sample is destroyed or transformed, leaving altered particulate material later known as **Abyron Powder**.
+- Clarified that Abyron Powder is **not the same thing as intact Abyron** and cannot be treated as a substitute for Hampton's lost intact sample.
+- Connected the Powder directly to Hampton's need for answers and the **second Abyron search**, which eventually leads to the larger post-Genesis reservoir discoveries.
+- Preserved the creator's open boundaries: exact Powder mechanics, performance limits, engineering uses, biological effects, deeper Genesis relationship, and any relationship to older **Genesis Dust** terminology remain unresolved until separately established.
+- Updated the Lore Index to route Abyron Powder directly into the expanded Abyron dossier subdivision, added a sidebar jump link, and added regression coverage for the new body of lore and navigation.
+- No new Powder mechanics were invented.
+
 ## OR-WEB-0050 · October 7, 2026 · Gila Monster Character Emblem
 
 - Established Gila Monster’s first official character mark from the creator-selected three-claw concept: three orange reptilian slashes with scale texture and ivory tips inside a black circular field with a red-orange rim.
