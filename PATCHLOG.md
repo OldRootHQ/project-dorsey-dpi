@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0057 · October 8, 2026 · Abyron Reader-Facing Lore Cleanup
+
+- Removed the reader-facing “Canon Boundaries / What Abyron is not” section from the Abyron dossier; it read as internal development guardrails rather than in-universe reference writing.
+- Kept established Abyron properties, origin/discovery lore, Genesis chronology, Powder details, and connected records intact.
+- Updated the Abyron regression checks to ensure the internal editorial section does not reappear in the public dossier.
+
 ## OR-WEB-0053 · October 7, 2026 · World Index Cosmic Horizon
 
 - Reworked the **Indexed Places** directory on the Locations page so it no longer inherits the bright cream editorial surface that conflicted with the current After Dark redesign.
