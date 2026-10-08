@@ -843,3 +843,7 @@ body.oldroot-after-dark .locations-page .location-dossier-cards a.place-card:foc
 .location-cosmic-image{display:block;width:min(100%,340px);max-height:254px;height:auto;aspect-ratio:320/264;object-fit:contain;border:0;border-radius:0;background:transparent;filter:drop-shadow(0 8px 22px rgba(0,0,0,.15))}
 @media(max-width:900px){.location-cosmic-panel{width:100%;min-height:200px}.location-cosmic-image{width:min(100%,300px)}}
 @media(max-width:680px){.location-cosmic-panel{min-height:165px}.location-cosmic-image{width:min(72vw,255px);max-height:210px}}
+
+/* OR-WEB-0056 · original OldRoot galaxy mark; balanced proportions */
+.location-cosmic-image{aspect-ratio:24/19;max-width:340px;filter:drop-shadow(0 7px 17px rgba(0,0,0,.22))}
+@media(max-width:680px){.location-cosmic-image{max-width:255px}}
