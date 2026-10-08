@@ -108,7 +108,7 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf8');
-    expect(html, path.relative(root, file)).toContain('brand.css?v=15');
+    expect(html, path.relative(root, file)).toContain('brand.css?v=16');
     expect(html, path.relative(root, file)).not.toContain('brand.css?v=13');
   }
 });
@@ -145,4 +145,20 @@ test('character registry filter control is integrated into the finalized dark at
   expect(cardRoot.image).toContain('root-corner.svg');
   expect(cardRoot.opacity).toBeGreaterThan(0.35);
   expect(cardRoot.pointerEvents).toBe('none');
+});
+
+
+test('footer does not render a pseudo data point at its top edge', async ({ page }) => {
+  await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
+  const state = await page.locator('.oldroot-footer').evaluate(el => {
+    const after = getComputedStyle(el, '::after');
+    return {
+      content: after.content,
+      width: after.width,
+      height: after.height
+    };
+  });
+  expect(state.content === 'none' || state.content === 'normal' || state.content === '""').toBe(true);
+  expect(state.width).toBe('auto');
+  expect(state.height).toBe('auto');
 });
