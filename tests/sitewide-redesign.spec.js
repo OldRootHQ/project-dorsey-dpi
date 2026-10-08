@@ -134,7 +134,7 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (relative === 'dpi.html' && !html.includes('data.js?v=18')) failures.push(relative + ': OPI data cache key stale');
     if (relative === 'dpi.html' && !html.includes('app.js?v=13')) failures.push(relative + ': OPI app cache key stale');
     if (relative === 'index.html' && !html.includes('home.css?v=3')) failures.push(relative + ': homepage stylesheet cache key stale');
-    if (relative === 'index.html' && !html.includes('home-data.js?v=3')) failures.push(relative + ': homepage data cache key stale');
+    if (relative === 'index.html' && !html.includes('home-data.js?v=4')) failures.push(relative + ': homepage data cache key stale');
     if (relative === 'index.html' && !html.includes('home.js?v=2')) failures.push(relative + ': homepage runtime cache key stale');
   }
 
