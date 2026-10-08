@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 500" role="img" aria-labelledby="title desc">
+  <title id="title">OldRoot cosmic scale reference</title>
+  <desc id="desc">A dark cosmic formation map expanding from Earth through a stellar field into a spiral galaxy, with faint unresolved horizon layers beyond the current public index.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06170f"/>
+      <stop offset=".55" stop-color="#03100b"/>
+      <stop offset="1" stop-color="#010704"/>
+    </linearGradient>
+    <radialGradient id="galaxyCore">
+      <stop offset="0" stop-color="#fff4cc" stop-opacity=".96"/>
+      <stop offset=".16" stop-color="#d9bd67" stop-opacity=".82"/>
+      <stop offset=".5" stop-color="#74a986" stop-opacity=".28"/>
+      <stop offset="1" stop-color="#244c3a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="earthGlow">
+      <stop offset="0" stop-color="#5b9b79" stop-opacity=".62"/>
+      <stop offset=".55" stop-color="#244c3a" stop-opacity=".20"/>
+      <stop offset="1" stop-color="#244c3a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur10"><feGaussianBlur stdDeviation="10"/></filter>
+    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#d8be6a" flood-opacity=".55"/></filter>
+  </defs>
+
+  <rect width="760" height="500" rx="34" fill="url(#panel)"/>
+  <g opacity=".45" stroke="#5d8e72" stroke-width="1" fill="none">
+    <path d="M35 384 C160 312 253 341 339 276 S525 167 714 114" opacity=".18"/>
+    <path d="M48 433 C197 369 297 395 416 329 S607 236 730 210" opacity=".11"/>
+    <ellipse cx="590" cy="244" rx="154" ry="90" opacity=".16" transform="rotate(-17 590 244)"/>
+    <ellipse cx="590" cy="244" rx="119" ry="65" opacity=".14" transform="rotate(-17 590 244)"/>
+    <ellipse cx="590" cy="244" rx="82" ry="42" opacity=".12" transform="rotate(-17 590 244)"/>
+  </g>
+
+  <g fill="#f3ebdd">
+    <circle cx="56" cy="74" r="1.6"/><circle cx="91" cy="135" r="1.1"/><circle cx="132" cy="60" r=".9"/>
+    <circle cx="172" cy="118" r="1.5"/><circle cx="210" cy="76" r=".8"/><circle cx="249" cy="151" r="1.2"/>
+    <circle cx="286" cy="92" r=".8"/><circle cx="321" cy="54" r="1.4"/><circle cx="358" cy="129" r=".9"/>
+    <circle cx="401" cy="78" r="1.1"/><circle cx="443" cy="142" r=".8"/><circle cx="479" cy="62" r="1.6"/>
+    <circle cx="523" cy="110" r="1.1"/><circle cx="561" cy="68" r=".9"/><circle cx="608" cy="118" r="1.4"/>
+    <circle cx="650" cy="69" r=".8"/><circle cx="704" cy="139" r="1.2"/><circle cx="729" cy="84" r=".9"/>
+    <circle cx="85" cy="223" r=".9"/><circle cx="141" cy="187" r="1.4"/><circle cx="199" cy="237" r="1.1"/>
+    <circle cx="270" cy="205" r=".8"/><circle cx="329" cy="242" r="1.5"/><circle cx="372" cy="185" r=".8"/>
+    <circle cx="420" cy="226" r="1.2"/><circle cx="463" cy="199" r=".9"/><circle cx="697" cy="236" r="1.2"/>
+    <circle cx="67" cy="327" r="1.3"/><circle cx="120" cy="287" r=".8"/><circle cx="179" cy="344" r="1.0"/>
+    <circle cx="241" cy="306" r="1.5"/><circle cx="312" cy="354" r=".9"/><circle cx="386" cy="321" r="1.1"/>
+    <circle cx="447" cy="370" r=".8"/><circle cx="523" cy="337" r="1.3"/><circle cx="618" cy="364" r=".8"/>
+    <circle cx="701" cy="331" r="1.5"/><circle cx="728" cy="399" r=".9"/>
+  </g>
+  <g fill="#c5a24a" opacity=".75">
+    <circle cx="116" cy="98" r="1.4"/><circle cx="232" cy="118" r="1"/><circle cx="351" cy="94" r="1.2"/>
+    <circle cx="470" cy="118" r="1.3"/><circle cx="666" cy="173" r="1.1"/><circle cx="272" cy="382" r="1.2"/>
+  </g>
+
+  <!-- Earth / present index -->
+  <circle cx="145" cy="327" r="78" fill="url(#earthGlow)"/>
+  <circle cx="145" cy="327" r="33" fill="#0d3828" stroke="#c5a24a" stroke-width="1.6"/>
+  <path d="M127 309 C138 302 150 303 155 311 C160 319 166 320 174 322 C164 329 166 339 153 344 C144 349 136 343 130 336 C126 329 120 323 127 309Z" fill="#4f8d6e" opacity=".92"/>
+  <circle cx="145" cy="327" r="42" fill="none" stroke="#c5a24a" stroke-opacity=".30" stroke-dasharray="3 5"/>
+  <text x="64" y="414" fill="#c5a24a" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" letter-spacing="3">CURRENT PUBLIC INDEX</text>
+  <text x="64" y="437" fill="#f3ebdd" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="800">EARTH / LOCAL SPACE</text>
+
+  <!-- Stellar bridge -->
+  <g stroke="#c5a24a" stroke-opacity=".28" stroke-width="1.2" stroke-dasharray="5 7">
+    <path d="M187 308 C272 284 345 275 428 262"/>
+  </g>
+  <g fill="#fff7d7" filter="url(#glow)">
+    <circle cx="243" cy="292" r="3.2"/><circle cx="305" cy="277" r="2.4"/><circle cx="367" cy="273" r="2.8"/>
+    <circle cx="421" cy="259" r="2.2"/>
+  </g>
+  <text x="235" y="248" fill="#d9d4c9" opacity=".72" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" letter-spacing="2">STELLAR FIELD</text>
+
+  <!-- Galaxy -->
+  <g transform="rotate(-17 590 244)">
+    <ellipse cx="590" cy="244" rx="148" ry="74" fill="none" stroke="#6fa17f" stroke-opacity=".17" stroke-width="12" filter="url(#blur4)"/>
+    <path d="M590 244 C625 215 683 210 724 231 C680 226 642 238 620 259 C596 282 552 297 501 289 C543 280 574 261 590 244Z" fill="#5b9273" opacity=".16" filter="url(#blur4)"/>
+    <path d="M590 244 C553 220 505 214 464 232 C504 229 545 240 565 259 C587 280 624 294 678 286 C638 278 607 260 590 244Z" fill="#c5a24a" opacity=".13" filter="url(#blur4)"/>
+    <ellipse cx="590" cy="244" rx="55" ry="25" fill="url(#galaxyCore)" filter="url(#blur4)"/>
+    <ellipse cx="590" cy="244" rx="18" ry="9" fill="#fff3c6" opacity=".88"/>
+  </g>
+  <g fill="#e6ddc9" opacity=".7">
+    <circle cx="499" cy="221" r="1.5"/><circle cx="520" cy="281" r="1"/><circle cx="544" cy="202" r="1.2"/>
+    <circle cx="572" cy="297" r="1.5"/><circle cx="606" cy="190" r="1.2"/><circle cx="639" cy="283" r="1.1"/>
+    <circle cx="670" cy="205" r="1.3"/><circle cx="703" cy="252" r="1.0"/>
+  </g>
+  <text x="506" y="362" fill="#c5a24a" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" letter-spacing="3">GALACTIC STRUCTURE</text>
+  <text x="506" y="385" fill="#f3ebdd" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="800">DEEP FIELD / FUTURE SCALE</text>
+
+  <!-- unresolved horizon / multiversal foreshadow -->
+  <g opacity=".26" fill="none">
+    <circle cx="672" cy="70" r="34" stroke="#8fb39c" stroke-width="1.2"/>
+    <circle cx="690" cy="70" r="34" stroke="#c5a24a" stroke-width="1.2"/>
+    <circle cx="708" cy="70" r="34" stroke="#8fb39c" stroke-width="1.2"/>
+    <path d="M638 70 H742" stroke="#c5a24a" stroke-width=".8" stroke-dasharray="2 4"/>
+  </g>
+  <text x="602" y="130" fill="#c5a24a" opacity=".48" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="700" letter-spacing="2.6">UNRESOLVED HORIZON</text>
+
+  <text x="42" y="52" fill="#c5a24a" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" letter-spacing="4">OLDROOT COSMIC REFERENCE / SCALE FORMATION</text>
+</svg>
