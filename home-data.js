@@ -84,9 +84,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0051 · Abyron Powder Expansion",
-    title:"Abyron Powder now has a full lore subdivision.",
-    body:"The Abyron dossier now gives its Genesis residual material the space it needed: formation, distinction from intact Abyron, its role in Hampton’s second ocean search, and clearly preserved open canon boundaries.",
-    href:"news.html#or-web-0051"
+    meta:"OR-WEB-0053 · World Index Cosmic Horizon",
+    title:"Locations opens outward without losing its Earth-first focus.",
+    body:"The World Index now carries a cosmic scale formation panel, a direct jump to Indexed Places, and a darker location-directory treatment that removes the old bright editorial slab while preserving the current After Dark direction.",
+    href:"news.html#or-web-0053"
   }
 };
