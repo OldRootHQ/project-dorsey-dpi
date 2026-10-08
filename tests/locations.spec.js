@@ -176,3 +176,43 @@ test('Locations globe supports mobile drag and pinch while preserving page scrol
 
   await expect(page.locator('#globeStage')).not.toHaveClass(/is-pinching/);
 });
+
+
+test('Locations directory stays dark and exposes a globe-skip shortcut', async ({ page }) => {
+  await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'domcontentloaded' });
+
+  const jump = page.locator('.location-jumpbar a');
+  await expect(jump).toHaveAttribute('href', '#indexed-places');
+  await expect(jump).toContainText('Jump to Indexed Places');
+
+  await expect(page.locator('.location-cosmic-panel')).toBeVisible();
+  await expect(page.locator('.location-cosmic-image')).toHaveAttribute('src', 'assets/locations/cosmic-scale.svg');
+  await expect(page.locator('.location-cosmic-panel')).toContainText('UNRESOLVED HORIZON');
+
+  const directory = page.locator('#indexed-places');
+  await expect(directory).toBeVisible();
+  await expect(directory.locator('.place-card')).toHaveCount(7);
+
+  const appearance = await directory.evaluate(el => {
+    const s = getComputedStyle(el);
+    const heading = getComputedStyle(el.querySelector('h2'));
+    const card = getComputedStyle(el.querySelector('.place-card'));
+    const cardTitle = getComputedStyle(el.querySelector('.place-card h3'));
+    return {
+      background: s.backgroundImage,
+      color: s.color,
+      headingColor: heading.color,
+      cardBackground: card.backgroundImage,
+      cardTitleColor: cardTitle.color
+    };
+  });
+
+  expect(appearance.background).toContain('linear-gradient');
+  expect(appearance.cardBackground).toContain('linear-gradient');
+  expect(appearance.color).not.toBe('rgb(21, 21, 21)');
+  expect(appearance.headingColor).not.toBe('rgb(23, 52, 40)');
+  expect(appearance.cardTitleColor).not.toBe('rgb(23, 52, 40)');
+
+  await jump.click();
+  await expect(page).toHaveURL(/#indexed-places$/);
+});

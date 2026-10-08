@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0053 · October 7, 2026 · World Index Cosmic Horizon
+
+- Reworked the **Indexed Places** directory on the Locations page so it no longer inherits the bright cream editorial surface that conflicted with the current After Dark redesign.
+- Preserved the existing place-specific accent system while moving the directory wrapper, headings, dossier cards, and count treatment into a darker glass / deep-green presentation.
+- Added a **Jump to Indexed Places** shortcut before the interactive globe so visitors can bypass the map and move directly into the location dossiers.
+- Added a 760×500 **Cosmic Reference** formation graphic to the Locations hero, intentionally matching the visual weight of Abyron's periodic-table panel without copying its structure.
+- The graphic expands from **Earth / Local Space** through a stellar field and galactic structure, ending in an **Unresolved Horizon** that quietly foreshadows future cosmic and multiversal scale without defining unrevealed cosmology or locking future canon.
+- Advanced the Locations stylesheet cache key and added regression coverage for the dark directory surface, cosmic panel, seven established dossier cards, and deep-link shortcut.
+
 ## OR-WEB-0052 · October 7, 2026 · Footer Marker Cleanup
 
 - Removed the centered gold pseudo-node from the top edge of the global OldRoot footer.
