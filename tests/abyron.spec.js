@@ -65,7 +65,9 @@ test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis c
   await expect(page.locator('#genesis')).toContainText('Approximately three seconds');
   await expect(page.locator('#genesis')).toContainText('small finite group');
   await expect(page.locator('#powder')).toContainText('Abyron Powder');
-  await expect(page.locator('#boundaries')).toContainText('Genesis itself is an accident');
+  await expect(page.locator('#boundaries')).toHaveCount(0);
+  await expect(page.locator('main')).not.toContainText('What Abyron is not.');
+  await expect(page.locator('main')).not.toContainText('Hampton’s Matter');
 });
 
 test('active lore and Genesis surfaces use the rewritten accidental-event model', async ({ page }) => {
