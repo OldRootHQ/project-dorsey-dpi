@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0052 · October 7, 2026 · Footer Marker Cleanup
+
+- Removed the centered gold pseudo-node from the top edge of the global OldRoot footer.
+- The marker was originally introduced as part of the root-system visual polish, but on OPI Analytics it closely resembled an escaped chart/data point and read as a rendering error.
+- Preserved the footer's root-field background, gold border treatment, logo panel, and all navigation content while removing only the ambiguous dot-and-halo marker.
+- Advanced the global brand stylesheet cache key and added regression coverage to ensure the footer no longer renders a pseudo data point.
+
 ## OR-WEB-0051 · October 7, 2026 · Abyron Powder Lore Expansion
 
 - Expanded Abyron Powder from a two-paragraph glossary treatment into a full canon subdivision inside the Abyron dossier.
