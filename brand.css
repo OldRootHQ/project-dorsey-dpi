@@ -596,19 +596,6 @@ body{
   transform:rotate(9deg);
   filter:saturate(.65) brightness(.84);
 }
-.oldroot-footer::after{
-  content:"";
-  position:absolute;
-  z-index:0;
-  left:50%;
-  top:0;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--old-gold);
-  transform:translate(-50%,-50%);
-  box-shadow:0 0 0 6px rgba(197,162,74,.065),0 0 24px rgba(197,162,74,.18);
-}
 .oldroot-footer-inner,
 .footer-bottom{
   position:relative;
