@@ -7,7 +7,7 @@
   
   <link rel="stylesheet" href="brand.css?v=16" />
   <link rel="stylesheet" href="site.css?v=33" />
-  <link rel="stylesheet" href="locations.css?v=6" />
+  <link rel="stylesheet" href="locations.css?v=7" />
 </head>
 <body class="oldroot-after-dark">
   <header class="masthead">
@@ -29,6 +29,11 @@
       <h1>LOCATIONS</h1>
       <p>Explore established places across the OldRoot universe. Drag the globe, pinch or use the zoom controls, select a location pin, cluster, or index entry, and open location dossiers for deeper context.</p>
     </section>
+
+    <nav class="location-jumpbar" aria-label="Location page shortcuts">
+      <span><b>DIRECTORY SHORTCUT</b><small>Skip the globe and browse established location dossiers.</small></span>
+      <a href="#indexed-places">Jump to Indexed Places <i aria-hidden="true">↓</i></a>
+    </nav>
 
     <section class="world-console" aria-label="OldRoot global location index">
       <div class="world-console-bar">
@@ -98,9 +103,10 @@
       <p class="globe-scope-note"><strong>MAP SCOPE:</strong> The globe is a discovery index, not a street map. Real-world city detail and fictional geography are handled in their location records rather than by extreme globe zoom.</p>
     </section>
 
-    <section class="location-dossier-list">
+    <section class="location-dossier-list" id="indexed-places">
       <div class="home-section-heading">
         <div><span class="lead-kicker">LOCATION DOSSIERS</span><h2>Indexed Places</h2></div>
+        <div class="location-directory-meta"><strong>07</strong><span>ESTABLISHED<br>DOSSIERS</span></div>
       </div>
       <div class="location-dossier-cards">
         <a class="place-card place-tucson" href="locations/tucson/"><span>LOC-001</span><h3>Tucson, Arizona</h3><p>Primary operating city of Gila Monster.</p></a>
