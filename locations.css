@@ -836,3 +836,10 @@ body.oldroot-after-dark .locations-page .location-dossier-cards a.place-card:foc
 .location-cosmic-panel{display:flex;align-items:center;justify-content:center;padding:12px;background:radial-gradient(ellipse at center,rgba(45,105,74,.12),transparent 74%),rgba(3,15,10,.72)}
 .location-cosmic-image{display:block;width:100%;height:auto;max-height:270px;object-fit:contain;border:0;border-radius:12px;background:transparent}
 @media(max-width:980px){.location-cosmic-image{max-height:240px}}
+
+/* OR-WEB-0055 — reference-traced galaxy, no faux infographic framing */
+.locations-cosmic-head{align-items:center}
+.location-cosmic-panel{min-height:236px;margin-inline:auto;padding:0;border:0;border-radius:0;box-shadow:none;background:transparent;overflow:visible}
+.location-cosmic-image{display:block;width:min(100%,340px);max-height:254px;height:auto;aspect-ratio:320/264;object-fit:contain;border:0;border-radius:0;background:transparent;filter:drop-shadow(0 8px 22px rgba(0,0,0,.15))}
+@media(max-width:900px){.location-cosmic-panel{width:100%;min-height:200px}.location-cosmic-image{width:min(100%,300px)}}
+@media(max-width:680px){.location-cosmic-panel{min-height:165px}.location-cosmic-image{width:min(72vw,255px);max-height:210px}}
