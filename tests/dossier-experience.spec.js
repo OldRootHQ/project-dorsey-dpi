@@ -47,7 +47,7 @@ test('all eight canonical dossiers gain cinematic chapters, original art and OPI
 test('all eight dossiers preserve the authored profile, OPI baselines and source images', async () => {
   for(const [slug] of dossiers){
     const source=fs.readFileSync('characters/'+slug+'/index.html','utf8');
-    expect(source).toContain('character.css?v=26');
+    expect(source).toContain('character.css?v=27');
     expect(source).toContain('dossier-experience.css?v=4');
     expect(source).toContain('dossier-experience.js?v=4');
     expect(source).toContain('class="dossier-grid"');
@@ -238,7 +238,7 @@ test('Ballestera dossier presents full working canon, original art and eleven in
   await expect(shell.locator('.dossier-art-tile')).toHaveCount(8);
   await expect(shell.locator('.dpi-grid .dpi-value')).toHaveCount(11);
   expect(await shell.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(['0.4','0.6','0.2','0.0','0.3','2.6','5.7','2.9','3.8','0.1','0.2']);
-  await expect(shell).toContainText('No overall combined DPI or average is established or published.');
+  await expect(shell).toContainText('The figures below describe individual abilities');
   await expect(shell.locator('.character-infobox')).toContainText('November 5');
   await expect(shell.locator('.character-infobox')).toContainText('Approximately 6–8');
   await expect(shell.locator('#chapter-13')).toContainText('Gila Monster');
