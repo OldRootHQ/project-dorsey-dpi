@@ -18,6 +18,15 @@ test('Remedie emblem appears in character registry and Start Here with original 
   await page.goto(BASE+'/characters.html');
   const card=page.locator('.character-card[href="characters/remedie/"]');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
+  const badgePosition=await card.evaluate(el=>{
+    const cover=el.querySelector('.character-cover').getBoundingClientRect();
+    const image=el.querySelector('.character-thumb').getBoundingClientRect();
+    const badge=el.querySelector('.character-card-mark').getBoundingClientRect();
+    return {insideCover:badge.left>=cover.left&&badge.top>=cover.top&&badge.right<=cover.right+1&&badge.bottom<=cover.bottom+1,
+      insideImage:badge.left>=image.left&&badge.top>=image.top&&badge.right<=image.right+1&&badge.bottom<=image.bottom+1,
+      inRightCorner:badge.left>=image.left+image.width/2};
+  });
+  expect(badgePosition).toEqual({insideCover:true,insideImage:true,inRightCorner:true});
   await expect(card.locator('.character-art-shell')).toHaveCount(1);
   await expect(card.locator('.character-thumb')).toHaveAttribute('src','assets/characters/remedie/remedie-registry.webp');
   await page.goto(BASE+'/start-here.html');
