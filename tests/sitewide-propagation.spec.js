@@ -17,7 +17,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#homeOpiAxisCount')).toHaveText('11');
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
-  expect(state.characterPool).toHaveLength(9);
+  expect(state.characterPool).toHaveLength(10);
   expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
   expect(state.upcomingPool).toHaveLength(8);
   expect(state.selectedCharacters).toHaveLength(3);
