@@ -9,8 +9,8 @@ test('OldRoot After Dark homepage prototype is active on desktop', async ({ page
   await expect(page.locator('body')).toHaveClass(/home-after-dark/);
   await expect(page.locator('body')).toHaveAttribute('data-home-prototype', 'after-dark');
   await expect(page.locator('.hero-root-map')).toHaveCount(1);
-  await expect(page.locator('.hero-signal-row > div')).toHaveCount(2);
-  await expect(page.locator('.hero-signal-row')).not.toContainText('OPI Axes');
+  await expect(page.locator('.hero-signal-row')).toHaveCount(0);
+  await expect(page.locator('.hero-actions a')).toHaveCount(2);
 
   const visual = await page.evaluate(() => {
     const body = getComputedStyle(document.body);
@@ -48,12 +48,12 @@ test('OldRoot After Dark homepage remains contained on phone width', async ({ pa
     bodyWidth: document.body.scrollWidth,
     heroWidth: document.querySelector('.editorial-hero').getBoundingClientRect().width,
     rootMapWidth: document.querySelector('.hero-root-map').getBoundingClientRect().width,
-    signalColumns: getComputedStyle(document.querySelector('.hero-signal-row')).gridTemplateColumns.split(' ').length
+    heroActionsVisible: [...document.querySelectorAll('.editorial-hero .hero-actions a')].every(link => link.getBoundingClientRect().width > 0)
   }));
 
   expect(layout.htmlWidth).toBeLessThanOrEqual(layout.viewport + 2);
   expect(layout.bodyWidth).toBeLessThanOrEqual(layout.viewport + 2);
   expect(layout.heroWidth).toBeLessThanOrEqual(layout.viewport);
   expect(layout.rootMapWidth).toBeLessThan(layout.viewport);
-  expect(layout.signalColumns).toBe(2);
+  expect(layout.heroActionsVisible).toBe(true);
 });
