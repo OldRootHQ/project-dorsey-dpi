@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0072 · October 9, 2026 · Anchorage Official Character Emblem
+
+- Installed the creator-approved simplified blue-and-ivory Anchorage portrait as a compact, transparent emblem. Preserved the separate high-resolution design as supplied and did not change Anchorage's established anatomy, outfit, or palette.
+- Propagated the emblem across Anchorage's dossier, character registry, Start Here, Baltimore known-character card, homepage character spotlight, and OPI Analytics. Existing action artwork and full character portraits remain unchanged.
+- Updated homepage and OPI cache keys, added dedicated asset, placement, and mobile layout tests, and refreshed legacy test expectations for registry cards.
+
 ## OR-WEB-0071 · October 9, 2026 · Commotion Official Character Emblem
 
 - Installed the previously approved purple mask and golden dreadlocks emblem for Commotion, preserving the character design and violet border in a compact transparent SVG-backed image.
