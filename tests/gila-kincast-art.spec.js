@@ -55,7 +55,7 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   expect(records.find(c => c.codename === 'Kincast').image).toBe('assets/characters/kincast/kincast-registry.webp');
 
   await page.goto(`${BASE}/locations/tucson/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.known-character-card[href="../../characters/gila-monster/"] img')).toHaveAttribute('src', '../../assets/characters/gila-monster/gila-monster-emblem.svg');
+  await expect(page.locator('.known-character-card[href="../../characters/gila-monster/"] img')).toHaveAttribute('src', '../../assets/characters/gila-monster/gila-monster-emblem.svg?v=2');
 
   await page.goto(`${BASE}/locations/baltimore/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.known-character-card[href="../../characters/kincast/"] img')).toHaveAttribute('src', '../../assets/characters/kincast/kincast-registry.webp');
