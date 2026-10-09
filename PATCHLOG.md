@@ -7,7 +7,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added Mandy Ledger / Remedie to the published character pipeline: comprehensive Boston-based family tragedy, George Ledger and Gary Sodd corruption, missing brother, engineer collaboration, and the earned progression from an anti-hero into a hero.
 - Documented the wearable exo-frame and signature paired gauntlets, force-intercepting palm mechanisms, magnetic polarity modes, assisted strength, bracing, threat-detection reflex systems, limited propulsion, Overdrive, EMP hardening, and Counter-Punch to Counter-Combo combat evolution, without making Mandy biologically enhanced.
 - Integrated all eleven exact creator-established Prime OPI measurements, with 19.4 Senses explicitly attributed to exo-frame electronics and the analytics baseline mean not labeled an official combined score.
-- Prepared seven creator-supplied images as optimized WebP artwork for registry, full-width featured art, and the chapter/gallery archive. Art and dossier code are staged pending binary-asset upload and complete QA; no broken images are deployed to main.
+- Installed seven creator-supplied illustrations as eight checksum-verified optimized WebP assets (including a smaller registry variant), with primary cover, image archive and story chapter placements. Kept the staging branch separate from main until full QA passes.
 - Updated character registry and filters, homepage spotlight and upcoming list, OPI data and caching, sitemap, Dispatches, patch log, and automated regression expectations.
 - No emblem generated or added: emblem design remains a separate creator-led step.
 
