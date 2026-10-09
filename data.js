@@ -99,7 +99,7 @@ window.OLDROOT_CHARACTERS = [
     suppressAggregate:true, officialOPI:null,
     baseline:{Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2},
     conditional:[]
-  }  ,
+  },
   {
     codename:"Remedie", civilian:"Mandy Ledger", classification:"Anti-Hero", role:"Anti-Hero",
     powerClass:null, registryOrder:11, location:"Boston, Massachusetts", locationKey:"Boston",
