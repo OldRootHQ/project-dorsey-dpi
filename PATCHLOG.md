@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0069 · October 9, 2026 · Homepage Hero Counters Removed
+
+- Removed the entire homepage hero statistics row; Characters and Places counts now live only in their dedicated registries and analytics views, where they belong.
+- Removed unused homepage count formatting and DOM update code, along with counter-specific stylesheet overrides. Retained the full Character Registry, Locations index, and OPI Analytics functionality.
+- Vertically rebalanced the desktop hero copy around its headline and two useful navigation buttons, keeping the mobile layout intact.
+- Refreshed homepage asset versions, updated responsive and sitewide regression tests, and published the matching Dispatches update.
+
 ## OR-WEB-0068 · October 9, 2026 · Homepage Counter Simplification
 
 - Removed the unnecessary "OPI Axes" counter from the homepage hero, leaving just Characters and Places.
