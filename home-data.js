@@ -101,8 +101,8 @@ window.OLDROOT_HOME = {
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
     meta:"OR-WEB-0072 · Remedie dossier",
-    title:"Commotion receives his official character mark.",
-    body:"Commotion’s approved purple mask and golden dreadlocks emblem now appears in his dossier, registry, Start Here, Chicago, homepage spotlight, and OPI Analytics.",
+    title:"Remedie enters the OldRoot character registry.",
+    body:"Mandy Ledger arrives with a full Boston origin dossier, seven approved illustrations, a lightweight twin-arm exo-frame, and eleven Prime power measurements.",
     href:"news.html#or-web-0072"
   }
 };
