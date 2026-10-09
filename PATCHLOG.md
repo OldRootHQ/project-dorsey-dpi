@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0067 · October 9, 2026 · Published Character Dossier Editorial Polish
+
+- Audited all ten published character dossiers and removed author-facing language that made intentional creative freedom appear to be incomplete character development.
+- Removed Ballestera's precise-credentials / former-institution disclaimer, along with similar lines about unmapped personal history, open future story beats, unnamed organizations, and undecided crossover details throughout the cast.
+- Replaced empty emblem warnings with OldRoot Archive dossier labels; removed the decorative "UNREVEALED MARK" watermark and dashed placeholder border, and refreshed character stylesheet versions.
+- Preserved canon, individual rating values, official OPI assignments, character relationships, and genuinely in-universe mysteries; unassigned composite scores now read as deliberate individual-measurement records instead of missing data.
+- Aligned connected Latch, Gila Monster, and Genesis records with the same editorial policy without inventing hidden identities, employers, mission specifics, or story outcomes.
+- Updated affected Playwright expectations, added a ten-character editorial regression audit, refreshed relevant asset cache keys, and published the matching Dispatches entry. Added the standing publishing rule to `BRAND.md`.
+
 ## OR-WEB-0066 · October 9, 2026 · Ballestera Character Registry and Cinematic Dossier
 
 - Published Ballestera / Veronica Devoodas as OldRoot’s tenth active character record, an unaffiliated, physically frail, 58-year-old Mexican former chemistry teacher living in an improvised RV compound near Nogales, Arizona.
