@@ -99,5 +99,15 @@ window.OLDROOT_CHARACTERS = [
     suppressAggregate:true, officialOPI:null,
     baseline:{Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2},
     conditional:[]
+  }  ,
+  {
+    codename:"Remedie", civilian:"Mandy Ledger", classification:"Anti-Hero", role:"Anti-Hero",
+    powerClass:null, registryOrder:11, location:"Boston, Massachusetts", locationKey:"Boston",
+    origin:"Human / Wearable Technology", originType:"Human / Technology", ascendantStatus:"Non-Ascendant",
+    affiliation:"Ledger technology company / Independent", page:"characters/remedie/", image:"assets/characters/remedie/remedie-registry.webp",
+    age:28, heightIn:66, weightLb:160, yearsActive:null,
+    summary:"Boston technology anti-hero wielding paired force-redirection gauntlets and a lightweight wearable exo-frame; a search for her missing brother grows into a mission of civilian protection.",
+    baseline:{Strength:16.4,Durability:14.7,Speed:12.3,Agility:12.5,Regeneration:5.2,Senses:19.4,Offense:21.6,Intellect:9.4,Combat:14.8,Mobility:17.9,Stamina:10.8},
+    conditional:[]
   }
 ];
