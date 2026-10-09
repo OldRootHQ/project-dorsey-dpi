@@ -42,7 +42,7 @@ test('Remedie has a full cinematic story, accurate power constraints and seven a
   await expect(shell).toContainText('20 cumulative seconds');
   await expect(shell).toContainText('19.4 Senses');
   await expect(shell).toContainText('not combat autopilot');
-  await expect(shell.locator('.logo-slot')).toContainText('OldRoot Archive');
+  await expect(shell.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../'+ 'assets/characters/remedie/remedie-emblem.svg?v=1' +'');
   const imgs = shell.locator('img[src*="assets/characters/remedie/"]');
   expect(await imgs.count()).toBeGreaterThanOrEqual(9);
   const broken = await imgs.evaluateAll(elements => elements.filter(img => !img.complete || img.naturalWidth <= 0).map(img => img.src));
