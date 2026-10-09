@@ -3,7 +3,6 @@
   const characters=Array.isArray(window.OLDROOT_CHARACTERS)?window.OLDROOT_CHARACTERS:[];
   const locations=window.OLDROOT_LOCATIONS||{};
   const config=window.OLDROOT_HOME||{};
-  const dpiAxes=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
 
   function esc(value){return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[ch]))}
   function boundedRandom(max){
@@ -30,10 +29,8 @@
 
   const characterCount=document.querySelector("#homePublicCharacterCount");
   const placeCount=document.querySelector("#homeEstablishedPlaceCount");
-  const axisCount=document.querySelector("#homeOpiAxisCount");
   if(characterCount)characterCount.textContent=pad(characters.length);
   if(placeCount)placeCount.textContent=pad(establishedLocations.length);
-  if(axisCount)axisCount.textContent=pad(dpiAxes.length);
 
   const tabs=document.querySelector("#homeCharacterTabs");
   const track=document.querySelector("#homeCharacterTrack");
