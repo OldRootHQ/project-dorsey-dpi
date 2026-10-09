@@ -62,7 +62,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.info-list')).toContainText('Approximately 2 tons');
   await expect(page.locator('.info-list')).toContainText('approximately one year before Genesis');
   await expect(page.locator('.dpi-grid .dpi-row')).toHaveCount(11);
-  await expect(page.locator('.wiki-section', { hasText: 'OldRoot Power Index' })).toContainText('No canonical overall power score is calculated or displayed');
+  await expect(page.locator('.wiki-section', { hasText: 'OldRoot Power Index' })).toContainText('their arithmetic mean is an analytics reference');
 
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
   await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
