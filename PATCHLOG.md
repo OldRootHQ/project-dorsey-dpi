@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0060 · October 8, 2026 · Sitewide Editorial Mega Navigation
+
+- Rebuilt the Characters, World, and Lore dropdowns into spacious, responsive panels that hang beneath the primary navigation rather than cramped small lists.
+- Applied the visual language of the Abyron Powder dossier to navigation throughout OldRoot: deep forest glass, warm metallic borders, atmospheric gradients, cream typography, and restrained context-sensitive color accents.
+- Added introductory copy and explanatory descriptions for each destination without changing established page paths, canonical character records, or lore.
+- Desktop panels open on hover, focus, or click; moving the pointer beyond the panel, clicking away, scrolling the page, or pressing Escape closes them. A dimmed backdrop focuses attention on the expanded navigation.
+- Phones continue using explicit tap-to-open controls with compact scrollable panels and no hover-dependent behavior.
+- Preserved keyboard navigation, focus styling, active states, and all existing sitewide grouped-navigation conventions. Corrected the dynamic Upcoming Characters link prefix to ensure it reaches the roster on nested and root pages.
+- Updated shared navigation assets, refreshed CSS/JS cache keys across HTML templates, and expanded automated navigation regression checks.
+
 ## OR-WEB-0059 · October 8, 2026 · Upcoming Characters Navigation and Abyron Powder Dossier
 
 - Added **Upcoming Characters** to the sitewide Characters navigation menu, linking directly to the established in-development character roster without duplicating records.
