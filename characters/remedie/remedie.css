@@ -1,4 +1,4 @@
-/* OR-WEB-0071 · Remedie: approved art never receives overlays */
+/* OR-WEB-0072 · Remedie: approved art never receives overlays */
 .character-shell[data-dossier="remedie"] .character-identity{background:radial-gradient(circle at 5% 6%,rgba(229,163,36,.22),transparent 48%),linear-gradient(120deg,#121d1b,#071610)!important}
 .character-shell[data-dossier="remedie"] .character-kicker{color:#e9b94f!important}
 .character-shell[data-dossier="remedie"] .character-thesis{font-style:italic;color:#ffe0a0!important}
