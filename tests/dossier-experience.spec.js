@@ -203,7 +203,7 @@ test('Amari’s public OPI listing is unscored and White Magma remains developme
   await expect(page.locator('#upcoming-characters')).toContainText('White Magma');
 });
 
-test('Amari's cinematic presentation fits on phone widths and preserves approved art', async ({ page }) => {
+test("Amari's cinematic presentation fits on phone widths and preserves approved art", async ({ page }) => {
   await page.setViewportSize({width:390,height:844});
   await page.goto(BASE+'/characters/amari-razman/',{waitUntil:'domcontentloaded'});
   await expect(page.locator('.dossier-chapter-index')).toBeVisible();
