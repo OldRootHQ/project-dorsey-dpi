@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0065 · October 8, 2026 · Amari Razman Official OPI Profile
+
+- Locked the creator-supplied eleven baseline ratings for Amari Razman: Strength **8.4**, Durability **7.5**, Speed **8.8**, Agility **9.1**, Regeneration **5.2**, Senses **11.4**, Offense **13.2**, Intellect **12.8**, Combat **16.4**, Mobility **6.8**, and Stamina **10.6**.
+- Confirmed the exact category total **110.2** and the official OPI **10.02**, rounded from the eleven-value mean of approximately 10.01818. This is Amari's creator-locked OPI, not just an analytics-only average.
+- Added the official measurements and interactive OPI inspector to Amari's existing dossier; updated her infobox, connected records, Character Registry badge, homepage spotlight, and the shared analytics baseline.
+- Amari is now scored in OPI Analytics, including comparisons and plotting; **Latch remains 10.15** with a different category profile.
+- Preserved her fully human, unenhanced identity, unassigned Power Classification and empty conditional score list. No new powers or biography details were introduced.
+- Refreshed data and application cache keys and updated regression expectations. This entry supersedes the temporary unassigned-score statements made at Amari's launch in OR-WEB-0063.
+
 ## OR-WEB-0064 · October 8, 2026 · Amari Registry Portrait Framing
 
 - Corrected the Amari Razman registry thumbnail's focal position so her hair, forehead and face remain visible instead of being cut off by the landscape card crop.
