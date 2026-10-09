@@ -258,7 +258,7 @@ test('Ballestera is registrable and plot-safe without any calculated combined sc
   expect(record.officialOPI).toBeNull();
   expect(record.suppressAggregate).toBe(true);
   expect(record.baseline).toEqual({Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2});
-  await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
   await expect(page.locator('#plot-count')).toContainText('10 plotted');
   await page.locator('#search').fill('Ballestera');
   await expect(page.locator('#detail')).toContainText('Individual categories only');
