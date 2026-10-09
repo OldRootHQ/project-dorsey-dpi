@@ -17,7 +17,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/gila-monster/"],["Tucson →","locations/tucson/"],["Los Moralistas →","organizations/los-moralistas/"]]
     },
     "Commotion": {
-      key:"commotion", image:"assets/characters/commotion/commotion-featured-rooftop.webp",
+      key:"commotion", image:"assets/characters/commotion/commotion-featured-rooftop.webp", mark:"assets/characters/commotion/commotion-emblem.svg?v=1",
       alt:"Commotion crouched on a Chicago elevated train at sunset",
       meta:"EXCEPTIONAL HUMAN · CHICAGO",
       teaser:"No powers. No armor. Just a Chicago fighter who is at his best when a plan falls apart.",
