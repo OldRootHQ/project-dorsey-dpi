@@ -22,7 +22,7 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
   expect((await page.request.get(BASE + '/' + homeArt.agentEmerald)).ok()).toBe(true);
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
-  const afterRegistry = page.locator('.character-card[href="characters/aftermark/"] img');
+  const afterRegistry = page.locator('.character-card[href="characters/aftermark/"] .character-thumb');
   const agentRegistry = page.locator('.character-card[href="characters/agent-emerald/"] img');
   await expect(afterRegistry).toHaveAttribute('src', 'assets/characters/aftermark/aftermark-opi-cover.webp');
   await expect(agentRegistry).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
