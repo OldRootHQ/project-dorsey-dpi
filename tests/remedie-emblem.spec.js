@@ -52,3 +52,38 @@ test('Remedie SVG contains alpha-transparent approved sticker artwork and fits p
     expect(dims.scroll,path).toBeLessThanOrEqual(dims.viewport+2);
   }
 });
+
+
+test('registry artwork and all official marks share the same card corner at desktop and phone sizes',async({page})=>{
+  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
+    await page.setViewportSize(viewport);
+    await page.goto(BASE+'/characters.html',{waitUntil:'networkidle'});
+    const badges=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(cards=>cards.map(card=>{
+      const image=card.querySelector('.character-thumb');
+      const badge=card.querySelector('.character-card-mark');
+      const box=card.getBoundingClientRect();
+      const cover=image.getBoundingClientRect();
+      const mark=badge.getBoundingClientRect();
+      const css=getComputedStyle(badge);
+      return {name:card.querySelector('h3')?.textContent.trim(),
+        position:css.position,
+        cardTop:box.top,coverTop:cover.top,coverRight:cover.right,coverBottom:cover.bottom,
+        markTop:mark.top,markLeft:mark.left,markRight:mark.right,markBottom:mark.bottom,
+        coverWidth:cover.width,markWidth:mark.width};
+    }));
+    expect(badges.length).toBeGreaterThanOrEqual(5);
+    for(const b of badges){
+      expect(b.position,b.name+' badge must be absolutely positioned').toBe('absolute');
+      expect(b.coverTop-b.cardTop,b.name+' portrait must remain first in the card').toBeLessThan(55);
+      expect(b.markTop,b.name+' badge must overlay, not sit above portrait').toBeGreaterThanOrEqual(b.coverTop);
+      expect(b.markTop-b.coverTop,b.name+' badge should sit near portrait top').toBeLessThan(32);
+      expect(b.markLeft,b.name+' badge must sit in right image corner').toBeGreaterThanOrEqual(b.coverRight-145);
+      expect(b.markRight,b.name+' badge must remain inside portrait edge').toBeLessThanOrEqual(b.coverRight+1);
+      expect(b.markBottom,b.name+' badge should stay inside portrait').toBeLessThan(b.coverBottom);
+      expect(b.coverWidth).toBeGreaterThan(230);
+    }
+    const remedie=badges.find(x=>x.name==='Remedie');
+    expect(remedie).toBeTruthy();
+    expect(remedie.markWidth).toBeGreaterThanOrEqual(viewport.width<600?65:85);
+  }
+});
