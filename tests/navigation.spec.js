@@ -184,6 +184,6 @@ test('upcoming character menu link reaches the established roster', async ({ pag
   await expect(target).toHaveAttribute('href','news.html#upcoming-characters');
   await expect(target).toHaveText('Upcoming Characters');
   await target.click();
-  await expect(page).toHaveURL(/news\\.html#upcoming-characters$/);
+  await expect(page).toHaveURL(/news\.html#upcoming-characters$/);
   await expect(page.locator('#upcoming-characters')).toHaveCount(1);
 });
