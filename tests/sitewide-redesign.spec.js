@@ -10,6 +10,7 @@ const DARK_PAGES = [
   ['characters/agent-emerald/', '.wiki-section'],
   ['characters/kokio/', '.wiki-section'],
   ['characters/amari-razman/', '.wiki-section'],
+  ['characters/ballestera/', '.wiki-section'],
   ['start-here.html', '.section-band'],
   ['lore.html', '.lore-entry'],
   ['lore/abyron/', '.location-section'],
@@ -68,6 +69,7 @@ test('After Dark major pages remain viewport-safe on mobile', async ({ page }) =
     '/characters/agent-emerald/',
     '/characters/kokio/',
     '/characters/amari-razman/',
+    '/characters/ballestera/',
     '/start-here.html',
     '/lore.html',
     '/lore/abyron/',
@@ -140,6 +142,6 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (relative === 'index.html' && !html.includes('home.js?v=2')) failures.push(relative + ': homepage runtime cache key stale');
   }
 
-  expect(htmlFiles.length).toBe(49);
+  expect(htmlFiles.length).toBe(50);
   expect(failures).toEqual([]);
 });

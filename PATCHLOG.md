@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0066 · October 9, 2026 · Ballestera Character Registry and Cinematic Dossier
+
+- Published Ballestera / Veronica Devoodas as OldRoot’s tenth active character record, an unaffiliated, physically frail, 58-year-old Mexican former chemistry teacher living in an improvised RV compound near Nogales, Arizona.
+- Integrated the full current working handoff: grief over her murdered son, uneven cognition and chemical exposure, grim temperament, specialized toxic chemistry, weathered crossbow, last-resort dagger, defensive traps, six-to-eight-person armed security crew, regional underworld ties and an intentionally unresolved first meeting with Gila Monster.
+- Installed the seven latest approved character illustrations plus an optimized registry asset. The art was resized for the web without creating replacement character designs.
+- Added a unique black-cloak, floral-rust cinematic presentation, a canon-derived story-thread index, the original image lightbox, artwork archive, responsive layouts and connected records, including a reciprocal regional link from Gila Monster's dossier.
+- Published the exact eleven creator-supplied DPI category measurements, without a combined score or derived mean. The shared analytics system suppresses aggregate calculations and presentations for Ballestera while retaining all individual values and comparisons.
+- Updated Character Registry, OPI Analytics shared dataset, sitemap, cache versions, editorial patch dispatch and regression tests. No unestablished son’s identity, location coordinates, chemical formulas or encounter outcomes were invented.
+- Ballestera is a **current working registry record**, not represented as a completed formal checkpoint.
+
 ## OR-WEB-0065 · October 8, 2026 · Amari Razman Official OPI Profile
 
 - Locked the creator-supplied eleven baseline ratings for Amari Razman: Strength **8.4**, Durability **7.5**, Speed **8.8**, Agility **9.1**, Regeneration **5.2**, Senses **11.4**, Offense **13.2**, Intellect **12.8**, Combat **16.4**, Mobility **6.8**, and Stamina **10.6**.

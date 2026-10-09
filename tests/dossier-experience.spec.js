@@ -206,7 +206,7 @@ test('Amari’s public OPI is officially 10.02 and White Magma remains developme
   expect(Object.values(amari.baseline).reduce((a,b)=>a+b,0)).toBeCloseTo(110.2,8);
   expect(amari.powerClass).toBeNull();
   expect(amari.conditional).toEqual([]);
-  await expect(page.locator('#plot-count')).toContainText('9 plotted');
+  await expect(page.locator('#plot-count')).toContainText('10 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await page.locator('#search').fill('Amari Razman');
@@ -225,4 +225,52 @@ test("Amari's cinematic presentation fits on phone widths and preserves approved
   const widths=await page.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
   expect(widths.document).toBeLessThanOrEqual(widths.viewport+2);
   expect(widths.body).toBeLessThanOrEqual(widths.viewport+2);
+});
+
+test('Ballestera dossier presents full working canon, original art and eleven individual DPI categories', async ({page})=>{
+  await page.goto(BASE+'/characters/ballestera/',{waitUntil:'domcontentloaded'});
+  const shell=page.locator('main.character-shell');
+  await expect(shell).toHaveAttribute('data-dossier','ballestera');
+  await expect(shell.locator('h1')).toHaveText('BALLESTERA');
+  await expect(shell.locator('.dossier-story-thread')).toHaveCount(1);
+  await expect(shell.locator('.dossier-thread-stop')).toHaveCount(5);
+  await expect(shell.locator('.wiki-section')).toHaveCount(15);
+  await expect(shell.locator('.dossier-art-tile')).toHaveCount(8);
+  await expect(shell.locator('.dpi-grid .dpi-value')).toHaveCount(11);
+  expect(await shell.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(['0.4','0.6','0.2','0.0','0.3','2.6','5.7','2.9','3.8','0.1','0.2']);
+  await expect(shell).toContainText('No overall combined DPI or average is established or published.');
+  await expect(shell.locator('.character-infobox')).toContainText('November 5');
+  await expect(shell.locator('.character-infobox')).toContainText('Approximately 6–8');
+  await expect(shell.locator('#chapter-13')).toContainText('Gila Monster');
+  await expect.poll(()=>shell.locator('.character-feature-art-trigger img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+  await shell.locator('.dossier-opi-inspect').first().click();
+  await expect(shell.locator('.dossier-opi-readout')).toContainText('Strength / 0.4');
+  await shell.locator('.dossier-art-tile').first().click();
+  await expect(page.locator('.image-lightbox')).toHaveClass(/open/);
+  await page.keyboard.press('Escape');
+});
+
+test('Ballestera is registrable and plot-safe without any calculated combined score', async ({page})=>{
+  await page.goto(BASE+'/dpi.html',{waitUntil:'networkidle'});
+  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Ballestera'));
+  expect(record).toBeTruthy();
+  expect(record.classification).toBe('Unaffiliated');
+  expect(record.officialOPI).toBeNull();
+  expect(record.suppressAggregate).toBe(true);
+  expect(record.baseline).toEqual({Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2});
+  await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('10 plotted');
+  await page.locator('#search').fill('Ballestera');
+  await expect(page.locator('#detail')).toContainText('Individual categories only');
+  await expect(page.locator('#detail')).not.toContainText('Analytics-only');
+  await expect(page.locator('#detail')).not.toContainText('Baseline mean');
+});
+test('Ballestera dossier and artwork fit on a narrow mobile screen', async ({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(BASE+'/characters/ballestera/',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('.dossier-chapter-index')).toBeVisible();
+  await expect(page.locator('.dossier-art-archive')).toBeVisible();
+  const x=await page.evaluate(()=>({viewport:innerWidth,html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+  expect(x.html).toBeLessThanOrEqual(x.viewport+2);
+  expect(x.body).toBeLessThanOrEqual(x.viewport+2);
 });

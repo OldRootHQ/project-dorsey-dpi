@@ -41,7 +41,7 @@
 
   function baselineValues(c){return Object.values(c.baseline||{}).filter(Number.isFinite)}
   function hasBaseline(c){return dpiMetrics.every(k=>Number.isFinite(c.baseline?.[k]))}
-  function mean(c){const v=baselineValues(c);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
+  function mean(c){if(c.suppressAggregate)return null;const v=baselineValues(c);return v.length?v.reduce((a,b)=>a+b,0)/v.length:null}
   function high(c){const v=baselineValues(c);return v.length?Math.max(...v):null}
   function low(c){const v=baselineValues(c);return v.length?Math.min(...v):null}
   function valueFor(c,key){
@@ -281,7 +281,7 @@
       '<div class="trow"><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div>'+
       '<div class="trow"><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
       (Number.isFinite(c.officialOPI)?'<div class="trow"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':"")+
-      '<div class="trow"><span>Baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>'+
+      (c.suppressAggregate?"":'<div class="trow"><span>Baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>')+
       '<div class="trow"><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>';
     tip.classList.add("show");let left=e.clientX+16,top=e.clientY+16;if(left+320>innerWidth)left=e.clientX-320;if(top+200>innerHeight)top=e.clientY-210;
     tip.style.left=Math.max(10,left)+"px";tip.style.top=Math.max(10,top)+"px";
@@ -310,7 +310,7 @@
       '<div class="meta"><div><span>Location</span><b>'+esc(c.location)+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>'+
       '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
       '<div class="comparison-readout"><span>Current comparison</span><b>'+esc(defs[xKey].label)+' '+esc(formatMetric(xKey,valueFor(c,xKey)))+' <i>vs</i> '+esc(defs[yKey].label)+' '+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
-      (Number.isFinite(c.officialOPI)?'<div class="mean"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':'<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+mean(c).toFixed(2)+'</b></div>')+
+      (c.suppressAggregate?'<div class="mean"><span>DPI display</span><b>Individual categories only</b></div>':Number.isFinite(c.officialOPI)?'<div class="mean"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':'<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>')+
       '<div class="top-baseline"><span>Highest baseline category</span><b>'+esc(top[0])+' · '+top[1].toFixed(1)+'</b></div>'+
       (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"")+
       '<div class="section-label">Baseline OPI</div>'+

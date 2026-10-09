@@ -88,5 +88,16 @@ window.OLDROOT_CHARACTERS = [
     age:33, heightIn:68, weightLb:162, yearsActive:null,
     summary:"Unenhanced Brooklyn-born human tracker and reconnaissance operative whose expertise lies in finding hidden or missing threats after Genesis.",
     officialOPI:10.02, baseline:{Strength:8.4,Durability:7.5,Speed:8.8,Agility:9.1,Regeneration:5.2,Senses:11.4,Offense:13.2,Intellect:12.8,Combat:16.4,Mobility:6.8,Stamina:10.6}, conditional:[]
+  },
+  {
+    codename:"Ballestera", civilian:"Veronica Devoodas", classification:"Unaffiliated", role:"Unaffiliated",
+    powerClass:null, registryOrder:10, location:"Nogales area, southern Arizona", locationKey:"Nogales",
+    origin:"Human / Non-Ascendant", originType:"Human / Chemistry", ascendantStatus:"Non-Ascendant",
+    affiliation:"Unaffiliated / southern Arizona underworld", page:"characters/ballestera/", image:"assets/characters/ballestera/ballestera-registry.webp",
+    age:58, heightIn:null, weightLb:null, yearsActive:null,
+    summary:"Frail former chemistry teacher and underworld poison specialist living in a defended desert RV compound; an early recurring obstacle and possible contact for Gila Monster.",
+    suppressAggregate:true, officialOPI:null,
+    baseline:{Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2},
+    conditional:[]
   }
 ];

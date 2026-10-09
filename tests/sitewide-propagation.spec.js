@@ -64,7 +64,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(9);
+  await expect(page.locator('.character-card')).toHaveCount(10);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
   await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
 
@@ -79,7 +79,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('9 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
 });
 
 test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', async ({ page }) => {
