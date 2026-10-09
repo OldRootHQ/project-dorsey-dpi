@@ -57,7 +57,7 @@ test('Commotion artwork stays purposeful and distinct across the site', async ({
   expect(dataText).toContain('image:"assets/characters/commotion/commotion-primary.webp"');
 
   await page.goto(`${BASE}/locations/chicago/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('img[src*="assets/characters/commotion/"]')).toHaveCount(0);
+  await expect(page.locator('.known-character-card[href="../../characters/commotion/"] img')).toHaveAttribute('src', '../../assets/characters/commotion/commotion-emblem.svg?v=1');
 
   expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
 });
