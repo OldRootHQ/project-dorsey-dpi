@@ -135,7 +135,7 @@
     let p=heading.nextElementSibling;
     if(!p||p.tagName!=="P") p=parent?.querySelector(":scope > p");
     const excerpt=p?.textContent.trim()||"Read the established character record.";
-    const condensed=excerpt.length>142?excerpt.slice(0,139).replace(/\\s+\\S*$/,"")+"…":excerpt;
+    const condensed=excerpt.length>142?excerpt.slice(0,139).replace(/\s+\S*$/,"")+"…":excerpt;
     const link=document.createElement("a");
     link.className="dossier-thread-stop";
     link.href="#"+heading.id;
