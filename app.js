@@ -296,7 +296,7 @@
         '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
         '<div class="meta"><div><span>Location</span><b>'+esc(c.location||"Unassigned")+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Not separately assigned")+'</b></div>'+
         '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
-        '<div class="unscored-detail"><span>OPI STATUS</span><strong>Numeric profile not established</strong><p>Latch remains a public OPI record, but no capability values are published until creator-approved ratings are established. Missing values are not guessed.</p></div>'+
+        '<div class="unscored-detail"><span>OPI STATUS</span><strong>Numeric profile not established</strong><p>This public character has no creator-approved numeric capability profile yet. Missing values are never guessed.</p></div>'+
         (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"");
       return
     }
@@ -327,7 +327,7 @@
       dpiMetrics.map(k=>'<tr><td>'+k+'</td>'+selected.map(c=>'<td>'+(Number.isFinite(c.baseline?.[k])?c.baseline[k].toFixed(1):"—")+'</td>').join("")+'</tr>').join("")+
       '<tr><td>Official OPI</td>'+selected.map(c=>'<td>'+(Number.isFinite(c.officialOPI)?c.officialOPI.toFixed(2):"—")+'</td>').join("")+'</tr>'+
       '<tr class="analytics-row"><td>Baseline Mean*</td>'+selected.map(c=>'<td>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</td>').join("")+'</tr></tbody></table></div>'+
-      '<p class="compare-footnote">* Baseline Mean remains an analytics-only statistic. Official OPI values are shown separately only when creator-established; Latch’s official OPI is 10.15.</p>';
+      '<p class="compare-footnote">* Baseline Mean remains an analytics-only statistic. Official OPI values are shown separately only when creator-established; Amari Razman is 10.02 and Latch is 10.15.</p>';
     compareContent.querySelectorAll("[data-remove-compare]").forEach(b=>b.onclick=()=>{compareSet.delete(b.dataset.removeCompare);render()});
   }
 
