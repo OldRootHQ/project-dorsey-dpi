@@ -206,7 +206,7 @@ test('Amari’s public OPI is officially 10.02 and White Magma remains developme
   expect(Object.values(amari.baseline).reduce((a,b)=>a+b,0)).toBeCloseTo(110.2,8);
   expect(amari.powerClass).toBeNull();
   expect(amari.conditional).toEqual([]);
-  await expect(page.locator('#plot-count')).toContainText('10 plotted');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await page.locator('#search').fill('Amari Razman');
@@ -259,7 +259,7 @@ test('Ballestera is registrable and plot-safe without any calculated combined sc
   expect(record.suppressAggregate).toBe(true);
   expect(record.baseline).toEqual({Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2});
   await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('10 plotted');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await page.locator('#search').fill('Ballestera');
   await expect(page.locator('#detail')).toContainText('Individual categories only');
   await expect(page.locator('#detail')).not.toContainText('Analytics-only');
