@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0059 · October 8, 2026 · Upcoming Characters Navigation and Abyron Powder Dossier
+
+- Added **Upcoming Characters** to the sitewide Characters navigation menu, linking directly to the established in-development character roster without duplicating records.
+- Added **Abyron Powder** as an independent, 20-section lore dossier at `lore/abyron-powder/`, with a unique orange material treatment, quick-jump index, specimen illustration, accessible material facts, and responsive layout.
+- Integrated the full creator handoff: genuine Genesis-origin material versus synthetic/cut alternatives, fragmented UMWR and loss of bloom, temporary amplification of existing biological and powered systems, true-Ascendant affinity, crash, dependency, overdose, internal crystalline deposits, Exposure Protocol, finite supply, international and criminal markets, and protective controls.
+- Kept the new page in reader-facing editorial prose, not internal writer instructions or unapproved named incidents/programs.
+- Updated the parent Abyron and Genesis dossiers to remove superseded statements that Powder mechanics and Genesis Dust terminology were unresolved; linked both to the full new record.
+- Updated Lore Index, shared Lore dropdown, sitemap, material sidebar, regression tests, and mobile-layout coverage.
+- Preserved the core distinction that Powder amplifies existing systems but does not make new true Ascendants or restore original intact Ax-126.
+
 ## OR-WEB-0058 · October 8, 2026 · Gila Monster Emblem Refinement
 
 - Replaced the earlier improvised vector claw mark at the existing shared SVG emblem path with the creator-approved red-ring, triple fiery/scaly-claw artwork, optimized as a compact transparent PNG embedded in the scalable SVG wrapper.
