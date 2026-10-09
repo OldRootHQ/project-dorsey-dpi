@@ -9,6 +9,12 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Added Playwright geometry assertions at desktop and mobile sizes so tests catch displaced markers and portrait shifts rather than only confirming that images loaded.
 - No changes to the canon, the official Remedie design, her character dossier, other hero portraits, or OPI ratings.
 
+## OR-WEB-0075 · October 9, 2026 · Character Registry Emblem Positioning Fix
+
+- Fixed approved character emblems floating outside their registry artwork, reported on Remedie's card. All five existing emblem cards now anchor their marks to dedicated portrait containers instead of the outer card.
+- Updated desktop and mobile positioning to keep each badge inside the upper-right region of the actual cover artwork, preserving image zoom, dossier navigation, and original artwork.
+- Added a browser geometry assertion checking Remedie's badge stays inside its cover and appears in the upper-right half, rather than only testing that the image exists.
+
 ## OR-WEB-0074 · October 9, 2026 · Remedie Creator-Approved Character Emblem
 
 - Installed the approved dark-gold outline, transparent cartoon/comic-sticker portrait of Mandy Ledger with her recognizable messy bun, mustard turtleneck, black-and-gold wearable frame and raised circular force-interception palm. No new art was generated or costume redesigned.
