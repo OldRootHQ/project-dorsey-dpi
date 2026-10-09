@@ -97,7 +97,7 @@ test('Kokio and Hilo remain contained at phone width', async ({ page }) => {
 
 test('Kokio release updates public counts, Hilo, README, and sitemap', async ({ page }) => {
   await page.goto(BASE + '/index.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*08/);
+  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*09/);
   await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*07/);
 
   await page.goto(BASE + '/locations.html#hilo', { waitUntil: 'networkidle' });
