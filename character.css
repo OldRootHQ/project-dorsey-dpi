@@ -737,16 +737,7 @@ body.oldroot-after-dark .character-identity{
 .logo-slot{
   position:relative;
   overflow:hidden;
-  border-style:dashed!important;
-}
-.logo-slot::after{
-  content:"UNREVEALED MARK";
-  position:absolute;
-  right:12px;
-  bottom:10px;
-  color:rgba(197,162,74,.52);
-  font:850 7px/1 var(--font-sans);
-  letter-spacing:.13em;
+  border-style:solid!important;
 }
 .quick-link,
 .character-links a,
