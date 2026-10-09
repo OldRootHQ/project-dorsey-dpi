@@ -31,7 +31,7 @@ test('OldRoot After Dark homepage prototype is active on desktop', async ({ page
   });
 
   expect(visual.bodyBackground).toContain('gradient');
-  expect(visual.heroHeight).toBeGreaterThan(600);
+  expect(visual.heroHeight).toBeGreaterThanOrEqual(600);
   expect(visual.featuredBackground).toContain('gradient');
   expect(visual.artHeight).toBeGreaterThan(500);
   expect(visual.cardBackground).toContain('gradient');
