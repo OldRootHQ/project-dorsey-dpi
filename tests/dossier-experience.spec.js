@@ -48,8 +48,8 @@ test('all eight dossiers preserve the authored profile, OPI baselines and source
   for(const [slug] of dossiers){
     const source=fs.readFileSync('characters/'+slug+'/index.html','utf8');
     expect(source).toContain('character.css?v=26');
-    expect(source).toContain('dossier-experience.css?v=2');
-    expect(source).toContain('dossier-experience.js?v=2');
+    expect(source).toContain('dossier-experience.css?v=3');
+    expect(source).toContain('dossier-experience.js?v=3');
     expect(source).toContain('class="dossier-grid"');
     expect(source).toContain('class="character-network"');
     expect(source).toContain('class="character-feature-art-trigger"');
