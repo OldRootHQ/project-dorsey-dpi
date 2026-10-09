@@ -57,7 +57,6 @@
   category.textContent = profile.sig;
   mast.append(aura, category);
   identity.append(mast);
-  featured.querySelector(".character-feature-art-badge")?.replaceChildren(document.createTextNode("View original artwork ↗"));
 
   // A one-tap map of the original chapters: labels come from existing headings.
   const sections = [...grid.querySelectorAll(".lore-column > .wiki-section")];
