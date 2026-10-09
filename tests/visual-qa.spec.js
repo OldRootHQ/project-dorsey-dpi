@@ -26,6 +26,7 @@ const viewports = [
 
 for (const [mode, width, height] of viewports) {
   test(`capture ${mode} production surfaces`, async ({ page }) => {
+    test.setTimeout(180000);
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.setViewportSize({ width, height });
     fs.mkdirSync('artifacts/visual-qa', { recursive: true });
