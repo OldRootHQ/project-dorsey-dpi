@@ -107,7 +107,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
   });
   expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=3"]')).toHaveCount(1);
+  await expect(page.locator('link[href="home.css?v=4"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
