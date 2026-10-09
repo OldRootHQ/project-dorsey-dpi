@@ -46,13 +46,13 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   expect(introLayout.imageFit).toBe('contain');
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
-  await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
+  await expect(page.locator('.logo-slot')).toContainText('Vigilante dossier');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
   await expect(page.locator('.character-infobox')).toContainText('Superior Human');
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
   await expect(page.locator('.conditional-box')).toContainText('Senses — Precision Pill Active: 16.1');
   await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('50.0 — Theoretical ceiling');
-  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('No overall OPI score is published');
+  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('analytics mean is a reference calculation');
 
   const values = await page.locator('.dpi-row').evaluateAll(rows => Object.fromEntries(rows.map(row => [
     row.querySelector('.dpi-name').textContent.trim(),
