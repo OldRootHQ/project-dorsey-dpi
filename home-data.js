@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0074 · Remedie emblem",
-    title:"Remedie receives her official character emblem.",
-    body:"Her approved mustard-and-black comic portrait and raised force-interception palm now represent Remedie across the dossier, registry, first-contact guide, homepage spotlight, and OPI Analytics.",
-    href:"news.html#or-web-0074"
+    meta:"OR-WEB-0075 · Remedie registry polish",
+    title:"Remedie’s emblem now fits the registry artwork.",
+    body:"The gold-bordered Remedie emblem has been repositioned inside her Character Registry portrait and made easier to read, preserving all original character art.",
+    href:"news.html#or-web-0075"
   }
 };

@@ -18,6 +18,7 @@ test('Remedie emblem appears in character registry and Start Here with original 
   await page.goto(BASE+'/characters.html');
   const card=page.locator('.character-card[href="characters/remedie/"]');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
+  await expect(card.locator('.character-art-shell')).toHaveCount(1);
   await expect(card.locator('.character-thumb')).toHaveAttribute('src','assets/characters/remedie/remedie-registry.webp');
   await page.goto(BASE+'/start-here.html');
   await expect(page.locator('a[href="characters/remedie/"] .start-character-mark')).toHaveAttribute('src',MARK);
@@ -50,5 +51,47 @@ test('Remedie SVG contains alpha-transparent approved sticker artwork and fits p
     await page.goto(BASE+path,{waitUntil:'domcontentloaded'});
     const dims=await page.evaluate(()=>({viewport:innerWidth,scroll:document.documentElement.scrollWidth}));
     expect(dims.scroll,path).toBeLessThanOrEqual(dims.viewport+2);
+  }
+});
+
+
+test('registry artwork and all official marks share the same card corner at desktop and phone sizes',async({page})=>{
+  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
+    await page.setViewportSize(viewport);
+    await page.goto(BASE+'/characters.html',{waitUntil:'networkidle'});
+    const badges=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(cards=>cards.map(card=>{
+      const image=card.querySelector('.character-thumb');
+      const badge=card.querySelector('.character-card-mark');
+      const box=card.getBoundingClientRect();
+      const cover=image.getBoundingClientRect();
+      const mark=badge.getBoundingClientRect();
+      const css=getComputedStyle(badge);
+      return {name:card.querySelector('h3')?.textContent.trim(),
+        withinArtShell:badge.closest('.character-art-shell')===image.parentElement,
+        position:css.position,
+        cardTop:box.top,coverTop:cover.top,coverRight:cover.right,coverBottom:cover.bottom,
+        markTop:mark.top,markLeft:mark.left,markRight:mark.right,markBottom:mark.bottom,
+        coverWidth:cover.width,markWidth:mark.width};
+    }));
+    expect(badges.length).toBeGreaterThanOrEqual(5);
+    for(const b of badges){
+      expect(b.withinArtShell,b.name+' badge must share its portrait container').toBe(true);
+      expect(b.position,b.name+' badge must be absolutely positioned').toBe('absolute');
+      expect(b.coverTop-b.cardTop,b.name+' portrait must remain first in the card').toBeLessThan(55);
+      expect(b.markTop,b.name+' badge must overlay, not sit above portrait').toBeGreaterThanOrEqual(b.coverTop);
+      expect(b.markTop-b.coverTop,b.name+' badge should sit near portrait top').toBeLessThan(32);
+      expect(b.markLeft,b.name+' badge must sit in right image corner').toBeGreaterThanOrEqual(b.coverRight-145);
+      expect(b.markRight,b.name+' badge must remain inside portrait edge').toBeLessThanOrEqual(b.coverRight+1);
+      expect(b.markBottom,b.name+' badge should stay inside portrait').toBeLessThan(b.coverBottom);
+      expect(b.coverWidth).toBeGreaterThan(230);
+    }
+    const remedie=badges.find(x=>x.name==='Remedie');
+    expect(remedie).toBeTruthy();
+    expect(remedie.markWidth).toBeGreaterThanOrEqual(viewport.width<600?65:85);
+    fs.mkdirSync('artifacts/visual-qa',{recursive:true});
+    const card=page.locator('.character-card[href="characters/remedie/"]');
+    await card.scrollIntoViewIfNeeded();
+    await expect.poll(()=>card.locator('.character-thumb').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+    await card.screenshot({path:'artifacts/visual-qa/remedie-registry-fixed-'+viewport.width+'.png',animations:'disabled'});
   }
 });
