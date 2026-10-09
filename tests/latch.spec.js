@@ -29,7 +29,7 @@ test('Latch is promoted across public character discovery surfaces', async ({ pa
   await expect(page.locator('a[href="characters/latch/"]').filter({ hasText: 'Latch' })).toHaveCount(1);
 });
 
-test('Latch dossier preserves supplied art package and unresolved canon boundaries', async ({ page }) => {
+test('Latch dossier preserves supplied art package and narrative boundaries', async ({ page }) => {
   await page.goto(BASE + '/characters/latch/', { waitUntil: 'domcontentloaded' });
 
   await expect(page.locator('h1')).toHaveText('LATCH');
@@ -51,8 +51,8 @@ test('Latch dossier preserves supplied art package and unresolved canon boundari
   const sources = await page.locator('img').evaluateAll(images => images.map(img => img.getAttribute('src') || ''));
   for (const asset of required) expect(sources.some(src => src.endsWith(asset)), asset).toBe(true);
 
-  await expect(page.locator('body')).toContainText('The enemy, technology or power, location, exact mission, and outcome details are intentionally open writer decisions.');
-  await expect(page.locator('body')).toContainText('No cybernetic replacement is established.');
+  await expect(page.locator('body')).not.toContainText('intentionally open writer decisions');
+  await expect(page.locator('body')).toContainText('The destroyed eye is permanent and Latch wears an eyepatch.');
   await expect(page.locator('body')).toContainText('Official OPI · 10.15');
 });
 
@@ -62,7 +62,7 @@ test('Latch is connected to Australia on the World Index without inventing a cit
   await expect(page.locator('#locationStatus')).toHaveText('Reference');
   await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
   await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
-  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
+  await expect(page.locator('#locationNote')).toContainText('Australia anchors Latch Boswell’s early military career');
 
   await page.goto(BASE + '/characters/latch/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a[href="../../locations.html#australia"]')).toHaveCount(2);
