@@ -15,12 +15,27 @@
 
   if (!nav) return;
 
+  // All mastheads share this navigation controller; keep the in-development roster
+  // discoverable in Characters without duplicating the canonical list in Dispatches.
+  const charactersMenu = nav.querySelector("#nav-characters-menu");
+  const registryLink = charactersMenu?.querySelector('a[href$="characters.html"]');
+  if (charactersMenu && registryLink && !charactersMenu.querySelector('[data-upcoming-characters-link]')) {
+    const prefix = registryLink.getAttribute("href").replace(/characters\\.html(?:[?#].*)?$/, "");
+    const upcoming = document.createElement("a");
+    upcoming.setAttribute("role", "menuitem");
+    upcoming.setAttribute("data-upcoming-characters-link", "");
+    upcoming.href = prefix + "news.html#upcoming-characters";
+    upcoming.textContent = "Upcoming Characters";
+    registryLink.insertAdjacentElement("afterend", upcoming);
+  }
+
   const loreMenu = nav.querySelector("#nav-lore-menu");
   const loreIndexLink = loreMenu?.querySelector('a[href$="lore.html"]');
   if (loreMenu && loreIndexLink) {
     const prefix = loreIndexLink.getAttribute("href").replace(/lore\.html(?:[?#].*)?$/, "");
     const records = [
       ["ELEMENT 126: ABYRON", "lore/abyron/"],
+      ["Abyron Powder", "lore/abyron-powder/"],
       ["Discovery of Abyron", "lore/abyron-discovery/"],
       ["Genesis", "lore/genesis/"]
     ];
