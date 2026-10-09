@@ -30,11 +30,11 @@ test('Kokio is promoted across public character discovery surfaces', async ({ pa
   await expect(page.locator('a[href="characters/kokio/"]').filter({ hasText: 'Kokio' })).toHaveCount(1);
 });
 
-test('Kokio dossier preserves locked canon, art package, and open boundaries', async ({ page }) => {
+test('Kokio dossier preserves locked canon, art package, and narrative boundaries', async ({ page }) => {
   await page.goto(BASE + '/characters/kokio/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('KOKIO');
   await expect(page.locator('.character-subtitle')).toHaveText('Kalani Kane');
-  await expect(page.locator('.logo-slot')).toContainText('DESIGN NOT ESTABLISHED');
+  await expect(page.locator('.logo-slot')).toContainText('Mythic hero dossier');
   await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-01.webp');
   await expect(page.locator('.character-infobox > img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-07.webp');
 
@@ -50,7 +50,7 @@ test('Kokio dossier preserves locked canon, art package, and open boundaries', a
   await expect(page.locator('body')).toContainText('does not fly');
   await expect(page.locator('body')).toContainText('does not permit limb severance or organ removal');
   await expect(page.locator('body')).toContainText('exact forest and hidden community remain fictionalized');
-  await expect(page.locator('body')).toContainText('future city-combat suit remain intentionally undefined');
+  await expect(page.locator('body')).not.toContainText('remain intentionally undefined');
 });
 
 test('Kokio exact OPI profile is published without a canonical overall score', async ({ page }) => {
@@ -76,7 +76,7 @@ test('Kokio exact OPI profile is published without a canonical overall score', a
     row.querySelector('.dpi-name').textContent.trim(), Number(row.querySelector('.dpi-value').textContent.trim())
   ])));
   expect(values).toEqual(kokio.baseline);
-  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('No canonical overall OPI score is published');
+  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('analytics mean is a reference calculation');
 });
 
 test('Kokio and Hilo remain contained at phone width', async ({ page }) => {
