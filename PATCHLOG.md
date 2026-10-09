@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0068 · October 9, 2026 · Homepage Counter Simplification
+
+- Removed the unnecessary "OPI Axes" counter from the homepage hero, leaving just Characters and Places.
+- Removed the unused homepage-only category-count logic while preserving the full OPI Analytics system and navigation.
+- Balanced the remaining two counter cards for desktop and mobile, refreshed homepage stylesheet/runtime cache keys, and updated the relevant regression tests.
+
 ## OR-WEB-0067 · October 9, 2026 · Published Character Dossier Editorial Polish
 
 - Audited all ten published character dossiers and removed author-facing language that made intentional creative freedom appear to be incomplete character development.
