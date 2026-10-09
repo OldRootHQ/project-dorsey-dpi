@@ -13,9 +13,10 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(card).toContainText('Villain');
   await expect(card).toContainText('E&A Human');
   await expect(card).toHaveAttribute('data-tags', /ea-human/);
-  await expect(card.locator('img')).toHaveCount(1);
-  await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-registry.png');
-  await expect.poll(() => card.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  await expect(card.locator('img')).toHaveCount(2);
+  await expect(card.locator('.character-card-mark')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-emblem.svg?v=1');
+  await expect(card.locator('.character-thumb')).toHaveAttribute('src', 'assets/characters/anchorage/anchorage-registry.png');
+  await expect.poll(() => card.locator('.character-thumb').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="villain"]').check();
