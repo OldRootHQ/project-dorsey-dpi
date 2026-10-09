@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0064 · October 8, 2026 · Amari Registry Portrait Framing
+
+- Corrected the Amari Razman registry thumbnail's focal position so her hair, forehead and face remain visible instead of being cut off by the landscape card crop.
+- Preserved the creator-approved source art, all other character thumbnails, registry sorting/filtering, dossier layout and OPI data.
+- Added a desktop-and-phone regression check verifying the correct thumbnail asset and top-anchored crop.
+
 ## OR-WEB-0063 · October 8, 2026 · Amari Razman / White Magma Character Release
 
 - Published **Amari Razman** as a recurring supporting character at `characters/amari-razman/`, preserving her Brooklyn origin, ethical and disciplined personality, unenhanced human capabilities, reconnaissance and tracking specialty, recruitment after Latch, and eventual relationship with him without inventing additional operations, family history or a full solo mythology.
