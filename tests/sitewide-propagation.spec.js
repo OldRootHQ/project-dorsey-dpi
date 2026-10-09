@@ -14,7 +14,8 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
   await expect(page.locator('#homePublicCharacterCount')).toHaveText('10');
   await expect(page.locator('#homeEstablishedPlaceCount')).toHaveText('07');
-  await expect(page.locator('#homeOpiAxisCount')).toHaveText('11');
+  await expect(page.locator('#homeOpiAxisCount')).toHaveCount(0);
+  await expect(page.locator('.hero-signal-row > div')).toHaveCount(2);
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(10);
