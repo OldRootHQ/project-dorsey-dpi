@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0067 · Character dossier editorial polish",
-    title:"OldRoot's character dossiers now read like living universe records.",
-    body:"Across all ten published characters, out-of-story placeholders and production-gap language have been replaced with confident, lore-first presentation while keeping future story possibilities open.",
-    href:"news.html#or-web-0067"
+    meta:"OR-WEB-0068 · Homepage polish",
+    title:"A cleaner first look at the OldRoot universe.",
+    body:"The homepage now focuses its opening counts on public characters and established places. The unnecessary technical OPI-axes counter has been removed without changing OPI Analytics.",
+    href:"news.html#or-web-0068"
   }
 };
