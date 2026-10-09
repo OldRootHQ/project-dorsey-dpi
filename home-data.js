@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0070 · Aftermark emblem",
-    title:"Aftermark's approved character mark joins the universe.",
-    body:"Aftermark now has his own official black-and-teal masked emblem across the dossier, registry, Start Here, San Juan, homepage spotlight, and OPI systems.",
-    href:"news.html#or-web-0070"
+    meta:"OR-WEB-0071 · Commotion emblem",
+    title:"Commotion receives his official character mark.",
+    body:"Commotion’s approved purple mask and golden dreadlocks emblem now appears in his dossier, registry, Start Here, Chicago, homepage spotlight, and OPI Analytics.",
+    href:"news.html#or-web-0071"
   }
 };
