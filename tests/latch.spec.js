@@ -82,7 +82,7 @@ test('Latch publishes his locked DPI profile and official OPI 10.15', async ({ p
   });
 
   await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('10 plotted');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await expect(page.locator('[data-unscored-character="Latch"]')).toHaveCount(0);
@@ -121,7 +121,7 @@ test('Latch dossier remains contained at phone width', async ({ page }) => {
 
 test('Latch release updates public counts, README, and sitemap', async ({ page }) => {
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat').filter({ hasText: 'Public character dossiers' })).toContainText('9 active records');
+  await expect(page.locator('.start-stat').filter({ hasText: 'Public character dossiers' })).toContainText('11 active records');
 
   const sitemap = await (await page.request.get(BASE + '/sitemap.xml')).text();
   expect(sitemap).toContain('/characters/latch/');
