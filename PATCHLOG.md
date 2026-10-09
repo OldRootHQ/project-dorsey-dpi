@@ -4,8 +4,8 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ## OR-WEB-0075 · October 9, 2026 · Remedie Registry Emblem Placement Repair
 
-- Corrected Remedie's Character Registry card so her approved gold-bordered mark follows the portrait markup pattern shared by the other emblemed characters. The portrait no longer shifts downward behind a stray floating icon.
-- Explicitly anchored all registry character marks to the artwork's upper-right corner and gave Remedie's detailed sticker a slightly larger, dark-backed badge to improve contrast without altering the original emblem image.
+- Corrected Remedie's Character Registry card by moving its emblem behind its portrait in the card markup and wrapping the portraits and badges of all five emblemed characters in dedicated positioned image frames. Remedie's original artwork no longer gets pushed down by a misplaced logo.
+- Explicitly anchored each registry emblem within its artwork frame, independently of card padding, while giving Remedie's detailed sticker a slightly larger dark-backed badge to improve contrast without altering the approved image.
 - Added Playwright geometry assertions at desktop and mobile sizes so tests catch displaced markers and portrait shifts rather than only confirming that images loaded.
 - No changes to the canon, the official Remedie design, her character dossier, other hero portraits, or OPI ratings.
 
