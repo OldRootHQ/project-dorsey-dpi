@@ -85,5 +85,10 @@ test('registry artwork and all official marks share the same card corner at desk
     const remedie=badges.find(x=>x.name==='Remedie');
     expect(remedie).toBeTruthy();
     expect(remedie.markWidth).toBeGreaterThanOrEqual(viewport.width<600?65:85);
+    fs.mkdirSync('artifacts/visual-qa',{recursive:true});
+    const card=page.locator('.character-card[href="characters/remedie/"]');
+    await card.scrollIntoViewIfNeeded();
+    await expect.poll(()=>card.locator('.character-thumb').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+    await card.screenshot({path:'artifacts/visual-qa/remedie-registry-fixed-'+viewport.width+'.png',animations:'disabled'});
   }
 });
