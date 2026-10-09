@@ -40,7 +40,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/kincast/"],["Baltimore →","locations/baltimore/"]]
     },
     "Anchorage": {
-      key:"anchorage", image:"assets/characters/anchorage/anchorage-featured.png",
+      key:"anchorage", image:"assets/characters/anchorage/anchorage-featured.png", mark:"assets/characters/anchorage/anchorage-emblem.svg?v=1",
       alt:"Anchorage in his blue-and-ivory design",
       meta:"E&A HUMAN · VILLAIN · BALTIMORE",
       teaser:"A Baltimore mercenary built like living metal and heavy enough to make every fight a structural problem.",
