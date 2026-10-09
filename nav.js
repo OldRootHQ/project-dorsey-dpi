@@ -20,7 +20,7 @@
   const charactersMenu = nav.querySelector("#nav-characters-menu");
   const registryLink = charactersMenu?.querySelector('a[href$="characters.html"]');
   if (charactersMenu && registryLink && !charactersMenu.querySelector('[data-upcoming-characters-link]')) {
-    const prefix = registryLink.getAttribute("href").replace(/characters\\.html(?:[?#].*)?$/, "");
+    const prefix = registryLink.getAttribute("href").replace(/characters\.html(?:[?#].*)?$/, "");
     const upcoming = document.createElement("a");
     upcoming.setAttribute("role", "menuitem");
     upcoming.setAttribute("data-upcoming-characters-link", "");
