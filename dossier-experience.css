@@ -123,6 +123,8 @@ body.oldroot-after-dark .character-shell[data-dossier] .logo-slot::after{display
   display:block;max-width:95px;max-height:95px;width:auto;height:auto
 }
 .character-shell[data-dossier] .dossier-cinematic-hero>.character-feature-art{
+  background:
+    radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--dossier-secondary) 48%,transparent),transparent 67%),#020b08;
   position:relative;width:100%;height:100%;min-height:440px;margin:0;
   border:0;border-radius:0;box-shadow:none;background:#03100a
 }
@@ -130,8 +132,7 @@ body.oldroot-after-dark .character-shell[data-dossier] .logo-slot::after{display
   position:absolute;inset:0;width:100%;height:100%;min-height:0
 }
 .character-shell[data-dossier] .dossier-cinematic-hero .character-feature-art-trigger img{
-  width:100%;height:100%;object-fit:cover;
-  object-position:center 24%;
+  width:100%;height:100%;object-fit:contain;
   filter:saturate(.87) contrast(1.05);
   transition:transform .55s ease,filter .55s ease
 }
@@ -238,12 +239,12 @@ body.oldroot-after-dark .character-shell[data-dossier] .wiki-section li{
 }
 /* Original in-article art becomes a measured visual-record interlude. */
 .character-shell[data-dossier] .dossier-scene{
-  position:relative;margin:27px 0 12px;
+  position:relative;margin:27px auto 12px;max-width:min(100%,760px);
   border:1px solid color-mix(in srgb,var(--dossier-accent) 30%,transparent);
   border-radius:16px;overflow:hidden;
   background:#030e09
 }
-.character-shell[data-dossier] .dossier-scene img{max-height:630px;object-fit:cover}
+.character-shell[data-dossier] .dossier-scene img{max-height:630px}
 .character-shell[data-dossier] .dossier-scene figcaption{
   position:relative;padding:13px 16px 16px;
   color:#dfd6c6;background:rgba(8,29,20,.97);
