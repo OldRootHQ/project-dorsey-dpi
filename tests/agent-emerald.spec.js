@@ -137,8 +137,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.hero-signal-row')).toContainText(/Characters\s*10/);
-  await expect(page.locator('.hero-signal-row')).toContainText(/Places\s*07/);
+  await expect(page.locator('.hero-signal-row')).toHaveCount(0);
   const agentHomeConfig = await page.evaluate(() => ({
     spotlight: window.OLDROOT_HOME.characterSpotlights['Agent Emerald'],
     pool: window.OLDROOT_HOME_STATE.characterPool
