@@ -12,7 +12,7 @@
     .character-card:hover{transform:translateY(-2px);border-top-color:var(--old-gold);background:#fff8ed}
     .character-card-mark{position:absolute;top:22px;right:22px;width:68px;height:68px;object-fit:contain;z-index:2;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
     /* Keep approved character marks anchored to their card artwork, never in the flex flow. */
-    .character-card > .character-card-mark{position:absolute;top:30px;right:30px;margin:0;flex:none;align-self:auto}
+    .character-card > img.character-card-mark{position:absolute!important;top:30px!important;right:30px!important;margin:0!important;flex:none;align-self:auto}
     .character-card[href="characters/remedie/"] > .character-card-mark{width:88px;height:88px;padding:5px;border-radius:14px;border:1px solid rgba(228,175,58,.35);background:rgba(2,16,12,.83);box-shadow:0 8px 22px rgba(0,0,0,.4)}
 
     .card-open{margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--root-green)}
@@ -37,7 +37,7 @@
       .character-grid{gap:18px}
       .character-card{padding:14px 14px 16px;border-radius:18px}
       .character-card-mark{top:20px;right:20px;width:56px;height:56px}
-      .character-card > .character-card-mark{top:22px;right:22px}
+      .character-card > img.character-card-mark{top:22px!important;right:22px!important}
       .character-card[href="characters/remedie/"] > .character-card-mark{width:68px;height:68px;padding:4px}
       .character-thumb{
         height:clamp(250px,72vw,285px);
