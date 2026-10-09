@@ -17,6 +17,10 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await expect(page.locator('#nav-characters-menu a[href="characters.html"]')).toHaveText('Character Registry');
   await expect(page.locator('#nav-characters-menu a[href="dpi.html"]')).toHaveText('OPI Analytics');
   await expect(page.locator('#nav-characters-menu a[href="news.html#upcoming-characters"]')).toHaveText('Upcoming Characters');
+  await expect(page.locator('#nav-characters-menu')).toHaveClass(/oldroot-mega/);
+  await expect(page.locator('#nav-characters-menu .oldroot-mega-intro')).toContainText('Characters');
+  await expect(page.locator('#nav-characters-menu .oldroot-mega-links a')).toHaveCount(3);
+  await expect(page.locator('.oldroot-nav-scrim')).toBeVisible();
 
   const world = nav.locator('[aria-controls="nav-world-menu"]');
   await world.hover();
@@ -68,6 +72,9 @@ test('grouped navigation is tap-safe and viewport-safe on mobile', async ({ page
   await expect(page.locator('#nav-characters-menu')).toBeVisible();
   await expect(page.locator('#nav-lore-menu')).toBeHidden();
   await expect(page.locator('#nav-characters-menu a[href="dpi.html"]')).toHaveText('OPI Analytics');
+  await expect(page.locator('#nav-characters-menu .oldroot-mega-links a')).toHaveCount(3);
+  await expect(page.locator('.oldroot-nav-scrim')).toBeHidden();
+
 
   const widths = await page.evaluate(() => ({
     viewport: innerWidth,
@@ -127,7 +134,7 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('class="masthead"')) continue;
     const relative = path.relative(root, file).replace(/\\/g, '/');
     const nested = relative.includes('/');
-    const expectedScript = nested ? '../../nav.js?v=4' : 'nav.js?v=4';
+    const expectedScript = nested ? '../../nav.js?v=5' : 'nav.js?v=5';
 
     const toggleCount = (html.match(/data-nav-toggle/g) || []).length;
     if (!html.includes('class="site-nav"')) failures.push(relative + ': missing site-nav');
@@ -135,8 +142,48 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('>OPI Analytics</a>')) failures.push(relative + ': missing OPI link');
     if (!html.includes('>Start Here</a>') || !html.includes('>Lore Index</a>')) failures.push(relative + ': incomplete Lore menu');
     if (!html.includes(expectedScript)) failures.push(relative + ': missing nav controller');
-    if (!html.includes('brand.css?v=16')) failures.push(relative + ': stale brand stylesheet');
+    if (!html.includes('brand.css?v=17')) failures.push(relative + ': stale brand stylesheet');
   }
 
   expect(failures).toEqual([]);
+});
+test('editorial mega menus hang from the header and close outside the panel', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+
+  const trigger = page.locator('[aria-controls="nav-lore-menu"]');
+  await trigger.click();
+  const panel = page.locator('#nav-lore-menu');
+  await expect(panel).toBeVisible();
+  await expect(panel).toHaveClass(/oldroot-mega/);
+  await expect(panel.locator('.oldroot-mega-links a')).toHaveCount(6);
+  const bounds = await panel.boundingBox();
+  expect(bounds).toBeTruthy();
+  expect(bounds.x).toBeGreaterThanOrEqual(0);
+  expect(bounds.x + bounds.width).toBeLessThanOrEqual(1441);
+
+  // Exit the box into the dimmed page: leave closes without a sticky overlay.
+  await page.mouse.move(2, 610);
+  await expect(panel).toBeHidden();
+  await expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  await expect(page.locator('.oldroot-nav-scrim')).toBeHidden();
+
+  await trigger.focus();
+  await page.keyboard.press('ArrowDown');
+  await expect(panel).toBeVisible();
+  await page.keyboard.press('Escape');
+  await expect(panel).toBeHidden();
+  await expect(trigger).toBeFocused();
+});
+
+test('upcoming character menu link reaches the established roster', async ({ page }) => {
+  await page.goto(BASE + '/', { waitUntil:'domcontentloaded' });
+  const trigger = page.locator('[aria-controls="nav-characters-menu"]');
+  await trigger.click();
+  const target = page.locator('#nav-characters-menu [data-upcoming-characters-link]');
+  await expect(target).toHaveAttribute('href','news.html#upcoming-characters');
+  await expect(target).toHaveText('Upcoming Characters');
+  await target.click();
+  await expect(page).toHaveURL(/news\\.html#upcoming-characters$/);
+  await expect(page.locator('#upcoming-characters')).toHaveCount(1);
 });
