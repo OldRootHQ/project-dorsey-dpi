@@ -2,7 +2,7 @@
 window.OLDROOT_HOME = {
   characterSpotlights: {
     "Remedie": {
-      key:"remedie", image:"assets/characters/remedie/remedie-featured.webp",
+      key:"remedie", image:"assets/characters/remedie/remedie-featured.webp", mark:"assets/characters/remedie/remedie-emblem.svg?v=1",
       alt:"Remedie catches incoming fire with her responsive gauntlets while shielding a family",
       meta:"TECH-ASSISTED HUMAN · ANTI-HERO · BOSTON",
       teaser:"She built a weapon to recover her family. Every stranger she saves turns it into something else.",
@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0073 · Remedie dossier",
-    title:"Remedie enters the OldRoot character registry.",
-    body:"Mandy Ledger arrives with a full Boston origin dossier, seven approved illustrations, a lightweight twin-arm exo-frame, and eleven Prime power measurements.",
-    href:"news.html#or-web-0072"
+    meta:"OR-WEB-0074 · Remedie emblem",
+    title:"Remedie receives her official character emblem.",
+    body:"Her approved mustard-and-black comic portrait and raised force-interception palm now represent Remedie across the dossier, registry, first-contact guide, homepage spotlight, and OPI Analytics.",
+    href:"news.html#or-web-0074"
   }
 };
