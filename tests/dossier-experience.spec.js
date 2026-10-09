@@ -48,7 +48,7 @@ test('all eight dossiers preserve the authored profile, OPI baselines and source
   for(const [slug] of dossiers){
     const source=fs.readFileSync('characters/'+slug+'/index.html','utf8');
     expect(source).toContain('character.css?v=26');
-    expect(source).toContain('dossier-experience.css?v=3');
+    expect(source).toContain('dossier-experience.css?v=4');
     expect(source).toContain('dossier-experience.js?v=3');
     expect(source).toContain('class="dossier-grid"');
     expect(source).toContain('class="character-network"');
@@ -93,4 +93,76 @@ test('conditional OPI is an optional disclosed reading, never a changed baseline
   await expect(conditional).toBeVisible();
   await expect(conditional).toContainText('Senses — Nocturnal: 31.7');
   expect(await page.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(scores);
+});
+
+test('all published hero portraits display at natural brightness without an image gradient or filter', async ({ page }) => {
+  test.setTimeout(90000);
+  for(const [slug] of dossiers){
+    await page.goto(BASE+'/characters/'+slug+'/',{waitUntil:'domcontentloaded'});
+    const actual=await page.locator('.dossier-cinematic-hero').evaluate(hero=>{
+      const figure=hero.querySelector('.character-feature-art');
+      const img=hero.querySelector('.character-feature-art-trigger img');
+      const after=getComputedStyle(figure,'::after');
+      const before=getComputedStyle(figure,'::before');
+      return {
+        afterDisplay:after.display,
+        afterContent:after.content,
+        beforeDisplay:before.display,
+        opacity:getComputedStyle(img).opacity,
+        filter:getComputedStyle(img).filter,
+        imageFit:getComputedStyle(img).objectFit,
+        loaded:img.naturalWidth>0
+      };
+    });
+    expect(actual.afterDisplay,slug).toBe('none');
+    expect(actual.beforeDisplay,slug).toBe('none');
+    expect(actual.opacity,slug).toBe('1');
+    expect(actual.filter,slug).toBe('none');
+    expect(actual.imageFit,slug).toBe('contain');
+    expect(actual.loaded,slug).toBe(true);
+  }
+});
+
+test('art archive and illustrated records are centered, uncropped and balanced on desktop and mobile', async ({ page }) => {
+  test.setTimeout(90000);
+  for (const width of [1440,390]) {
+    await page.setViewportSize({width,height:900});
+    for(const [slug] of dossiers){
+      await page.goto(BASE+'/characters/'+slug+'/',{waitUntil:'domcontentloaded'});
+      const layout=await page.locator('.dossier-art-gallery').evaluate(gallery=>{
+        const outer=gallery.getBoundingClientRect();
+        const cards=[...gallery.querySelectorAll('.dossier-art-tile')].map(card=>({
+          box:card.getBoundingClientRect(),
+          fit:getComputedStyle(card.querySelector('img')).objectFit
+        }));
+        const bottom=Math.max(...cards.map(c=>c.box.top));
+        const finalRow=cards.filter(c=>Math.abs(c.box.top-bottom)<2);
+        const left=Math.min(...finalRow.map(c=>c.box.left));
+        const right=Math.max(...finalRow.map(c=>c.box.right));
+        return {
+          galleryCenter:outer.left+outer.width/2,
+          rowCenter:(left+right)/2,
+          imageFits:cards.map(c=>c.fit),
+          galleryOverflow:Math.max(...cards.map(c=>c.box.right))-outer.right
+        };
+      });
+      expect(layout.imageFits.every(v=>v==='contain'),slug).toBe(true);
+      expect(Math.abs(layout.galleryCenter-layout.rowCenter),slug+' at '+width).toBeLessThanOrEqual(3);
+      expect(layout.galleryOverflow,slug+' at '+width).toBeLessThanOrEqual(2);
+      const scenes=await page.locator('.dossier-scene').evaluateAll(figures=>figures.map(figure=>{
+        const frame=figure.getBoundingClientRect();
+        const parent=figure.parentElement.getBoundingClientRect();
+        const image=figure.querySelector('img');
+        return {
+          centerOffset:Math.abs((frame.left+frame.right)/2-(parent.left+parent.right)/2),
+          width:frame.width,viewport:innerWidth,fit:image?getComputedStyle(image).objectFit:null
+        };
+      }));
+      for (const [i,scene] of scenes.entries()){
+        expect(scene.centerOffset,slug+' scene '+i).toBeLessThanOrEqual(3);
+        expect(scene.width,slug+' scene '+i).toBeLessThanOrEqual(scene.viewport);
+        if(scene.fit)expect(scene.fit,slug+' scene '+i).toBe('contain');
+      }
+    }
+  }
 });

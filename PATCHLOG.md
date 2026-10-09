@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0062 · October 8, 2026 · Character Artwork Presentation Polish
+
+- Removed the remaining legacy dark image overlays, saturation filters and hover dimming from all eight cinematic character hero portraits, so approved artwork appears clean, evenly lit and uninterrupted.
+- Centered each dossier's established in-story illustration frames and preserved the original images without cropping them.
+- Replaced left-aligned artwork archive grids with responsive, centered wrap layouts, keeping incomplete final rows balanced and each preview fully visible at desktop and mobile widths.
+- Refreshed the shared dossier stylesheet to v4 across every published character dossier; no canon, OPI values, art files or navigation routes were changed.
+- Added browser regression checks for cover pseudoelements, original image brightness, archive geometry, art framing and mobile overflow.
+
 ## OR-WEB-0061 · October 8, 2026 · Cinematic Character Archives Across All Published Dossiers
 
 - Launched a shared cinematic dossier system for every currently published character: **Gila Monster, Commotion, Aftermark, Kincast, Anchorage, Agent Emerald, Latch, and Kokio**.
