@@ -789,3 +789,166 @@ main [id]:target{
   .mobile-nav-icon i{transition:none}
 }
 
+
+
+/* =========================================================
+   OR-WEB-0060 · OLDROOT EDITORIAL MEGA NAVIGATION
+   Inspired by the Abyron Powder dossier: elegant dark
+   surfaces, organic lighting, restrained character accents.
+   Desktop: substantial hanging panel; mobile: tap-driven.
+   ========================================================= */
+.mast-inner{position:relative}
+.site-nav{position:static}
+.site-nav .nav-group{position:static}
+.oldroot-nav-scrim{
+  position:fixed;inset:0;z-index:29;
+  background:rgba(0,8,5,.58);
+  backdrop-filter:blur(3px);
+  opacity:1;
+}
+.oldroot-nav-scrim[hidden]{display:none!important}
+.site-nav .nav-group .nav-dropdown.oldroot-mega{
+  position:absolute;
+  top:calc(100% + 1px);
+  right:32px;
+  left:auto;
+  width:min(880px,calc(100vw - 64px));
+  max-height:min(76vh,640px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  display:grid;
+  grid-template-columns:minmax(200px,.78fr) minmax(0,1.48fr);
+  gap:20px;
+  padding:22px;
+  border:1px solid rgba(197,162,74,.34);
+  border-top:2px solid #c5a24a;
+  border-radius:0 0 22px 22px;
+  background:
+    radial-gradient(circle at 5% 12%,rgba(197,162,74,.09),transparent 37%),
+    radial-gradient(circle at 91% 88%,rgba(54,112,79,.14),transparent 50%),
+    linear-gradient(135deg,rgba(9,30,21,.99),rgba(3,17,11,.995));
+  box-shadow:0 30px 90px rgba(0,0,0,.52),0 3px 22px rgba(0,0,0,.21);
+  backdrop-filter:blur(20px) saturate(120%);
+  transform:translateY(-9px);
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease;
+  z-index:100
+}
+.site-nav .nav-group .nav-dropdown.oldroot-mega::before{
+  content:"";position:absolute;top:0;left:0;right:0;
+  width:auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(244,218,147,.68),transparent)
+}
+.site-nav .nav-group:not(.is-open) .nav-dropdown.oldroot-mega{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translateY(-9px)
+}
+.site-nav .nav-group.is-open .nav-dropdown.oldroot-mega{
+  opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0)
+}
+.oldroot-mega[data-mega-theme="characters"]{--mega-tint:#cfa76c;--mega-glow:rgba(199,129,82,.17)}
+.oldroot-mega[data-mega-theme="world"]{--mega-tint:#9fc5a9;--mega-glow:rgba(82,153,106,.17)}
+.oldroot-mega[data-mega-theme="lore"]{--mega-tint:#e7af74;--mega-glow:rgba(224,126,53,.18)}
+.oldroot-mega-intro{
+  position:relative;display:flex;flex-direction:column;align-items:flex-start;
+  min-height:230px;padding:19px;
+  border:1px solid rgba(211,192,140,.15);
+  border-radius:14px;
+  background:radial-gradient(circle at 85% 20%,var(--mega-glow),transparent 63%),rgba(20,44,31,.48);
+}
+.oldroot-mega-kicker{
+  color:var(--mega-tint);font:850 9px/1.4 var(--font-sans);
+  letter-spacing:.2em;text-transform:uppercase
+}
+.oldroot-mega-heading{
+  display:block;margin:21px 0 13px;
+  font:850 clamp(30px,3.5vw,45px)/.94 var(--font-display);
+  letter-spacing:-.045em;color:#f4ead9
+}
+.oldroot-mega-description{
+  margin:0;color:rgba(233,229,213,.76);
+  max-width:300px;font:450 13px/1.65 var(--font-sans);
+}
+.oldroot-mega-signature{
+  margin-top:auto;padding-top:22px;
+  color:rgba(224,202,164,.55);
+  font:850 9px/1.35 var(--font-sans);
+  letter-spacing:.16em
+}
+.oldroot-mega-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;gap:10px}
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{
+  position:relative;display:block;white-space:normal;
+  min-width:0;min-height:93px;
+  padding:17px 33px 15px 17px;
+  border:1px solid rgba(218,198,158,.15);
+  border-radius:13px;
+  background:rgba(219,204,168,.045);
+  color:#f1e9d9;
+  font:800 12px/1.35 var(--font-sans);
+  letter-spacing:.005em;
+  text-transform:none;
+  text-decoration:none;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease
+}
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link::before{
+  content:"↗";
+  position:absolute;right:14px;top:15px;
+  color:var(--mega-tint);
+  font:800 17px/1 var(--font-sans);
+  opacity:.8
+}
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link::after{
+  content:attr(data-nav-description);
+  display:block;position:static;
+  margin-top:7px;width:auto;height:auto;
+  background:none;transform:none;opacity:1;
+  white-space:normal;
+  color:rgba(225,228,215,.64);
+  font:450 11px/1.45 var(--font-sans);
+  letter-spacing:0;text-transform:none
+}
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link:hover,
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link:focus-visible{
+  background:var(--mega-glow);
+  border-color:rgba(225,192,126,.55);
+  transform:translateY(-1px)
+}
+.site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link.active{
+  border-color:var(--mega-tint);
+  background:var(--mega-glow);
+  box-shadow:inset 3px 0 0 var(--mega-tint)
+}
+.oldroot-mega-links>a:last-child:nth-child(odd){grid-column:1/-1}
+.site-nav .nav-menu-button[aria-expanded="true"]{
+  background:rgba(197,162,74,.14)
+}
+@media(max-width:760px){
+  .masthead.nav-mobile-ready .site-nav .nav-group .nav-dropdown.oldroot-mega{
+    top:calc(100% + 5px);
+    left:12px;right:12px;
+    width:auto;max-height:min(68vh,570px);
+    padding:13px;gap:11px;
+    grid-template-columns:1fr;
+    border-radius:15px;
+    box-shadow:0 25px 65px rgba(0,0,0,.58)
+  }
+  .oldroot-mega-intro{min-height:0;padding:12px 15px 13px}
+  .oldroot-mega-heading{font-size:25px;margin:5px 0}
+  .oldroot-mega-description{font-size:11px;max-width:none}
+  .oldroot-mega-signature{display:none}
+  .oldroot-mega-links{grid-template-columns:1fr;gap:7px}
+  .oldroot-mega-links>a:last-child:nth-child(odd){grid-column:auto}
+  .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{
+    min-height:65px;padding:12px 30px 11px 13px;font-size:12px
+  }
+  .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link::after{
+    margin-top:4px;font-size:10px
+  }
+  .oldroot-nav-scrim{display:none!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .site-nav .nav-group .nav-dropdown.oldroot-mega,
+  .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{transition:none}
+}
