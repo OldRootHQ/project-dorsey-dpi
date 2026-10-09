@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0071 · October 9, 2026 · Commotion Official Character Emblem
+
+- Installed the previously approved purple mask and golden dreadlocks emblem for Commotion, preserving the character design and violet border in a compact transparent SVG-backed image.
+- Propagated Commotion's identity mark to the character dossier, registry card, Start Here discovery tile, Chicago character connection, homepage character spotlight, and OPI Analytics detail panel.
+- Preserved all existing primary artwork, combat illustrations, and homepage cover imagery. Chicago displays only the character emblem alongside a dossier link—not action artwork.
+- Updated homepage/OPI cache keys, added emblem asset and cross-page browser regression coverage, and documented the release in Dispatches.
+
 ## OR-WEB-0070 · October 9, 2026 · Aftermark Creator-Approved Character Emblem
 
 - Added the creator-selected black, graphite, and sea-glass-teal Aftermark mask portrait as an optimized transparent scalable emblem, without redesigning the supplied image.
