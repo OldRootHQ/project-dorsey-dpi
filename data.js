@@ -87,6 +87,6 @@ window.OLDROOT_CHARACTERS = [
     affiliation:"Post-Genesis hero-recruitment operation", page:"characters/amari-razman/", image:"assets/characters/amari-razman/amari-registry.webp",
     age:33, heightIn:68, weightLb:162, yearsActive:null,
     summary:"Unenhanced Brooklyn-born human tracker and reconnaissance operative whose expertise lies in finding hidden or missing threats after Genesis.",
-    officialOPI:null, baseline:null, conditional:[]
+    officialOPI:10.02, baseline:{Strength:8.4,Durability:7.5,Speed:8.8,Agility:9.1,Regeneration:5.2,Senses:11.4,Offense:13.2,Intellect:12.8,Combat:16.4,Mobility:6.8,Stamina:10.6}, conditional:[]
   }
 ];
