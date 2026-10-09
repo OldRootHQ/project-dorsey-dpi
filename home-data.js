@@ -1,6 +1,13 @@
 "use strict";
 window.OLDROOT_HOME = {
   characterSpotlights: {
+    "Remedie": {
+      key:"remedie", image:"assets/characters/remedie/remedie-featured.webp",
+      alt:"Remedie catches incoming fire with her responsive gauntlets while shielding a family",
+      meta:"TECH-ASSISTED HUMAN · ANTI-HERO · BOSTON",
+      teaser:"She built a weapon to recover her family. Every stranger she saves turns it into something else.",
+      links:[["Character Dossier →","characters/remedie/"],["OPI Analytics →","dpi.html"]]
+    },
     "Amari Razman": {
       key:"amari-razman", image:"assets/characters/amari-razman/amari-dossier-04.webp",
       alt:"Amari Razman overlooking the Brooklyn skyline at sunset",
@@ -88,15 +95,14 @@ window.OLDROOT_HOME = {
     {name:"Makari",status:"IN DEVELOPMENT"},
     {name:"Akuaom",status:"IN DEVELOPMENT"},
     {name:"Duke",status:"IN DEVELOPMENT"},
-    {name:"Remedie",status:"IN DEVELOPMENT"},
     {name:"Malasangre",status:"IN DEVELOPMENT"},
     {name:"White Magma",status:"IN DEVELOPMENT"}
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0072 · Anchorage emblem",
-    title:"Anchorage receives his official blue-and-ivory character mark.",
-    body:"Anchorage’s approved blue-and-ivory portrait emblem now appears across his dossier, registry, Start Here, Baltimore, homepage spotlight, and OPI Analytics.",
+    meta:"OR-WEB-0073 · Remedie dossier",
+    title:"Remedie enters the OldRoot character registry.",
+    body:"Mandy Ledger arrives with a full Boston origin dossier, seven approved illustrations, a lightweight twin-arm exo-frame, and eleven Prime power measurements.",
     href:"news.html#or-web-0072"
   }
 };

@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 const BASE = 'http://127.0.0.1:8000';
 const publishedCharacters = [
   'gila-monster', 'commotion', 'aftermark', 'kincast', 'anchorage',
-  'agent-emerald', 'latch', 'kokio', 'amari-razman', 'ballestera'
+  'agent-emerald', 'latch', 'kokio', 'amari-razman', 'ballestera', 'remedie'
 ];
 
 const productionGapPhrases = [
