@@ -65,7 +65,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.wiki-section', { hasText: 'OldRoot Power Index' })).toContainText('their arithmetic mean is an analytics reference');
 
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
-  await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
   const anchorage = records.find(c => c.codename === 'Anchorage');
