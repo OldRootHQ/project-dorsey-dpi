@@ -120,7 +120,7 @@ window.OLDROOT_LOCATIONS = {
       characterUrl: "characters/latch/",
       characters: [{ name: "Latch", url: "characters/latch/", role: "Hero recruiter / field operative" }],
       dossierUrl: "",
-      note: "Australia is Latch Boswell’s established nationality and military origin. No specific Australian hometown or present-day base is established.",
+      note: "Australia anchors Latch Boswell’s early military career, before he joins an internationally sourced hero-recruitment operation.",
       coords: [134.4896, -25.7349],
       reference: true,
       labelOffset: [11, -10]
