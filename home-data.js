@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0069 · Homepage simplification",
-    title:"More world, fewer numbers.",
-    body:"The hero now invites visitors into OldRoot without listing record totals. The Character Registry, Locations index, and OPI Analytics remain the places to explore those details.",
-    href:"news.html#or-web-0069"
+    meta:"OR-WEB-0070 · Aftermark emblem",
+    title:"Aftermark's approved character mark joins the universe.",
+    body:"Aftermark now has his own official black-and-teal masked emblem across the dossier, registry, Start Here, San Juan, homepage spotlight, and OPI systems.",
+    href:"news.html#or-web-0070"
   }
 };
