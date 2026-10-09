@@ -23,6 +23,7 @@ body.oldroot-after-dark .character-shell[data-dossier]{
 .character-shell[data-dossier="anchorage"]{--dossier-shadow:rgba(48,100,131,.37)}
 .character-shell[data-dossier="agent-emerald"]{--dossier-shadow:rgba(38,111,81,.37)}
 .character-shell[data-dossier="latch"]{--dossier-shadow:rgba(79,100,64,.29)}
+.character-shell[data-dossier="amari-razman"]{--dossier-shadow:rgba(88,45,59,.34)}
 .character-shell[data-dossier="kokio"]{--dossier-shadow:rgba(159,68,45,.34)}
 /* Cinematic entry: original featured artwork is unchanged and still opens in
    the established accessible image lightbox. */

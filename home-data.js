@@ -1,6 +1,13 @@
 "use strict";
 window.OLDROOT_HOME = {
   characterSpotlights: {
+    "Amari Razman": {
+      key:"amari-razman", image:"assets/characters/amari-razman/amari-dossier-04.webp",
+      alt:"Amari Razman overlooking the Brooklyn skyline at sunset",
+      meta:"HUMAN · FIELD TRACKER · BROOKLYN · UNSCORED",
+      teaser:"No superpowers—just a disciplined operative who finds the people who do not want to be found.",
+      links:[["Character Dossier →","characters/amari-razman/"],["Latch Boswell →","characters/latch/"],["OPI profile pending →","dpi.html"]]
+    },
     "Gila Monster": {
       key:"gila", image:"assets/characters/gila-monster/gila-featured.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg?v=2",
       alt:"Gila Monster moving across Tucson rooftops at sunset",
@@ -63,6 +70,9 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/kokio/"],["Hilo / Hawaiʻi Island →","locations/hilo/"],["OPI Analytics →","dpi.html"]]
     }
   },
+  // The supporting cast also appears in the rotating public character spotlight.
+  // Official OPI scoring for Amari has not been established.
+  characterSupportNotes: { "Amari Razman": "OPI not established" },
   locationSpotlights: {
     tucson:{teaser:"Desert nights, police corruption, and something moving beneath the city.",className:"place-tucson"},
     chicago:{teaser:"Human skill, family ties, and street-level chaos can matter here as much as raw power.",className:"place-chicago"},
@@ -80,7 +90,8 @@ window.OLDROOT_HOME = {
     {name:"Akuaom",status:"IN DEVELOPMENT"},
     {name:"Duke",status:"IN DEVELOPMENT"},
     {name:"Remedie",status:"IN DEVELOPMENT"},
-    {name:"Malasangre",status:"IN DEVELOPMENT"}
+    {name:"Malasangre",status:"IN DEVELOPMENT"},
+    {name:"White Magma",status:"IN DEVELOPMENT"}
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",

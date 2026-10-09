@@ -79,5 +79,14 @@ window.OLDROOT_CHARACTERS = [
     summary:"Hilo-based hero empowered through an ancient Tiki ritual bond with Takaro, combining juggernaut physicality, mystical force control, and dual ritual hatchets.",
     baseline:{Strength:33.0,Durability:32.1,Speed:28.4,Agility:26.7,Regeneration:13.1,Senses:13.8,Offense:35.6,Intellect:6.2,Combat:23.7,Mobility:16.7,Stamina:26.8},
     conditional:[]
+  },
+  {
+    codename:"Amari Razman", civilian:"Amari Razman", classification:"Hero", role:"Hero",
+    powerClass:null, registryOrder:9, location:"Brooklyn, New York", locationKey:"Brooklyn",
+    origin:"Human / Non-Ascendant", originType:"Human / Training", ascendantStatus:"Non-Ascendant",
+    affiliation:"Post-Genesis hero-recruitment operation", page:"characters/amari-razman/", image:"assets/characters/amari-razman/amari-registry.webp",
+    age:33, heightIn:68, weightLb:162, yearsActive:null,
+    summary:"Unenhanced Brooklyn-born human tracker and reconnaissance operative whose expertise lies in finding hidden or missing threats after Genesis.",
+    officialOPI:null, baseline:null, conditional:[]
   }
 ];
