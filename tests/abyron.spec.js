@@ -65,6 +65,7 @@ test('Abyron dossier preserves bloom, UMWR, engineering, and corrected Genesis c
   await expect(page.locator('#genesis')).toContainText('Approximately three seconds');
   await expect(page.locator('#genesis')).toContainText('small finite group');
   await expect(page.locator('#powder')).toContainText('Abyron Powder');
+  await expect(page.locator('#powder a[href="../abyron-powder/"]')).toHaveCount(1);
   await expect(page.locator('#boundaries')).toHaveCount(0);
   await expect(page.locator('main')).not.toContainText('What Abyron is not.');
   await expect(page.locator('main')).not.toContainText('Hampton’s Matter');
@@ -119,4 +120,43 @@ test('retired Hampton material and retired Genesis framing are absent from activ
   expect(stDorsey).not.toContain('Genesis Dust');
   expect(genesis).not.toContain('exact villain, weapon');
   expect(genesis).not.toContain('600–700 kilograms');
+});
+
+test('standalone Abyron Powder dossier publishes the complete established material system', async ({ page }) => {
+  await page.goto(BASE + '/lore/abyron-powder/', { waitUntil: 'domcontentloaded' });
+  await expect(page).toHaveTitle(/Abyron Powder/);
+  await expect(page.locator('h1')).toContainText('ABYRON');
+  await expect(page.locator('main')).toContainText('Genesis left more behind than ruins.');
+  await expect(page.locator('#origin')).toContainText('Saint Dorsey');
+  await expect(page.locator('#composition')).toContainText('blood-orange');
+  await expect(page.locator('#lattice')).toContainText('volumetric bloom');
+  await expect(page.locator('#rule')).toContainText('forces more out of what is already there');
+  await expect(page.locator('#human')).toContainText('human');
+  await expect(page.locator('#powered')).toContainText('already');
+  await expect(page.locator('#ascendants')).toContainText('latent');
+  await expect(page.locator('#window')).toContainText('10–30 minutes');
+  await expect(page.locator('#crash')).toContainText('fatigue');
+  await expect(page.locator('#dependency')).toContainText('tolerance');
+  await expect(page.locator('#overdose')).toContainText('organ failure');
+  await expect(page.locator('#deposits')).toContainText('crystalline');
+  await expect(page.locator('#treatment')).toContainText('Abyron Exposure Protocol');
+  await expect(page.locator('.powder-grades > div')).toHaveCount(4);
+  await expect(page.locator('#supply')).toContainText('finite');
+  await expect(page.locator('#black-market')).toContainText('Los Moralistas');
+  await expect(page.locator('#terminology')).toContainText('Genesis Dust');
+  await expect(page.locator('main')).not.toContainText('What Abyron is not.');
+  await expect(page.locator('.location-facts')).toBeVisible();
+  const style = await page.request.get(BASE + '/lore/abyron-powder/powder.css');
+  expect(style.ok()).toBe(true);
+});
+
+test('Powder dossier remains within narrow mobile width and keeps anchored sections reachable', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(BASE + '/lore/abyron-powder/', { waitUntil: 'domcontentloaded' });
+  const widths = await page.evaluate(() => ({viewport:innerWidth,html:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+  expect(widths.html).toBeLessThanOrEqual(widths.viewport + 2);
+  expect(widths.body).toBeLessThanOrEqual(widths.viewport + 2);
+  await page.locator('.powder-index a[href="#grades"]').click();
+  await expect(page).toHaveURL(/#grades$/);
+  await expect(page.locator('#grades')).toBeVisible();
 });
