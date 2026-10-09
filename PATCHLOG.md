@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0058 · October 8, 2026 · Gila Monster Emblem Refinement
+
+- Replaced the earlier improvised vector claw mark at the existing shared SVG emblem path with the creator-approved red-ring, triple fiery/scaly-claw artwork, optimized as a compact transparent PNG embedded in the scalable SVG wrapper.
+- Updated emblem cache references for the character dossier, registry, Start Here, Tucson, Los Moralistas, homepage spotlight data, and OPI Analytics data; refreshed parent data script version keys.
+- Preserved existing Gila Monster full-size illustration assets and all established character lore.
+- Updated emblem regression tests to confirm the approved embedded image signature, dimensions, alpha transparency, and propagation across registered identity surfaces.
+
 ## OR-WEB-0057 · October 8, 2026 · Abyron Reader-Facing Lore Cleanup
 
 - Removed the reader-facing “Canon Boundaries / What Abyron is not” section from the Abyron dossier; it read as internal development guardrails rather than in-universe reference writing.
