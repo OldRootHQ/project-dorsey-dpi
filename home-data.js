@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0071 · Commotion emblem",
-    title:"Commotion receives his official character mark.",
-    body:"Commotion’s approved purple mask and golden dreadlocks emblem now appears in his dossier, registry, Start Here, Chicago, homepage spotlight, and OPI Analytics.",
-    href:"news.html#or-web-0071"
+    meta:"OR-WEB-0072 · Anchorage emblem",
+    title:"Anchorage receives his official blue-and-ivory character mark.",
+    body:"Anchorage’s approved blue-and-ivory portrait emblem now appears across his dossier, registry, Start Here, Baltimore, homepage spotlight, and OPI Analytics.",
+    href:"news.html#or-web-0072"
   }
 };
