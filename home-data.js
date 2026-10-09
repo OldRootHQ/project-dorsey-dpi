@@ -24,7 +24,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/commotion/"],["Chicago →","locations/chicago/"]]
     },
     "Aftermark": {
-      key:"aftermark", image:"assets/characters/aftermark/aftermark-featured.webp",
+      key:"aftermark", image:"assets/characters/aftermark/aftermark-featured.webp", mark:"assets/characters/aftermark/aftermark-emblem.svg?v=1",
       alt:"Aftermark leaping across rain-slick Santurce rooftops",
       meta:"SLIGHTLY ENHANCED HUMAN · SAN JUAN",
       teaser:"A San Juan hero who can leave pieces of his own movement behind—and make them happen again.",
