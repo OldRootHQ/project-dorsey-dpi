@@ -1,18 +1,18 @@
-# Remedie · Approved Art Assets
+# Remedie · Approved Character Artwork
 
-This folder is reserved for Mandy Ledger / Remedie's **seven supplied creator-approved illustrations**. The image set is packaged in the chat as `remedie-artwork-ready.zip`.
+Eight optimized WebP files are installed in this folder, derived from **seven creator-supplied original Remedie illustrations**. The original character designs and compositions are preserved; all eight file blobs were checked against local Git blob SHA-1 values during upload on October 9, 2026.
 
-To finalize the site feature, upload the eight optimized WebP files contained in the ZIP into **this exact folder**, on the `feat/remedie-canon-art-integration` branch. Retain filenames:
+| File | Approved reference |
+| --- | --- |
+| `remedie-primary.webp` | Rooftop portrait / primary character field reference (illustration 1) |
+| `remedie-registry.webp` | Smaller registry variation of the same rooftop portrait |
+| `remedie-featured.webp` | Remedie intercepting gunfire to protect civilians (illustration 7) |
+| `remedie-dossier-01.webp` | Close-range palm interception (illustration 2) |
+| `remedie-dossier-02.webp` | Magnetic firearm disarm (illustration 3) |
+| `remedie-dossier-03.webp` | Falling debris / civilian protection (illustration 4) |
+| `remedie-dossier-04.webp` | Magnetic high-rise traversal (illustration 5) |
+| `remedie-dossier-05.webp` | Industrial confrontation / interrogation (illustration 6) |
 
-- `remedie-primary.webp` — rooftop, portrait source image 1
-- `remedie-registry.webp` — optimized registry variant of source image 1
-- `remedie-featured.webp` — Remedie protecting civilians, wide source image 7
-- `remedie-dossier-01.webp` — close-range punch interception, source 2
-- `remedie-dossier-02.webp` — magnetic firearm disarm, source 3
-- `remedie-dossier-03.webp` — debris and civilian protection, source 4
-- `remedie-dossier-04.webp` — high-rise magnetic anchoring, source 5
-- `remedie-dossier-05.webp` — confrontation/interrogation, source 6
+**No Remedie emblem is installed.** Emblem design remains a separate creator-led project.
 
-Do not merge the staging branch until image assets have been uploaded and the `tests/remedie.spec.js` image-loading checks and the full Site QA suite pass. **Do not generate or publish a Remedie emblem** until the creator approves the design separately.
-
-The content of this README is an internal art handoff, not a public dossier.
+The dossier art and site registrations are covered by `tests/remedie.spec.js`.
