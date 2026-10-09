@@ -23,7 +23,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Aftermark", civilian:"Nicolás “Nico” Vélez Rosado", classification:"Hero", role:"Hero",
     powerClass:"Slightly Enhanced Human", registryOrder:3, location:"Santurce, San Juan, Puerto Rico", locationKey:"San Juan",
     origin:"External spatial anomaly / Non-Ascendant", originType:"External Anomaly", ascendantStatus:"Non-Ascendant",
-    affiliation:"Independent", page:"characters/aftermark/", image:"assets/characters/aftermark/aftermark-opi-cover.webp",
+    affiliation:"Independent", page:"characters/aftermark/", image:"assets/characters/aftermark/aftermark-opi-cover.webp", mark:"assets/characters/aftermark/aftermark-emblem.svg?v=1",
     age:27, heightIn:73, weightLb:194, yearsActive:4,
     summary:"Puerto Rican hero who stores his own physical actions in fixed positions in space and triggers them once more within a 90-second window.",
     baseline:{Strength:7.2,Durability:6.8,Speed:6.6,Agility:8.4,Regeneration:4.5,Senses:7.4,Offense:16.3,Intellect:7.0,Combat:9.0,Mobility:11.2,Stamina:7.7},
