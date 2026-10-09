@@ -9,7 +9,8 @@ test('OldRoot After Dark homepage prototype is active on desktop', async ({ page
   await expect(page.locator('body')).toHaveClass(/home-after-dark/);
   await expect(page.locator('body')).toHaveAttribute('data-home-prototype', 'after-dark');
   await expect(page.locator('.hero-root-map')).toHaveCount(1);
-  await expect(page.locator('.hero-signal-row > div')).toHaveCount(3);
+  await expect(page.locator('.hero-signal-row > div')).toHaveCount(2);
+  await expect(page.locator('.hero-signal-row')).not.toContainText('OPI Axes');
 
   const visual = await page.evaluate(() => {
     const body = getComputedStyle(document.body);
@@ -54,5 +55,5 @@ test('OldRoot After Dark homepage remains contained on phone width', async ({ pa
   expect(layout.bodyWidth).toBeLessThanOrEqual(layout.viewport + 2);
   expect(layout.heroWidth).toBeLessThanOrEqual(layout.viewport);
   expect(layout.rootMapWidth).toBeLessThan(layout.viewport);
-  expect(layout.signalColumns).toBe(3);
+  expect(layout.signalColumns).toBe(2);
 });
