@@ -24,6 +24,8 @@ test('all eight canonical dossiers gain cinematic chapters, original art and OPI
     await expect(shell.locator('.dossier-cinematic-hero .character-identity')).toHaveCount(1);
     await expect(shell.locator('.dossier-cinematic-hero .character-feature-art')).toHaveCount(1);
     await expect(shell.locator('.dossier-chapter-index')).toHaveCount(1);
+    await expect(shell.locator('.dossier-story-thread')).toHaveCount(1);
+    expect(await shell.locator('.dossier-thread-stop').count(),slug).toBeGreaterThanOrEqual(3);
     const count=await shell.locator('.lore-column > .wiki-section').count();
     expect(count,slug).toBeGreaterThanOrEqual(6);
     await expect(shell.locator('.dossier-index-scroll a[href^="#chapter-"]')).toHaveCount(count);
@@ -46,8 +48,8 @@ test('all eight dossiers preserve the authored profile, OPI baselines and source
   for(const [slug] of dossiers){
     const source=fs.readFileSync('characters/'+slug+'/index.html','utf8');
     expect(source).toContain('character.css?v=26');
-    expect(source).toContain('dossier-experience.css?v=1');
-    expect(source).toContain('dossier-experience.js?v=1');
+    expect(source).toContain('dossier-experience.css?v=2');
+    expect(source).toContain('dossier-experience.js?v=2');
     expect(source).toContain('class="dossier-grid"');
     expect(source).toContain('class="character-network"');
     expect(source).toContain('class="character-feature-art-trigger"');
