@@ -84,3 +84,21 @@ test('Character Registry sort controls remain phone-safe', async ({ page }) => {
   expect(dims.sortWidth).toBeLessThanOrEqual(dims.viewport);
   expect(dims.rowWidth).toBeLessThanOrEqual(dims.viewport);
 });
+
+
+test('Amari’s approved portrait keeps her face in frame across desktop and phone registry cards', async ({ page }) => {
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
+    const image = page.locator('.character-thumb.amari-thumb');
+    await expect(image).toBeVisible();
+    await expect(image).toHaveAttribute('src', 'assets/characters/amari-razman/amari-registry.webp');
+    await expect.poll(() => image.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+    const position = await image.evaluate(img => ({
+      position: getComputedStyle(img).objectPosition,
+      fit: getComputedStyle(img).objectFit
+    }));
+    expect(position.position).toBe('50% 0%');
+    expect(position.fit).toBe('cover');
+  }
+});
