@@ -95,9 +95,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0053 · World Index Cosmic Horizon",
-    title:"Locations opens outward without losing its Earth-first focus.",
-    body:"The World Index now carries a cosmic scale formation panel, a direct jump to Indexed Places, and a darker location-directory treatment that removes the old bright editorial slab while preserving the current After Dark direction.",
-    href:"news.html#or-web-0053"
+    meta:"OR-WEB-0063 · New Character / Upcoming Roster",
+    title:"Amari Razman joins the public cast. White Magma enters development.",
+    body:"The unenhanced Brooklyn field tracker receives a dedicated canon-faithful dossier with seven approved artwork references, while White Magma joins the upcoming character roster. Amari's OPI remains unassigned.",
+    href:"news.html#or-web-0063"
   }
 };
