@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0072 · October 9, 2026 · Remedie Canon-Rich Dossier and Character Registry
+
+- Added Mandy Ledger / Remedie to the published character pipeline: comprehensive Boston-based family tragedy, George Ledger and Gary Sodd corruption, missing brother, engineer collaboration, and the earned progression from an anti-hero into a hero.
+- Documented the wearable exo-frame and signature paired gauntlets, force-intercepting palm mechanisms, magnetic polarity modes, assisted strength, bracing, threat-detection reflex systems, limited propulsion, Overdrive, EMP hardening, and Counter-Punch to Counter-Combo combat evolution, without making Mandy biologically enhanced.
+- Integrated all eleven exact creator-established Prime OPI measurements, with 19.4 Senses explicitly attributed to exo-frame electronics and the analytics baseline mean not labeled an official combined score.
+- Prepared seven creator-supplied images as optimized WebP artwork for registry, full-width featured art, and the chapter/gallery archive. Art and dossier code are staged pending binary-asset upload and complete QA; no broken images are deployed to main.
+- Updated character registry and filters, homepage spotlight and upcoming list, OPI data and caching, sitemap, Dispatches, patch log, and automated regression expectations.
+- No emblem generated or added: emblem design remains a separate creator-led step.
+
 ## OR-WEB-0071 · October 9, 2026 · Commotion Official Character Emblem
 
 - Installed the previously approved purple mask and golden dreadlocks emblem for Commotion, preserving the character design and violet border in a compact transparent SVG-backed image.
