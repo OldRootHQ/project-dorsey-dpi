@@ -18,6 +18,7 @@ test('Remedie emblem appears in character registry and Start Here with original 
   await page.goto(BASE+'/characters.html');
   const card=page.locator('.character-card[href="characters/remedie/"]');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
+  await expect(card.locator('.character-art-shell')).toHaveCount(1);
   await expect(card.locator('.character-thumb')).toHaveAttribute('src','assets/characters/remedie/remedie-registry.webp');
   await page.goto(BASE+'/start-here.html');
   await expect(page.locator('a[href="characters/remedie/"] .start-character-mark')).toHaveAttribute('src',MARK);
@@ -66,6 +67,7 @@ test('registry artwork and all official marks share the same card corner at desk
       const mark=badge.getBoundingClientRect();
       const css=getComputedStyle(badge);
       return {name:card.querySelector('h3')?.textContent.trim(),
+        withinArtShell:badge.closest('.character-art-shell')===image.parentElement,
         position:css.position,
         cardTop:box.top,coverTop:cover.top,coverRight:cover.right,coverBottom:cover.bottom,
         markTop:mark.top,markLeft:mark.left,markRight:mark.right,markBottom:mark.bottom,
@@ -73,6 +75,7 @@ test('registry artwork and all official marks share the same card corner at desk
     }));
     expect(badges.length).toBeGreaterThanOrEqual(5);
     for(const b of badges){
+      expect(b.withinArtShell,b.name+' badge must share its portrait container').toBe(true);
       expect(b.position,b.name+' badge must be absolutely positioned').toBe('absolute');
       expect(b.coverTop-b.cardTop,b.name+' portrait must remain first in the card').toBeLessThan(55);
       expect(b.markTop,b.name+' badge must overlay, not sit above portrait').toBeGreaterThanOrEqual(b.coverTop);
