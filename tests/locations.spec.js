@@ -186,8 +186,9 @@ test('Locations directory stays dark and exposes a globe-skip shortcut', async (
   await expect(jump).toContainText('Jump to Indexed Places');
 
   await expect(page.locator('.location-cosmic-panel')).toBeVisible();
-  await expect(page.locator('.location-cosmic-image')).toHaveAttribute('src', 'assets/locations/cosmic-scale.svg');
-  await expect(page.locator('.location-cosmic-panel')).toContainText('UNRESOLVED HORIZON');
+  await expect(page.locator('.location-cosmic-image')).toHaveAttribute('src', 'assets/locations/oldroot-galaxy-mark.svg');
+  await expect(page.locator('.location-cosmic-panel')).not.toContainText('UNRESOLVED HORIZON');
+  await expect.poll(() => page.locator('.location-cosmic-image').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   const directory = page.locator('#indexed-places');
   await expect(directory).toBeVisible();
