@@ -132,7 +132,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.dossier-facts')).toContainText('Known villain');
   await expect(page.locator('.dossier-facts')).toContainText('Anchorage');
   const baltimoreArt = page.locator('.known-character-card[href="../../characters/anchorage/"] img');
-  await expect(baltimoreArt).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-registry.png');
+  await expect(baltimoreArt).toHaveAttribute('src', '../../assets/characters/anchorage/anchorage-emblem.svg?v=1');
   await expect.poll(() => baltimoreArt.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
