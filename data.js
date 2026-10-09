@@ -3,7 +3,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Gila Monster", civilian:"Adrián Zúñiga", classification:"Hero", role:"Hero",
     powerClass:"Enhanced Human", registryOrder:1, location:"Tucson, Arizona", locationKey:"Tucson",
     origin:"Bioengineered / Non-Ascendant", originType:"Biotechnology", ascendantStatus:"Non-Ascendant",
-    affiliation:"Tucson Police Department", page:"characters/gila-monster/", image:"assets/characters/gila-monster/gila-registry.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg",
+    affiliation:"Tucson Police Department", page:"characters/gila-monster/", image:"assets/characters/gila-monster/gila-registry.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg?v=2",
     age:33, heightIn:70, weightLb:165, yearsActive:null,
     summary:"TPD detective and nocturnal subterranean metahuman specialized for desert operations.",
     baseline:{Strength:13.2,Durability:23.3,Speed:9.8,Agility:23.7,Regeneration:17.9,Senses:22.2,Offense:17.4,Intellect:13.6,Combat:18.8,Mobility:16.1,Stamina:25.4},
