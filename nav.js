@@ -313,7 +313,6 @@
     }
   });
 
-  scrim?.addEventListener("pointerenter", () => closeAll());
   scrim?.addEventListener("pointerdown", () => closeAll());
   window.addEventListener("scroll", () => {
     if (!mobileQuery.matches) closeAll();
