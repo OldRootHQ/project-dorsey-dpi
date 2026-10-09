@@ -1,0 +1,65 @@
+/* OR-WEB-0059 · Abyron Powder / dedicated material dossier.
+   Scoped to .powder-page; works with the shared After Dark shell. */
+.powder-page{max-width:1450px;--powder-orange:#ee8033;--powder-rust:#af4024;--powder-cream:#f1dfbf}
+.powder-page .powder-breadcrumb{margin-bottom:18px}
+.powder-page .powder-hero{
+  position:relative;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  gap:28px;align-items:center;padding:clamp(25px,4vw,48px);
+  border:1px solid rgba(227,137,70,.26);border-radius:26px;overflow:hidden;
+  background:radial-gradient(circle at 84% 32%,rgba(190,80,32,.18),transparent 36%),
+    radial-gradient(circle at 8% 100%,rgba(47,103,73,.15),transparent 44%),linear-gradient(135deg,#0c2318,#05140d 65%,#120c09);
+  box-shadow:0 30px 80px rgba(0,0,0,.3);
+}
+.powder-page .powder-hero .front-label{color:#e7b26a}
+.powder-page .powder-hero h1{margin:14px 0 19px;font-size:clamp(47px,6vw,88px);line-height:.87;letter-spacing:-.055em;color:#f4e9d7;max-width:730px}
+.powder-page .powder-hero p{font-size:clamp(15px,1.4vw,19px);line-height:1.55;max-width:720px;color:#d1c8b6}
+.powder-page .powder-lead{color:#ffe7bb!important;font-weight:800}
+.powder-page .powder-art{position:relative;min-height:290px;isolation:isolate;display:grid;place-items:center}
+.powder-page .powder-art::before{content:"";position:absolute;inset:7% 8%;z-index:-1;
+  background:radial-gradient(ellipse at center,rgba(251,165,77,.22),transparent 60%);filter:blur(14px)}
+.powder-page .powder-sample{width:min(88%,330px);aspect-ratio:1;border:1px solid rgba(242,157,78,.32);border-radius:50%;position:relative;
+  background:radial-gradient(circle at 52% 44%,rgba(243,167,68,.65) 0 1px,transparent 2px) 0 0/12px 13px,
+   radial-gradient(circle at 25% 30%,rgba(160,60,28,.9) 0 1.6px,transparent 2.5px) 0 0/19px 21px,
+   radial-gradient(circle at 72% 70%,rgba(248,210,149,.8) 0 .8px,transparent 2px) 0 0/25px 20px,
+   radial-gradient(ellipse at center,rgba(226,91,36,.46),rgba(64,27,19,.3) 63%,rgba(0,0,0,.05) 71%);
+  box-shadow:inset 0 0 0 9px rgba(3,15,9,.68),inset 0 0 42px rgba(17,5,2,.8),0 0 80px rgba(173,76,27,.13);
+}
+.powder-page .powder-sample::after{content:"";position:absolute;inset:15%;border:1px dashed rgba(238,170,93,.18);border-radius:50%}
+.powder-page .powder-sample-label{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);font:800 9px/1.5 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#e6c79c;white-space:nowrap}
+.powder-page .powder-index{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 22px}
+.powder-page .powder-index a{display:inline-flex;align-items:center;min-height:38px;padding:9px 14px;border:1px solid rgba(222,154,98,.23);
+ border-radius:999px;background:rgba(25,18,13,.48);color:#efddc3;text-decoration:none;font:800 10px/1.2 Arial,sans-serif}
+.powder-page .powder-index a:hover,.powder-page .powder-index a:focus-visible{border-color:rgba(237,160,96,.8);background:rgba(191,89,41,.22);outline-offset:3px}
+.powder-page .powder-statement{margin:0 0 22px;padding:21px 26px;border-left:3px solid #e38c3e;background:rgba(19,37,27,.72);
+ border-radius:0 13px 13px 0;color:#f5e0bf;font-size:clamp(18px,2vw,23px);line-height:1.45;font-weight:800}
+.powder-page .powder-statement strong{color:#ffb974}
+.powder-page .location-section,.powder-page .location-facts{border-color:rgba(242,219,182,.09);background:linear-gradient(145deg,rgba(8,29,20,.95),rgba(4,18,12,.96));color:#eee4d6;box-shadow:0 20px 48px rgba(0,0,0,.17)}
+.powder-page .location-section{scroll-margin-top:110px}
+.powder-page .location-section .lead-kicker{color:#eba666;font-size:9px;letter-spacing:.16em}
+.powder-page .location-section h2,.powder-page .location-facts h2{color:#f4e9d7}
+.powder-page .location-section h3{font-size:clamp(17px,1.8vw,21px);color:#f3c38b;margin:22px 0 7px}
+.powder-page .location-section p{color:#c3cbbf;line-height:1.78;font-size:14px}
+.powder-page .location-section strong{color:#f0e3cc}
+.powder-page .location-section a{color:#e7b26a}
+.powder-page .location-section ul{color:#c9c7b9;line-height:1.75;padding-left:22px;margin:8px 0 17px;font-size:14px}
+.powder-page .location-section li{padding-left:3px;margin:5px 0}
+.powder-page .powder-inline-rule{border:1px solid rgba(235,161,89,.22);padding:17px 21px;border-radius:14px;background:rgba(188,88,33,.09);font-weight:800;color:#f3d8b3;line-height:1.55;margin:20px 0}
+.powder-page .powder-compare,.powder-page .powder-grades{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:16px 0 5px}
+.powder-page .powder-grades{grid-template-columns:repeat(2,minmax(0,1fr))}
+.powder-page .powder-compare>div,.powder-page .powder-grades>div{padding:17px;border:1px solid rgba(242,219,182,.1);border-radius:14px;background:rgba(17,45,30,.46);min-width:0}
+.powder-page .powder-compare h3,.powder-page .powder-grades h3{margin:0 0 7px;font-size:16px;color:#eab67a}
+.powder-page .powder-compare p,.powder-page .powder-grades p{margin:0;font-size:13px}
+.powder-page .powder-facts .dossier-facts{margin:0}
+.powder-page .powder-facts .dossier-facts>div{border-color:rgba(239,224,190,.1)}
+.powder-page .powder-facts .dossier-facts dt{color:#dca16e}
+.powder-page .powder-facts .dossier-facts dd{color:#e6e3d5;overflow-wrap:anywhere}
+.powder-page .powder-facts a{color:#edbd86}
+.powder-page .powder-warning{margin-top:18px;padding:15px;border-radius:13px;border:1px solid rgba(233,115,57,.34);background:rgba(144,43,21,.11);
+ color:#edd8c0;font:700 12px/1.6 Arial,sans-serif}
+.powder-page .related-records a{color:#f1d9b3;background:rgba(34,59,42,.53);border-color:rgba(243,219,182,.15)}
+.powder-page .related-records a:hover{border-color:#d9a263}
+@media(max-width:980px){.powder-page .powder-hero{grid-template-columns:1fr}.powder-page .powder-art{min-height:235px}.powder-page .powder-sample{width:min(65%,235px)}}
+@media(max-width:680px){.powder-page .powder-hero{padding:25px 19px}.powder-page .powder-art{min-height:188px}
+ .powder-page .powder-sample{width:min(56%,185px)}.powder-page .powder-sample-label{font-size:7px}
+ .powder-page .powder-compare,.powder-page .powder-grades{grid-template-columns:1fr}.powder-page .powder-statement{padding:18px}}
+@media(prefers-reduced-motion:reduce){.powder-page .powder-index a{transition:none}}
