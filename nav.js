@@ -57,9 +57,86 @@
     if (recordActive) loreIndexLink.classList.remove("active");
   }
 
+  // OR-WEB-0060: Shared OldRoot navigation panels. The page templates supply
+  // canonical links; this controller supplies accessible editorial presentation.
+  const megaContent = {
+    "nav-characters-menu": {
+      kicker: "THE PEOPLE OF OLDROOT", title: "Characters",
+      intro: "Meet established figures, study their capabilities, or see who is still taking shape.",
+      theme: "characters",
+      captions: {
+        "Character Registry": "Browse the published character dossiers",
+        "Upcoming Characters": "The figures currently in development",
+        "OPI Analytics": "Compare capabilities across the registry"
+      }
+    },
+    "nav-world-menu": {
+      kicker: "THE LIVING WORLD", title: "World",
+      intro: "The places, events, and factions that connect the OldRoot universe.",
+      theme: "world",
+      captions: {
+        "Locations": "Cities, islands, facilities and beyond",
+        "Events": "The history shaping the present",
+        "Organizations": "Companies, factions and criminal networks"
+      }
+    },
+    "nav-lore-menu": {
+      kicker: "THE OLDROOT ARCHIVE", title: "Lore",
+      intro: "Follow the deeper science, history and systems beneath the stories.",
+      theme: "lore",
+      captions: {
+        "Start Here": "Your introduction to the universe",
+        "Lore Index": "The complete terminology and reference library",
+        "ELEMENT 126: ABYRON": "The element that changed human history",
+        "Abyron Powder": "Genesis residue, amplification and its consequences",
+        "Discovery of Abyron": "A strange first encounter beneath the ocean",
+        "Genesis": "The catastrophe that altered everything"
+      }
+    }
+  };
+
+  for (const [id, config] of Object.entries(megaContent)) {
+    const panel = nav.querySelector("#" + id);
+    if (!panel || panel.classList.contains("oldroot-mega")) continue;
+    panel.classList.add("oldroot-mega");
+    panel.dataset.megaTheme = config.theme;
+    panel.setAttribute("aria-label", config.title + " navigation");
+
+    const introduction = document.createElement("div");
+    introduction.className = "oldroot-mega-intro";
+    const eyebrow = document.createElement("span");
+    eyebrow.className = "oldroot-mega-kicker";
+    eyebrow.textContent = config.kicker;
+    const heading = document.createElement("strong");
+    heading.className = "oldroot-mega-heading";
+    heading.textContent = config.title;
+    const description = document.createElement("p");
+    description.className = "oldroot-mega-description";
+    description.textContent = config.intro;
+    const signature = document.createElement("span");
+    signature.className = "oldroot-mega-signature";
+    signature.textContent = "OLDROOT / EXPLORE";
+    introduction.append(eyebrow, heading, description, signature);
+
+    const cards = document.createElement("div");
+    cards.className = "oldroot-mega-links";
+    for (const link of [...panel.querySelectorAll(":scope > a")]) {
+      link.classList.add("oldroot-mega-link");
+      link.dataset.navDescription = config.captions[link.textContent.trim()] || "Explore this OldRoot record";
+      cards.append(link);
+    }
+    panel.append(introduction, cards);
+  }
+
   const masthead = nav.closest(".masthead");
   const mastInner = nav.parentElement;
   const groups = [...nav.querySelectorAll(".nav-group")];
+  const scrim = document.createElement("div");
+  scrim.className = "oldroot-nav-scrim";
+  scrim.hidden = true;
+  scrim.setAttribute("aria-hidden", "true");
+  masthead?.after(scrim);
+
   const fineHover = window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches ?? false;
   const mobileQuery = window.matchMedia("(max-width: 760px)");
 
@@ -83,6 +160,9 @@
 
     group.classList.toggle("is-open", open);
     button.setAttribute("aria-expanded", String(open));
+    const anyOpen = groups.some(item => item.classList.contains("is-open"));
+    if (masthead) masthead.classList.toggle("has-mega-open", anyOpen);
+    if (scrim) scrim.hidden = !anyOpen || mobileQuery.matches;
   }
 
   function closeAll(except = null) {
@@ -133,6 +213,7 @@
     if (!button || !menu) return;
 
     const links = [...menu.querySelectorAll("a")];
+    let hoverExitTimer;
 
     button.addEventListener("click", event => {
       event.preventDefault();
@@ -187,13 +268,19 @@
 
     if (fineHover) {
       group.addEventListener("mouseenter", () => {
+        clearTimeout(hoverExitTimer);
         if (mobileQuery.matches) return;
         closeAll(group);
         setGroup(group, true);
       });
+      menu.addEventListener("pointerenter", () => clearTimeout(hoverExitTimer));
       group.addEventListener("mouseleave", () => {
         if (mobileQuery.matches) return;
-        if (!group.contains(document.activeElement)) setGroup(group, false);
+        // A brief bridge prevents flicker when travelling from tab to panel.
+        hoverExitTimer = setTimeout(() => {
+          if (!group.matches(":hover") && !menu.matches(":hover")
+            && !menu.contains(document.activeElement)) setGroup(group, false);
+        }, 120);
       });
     }
   });
@@ -225,6 +312,12 @@
       setMobileNav(false, true);
     }
   });
+
+  scrim?.addEventListener("pointerenter", () => closeAll());
+  scrim?.addEventListener("pointerdown", () => closeAll());
+  window.addEventListener("scroll", () => {
+    if (!mobileQuery.matches) closeAll();
+  }, { passive: true });
 
   syncMobileNav();
 })();
