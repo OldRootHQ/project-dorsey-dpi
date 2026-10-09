@@ -40,9 +40,9 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
       imageFit: getComputedStyle(image).objectFit
     };
   });
-  expect(introLayout.identityTop).toBeLessThan(introLayout.coverTop);
-  expect(introLayout.identityBottom).toBeLessThanOrEqual(introLayout.coverTop);
-  expect(introLayout.coverHeight).toBeLessThanOrEqual(500);
+  expect(Math.abs(introLayout.identityTop - introLayout.coverTop)).toBeLessThanOrEqual(2);
+  expect(introLayout.coverHeight).toBeGreaterThanOrEqual(440);
+  expect(introLayout.coverHeight).toBeLessThanOrEqual(690);
   expect(introLayout.imageFit).toBe('contain');
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
