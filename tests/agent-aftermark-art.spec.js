@@ -66,7 +66,7 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
   expect(records.find(c => c.codename === 'Agent Emerald').image).toBe('assets/characters/agent-emerald/agent-emerald-registry.webp');
 
   await page.goto(`${BASE}/locations/san-juan/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.known-character-card[href="../../characters/aftermark/"] img')).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-location-cover.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/aftermark/"] img')).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-emblem.svg?v=1');
 
   await page.goto(`${BASE}/locations/seattle/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
