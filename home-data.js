@@ -85,7 +85,6 @@ window.OLDROOT_HOME = {
   upcoming: [
     {name:"Mark Hampton",status:"NO OPI LISTING"},
     {name:"Neegan Walters",status:"NO OPI LISTING"},
-    {name:"Ballestera",status:"IN DEVELOPMENT"},
     {name:"Makari",status:"IN DEVELOPMENT"},
     {name:"Akuaom",status:"IN DEVELOPMENT"},
     {name:"Duke",status:"IN DEVELOPMENT"},
@@ -95,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0065 · Official OPI / Amari Razman",
-    title:"Amari Razman's official OPI is 10.02.",
-    body:"Amari's creator-locked eleven-category profile gives her an official OPI of 10.02. She sits near Latch's 10.15, but has a distinct set of Senses, Intellect and Combat values.",
-    href:"news.html#or-web-0065"
+    meta:"OR-WEB-0066 · Character / Ballestera",
+    title:"Ballestera leaves the upcoming list and enters the desert underworld.",
+    body:"Ballestera, Veronica Devoodas, joins the public character roster with an illustrated chemistry-and-desert dossier and eleven individual DPI categories. Her overall score remains intentionally unestablished.",
+    href:"news.html#or-web-0066"
   }
 };

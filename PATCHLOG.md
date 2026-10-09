@@ -9,7 +9,8 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Installed the seven latest approved character illustrations plus an optimized registry asset. The art was resized for the web without creating replacement character designs.
 - Added a unique black-cloak, floral-rust cinematic presentation, a canon-derived story-thread index, the original image lightbox, artwork archive, responsive layouts and connected records, including a reciprocal regional link from Gila Monster's dossier.
 - Published the exact eleven creator-supplied DPI category measurements, without a combined score or derived mean. The shared analytics system suppresses aggregate calculations and presentations for Ballestera while retaining all individual values and comparisons.
-- Updated Character Registry, OPI Analytics shared dataset, sitemap, cache versions, editorial patch dispatch and regression tests. No unestablished son’s identity, location coordinates, chemical formulas or encounter outcomes were invented.
+- Moved Ballestera out of **Upcoming Characters** in both the Dispatch Desk and homepage development feed; she now appears only in the active Character Registry and her dedicated dossier.
+- Updated the homepage character counter, latest dispatch to OR-WEB-0066, analytics asset versions, sitemap, and regression tests. No unestablished son’s identity, location coordinates, chemical formulas or encounter outcomes were invented.
 - Ballestera is a **current working registry record**, not represented as a completed formal checkpoint.
 
 ## OR-WEB-0065 · October 8, 2026 · Amari Razman Official OPI Profile

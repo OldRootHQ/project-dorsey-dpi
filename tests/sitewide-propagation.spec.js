@@ -12,14 +12,14 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('[data-home-location]')).toHaveCount(3);
   await expect(page.locator('[data-home-upcoming]')).toHaveCount(3);
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
-  await expect(page.locator('#homePublicCharacterCount')).toHaveText('09');
+  await expect(page.locator('#homePublicCharacterCount')).toHaveText('10');
   await expect(page.locator('#homeEstablishedPlaceCount')).toHaveText('07');
   await expect(page.locator('#homeOpiAxisCount')).toHaveText('11');
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(9);
   expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
-  expect(state.upcomingPool).toHaveLength(9);
+  expect(state.upcomingPool).toHaveLength(8);
   expect(state.selectedCharacters).toHaveLength(3);
   expect(state.selectedLocations).toHaveLength(3);
   expect(state.selectedUpcoming).toHaveLength(3);
@@ -53,7 +53,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('Characters');
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
-  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0065');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0066');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');

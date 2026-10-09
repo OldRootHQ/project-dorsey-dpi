@@ -1,17 +1,17 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Ballestera', 'Makari', 'Akuaom', 'Duke', 'Remedie', 'Malasangre', 'White Magma'];
+const UPCOMING = ['Mark Hampton', 'Neegan Walters', 'Makari', 'Akuaom', 'Duke', 'Remedie', 'Malasangre', 'White Magma'];
 
 async function expectFullUpcomingSection(page) {
   const section = page.locator('#upcoming-characters');
   await expect(section).toBeVisible();
   await expect(section.locator('h2')).toHaveText('Upcoming Characters');
-  await expect(section.locator('.discovery-card')).toHaveCount(9);
+  await expect(section.locator('.discovery-card')).toHaveCount(8);
   await expect(section.locator('.discovery-card h3')).toHaveText(UPCOMING);
   await expect(section.locator('.discovery-card').filter({ hasText: 'Mark Hampton' }).locator('b')).toHaveText('NO OPI LISTING');
   await expect(section.locator('.discovery-card').filter({ hasText: 'Neegan Walters' }).locator('b')).toHaveText('NO OPI LISTING');
-  for (const name of ['Ballestera', 'Makari', 'Akuaom', 'Duke', 'Remedie', 'Malasangre', 'White Magma']) {
+  for (const name of ['Makari', 'Akuaom', 'Duke', 'Remedie', 'Malasangre', 'White Magma']) {
     await expect(section.locator('.discovery-card').filter({ hasText: name }).locator('b')).toHaveText('IN DEVELOPMENT');
   }
 }
@@ -35,6 +35,7 @@ test('Upcoming Characters do not become active registry or OPI records', async (
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS.map(c => c.codename));
   for (const name of UPCOMING) expect(records).not.toContain(name);
+  expect(records).toContain('Ballestera'); // Now published; no longer development-only.
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   for (const name of UPCOMING) {
