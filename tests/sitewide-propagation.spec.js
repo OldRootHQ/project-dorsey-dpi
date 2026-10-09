@@ -12,10 +12,9 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('[data-home-location]')).toHaveCount(3);
   await expect(page.locator('[data-home-upcoming]')).toHaveCount(3);
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
-  await expect(page.locator('#homePublicCharacterCount')).toHaveText('10');
-  await expect(page.locator('#homeEstablishedPlaceCount')).toHaveText('07');
-  await expect(page.locator('#homeOpiAxisCount')).toHaveCount(0);
-  await expect(page.locator('.hero-signal-row > div')).toHaveCount(2);
+  await expect(page.locator('.hero-signal-row')).toHaveCount(0);
+  await expect(page.locator('#homePublicCharacterCount, #homeEstablishedPlaceCount, #homeOpiAxisCount')).toHaveCount(0);
+  await expect(page.locator('.editorial-hero .hero-actions a')).toHaveCount(2);
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(10);
@@ -54,7 +53,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('Characters');
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
-  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0068');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0069');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
@@ -107,7 +106,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
   });
   expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=4"]')).toHaveCount(1);
+  await expect(page.locator('link[href="home.css?v=5"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
