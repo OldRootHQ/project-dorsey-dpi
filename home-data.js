@@ -4,9 +4,9 @@ window.OLDROOT_HOME = {
     "Amari Razman": {
       key:"amari-razman", image:"assets/characters/amari-razman/amari-dossier-04.webp",
       alt:"Amari Razman overlooking the Brooklyn skyline at sunset",
-      meta:"HUMAN · FIELD TRACKER · BROOKLYN · UNSCORED",
+      meta:"HUMAN · FIELD TRACKER · BROOKLYN · OPI 10.02",
       teaser:"No superpowers—just a disciplined operative who finds the people who do not want to be found.",
-      links:[["Character Dossier →","characters/amari-razman/"],["Latch Boswell →","characters/latch/"],["OPI profile pending →","dpi.html"]]
+      links:[["Character Dossier →","characters/amari-razman/"],["Latch Boswell →","characters/latch/"],["Official OPI 10.02 →","dpi.html"]]
     },
     "Gila Monster": {
       key:"gila", image:"assets/characters/gila-monster/gila-featured.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg?v=2",
@@ -71,8 +71,8 @@ window.OLDROOT_HOME = {
     }
   },
   // The supporting cast also appears in the rotating public character spotlight.
-  // Official OPI scoring for Amari has not been established.
-  characterSupportNotes: { "Amari Razman": "OPI not established" },
+  // Amari's eleven creator-approved OPI ratings are now established.
+  characterSupportNotes: { "Amari Razman": "Official OPI 10.02" },
   locationSpotlights: {
     tucson:{teaser:"Desert nights, police corruption, and something moving beneath the city.",className:"place-tucson"},
     chicago:{teaser:"Human skill, family ties, and street-level chaos can matter here as much as raw power.",className:"place-chicago"},
@@ -95,9 +95,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0063 · New Character / Upcoming Roster",
-    title:"Amari Razman joins the public cast. White Magma enters development.",
-    body:"The unenhanced Brooklyn field tracker receives a dedicated canon-faithful dossier with seven approved artwork references, while White Magma joins the upcoming character roster. Amari's OPI remains unassigned.",
-    href:"news.html#or-web-0063"
+    meta:"OR-WEB-0065 · Official OPI / Amari Razman",
+    title:"Amari Razman's official OPI is 10.02.",
+    body:"Amari's creator-locked eleven-category profile gives her an official OPI of 10.02. She sits near Latch's 10.15, but has a distinct set of Senses, Intellect and Combat values.",
+    href:"news.html#or-web-0065"
   }
 };
