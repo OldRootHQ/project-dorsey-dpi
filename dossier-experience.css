@@ -420,3 +420,69 @@ body.oldroot-after-dark .character-shell[data-dossier] .infobox-title{
   .character-shell[data-dossier] .dossier-cinematic-hero .character-feature-art-trigger img,
   .character-shell[data-dossier] .dpi-row.dossier-inspectable-row{transition:none}
 }
+
+/* OR-WEB-0061 · canon-derived character narrative threads */
+.character-shell[data-dossier] .dossier-story-thread{
+  display:grid;grid-template-columns:minmax(0,.33fr) minmax(0,1fr);
+  gap:21px;padding:26px;margin:0 0 20px;
+  border:1px solid color-mix(in srgb,var(--dossier-accent) 25%,transparent);
+  border-radius:20px;background:
+    radial-gradient(circle at 95% 0%,color-mix(in srgb,var(--dossier-secondary) 23%,transparent),transparent 52%),
+    linear-gradient(120deg,rgba(5,23,15,.96),rgba(8,28,20,.98));
+  box-shadow:0 18px 53px rgba(0,0,0,.17);
+}
+.character-shell[data-dossier] .dossier-thread-heading>span{
+  color:var(--dossier-accent);font:850 9px/1.4 var(--font-sans);
+  letter-spacing:.18em
+}
+.character-shell[data-dossier] .dossier-thread-heading h2{
+  font:860 clamp(25px,2.8vw,36px)/1.04 var(--font-display);
+  letter-spacing:-.04em;color:#f4e9d7;margin:11px 0
+}
+.character-shell[data-dossier] .dossier-thread-heading p{
+  font:500 12px/1.7 var(--font-sans);
+  color:rgba(232,230,214,.68);margin:0
+}
+.character-shell[data-dossier] .dossier-thread-list{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px
+}
+.character-shell[data-dossier] .dossier-thread-stop{
+  position:relative;display:grid;grid-template-columns:25px minmax(0,1fr);
+  align-content:start;column-gap:11px;row-gap:7px;min-height:112px;
+  border:1px solid rgba(236,213,175,.14);border-radius:13px;
+  padding:17px 15px;background:rgba(235,217,180,.04);
+  color:#f5ead8;text-decoration:none;
+  transition:border-color .15s,background .15s,transform .15s
+}
+.character-shell[data-dossier] .dossier-thread-stop:hover,
+.character-shell[data-dossier] .dossier-thread-stop:focus-visible{
+  border-color:var(--dossier-accent);
+  background:color-mix(in srgb,var(--dossier-secondary) 24%,#05160e);
+  transform:translateY(-2px)
+}
+.character-shell[data-dossier] .dossier-thread-number{
+  grid-row:1/3;
+  color:var(--dossier-accent);
+  font:850 11px/1.5 var(--font-sans)
+}
+.character-shell[data-dossier] .dossier-thread-stop strong{
+  font:830 13px/1.3 var(--font-sans);letter-spacing:-.01em
+}
+.character-shell[data-dossier] .dossier-thread-stop small{
+  color:rgba(232,228,210,.66);
+  font:500 11px/1.5 var(--font-sans);
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden
+}
+.character-shell[data-dossier] h3[id^="record-"],
+.character-shell[data-dossier] h2[id^="record-"]{scroll-margin-top:112px}
+@media(max-width:900px){
+  .character-shell[data-dossier] .dossier-story-thread{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .character-shell[data-dossier] .dossier-story-thread{padding:17px}
+  .character-shell[data-dossier] .dossier-thread-list{grid-template-columns:1fr}
+  .character-shell[data-dossier] .dossier-thread-stop{min-height:85px}
+}
+@media(prefers-reduced-motion:reduce){
+  .character-shell[data-dossier] .dossier-thread-stop{transition:none}
+}
