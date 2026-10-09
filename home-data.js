@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0068 · Homepage polish",
-    title:"A cleaner first look at the OldRoot universe.",
-    body:"The homepage now focuses its opening counts on public characters and established places. The unnecessary technical OPI-axes counter has been removed without changing OPI Analytics.",
-    href:"news.html#or-web-0068"
+    meta:"OR-WEB-0069 · Homepage simplification",
+    title:"More world, fewer numbers.",
+    body:"The hero now invites visitors into OldRoot without listing record totals. The Character Registry, Locations index, and OPI Analytics remain the places to explore those details.",
+    href:"news.html#or-web-0069"
   }
 };
