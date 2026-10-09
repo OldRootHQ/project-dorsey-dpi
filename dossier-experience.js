@@ -99,6 +99,59 @@
   indexPanel.append(indexText,jumpList);
   grid.before(indexPanel);
 
+  // A canon-derived story thread for every published dossier. The headings
+  // and excerpts are pulled from actual source sections, never invented events.
+  const storyThreads = {
+    "gila-monster":["Biography","Los Moralistas and ASC","Equipment & Combat"],
+    "commotion":["Biography","Boxing","Underground fighting","Becoming Commotion"],
+    "aftermark":["Biography","Origin","Becoming Aftermark"],
+    "kincast":["Overview","Personality & Dynamic","Powers & Abilities"],
+    "anchorage":["Pre-Transformation Life","Abduction & Experimentation","Creators, Conditioning & Chosen Loyalty","Baltimore Underworld Role"],
+    "agent-emerald":["Identity & Family","Allies & Training","Origin","Dunamis Dynamics & VX-11"],
+    "latch":["Early Life","Military Career","Capture & Eye Injury","Recruitment by the Organizer","Post-Genesis Role"],
+    "kokio":["Family History","Shared Origin","The Tiki Ritual System","Takaro & the Ritual Vision"]
+  };
+  const headings=[...main.querySelectorAll(".lore-column > .wiki-section h2, .lore-column > .wiki-section h3")];
+  const thread=document.createElement("section");
+  thread.className="dossier-story-thread";
+  thread.setAttribute("aria-label","Key passages in the character dossier");
+  const storyHeader=document.createElement("div");
+  storyHeader.className="dossier-thread-heading";
+  const tiny=document.createElement("span");
+  tiny.textContent="THE CHARACTER / KEY RECORDS";
+  const big=document.createElement("h2");
+  big.textContent=slug==="kincast"?"One identity, two voices.":"The journey in records.";
+  const notes=document.createElement("p");
+  notes.textContent="Follow pivotal passages in the existing biography, from identity and origin to the character’s choices and capabilities.";
+  storyHeader.append(tiny,big,notes);
+  thread.append(storyHeader);
+  const threadList=document.createElement("div");
+  threadList.className="dossier-thread-list";
+  (storyThreads[slug]||[]).forEach((label,index)=>{
+    const heading=headings.find(h=>h.textContent.trim().toLowerCase()===label.toLowerCase());
+    if(!heading)return;
+    if(!heading.id)heading.id="record-"+slug+"-"+String(index+1).padStart(2,"0");
+    const parent=heading.closest(".wiki-section");
+    let p=heading.nextElementSibling;
+    if(!p||p.tagName!=="P") p=parent?.querySelector(":scope > p");
+    const excerpt=p?.textContent.trim()||"Read the established character record.";
+    const condensed=excerpt.length>142?excerpt.slice(0,139).replace(/\\s+\\S*$/,"")+"…":excerpt;
+    const link=document.createElement("a");
+    link.className="dossier-thread-stop";
+    link.href="#"+heading.id;
+    const number=document.createElement("span");
+    number.className="dossier-thread-number";
+    number.textContent=String(index+1).padStart(2,"0");
+    const title=document.createElement("strong");
+    title.textContent=heading.textContent.trim();
+    const detail=document.createElement("small");
+    detail.textContent=condensed;
+    link.append(number,title,detail);
+    threadList.append(link);
+  });
+  thread.append(threadList);
+  if(threadList.children.length>=3)grid.before(thread);
+
   // Turn preexisting story illustrations into chapter spotlights. No new scene
   // is claimed here: artwork and captions are drawn only from the original page.
   main.querySelectorAll(".lore-column .dossier-illustration").forEach((figure,index) => {
