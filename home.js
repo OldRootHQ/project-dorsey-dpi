@@ -19,18 +19,12 @@
     for(let i=0;i<limit;i++){const j=i+boundedRandom(copy.length-i);[copy[i],copy[j]]=[copy[j],copy[i]]}
     return copy.slice(0,limit);
   }
-  function pad(n){return String(n).padStart(2,"0")}
 
   const establishedLocations=Object.entries(locations).filter(([,loc])=>loc&&loc.dossierUrl&&!loc.reference&&String(loc.id||"").startsWith("LOC-"));
   const upcoming=Array.isArray(config.upcoming)?config.upcoming:[];
   const selectedCharacters=pickRandom(characters,3);
   const selectedLocations=pickRandom(establishedLocations,3);
   const selectedUpcoming=pickRandom(upcoming,3);
-
-  const characterCount=document.querySelector("#homePublicCharacterCount");
-  const placeCount=document.querySelector("#homeEstablishedPlaceCount");
-  if(characterCount)characterCount.textContent=pad(characters.length);
-  if(placeCount)placeCount.textContent=pad(establishedLocations.length);
 
   const tabs=document.querySelector("#homeCharacterTabs");
   const track=document.querySelector("#homeCharacterTrack");
