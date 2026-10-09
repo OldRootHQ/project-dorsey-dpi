@@ -81,8 +81,8 @@ test('Latch publishes his locked DPI profile and official OPI 10.15', async ({ p
     Offense:15.4,Intellect:12.3,Combat:18.6,Mobility:6.0,Stamina:11.1
   });
 
-  await expect(page.locator('#count')).toHaveText('9 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('9 plotted');
+  await expect(page.locator('#count')).toHaveText('10 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('10 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await expect(page.locator('[data-unscored-character="Latch"]')).toHaveCount(0);
