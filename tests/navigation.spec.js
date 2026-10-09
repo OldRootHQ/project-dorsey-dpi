@@ -16,6 +16,7 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await expect(page.locator('#nav-characters-menu')).toBeVisible();
   await expect(page.locator('#nav-characters-menu a[href="characters.html"]')).toHaveText('Character Registry');
   await expect(page.locator('#nav-characters-menu a[href="dpi.html"]')).toHaveText('OPI Analytics');
+  await expect(page.locator('#nav-characters-menu a[href="news.html#upcoming-characters"]')).toHaveText('Upcoming Characters');
 
   const world = nav.locator('[aria-controls="nav-world-menu"]');
   await world.hover();
@@ -30,8 +31,9 @@ test('grouped navigation exposes OPI, World, and Lore menus on desktop', async (
   await page.keyboard.press('ArrowDown');
   await expect(lore).toHaveAttribute('aria-expanded', 'true');
   await expect(page.locator('#nav-lore-menu')).toBeVisible();
-  await expect(page.locator('#nav-lore-menu a')).toHaveCount(5);
+  await expect(page.locator('#nav-lore-menu a')).toHaveCount(6);
   await expect(page.locator('#nav-lore-menu a[href="lore/abyron/"]')).toHaveText('ELEMENT 126: ABYRON');
+  await expect(page.locator('#nav-lore-menu a[href="lore/abyron-powder/"]')).toHaveText('Abyron Powder');
   await expect(page.locator('#nav-lore-menu')).toContainText('Discovery of Abyron');
   await expect(page.locator('#nav-lore-menu')).toContainText('Genesis');
   await page.keyboard.press('Tab');
@@ -84,6 +86,7 @@ test('active grouped navigation follows the current section', async ({ page }) =
     ['/start-here.html', 'nav-lore-menu', 'start-here.html'],
     ['/lore.html', 'nav-lore-menu', 'lore.html'],
     ['/lore/abyron/', 'nav-lore-menu', '../../lore/abyron/'],
+    ['/lore/abyron-powder/', 'nav-lore-menu', '../../lore/abyron-powder/'],
     ['/lore/abyron-discovery/', 'nav-lore-menu', '../../lore/abyron-discovery/'],
     ['/lore/genesis/', 'nav-lore-menu', '../../lore/genesis/']
   ];
