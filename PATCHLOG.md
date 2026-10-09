@@ -2,6 +2,12 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0070 · October 9, 2026 · Aftermark Creator-Approved Character Emblem
+
+- Added the creator-selected black, graphite, and sea-glass-teal Aftermark mask portrait as an optimized transparent scalable emblem, without redesigning the supplied image.
+- Installed the emblem in the Aftermark character dossier, public registry card, Start Here discovery tile, San Juan known-character connection, homepage spotlight, and OPI character detail. Kept established cover and portrait artwork in their primary placements.
+- Refreshed homepage and OPI data cache keys, created asset and identity propagation tests, and logged the public update.
+
 ## OR-WEB-0069 · October 9, 2026 · Homepage Hero Counters Removed
 
 - Removed the entire homepage hero statistics row; Characters and Places counts now live only in their dedicated registries and analytics views, where they belong.
