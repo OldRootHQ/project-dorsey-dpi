@@ -167,7 +167,7 @@ test('art archive and illustrated records are centered, uncropped and balanced o
   }
 });
 
-test('Amari Razman publishes a concise supporting-character dossier without fictional OPI scores', async ({ page }) => {
+test('Amari Razman publishes her official eleven-category OPI profile', async ({ page }) => {
   await page.goto(BASE+'/characters/amari-razman/',{waitUntil:'domcontentloaded'});
   const shell=page.locator('main.character-shell');
   await expect(shell).toHaveAttribute('data-dossier','amari-razman');
@@ -178,9 +178,14 @@ test('Amari Razman publishes a concise supporting-character dossier without fict
   await expect(shell.locator('.dossier-chapter-index')).toHaveCount(1);
   await expect(shell.locator('.wiki-section')).toHaveCount(9);
   await expect(shell.locator('.dossier-art-tile')).toHaveCount(7);
-  await expect(shell.locator('.dpi-row')).toHaveCount(0);
-  await expect(shell.locator('.dossier-opi-inspect')).toHaveCount(0);
-  await expect(shell.locator('.dpi-summary')).toContainText('Awaiting official profile');
+  await expect(shell.locator('.dpi-row')).toHaveCount(11);
+  await expect(shell.locator('.dossier-opi-inspect')).toHaveCount(11);
+  await expect(shell.locator('.dpi-summary')).toContainText('Official OPI · 10.02');
+  await expect(shell.locator('.character-infobox')).toContainText('10.02');
+  const values=await shell.locator('.dpi-grid .dpi-value').allTextContents();
+  expect(values).toEqual(['8.4','7.5','8.8','9.1','5.2','11.4','13.2','12.8','16.4','6.8','10.6']);
+  await shell.locator('.dossier-opi-inspect').first().click();
+  await expect(shell.locator('.dossier-opi-readout')).toContainText('Strength / 8.4');
   await expect(shell.locator('.character-infobox')).toContainText('January 21, 1993');
   await expect(shell.locator('#chapter-07')).toContainText('Latch Boswell');
   await expect.poll(()=>shell.locator('.character-feature-art-trigger img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
@@ -189,14 +194,23 @@ test('Amari Razman publishes a concise supporting-character dossier without fict
   await page.keyboard.press('Escape');
 });
 
-test('Amari’s public OPI listing is unscored and White Magma remains development-only', async ({ page }) => {
+test('Amari’s public OPI is officially 10.02 and White Magma remains development-only', async ({ page }) => {
   await page.goto(BASE+'/dpi.html',{waitUntil:'networkidle'});
   const amari=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Amari Razman'));
   expect(amari).toBeTruthy();
-  expect(amari.baseline).toBeNull();
-  expect(amari.officialOPI).toBeNull();
+  expect(amari.officialOPI).toBe(10.02);
+  expect(amari.baseline).toEqual({
+    Strength:8.4,Durability:7.5,Speed:8.8,Agility:9.1,Regeneration:5.2,Senses:11.4,
+    Offense:13.2,Intellect:12.8,Combat:16.4,Mobility:6.8,Stamina:10.6
+  });
+  expect(Object.values(amari.baseline).reduce((a,b)=>a+b,0)).toBeCloseTo(110.2,8);
   expect(amari.powerClass).toBeNull();
-  await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(1);
+  expect(amari.conditional).toEqual([]);
+  await expect(page.locator('#plot-count')).toContainText('9 plotted');
+  await expect(page.locator('#unscored-panel')).toBeHidden();
+  await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
+  await page.locator('#search').fill('Amari Razman');
+  await expect(page.locator('#detail')).toContainText('10.02');
   const names=await page.evaluate(()=>window.OLDROOT_CHARACTERS.map(c=>c.codename));
   expect(names).not.toContain('White Magma');
   await page.goto(BASE+'/news.html#upcoming-characters',{waitUntil:'domcontentloaded'});
