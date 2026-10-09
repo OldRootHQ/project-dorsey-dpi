@@ -12,7 +12,7 @@ const DOSSIERS = [
   '/characters/agent-emerald/'
 ];
 
-test('every active character dossier identifies the character before a compact cover', async ({ page }) => {
+test('active character dossiers display cinematic side-by-side identity and approved artwork', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
 
   for (const url of DOSSIERS) {
@@ -25,6 +25,8 @@ test('every active character dossier identifies the character before a compact c
       return {
         identityTop: identity.top,
         identityBottom: identity.bottom,
+        identityRight: identity.right,
+        coverLeft: cover.left,
         coverTop: cover.top,
         coverHeight: cover.height,
         coverWidth: cover.width,
@@ -34,9 +36,11 @@ test('every active character dossier identifies the character before a compact c
       };
     });
 
-    expect(layout.identityTop, url).toBeLessThan(layout.coverTop);
-    expect(layout.identityBottom, url).toBeLessThanOrEqual(layout.coverTop);
-    expect(layout.coverHeight, url).toBeLessThanOrEqual(450);
+    // Cinematic dossiers present identity and approved art side by side.
+    expect(Math.abs(layout.identityTop - layout.coverTop), url).toBeLessThanOrEqual(2);
+    expect(layout.identityRight, url).toBeLessThanOrEqual(layout.coverLeft + 2);
+    expect(layout.coverHeight, url).toBeGreaterThanOrEqual(440);
+    expect(layout.coverHeight, url).toBeLessThanOrEqual(700);
     expect(layout.coverWidth, url).toBeLessThanOrEqual(982);
     expect(layout.imageFit, url).toBe('contain');
     expect(layout.naturalWidth, url).toBeGreaterThan(0);
@@ -44,7 +48,7 @@ test('every active character dossier identifies the character before a compact c
   }
 });
 
-test('sitewide dossier covers remain compact on phone width', async ({ page }) => {
+test('sitewide dossier covers stack safely on phone width', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
 
   for (const url of DOSSIERS) {
@@ -62,7 +66,7 @@ test('sitewide dossier covers remain compact on phone width', async ({ page }) =
 
     expect(dims.html, url).toBeLessThanOrEqual(dims.viewport + 2);
     expect(dims.body, url).toBeLessThanOrEqual(dims.viewport + 2);
-    expect(dims.coverHeight, url).toBeLessThanOrEqual(350);
+    expect(dims.coverHeight, url).toBeLessThanOrEqual(400);
     expect(dims.coverWidth, url).toBeLessThanOrEqual(dims.viewport);
   }
 });
