@@ -13,6 +13,6 @@ Eight optimized WebP files are installed in this folder, derived from **seven cr
 | `remedie-dossier-04.webp` | Magnetic high-rise traversal (illustration 5) |
 | `remedie-dossier-05.webp` | Industrial confrontation / interrogation (illustration 6) |
 
-**No Remedie emblem is installed.** Emblem design remains a separate creator-led project.
+**Official emblem installed:** `remedie-emblem.svg` is a 720 × 720 scalable SVG wrapper containing the creator-approved compact transparent WebP emblem. It depicts Mandy Ledger in her mustard turtleneck with the raised circular mechanical palm and deep mustard-gold border. It does not replace the seven approved character illustrations.
 
 The dossier art and site registrations are covered by `tests/remedie.spec.js`.
