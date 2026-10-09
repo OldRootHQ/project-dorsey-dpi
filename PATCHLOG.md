@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0074 · October 9, 2026 · Remedie Creator-Approved Character Emblem
+
+- Installed the approved dark-gold outline, transparent cartoon/comic-sticker portrait of Mandy Ledger with her recognizable messy bun, mustard turtleneck, black-and-gold wearable frame and raised circular force-interception palm. No new art was generated or costume redesigned.
+- Optimized the creator-approved cutout to a compact 720px transparent WebP embedded within the site's established 720 × 720 SVG emblem format. Preserved the full seven Remedie illustrations and registry artwork.
+- Propagated the emblem to Remedie's dossier Character Mark, Character Registry card, Start Here guide, rotating homepage character spotlight, and OPI Analytics detail. Advanced character/home data cache keys and updated QA coverage.
+- Added dedicated emblem integrity and mobile responsive regression checks and refreshed the latest Dispatches bulletin.
+
 ## OR-WEB-0073 · October 9, 2026 · Remedie Canon-Rich Dossier and Character Registry
 
 - Added Mandy Ledger / Remedie to the published character pipeline: comprehensive Boston-based family tragedy, George Ledger and Gary Sodd corruption, missing brother, engineer collaboration, and the earned progression from an anti-hero into a hero.
