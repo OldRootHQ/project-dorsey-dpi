@@ -166,3 +166,49 @@ test('art archive and illustrated records are centered, uncropped and balanced o
     }
   }
 });
+
+test('Amari Razman publishes a concise supporting-character dossier without fictional OPI scores', async ({ page }) => {
+  await page.goto(BASE+'/characters/amari-razman/',{waitUntil:'domcontentloaded'});
+  const shell=page.locator('main.character-shell');
+  await expect(shell).toHaveAttribute('data-dossier','amari-razman');
+  await expect(shell.locator('h1')).toHaveText('AMARI RAZMAN');
+  await expect(shell.locator('.dossier-cinematic-hero')).toHaveCount(1);
+  await expect(shell.locator('.dossier-story-thread')).toHaveCount(1);
+  await expect(shell.locator('.dossier-thread-stop')).toHaveCount(4);
+  await expect(shell.locator('.dossier-chapter-index')).toHaveCount(1);
+  await expect(shell.locator('.wiki-section')).toHaveCount(9);
+  await expect(shell.locator('.dossier-art-tile')).toHaveCount(7);
+  await expect(shell.locator('.dpi-row')).toHaveCount(0);
+  await expect(shell.locator('.dossier-opi-inspect')).toHaveCount(0);
+  await expect(shell.locator('.dpi-summary')).toContainText('Awaiting official profile');
+  await expect(shell.locator('.character-infobox')).toContainText('January 21, 1993');
+  await expect(shell.locator('#chapter-07')).toContainText('Latch Boswell');
+  await expect.poll(()=>shell.locator('.character-feature-art-trigger img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+  await shell.locator('.dossier-art-tile').first().click();
+  await expect(page.locator('.image-lightbox')).toHaveClass(/open/);
+  await page.keyboard.press('Escape');
+});
+
+test('Amari’s public OPI listing is unscored and White Magma remains development-only', async ({ page }) => {
+  await page.goto(BASE+'/dpi.html',{waitUntil:'networkidle'});
+  const amari=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Amari Razman'));
+  expect(amari).toBeTruthy();
+  expect(amari.baseline).toBeNull();
+  expect(amari.officialOPI).toBeNull();
+  expect(amari.powerClass).toBeNull();
+  await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(1);
+  const names=await page.evaluate(()=>window.OLDROOT_CHARACTERS.map(c=>c.codename));
+  expect(names).not.toContain('White Magma');
+  await page.goto(BASE+'/news.html#upcoming-characters',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#upcoming-characters')).toContainText('White Magma');
+});
+
+test('Amari's cinematic presentation fits on phone widths and preserves approved art', async ({ page }) => {
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(BASE+'/characters/amari-razman/',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('.dossier-chapter-index')).toBeVisible();
+  await expect(page.locator('.dossier-art-archive')).toBeVisible();
+  const widths=await page.evaluate(()=>({viewport:innerWidth,document:document.documentElement.scrollWidth,body:document.body.scrollWidth}));
+  expect(widths.document).toBeLessThanOrEqual(widths.viewport+2);
+  expect(widths.body).toBeLessThanOrEqual(widths.viewport+2);
+});

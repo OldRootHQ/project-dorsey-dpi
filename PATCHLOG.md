@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0063 · October 8, 2026 · Amari Razman / White Magma Character Release
+
+- Published **Amari Razman** as a recurring supporting character at `characters/amari-razman/`, preserving her Brooklyn origin, ethical and disciplined personality, unenhanced human capabilities, reconnaissance and tracking specialty, recruitment after Latch, and eventual relationship with him without inventing additional operations, family history or a full solo mythology.
+- Integrated seven user-supplied Amari images as optimized WebP artwork: full-body registry art, cinematic featured visual, and five archive/field references. Original character art was not retouched.
+- Added Amari once to the character registry, original release order 9, with appropriate human/hero filters, a public homepage spotlight, Start Here cast introduction, and a reciprocal connection on Latch’s dossier.
+- Added Amari as an **unscored public OPI record**: no invented category scores, baseline, aggregate OPI, fixed power tier or powers.
+- Added **White Magma** to the upcoming-character roster in Dispatches and the rotating homepage development pool; no unannounced powers or backstory established.
+- Updated the shared cinematic dossier theme, site data script cache references, sitemap, metadata/indexing, release counts, tests and mobile coverage.
+
 ## OR-WEB-0062 · October 8, 2026 · Character Artwork Presentation Polish
 
 - Removed the remaining legacy dark image overlays, saturation filters and hover dimming from all eight cinematic character hero portraits, so approved artwork appears clean, evenly lit and uninterrupted.

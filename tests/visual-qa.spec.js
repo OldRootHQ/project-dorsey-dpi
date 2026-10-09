@@ -8,6 +8,7 @@ const pages = [
   ['gila','/characters/gila-monster/'],
   ['latch','/characters/latch/'],
   ['kokio','/characters/kokio/'],
+  ['amari-razman','/characters/amari-razman/'],
   ['locations','/locations.html'],
   ['hilo','/locations/hilo/'],
   ['lore','/lore.html'],

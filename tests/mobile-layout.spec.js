@@ -8,6 +8,7 @@ const pages = [
   '/characters/commotion/',
   '/characters/agent-emerald/',
   '/characters/kokio/',
+  '/characters/amari-razman/',
   '/locations.html',
   '/locations/baltimore/',
   '/locations/seattle/',

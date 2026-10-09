@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Anchorage', 'Commotion', 'Gila Monster', 'Kincast', 'Kokio', 'Latch'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Commotion', 'Gila Monster', 'Kincast', 'Kokio', 'Latch'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
@@ -30,7 +30,8 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Anchorage': 5,
     'Agent Emerald': 6,
     'Latch': 7,
-    'Kokio': 8
+    'Kokio': 8,
+    'Amari Razman': 9
   });
 });
 
@@ -56,10 +57,10 @@ test('Character Registry sorting stays active while filters are applied', async 
   await page.locator('#filterApply').click();
 
   await expect(page.locator('#registrySort')).toHaveValue('newest');
-  expect(await cardNames(page, true)).toEqual(['Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
+  expect(await cardNames(page, true)).toEqual(['Amari Razman', 'Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
 
   await page.locator('#registrySort').selectOption('release');
-  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio']);
+  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio', 'Amari Razman']);
 });
 
 test('Character Registry sort controls remain phone-safe', async ({ page }) => {
