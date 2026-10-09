@@ -79,7 +79,7 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await expect(page.locator('#locationStatus')).toHaveText('Reference');
   await expect(page.locator('#locationCharacter a')).toHaveText('Latch');
   await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', 'characters/latch/');
-  await expect(page.locator('#locationNote')).toContainText('No specific Australian hometown or present-day base is established');
+  await expect(page.locator('#locationNote')).toContainText('Australia anchors Latch Boswell’s early military career');
   await expect(page.locator('#locationExplore')).toBeHidden();
 
   for (let i = 0; i < 20; i += 1) await page.locator('#zoomInGlobe').click();
