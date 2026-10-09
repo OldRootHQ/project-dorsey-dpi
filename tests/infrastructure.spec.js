@@ -42,7 +42,10 @@ test('public records expose complete search and social metadata', async () => {
     if (!html.includes('<meta property="og:title"')) failures.push(file + ': og title missing');
     if (!html.includes('<meta property="og:description"')) failures.push(file + ': og description missing');
     if (!html.includes(`<meta property="og:url" content="${expected}"`)) failures.push(file + ': og url mismatch');
-    if (!html.includes(`<meta property="og:image" content="${SOCIAL}"`)) failures.push(file + ': og image missing');
+    const socialImage = file === 'characters/amari-razman/index.html'
+      ? BASE + 'assets/characters/amari-razman/amari-featured.webp'
+      : SOCIAL;
+    if (!html.includes(`<meta property="og:image" content="${socialImage}"`)) failures.push(file + ': og image missing');
     if (!html.includes('<meta name="twitter:card" content="summary_large_image"')) failures.push(file + ': twitter card missing');
     if (/name="robots" content="[^"]*noindex/i.test(html)) failures.push(file + ': unexpectedly noindex');
   }
