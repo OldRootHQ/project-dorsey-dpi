@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0061 · October 8, 2026 · Cinematic Character Archives Across All Published Dossiers
+
+- Launched a shared cinematic dossier system for every currently published character: **Gila Monster, Commotion, Aftermark, Kincast, Anchorage, Agent Emerald, Latch, and Kokio**.
+- Created `dossier-experience.css` and `dossier-experience.js` with eight canon-informed atmospheric identities, large editorial cover compositions using original approved feature art, legible identity panels, and a polished shared OldRoot interface.
+- Added chapter indexes based entirely on each existing biography's headings, prominent illustrated story-record interludes using existing official images, improved dossier typography and section hierarchy, and curated, accessible galleries of the original art.
+- Added an interactive OPI category inspector that reads and explains existing official baseline values without recalculating or revising scores; conditional measurements remain separately disclosed where canon provides them.
+- Preserved character histories, relationships, classifications, limitations, original image paths, canonical connected-record links, and all not-yet-approved emblems, story details, and dates.
+- Added mobile layouts, reduced-motion support, lazy-loaded gallery images, proper alt text, accessible buttons and lightbox focus restoration through the existing site controller.
+- Created Playwright regression coverage for all eight dossiers, art archives, chapter navigation, OPI fidelity, keyboard lightbox, and mobile width. Corrected a previous mega-menu keyboard closure issue and a malformed URL test assertion during the rollout.
+
 ## OR-WEB-0060 · October 8, 2026 · Sitewide Editorial Mega Navigation
 
 - Rebuilt the Characters, World, and Lore dropdowns into spacious, responsive panels that hang beneath the primary navigation rather than cramped small lists.
