@@ -1,0 +1,14 @@
+/* Ballestera / OR-WEB-0066 · only identity surfaces, never image overlays. */
+.character-shell[data-dossier="ballestera"] .character-identity{
+ background:radial-gradient(circle at 3% 3%,rgba(159,95,30,.16),transparent 52%),linear-gradient(120deg,#0e1e17,#081710)!important
+}
+.character-shell[data-dossier="ballestera"] .character-thesis{font-style:italic;color:#f2d6a9!important}
+.character-shell[data-dossier="ballestera"] .dossier-aura{border-color:rgba(220,144,63,.5)}
+.character-shell[data-dossier="ballestera"] .ballestera-scaling-note{
+ margin-top:18px;padding:14px 18px;border:1px solid rgba(226,168,84,.24);
+ border-left:3px solid var(--dossier-accent);border-radius:9px;background:rgba(80,37,13,.21)
+}
+.character-shell[data-dossier="ballestera"] .dossier-cinematic-hero .character-feature-art-trigger img{object-fit:contain}
+@media(max-width:650px){
+.character-shell[data-dossier="ballestera"] .dossier-cinematic-hero>.character-feature-art{min-height:240px;height:260px}
+}

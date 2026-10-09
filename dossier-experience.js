@@ -23,6 +23,8 @@
       guidance:"Follow the transformation, broken conditioning and decisions behind the name." },
     "agent-emerald": { color:"#9be4b2", secondary:"#285e50", aura:"Precision Protocol", sig:"Engineering / Vigilance", icon:"◇",
       guidance:"The family, the engineering and the deliberate choices behind every weapon." },
+    "ballestera": { color:"#e5ac61", secondary:"#69462b", aura:"Grief & Chemistry", sig:"Nogales / Underworld Chemist", icon:"✧",
+      guidance:"Trace the teacher, the loss, the desert refuge and the chemistry that became her defense." },
     "amari-razman": { color:"#c2a0a5", secondary:"#5a3545", aura:"The Quiet Pursuit", sig:"Brooklyn / Field Tracker", icon:"⌖",
       guidance:"Read the record of an unenhanced operative trusted to locate people who would rather disappear." },
     "latch": { color:"#c9c39c", secondary:"#536048", aura:"Field Records", sig:"Operations / Strategy", icon:"⟟",
@@ -110,6 +112,7 @@
     "anchorage":["Pre-Transformation Life","Abduction & Experimentation","Creators, Conditioning & Chosen Loyalty","Baltimore Underworld Role"],
     "agent-emerald":["Identity & Family","Allies & Training","Origin","Dunamis Dynamics & VX-11"],
     "latch":["Early Life","Military Career","Capture & Eye Injury","Recruitment by the Organizer","Post-Genesis Role"],
+    "ballestera":["Teaching Years","Death of Her Son","Grief Turned to Chemistry","A Desert Refuge","Gila Monster Connection"],
     "amari-razman":["Field Background","Tracking & Reconnaissance","Post-Genesis Recruitment","Working with Latch"],
     "kokio":["Family History","Shared Origin","The Tiki Ritual System","Takaro & the Ritual Vision"]
   };
