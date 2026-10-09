@@ -94,9 +94,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0066 · Character / Ballestera",
-    title:"Ballestera leaves the upcoming list and enters the desert underworld.",
-    body:"Ballestera, Veronica Devoodas, joins the public character roster with an illustrated chemistry-and-desert dossier and eleven individual DPI categories. Her overall score remains intentionally unestablished.",
-    href:"news.html#or-web-0066"
+    meta:"OR-WEB-0067 · Character dossier editorial polish",
+    title:"OldRoot's character dossiers now read like living universe records.",
+    body:"Across all ten published characters, out-of-story placeholders and production-gap language have been replaced with confident, lore-first presentation while keeping future story possibilities open.",
+    href:"news.html#or-web-0067"
   }
 };
