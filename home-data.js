@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0075 · Remedie registry polish",
-    title:"Remedie’s emblem now fits the registry artwork.",
-    body:"The gold-bordered Remedie emblem has been repositioned inside her Character Registry portrait and made easier to read, preserving all original character art.",
-    href:"news.html#or-web-0075"
+    meta:"OR-WEB-0076 · Kincast emblem & registry repair",
+    title:"Kincast receives his and Naomi’s official mark.",
+    body:"Micah and Naomi share one official black-and-ivory shadow emblem. Other marks return to their established positions, and Remedie’s icon now sits clearly over her portrait.",
+    href:"news.html#or-web-0076"
   }
 };
