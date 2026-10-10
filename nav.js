@@ -13,6 +13,17 @@
     document.body.prepend(skip);
   }
 
+  // Studio opportunities belong in the OldRoot footer group sitewide, not in the universe navigation.
+  const oldrootFooter = document.querySelector(".oldroot-footer .footer-links");
+  const aboutLink = oldrootFooter?.querySelector('a[href$="about.html"]');
+  if (aboutLink && !oldrootFooter.querySelector('a[href$="work-with-oldroot.html"]')) {
+    const link = document.createElement("a");
+    link.href = aboutLink.getAttribute("href").replace(/about\.html$/, "work-with-oldroot.html");
+    link.textContent = "Work with OldRoot";
+    aboutLink.insertAdjacentElement("afterend", link);
+    if (window.location.pathname.endsWith("/work-with-oldroot.html")) link.setAttribute("aria-current", "page");
+  }
+
   if (!nav) return;
 
   // All mastheads share this navigation controller; keep the in-development roster
