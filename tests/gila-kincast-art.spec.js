@@ -21,7 +21,7 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const gilaRegistry = page.locator('.character-card[href="characters/gila-monster/"] .character-thumb');
-  const kincastRegistry = page.locator('.character-card[href="characters/kincast/"] img');
+  const kincastRegistry = page.locator('.character-card[href="characters/kincast/"] .character-thumb');
   await expect(gilaRegistry).toHaveAttribute('src', 'assets/characters/gila-monster/gila-registry.webp');
   await expect(kincastRegistry).toHaveAttribute('src', 'assets/characters/kincast/kincast-registry.webp');
   await expect.poll(() => gilaRegistry.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
@@ -58,7 +58,7 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   await expect(page.locator('.known-character-card[href="../../characters/gila-monster/"] img')).toHaveAttribute('src', '../../assets/characters/gila-monster/gila-monster-emblem.svg?v=2');
 
   await page.goto(`${BASE}/locations/baltimore/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.known-character-card[href="../../characters/kincast/"] img')).toHaveAttribute('src', '../../assets/characters/kincast/kincast-registry.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/kincast/"] img')).toHaveAttribute('src', '../../assets/characters/kincast/kincast-emblem.svg?v=1');
 
   expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
 });
