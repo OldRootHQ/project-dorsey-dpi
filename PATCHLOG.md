@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0076 · October 9, 2026 · Restore Registry Marks; Remedie Fix; Kincast Official Emblem
+
+- Reversed only the global Character Registry emblem relocation introduced by OR-WEB-0075. Restored Gila Monster, Commotion, Aftermark and Anchorage to their original card-corner badge positioning and removed the shared art-shell wrappers; preserved portraits, artwork and dossier content.
+- Applied a character-specific elevated image overlay to Remedie so her existing mustard-gold emblem sits visibly above her registry portrait without moving any other character's emblem.
+- Installed the creator-approved combined Micah and Naomi Kincast mark as a transparent emblem. It shows Micah in ivory and amber with the frightening black-and-white two-dimensional Naomi behind him, both hands on his shoulders. Kept all existing character art unchanged.
+- Propagated Kincast's emblem to dossier, registry, Start Here, Baltimore, homepage character spotlight and OPI Analytics. Updated cache keys and desktop/mobile regression coverage, including original placement assertions for existing characters.
+
 ## OR-WEB-0075 · October 9, 2026 · Remedie Registry Emblem Placement Repair
 
 - Corrected Remedie's Character Registry card by moving its emblem behind its portrait in the card markup and wrapping the portraits and badges of all five emblemed characters in dedicated positioned image frames. Remedie's original artwork no longer gets pushed down by a misplaced logo.
