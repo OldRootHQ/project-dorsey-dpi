@@ -40,7 +40,7 @@
       const key=spot.key||String(c.codename).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
       const image=spot.image||c.image||"";
       const mark=spot.mark||c.mark||"";
-      const meta=spot.meta||[c.powerClass,c.classification,c.locationKey].filter(Boolean).join(" · ").toUpperCase();
+      const meta=spot.meta||[c.origin,c.role,c.locationKey].filter(Boolean).join(" · ").toUpperCase();
       const teaser=spot.teaser||c.summary||"Open the dossier to explore this character.";
       const links=(spot.links?.length?spot.links:[["Character Dossier →",c.page]]).filter(([,href])=>href);
       return '<div class="home-character-slide '+(n===0?"active":"")+'" data-home-slide="'+esc(key)+'">'+

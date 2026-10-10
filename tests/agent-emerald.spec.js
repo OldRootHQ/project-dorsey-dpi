@@ -2,13 +2,13 @@ const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Agent Emerald canon is propagated as the first Superior Human with creator artwork', async ({ page }) => {
+test('Agent Emerald canon is propagated as the technology-driven human with creator artwork', async ({ page }) => {
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const card = page.locator('.character-card[href="characters/agent-emerald/"]');
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Agent Emerald');
   await expect(card).toContainText('Remington James “Remy” Hampton');
-  await expect(card).toContainText('Superior Human');
+  await expect(card).toContainText('Human / Technology');
   await expect(card.locator('.character-thumb')).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect.poll(() => card.locator('.character-thumb').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
@@ -20,7 +20,8 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
 
   await page.locator('#filterToggle').click();
   await page.locator('#filterClear').click();
-  await page.locator('[data-filter-group="power"][value="superior-human"]').check();
+  await page.locator('[data-filter-group="origin"][value="human"]').check();
+  await page.locator('[data-filter-group="role"][value="vigilante"]').check();
   await page.locator('#filterApply').click();
   await expect(page.locator('.character-card:visible')).toHaveCount(1);
   await expect(card).toBeVisible();
@@ -48,7 +49,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
   await expect(page.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
-  await expect(page.locator('.character-infobox')).toContainText('Superior Human');
+  await expect(page.locator('.character-infobox')).toContainText('Human · Technology / Training');
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
   await expect(page.locator('.conditional-box')).toContainText('Senses — Precision Pill Active: 16.1');
   await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('50.0 — Theoretical ceiling');
@@ -79,8 +80,9 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   expect(remy.civilian).toBe('Remington James “Remy” Hampton');
   expect(remy.classification).toBe('Vigilante');
   expect(remy.role).toBe('Vigilante');
-  expect(remy.powerClass).toBe('Superior Human');
-  expect(remy.ascendantStatus).toBeNull();
+  expect(remy.originType).toBe('Human / Technology / Training');
+  expect(remy).not.toHaveProperty('powerClass');
+  expect(remy).not.toHaveProperty('ascendantStatus');
   expect(remy.location).toBe('Seattle, Washington / Puget Sound');
   expect(remy.locationKey).toBe('Seattle');
   expect(remy.affiliation).toBe('Dunamis Dynamics');
@@ -104,7 +106,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   expect(remy.conditional).toEqual([{ category:'Senses', condition:'Precision Pill Active', value:16.1 }]);
 
   await page.locator('#filter-open').click();
-  await page.locator('[data-filter-key="powerClass"][value="Superior Human"]').check();
+  await page.locator('[data-filter-key="originType"][value="Human / Technology / Training"]').check();
   await page.locator('#filter-apply').click();
   await expect(page.locator('#count')).toHaveText('1 CHARACTER');
   await expect(page.locator('#detail')).toContainText('Agent Emerald');

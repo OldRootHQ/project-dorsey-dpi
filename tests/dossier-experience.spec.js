@@ -205,7 +205,7 @@ test('Amari’s public OPI is officially 10.02 and White Magma remains developme
     Offense:13.2,Intellect:12.8,Combat:16.4,Mobility:6.8,Stamina:10.6
   });
   expect(Object.values(amari.baseline).reduce((a,b)=>a+b,0)).toBeCloseTo(110.2,8);
-  expect(amari.powerClass).toBeNull();
+  expect(amari).not.toHaveProperty('powerClass');
   expect(amari.conditional).toEqual([]);
   await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();

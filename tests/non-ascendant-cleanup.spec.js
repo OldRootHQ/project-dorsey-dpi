@@ -23,14 +23,15 @@ test('Character source preserves origin meaning and OPI without negative status 
   const chars = await page.evaluate(() => window.OLDROOT_CHARACTERS);
   expect(chars).toHaveLength(11);
   for (const c of chars) {
-    expect(c.ascendantStatus).toBeNull();
+    expect(c).not.toHaveProperty('ascendantStatus');
+    expect(c).not.toHaveProperty('powerClass');
     expect(c.origin).not.toMatch(/Non[\s-]?Ascendant/i);
     expect(Object.keys(c.baseline)).toEqual([
       'Strength', 'Durability', 'Speed', 'Agility', 'Regeneration',
       'Senses', 'Offense', 'Intellect', 'Combat', 'Mobility', 'Stamina'
     ]);
   }
-  expect(chars.find(c => c.codename === 'Kokio').powerClass).toBe('Demi-God');
+  expect(chars.find(c => c.codename === 'Kokio').originType).toBe('Demi-God / Supernatural Ritual');
   expect(chars.find(c => c.codename === 'Gila Monster').originType).toBe('Biotechnology');
   expect(chars.find(c => c.codename === 'Anchorage').originType).toBe('Experimental Enhancement');
   await expect(page.locator('body')).not.toContainText('Non-Ascendant');
