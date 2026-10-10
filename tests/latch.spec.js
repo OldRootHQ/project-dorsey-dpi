@@ -74,7 +74,7 @@ test('Latch publishes his locked DPI profile and official OPI 10.15', async ({ p
   expect(latch).toBeTruthy();
   expect(latch.age).toBe(36);
   expect(latch.location).toBe('Australia');
-  expect(latch.powerClass).toBeNull();
+  expect(latch).not.toHaveProperty('powerClass');
   expect(latch.officialOPI).toBe(10.15);
   expect(latch.baseline).toEqual({
     Strength:9.7,Durability:7.7,Speed:9.3,Agility:8.4,Regeneration:5.3,Senses:7.9,
