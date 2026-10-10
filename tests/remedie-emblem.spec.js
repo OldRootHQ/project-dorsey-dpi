@@ -110,7 +110,7 @@ test('all six registry emblems occupy the same below-image text position on desk
       const card=page.locator('.character-card').filter({has:page.locator('h3', {hasText:name})}).first();
       await card.scrollIntoViewIfNeeded();
       await expect.poll(()=>card.locator('.character-thumb').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
-      await card.screenshot({path:'artifacts/visual-qa/below-image-'+name.toLowerCase().replace(/\\s+/g,'-')+'-'+viewport.width+'.png',animations:'disabled'});
+      await card.screenshot({path:'artifacts/visual-qa/below-image-'+name.toLowerCase().replace(/\s+/g,'-')+'-'+viewport.width+'.png',animations:'disabled'});
     }
   }
 });
