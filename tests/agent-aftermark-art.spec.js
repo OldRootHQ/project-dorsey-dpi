@@ -23,7 +23,7 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
 
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   const afterRegistry = page.locator('.character-card[href="characters/aftermark/"] .character-thumb');
-  const agentRegistry = page.locator('.character-card[href="characters/agent-emerald/"] img');
+  const agentRegistry = page.locator('.character-card[href="characters/agent-emerald/"] .character-thumb');
   await expect(afterRegistry).toHaveAttribute('src', 'assets/characters/aftermark/aftermark-opi-cover.webp');
   await expect(agentRegistry).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect.poll(() => afterRegistry.evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
@@ -69,10 +69,10 @@ test('Agent Emerald and Aftermark artwork is assigned to the intended site surfa
   await expect(page.locator('.known-character-card[href="../../characters/aftermark/"] img')).toHaveAttribute('src', '../../assets/characters/aftermark/aftermark-emblem.svg?v=1');
 
   await page.goto(`${BASE}/locations/seattle/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
 
   await page.goto(`${BASE}/organizations/dunamis-dynamics/`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
 
   expect(errors, `Unexpected page errors: ${errors.join(' | ')}`).toEqual([]);
 });
