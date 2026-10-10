@@ -33,7 +33,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Kincast", civilian:"Micah Ellison & Naomi Ellison", classification:"Hero", role:"Hero",
     powerClass:"Superhuman", registryOrder:4, location:"Baltimore, Maryland", locationKey:"Baltimore",
     origin:"Unresolved twin-shadow phenomenon / Non-Ascendant", originType:"Metaphysical / Unexplained", ascendantStatus:"Non-Ascendant",
-    affiliation:"Unaffiliated", page:"characters/kincast/", image:"assets/characters/kincast/kincast-registry.webp",
+    affiliation:"Unaffiliated", page:"characters/kincast/", image:"assets/characters/kincast/kincast-registry.webp", mark:"assets/characters/kincast/kincast-emblem.svg?v=1",
     age:26, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Twin siblings sharing one heroic identity: elite human gunfighter Micah Ellison and Naomi, his independently conscious two-dimensional shadow sister.",
     baseline:{Strength:16.8,Durability:28.2,Speed:20.8,Agility:25.2,Regeneration:5.9,Senses:22.0,Offense:29.3,Intellect:14.6,Combat:31.6,Mobility:21.3,Stamina:16.4},
