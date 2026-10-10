@@ -18,16 +18,18 @@ test('Remedie emblem appears in character registry and Start Here with original 
   await page.goto(BASE+'/characters.html');
   const card=page.locator('.character-card[href="characters/remedie/"]');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
-  const badgePosition=await card.evaluate(el=>{
-    const cover=el.querySelector('.remedie-art-frame').getBoundingClientRect();
-    const image=el.querySelector('.character-thumb').getBoundingClientRect();
-    const badge=el.querySelector('.character-card-mark').getBoundingClientRect();
-    return {insideCover:badge.left>=cover.left&&badge.top>=cover.top&&badge.right<=cover.right+1&&badge.bottom<=cover.bottom+1,
-      insideImage:badge.left>=image.left&&badge.top>=image.top&&badge.right<=image.right+1&&badge.bottom<=image.bottom+1,
-      inRightCorner:badge.left>=image.left+image.width/2};
+  const place=await card.evaluate(el=>{
+    const photo=el.querySelector('.character-thumb').getBoundingClientRect();
+    const row=el.querySelector('.character-identity-row').getBoundingClientRect();
+    const mark=el.querySelector('.character-card-mark').getBoundingClientRect();
+    return {belowPhoto:mark.top>=photo.bottom+1,
+      inTextRow:mark.top>=row.top-1&&mark.bottom<=row.bottom+1,
+      sameLine:Math.abs(mark.top-row.top)<2,
+      iconOnRight:mark.left>row.left+row.width/2};
   });
-  expect(badgePosition).toEqual({insideCover:true,insideImage:true,inRightCorner:true});
-  await expect(card.locator('.remedie-art-frame')).toHaveCount(1);
+  expect(place).toEqual({belowPhoto:true,inTextRow:true,sameLine:true,iconOnRight:true});
+  await expect(card.locator('.character-identity-row')).toHaveCount(1);
+  await expect(card.locator('.remedie-art-frame')).toHaveCount(0);
   await expect(card.locator('.character-art-shell')).toHaveCount(0);
   await expect(card.locator('.character-thumb')).toHaveAttribute('src','assets/characters/remedie/remedie-registry.webp');
   await page.goto(BASE+'/start-here.html');
@@ -65,53 +67,50 @@ test('Remedie SVG contains alpha-transparent approved sticker artwork and fits p
 });
 
 
-test('original badges stay at original card corners; Remedie alone overlays her portrait',async({page})=>{
-  const original=['Gila Monster','Commotion','Aftermark','Anchorage'];
+test('all six registry emblems occupy the same below-image text position on desktop and mobile',async({page})=>{
+  const names=['Gila Monster','Commotion','Aftermark','Anchorage','Kincast','Remedie'];
   for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/characters.html',{waitUntil:'networkidle'});
-    const badges=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(cards=>cards.map(card=>{
-      const image=card.querySelector('.character-thumb').getBoundingClientRect();
+    const cards=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(nodes=>nodes.map(card=>{
+      const img=card.querySelector('.character-thumb');
       const badge=card.querySelector('.character-card-mark');
-      const mark=badge.getBoundingClientRect();
-      const box=card.getBoundingClientRect();
-      const css=getComputedStyle(badge);
+      const row=card.querySelector('.character-identity-row');
+      const copy=card.querySelector('.character-identity-copy');
+      if(!row||!copy||!img||!badge)return {name:card.querySelector('h3')?.textContent.trim(),missing:true};
+      const photo=img.getBoundingClientRect(),b=badge.getBoundingClientRect(),r=row.getBoundingClientRect(),t=copy.getBoundingClientRect();
       return {name:card.querySelector('h3')?.textContent.trim(),
-        position:css.position,zIndex:parseInt(css.zIndex,10),
-        hasBadGlobalWrapper:!!card.querySelector('.character-art-shell'),
-        originalCardChild:badge.parentElement===card,
-        remedieFrame:badge.parentElement.classList.contains('remedie-art-frame'),
-        offsetTop:mark.top-box.top,markWidth:mark.width,
-        withinPortrait:mark.left>=image.left-1&&mark.top>=image.top-1&&mark.right<=image.right+1&&mark.bottom<=image.bottom+1,
-        portraitTop:image.top,cardTop:box.top};
+        missing:false,
+        withinRow:badge.parentElement===row&&copy.parentElement===row,
+        static: getComputedStyle(badge).position==='static',
+        belowImage:b.top>=photo.bottom+1,
+        besideText:b.left>=t.right-1,
+        aboveCardBottom:b.bottom<=card.getBoundingClientRect().bottom+1,
+        rightAligned:Math.abs(b.right-r.right)<2,
+        topAligned:Math.abs(b.top-r.top)<2,
+        width:Math.round(b.width),height:Math.round(b.height),
+        portraitSource:img.getAttribute('src')};
     }));
-    expect(badges).toHaveLength(6);
-    for(const b of badges){
-      expect(b.hasBadGlobalWrapper,b.name).toBe(false);
-      expect(b.position,b.name+' must be absolutely positioned').toBe('absolute');
-      expect(b.portraitTop-b.cardTop,b.name+' portrait position unaffected').toBeLessThan(85);
+    expect(cards.map(x=>x.name).sort()).toEqual([...names].sort());
+    for(const c of cards){
+      expect(c.missing,c.name).toBe(false);
+      expect(c.withinRow,c.name+' identity row').toBe(true);
+      expect(c.static,c.name+' emblem must NOT be an image overlay').toBe(true);
+      expect(c.belowImage,c.name+' emblem must be below the portrait').toBe(true);
+      expect(c.besideText,c.name+' emblem must sit beside identity text').toBe(true);
+      expect(c.rightAligned,c.name+' same right alignment').toBe(true);
+      expect(c.topAligned,c.name+' same vertical alignment').toBe(true);
+      expect(c.aboveCardBottom,c.name+' contained by card').toBe(true);
+      expect(c.width,c.name+' shared icon width').toBe(viewport.width<600?56:68);
+      expect(c.height,c.name+' shared icon height').toBe(viewport.width<600?56:68);
     }
-    for(const name of original.concat(['Kincast'])){
-      const b=badges.find(x=>x.name===name);
-      expect(b,name).toBeTruthy();
-      expect(b.originalCardChild,name+' must keep original markup').toBe(true);
-      expect(b.remedieFrame).toBe(false);
-      expect(b.offsetTop,name+' should retain original card top offset').toBeGreaterThanOrEqual(viewport.width<600?19:21);
-      expect(b.offsetTop,name+' should retain original card top offset').toBeLessThanOrEqual(viewport.width<600?21:23);
-      expect(b.markWidth,name+' should retain original mark size').toBe(viewport.width<600?56:68);
-      expect(b.zIndex,name+' original layer').toBe(2);
-    }
-    const remedie=badges.find(x=>x.name==='Remedie');
-    expect(remedie).toBeTruthy();
-    expect(remedie.originalCardChild).toBe(false);
-    expect(remedie.remedieFrame).toBe(true);
-    expect(remedie.withinPortrait).toBe(true);
-    expect(remedie.zIndex).toBe(20);
-    expect(remedie.markWidth).toBe(viewport.width<600?68:88);
+    expect(cards.find(c=>c.name==='Remedie').portraitSource).toBe('assets/characters/remedie/remedie-registry.webp');
     fs.mkdirSync('artifacts/visual-qa',{recursive:true});
-    const card=page.locator('.character-card[href="characters/remedie/"]');
-    await card.scrollIntoViewIfNeeded();
-    await expect.poll(()=>card.locator('.character-thumb').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
-    await card.screenshot({path:'artifacts/visual-qa/remedie-corrected-'+viewport.width+'.png',animations:'disabled'});
+    for(const name of ['Remedie','Kincast','Gila Monster']){
+      const card=page.locator('.character-card').filter({has:page.locator('h3', {hasText:name})}).first();
+      await card.scrollIntoViewIfNeeded();
+      await expect.poll(()=>card.locator('.character-thumb').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
+      await card.screenshot({path:'artifacts/visual-qa/below-image-'+name.toLowerCase().replace(/\\s+/g,'-')+'-'+viewport.width+'.png',animations:'disabled'});
+    }
   }
 });
