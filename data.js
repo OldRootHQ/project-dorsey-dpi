@@ -53,7 +53,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Agent Emerald", civilian:"Remington James “Remy” Hampton", classification:"Vigilante", role:"Vigilante",
     powerClass:"Superior Human", registryOrder:6, location:"Seattle, Washington / Puget Sound", locationKey:"Seattle",
     origin:"Human / Technology / Training", originType:"Human / Technology / Training", ascendantStatus:null,
-    affiliation:"Dunamis Dynamics", page:"characters/agent-emerald/", image:"assets/characters/agent-emerald/agent-emerald-registry.webp",
+    affiliation:"Dunamis Dynamics", page:"characters/agent-emerald/", image:"assets/characters/agent-emerald/agent-emerald-registry.webp", mark:"assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1",
     age:25, heightIn:73, weightLb:185, yearsActive:null,
     summary:"Seattle / Puget Sound vigilante and engineering prodigy whose precision combat system combines guided Vector Talons, integrated mobility, and advanced tactical planning.",
     baseline:{Strength:7.7,Durability:10.9,Speed:8.1,Agility:12.0,Regeneration:5.5,Senses:11.7,Offense:18.5,Intellect:14.8,Combat:19.0,Mobility:15.3,Stamina:9.2},
