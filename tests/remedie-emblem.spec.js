@@ -19,7 +19,7 @@ test('Remedie emblem appears in character registry and Start Here with original 
   const card=page.locator('.character-card[href="characters/remedie/"]');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
   const badgePosition=await card.evaluate(el=>{
-    const cover=el.getBoundingClientRect();
+    const cover=el.querySelector('.remedie-art-frame').getBoundingClientRect();
     const image=el.querySelector('.character-thumb').getBoundingClientRect();
     const badge=el.querySelector('.character-card-mark').getBoundingClientRect();
     return {insideCover:badge.left>=cover.left&&badge.top>=cover.top&&badge.right<=cover.right+1&&badge.bottom<=cover.bottom+1,
@@ -27,6 +27,7 @@ test('Remedie emblem appears in character registry and Start Here with original 
       inRightCorner:badge.left>=image.left+image.width/2};
   });
   expect(badgePosition).toEqual({insideCover:true,insideImage:true,inRightCorner:true});
+  await expect(card.locator('.remedie-art-frame')).toHaveCount(1);
   await expect(card.locator('.character-art-shell')).toHaveCount(0);
   await expect(card.locator('.character-thumb')).toHaveAttribute('src','assets/characters/remedie/remedie-registry.webp');
   await page.goto(BASE+'/start-here.html');
@@ -64,46 +65,49 @@ test('Remedie SVG contains alpha-transparent approved sticker artwork and fits p
 });
 
 
-test('original registry emblem placement is restored for all heroes; only Remedie gets a stronger overlay',async({page})=>{
-  const previous=['Gila Monster','Commotion','Aftermark','Anchorage'];
+test('original badges stay at original card corners; Remedie alone overlays her portrait',async({page})=>{
+  const original=['Gila Monster','Commotion','Aftermark','Anchorage'];
   for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/characters.html',{waitUntil:'networkidle'});
-    const results=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(cards=>cards.map(card=>{
-      const portrait=card.querySelector('.character-thumb');
+    const badges=await page.locator('.character-card:has(.character-card-mark)').evaluateAll(cards=>cards.map(card=>{
+      const image=card.querySelector('.character-thumb').getBoundingClientRect();
       const badge=card.querySelector('.character-card-mark');
-      const cardBox=card.getBoundingClientRect();
-      const image=portrait.getBoundingClientRect();
       const mark=badge.getBoundingClientRect();
-      const style=getComputedStyle(badge);
+      const box=card.getBoundingClientRect();
+      const css=getComputedStyle(badge);
       return {name:card.querySelector('h3')?.textContent.trim(),
-        hasNewWrapper:!!card.querySelector('.character-art-shell'),
-        directChild:badge.parentElement===card,
-        position:style.position,zIndex:parseInt(style.zIndex,10),height:mark.height,
-        imageTop:image.top,cardTop:cardBox.top,offsetY:mark.top-cardBox.top,
-        imageRight:image.right,markRight:mark.right,markTop:mark.top,markBottom:mark.bottom,
-        insideImage:mark.top>=image.top-1&&mark.right<=image.right+1&&mark.bottom<=image.bottom+1};
+        position:css.position,zIndex:parseInt(css.zIndex,10),
+        hasBadGlobalWrapper:!!card.querySelector('.character-art-shell'),
+        originalCardChild:badge.parentElement===card,
+        remedieFrame:badge.parentElement.classList.contains('remedie-art-frame'),
+        offsetTop:mark.top-box.top,markWidth:mark.width,
+        withinPortrait:mark.left>=image.left-1&&mark.top>=image.top-1&&mark.right<=image.right+1&&mark.bottom<=image.bottom+1,
+        portraitTop:image.top,cardTop:box.top};
     }));
-    expect(results.length).toBeGreaterThanOrEqual(6);
-    for(const b of results){
-      expect(b.hasNewWrapper,b.name+' wrapper introduced in OR-WEB-0075 must be gone').toBe(false);
-      expect(b.directChild,b.name+' badge must be direct child of original card').toBe(true);
-      expect(b.position,b.name+' badge uses original absolute positioning').toBe('absolute');
-      expect(b.offsetY,b.name+' original top corner offset').toBeGreaterThanOrEqual(viewport.width<600?19:21);
-      expect(b.offsetY,b.name+' original top corner offset').toBeLessThanOrEqual(viewport.width<600?21:23);
-      expect(b.insideImage,b.name+' badge must appear over image').toBe(true);
-      expect(b.imageTop-b.cardTop,b.name+' original image position preserved').toBeLessThan(55);
+    expect(badges).toHaveLength(6);
+    for(const b of badges){
+      expect(b.hasBadGlobalWrapper,b.name).toBe(false);
+      expect(b.position,b.name+' must be absolutely positioned').toBe('absolute');
+      expect(b.portraitTop-b.cardTop,b.name+' portrait position unaffected').toBeLessThan(85);
     }
-    for(const name of previous){
-      const b=results.find(x=>x.name===name);
-      expect(b,name+' should have original standard badge size').toBeTruthy();
-      expect(b.height,name+' standard badge dimensions').toBe(viewport.width<600?56:68);
-      expect(b.zIndex,name+' must retain original layer').toBe(2);
+    for(const name of original.concat(['Kincast'])){
+      const b=badges.find(x=>x.name===name);
+      expect(b,name).toBeTruthy();
+      expect(b.originalCardChild,name+' must keep original markup').toBe(true);
+      expect(b.remedieFrame).toBe(false);
+      expect(b.offsetTop,name+' should retain original card top offset').toBeGreaterThanOrEqual(viewport.width<600?19:21);
+      expect(b.offsetTop,name+' should retain original card top offset').toBeLessThanOrEqual(viewport.width<600?21:23);
+      expect(b.markWidth,name+' should retain original mark size').toBe(viewport.width<600?56:68);
+      expect(b.zIndex,name+' original layer').toBe(2);
     }
-    const remedie=results.find(x=>x.name==='Remedie');
+    const remedie=badges.find(x=>x.name==='Remedie');
     expect(remedie).toBeTruthy();
-    expect(remedie.zIndex).toBeGreaterThan(2);
-    expect(remedie.height).toBe(viewport.width<600?68:88);
+    expect(remedie.originalCardChild).toBe(false);
+    expect(remedie.remedieFrame).toBe(true);
+    expect(remedie.withinPortrait).toBe(true);
+    expect(remedie.zIndex).toBe(20);
+    expect(remedie.markWidth).toBe(viewport.width<600?68:88);
     fs.mkdirSync('artifacts/visual-qa',{recursive:true});
     const card=page.locator('.character-card[href="characters/remedie/"]');
     await card.scrollIntoViewIfNeeded();
