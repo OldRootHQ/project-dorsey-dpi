@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0077 · October 9, 2026 · Correct All Registry Emblem Placement
+
+- Corrected the creator-identified mistake in OR-WEB-0075 and OR-WEB-0076: approved character icons do **not** belong on top of artwork. They belong **below each portrait beside the character's identity text**, all in a consistent position.
+- Moved all six installed Character Registry emblems — Gila Monster, Commotion, Aftermark, Anchorage, Kincast and Remedie — into the same dedicated text-and-mark layout row immediately following the portrait. Removed absolute/floating portrait overlays and Remedie's special artwork frame.
+- Kept the existing approved icon artwork, the character portraits, dossier pages, Start Here, Baltimore, homepage spotlight, and OPI Analytics unchanged.
+- Added desktop/mobile geometry tests asserting each badge is aligned right of its character identity, below the image, outside its bounds, and at an identical size across cards.
+
 ## OR-WEB-0076 · October 9, 2026 · Restore Registry Marks; Remedie Fix; Kincast Official Emblem
 
 - Reversed only the global Character Registry emblem relocation introduced by OR-WEB-0075. Restored Gila Monster, Commotion, Aftermark and Anchorage to their original card-corner badge positioning and removed the shared art-shell wrappers; preserved portraits, artwork and dossier content.
