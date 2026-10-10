@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0077 · Character emblem positioning",
-    title:"Character emblems return beside their identities.",
-    body:"All six installed character emblems — including Remedie and Kincast — now line up below their portraits beside the identity text, leaving the illustrations unobstructed.",
-    href:"news.html#or-web-0077"
+    meta:"OR-WEB-0078 · Work with OldRoot",
+    title:"Work with OldRoot opens creative conversations.",
+    body:"OldRoot is welcoming expressions of interest from co-writers and illustrators for clearly disclosed, currently unpaid creative collaboration. Meet the studio and reach out.",
+    href:"work-with-oldroot.html"
   }
 };
