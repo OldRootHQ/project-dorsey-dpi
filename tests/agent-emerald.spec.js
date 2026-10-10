@@ -9,8 +9,8 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(card).toContainText('Agent Emerald');
   await expect(card).toContainText('Remington James “Remy” Hampton');
   await expect(card).toContainText('Superior Human');
-  await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
-  await expect.poll(() => card.locator('img').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  await expect(card.locator('.character-thumb')).toHaveAttribute('src', 'assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect.poll(() => card.locator('.character-thumb').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
 
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="vigilante"]').check();
@@ -118,7 +118,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await page.goto(`${BASE}/locations/seattle/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('SEATTLE / PUGET SOUND');
   await expect(page.locator('a[href="../../characters/agent-emerald/"]')).toHaveCount(2);
-  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
 
   await page.goto(`${BASE}/locations/st-dorsey/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.location-main')).toContainText('division focuses on sonar, deep-ocean exploration, ocean mapping, marine robotics');
@@ -134,7 +134,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   await expect(page.locator('h1')).toHaveText('DUNAMIS DYNAMICS');
   await expect(page.locator('.dossier-facts')).toContainText('Mark Hampton');
   await expect(page.locator('.org-main')).toContainText('VX-11 belongs to Remy personally');
-  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
+  await expect(page.locator('.known-character-card[href="../../characters/agent-emerald/"] img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
 
   await page.goto(`${BASE}/index.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.hero-signal-row')).toHaveCount(0);
