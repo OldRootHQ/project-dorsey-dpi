@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0078 · Work with OldRoot",
-    title:"Work with OldRoot opens creative conversations.",
-    body:"OldRoot is welcoming expressions of interest from co-writers and illustrators for clearly disclosed, currently unpaid creative collaboration. Meet the studio and reach out.",
-    href:"work-with-oldroot.html"
+    meta:"OR-WEB-0079 · Agent Emerald emblem",
+    title:"Agent Emerald receives his official twin-talon mark.",
+    body:"Remy Hampton’s visor and twin Vector Talons now form Agent Emerald’s approved insignia across his dossier, registry, Seattle, Dunamis Dynamics, homepage and OPI. His original artwork remains unchanged.",
+    href:"characters/agent-emerald/"
   }
 };
