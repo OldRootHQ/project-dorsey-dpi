@@ -46,7 +46,7 @@ test('Agent Emerald canon is propagated as the first Superior Human with creator
   expect(introLayout.imageFit).toBe('contain');
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', '../../assets/characters/agent-emerald/agent-emerald-registry.webp');
   await expect(page.locator('.dossier-illustration img')).toHaveCount(5);
-  await expect(page.locator('.logo-slot')).toContainText('Vigilante dossier');
+  await expect(page.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
   await expect(page.locator('.character-infobox')).toContainText('Superior Human');
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
