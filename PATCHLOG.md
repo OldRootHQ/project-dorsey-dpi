@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0078 · October 9, 2026 · Work with OldRoot Creative Collaboration Page
+
+- Launched `work-with-oldroot.html` as a dedicated OldRoot Studios page for expressions of interest from co-writers and illustrators, with a matching responsive After Dark editorial stylesheet.
+- Clearly states current opportunities are voluntary and unpaid, and that there are no paid openings or guarantees of future compensation, employment, credit, assignment or selection from submitting an inquiry.
+- Explains how exploratory collaboration would work, including agreement in writing on scope, attribution, creative rights and permitted use before any contribution.
+- Added focused inquiry form routed through the same existing FormSubmit inbox as the Contact page, `oldrootinquiries@gmail.com`, collecting minimum contact information, discipline, optional existing portfolio URL, and interests; requires an explicit unpaid-collaboration acknowledgment. No sample assignments or complete scripts are solicited.
+- Linked the page from the homepage Explore section, About, Contact, Support, and the sitewide OldRoot footer. Preserved the existing universe navigation groups.
+- Added automated tests covering disclosure, links, form wiring, mobile layout, and site infrastructure. Form delivery to the external service is not asserted by CI.
+
 ## OR-WEB-0077 · October 9, 2026 · Correct All Registry Emblem Placement
 
 - Corrected the creator-identified mistake in OR-WEB-0075 and OR-WEB-0076: approved character icons do **not** belong on top of artwork. They belong **below each portrait beside the character's identity text**, all in a consistent position.
