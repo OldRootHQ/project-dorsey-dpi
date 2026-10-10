@@ -99,6 +99,7 @@ test('all published hero portraits display at natural brightness without an imag
   test.setTimeout(90000);
   for(const [slug] of dossiers){
     await page.goto(BASE+'/characters/'+slug+'/',{waitUntil:'domcontentloaded'});
+    await expect.poll(()=>page.locator('.dossier-cinematic-hero .character-feature-art-trigger img').evaluate(img=>img.naturalWidth),{timeout:12000}).toBeGreaterThan(0);
     const actual=await page.locator('.dossier-cinematic-hero').evaluate(hero=>{
       const figure=hero.querySelector('.character-feature-art');
       const img=hero.querySelector('.character-feature-art-trigger img');
