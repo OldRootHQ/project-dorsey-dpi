@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0081 · October 10, 2026 · Origin-Only Character Records
+
+- Retired the separate Power Classification filter and display labels from the Character Registry and OPI Analytics. Registry filters now emphasize origin, role, and location; Origin is the default OPI chart color category.
+- Replaced the two unresolved Origin-filter placeholders with **Demi-God** and **God**. Kept Kokio’s established Demi-God/Takaro origin without assigning any existing character the God origin. Added an Inborn Anomaly origin filter for Kincast, whose twin-shadow condition began at birth, and a Human origin filter for technology users and unenhanced humans.
+- Removed `powerClass` and the redundant, empty `ascendantStatus` fields from all 11 structured character records. Narrative `origin` and detailed `originType` now drive public origin reporting; all baseline and conditional OPI values, creator-assigned official OPI values, roles, biographies, and artwork are preserved.
+- Replaced power-class labels in character summaries and dossier fact rows with established origin descriptions, and migrated obsolete classification links to the Lore Index Origin reference. Historical patch and dispatch entries are retained as release records.
+- Updated asset cache keys and browser regression coverage for the Origin-only system and Demi-God/God origin options.
+
 ## OR-WEB-0080 · October 10, 2026 · Classification Label Cleanup
 
 - Removed repetitive negative Ascendant labels from the Character Registry, character dossiers, Start Here, Baltimore linked references, Lore Index glossary and public Dispatch copy. Removed the unused negative-origin filter, keeping existing origin filters and the positive Ascendants concept.

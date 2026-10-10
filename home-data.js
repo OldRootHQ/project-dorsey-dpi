@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0080 · Classification label cleanup",
-    title:"Cleaner character origins throughout OldRoot.",
-    body:"Redundant negative Ascendant labels have been removed from published character records, filters and links. Genesis Ascendants remain their own classification, and character origins and OPI measurements are preserved.",
-    href:"news.html#or-web-0080"
+    meta:"OR-WEB-0081 · Origin-only character registry",
+    title:"Origins take the lead in the character archive.",
+    body:"The redundant power-class categorization is retired. Origin now anchors the character registry and OPI filters, including Demi-God and God as origin options. Existing character artwork and OPI values remain intact.",
+    href:"news.html#or-web-0081"
   }
 };
