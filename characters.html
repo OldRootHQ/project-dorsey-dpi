@@ -11,7 +11,7 @@
     .character-thumb{display:block;width:100%;height:clamp(260px,22vw,360px);aspect-ratio:auto;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
     .character-card:hover{transform:translateY(-2px);border-top-color:var(--old-gold);background:#fff8ed}
     /* Restore the ORIGINAL card-corner placement for Gila, Commotion, Aftermark, Anchorage and new Kincast. */
-    .character-card > img.character-card-mark{position:absolute!important;top:22px!important;right:22px!important;left:auto!important;bottom:auto!important;width:68px;height:68px;object-fit:contain;z-index:2;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
+    .character-card > img.character-card-mark{position:absolute!important;top:22px!important;right:22px!important;left:auto!important;bottom:auto!important;width:68px;height:68px;object-fit:contain;z-index:2!important;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
     /* Remedie is the ONLY registry card using a portrait-level overlay. */
     .character-card[href="characters/remedie/"] .remedie-art-frame{position:relative;isolation:isolate;flex:none;width:100%;margin-bottom:17px}
     .character-card[href="characters/remedie/"] .remedie-art-frame > .character-thumb{display:block;margin:0}
