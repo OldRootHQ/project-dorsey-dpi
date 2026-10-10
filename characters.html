@@ -10,12 +10,10 @@
     .character-card{position:relative;text-decoration:none;transition:transform .14s ease,background .14s ease,border-color .14s ease}
     .character-thumb{display:block;width:100%;height:clamp(260px,22vw,360px);aspect-ratio:auto;object-fit:cover;object-position:center top;border-radius:14px;border:1px solid var(--slate-silver);margin-bottom:17px;background:var(--parchment)}
     .character-card:hover{transform:translateY(-2px);border-top-color:var(--old-gold);background:#fff8ed}
-    /* Restore the ORIGINAL card-corner placement for Gila, Commotion, Aftermark, Anchorage and new Kincast. */
-    .character-card > img.character-card-mark{position:absolute!important;top:22px!important;right:22px!important;left:auto!important;bottom:auto!important;width:68px;height:68px;object-fit:contain;z-index:2!important;pointer-events:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
-    /* Remedie is the ONLY registry card using a portrait-level overlay. */
-    .character-card[href="characters/remedie/"] .remedie-art-frame{position:relative;isolation:isolate;flex:none;width:100%;margin-bottom:17px}
-    .character-card[href="characters/remedie/"] .remedie-art-frame > .character-thumb{display:block;margin:0}
-    .character-card[href="characters/remedie/"] .remedie-art-frame > img.character-card-mark{position:absolute!important;top:12px!important;right:12px!important;left:auto!important;bottom:auto!important;width:88px;height:88px;z-index:20!important;object-fit:contain;pointer-events:none;padding:5px;border-radius:14px;border:1px solid rgba(228,175,58,.35);background:rgba(2,16,12,.83);box-shadow:0 8px 22px rgba(0,0,0,.4)}
+    /* Approved registry layout: emblems live beside character text, ALWAYS below the portrait. */
+    .character-card .character-identity-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;width:100%;min-width:0;flex:none}
+    .character-card .character-identity-copy{min-width:0;flex:1}
+    .character-card .character-identity-row > img.character-card-mark{position:static!important;inset:auto!important;top:auto!important;right:auto!important;left:auto!important;bottom:auto!important;display:block;flex:0 0 68px;width:68px;height:68px;max-width:68px;max-height:68px;object-fit:contain;margin:0!important;padding:0;border:0;background:transparent;z-index:auto!important;pointer-events:none;filter:drop-shadow(0 6px 9px rgba(0,0,0,.22))}
 
     .card-open{margin-top:14px;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.06em;color:var(--root-green)}
     .registry-note{font-size:12px;color:#575a53;margin:0}
@@ -38,9 +36,8 @@
       .registry-sort select{min-height:46px}
       .character-grid{gap:18px}
       .character-card{padding:14px 14px 16px;border-radius:18px}
-      .character-card > img.character-card-mark{top:20px!important;right:20px!important;width:56px;height:56px}
-      .character-card[href="characters/remedie/"] .remedie-art-frame{margin-bottom:14px}
-      .character-card[href="characters/remedie/"] .remedie-art-frame > img.character-card-mark{top:10px!important;right:10px!important;width:68px;height:68px;padding:4px}
+      .character-card .character-identity-row{gap:10px}
+      .character-card .character-identity-row > img.character-card-mark{flex-basis:56px;width:56px;height:56px;max-width:56px;max-height:56px}
       .character-thumb{
         height:clamp(250px,72vw,285px);
         aspect-ratio:auto;
@@ -183,10 +180,15 @@
     <section class="character-grid">
       <a class="character-card" data-release-order="1" data-tags="hero non-ascendant bioengineered enhanced-human tucson" href="characters/gila-monster/">
                 <img decoding="async" class="character-thumb" src="assets/characters/gila-monster/gila-registry.webp" width="733" height="1100" alt="Gila Monster overlooking Tucson at twilight" loading="lazy" data-lightbox data-full-src="assets/characters/gila-monster/gila-registry.webp" data-caption="Gila Monster · registry visual reference" title="View character artwork" tabindex="0" />
-        <img class="character-card-mark" decoding="async" src="assets/characters/gila-monster/gila-monster-emblem.svg?v=2" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
-        <div class="class">Hero · Enhanced Human · Non-Ascendant</div>
-        <h3>Gila Monster</h3>
-        <div class="civil">Adrián Zúñiga</div>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Hero · Enhanced Human · Non-Ascendant</div>
+            <h3>Gila Monster</h3>
+            <div class="civil">Adrián Zúñiga</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/gila-monster/gila-monster-emblem.svg?v=2" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+        </div>
         <p>Tucson-based TPD detective and Bioengineered nocturnal metahuman with desert-specialized movement and equipment-driven offense.</p>
         <div class="meta-row"><span class="meta-pill">Tucson</span><span class="meta-pill">Enhanced Human</span><span class="meta-pill">Bioengineered</span><span class="meta-pill">Baseline mean 17.67</span></div>
         <span class="card-open">Open dossier →</span>
@@ -194,20 +196,30 @@
 
       <a class="character-card" data-release-order="2" data-tags="hero non-ascendant human exceptional-human chicago" href="characters/commotion/">
                 <img decoding="async" class="character-thumb commotion-thumb" src="assets/characters/commotion/commotion-primary.webp" width="1122" height="1402" alt="Commotion in his purple mask and gray jacket beneath Chicago elevated tracks" loading="lazy" data-lightbox data-full-src="assets/characters/commotion/commotion-primary.webp" data-caption="Commotion · primary visual reference" title="View Commotion primary visual" tabindex="0" />
-        <img class="character-card-mark" decoding="async" src="assets/characters/commotion/commotion-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
-        <div class="class">Hero · Exceptional Human · Non-Ascendant</div>
-        <h3>Commotion</h3>
-        <div class="civil">Ja’Kori Benson</div>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Hero · Exceptional Human · Non-Ascendant</div>
+            <h3>Commotion</h3>
+            <div class="civil">Ja’Kori Benson</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/commotion/commotion-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+        </div>
         <p>Chicago vigilante and former professional boxer who weaponizes agility, dirty fighting, close-quarters awareness, and the room around him.</p>
         <div class="meta-row"><span class="meta-pill">Chicago</span><span class="meta-pill">Exceptional Human</span><span class="meta-pill">No powers</span><span class="meta-pill">Baseline mean 6.88</span></div>
         <span class="card-open">Open dossier →</span>
       </a>
       <a class="character-card" data-release-order="3" data-tags="hero non-ascendant anomalous-human external-anomaly spatial-anomaly slightly-enhanced-human san-juan puerto-rico santurce independent" href="characters/aftermark/">
                 <img decoding="async" class="character-thumb aftermark-thumb" src="assets/characters/aftermark/aftermark-opi-cover.webp" width="1448" height="1086" alt="Aftermark during a rainy San Juan counter" loading="lazy" data-lightbox data-full-src="assets/characters/aftermark/aftermark-opi-cover.webp" data-caption="Aftermark · rainy San Juan counter" title="View Aftermark artwork" tabindex="0" />
-        <img class="character-card-mark" decoding="async" src="assets/characters/aftermark/aftermark-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
-        <div class="class">Hero · Slightly Enhanced Human · Non-Ascendant</div>
-        <h3>Aftermark</h3>
-        <div class="civil">Nicolás “Nico” Vélez Rosado</div>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Hero · Slightly Enhanced Human · Non-Ascendant</div>
+            <h3>Aftermark</h3>
+            <div class="civil">Nicolás “Nico” Vélez Rosado</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/aftermark/aftermark-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+        </div>
         <p>Santurce-based hero and elevator technician who stores his own physical actions in space and triggers them again as delayed attacks, traps, and movement paths.</p>
         <div class="meta-row"><span class="meta-pill">San Juan</span><span class="meta-pill">External anomaly</span><span class="meta-pill">Slightly Enhanced Human</span><span class="meta-pill">Baseline mean 8.37</span></div>
         <span class="card-open">Open dossier →</span>
@@ -215,10 +227,15 @@
 
       <a class="character-card" data-release-order="4" data-tags="hero non-ascendant unresolved-origin metaphysical superhuman baltimore independent" href="characters/kincast/">
         <img decoding="async" class="character-thumb kincast-thumb" src="assets/characters/kincast/kincast-registry.webp" width="825" height="1100" alt="Kincast with Micah and Naomi in an emerald conservatory" loading="lazy" data-lightbox data-full-src="assets/characters/kincast/kincast-registry.webp" data-caption="Kincast · registry visual reference" title="View character artwork" tabindex="0" />
-        <img class="character-card-mark" decoding="async" src="assets/characters/kincast/kincast-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
-        <div class="class">Hero · Superhuman · Non-Ascendant</div>
-        <h3>Kincast</h3>
-        <div class="civil">Micah Ellison & Naomi Ellison</div>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Hero · Superhuman · Non-Ascendant</div>
+            <h3>Kincast</h3>
+            <div class="civil">Micah Ellison & Naomi Ellison</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/kincast/kincast-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+        </div>
         <p>Baltimore twin heroes sharing one identity: elite human gunfighter Micah and Naomi, his independently conscious two-dimensional shadow sister.</p>
         <div class="meta-row"><span class="meta-pill">Baltimore</span><span class="meta-pill">Superhuman</span><span class="meta-pill">Non-Ascendant</span><span class="meta-pill">Baseline mean 21.10</span></div>
         <span class="card-open">Open dossier →</span>
@@ -226,10 +243,15 @@
 
       <a class="character-card" data-release-order="5" data-tags="villain ea-human non-ascendant experimental-enhancement baltimore mercenary" href="characters/anchorage/">
                 <img decoding="async" class="character-thumb anchorage-thumb" src="assets/characters/anchorage/anchorage-registry.png" alt="Anchorage in his current blue-and-ivory design" loading="lazy" data-lightbox data-full-src="assets/characters/anchorage/anchorage-registry.png" data-caption="Anchorage · character registry visual" title="View Anchorage character art" tabindex="0" />
-        <img class="character-card-mark" decoding="async" src="assets/characters/anchorage/anchorage-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
-        <div class="class">Villain · E&amp;A Human · Non-Ascendant</div>
-        <h3>Anchorage</h3>
-        <div class="civil">Gilmer Simpson</div>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Villain · E&amp;A Human · Non-Ascendant</div>
+            <h3>Anchorage</h3>
+            <div class="civil">Gilmer Simpson</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/anchorage/anchorage-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+        </div>
         <p>Baltimore underworld mercenary and recurring powerhouse antagonist transformed through forced pre-Genesis experimentation.</p>
         <div class="meta-row"><span class="meta-pill">Baltimore</span><span class="meta-pill">Villain</span><span class="meta-pill">E&amp;A Human</span><span class="meta-pill">Experimental enhancement</span><span class="meta-pill">Non-Ascendant</span></div>
         <span class="card-open">Open dossier →</span>
@@ -286,11 +308,16 @@
       </a>
 
       <a class="character-card" data-release-order="11" data-tags="anti-hero antihero human enhanced wearable technology exo-frame exoskeleton boston massachusetts gauntlets magnetic reflex force-ledger mandy" href="characters/remedie/">
-                <div class="remedie-art-frame">
-        <img decoding="async" class="character-thumb remedie-thumb" src="assets/characters/remedie/remedie-registry.webp" width="700" height="875" alt="Mandy Ledger in a mustard turtleneck, gray tactical pants, and compact black-and-gold wearable exo-frame" loading="lazy" data-lightbox data-full-src="assets/characters/remedie/remedie-primary.webp" data-caption="Remedie · primary field visual reference" title="View Remedie artwork" tabindex="0"/>
-        <img class="character-card-mark" decoding="async" src="assets/characters/remedie/remedie-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
+                <img decoding="async" class="character-thumb remedie-thumb" src="assets/characters/remedie/remedie-registry.webp" width="700" height="875" alt="Mandy Ledger in a mustard turtleneck, gray tactical pants, and compact black-and-gold wearable exo-frame" loading="lazy" data-lightbox data-full-src="assets/characters/remedie/remedie-primary.webp" data-caption="Remedie · primary field visual reference" title="View Remedie artwork" tabindex="0"/>
+        
+        <div class="character-identity-row">
+          <div class="character-identity-copy">
+            <div class="class">Anti-Hero → Hero · Human · Wearable Technology</div>
+            <h3>Remedie</h3>
+            <div class="civil">Mandy Ledger</div>
+          </div>
+          <img class="character-card-mark" decoding="async" src="assets/characters/remedie/remedie-emblem.svg?v=1" width="720" height="720" alt="" aria-hidden="true" loading="lazy" />
         </div>
-        <div class="class">Anti-Hero → Hero · Human · Wearable Technology</div><h3>Remedie</h3><div class="civil">Mandy Ledger</div>
         <p>A Boston-based daughter of a tech dynasty whose paired impact-redirection gauntlets become the tools of a hard-won journey from vengeance to rescue.</p>
         <div class="meta-row"><span class="meta-pill">Boston / Massachusetts</span><span class="meta-pill">Human · Exo-frame</span><span class="meta-pill">Counter-Punch → Counter-Combo</span><span class="meta-pill">11 Prime OPI categories</span></div><span class="card-open">Open dossier →</span>
       </a>
