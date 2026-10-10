@@ -28,13 +28,11 @@
   const metricOrder=[...dpiMetrics,"officialOPI","age","heightIn","weightLb","yearsActive","mean","high","low","spread","conditionalCount"];
   const filterDefs=[
     {key:"role",label:"Role"},
-    {key:"powerClass",label:"Power Classification"},
-    {key:"originType",label:"Origin Type"},
-    {key:"ascendantStatus",label:"Ascendant Status"},
+    {key:"originType",label:"Origin"},
     {key:"locationKey",label:"Location"},
     {key:"opiStatus",label:"OPI Status"},
     {key:"conditionalStatus",label:"Conditional OPI"}
-  ].filter(def=>def.key!=="ascendantStatus"||chars.some(c=>Boolean(c.ascendantStatus)));
+  ];
   const filterState={};
   const compareSet=new Set();
   let compareMode=false,selectedCharacter=chars[0]||null;
@@ -112,7 +110,7 @@
   function matchesState(c,state){return Object.entries(state).every(([key,set])=>!set.size||set.has(getFilterValue(c,key)))}
   function textMatches(c){
     const q=search.value.trim().toLowerCase();if(!q)return true;
-    return[c.codename,c.civilian,c.location,c.origin,c.originType,c.powerClass,c.affiliation,c.ascendantStatus].filter(Boolean).join(" ").toLowerCase().includes(q);
+    return[c.codename,c.civilian,c.location,c.origin,c.originType,c.affiliation].filter(Boolean).join(" ").toLowerCase().includes(q);
   }
   function appliedMatches(c){return textMatches(c)&&matchesState(c,filterState)}
 
@@ -282,7 +280,7 @@
       '<div class="trow"><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
       (Number.isFinite(c.officialOPI)?'<div class="trow"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':"")+
       (c.suppressAggregate?"":'<div class="trow"><span>Baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>')+
-      '<div class="trow"><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>';
+      '<div class="trow"><span>Origin</span><b>'+esc(c.origin||"Unassigned")+'</b></div>';
     tip.classList.add("show");let left=e.clientX+16,top=e.clientY+16;if(left+320>innerWidth)left=e.clientX-320;if(top+200>innerHeight)top=e.clientY-210;
     tip.style.left=Math.max(10,left)+"px";tip.style.top=Math.max(10,top)+"px";
   }
@@ -294,7 +292,7 @@
         (c.mark?'<img class="detail-mark" src="'+esc(c.mark)+'" alt="'+esc(c.codename)+' emblem" loading="lazy" />':"")+
         '<div class="name-row"><div class="name">'+esc(c.codename)+'</div><span class="badge">'+esc(c.classification)+'</span></div>'+
         '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
-        '<div class="meta"><div><span>Location</span><b>'+esc(c.location||"Unassigned")+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Not separately assigned")+'</b></div>'+
+        '<div class="meta"><div><span>Location</span><b>'+esc(c.location||"Unassigned")+'</b></div><div><span>Origin</span><b>'+esc(c.origin||"Unassigned")+'</b></div>'+
         '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
         '<div class="unscored-detail"><span>OPI STATUS</span><strong>Numeric profile not established</strong><p>This public character has no creator-approved numeric capability profile yet. Missing values are never guessed.</p></div>'+
         (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"");
@@ -307,7 +305,7 @@
       (c.mark?'<img class="detail-mark" src="'+esc(c.mark)+'" alt="'+esc(c.codename)+' emblem" loading="lazy" />':"")+
       '<div class="name-row"><div class="name">'+esc(c.codename)+'</div><span class="badge">'+esc(c.classification)+'</span></div>'+
       '<div class="civilian">'+esc(c.civilian)+'</div><div class="summary">'+esc(c.summary)+'</div>'+
-      '<div class="meta"><div><span>Location</span><b>'+esc(c.location)+'</b></div><div><span>Power class</span><b>'+esc(c.powerClass||"Unassigned")+'</b></div>'+
+      '<div class="meta"><div><span>Location</span><b>'+esc(c.location)+'</b></div><div><span>Origin</span><b>'+esc(c.origin||"Unassigned")+'</b></div>'+
       '<div><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div><div><span>'+esc(defs[yKey].label)+'</span><b>'+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div></div>'+
       '<div class="comparison-readout"><span>Current comparison</span><b>'+esc(defs[xKey].label)+' '+esc(formatMetric(xKey,valueFor(c,xKey)))+' <i>vs</i> '+esc(defs[yKey].label)+' '+esc(formatMetric(yKey,valueFor(c,yKey)))+'</b></div>'+
       (c.suppressAggregate?'<div class="mean"><span>DPI display</span><b>Individual categories only</b></div>':Number.isFinite(c.officialOPI)?'<div class="mean"><span>Official OPI</span><b>'+c.officialOPI.toFixed(2)+'</b></div>':'<div class="mean"><span>Analytics-only<br>baseline mean</span><b>'+(Number.isFinite(mean(c))?mean(c).toFixed(2):"—")+'</b></div>')+
@@ -339,7 +337,7 @@
   filterClear.onclick=()=>{filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());updateActiveFilters();updateFilterOptionCounts();render()};
   compareToggle.onclick=()=>{compareMode=!compareMode;compareToggle.classList.toggle("active",compareMode);compareToggle.setAttribute("aria-pressed",String(compareMode));renderCompare();render()};
   compareClear.onclick=()=>{compareSet.clear();render()};
-  reset.onclick=()=>{search.value="";filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());xMetric.value="Offense";yMetric.value="Durability";colorBy.value="powerClass";sizeBy.value="fixed";labelBy.value="codename";compareSet.clear();compareMode=false;compareToggle.classList.remove("active");compareToggle.setAttribute("aria-pressed","false");updateActiveFilters();updateFilterOptionCounts();render()};
+  reset.onclick=()=>{search.value="";filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());xMetric.value="Offense";yMetric.value="Durability";colorBy.value="originType";sizeBy.value="fixed";labelBy.value="codename";compareSet.clear();compareMode=false;compareToggle.classList.remove("active");compareToggle.setAttribute("aria-pressed","false");updateActiveFilters();updateFilterOptionCounts();render()};
   window.addEventListener("resize",()=>requestAnimationFrame(render));
   updateFilterOptionCounts();render();
 })();
