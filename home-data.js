@@ -55,7 +55,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/anchorage/"],["Baltimore →","locations/baltimore/"]]
     },
     "Agent Emerald": {
-      key:"agent-emerald", image:"assets/characters/agent-emerald/agent-emerald-featured.webp",
+      key:"agent-emerald", image:"assets/characters/agent-emerald/agent-emerald-featured.webp", mark:"assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1",
       alt:"Agent Emerald overlooking a rain-soaked Seattle industrial skyline",
       meta:"SUPERIOR HUMAN · VIGILANTE · SEATTLE",
       teaser:"A Seattle vigilante who turns engineering, precision, and preparation into a combat system.",
