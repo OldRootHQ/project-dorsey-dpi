@@ -34,7 +34,7 @@
     {key:"locationKey",label:"Location"},
     {key:"opiStatus",label:"OPI Status"},
     {key:"conditionalStatus",label:"Conditional OPI"}
-  ];
+  ].filter(def=>def.key!=="ascendantStatus"||chars.some(c=>Boolean(c.ascendantStatus)));
   const filterState={};
   const compareSet=new Set();
   let compareMode=false,selectedCharacter=chars[0]||null;
