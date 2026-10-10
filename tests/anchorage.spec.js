@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Anchorage imports as a Baltimore Non-Ascendant villain without invented schema values', async ({ page }) => {
+test('Anchorage imports as a Baltimore experimental villain without invented schema values', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
 
@@ -59,7 +59,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
   await expect(page.locator('.info-list')).toContainText('E&A Human');
-  await expect(page.locator('.info-list')).toContainText('Non-Ascendant');
+  await expect(page.locator('.info-list')).not.toContainText('Non-Ascendant');
   await expect(page.locator('.info-list')).toContainText('Approximately 2 tons');
   await expect(page.locator('.info-list')).toContainText('approximately one year before Genesis');
   await expect(page.locator('.dpi-grid .dpi-row')).toHaveCount(11);
@@ -79,9 +79,9 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(anchorage.powerClass).toBe('E&A Human');
   expect(anchorage.location).toBe('Baltimore, Maryland');
   expect(anchorage.locationKey).toBe('Baltimore');
-  expect(anchorage.origin).toBe('Pre-Genesis experimental enhancement / Non-Ascendant');
+  expect(anchorage.origin).toBe('Pre-Genesis experimental enhancement');
   expect(anchorage.originType).toBe('Experimental Enhancement');
-  expect(anchorage.ascendantStatus).toBe('Non-Ascendant');
+  expect(anchorage.ascendantStatus).toBeNull();
   expect(anchorage.image).toBe('assets/characters/anchorage/anchorage-registry.png');
   expect(anchorage.age).toBe(37);
   expect(anchorage.heightIn).toBe(82);
@@ -105,7 +105,7 @@ test('Anchorage imports as a Baltimore Non-Ascendant villain without invented sc
   expect(kincast.classification).toBe('Hero');
   expect(kincast.role).toBe('Hero');
   expect(kincast.location).toBe('Baltimore, Maryland');
-  expect(kincast.ascendantStatus).toBe('Non-Ascendant');
+  expect(kincast.ascendantStatus).toBeNull();
   expect(kincast.baseline).toEqual({
     Strength:16.8,
     Durability:28.2,

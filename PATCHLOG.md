@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0080 · October 10, 2026 · Classification Label Cleanup
+
+- Removed repetitive negative Ascendant labels from the Character Registry, character dossiers, Start Here, Baltimore linked references, Lore Index glossary and public Dispatch copy. Removed the unused negative-origin filter, keeping existing origin filters and the positive Ascendants concept.
+- Updated all 11 structured character records so non-Genesis origins retain their meaningful descriptions without a redundant negative status; the reserved `ascendantStatus` field now remains `null` until a positive or otherwise meaningful status is explicitly assigned.
+- OPI Analytics hides its empty Ascendant Status facet until a character has an explicitly assigned status. Refreshed the homepage latest-dispatch link and bumped changed character-data, homepage-data, and OPI-app cache keys, with matching sitewide cache-key expectations. Preserved established OPI data, classification labels, character lore, art, Genesis-specific Ascendant canon and site filter/sort behavior.
+- Updated Anchorage/Remedie regression expectations and added a focused regression suite for public label cleanup and preserved data.
+
 ## OR-WEB-0079 · October 10, 2026 · Agent Emerald Official Emblem
 
 - Installed the creator-approved lower-texture Agent Emerald portrait emblem: Remy Hampton's glossy black visor and exposed lower face, forest-green and matte-black suit, restrained amber technology accents, and two curved Vector Talons framing his silhouette.

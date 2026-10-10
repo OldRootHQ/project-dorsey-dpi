@@ -2,7 +2,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Gila Monster", civilian:"Adrián Zúñiga", classification:"Hero", role:"Hero",
     powerClass:"Enhanced Human", registryOrder:1, location:"Tucson, Arizona", locationKey:"Tucson",
-    origin:"Bioengineered / Non-Ascendant", originType:"Biotechnology", ascendantStatus:"Non-Ascendant",
+    origin:"Bioengineered", originType:"Biotechnology", ascendantStatus:null,
     affiliation:"Tucson Police Department", page:"characters/gila-monster/", image:"assets/characters/gila-monster/gila-registry.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg?v=2",
     age:33, heightIn:70, weightLb:165, yearsActive:null,
     summary:"TPD detective and nocturnal subterranean metahuman specialized for desert operations.",
@@ -12,7 +12,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Commotion", civilian:"Ja’Kori Benson", classification:"Hero", role:"Hero",
     powerClass:"Exceptional Human", registryOrder:2, location:"Chicago", locationKey:"Chicago",
-    origin:"Human / Non-Ascendant", originType:"Human / Training", ascendantStatus:"Non-Ascendant",
+    origin:"Human", originType:"Human / Training", ascendantStatus:null,
     affiliation:"Walker extended family", page:"characters/commotion/", image:"assets/characters/commotion/commotion-primary.webp", mark:"assets/characters/commotion/commotion-emblem.svg?v=1",
     age:null, heightIn:71, weightLb:185, yearsActive:null,
     summary:"Fully human Chicago vigilante who turns close-quarters chaos, exceptional agility, dirty fighting, and the environment itself into his advantage.",
@@ -22,7 +22,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Aftermark", civilian:"Nicolás “Nico” Vélez Rosado", classification:"Hero", role:"Hero",
     powerClass:"Slightly Enhanced Human", registryOrder:3, location:"Santurce, San Juan, Puerto Rico", locationKey:"San Juan",
-    origin:"External spatial anomaly / Non-Ascendant", originType:"External Anomaly", ascendantStatus:"Non-Ascendant",
+    origin:"External spatial anomaly", originType:"External Anomaly", ascendantStatus:null,
     affiliation:"Independent", page:"characters/aftermark/", image:"assets/characters/aftermark/aftermark-opi-cover.webp", mark:"assets/characters/aftermark/aftermark-emblem.svg?v=1",
     age:27, heightIn:73, weightLb:194, yearsActive:4,
     summary:"Puerto Rican hero who stores his own physical actions in fixed positions in space and triggers them once more within a 90-second window.",
@@ -32,7 +32,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Kincast", civilian:"Micah Ellison & Naomi Ellison", classification:"Hero", role:"Hero",
     powerClass:"Superhuman", registryOrder:4, location:"Baltimore, Maryland", locationKey:"Baltimore",
-    origin:"Unresolved twin-shadow phenomenon / Non-Ascendant", originType:"Metaphysical / Unexplained", ascendantStatus:"Non-Ascendant",
+    origin:"Unresolved twin-shadow phenomenon", originType:"Metaphysical / Unexplained", ascendantStatus:null,
     affiliation:"Unaffiliated", page:"characters/kincast/", image:"assets/characters/kincast/kincast-registry.webp", mark:"assets/characters/kincast/kincast-emblem.svg?v=1",
     age:26, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Twin siblings sharing one heroic identity: elite human gunfighter Micah Ellison and Naomi, his independently conscious two-dimensional shadow sister.",
@@ -42,7 +42,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
     powerClass:"E&A Human", registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
-    origin:"Pre-Genesis experimental enhancement / Non-Ascendant", originType:"Experimental Enhancement", ascendantStatus:"Non-Ascendant",
+    origin:"Pre-Genesis experimental enhancement", originType:"Experimental Enhancement", ascendantStatus:null,
     affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"assets/characters/anchorage/anchorage-registry.png", mark:"assets/characters/anchorage/anchorage-emblem.svg?v=1",
     age:37, heightIn:82, weightLb:null, yearsActive:null,
     summary:"Recurring Baltimore underworld villain, mercenary, and powerhouse antagonist transformed roughly one year before Genesis through forced experimental enhancement.",
@@ -83,7 +83,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Amari Razman", civilian:"Amari Razman", classification:"Hero", role:"Hero",
     powerClass:null, registryOrder:9, location:"Brooklyn, New York", locationKey:"Brooklyn",
-    origin:"Human / Non-Ascendant", originType:"Human / Training", ascendantStatus:"Non-Ascendant",
+    origin:"Human", originType:"Human / Training", ascendantStatus:null,
     affiliation:"Post-Genesis hero-recruitment operation", page:"characters/amari-razman/", image:"assets/characters/amari-razman/amari-registry.webp",
     age:33, heightIn:68, weightLb:162, yearsActive:null,
     summary:"Unenhanced Brooklyn-born human tracker and reconnaissance operative whose expertise lies in finding hidden or missing threats after Genesis.",
@@ -92,7 +92,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Ballestera", civilian:"Veronica Devoodas", classification:"Unaffiliated", role:"Unaffiliated",
     powerClass:null, registryOrder:10, location:"Nogales area, southern Arizona", locationKey:"Nogales",
-    origin:"Human / Non-Ascendant", originType:"Human / Chemistry", ascendantStatus:"Non-Ascendant",
+    origin:"Human", originType:"Human / Chemistry", ascendantStatus:null,
     affiliation:"Unaffiliated / southern Arizona underworld", page:"characters/ballestera/", image:"assets/characters/ballestera/ballestera-registry.webp",
     age:58, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Frail former chemistry teacher and underworld poison specialist living in a defended desert RV compound; an early recurring obstacle and possible contact for Gila Monster.",
@@ -103,7 +103,7 @@ window.OLDROOT_CHARACTERS = [
   {
     codename:"Remedie", civilian:"Mandy Ledger", classification:"Anti-Hero", role:"Anti-Hero",
     powerClass:null, registryOrder:11, location:"Boston, Massachusetts", locationKey:"Boston",
-    origin:"Human / Wearable Technology", originType:"Human / Technology", ascendantStatus:"Non-Ascendant",
+    origin:"Human / Wearable Technology", originType:"Human / Technology", ascendantStatus:null,
     affiliation:"Ledger technology company / Independent", page:"characters/remedie/", image:"assets/characters/remedie/remedie-registry.webp", mark:"assets/characters/remedie/remedie-emblem.svg?v=1",
     age:28, heightIn:66, weightLb:160, yearsActive:null,
     summary:"Boston technology anti-hero wielding paired force-redirection gauntlets and a lightweight wearable exo-frame; a search for her missing brother grows into a mission of civilian protection.",
