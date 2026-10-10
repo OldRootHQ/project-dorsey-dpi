@@ -11,7 +11,8 @@ test('Remedie is a published Boston anti-hero with exact Prime categories', asyn
   expect(record.location).toBe('Boston, Massachusetts');
   expect(record.classification).toBe('Anti-Hero');
   expect(record.originType).toBe('Human / Technology');
-  expect(record.ascendantStatus).toBeNull();
+  expect(record).not.toHaveProperty('ascendantStatus');
+  expect(record).not.toHaveProperty('powerClass');
   expect(record.baseline).toEqual({
     Strength:16.4,Durability:14.7,Speed:12.3,Agility:12.5,Regeneration:5.2,
     Senses:19.4,Offense:21.6,Intellect:9.4,Combat:14.8,Mobility:17.9,Stamina:10.8

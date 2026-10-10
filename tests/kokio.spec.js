@@ -58,10 +58,11 @@ test('Kokio exact OPI profile is published without a canonical overall score', a
   const kokio = await page.evaluate(() => window.OLDROOT_CHARACTERS.find(c => c.codename === 'Kokio'));
   expect(kokio).toBeTruthy();
   expect(kokio.civilian).toBe('Kalani Kane');
-  expect(kokio.powerClass).toBe('Demi-God');
+  expect(kokio.originType).toBe('Demi-God / Supernatural Ritual');
+  expect(kokio).not.toHaveProperty('powerClass');
   expect(kokio.location).toBe('Hilo, Hawaiʻi Island');
   expect(kokio.locationKey).toBe('Hilo');
-  expect(kokio.ascendantStatus).toBeNull();
+  expect(kokio).not.toHaveProperty('ascendantStatus');
   expect(kokio.affiliation).toBeNull();
   expect(kokio.age).toBe(26);
   expect(kokio.heightIn).toBe(67);
