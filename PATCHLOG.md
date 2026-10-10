@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0079 · October 10, 2026 · Agent Emerald Official Emblem
+
+- Installed the creator-approved lower-texture Agent Emerald portrait emblem: Remy Hampton's glossy black visor and exposed lower face, forest-green and matte-black suit, restrained amber technology accents, and two curved Vector Talons framing his silhouette.
+- Converted the approved emblem image to a compact alpha-transparent WebP embedded in the established character SVG emblem format; verified the exact transferred image data. Kept Remy's original featured, registry and dossier images unchanged.
+- Propagated the mark to Agent Emerald's dossier Character Mark, Character Registry identity row **below the portrait beside the name**, Start Here, Seattle known-character record, Dunamis Dynamics character record, homepage character spotlight, and OPI Analytics.
+- Advanced character/home data cache keys, updated existing art tests and all-seven-emblems positioning checks, and added dedicated artwork-integrity and mobile-responsive regression tests.
+
 ## OR-WEB-0078 · October 9, 2026 · Work with OldRoot Creative Collaboration Page
 
 - Launched `work-with-oldroot.html` as a dedicated OldRoot Studios page for expressions of interest from co-writers and illustrators, with a matching responsive After Dark editorial stylesheet.
