@@ -58,7 +58,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   expect(framing.abductionCenterDelta).toBeLessThanOrEqual(2);
   await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
   await expect(page.locator('.info-list')).toContainText('Active');
-  await expect(page.locator('.info-list')).toContainText('Experimental Enhancement');
+  await expect(page.locator('.info-list')).toContainText('Pre-Genesis experimental enhancement');
   await expect(page.locator('.info-list')).not.toContainText('Non-Ascendant');
   await expect(page.locator('.info-list')).toContainText('Approximately 2 tons');
   await expect(page.locator('.info-list')).toContainText('approximately one year before Genesis');
