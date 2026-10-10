@@ -39,7 +39,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/aftermark/"],["San Juan →","locations/san-juan/"]]
     },
     "Kincast": {
-      key:"kincast", image:"assets/characters/kincast/kincast-featured.webp",
+      key:"kincast", image:"assets/characters/kincast/kincast-featured.webp", mark:"assets/characters/kincast/kincast-emblem.svg?v=1",
       alt:"Kincast with Naomi on an industrial catwalk",
       meta:"SUPERHUMAN · BALTIMORE",
       teaser:"One heroic identity shared by a gunfighter and the impossible shadow that fights beside him.",
