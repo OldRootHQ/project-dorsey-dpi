@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0076 · Kincast emblem & registry repair",
-    title:"Kincast receives his and Naomi’s official mark.",
-    body:"Micah and Naomi share one official black-and-ivory shadow emblem. Other marks return to their established positions, and Remedie’s icon now sits clearly over her portrait.",
-    href:"news.html#or-web-0076"
+    meta:"OR-WEB-0077 · Character emblem positioning",
+    title:"Character emblems return beside their identities.",
+    body:"All six installed character emblems — including Remedie and Kincast — now line up below their portraits beside the identity text, leaving the illustrations unobstructed.",
+    href:"news.html#or-web-0077"
   }
 };
