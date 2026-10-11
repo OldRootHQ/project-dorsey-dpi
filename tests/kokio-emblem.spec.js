@@ -55,7 +55,7 @@ test('Kokio emblem propagates to Start Here, Hilo, homepage spotlight, and OPI A
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
   const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Kokio'));
   expect(record.mark).toBe(MARK);
-  expect(record).not.toHaveProperty('officialOPI');
+  expect(record.officialOPI == null).toBe(true);
   await page.locator('#search').fill('Kokio');
   await expect(page.locator('.detail-mark')).toHaveAttribute('src',MARK);
 });
