@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0090 · October 11, 2026 · Marketplace Fallback Sticker Link Repair
+
+- Fixed the **underlying preloaded Featured Finds HTML**: Gila Monster, Commotion, and Latch's visible default sticker cards still pointed to `characters/{slug}/` even after the collection grid was corrected. All default sticker cards now link to `stickers/{slug}/`, and their call-to-action is "View sticker details".
+- Previously the client-side rotation script replaced these links only if JavaScript executed successfully; cached, blocked, failed, or not-yet-run JavaScript could expose incorrect registry destinations. The new default HTML is correct even without JavaScript.
+- Bumped the Marketplace rotating script cache key to `marketplace.js?v=3` to avoid stale old-client asset reuse. Book routes, four first-wave sticker product pages, official artwork, character links inside product pages, and the disabled purchasing state remain unchanged.
+- Added regression tests in both JavaScript-disabled and simulated script-failure states to ensure sticker cards still open sticker product pages; verified links after publishing.
+- No changes to paid checkout, inventory, pricing, character canon, or the book catalog.
+
 ## OR-WEB-0089 · October 10, 2026 · Max Corbett Supporting Character / Creator Artwork
 
 - Added **Max Corbett**, a Boston-area 31-year-old senior mechatronics and exoskeleton-controls engineer, to the Supporting Characters public registry as release-order 13, with a complete civilian dossier.
