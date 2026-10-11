@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Remedie'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Remedie'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
@@ -33,7 +33,8 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Kokio': 8,
     'Amari Razman': 9,
     'Ballestera': 10,
-    'Remedie': 11
+    'Remedie': 11,
+    'Deuce': 12
   });
 });
 

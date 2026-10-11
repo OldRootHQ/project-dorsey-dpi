@@ -53,7 +53,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('Characters');
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
-  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0083');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0084');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
@@ -64,12 +64,12 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(11);
+  await expect(page.locator('.character-card')).toHaveCount(12);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
   await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('11 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('12 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
   await expect(page.locator('text=Meet the expanding cast.')).toHaveCount(1);
 

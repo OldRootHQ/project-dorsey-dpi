@@ -2,6 +2,16 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0084 · October 10, 2026 · Mono “Deuce” Russo Supporting Character
+
+- Published Deuce's public supporting-character dossier from the creator handoff, including legal identity, vitals, online VEU enrollment, boxing fundamentals, family and father's death, role as junior warehouse support, personality, and grounded relationships with Latch, Amari, Fury and his mother.
+- Preserved unresolved canon: exact VEU major, formal attention diagnosis, future combat/technical career, exact facial dimensions and any direct medical causation regarding his father's heart attack.
+- Imported and optimized **all five creator-supplied Deuce images** as 640–760px embedded-WebP SVG artwork, with separate portrait, featured, warehouse, briefing and IT-support images.
+- Added Deuce to the Character Registry in release order 12, new Supporting Characters role filter, Start Here discovery, sitemap, public README list, and latest Dispatch.
+- **No OPI record and no OPI rating**: intentionally left `data.js` and the analytical ranking/population unchanged; the public Character Registry now contains 12 entries, while power-scaling analytics remain at 11.
+- The approved emblem motif is the headless messy suit and loosened red tie. The exact separate approved emblem file was not supplied in this website room; the dossier labels the existing concept and does not invent a different insignia. Original artwork can be integrated when available.
+- Updated site-cache key, sitemap metadata test coverage, character-count expectations, and release-order tests.
+
 ## OR-WEB-0083 · October 10, 2026 · Kokio Official Hatchets & Hibiscus Emblem
 
 - Added the creator-approved Kokio emblem: symmetrical crossed stone ritual hatchets with **small tiki face glyphs**, decorative red geometric glyphs, and a large white hibiscus with green leaves and crimson ribbons. No sunset sphere or palm-tree background.

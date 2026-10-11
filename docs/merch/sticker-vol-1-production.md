@@ -3,7 +3,7 @@
 
 ## Creator's confirmed corrections
 - **Kokio is live** in the public character registry with an official crossed ritual hatchets / hibiscus emblem. He is **not** a "future reveal" or unrevealed character. Kokio belongs in First Wave.
-- **Deuce is joining the registry** through separate ongoing site work, with an approved messy suit / absent-head / red-tie emblem. Do not create an unofficial active dossier or leak unreleased story details here. Reserve his emblem for later merchandise planning until registration is live.
+- **Deuce is now live in the public registry** with a character dossier and creator-approved messy suit / absent-head / red-tie emblem. His sticker is reserved for a later wave, and no print order or product listing is planned yet.
 - Agent Emerald is the **green armor / visor / twin talons** emblem. Aftermark is the **black-and-teal mask** emblem. Never mix those two up.
 
 ## First Wave (4 designs only)
@@ -12,7 +12,7 @@
 3. Latch — yellow eyepatch smiley, dripping pink
 4. Kokio — crossed ritual hatchets and hibiscus
 
-**Reserve** for later: Aftermark, Anchorage, Agent Emerald, Kincast, Remedie, and Deuce. All ten original image uploads are accounted for separately, including Deuce. Nine active character emblems appear on the draft catalog; Deuce is acknowledged only in roadmap text pending the registry integration.
+**Reserve** for later: Aftermark, Anchorage, Agent Emerald, Kincast, Remedie, and Deuce. All ten original image uploads are accounted for separately, including Deuce. Nine active character emblems appear on the draft catalog; Deuce is acknowledged in roadmap text, but does not appear as a merchandise item until the seller product is actually ready.
 
 ## Source-art inspection, October 10, 2026
 Original user uploads were inspected, not enlarged website SVGs. All ten are **1254 × 1254 RGBA PNG** images. Nine have real alpha transparency. **Agent Emerald is 1254 × 1254 but entirely opaque with a black background**; this requires cleanup and creator approval before a die-cut outline.
