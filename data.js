@@ -63,7 +63,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Latch", civilian:"Latch Boswell", classification:"Hero", role:"Hero",
     registryOrder:7, location:"Australia", locationKey:"Australia",
     origin:"Human / Military Training", originType:"Human / Training", 
-    affiliation:"Post-Genesis hero-recruitment operation / core hero organization", page:"characters/latch/", image:"assets/characters/latch/latch-registry.webp",
+    affiliation:"Post-Genesis hero-recruitment operation / core hero organization", page:"characters/latch/", image:"assets/characters/latch/latch-registry.webp", mark:"assets/characters/latch/latch-emblem.svg?v=1",
     age:36, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Australian former 2nd Commando Regiment team leader serving as a post-Genesis recruiter, security operative, field agent, marksman, and practical right-hand operative.",
     officialOPI:10.15,
