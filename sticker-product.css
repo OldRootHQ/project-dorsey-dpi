@@ -1,0 +1,27 @@
+/* OR-WEB-0087 · OldRoot sticker merchandise product image pages. */
+.sticker-product-page{padding-bottom:42px}
+.sticker-product-page .product-gallery{padding:19px}
+.sticker-main-image{position:relative;display:grid;place-items:center;min-height:460px;padding:56px 20px;border:1px solid rgba(197,162,74,.45);border-radius:20px;background:radial-gradient(circle at 45% 40%,#426247,#0b281b 65%,#061a10)}
+.sticker-main-image.ember{background:radial-gradient(circle at 45% 40%,#654733,#191e18 64%,#0b2015)}
+.sticker-main-image.violet{background:radial-gradient(circle at 45% 40%,#534064,#251829 64%,#121a1a)}
+.sticker-main-image.pink{background:radial-gradient(circle at 45% 40%,#7a3b5e,#2a1628 65%,#122019)}
+.sticker-main-image.aloha{background:radial-gradient(circle at 45% 40%,#656344,#2b3021 65%,#10221c)}
+.sticker-main-image-tag{position:absolute;top:17px;left:18px;color:#ebd5a1;font:900 9px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.1em}
+.sticker-picture-trigger{display:grid;place-items:center;width:min(100%,385px);aspect-ratio:1;border:0;padding:0;background:transparent;cursor:zoom-in}
+.sticker-picture-trigger img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px rgba(255,255,255,.88)) drop-shadow(0 17px 16px rgba(0,0,0,.55));transition:transform .16s ease}
+.sticker-picture-trigger:hover img,.sticker-picture-trigger:focus-visible img{transform:scale(1.055)}
+.sticker-picture-trigger:focus-visible{outline:3px solid #f4d18a;outline-offset:8px;border-radius:16px}
+.sticker-zoom-hint{margin:14px 0 6px;text-align:center;font:900 12px/1.5 Arial,Helvetica,sans-serif;color:#325139}
+.sticker-proof-warning{margin:0;text-align:center;font:600 12px/1.6 Arial,Helvetica,sans-serif;color:#575b52}
+.sticker-product-page .product-buybox{padding:clamp(24px,3vw,36px)}
+.sticker-product-page .product-buybox h1{font-size:clamp(38px,4.7vw,64px);line-height:.96;letter-spacing:-.06em;margin:15px 0 20px;color:#173428}
+.sticker-product-page .product-format{font:900 11px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.1em;color:#755b30}
+.sticker-product-page .product-lead{font-size:16px;line-height:1.65;color:#3b4940}
+.sticker-product-page .product-price{font-size:22px;margin:20px 0 10px}
+.sticker-product-page .product-disabled{cursor:not-allowed}
+.sticker-character-link{display:inline-block;margin-top:10px;color:#244c3a;font:850 12px/1.5 Arial,Helvetica,sans-serif}
+.sticker-product-page .product-pagination{flex-wrap:wrap}
+.sticker-product-page .product-pagination a{line-height:1.4}
+@media(max-width:750px){.sticker-product-page .product-hero{grid-template-columns:1fr}.sticker-main-image{min-height:350px;padding:47px 20px}.sticker-picture-trigger{width:min(100%,300px)}.sticker-product-page .product-gallery{padding:13px}}
+@media(max-width:430px){.sticker-main-image{min-height:280px}.sticker-picture-trigger{width:min(100%,250px)}.sticker-product-page .product-pagination a{width:100%;text-align:center}}
+@media(prefers-reduced-motion:reduce){.sticker-picture-trigger img{transition:none}}

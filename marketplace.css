@@ -56,3 +56,13 @@
 @media(max-width:700px){.marketplace-head-row{align-items:flex-start}.marketplace-head-seal{display:none}.marketplace-page{padding-left:16px;padding-right:16px}.marketplace-featured{padding:20px}.marketplace-section-top{align-items:start}.marketplace-featured-count strong{font-size:47px}.marketplace-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.market-feature-visual{height:165px}.marketplace-division-heading{align-items:start;flex-direction:column}.marketplace-feature-legal{align-items:start;flex-direction:column;gap:9px}}
 @media(max-width:420px){.marketplace-feature-grid{grid-template-columns:1fr}.market-feature-card{flex-direction:row;min-height:145px}.market-feature-visual{height:auto;min-height:145px;min-width:42%;max-width:42%}.market-feature-info{padding:13px;justify-content:center}.market-sticker-grid{grid-template-columns:1fr}.marketplace-stickers{margin-top:20px}.marketplace-featured-count{display:none}}
 @media(prefers-reduced-motion:reduce){.market-feature-card{transition:none}.market-feature-card:hover{transform:none}}
+
+/* OR-WEB-0087 · Direct sticker product browsing in Marketplace. */
+.market-sticker-product{display:block;color:inherit;text-decoration:none;outline-offset:3px}
+.market-sticker-product:hover .market-sticker-view,.market-sticker-product:focus-visible .market-sticker-view{text-decoration:underline}
+.market-sticker-product:hover .market-sticker-visual,.market-sticker-product:focus-visible .market-sticker-visual{filter:brightness(1.15)}
+.market-sticker-view{display:inline-block;margin:0 0 2px;color:#244c3a;font:900 12px/1.4 Arial,Helvetica,sans-serif;border-bottom:1px solid #ae945a}
+.market-sticker-copy{padding-bottom:11px}
+.market-sticker-character{padding:0 18px 17px}
+.market-sticker-character a{color:#395f4b;text-decoration:none;font:850 11px/1.4 Arial,Helvetica,sans-serif}
+.market-sticker-character a:hover,.market-sticker-character a:focus-visible{text-decoration:underline}

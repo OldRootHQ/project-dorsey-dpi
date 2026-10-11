@@ -18,7 +18,8 @@ const indexable = [
 
 const noindex = [
   '404.html','cart.html','checkout.html','order-confirmation.html','library.html',
-  ...Array.from({ length: 10 }, (_, i) => `library/oldroot-book-${i + 1}/index.html`)
+  ...Array.from({ length: 10 }, (_, i) => `library/oldroot-book-${i + 1}/index.html`),
+  ...['gila-monster','commotion','latch','kokio'].map(slug=>`stickers/${slug}/index.html`)
 ];
 
 function read(file) {
