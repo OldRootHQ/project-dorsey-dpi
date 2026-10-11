@@ -93,7 +93,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Ballestera", civilian:"Veronica Devoodas", classification:"Unaffiliated", role:"Unaffiliated",
     registryOrder:10, location:"Nogales area, southern Arizona", locationKey:"Nogales",
     origin:"Human", originType:"Human / Chemistry", 
-    affiliation:"Unaffiliated / southern Arizona underworld", page:"characters/ballestera/", image:"assets/characters/ballestera/ballestera-registry.webp",
+    affiliation:"Unaffiliated / southern Arizona underworld", page:"characters/ballestera/", image:"assets/characters/ballestera/ballestera-registry.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
     age:58, heightIn:null, weightLb:null, yearsActive:null,
     summary:"Frail former chemistry teacher and underworld poison specialist living in a defended desert RV compound; an early recurring obstacle and possible contact for Gila Monster.",
     suppressAggregate:true, officialOPI:null,
