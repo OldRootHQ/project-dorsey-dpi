@@ -54,7 +54,7 @@ test('Remedie has a full cinematic story, accurate power constraints and seven a
 test('Remedie registry is discoverable under the anti-hero filter but not future Hero status', async ({page}) => {
   await page.goto(BASE + '/characters.html', {waitUntil:'domcontentloaded'});
   await expect(page.locator('.character-card')).toHaveCount(13);
-  await expect(page.locator('.character-card').filter({hasText:'Remedie'})).toHaveCount(1);
+  await expect(page.locator('.character-card[href="characters/remedie/"]')).toHaveCount(1);
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="anti-hero"]').check();
   await page.locator('#filterApply').click();
