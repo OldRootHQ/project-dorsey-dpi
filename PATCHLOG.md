@@ -2,6 +2,15 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0087 · October 10, 2026 · Sticker Product Pages & Click-to-View Artwork
+
+- Created dedicated Marketplace product detail pages for all four first-wave stickers: **Gila Monster, Commotion, Latch, Kokio**, matching the existing book product layout and branding.
+- Sticker gallery cards now open these product pages when clicked; character dossier links remain available separately. The five-item rotating Featured Finds still presents three random sticker designs and two book records, but now links sticker finds to their appropriate product pages.
+- Added large clickable gallery imagery to each sticker page using the official approved emblem and OldRoot's existing keyboard-accessible image viewer. Supports button click or keyboard activation, Escape/close dismissal, and focus return. Gallery presentation remains labeled as a **digital design preview**, not an actual photograph of manufactured stickers.
+- Made sample/purchase states explicit: **Sample Pending**, price not announced, physical size and finish unknown, disabled sample button, no functioning or fake checkout.
+- Kept the Library, character canon, OPI data, and upcoming merchandise untouched. Sticker product pages are noindex until real product availability is established.
+- Added regression tests for both storefront link paths, viewer interactions, disabled purchasing, and mobile sizing. Updated page-count and prelaunch noindex QA; release requires successful Site QA before merging.
+
 ## OR-WEB-0086 · October 10, 2026 · OldRoot Marketplace Launch (Browse-Only)
 
 - Rebranded the publishing Library into **Marketplace**, a single front door for the existing Library book records and emerging OldRoot merchandise. Main listing lives at `marketplace.html`; old `library.html` remains a non-indexed legacy entry with a canonical link to Marketplace.

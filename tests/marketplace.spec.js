@@ -29,7 +29,7 @@ test('Featured five changes after refresh and never duplicates products',async({
 test('Marketplace links resolve to real book records and published character pages',async({page})=>{
   await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
   const links=await page.locator(FEATURED).evaluateAll(xs=>xs.map(x=>x.getAttribute('href')));
-  for(const href of links){expect(href).toMatch(/^(characters\/(gila-monster|commotion|latch|kokio)\/|library\/oldroot-book-(?:10|[1-9])\/)$/);const response=await page.request.get(BASE+'/'+href);expect(response.status(),href).toBe(200);}
+  for(const href of links){expect(href).toMatch(/^(stickers\/(gila-monster|commotion|latch|kokio)\/|library\/oldroot-book-(?:10|[1-9])\/)$/);const response=await page.request.get(BASE+'/'+href);expect(response.status(),href).toBe(200);}
   await expect(page.locator('.site-nav > a[href="marketplace.html"]')).toHaveText('Marketplace');
 });
 test('Marketplace is mobile safe and legacy Library is non-indexed',async({page})=>{
