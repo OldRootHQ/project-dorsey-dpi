@@ -1,0 +1,58 @@
+/* OR-WEB-0085 — Marketplace discovery layer. Scoped to preserve existing Library/book styles. */
+.marketplace-page{padding-bottom:52px}
+.marketplace-head{position:relative;overflow:hidden;background:radial-gradient(circle at 92% 10%,rgba(197,162,74,.18),transparent 25rem),#f3ebdd}
+.marketplace-head h1{font-size:clamp(42px,6.8vw,88px);line-height:.93;max-width:980px;margin:14px 0 17px}
+.marketplace-head-row{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.marketplace-head-row p{font-size:clamp(17px,1.9vw,22px);max-width:800px;line-height:1.5;margin:0}
+.marketplace-head-seal{min-width:125px;height:125px;border:3px double #ad8c3d;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(9deg);color:#285039;background:rgba(197,162,74,.1)}
+.marketplace-head-seal span{font:950 48px/1 Georgia,serif;letter-spacing:-.13em}.marketplace-head-seal small{font:850 9px/1.4 Arial,sans-serif;letter-spacing:.17em}
+.marketplace-head-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+.marketplace-head-links a{display:inline-flex;align-items:center;padding:12px 17px;border:1px solid #b39555;border-radius:999px;background:rgba(255,255,255,.5);font:850 11px/1.3 Arial,sans-serif;text-decoration:none;color:#244c3a}
+.marketplace-head-links a:hover,.marketplace-head-links a:focus-visible{background:#f1dca9}
+.marketplace-featured{margin:22px 0 42px;padding:clamp(21px,3.5vw,38px);background:linear-gradient(135deg,#071e14,#133b2a);color:#f3ebdd;border:1px solid rgba(197,162,74,.46);border-radius:25px;box-shadow:0 20px 40px rgba(0,0,0,.17)}
+.marketplace-section-top{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}
+.marketplace-section-top h2,.marketplace-division-heading h2{font-size:clamp(33px,4.2vw,58px);line-height:.96;letter-spacing:-.06em;margin:10px 0 8px}
+.marketplace-section-top h2{color:#f4eddd}
+.marketplace-section-top p{margin:0;font-size:15px;line-height:1.5;color:#e5e4d9}
+.marketplace-kicker{font:900 11px/1.3 Arial,sans-serif;letter-spacing:.13em;color:#e2c478}
+.marketplace-featured-count{text-align:right;white-space:nowrap}.marketplace-featured-count strong{display:block;color:#c5a24a;font:900 65px/.9 Arial,sans-serif;letter-spacing:-.1em}.marketplace-featured-count span{font:850 9px/1.3 Arial,sans-serif;letter-spacing:.12em}
+.marketplace-feature-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.market-feature-card{display:flex;flex-direction:column;overflow:hidden;min-width:0;border:1px solid rgba(255,255,255,.24);border-radius:17px;background:#f3ebdd;text-decoration:none;color:#14231b;transition:transform .16s ease,box-shadow .16s ease}
+.market-feature-card:hover,.market-feature-card:focus-visible{transform:translateY(-4px);box-shadow:0 15px 25px rgba(0,0,0,.28);outline-offset:3px}
+.market-feature-visual{height:clamp(160px,18vw,230px);position:relative;display:grid;place-items:center;overflow:hidden}
+.market-feature-visual.is-sticker{background:radial-gradient(circle,#315746,#0c251a 74%)}
+.market-feature-visual.is-sticker img{display:block;width:84%;height:84%;object-fit:contain;filter:drop-shadow(0 12px 12px rgba(0,0,0,.29))}
+.market-feature-visual.is-book{background:radial-gradient(circle at 25% 14%,#b19871,#4a3726 73%);isolation:isolate}
+.market-feature-visual.is-book:before{content:"";position:absolute;inset:13% 24% 8%;background:linear-gradient(120deg,#1b3228,#0e2119 73%);border:2px solid #c6a050;box-shadow:6px 10px 0 #101d17,13px 14px 16px #211a15;transform:perspective(550px) rotateY(-13deg) rotateZ(-3deg)}
+.market-book-spine,.market-book-folio,.market-book-label{position:relative;z-index:1;color:#ddbd72}
+.market-book-spine{font:900 24px/1 Georgia,serif;margin-bottom:-28px}.market-book-folio{font:900 39px/1 Georgia,serif}.market-book-label{font:900 8px/1.4 Arial,sans-serif;letter-spacing:.12em;text-align:center;width:100px}
+.market-feature-info{display:flex;flex-direction:column;flex:1;gap:9px;padding:15px 13px 17px}
+.market-feature-info span{color:#795e26;font:850 9px/1.45 Arial,sans-serif;letter-spacing:.07em}
+.market-feature-info h3{margin:0;color:#18392b;font-size:clamp(18px,1.8vw,24px);line-height:1.03}
+.market-feature-info small{display:block;margin-top:auto;color:#1a593e;font:850 11px/1.35 Arial,sans-serif}
+.marketplace-feature-legal{display:flex;align-items:center;gap:18px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.marketplace-feature-legal span{white-space:nowrap;border:1px solid rgba(197,162,74,.5);border-radius:999px;padding:7px 10px;color:#d9bd7e;font:800 9px/1.2 Arial,sans-serif;letter-spacing:.11em}
+.marketplace-feature-legal p{color:#dce3d7;font:600 12px/1.5 Arial,sans-serif;margin:0}
+.marketplace-library-zone{margin-bottom:44px}
+.marketplace-division-heading{display:flex;gap:20px;align-items:end;justify-content:space-between;margin:0 3px 17px;color:#f3ebdd}
+.marketplace-division-heading h2{color:#f3ebdd}
+.marketplace-division-heading p{font:500 15px/1.5 Arial,sans-serif;margin:0;max-width:700px;color:#e1e1d8}
+.marketplace-count-label{display:inline-block;white-space:nowrap;color:#debd79;border:1px solid rgba(197,162,74,.44);border-radius:999px;padding:10px 12px;font:850 10px/1 Arial,sans-serif;letter-spacing:.09em}
+.marketplace-library-zone .library-feature,.marketplace-library-zone .library-shelf-wrap{margin-top:18px}
+.marketplace-stickers{margin-top:35px}
+.marketplace-sticker-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.market-sticker-card{border-radius:18px;overflow:hidden;background:#f3ebdd;border:1px solid #b7bec5;box-shadow:0 16px 30px rgba(0,0,0,.17)}
+.market-sticker-visual{position:relative;min-height:230px;display:grid;place-items:center;background:radial-gradient(circle at 47% 44%,#3a5c49,#0a1d14 76%);padding:24px}
+.market-sticker-visual img{width:100%;max-width:190px;height:190px;object-fit:contain;filter:drop-shadow(0 14px 12px rgba(0,0,0,.37))}
+.market-sticker-index{position:absolute;top:15px;left:15px;color:#e5c984;font:850 9px/1 Arial,sans-serif;letter-spacing:.1em}
+.market-sticker-sample{position:absolute;bottom:11px;right:12px;font:800 8px/1 Arial,sans-serif;letter-spacing:.08em;color:#f3ebdd}
+.market-sticker-copy{padding:18px}.market-sticker-status{font:900 9px/1.3 Arial,sans-serif;letter-spacing:.08em;color:#846a35}
+.market-sticker-copy h3{color:#183c2c;margin:10px 0 7px;font-size:27px;letter-spacing:-.045em}
+.market-sticker-copy p{color:#5c5b54;margin:0 0 16px;font-size:14px;line-height:1.4}
+.market-sticker-copy a{display:inline-flex;color:#234a36;font:850 11px/1.3 Arial,sans-serif;border-bottom:1px solid #ae945a;text-decoration:none;padding-bottom:5px}
+.marketplace-next-note{margin-top:18px;border:1px solid rgba(197,162,74,.5);border-radius:17px;padding:18px 21px;background:#123c2b;color:#efebdd;font:600 13px/1.5 Arial,sans-serif}
+.marketplace-next-note strong{font-weight:900;margin-right:7px}.marketplace-next-note span{color:#e8c57e;font-weight:800}
+@media(max-width:1100px){.marketplace-feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.marketplace-sticker-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.market-feature-visual{height:210px}}
+@media(max-width:700px){.marketplace-head-row{align-items:flex-start}.marketplace-head-seal{display:none}.marketplace-page{padding-left:16px;padding-right:16px}.marketplace-featured{padding:20px}.marketplace-section-top{align-items:start}.marketplace-featured-count strong{font-size:47px}.marketplace-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.market-feature-visual{height:165px}.marketplace-division-heading{align-items:start;flex-direction:column}.marketplace-feature-legal{align-items:start;flex-direction:column;gap:9px}}
+@media(max-width:420px){.marketplace-feature-grid{grid-template-columns:1fr}.market-feature-card{flex-direction:row;min-height:145px}.market-feature-visual{height:auto;min-height:145px;min-width:42%;max-width:42%}.market-feature-info{padding:13px;justify-content:center}.market-sticker-grid{grid-template-columns:1fr}.marketplace-stickers{margin-top:20px}.marketplace-featured-count{display:none}}
+@media(prefers-reduced-motion:reduce){.market-feature-card{transition:none}.market-feature-card:hover{transform:none}}
