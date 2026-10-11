@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0083 · Kokio's official emblem",
-    title:"Kokio's hibiscus and ritual hatchets join the emblem collection.",
-    body:"Crossed glyph-marked ritual hatchets meet a radiant white hibiscus and lush green leaves in Kalani Kane's creator-approved mark. Her character art and established OPI profile stay unchanged.",
-    href:"news.html#or-web-0083"
+    meta:"OR-WEB-0084 · Deuce joins the supporting cast",
+    title:"The warehouse gets its most self-appointed security officer.",
+    body:"Mono “Deuce” Russo joins the public character registry: a fully human junior support worker, an online college student, and the cheerful heart of the warehouse. He has no official OPI rating.",
+    href:"news.html#or-web-0084"
   }
 };
