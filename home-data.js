@@ -70,7 +70,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/latch/"],["Genesis →","events.html#genesis"]]
     },
     "Kokio": {
-      key:"kokio", image:"assets/characters/kokio/kokio-combat-01.webp",
+      key:"kokio", image:"assets/characters/kokio/kokio-combat-01.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
       alt:"Kokio wielding two glowing ritual hatchets in close combat",
       meta:"DEMI-GOD · HERO · HILO / HAWAIʻI ISLAND",
       teaser:"A Hilo warrior carrying power from something far older than the world around her.",
