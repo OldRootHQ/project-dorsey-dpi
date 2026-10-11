@@ -13,11 +13,11 @@ const indexable = [
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
   'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
-  'start-here.html','lore.html','lore/abyron/index.html','lore/abyron-powder/index.html','lore/abyron-discovery/index.html','lore/genesis/index.html','library.html','news.html','dpi.html','about.html','work-with-oldroot.html','contact.html','donate.html'
+  'start-here.html','lore.html','lore/abyron/index.html','lore/abyron-powder/index.html','lore/abyron-discovery/index.html','lore/genesis/index.html','marketplace.html','news.html','dpi.html','about.html','work-with-oldroot.html','contact.html','donate.html'
 ];
 
 const noindex = [
-  '404.html','cart.html','checkout.html','order-confirmation.html',
+  '404.html','cart.html','checkout.html','order-confirmation.html','library.html',
   ...Array.from({ length: 10 }, (_, i) => `library/oldroot-book-${i + 1}/index.html`)
 ];
 

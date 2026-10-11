@@ -40,6 +40,7 @@ jobs:
           node --check app.js
           node --check data.js
           node --check shop.js
+          node --check marketplace.js
           node --check lightbox.js
           node --check nav.js
           node --check tests/infrastructure.spec.js

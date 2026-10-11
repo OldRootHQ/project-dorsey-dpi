@@ -7,7 +7,7 @@
   function sync(){document.querySelectorAll("[data-cart-count]").forEach(el=>el.textContent=count());renderCart();renderCheckout();}
   function ensureDrawer(){
     if(document.querySelector(".bag-drawer"))return;
-    document.body.insertAdjacentHTML("beforeend",'<div class="bag-overlay" data-bag-close></div><aside class="bag-drawer" aria-label="Library Bag"><div class="bag-head"><strong>Your Library Bag</strong><button class="bag-close" type="button" data-bag-close>×</button></div><div class="bag-body"><div class="bag-empty">No titles are available to purchase yet.</div></div><div class="bag-actions"><a href="'+rootPath("cart.html")+'">View Full Bag</a><a href="'+rootPath("library.html")+'">Continue Browsing</a></div></aside>');
+    document.body.insertAdjacentHTML("beforeend",'<div class="bag-overlay" data-bag-close></div><aside class="bag-drawer" aria-label="Marketplace Bag"><div class="bag-head"><strong>Your Marketplace Bag</strong><button class="bag-close" type="button" data-bag-close>×</button></div><div class="bag-body"><div class="bag-empty">No items are available to purchase yet.</div></div><div class="bag-actions"><a href="'+rootPath("cart.html")+'">View Full Bag</a><a href="'+rootPath("marketplace.html")+'">Continue Browsing</a></div></aside>');
     document.querySelectorAll("[data-bag-close]").forEach(el=>el.addEventListener("click",closeBag));
   }
   function depth(){return location.pathname.includes("/library/oldroot-book-")?2:0}
@@ -18,7 +18,7 @@
   function renderCart(){
     const target=document.querySelector("#cartItems"); if(!target)return;
     const cart=read();
-    if(!cart.length){target.innerHTML='<div class="cart-empty"><h2>Your bag is empty.</h2><p>The first OldRoot titles are still being prepared for release.</p><a class="shop-secondary" href="library.html">Browse Library</a></div>';return;}
+    if(!cart.length){target.innerHTML='<div class="cart-empty"><h2>Your bag is empty.</h2><p>OldRoot books and merchandise are being prepared for release.</p><a class="shop-secondary" href="marketplace.html">Browse Marketplace</a></div>';return;}
     target.innerHTML=cart.map(x=>'<div>'+x.title+'</div>').join("");
   }
   function renderCheckout(){

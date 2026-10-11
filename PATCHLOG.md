@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0086 · October 10, 2026 · OldRoot Marketplace Launch (Browse-Only)
+
+- Rebranded the publishing Library into **Marketplace**, a single front door for the existing Library book records and emerging OldRoot merchandise. Main listing lives at `marketplace.html`; old `library.html` remains a non-indexed legacy entry with a canonical link to Marketplace.
+- Added a new five-item rotating Featured Finds showcase **before** Library. It picks three approved sticker previews and two of ten existing book records; selection changes on refresh/re-entry using session storage to avoid identical consecutive displays. Feature cards link to real character dossiers or book detail pages, never fake purchase actions.
+- Kept the existing eight-title Library spotlight slider, all ten placeholder title records, and their routes unchanged under the Library section. Added a first-wave sticker gallery for **Gila Monster, Commotion, Latch, Kokio** with transparent approved web emblems and prominent sample-stage notices.
+- Updated visible navigation and footer link labels sitewide from Library to Marketplace, repaired homepage entry links and sitemap/canonical metadata, and retained the existing bag infrastructure pending real payment and print supplier configuration.
+- Established **no payment processing, published sticker inventory, or live commerce promise**. The first real sale remains gated on owner merchant setup, approved physical samples, true vendor listings, pricing and shipping.
+
 ## OR-WEB-0085 · October 10, 2026 · Deuce Official Messy-Suit Emblem
 
 - Received the creator-approved standalone Deuce emblem: headless rumpled navy suit, open white collar, crooked dark-red necktie, black-and-amber circular badge, no background.

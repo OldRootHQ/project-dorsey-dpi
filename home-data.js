@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0085 · Deuce's official emblem",
-    title:"Deuce's crooked tie becomes a character mark.",
-    body:"The creator-approved amber-and-black suit badge brings Mono Russo's disheveled professional swagger to his dossier, registry, and Start Here. He's still our self-appointed “Security,” with no OPI rating.",
-    href:"news.html#or-web-0085"
+    meta:"OR-WEB-0086 · OldRoot Marketplace",
+    title:"The Library opens up into Marketplace.",
+    body:"One destination for the growing OldRoot Library and character merchandise. Five picks refresh each visit; stickers and books are still in prelaunch browsing until production and checkout are ready.",
+    href:"news.html#or-web-0086"
   }
 };
