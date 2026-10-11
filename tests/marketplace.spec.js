@@ -41,3 +41,34 @@ test('Marketplace is mobile safe and legacy Library is non-indexed',async({page}
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://oldroothq.github.io/project-dorsey-dpi/marketplace.html');
 });
+
+
+test('JavaScript-free Featured Finds stickers still open their own product pages', async ({browser})=>{
+  const context=await browser.newContext({javaScriptEnabled:false});
+  const page=await context.newPage();
+  try{
+    await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
+    await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]')).toHaveCount(3);
+    for(const slug of ['gila-monster','commotion','latch']){
+      const card=page.locator('#marketplaceFeaturedGrid [data-feature-id="'+slug+'"]');
+      await expect(card).toHaveAttribute('href','stickers/'+slug+'/');
+      await expect(card.locator('small')).toContainText('View sticker details');
+      await card.click();
+      await expect(page).toHaveURL(new RegExp('/stickers/'+slug+'/$'));
+      await expect(page.locator('main[data-sticker-product="'+slug+'"]')).toBeVisible();
+      await page.goBack({waitUntil:'domcontentloaded'});
+    }
+  } finally {
+    await context.close();
+  }
+});
+
+test('Featured sticker fallbacks remain correct when the rotation script fails', async ({page})=>{
+  await page.route('**/marketplace.js*',route=>route.abort());
+  await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
+  const links=await page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]').evaluateAll(xs=>xs.map(x=>x.getAttribute('href')));
+  expect(links).toEqual(['stickers/gila-monster/','stickers/commotion/','stickers/latch/']);
+  await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="book"]')).toHaveCount(2);
+  await page.locator('#marketplaceFeaturedGrid [data-feature-id="gila-monster"]').click();
+  await expect(page).toHaveURL(/\/stickers\/gila-monster\/$/);
+});
