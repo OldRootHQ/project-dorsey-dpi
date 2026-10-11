@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0092 · October 11, 2026 · Ballestera Official Despair & Vengeance Emblem
+
+- Imported the **creator-approved transparent Ballestera emblem** representing her internal despair and dazed vengeance: black floral hood, mourning skull makeup, amber poison vial, lower skull, red flowers and thorned gold ornamentation.
+- Resized the supplied transparent PNG to a web-optimized 720 × 720 alpha-preserving WebP, embedded in the established accessible SVG emblem wrapper. Kept the original illustration composition and clear background.
+- Added her mark to the **dossier's Character Mark**, Character Registry **below the portrait beside the name**, Start Here, OPI Analytics detail record and rotating homepage character spotlights. Preserved her original seven dossier illustrations and existing portrait images.
+- Ballestera remains **human, unenhanced, unaffiliated**; her eleven existing OPI/DPI category values, `officialOPI: null` and `suppressAggregate: true` are untouched. No overall power score was added.
+- Updated cache versions, visual placement regressions and a dedicated image integrity test. Marketplace's separate ten-sticker release remains untouched.
+
 ## OR-WEB-0091 · October 11, 2026 · Marketplace Sticker Collection Wave 2
 
 - Expanded the Marketplace sticker collection from four to **ten approved character-emblem sticker concepts**. Wave 2 includes **Remedie, Agent Emerald, Aftermark, Kincast, Anchorage and Deuce**; Wave 1 (Gila Monster, Commotion, Latch and Kokio) remains unchanged.
