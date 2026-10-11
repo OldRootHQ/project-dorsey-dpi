@@ -151,7 +151,7 @@ test('Agent Emerald canon is propagated as the technology-driven human with crea
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
 
   await page.goto(`${BASE}/start-here.html`, { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('11 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('12 active records');
   await expect(page.locator('a[href="characters/agent-emerald/"]')).toHaveCount(1);
 });
 
