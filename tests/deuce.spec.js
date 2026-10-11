@@ -109,8 +109,7 @@ test('Deuce is discoverable from Start Here, Dispatch, and sitemap',async({page}
  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.discovery-card[href="characters/deuce/"]')).toHaveCount(1);
  await expect(page.locator('.start-stat-panel')).toContainText('12 active records');
- await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
- await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0084');
+ // Deuce's registry and Dispatch entry persist even when newer updates take the homepage lead.
  await page.goto(BASE+'/news.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('#or-web-0084 a[href="characters/deuce/"]')).toHaveCount(1);
  expect(fs.readFileSync('sitemap.xml','utf8')).toContain('/characters/deuce/');
