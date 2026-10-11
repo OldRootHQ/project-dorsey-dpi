@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0082 · October 10, 2026 · Latch Official Smiley Emblem
+
+- Added the creator-approved Latch insignia, based closely on the yellow smiley painted on his tactical-gear patch with bright pink melting borders and Latch's fully covering black eyepatch.
+- Optimized the approved alpha-transparent artwork and embedded it in the established 720 × 720 character SVG wrapper; verified all 72 transfer blocks against the image-source content.
+- Displayed Latch's official emblem in the dossier's Character Mark area; below the Character Registry portrait beside his name (never over the portrait); on Start Here; in homepage spotlight data; and in OPI Analytics.
+- Kept all established Latch portraits, origin details, biography, official OPI 10.15 and existing character emblems untouched. Updated cache keys and corresponding public Dispatch.
+
 ## OR-WEB-0081 · October 10, 2026 · Origin-Only Character Records
 
 - Retired the separate Power Classification filter and display labels from the Character Registry and OPI Analytics. Registry filters now emphasize origin, role, and location; Origin is the default OPI chart color category.
