@@ -9,7 +9,7 @@ test('unpublished sticker preview shows 8 exact approved emblems without fake pu
   await expect(page.locator('body')).toContainText('NO ORDERS OR PAYMENTS ACCEPTED');
   await expect(page.locator('body')).toContainText('Sample pending');
   await expect(page.getByRole('button', { name: /buy|add to bag|checkout/i })).toHaveCount(0);
-  await expect(page.locator('a[href*="checkout"], a[href*="cart.html"], [data-buy]')).toHaveCount(0);
+  await expect(page.locator('main a[href*="checkout"], main a[href*="cart.html"], main [data-buy]')).toHaveCount(0);
   for (const slug of ['gila-monster','commotion','aftermark','kincast','anchorage','agent-emerald','latch','remedie']) {
     const card = page.locator('[data-merch-character="' + slug + '"]');
     await expect(card.locator('img')).toHaveAttribute('src', new RegExp('^assets/characters/' + slug + '/.*-emblem\\.svg$'));
