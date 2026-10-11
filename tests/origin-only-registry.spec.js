@@ -3,7 +3,7 @@ const BASE = 'http://127.0.0.1:8000';
 
 test('Registry has one origin filter, retains Demi-God and God, and no power-class filter', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(11);
+  await expect(page.locator('.character-card')).toHaveCount(12);
   await expect(page.getByText('Power Classification')).toHaveCount(0);
   await expect(page.locator('[data-filter-group="power"]')).toHaveCount(0);
   await expect(page.locator('[data-filter-group="origin"][value="human"]')).toHaveCount(1);
@@ -35,7 +35,7 @@ test('Registry has one origin filter, retains Demi-God and God, and no power-cla
   await page.locator('#filterClear').click();
   await page.locator('[data-filter-group="origin"][value="human"]').check();
   await page.locator('#filterApply').click();
-  await expect(page.locator('.character-card:visible')).toHaveCount(6);
+  await expect(page.locator('.character-card:visible')).toHaveCount(7);
 });
 
 test('OPI uses origin, preserves all eleven capability values and excludes retired fields', async ({ page }) => {
