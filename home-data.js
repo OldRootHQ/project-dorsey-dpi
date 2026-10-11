@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0082 · Latch official character emblem",
-    title:"Latch's signature smiley joins the emblem collection.",
-    body:"Latch Boswell's original melting yellow smiley is now an official character mark, with hot-pink drips and the black eyepatch that echoes his field identity. His established character artwork and OPI record remain unchanged.",
-    href:"news.html#or-web-0082"
+    meta:"OR-WEB-0083 · Kokio's official emblem",
+    title:"Kokio's hibiscus and ritual hatchets join the emblem collection.",
+    body:"Crossed glyph-marked ritual hatchets meet a radiant white hibiscus and lush green leaves in Kalani Kane's creator-approved mark. Her character art and established OPI profile stay unchanged.",
+    href:"news.html#or-web-0083"
   }
 };
