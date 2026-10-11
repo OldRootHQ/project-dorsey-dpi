@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0083 · October 10, 2026 · Kokio Official Hatchets & Hibiscus Emblem
+
+- Added the creator-approved Kokio emblem: symmetrical crossed stone ritual hatchets with **small tiki face glyphs**, decorative red geometric glyphs, and a large white hibiscus with green leaves and crimson ribbons. No sunset sphere or palm-tree background.
+- Optimized the alpha-transparent artwork for badges and embedded it in the site's established 720 × 720 SVG emblem wrapper; verified the exact Git blob SHA matches the locally built asset.
+- Integrated the emblem into Kokio's dossier Character Mark and established-emblem fact row, the Character Registry **below the portrait beside the identity text**, Start Here, Hilo's Known Characters card, homepage character spotlight, and OPI Analytics.
+- Preserved all existing Kokio illustrations and established canon, including the Takaro ritual-bond origin and eleven locked OPI categories. Updated data cache keys and corresponding Dispatch; added artwork and placement QA.
+
 ## OR-WEB-0082 · October 10, 2026 · Latch Official Smiley Emblem
 
 - Added the creator-approved Latch insignia, based closely on the yellow smiley painted on his tactical-gear patch with bright pink melting borders and Latch's fully covering black eyepatch.

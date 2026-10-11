@@ -1,41 +1,37 @@
-# OldRoot Emblem Collection — Vol. 1
-**Status:** PRELAUNCH / creator review only. No live store, no accepted orders, no physical stock, no payment processing.
+# OldRoot Emblem Collection — Vol. 1 / Four-Sticker First Wave
+**Status:** Private prelaunch proposal; no published merch page, payment links, seller account integration, or merchandise sale yet.
 
-## Design roster
-The following eight approved website emblems are exact source references for proofing; **not verified 300-DPI production files**.
+## Creator's confirmed corrections
+- **Kokio is live** in the public character registry with an official crossed ritual hatchets / hibiscus emblem. He is **not** a "future reveal" or unrevealed character. Kokio belongs in First Wave.
+- **Deuce is joining the registry** through separate ongoing site work, with an approved messy suit / absent-head / red-tie emblem. Do not create an unofficial active dossier or leak unreleased story details here. Reserve his emblem for later merchandise planning until registration is live.
+- Agent Emerald is the **green armor / visor / twin talons** emblem. Aftermark is the **black-and-teal mask** emblem. Never mix those two up.
 
-| Emblem | Source artwork | Embedded raster pixels | 300 DPI maximum unscaled width |
-|---|---|---|---|
-| Gila Monster | `assets/characters/gila-monster/gila-monster-emblem.svg` | 256 × 256 PNG | ~0.85 in |
-| Commotion | `assets/characters/commotion/commotion-emblem.svg` | 192 × 192 PNG | ~0.64 in |
-| Aftermark | `assets/characters/aftermark/aftermark-emblem.svg` | 256 × 256 WebP | ~0.85 in |
-| Kincast | `assets/characters/kincast/kincast-emblem.svg` | 160 × 160 WebP | ~0.53 in |
-| Anchorage | `assets/characters/anchorage/anchorage-emblem.svg` | 192 × 192 WebP | ~0.64 in |
-| Agent Emerald | `assets/characters/agent-emerald/agent-emerald-emblem.svg` | 180 × 180 WebP | ~0.60 in |
-| Latch | `assets/characters/latch/latch-emblem.svg` | 192 × 192 WebP | ~0.64 in |
-| Remedie | `assets/characters/remedie/remedie-emblem.svg` | 720 × 720 WebP | ~2.40 in |
+## First Wave (4 designs only)
+1. Gila Monster — fiery claw mark
+2. Commotion — purple mask / locs
+3. Latch — yellow eyepatch smiley, dripping pink
+4. Kokio — crossed ritual hatchets and hibiscus
 
-**Important:** All files are 720 × 720 SVG *wrappers*, but seven contain much smaller PNG/WebP images. Scaling the wrapper does NOT restore real detail. Avoid 2–3 inch sales until vendor proofs or higher-quality versions are approved. Source transparency is expected but must be verified in vendor artwork checker and sample.
+**Reserve** for later: Aftermark, Anchorage, Agent Emerald, Kincast, Remedie, and Deuce. All ten original image uploads are accounted for separately, including Deuce. Nine active character emblems appear on the draft catalog; Deuce is acknowledged only in roadmap text pending the registry integration.
 
-## Launch constraints
-- Merchant ownership: creator must open seller account and handle verification, payout details, tax/business requirements.
-- Final product: one emblem per sticker; start with die-cut or kiss-cut vinyl, preferably a simple single white underlay and consistent white border. Do not print checkerboard pixels as a background.
-- Source art: do not redraw, alter, reinterpret or AI-upscale approved icons without creator approval. Try to recover original high-res image masters or recreate pixel-perfect vector traces and submit for creator review.
-- Re-export supplier-specific transparent PNGs at actual pixel dimensions (e.g. a common 2 in × 2 in print area needs roughly 600 × 600 pixels at 300 DPI). Confirm actual product template and safe area with selected vendor. Preserve transparent background and sRGB.
-- Test the contour path: separated fragments/negative spaces can split a kiss-cut design. Check a white underlay/border and one physical sample for each design.
-- Confirm per-item base cost, minimum order, payment processing, shipping, taxes and actual fan checkout total **before** announcing prices.
-- The creator prefers accessible sticker pricing around $1–2 when economically feasible. Individual print-on-demand may not support that target. Consider fan-friendly packs or inventory batches, not a loss-making launch.
-- Fulfillment: no placeholder cart or fake checkout. External checkout links should point to real, user-owned product listings after verification.
+## Source-art inspection, October 10, 2026
+Original user uploads were inspected, not enlarged website SVGs. All ten are **1254 × 1254 RGBA PNG** images. Nine have real alpha transparency. **Agent Emerald is 1254 × 1254 but entirely opaque with a black background**; this requires cleanup and creator approval before a die-cut outline.
 
-## Current vendor facts (October 2026)
-- Fourthwall: no recurring storefront fee; publicly advertises kiss-cut stickers from $2.29 before buyer shipping and relevant processing costs. https://fourthwall.com/design-and-sell/custom-stickers and https://fourthwall.com/pricing/
-- Printify: PNG with transparent background recommended for kiss-cut stickers; 300 DPI recommended for raster art, product-specific dimensions vary. https://help.printify.com/hc/en-us/articles/4483637274257-What-are-the-recommended-guidelines-for-stickers and https://help.printify.com/hc/en-us/articles/4483617936657-What-type-of-print-files-does-Printify-require
+The website SVGs still embed lower-resolution images for efficiency; do not upload those tiny rasters as print masters. All ten uploaded originals, an artwork manifest with SHA-256 hashes, and first-wave white-keyline PNG proofs are preserved in the **creator handoff archive** `OldRoot_Sticker_Vol1_Prelaunch_Kit.zip` provided in this conversation. The archive is **not yet stored in GitHub** and should be saved safely by the creator.
 
-## Publication gate
-1. Creator approves physical product format and supplier/account choice.
-2. Artwork masters re-audited and suitable print exports made.
-3. Production sample ordered, received and inspected.
-4. Real prices and live checkout links confirmed by store owner.
-5. Only then change preview product statuses to published and link merchandise from the main OldRoot navigation. Update patch log and Dispatches as an actual public launch.
+## Proofs and quality gate
+- White-keyline PNGs are *visual proofs*, not printer-approved die-cut paths. The emblem interiors are unchanged; a white outline/underbase is added for demonstration.
+- Confirm final vendor (Fourthwall, Printify or a bulk sticker supplier), dimensions, sRGB color, minimum safe print resolution and trim/bleed rules.
+- For 2–3-inch test stickers, 1254px originals provide useful resolution, but physical samples remain essential. Do not claim vendor approval from pixel count alone.
+- Obtain test samples for all four, confirm adhesion, readability of tiny lines, real color, opacity and cutline.
+- Confirm production + fulfillment + shipping + checkout total. The creator prioritizes accessible fan pricing (ideally $1–$2 per small sticker); print-on-demand unit costs often make that infeasible. Explore small batches or packs if needed.
+- Seller account, ID/payout setup, legal/tax obligations and purchase approval must be completed by the creator. No fake Add to cart, fake checkout or inventory claims.
+- Keep the preview `noindex`, absent from public navigation, and in a **draft PR** until creator approves the full release.
+- When real product links and stock/fulfillment are verified, separately integrate public OldRoot Shop pages and add Dispatch / Patch Log entries as visitor-facing work.
 
-**Draft scope:** `merch.html`, `merch-preview.css`, this document and dedicated tests are intentionally **not published**. Their GitHub pull request is a staging/approval artifact.
+## Preview files
+- `merch.html` — nine canonical website emblem previews, four First Wave and five Reserve; no purchase controls
+- `merch-preview.css` — scoped styles, responsive design
+- `tests/merch-preview.spec.js` — safe noncommerce rendering and cross-device checks
+
+**Do not merge as a public shop launch.**

@@ -9,7 +9,7 @@ test('Kokio is promoted across public character discovery surfaces', async ({ pa
   await expect(card).toContainText('Kalani Kane');
   await expect(card).toContainText('Demi-God');
   await expect(card).toHaveAttribute('data-release-order', '8');
-  await expect(card.locator('img')).toHaveAttribute('src', 'assets/characters/kokio/kokio-casual.webp');
+  await expect(card.locator('.character-thumb')).toHaveAttribute('src', 'assets/characters/kokio/kokio-casual.webp');
 
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
   const kokioHome = await page.evaluate(() => ({
@@ -34,7 +34,7 @@ test('Kokio dossier preserves locked canon, art package, and narrative boundarie
   await page.goto(BASE + '/characters/kokio/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveText('KOKIO');
   await expect(page.locator('.character-subtitle')).toHaveText('Kalani Kane');
-  await expect(page.locator('.logo-slot')).toContainText('Mythic hero dossier');
+  await expect(page.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-emblem.svg?v=1');
   await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-01.webp');
   await expect(page.locator('.character-infobox > img')).toHaveAttribute('src', '../../assets/characters/kokio/kokio-combat-07.webp');
 

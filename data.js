@@ -74,7 +74,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Kokio", civilian:"Kalani Kane", classification:"Hero", role:"Hero",
     registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
     origin:"Ancient Tiki ritual / Takaro bond", originType:"Demi-God / Supernatural Ritual", 
-    affiliation:null, page:"characters/kokio/", image:"assets/characters/kokio/kokio-casual.webp",
+    affiliation:null, page:"characters/kokio/", image:"assets/characters/kokio/kokio-casual.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
     age:26, heightIn:67, weightLb:175, yearsActive:null,
     summary:"Hilo-based hero empowered through an ancient Tiki ritual bond with Takaro, combining juggernaut physicality, mystical force control, and dual ritual hatchets.",
     baseline:{Strength:33.0,Durability:32.1,Speed:28.4,Agility:26.7,Regeneration:13.1,Senses:13.8,Offense:35.6,Intellect:6.2,Combat:23.7,Mobility:16.7,Stamina:26.8},
