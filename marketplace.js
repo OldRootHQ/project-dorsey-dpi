@@ -14,7 +14,7 @@
   const save=ids=>{try{sessionStorage.setItem("oldroot-marketplace-features-v1",JSON.stringify(ids));}catch{}};
   let picked = shuffle([...shuffle(stickers).slice(0,3),...shuffle(books).slice(0,2)]);
   const last = getPrevious();
-  const same=(a,b)=>Array.isArray(b)&&a.length===b.length&&a.every((x,i)=>x===b[i]);
+  const same=(a,b)=>Array.isArray(b)&&a.length===b.length&&a.every(x=>b.includes(x));
   if(same(picked.map(p=>p.id),last)){
     // Guarantee a visibly different selection on a refresh/re-entry, even if the random shuffle repeats.
     const replacement=books.find(b=>!picked.some(p=>p.id===b.id));

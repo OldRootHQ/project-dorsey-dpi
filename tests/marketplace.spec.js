@@ -23,7 +23,7 @@ test('Featured five changes after refresh and never duplicates products',async({
   const before=await page.locator(FEATURED).evaluateAll(xs=>xs.map(x=>x.dataset.featureId));
   await page.reload({waitUntil:'domcontentloaded'});
   const after=await page.locator(FEATURED).evaluateAll(xs=>xs.map(x=>x.dataset.featureId));
-  expect(before).not.toEqual(after);
+  expect([...before].sort()).not.toEqual([...after].sort());
   expect(new Set(after).size).toBe(5);
 });
 test('Marketplace links resolve to real book records and published character pages',async({page})=>{
