@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0085 · October 10, 2026 · Deuce Official Messy-Suit Emblem
+
+- Received the creator-approved standalone Deuce emblem: headless rumpled navy suit, open white collar, crooked dark-red necktie, black-and-amber circular badge, no background.
+- Resized to 720 × 720 and converted into a transparent quality-92 WebP (83,780 bytes) inside the same SVG wrapper used for OldRoot's existing character marks. The original source image was not redrawn or replaced.
+- Added the official mark to Deuce's dossier Character Mark, the Character Registry **below his portrait beside the name**, and his Start Here discovery card. Preserved all five previous story images and canon, and kept him excluded from the OPI data.
+- Updated public Dispatch and homepage latest dispatch, plus cache versions and desktop/mobile positioning regression checks.
+
 ## OR-WEB-0084 · October 10, 2026 · Mono “Deuce” Russo Supporting Character
 
 - Published Deuce's public supporting-character dossier from the creator handoff, including legal identity, vitals, online VEU enrollment, boxing fundamentals, family and father's death, role as junior warehouse support, personality, and grounded relationships with Latch, Amari, Fury and his mother.
