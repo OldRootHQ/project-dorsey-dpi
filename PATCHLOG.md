@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0088 · October 10, 2026 · Marketplace Sticker Card Link Correction
+
+- Removed the second, conflicting character-dossier link from each first-wave sticker tile on Marketplace. The **entire sticker card** (artwork, name, description, and View Sticker action) now leads to its own actual Marketplace product page.
+- Kept the character dossier link **inside** each sticker detail page so visitor-facing shopping navigation is unambiguous.
+- The Featured Finds sticker rotation already led to sticker product pages and remains unchanged. The books section, product images, image viewer, first-wave roster, and non-purchasable samples status are preserved.
+- Added assertions that each sticker tile has exactly one link and tested navigation by artwork and product title. Bumped the Marketplace stylesheet cache key; no content/layout restructuring or payment functionality was introduced.
+- Release gate: full Site QA pass, GitHub merge and Pages deployment verification.
+
 ## OR-WEB-0087 · October 10, 2026 · Sticker Product Pages & Click-to-View Artwork
 
 - Created dedicated Marketplace product detail pages for all four first-wave stickers: **Gila Monster, Commotion, Latch, Kokio**, matching the existing book product layout and branding.

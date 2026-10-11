@@ -66,3 +66,8 @@
 .market-sticker-character{padding:0 18px 17px}
 .market-sticker-character a{color:#395f4b;text-decoration:none;font:850 11px/1.4 Arial,Helvetica,sans-serif}
 .market-sticker-character a:hover,.market-sticker-character a:focus-visible{text-decoration:underline}
+
+/* OR-WEB-0088: The full sticker tile is one product link. Character dossier navigation belongs in the detail page. */
+.market-sticker-product{min-height:100%;display:flex;flex-direction:column}
+.market-sticker-product .market-sticker-copy{flex:1;padding-bottom:19px}
+.market-sticker-product:focus-visible{outline:3px solid #bb9146;outline-offset:3px}

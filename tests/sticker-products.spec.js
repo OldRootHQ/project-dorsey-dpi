@@ -7,9 +7,10 @@ test('Market stickers open product pages, with character links still present',as
   for(const slug of products){
     const card=page.locator('[data-market-sticker="'+slug+'"]');
     await expect(card.locator('a.market-sticker-product')).toHaveAttribute('href','stickers/'+slug+'/');
-    await expect(card.locator('a[href="characters/'+slug+'/"]')).toHaveCount(1);
+    await expect(card.locator('a')).toHaveCount(1);
+    await expect(card.locator('a[href^="characters/"]')).toHaveCount(0);
   }
-  await page.locator('[data-market-sticker="gila-monster"] a.market-sticker-product').click();
+  await page.locator('[data-market-sticker="gila-monster"] .market-sticker-visual img').click();
   await expect(page).toHaveURL(/\/stickers\/gila-monster\/$/);
   await expect(page.locator('h1')).toContainText('Emblem Sticker');
 });
@@ -52,3 +53,17 @@ for(const slug of products){
     await expect(page.locator('.sticker-picture-trigger')).toBeVisible();
   });
 }
+
+test('all four sticker cards use one product destination from the artwork, name and action',async({page})=>{
+  const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio'};
+  for(const [slug,title] of Object.entries(titles)){
+    await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
+    const card=page.locator('[data-market-sticker="'+slug+'"]');
+    await expect(card.locator('a')).toHaveCount(1);
+    await expect(card.locator('a')).toHaveAttribute('href','stickers/'+slug+'/');
+    await card.locator('h3').click();
+    await expect(page).toHaveURL(new RegExp('/stickers/'+slug+'/$'));
+    await expect(page.getByRole('heading',{name:new RegExp(title+'\\s*Emblem Sticker')})).toBeVisible();
+    await expect(page.locator('a[href="../../characters/'+slug+'/"]')).toHaveCount(1);
+  }
+});
