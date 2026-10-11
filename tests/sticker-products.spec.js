@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const BASE='http://127.0.0.1:8000';
 const products=["gila-monster","commotion","latch","kokio","remedie","agent-emerald","aftermark","kincast","anchorage","deuce"];
+const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio','remedie':'Remedie','agent-emerald':'Agent Emerald','aftermark':'Aftermark','kincast':'Kincast','anchorage':'Anchorage','deuce':'Deuce'};
 
 test('Market stickers open product pages, with character links still present',async({page})=>{
   await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
@@ -26,7 +27,7 @@ for(const slug of products){
     await page.goto(BASE+'/stickers/'+slug+'/',{waitUntil:'domcontentloaded'});
     await expect(page.locator('main[data-sticker-product="'+slug+'"]')).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
-    const trigger=page.getByRole('button',{name:'Enlarge '+({ 'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio'}[slug])+' sticker preview'});
+    const trigger=page.getByRole('button',{name:'Enlarge '+titles[slug]+' sticker preview'});
     await expect(trigger.locator('img')).toBeVisible();
     await expect.poll(()=>trigger.locator('img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
     await trigger.click();
@@ -55,7 +56,7 @@ for(const slug of products){
 }
 
 test('all ten sticker cards use one product destination from the artwork, name and action',async({page})=>{
-  const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio','remedie':'Remedie','agent-emerald':'Agent Emerald','aftermark':'Aftermark','kincast':'Kincast','anchorage':'Anchorage','deuce':'Deuce'};
+  
   for(const [slug,title] of Object.entries(titles)){
     await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
     const card=page.locator('[data-market-sticker="'+slug+'"]');
