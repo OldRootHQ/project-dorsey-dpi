@@ -145,6 +145,6 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (relative === 'index.html' && !html.includes('home.js?v=5')) failures.push(relative + ': homepage runtime cache key stale');
   }
 
-  expect(htmlFiles.length).toBe(59);
+  expect(htmlFiles.length).toBe(65);
   expect(failures).toEqual([]);
 });
