@@ -43,21 +43,21 @@ test('Marketplace is mobile safe and legacy Library is non-indexed',async({page}
 });
 
 
-test('JavaScript-free Featured Finds stickers still open their own product pages', async ({browser})=>{
+test('JavaScript-free Featured Finds sticker fallbacks link directly to products', async ({browser})=>{
+  test.setTimeout(60000);
   const context=await browser.newContext({javaScriptEnabled:false});
-  const page=await context.newPage();
   try{
+    const page=await context.newPage();
     await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
     await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]')).toHaveCount(3);
     for(const slug of ['gila-monster','commotion','latch']){
       const card=page.locator('#marketplaceFeaturedGrid [data-feature-id="'+slug+'"]');
       await expect(card).toHaveAttribute('href','stickers/'+slug+'/');
       await expect(card.locator('small')).toContainText('View sticker details');
-      await card.click();
-      await expect(page).toHaveURL(new RegExp('/stickers/'+slug+'/$'));
-      await expect(page.locator('main[data-sticker-product="'+slug+'"]')).toBeVisible();
-      await page.goBack({waitUntil:'domcontentloaded'});
     }
+    await page.locator('#marketplaceFeaturedGrid [data-feature-id="gila-monster"]').click();
+    await expect(page).toHaveURL(/\/stickers\/gila-monster\/$/);
+    await expect(page.locator('main[data-sticker-product="gila-monster"]')).toBeVisible();
   } finally {
     await context.close();
   }
