@@ -67,8 +67,8 @@ test('Remedie SVG contains alpha-transparent approved sticker artwork and fits p
 });
 
 
-test('all seven registry emblems occupy the same below-image text position on desktop and mobile',async({page})=>{
-  const names=['Gila Monster','Commotion','Aftermark','Anchorage','Kincast','Remedie','Agent Emerald'];
+test('all eight registry emblems occupy the same below-image text position on desktop and mobile',async({page})=>{
+  const names=['Gila Monster','Commotion','Aftermark','Anchorage','Kincast','Remedie','Agent Emerald','Latch'];
   for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/characters.html',{waitUntil:'networkidle'});
