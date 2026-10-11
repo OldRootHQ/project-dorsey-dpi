@@ -25,6 +25,44 @@ test('all five creator-provided Deuce art assets survive optimized transparent-w
  }
 });
 
+test('approved Deuce emblem has transparent WebP data and renders on his dossier',async({page})=>{
+ const MARK='assets/characters/deuce/deuce-emblem.svg?v=1';
+ const svg=fs.readFileSync('assets/characters/deuce/deuce-emblem.svg','utf8');
+ expect(svg).toContain('viewBox="0 0 720 720"');
+ const match=svg.match(/data:image\/webp;base64,([A-Za-z0-9+/=]+)/);
+ expect(match).not.toBeNull();
+ const data=Buffer.from(match[1],'base64');
+ expect(data.toString('ascii',0,4)).toBe('RIFF');
+ expect(data.toString('ascii',8,12)).toBe('WEBP');
+ expect(data.includes(Buffer.from('ALPH'))).toBe(true);
+ expect(data.length).toBe(83780);
+ expect(crypto.createHash('sha256').update(data).digest('hex')).toBe('00b4e6c318095de440b2eab9f9a81121a11c017a84076c2b37d16c2f4c71ca8e');
+ await page.goto(BASE+'/characters/deuce/',{waitUntil:'domcontentloaded'});
+ const emblem=page.locator('.logo-slot.has-logo .character-logo');
+ await expect(emblem).toHaveAttribute('src','../../'+MARK);
+ await expect.poll(()=>emblem.evaluate(img=>img.complete&&img.naturalWidth>0)).toBe(true);
+});
+
+test('Deuce registry and Start Here mark stay beneath portrait and beside name',async({page})=>{
+ const MARK='assets/characters/deuce/deuce-emblem.svg?v=1';
+ for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
+  await page.setViewportSize(viewport);
+  await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
+  const card=page.locator('.character-card[href="characters/deuce/"]');
+  await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
+  const layout=await card.evaluate(card=>{
+   const portrait=card.querySelector('.character-thumb').getBoundingClientRect();
+   const copy=card.querySelector('.character-identity-copy').getBoundingClientRect();
+   const mark=card.querySelector('.character-card-mark');
+   const badge=mark.getBoundingClientRect();
+   return {below:badge.top>=portrait.bottom+1,beside:badge.left>=copy.right-1,static:getComputedStyle(mark).position==='static'};
+  });
+  expect(layout).toEqual({below:true,beside:true,static:true});
+  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('a[href="characters/deuce/"] .start-character-mark')).toHaveAttribute('src',MARK);
+ }
+});
+
 test('Deuce supporting character dossier is linked, illustrated, canon-faithful, and entirely unscored',async({page})=>{
  await page.goto(BASE+'/characters/deuce/',{waitUntil:'domcontentloaded'});
  await expect(page.locator('h1')).toHaveText('DEUCE');
