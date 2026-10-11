@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0084 · Deuce joins the supporting cast",
-    title:"The warehouse gets its most self-appointed security officer.",
-    body:"Mono “Deuce” Russo joins the public character registry: a fully human junior support worker, an online college student, and the cheerful heart of the warehouse. He has no official OPI rating.",
-    href:"news.html#or-web-0084"
+    meta:"OR-WEB-0086 · OldRoot Marketplace",
+    title:"The Library opens up into Marketplace.",
+    body:"One destination for the growing OldRoot Library and character merchandise. Five picks refresh each visit; stickers and books are still in prelaunch browsing until production and checkout are ready.",
+    href:"news.html#or-web-0086"
   }
 };

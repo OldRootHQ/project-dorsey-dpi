@@ -16,7 +16,7 @@ const pages = [
   ['abyron','/lore/abyron/'],
   ['abyron-discovery','/lore/abyron-discovery/'],
   ['genesis-lore','/lore/genesis/'],
-  ['library','/library.html'],
+  ['marketplace','/marketplace.html'],
   ['dispatches','/news.html'],
   ['opi','/dpi.html']
 ];
