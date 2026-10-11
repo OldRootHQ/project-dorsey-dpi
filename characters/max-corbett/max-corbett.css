@@ -1,0 +1,13 @@
+/* Max Corbett: creator-provided art, clean civilian engineering dossier. */
+.max-corbett-page .character-identity{grid-template-columns:minmax(0,1fr)}
+.max-corbett-page .max-featured-art img{object-position:center 14%}
+.max-gallery-section{margin:34px auto}
+.max-gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;margin-top:18px}
+.max-gallery-card{margin:0;min-width:0}
+.max-gallery-card button{width:100%}
+.max-gallery-card img{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;object-position:center 15%}
+.max-gallery-card figcaption{font-size:12px;line-height:1.5}
+@media(max-width:680px){
+  .max-gallery-grid{grid-template-columns:1fr;gap:20px}
+  .max-gallery-card img{max-height:560px}
+}

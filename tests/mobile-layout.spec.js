@@ -114,7 +114,7 @@ test('desktop Character Registry artwork stays within editorial card framing', a
     return { width: r.width, height: r.height };
   }));
 
-  expect(metrics.length).toBe(12);
+  expect(metrics.length).toBe(13);
   for (const metric of metrics) {
     expect(metric.height).toBeGreaterThanOrEqual(255);
     expect(metric.height).toBeLessThanOrEqual(365);

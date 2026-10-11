@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0089 · October 10, 2026 · Max Corbett Supporting Character / Creator Artwork
+
+- Added **Max Corbett**, a Boston-area 31-year-old senior mechatronics and exoskeleton-controls engineer, to the Supporting Characters public registry as release-order 13, with a complete civilian dossier.
+- Imported **all five creator-supplied Max illustrations** as web-optimized 900 × 1125 WebP files. Preserved the original visual compositions; used Max's workshop portrait on the registry and featured dossier cover, with four additional images in an accessible click-to-view gallery.
+- Linked Max's record to Mandy Ledger / Remedie's existing dossier, and added Start Here discovery, metadata, sitemap entry, and character registry listing.
+- Per creator instruction, Max has **no official emblem and no numeric OPI score**. No invented aliases, superpowers, combat record, birthday, weight, or standalone corporate canon was added.
+- Updated character count and sorting tests, phone-width assertions, social metadata, and illustration loading tests. Kept Marketplace releases 0087–0088 and their merchandise changes intact.
+
 ## OR-WEB-0088 · October 10, 2026 · Marketplace Sticker Card Link Correction
 
 - Removed the second, conflicting character-dossier link from each first-wave sticker tile on Marketplace. The **entire sticker card** (artwork, name, description, and View Sticker action) now leads to its own actual Marketplace product page.
