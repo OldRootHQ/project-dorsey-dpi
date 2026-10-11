@@ -75,6 +75,13 @@ window.OLDROOT_HOME = {
       meta:"DEMI-GOD · HERO · HILO / HAWAIʻI ISLAND",
       teaser:"A Hilo warrior carrying power from something far older than the world around her.",
       links:[["Character Dossier →","characters/kokio/"],["Hilo / Hawaiʻi Island →","locations/hilo/"],["OPI Analytics →","dpi.html"]]
+    },
+    "Ballestera": {
+      key:"ballestera", image:"assets/characters/ballestera/ballestera-featured.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
+      alt:"Ballestera studies a poison bottle by lamplight in her hidden southern Arizona RV laboratory",
+      meta:"HUMAN · UNDERWORLD CHEMIST · SOUTHERN ARIZONA",
+      teaser:"A life hollowed by grief and revenge. An old chemist whose fragile body hides a defended desert battlefield.",
+      links:[["Character Dossier →","characters/ballestera/"],["Individual OPI Categories →","dpi.html"]]
     }
   },
   // The supporting cast also appears in the rotating public character spotlight.
