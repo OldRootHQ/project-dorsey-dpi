@@ -3,10 +3,10 @@
   const grid = document.querySelector("#marketplaceFeaturedGrid");
   if (!grid) return;
   const stickers = [
-    {id:"gila-monster",title:"Gila Monster",asset:"assets/characters/gila-monster/gila-monster-emblem.svg",href:"characters/gila-monster/"},
-    {id:"commotion",title:"Commotion",asset:"assets/characters/commotion/commotion-emblem.svg",href:"characters/commotion/"},
-    {id:"latch",title:"Latch",asset:"assets/characters/latch/latch-emblem.svg",href:"characters/latch/"},
-    {id:"kokio",title:"Kokio",asset:"assets/characters/kokio/kokio-emblem.svg",href:"characters/kokio/"}
+    {id:"gila-monster",title:"Gila Monster",asset:"assets/characters/gila-monster/gila-monster-emblem.svg",href:"stickers/gila-monster/"},
+    {id:"commotion",title:"Commotion",asset:"assets/characters/commotion/commotion-emblem.svg",href:"stickers/commotion/"},
+    {id:"latch",title:"Latch",asset:"assets/characters/latch/latch-emblem.svg",href:"stickers/latch/"},
+    {id:"kokio",title:"Kokio",asset:"assets/characters/kokio/kokio-emblem.svg",href:"stickers/kokio/"}
   ].map(p=>({...p,kind:"sticker"}));
   const books = Array.from({length:10},(_,i)=>({id:"book-"+(i+1),title:"OldRoot Book "+(i+1),number:i+1,href:"library/oldroot-book-"+(i+1)+"/",kind:"book"}));
   const shuffle=arr=>{const out=[...arr];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;};
@@ -37,7 +37,7 @@
     const copy=document.createElement("div");copy.className="market-feature-info";
     const status=document.createElement("span");status.textContent=p.kind==="book"?"LIBRARY / COMING SOON":"EMBLEM STICKER / SAMPLE PENDING";
     const h=document.createElement("h3");h.textContent=p.title;
-    const action=document.createElement("small");action.textContent=p.kind==="book"?"View book record →":"Explore character →";
+    const action=document.createElement("small");action.textContent=p.kind==="book"?"View book record →":"View sticker details →";
     copy.append(status,h,action);a.append(art,copy);return a;
   };
   grid.replaceChildren(...picked.map(make));
