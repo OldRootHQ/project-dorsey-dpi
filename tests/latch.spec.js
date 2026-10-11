@@ -121,7 +121,7 @@ test('Latch dossier remains contained at phone width', async ({ page }) => {
 
 test('Latch release updates public counts, README, and sitemap', async ({ page }) => {
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat').filter({ hasText: 'Public character dossiers' })).toContainText('11 active records');
+  await expect(page.locator('.start-stat').filter({ hasText: 'Public character dossiers' })).toContainText('12 active records');
 
   const sitemap = await (await page.request.get(BASE + '/sitemap.xml')).text();
   expect(sitemap).toContain('/characters/latch/');
