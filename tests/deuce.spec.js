@@ -86,7 +86,7 @@ test('Deuce supporting character dossier is linked, illustrated, canon-faithful,
 
 test('Deuce is a supporting character in public registry, but never in the OPI dataset',async({page})=>{
  await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('.character-card')).toHaveCount(12);
+ await expect(page.locator('.character-card')).toHaveCount(13);
  const card=page.locator('.character-card[href="characters/deuce/"]');
  await expect(card).toHaveCount(1);
  await expect(card).toContainText('Mono Russo');
@@ -96,7 +96,7 @@ test('Deuce is a supporting character in public registry, but never in the OPI d
  await page.locator('#filterToggle').click();
  await page.locator('[data-filter-group="role"][value="support"]').check();
  await page.locator('#filterApply').click();
- await expect(page.locator('.character-card:visible')).toHaveCount(1);
+ await expect(page.locator('.character-card:visible')).toHaveCount(2);
  await expect(card).toBeVisible();
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
  const data=await page.evaluate(()=>({items:window.OLDROOT_CHARACTERS.map(x=>x.codename),count:window.OLDROOT_CHARACTERS.length}));
@@ -108,7 +108,7 @@ test('Deuce is a supporting character in public registry, but never in the OPI d
 test('Deuce is discoverable from Start Here, Dispatch, and sitemap',async({page})=>{
  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.discovery-card[href="characters/deuce/"]')).toHaveCount(1);
- await expect(page.locator('.start-stat-panel')).toContainText('12 active records');
+ await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
  // Deuce's registry and Dispatch entry persist even when newer updates take the homepage lead.
  await page.goto(BASE+'/news.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('#or-web-0084 a[href="characters/deuce/"]')).toHaveCount(1);
