@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const BASE='http://127.0.0.1:8000';
-const products=['gila-monster','commotion','latch','kokio'];
+const products=["gila-monster","commotion","latch","kokio","remedie","agent-emerald","aftermark","kincast","anchorage","deuce"];
+const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio','remedie':'Remedie','agent-emerald':'Agent Emerald','aftermark':'Aftermark','kincast':'Kincast','anchorage':'Anchorage','deuce':'Deuce'};
 
 test('Market stickers open product pages, with character links still present',async({page})=>{
   await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
@@ -19,14 +20,14 @@ test('Rotating sticker features open matching sticker products without changing 
   await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]')).toHaveCount(3);
   await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="book"]')).toHaveCount(2);
   const hrefs=await page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]').evaluateAll(xs=>xs.map(el=>el.getAttribute('href')));
-  for(const href of hrefs)expect(href).toMatch(/^stickers\/(gila-monster|commotion|latch|kokio)\/$/);
+  for(const href of hrefs)expect(href).toMatch(/^stickers\/(gila-monster|commotion|latch|kokio|remedie|agent-emerald|aftermark|kincast|anchorage|deuce)\/$/);
 });
 for(const slug of products){
   test(slug+' shows a clickable picture, functional lightbox and disabled purchasing',async({page})=>{
     await page.goto(BASE+'/stickers/'+slug+'/',{waitUntil:'domcontentloaded'});
     await expect(page.locator('main[data-sticker-product="'+slug+'"]')).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
-    const trigger=page.getByRole('button',{name:'Enlarge '+({ 'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio'}[slug])+' sticker preview'});
+    const trigger=page.getByRole('button',{name:'Enlarge '+titles[slug]+' sticker preview'});
     await expect(trigger.locator('img')).toBeVisible();
     await expect.poll(()=>trigger.locator('img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
     await trigger.click();
@@ -54,8 +55,8 @@ for(const slug of products){
   });
 }
 
-test('all four sticker cards use one product destination from the artwork, name and action',async({page})=>{
-  const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio'};
+test('all ten sticker cards use one product destination from the artwork, name and action',async({page})=>{
+  
   for(const [slug,title] of Object.entries(titles)){
     await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
     const card=page.locator('[data-market-sticker="'+slug+'"]');
