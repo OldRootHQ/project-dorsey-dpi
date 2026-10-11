@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0084 · Deuce joins the supporting cast",
-    title:"The warehouse gets its most self-appointed security officer.",
-    body:"Mono “Deuce” Russo joins the public character registry: a fully human junior support worker, an online college student, and the cheerful heart of the warehouse. He has no official OPI rating.",
-    href:"news.html#or-web-0084"
+    meta:"OR-WEB-0085 · Deuce's official emblem",
+    title:"Deuce's crooked tie becomes a character mark.",
+    body:"The creator-approved amber-and-black suit badge brings Mono Russo's disheveled professional swagger to his dossier, registry, and Start Here. He's still our self-appointed “Security,” with no OPI rating.",
+    href:"news.html#or-web-0085"
   }
 };
