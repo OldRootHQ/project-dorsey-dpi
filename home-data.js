@@ -100,9 +100,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0086 · OldRoot Marketplace",
-    title:"The Library opens up into Marketplace.",
-    body:"One destination for the growing OldRoot Library and character merchandise. Five picks refresh each visit; stickers and books are still in prelaunch browsing until production and checkout are ready.",
-    href:"news.html#or-web-0086"
+    meta:"OR-WEB-0091 · OldRoot Sticker Wave 2",
+    title:"Ten character emblems. One growing collection.",
+    body:"Remedie, Agent Emerald, Aftermark, Kincast, Anchorage, and Deuce join four original sticker designs in the Marketplace. All ten are preview-only until physical samples and checkout are ready.",
+    href:"news.html#or-web-0091"
   }
 };
