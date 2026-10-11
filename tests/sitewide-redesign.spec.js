@@ -25,6 +25,7 @@ const DARK_PAGES = [
   ['locations/seattle/', '.location-section'],
   ['locations/hilo/', '.location-section'],
   ['library.html', '.library-card'],
+  ['marketplace.html', '.market-feature-card'],
   ['library/oldroot-book-1/', '.product-buybox'],
   ['news.html', '.dispatch-card'],
   ['contact.html', '.mail-console'],
@@ -84,7 +85,7 @@ test('After Dark major pages remain viewport-safe on mobile', async ({ page }) =
     '/locations/baltimore/',
     '/locations/seattle/',
     '/locations/hilo/',
-    '/library.html',
+    '/marketplace.html',
     '/library/oldroot-book-1/',
     '/news.html',
     '/contact.html',
@@ -134,16 +135,16 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (html.includes('shop.css') && !html.includes('shop.css?v=2')) failures.push(relative + ': shop cache key stale');
     if (html.includes('lightbox.js') && !html.includes('lightbox.js?v=9')) failures.push(relative + ': lightbox cache key stale');
     if (html.includes('nav.js') && !html.includes('nav.js?v=5')) failures.push(relative + ': nav cache key stale');
-    if (html.includes('shop.js') && !html.includes('shop.js?v=1')) failures.push(relative + ': shop script cache key stale');
+    if (html.includes('shop.js') && !html.includes('shop.js?v=2')) failures.push(relative + ': shop script cache key stale');
     if (html.includes('locations.js') && !html.includes('locations.js?v=5')) failures.push(relative + ': locations script cache key stale');
     if (html.includes('locations.js') && !html.includes('location-data.js?v=2')) failures.push(relative + ': shared location data missing');
     if (relative === 'dpi.html' && !html.includes('data.js?v=33')) failures.push(relative + ': OPI data cache key stale');
     if (relative === 'dpi.html' && !html.includes('app.js?v=17')) failures.push(relative + ': OPI app cache key stale');
     if (relative === 'index.html' && !html.includes('home.css?v=5')) failures.push(relative + ': homepage stylesheet cache key stale');
-    if (relative === 'index.html' && !html.includes('home-data.js?v=30')) failures.push(relative + ': homepage data cache key stale');
+    if (relative === 'index.html' && !html.includes('home-data.js?v=31')) failures.push(relative + ': homepage data cache key stale');
     if (relative === 'index.html' && !html.includes('home.js?v=5')) failures.push(relative + ': homepage runtime cache key stale');
   }
 
-  expect(htmlFiles.length).toBe(53);
+  expect(htmlFiles.length).toBe(54);
   expect(failures).toEqual([]);
 });
