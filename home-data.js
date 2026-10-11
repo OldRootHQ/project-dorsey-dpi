@@ -63,7 +63,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/agent-emerald/"],["Seattle / Puget Sound →","locations/seattle/"],["Dunamis Dynamics →","organizations/dunamis-dynamics/"]]
     },
     "Latch": {
-      key:"latch", image:"assets/characters/latch/latch-featured.webp",
+      key:"latch", image:"assets/characters/latch/latch-featured.webp", mark:"assets/characters/latch/latch-emblem.svg?v=1",
       alt:"Latch moving through a damaged operational environment with a rifle",
       meta:"HUMAN · UNENHANCED · HERO · AUSTRALIAN",
       teaser:"An ordinary man recruited to stand beside people who are anything but ordinary.",
