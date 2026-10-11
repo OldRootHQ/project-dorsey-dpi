@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0091 · October 11, 2026 · Marketplace Sticker Collection Wave 2
+
+- Expanded the Marketplace sticker collection from four to **ten approved character-emblem sticker concepts**. Wave 2 includes **Remedie, Agent Emerald, Aftermark, Kincast, Anchorage and Deuce**; Wave 1 (Gila Monster, Commotion, Latch and Kokio) remains unchanged.
+- Created six dedicated sticker product pages with each character's existing approved emblem, accessible click-to-enlarge artwork, distinct character dossier links, and continuity between product pages. **No new emblems were invented or altered**.
+- Extended the five-item Featured Finds rotation to sample three sticker concepts from all ten, while retaining two book records and the existing non-repeating refresh behavior. Preserved the functional no-JavaScript sticker fallback URLs.
+- Kept all ten sticker listings clearly labeled as **digital previews / samples pending**, with no finalized sticker dimensions, finish, prices, stock, payment links, or active checkout.
+- Extended Marketplace tests, gallery/lightbox and mobile checks, and nonindex rules to all ten concepts. Real commerce setup remains a separate owner-approved step after fulfillment and payment provider configuration.
+
 ## OR-WEB-0090 · October 11, 2026 · Marketplace Fallback Sticker Link Repair
 
 - Fixed the **underlying preloaded Featured Finds HTML**: Gila Monster, Commotion, and Latch's visible default sticker cards still pointed to `characters/{slug}/` even after the collection grid was corrected. All default sticker cards now link to `stickers/{slug}/`, and their call-to-action is "View sticker details".
