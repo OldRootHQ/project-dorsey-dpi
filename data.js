@@ -109,5 +109,15 @@ window.OLDROOT_CHARACTERS = [
     summary:"Boston technology anti-hero wielding paired force-redirection gauntlets and a lightweight wearable exo-frame; a search for her missing brother grows into a mission of civilian protection.",
     baseline:{Strength:16.4,Durability:14.7,Speed:12.3,Agility:12.5,Regeneration:5.2,Senses:19.4,Offense:21.6,Intellect:9.4,Combat:14.8,Mobility:17.9,Stamina:10.8},
     conditional:[]
+  },
+  {
+    codename:"Flying Saucer", civilian:"Nikki Knotts", classification:"Hero", role:"Hero",
+    registryOrder:14, location:"Seattle, Washington", locationKey:"Seattle",
+    origin:"Human", originType:"Human / Technology",
+    affiliation:"Independent vigilante; future agency partnership", page:"characters/flying-saucer/", image:"assets/characters/flying-saucer/flying-saucer-harbor.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=1",
+    age:19, heightIn:64, weightLb:140, yearsActive:null,
+    summary:"Seattle pizza courier and emerging human vigilante. Wields six loaded high-velocity mechanical discs plus two manually reloaded reserves, and burst-assisted parkour equipment.",
+    officialOPI:null, suppressAggregate:true,
+    baseline:{Strength:5.5,Durability:5.4,Speed:7.3,Agility:9.2,Regeneration:4.7,Senses:6.4,Offense:14.1,Intellect:6.7,Combat:11.2,Mobility:11.0,Stamina:8.5}, conditional:[]
   }
 ];
