@@ -396,6 +396,35 @@
   background:var(--parchment);
   font-size:12px!important
 }
+/* Selected-globe-place context for a character associated with a wider region, not city limits. */
+.terminal-regional{
+  margin-top:12px;
+  padding:13px 14px;
+  border:1px solid #cbb78f;
+  border-left:3px solid #9c7c40;
+  border-radius:12px;
+  background:rgba(197,162,74,.12)
+}
+.terminal-regional[hidden]{display:none}
+.terminal-regional-heading{
+  display:block;
+  color:#70552a;
+  font:900 9px/1.5 Arial,Helvetica,sans-serif;
+  letter-spacing:.1em
+}
+.terminal-regional p{
+  margin:7px 0 0;
+  color:#3b4f41;
+  font:650 12px/1.55 Arial,Helvetica,sans-serif
+}
+.terminal-regional a{
+  color:var(--root-green);
+  font-weight:900;
+  text-decoration:underline;
+  text-underline-offset:2px
+}
+.terminal-regional a:focus-visible{outline:2px solid var(--root-green);outline-offset:2px}
+
 .location-explore{
   display:inline-flex;
   margin-top:16px;
