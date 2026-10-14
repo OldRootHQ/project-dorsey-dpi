@@ -10,6 +10,13 @@ window.OLDROOT_LOCATIONS = {
       character: "Gila Monster",
       characterUrl: "characters/gila-monster/",
       characters: [{ name: "Gila Monster", url: "characters/gila-monster/", role: "Hero" }],
+      // Regional links provide story context; they are not additional city residents or globe pins.
+      regionalConnections: [{
+        name: "Ballestera",
+        url: "characters/ballestera/",
+        location: "Outside the Nogales area, south of Tucson",
+        note: "Her concealed desert RV compound has no published exact coordinates."
+      }],
       dossierUrl: "locations/tucson/",
       note: "Tucson is the established operating city of Gila Monster.",
       coords: [-110.9747, 32.2226],

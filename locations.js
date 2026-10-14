@@ -49,6 +49,7 @@
     region: document.querySelector("#locationRegion"),
     status: document.querySelector("#locationStatus"),
     note: document.querySelector("#locationNote"),
+    regional: document.querySelector("#locationRegional"),
     explore: document.querySelector("#locationExplore")
   };
 
@@ -299,6 +300,30 @@
         terminal.character.appendChild(link);
       } else {
         terminal.character.textContent = item.character;
+      }
+    }
+
+    // Keep regional story connections distinct from the selected city's residents.
+    if (terminal.regional) {
+      const regionalConnections = Array.isArray(item.regionalConnections) ? item.regionalConnections : [];
+      terminal.regional.hidden = regionalConnections.length === 0;
+      terminal.regional.replaceChildren();
+      if (regionalConnections.length) {
+        const heading = document.createElement("strong");
+        heading.className = "terminal-regional-heading";
+        heading.textContent = "SOUTHERN ARIZONA · REGIONAL CONNECTION";
+        terminal.regional.appendChild(heading);
+        regionalConnections.forEach(connection => {
+          const detail = document.createElement("p");
+          const link = document.createElement("a");
+          link.href = connection.url;
+          link.textContent = connection.name;
+          detail.append(
+            link,
+            document.createTextNode(` — ${connection.location}. ${connection.note}`)
+          );
+          terminal.regional.appendChild(detail);
+        });
       }
     }
   }

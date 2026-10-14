@@ -2,6 +2,13 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0094 · October 13, 2026 · Tucson Globe / Ballestera Regional Accuracy
+
+- Corrected the Tucson globe selection to surface **Ballestera (Veronica Devoodas)** as a separate **southern Arizona regional connection**, with direct access to her character dossier and a location note about her concealed RV compound outside the **Nogales, Arizona area, south of Tucson**.
+- Preserved **Gila Monster as Tucson's known operating character**. Ballestera is not labeled as a Tucson resident or Los Moralistas member; her exact compound coordinates are not public, so no speculative globe pin was added.
+- Added the same distinction to Tucson's location dossier and linked its relevant regional record. No new map location dossier, primary city or precise placement was invented.
+- Maintained existing globe navigation, location count and cluster behavior. Expanded world-index regressions to validate selected/regional panels, city switching, reset, mobile layout, direct character links and cache revisions.
+
 ## OR-WEB-0093 · October 13, 2026 · Flying Saucer / Nikki Knotts Character Launch
 
 - Published **Flying Saucer / Nikki Knotts**, a 19-year-old Seattle pizza-delivery courier and independent, unenhanced human vigilante, as the **14th public character registry record** (and the 12th OPI analytic record).

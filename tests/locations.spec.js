@@ -108,6 +108,46 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
   await assertNoPageErrors(page, errors);
 });
 
+test('Tucson globe surfaces Ballestera as a Nogales-area regional connection, not a Tucson resident', async ({ page }) => {
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('http://127.0.0.1:8000/locations.html#tucson', { waitUntil: 'networkidle' });
+
+  await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
+  await expect(page.locator('#locationCharacter a')).toHaveCount(1);
+  await expect(page.locator('#locationCharacter a')).toHaveText('Gila Monster');
+  await expect(page.locator('#locationRegional')).toBeVisible();
+  await expect(page.locator('#locationRegional')).toContainText('Outside the Nogales area, south of Tucson');
+  await expect(page.locator('#locationRegional')).toContainText('no published exact coordinates');
+  await expect(page.locator('#locationRegional a')).toHaveText('Ballestera');
+  await expect(page.locator('#locationRegional a')).toHaveAttribute('href', 'characters/ballestera/');
+
+  // Regional story links never create invented globe locations or move city pins.
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  await expect(page.locator('#techGlobe .location-node[data-key="ballestera"]')).toHaveCount(0);
+  const data = await page.evaluate(() => window.OLDROOT_LOCATIONS);
+  expect(data.tucson.regionalConnections).toHaveLength(1);
+  expect(data.tucson.regionalConnections[0].name).toBe('Ballestera');
+
+  await page.locator('[data-location="chicago"]').click();
+  await expect(page.locator('#locationRegional')).toBeHidden();
+  await expect(page.locator('#locationCharacter a')).toHaveText('Commotion');
+  await page.locator('[data-location="tucson"]').click();
+  await expect(page.locator('#locationRegional')).toBeVisible();
+  await page.locator('#resetGlobe').click();
+  await expect(page.locator('#locationRegional a')).toHaveAttribute('href', 'characters/ballestera/');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(page.locator('#locationRegional')).toBeVisible();
+  await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(2);
+
+  await page.goto('http://127.0.0.1:8000/locations/tucson/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('.location-main')).toContainText('not in Tucson');
+  await expect(page.locator('.location-facts a[href="../../characters/ballestera/"]')).toBeVisible();
+  await expect(page.locator('.location-facts a[href="../../characters/gila-monster/"]')).toBeVisible();
+  await assertNoPageErrors(page, errors);
+});
+
 test('Locations globe prefers local world topology when the remote fallback is unavailable', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
