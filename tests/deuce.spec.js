@@ -102,7 +102,7 @@ test('Deuce is a supporting character in public registry, but never in the OPI d
  const data=await page.evaluate(()=>({items:window.OLDROOT_CHARACTERS.map(x=>x.codename),count:window.OLDROOT_CHARACTERS.length}));
  expect(data.items).not.toContain('Deuce');
  expect(data.items).not.toContain('Mono Russo');
- expect(data.count).toBe(11);
+ expect(data.count).toBe(12);
 });
 
 test('Deuce is discoverable from Start Here, Dispatch, and sitemap',async({page})=>{

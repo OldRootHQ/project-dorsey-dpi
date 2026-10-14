@@ -9,7 +9,7 @@ test('Public-facing character pages no longer repeat negative Ascendant labels',
     'characters/gila-monster/', 'characters/commotion/', 'characters/aftermark/',
     'characters/kincast/', 'characters/anchorage/', 'characters/agent-emerald/',
     'characters/latch/', 'characters/kokio/', 'characters/amari-razman/',
-    'characters/ballestera/', 'characters/remedie/'
+    'characters/ballestera/', 'characters/remedie/', 'characters/flying-saucer/'
   ];
   for (const route of routes) {
     await page.goto(BASE + '/' + route, { waitUntil: 'domcontentloaded' });
@@ -21,7 +21,7 @@ test('Public-facing character pages no longer repeat negative Ascendant labels',
 test('Character source preserves origin meaning and OPI without negative status assignments', async ({ page }) => {
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
   const chars = await page.evaluate(() => window.OLDROOT_CHARACTERS);
-  expect(chars).toHaveLength(11);
+  expect(chars).toHaveLength(12);
   for (const c of chars) {
     expect(c).not.toHaveProperty('ascendantStatus');
     expect(c).not.toHaveProperty('powerClass');
