@@ -28,7 +28,12 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
     await page.locator(`[data-location="${key}"]`).click();
     await expect(page.locator('#locationName')).toHaveText(name);
     await expect(page).toHaveURL(new RegExp(`#${key}$`));
-    await expect(page.locator('#locationCharacter a')).toHaveAttribute('href', characterHref);
+    await expect(page.locator('#locationCharacter a').first()).toHaveAttribute('href', characterHref);
+    if (key === 'seattle') {
+      await expect(page.locator('#locationCharacter a')).toHaveCount(2);
+      await expect(page.locator('#locationCharacter a').nth(1)).toHaveAttribute('href','characters/flying-saucer/');
+      await expect(page.locator('#locationCharacter a').nth(1)).toHaveText('Flying Saucer');
+    }
   }
 
   await page.locator('[data-location="baltimore"]').click();
