@@ -3,7 +3,7 @@ const BASE = 'http://127.0.0.1:8000';
 
 test('Registry has one origin filter, retains Demi-God and God, and no power-class filter', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(13);
+  await expect(page.locator('.character-card')).toHaveCount(14);
   await expect(page.getByText('Power Classification')).toHaveCount(0);
   await expect(page.locator('[data-filter-group="power"]')).toHaveCount(0);
   await expect(page.locator('[data-filter-group="origin"][value="human"]')).toHaveCount(1);
