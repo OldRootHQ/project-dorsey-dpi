@@ -36,7 +36,10 @@ test('Flying Saucer dossier includes canon, original visuals and no spoiler reve
    expect(publicText.toLowerCase()).not.toContain(spoiler);
  }
  const images=page.locator('main img');
- await expect.poll(()=>images.evaluateAll(nodes=>nodes.every(n=>n.complete&&n.naturalWidth>0))).toBe(true);
+ for(const image of await images.all()){
+  await image.scrollIntoViewIfNeeded();
+  await expect.poll(()=>image.evaluate(node=>node.complete&&node.naturalWidth>0)).toBe(true);
+ }
 });
 
 test('Nikki joins the 14-person registry with her emblem below her portrait, not over it',async({page})=>{
