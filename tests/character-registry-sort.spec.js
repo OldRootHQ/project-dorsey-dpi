@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Max Corbett', 'Remedie'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Max Corbett', 'Remedie'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
