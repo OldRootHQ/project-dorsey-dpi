@@ -35,7 +35,8 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Ballestera': 10,
     'Remedie': 11,
     'Deuce': 12,
-    'Max Corbett': 13
+    'Max Corbett': 13,
+    'Flying Saucer': 14
   });
 });
 
