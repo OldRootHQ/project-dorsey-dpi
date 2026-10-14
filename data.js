@@ -114,7 +114,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Flying Saucer", civilian:"Nikki Knotts", classification:"Hero", role:"Hero",
     registryOrder:14, location:"Seattle, Washington", locationKey:"Seattle",
     origin:"Human", originType:"Human / Technology",
-    affiliation:"Independent vigilante; future agency partnership", page:"characters/flying-saucer/", image:"assets/characters/flying-saucer/flying-saucer-harbor.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=1",
+    affiliation:"Independent vigilante; future agency partnership", page:"characters/flying-saucer/", image:"assets/characters/flying-saucer/flying-saucer-harbor.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=2",
     age:19, heightIn:64, weightLb:140, yearsActive:null,
     summary:"Seattle pizza courier and emerging human vigilante. Wields six loaded high-velocity mechanical discs plus two manually reloaded reserves, and burst-assisted parkour equipment.",
     officialOPI:null, suppressAggregate:true,

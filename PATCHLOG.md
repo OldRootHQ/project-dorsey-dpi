@@ -2,12 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
-## OR-WEB-0094 · October 13, 2026 · Tucson Globe / Ballestera Regional Accuracy
+## OR-WEB-0094 · October 13, 2026 · Flying Saucer Official Sticker Emblem and Marketplace Release
 
-- Corrected the Tucson globe selection to surface **Ballestera (Veronica Devoodas)** as a separate **southern Arizona regional connection**, with direct access to her character dossier and a location note about her concealed RV compound outside the **Nogales, Arizona area, south of Tucson**.
-- Preserved **Gila Monster as Tucson's known operating character**. Ballestera is not labeled as a Tucson resident or Los Moralistas member; her exact compound coordinates are not public, so no speculative globe pin was added.
-- Added the same distinction to Tucson's location dossier and linked its relevant regional record. No new map location dossier, primary city or precise placement was invented.
-- Maintained existing globe navigation, location count and cluster behavior. Expanded world-index regressions to validate selected/regional panels, city switching, reset, mobile layout, direct character links and cache revisions.
+- Replaced Flying Saucer's original Triple Strike character mark with the newly creator-approved **white die-cut sticker-style version**, retaining three amber-gold mechanical discs and fractured lilac detailing. All seven cinematic illustrations and her canon remain unchanged.
+- Preserved the exact approved 1,254 × 1,254 transparent PNG as the **full-resolution sticker master**, plus a matching 1,254 × 1,254 high-quality transparent WebP and self-contained SVG emblem for fast responsive character displays. No fake AI-upscaling or artwork substitutions.
+- Updated the official emblem on Nikki's dossier, below the registry portrait, Start Here, homepage spotlight and OPI Analytics with versioned URLs to prevent stale old-art caching.
+- Expanded the browse-only Marketplace from **ten to eleven sticker designs**, added Flying Saucer to the three-sticker Featured Finds rotation, and published a dedicated sticker product page with a clickable full-resolution image viewer and character-dossier link.
+- Retained **sample pending**, **no announced price**, **unfinalized cutline/physical size**, nonindexed product previews and disabled checkout. This is a digital concept, not a manufactured item.
+- Kept the two-book/three-sticker Featured Finds balance and all existing ten product routes intact; extended regression tests to protect image sharpness, mobile placement, links and prelaunch commerce safety.
 
 ## OR-WEB-0093 · October 13, 2026 · Flying Saucer / Nikki Knotts Character Launch
 

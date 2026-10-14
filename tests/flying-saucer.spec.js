@@ -1,19 +1,27 @@
 const {test,expect}=require('@playwright/test');
 const fs=require('fs');
+const crypto=require('crypto');
 const BASE='http://127.0.0.1:8000';
 const ASSETS='assets/characters/flying-saucer/';
-const MARK=ASSETS+'flying-saucer-emblem.svg?v=1';
+const MARK=ASSETS+'flying-saucer-emblem.svg?v=2';
 const ratings={Strength:5.5,Durability:5.4,Speed:7.3,Agility:9.2,Regeneration:4.7,Senses:6.4,Offense:14.1,Intellect:6.7,Combat:11.2,Mobility:11.0,Stamina:8.5};
 
 test('Triple Strike has genuine alpha and all seven illustrations are real WebP files',async()=>{
  const svg=fs.readFileSync(ASSETS+'flying-saucer-emblem.svg','utf8');
  expect(svg).toContain('Triple Strike');
- expect(svg).toContain('viewBox="0 0 720 720"');
+ expect(svg).toContain('viewBox="0 0 1254 1254"');
  expect(svg).toContain('data:image/webp;base64,');
  const buffer=fs.readFileSync(ASSETS+'flying-saucer-emblem.webp');
  expect(buffer.toString('ascii',0,4)).toBe('RIFF');
  expect(buffer.toString('ascii',8,12)).toBe('WEBP');
  expect(buffer.includes(Buffer.from('ALPH'))).toBe(true);
+ const master=fs.readFileSync(ASSETS+'flying-saucer-sticker-master.png');
+ expect(master.subarray(0,8).toString('hex')).toBe('89504e470d0a1a0a');
+ expect(master.readUInt32BE(16)).toBe(1254);
+ expect(master.readUInt32BE(20)).toBe(1254);
+ expect(crypto.createHash('sha256').update(master).digest('hex')).toBe('84bc691344df5cd428a299a6a7a12336fcba2765ca3ff0c217654637f4d07463');
+ expect(buffer.length).toBeGreaterThan(400000);
+ expect(svg).toContain('white die-cut outline');
  for(const asset of ['rain-combat','sunset-jump','pizza','cascade','snow','harbor','workshop']){
   const b=fs.readFileSync(ASSETS+'flying-saucer-'+asset+'.webp');
   expect(b.length,asset).toBeGreaterThan(25000);

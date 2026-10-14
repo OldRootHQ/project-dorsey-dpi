@@ -63,7 +63,7 @@ window.OLDROOT_HOME = {
       links:[["Character Dossier →","characters/agent-emerald/"],["Seattle / Puget Sound →","locations/seattle/"],["Dunamis Dynamics →","organizations/dunamis-dynamics/"]]
     },
     "Flying Saucer": {
-      key:"flying-saucer", image:"assets/characters/flying-saucer/flying-saucer-sunset-jump.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=1",
+      key:"flying-saucer", image:"assets/characters/flying-saucer/flying-saucer-sunset-jump.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=2",
       alt:"Flying Saucer leaps across Seattle rooftops at sunset with her mechanical disc launchers",
       meta:"HUMAN · DISC TECH · CORE HERO · SEATTLE",
       teaser:"Nineteen, fearless, and fast. A pizza courier with a pair of disc shooters, an impossible level of confidence, and a very real heart.",
@@ -114,9 +114,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0093 · Flying Saucer / Nikki Knotts",
-    title:"Flying Saucer joins the heroes of OldRoot.",
-    body:"Meet nineteen-year-old Seattle pizza courier Nikki Knotts: an unenhanced vigilante armed with disc launchers, a rebellious streak and a heart big enough to get her into trouble. Her official Triple Strike emblem, seven creator illustrations and full dossier are live.",
-    href:"news.html#or-web-0093"
+    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
+    title:"Flying Saucer joins the OldRoot sticker collection.",
+    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
+    href:"news.html#or-web-0094"
   }
 };
