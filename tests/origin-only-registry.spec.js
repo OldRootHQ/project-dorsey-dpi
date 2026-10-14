@@ -35,7 +35,7 @@ test('Registry has one origin filter, retains Demi-God and God, and no power-cla
   await page.locator('#filterClear').click();
   await page.locator('[data-filter-group="origin"][value="human"]').check();
   await page.locator('#filterApply').click();
-  await expect(page.locator('.character-card:visible')).toHaveCount(8);
+  await expect(page.locator('.character-card:visible')).toHaveCount(9);
 });
 
 test('OPI uses origin, preserves all eleven capability values and excludes retired fields', async ({ page }) => {
@@ -43,7 +43,7 @@ test('OPI uses origin, preserves all eleven capability values and excludes retir
   await expect(page.locator('#color-by')).toHaveValue('originType');
   await expect(page.locator('#color-by option[value="powerClass"]')).toHaveCount(0);
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
-  expect(records).toHaveLength(11);
+  expect(records).toHaveLength(12);
   for (const c of records) {
     expect(c).not.toHaveProperty('powerClass');
     expect(c).not.toHaveProperty('ascendantStatus');
@@ -69,7 +69,7 @@ test('OPI uses origin, preserves all eleven capability values and excludes retir
 
 test('Every published dossier uses an origin record instead of a power-class row', async ({ page }) => {
   test.setTimeout(90000);
-  for (const slug of ['gila-monster','commotion','aftermark','kincast','anchorage','agent-emerald','latch','kokio','amari-razman','ballestera','remedie']) {
+  for (const slug of ['gila-monster','commotion','aftermark','kincast','anchorage','agent-emerald','latch','kokio','amari-razman','ballestera','remedie','flying-saucer']) {
     await page.goto(BASE + '/characters/' + slug + '/', { waitUntil: 'domcontentloaded' });
     await expect(page.locator('.character-infobox')).toContainText('Origin');
     await expect(page.locator('.character-infobox')).not.toContainText('Power class');
