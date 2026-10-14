@@ -2,7 +2,18 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0093 · October 13, 2026 · Flying Saucer / Nikki Knotts Character Launch
+
+- Published **Flying Saucer / Nikki Knotts**, a 19-year-old Seattle pizza-delivery courier and independent, unenhanced human vigilante, as the **14th public character registry record** (and the 12th OPI analytic record).
+- Imported **all seven creator-supplied character illustrations** and the approved transparent **Triple Strike emblem**, optimized as genuine WebP artwork with the emblem displayed in the site's standard SVG badge wrapper. No new or substitute images were invented.
+- Built a full linked dossier covering personality, the Knotts family, Agent Emerald as strictly platonic older-brother figure, Nikki's own first victory, the recovered disc clue, daily life, tracksuit, disc ammo mechanics, assisted mobility, combat weaknesses, future agency involvement and friendships.
+- Kept the **writer-only Trank storyline and all unapproved future equipment upgrades out of public pages**, and preserved the rule that Nikki's **tracksuit has no chest emblem**.
+- Published all **eleven locked OPI attributes** exactly: Strength 5.5, Durability 5.4, Speed 7.3, Agility 9.2, Regeneration 4.7, Senses 6.4, Offense 14.1, Intellect 6.7, Combat 11.2, Mobility 11.0, Stamina 8.5. No creator-approved combined OPI was given, so no aggregate score is published.
+- Established her dossier, separate registry mark beside her text below the portrait, Start Here discovery card, homepage character spotlight, OPI Analytics, Seattle known-character connections, reciprocal Agent Emerald / Deuce links, sitemap entry, Dispatch and cache revisions.
+- Updated browser regressions for mobile, official art, records, visual identity, canon boundary and disc counts.
+
 ## OR-WEB-0092 · October 11, 2026 · Ballestera Official Despair & Vengeance Emblem
+
 
 - Imported the **creator-approved transparent Ballestera emblem** representing her internal despair and dazed vengeance: black floral hood, mourning skull makeup, amber poison vial, lower skull, red flowers and thorned gold ornamentation.
 - Resized the supplied transparent PNG to a web-optimized 720 × 720 alpha-preserving WebP, embedded in the established accessible SVG emblem wrapper. Kept the original illustration composition and clear background.

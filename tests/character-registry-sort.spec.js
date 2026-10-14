@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Max Corbett', 'Remedie'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Kokio', 'Latch', 'Max Corbett', 'Remedie'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Kokio', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
@@ -35,7 +35,8 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Ballestera': 10,
     'Remedie': 11,
     'Deuce': 12,
-    'Max Corbett': 13
+    'Max Corbett': 13,
+    'Flying Saucer': 14
   });
 });
 
@@ -61,10 +62,10 @@ test('Character Registry sorting stays active while filters are applied', async 
   await page.locator('#filterApply').click();
 
   await expect(page.locator('#registrySort')).toHaveValue('newest');
-  expect(await cardNames(page, true)).toEqual(['Amari Razman', 'Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
+  expect(await cardNames(page, true)).toEqual(['Flying Saucer', 'Amari Razman', 'Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
 
   await page.locator('#registrySort').selectOption('release');
-  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio', 'Amari Razman']);
+  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio', 'Amari Razman', 'Flying Saucer']);
 });
 
 test('Character Registry sort controls remain phone-safe', async ({ page }) => {

@@ -17,6 +17,7 @@ test('active character dossiers display cinematic side-by-side identity and appr
 
   for (const url of DOSSIERS) {
     await page.goto(BASE + url, { waitUntil: 'domcontentloaded' });
+    await expect.poll(() => page.locator('.character-feature-art img').evaluate(img => img.complete && img.naturalWidth > 0), {timeout:12000}).toBe(true);
 
     const layout = await page.evaluate(() => {
       const identity = document.querySelector('.character-identity').getBoundingClientRect();
