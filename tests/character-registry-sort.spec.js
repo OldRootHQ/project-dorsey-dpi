@@ -62,10 +62,10 @@ test('Character Registry sorting stays active while filters are applied', async 
   await page.locator('#filterApply').click();
 
   await expect(page.locator('#registrySort')).toHaveValue('newest');
-  expect(await cardNames(page, true)).toEqual(['Amari Razman', 'Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
+  expect(await cardNames(page, true)).toEqual(['Flying Saucer', 'Amari Razman', 'Kokio', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
 
   await page.locator('#registrySort').selectOption('release');
-  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio', 'Amari Razman']);
+  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Kokio', 'Amari Razman', 'Flying Saucer']);
 });
 
 test('Character Registry sort controls remain phone-safe', async ({ page }) => {
