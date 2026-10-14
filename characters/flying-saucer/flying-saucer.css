@@ -1,0 +1,9 @@
+/* Flying Saucer / Nikki Knotts. OR-WEB-0093. Public character identity styling only. */
+.character-shell[data-dossier="flying-saucer"]{--dossier-accent:#c69cff}
+.character-shell[data-dossier="flying-saucer"] .character-identity{background:radial-gradient(circle at 10% 10%,rgba(192,122,255,.18),transparent 52%),linear-gradient(130deg,#1c1334,#0d1520)!important}
+.character-shell[data-dossier="flying-saucer"] .character-thesis{color:#ead9ff!important}
+.character-shell[data-dossier="flying-saucer"] .flying-saucer-scaling-note{margin-top:18px;padding:15px 18px;border-left:3px solid #c69cff;background:rgba(82,45,118,.22);border-radius:8px}
+.character-shell[data-dossier="flying-saucer"] .character-feature-art-trigger img{object-fit:contain!important}
+.character-shell[data-dossier="flying-saucer"] .character-feature-art{background:linear-gradient(130deg,#17102e,#0c1720)}
+.character-shell[data-dossier="flying-saucer"] .dossier-illustration img{object-fit:contain}
+@media(max-width:650px){.character-shell[data-dossier="flying-saucer"] .character-feature-art{min-height:270px}}
