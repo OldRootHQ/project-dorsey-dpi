@@ -62,6 +62,13 @@ window.OLDROOT_HOME = {
       artClass:"agent-emerald-home-art",
       links:[["Character Dossier →","characters/agent-emerald/"],["Seattle / Puget Sound →","locations/seattle/"],["Dunamis Dynamics →","organizations/dunamis-dynamics/"]]
     },
+    "Flying Saucer": {
+      key:"flying-saucer", image:"assets/characters/flying-saucer/flying-saucer-sunset-jump.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=1",
+      alt:"Flying Saucer leaps across Seattle rooftops at sunset with her mechanical disc launchers",
+      meta:"HUMAN · DISC TECH · CORE HERO · SEATTLE",
+      teaser:"Nineteen, fearless, and fast. A pizza courier with a pair of disc shooters, an impossible level of confidence, and a very real heart.",
+      links:[["Character Dossier →","characters/flying-saucer/"],["Agent Emerald →","characters/agent-emerald/"],["Seattle →","locations/seattle/"]]
+    },
     "Latch": {
       key:"latch", image:"assets/characters/latch/latch-featured.webp", mark:"assets/characters/latch/latch-emblem.svg?v=1",
       alt:"Latch moving through a damaged operational environment with a rifle",
@@ -107,9 +114,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0091 · OldRoot Sticker Wave 2",
-    title:"Ten character emblems. One growing collection.",
-    body:"Remedie, Agent Emerald, Aftermark, Kincast, Anchorage, and Deuce join four original sticker designs in the Marketplace. All ten are preview-only until physical samples and checkout are ready.",
-    href:"news.html#or-web-0091"
+    meta:"OR-WEB-0093 · Flying Saucer / Nikki Knotts",
+    title:"Flying Saucer joins the heroes of OldRoot.",
+    body:"Meet nineteen-year-old Seattle pizza courier Nikki Knotts: an unenhanced vigilante armed with disc launchers, a rebellious streak and a heart big enough to get her into trouble. Her official Triple Strike emblem, seven creator illustrations and full dossier are live.",
+    href:"news.html#or-web-0093"
   }
 };
