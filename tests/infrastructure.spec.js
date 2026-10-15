@@ -203,15 +203,15 @@ test('OldRoot is clearly identifiable to search crawlers as a superhero universe
   expect(website.about.name).toBe('OldRoot');
   expect(website.about.genre).toBe('Superhero fiction');
 
-  expect(robots).toBe('User-agent: *\\nAllow: /\\n\\nSitemap: https://oldroothq.com/sitemap.xml\\n'.replaceAll('\\n', '\n'));
+  expect(robots).toBe('User-agent: *\nAllow: /\n\nSitemap: https://oldroothq.com/sitemap.xml\n');
   expect(robots).toContain('User-agent: *\nAllow: /');
   expect(robots).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
 });
 
 test('public OldRoot surfaces do not advertise outside infrastructure brands', async () => {
-  const forbidden = /chat[\\s-]?gpt|openai|github(?:\\.io)?|oai-searchbot/i;
+  const forbidden = /chat[\s-]?gpt|openai|github(?:\.io)?|oai-searchbot/i;
   const exclusions = new Set(['.git', '.github', 'node_modules', 'tests']);
-  const extensions = /\\.(html|js|css|xml|txt|md)$/i;
+  const extensions = /\.(html|js|css|xml|txt|md)$/i;
   const problems = [];
 
   function scan(directory = ROOT) {
