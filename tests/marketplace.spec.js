@@ -39,7 +39,7 @@ test('Marketplace is mobile safe and legacy Library is non-indexed',async({page}
   expect(dims.scroll).toBeLessThanOrEqual(dims.width+2);
   await page.goto(BASE+'/library.html',{waitUntil:'domcontentloaded'});
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://oldroothq.github.io/project-dorsey-dpi/marketplace.html');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href','https://oldroothq.com/marketplace.html');
 });
 
 

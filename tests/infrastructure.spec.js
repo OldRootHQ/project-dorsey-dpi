@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const BASE = 'https://oldroothq.github.io/project-dorsey-dpi/';
+const BASE = 'https://oldroothq.com/';
 const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 
 const indexable = [
@@ -124,10 +124,11 @@ test('local page links resolve to repository files', async () => {
       if (!href || /^(https?:|mailto:|tel:|javascript:|#)/i.test(href)) continue;
       href = href.split('#')[0].split('?')[0];
       if (!href) continue;
-      if (href.startsWith('/project-dorsey-dpi/')) href = href.slice('/project-dorsey-dpi/'.length);
-      else if (href.startsWith('/')) continue;
-      const resolved = path.posix.normalize(path.posix.join(dir === '.' ? '' : dir, href));
-      const target = href.endsWith('/') ? path.join(ROOT, resolved, 'index.html') : path.join(ROOT, resolved);
+      const fromSiteRoot = href.startsWith('/');
+      const directoryLink = href.endsWith('/');
+      if (fromSiteRoot) href = href.slice(1);
+      const resolved = path.posix.normalize(fromSiteRoot ? href : path.posix.join(dir === '.' ? '' : dir, href));
+      const target = directoryLink ? path.join(ROOT, resolved, 'index.html') : path.join(ROOT, resolved);
       if (!fs.existsSync(target)) failures.push(relative + ' -> ' + match[1]);
     }
   }
@@ -160,4 +161,18 @@ test('image markup preserves accessibility and reserves measurable WebP space', 
     }
   }
   expect(failures).toEqual([]);
+});
+
+test('OldRootHQ custom domain is configured and legacy project URLs are absent from live pages', async () => {
+  expect(read('CNAME').trim()).toBe('oldroothq.com');
+  const tree = ['index.html', '404.html', ...indexable, ...noindex];
+  const failures = [];
+  for (const file of new Set(tree)) {
+    const html = read(file);
+    if (html.includes('https://oldroothq.github.io/project-dorsey-dpi')) failures.push(file + ': legacy public URL');
+    if (/["'(]\\/project-dorsey-dpi\\//.test(html)) failures.push(file + ': legacy root-relative project path');
+  }
+  expect(failures).toEqual([]);
+  expect(read('robots.txt')).toContain('https://oldroothq.com/sitemap.xml');
+  expect(read('sitemap.xml')).toContain('<loc>https://oldroothq.com/</loc>');
 });

@@ -129,7 +129,7 @@ test('every masthead exposes an explicit Home tab with the correct relative path
     const relative = path.relative(root, file).replace(/\\/g, '/');
     const expected = relative.includes('/') ? 'href="../../index.html">Home</a>' : 'href="index.html">Home</a>';
     const homeActive = relative === 'index.html' && html.includes('class="active" href="index.html">Home</a>');
-    const projectRootHome = relative === '404.html' && html.includes('href="/project-dorsey-dpi/">Home</a>');
+    const projectRootHome = relative === '404.html' && html.includes('href="/">Home</a>');
     if (!html.includes(expected) && !homeActive && !projectRootHome) missing.push(relative);
   }
   expect(missing).toEqual([]);
