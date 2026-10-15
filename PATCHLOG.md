@@ -1,6 +1,13 @@
 # OldRoot Website Patch Log
 
-This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
+This file is the internal release ledger for website changes. Do not automatically mirror maintenance, SEO, infrastructure, UI polish, or cleanup into public Dispatches (`news.html`). Reserve Dispatches for character reveals, new canon, publishing announcements, and other reader-facing creative milestones.
+
+## OR-WEB-0098 · October 15, 2026 · Dispatch Editorial Policy and Homepage Spotlight
+
+- Removed the OR-WEB-0097 housekeeping announcement from the public Dispatches page; historical technical notes stay in this internal patch ledger only.
+- Stopped Kokio from appearing in the homepage randomized character spotlight, without deleting or changing Kokio's official dossier, the full Character Registry, lore, location links, or sticker product.
+- Updated regression checks so the public note stays absent and the homepage spotlight excludes Kokio.
+- Established an explicit editorial policy: routine website maintenance does not generate a public Dispatch.
 
 ## OR-WEB-0097 · October 15, 2026 · OldRoot-First Public Editorial Cleanup
 
