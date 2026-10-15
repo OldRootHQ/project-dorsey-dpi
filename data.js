@@ -71,18 +71,8 @@ window.OLDROOT_CHARACTERS = [
     conditional:[]
   },
   {
-    codename:"Kokio", civilian:"Kalani Kane", classification:"Hero", role:"Hero",
-    registryOrder:8, location:"Hilo, Hawaiʻi Island", locationKey:"Hilo",
-    origin:"Ancient Tiki ritual / Takaro bond", originType:"Demi-God / Supernatural Ritual", 
-    affiliation:null, page:"characters/kokio/", image:"assets/characters/kokio/kokio-casual.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
-    age:26, heightIn:67, weightLb:175, yearsActive:null,
-    summary:"Hilo-based hero empowered through an ancient Tiki ritual bond with Takaro, combining juggernaut physicality, mystical force control, and dual ritual hatchets.",
-    baseline:{Strength:33.0,Durability:32.1,Speed:28.4,Agility:26.7,Regeneration:13.1,Senses:13.8,Offense:35.6,Intellect:6.2,Combat:23.7,Mobility:16.7,Stamina:26.8},
-    conditional:[]
-  },
-  {
     codename:"Amari Razman", civilian:"Amari Razman", classification:"Hero", role:"Hero",
-    registryOrder:9, location:"Brooklyn, New York", locationKey:"Brooklyn",
+    registryOrder:8, location:"Brooklyn, New York", locationKey:"Brooklyn",
     origin:"Human", originType:"Human / Training", 
     affiliation:"Post-Genesis hero-recruitment operation", page:"characters/amari-razman/", image:"assets/characters/amari-razman/amari-registry.webp",
     age:33, heightIn:68, weightLb:162, yearsActive:null,
@@ -91,7 +81,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Ballestera", civilian:"Veronica Devoodas", classification:"Unaffiliated", role:"Unaffiliated",
-    registryOrder:10, location:"Nogales area, southern Arizona", locationKey:"Nogales",
+    registryOrder:9, location:"Nogales area, southern Arizona", locationKey:"Nogales",
     origin:"Human", originType:"Human / Chemistry", 
     affiliation:"Unaffiliated / southern Arizona underworld", page:"characters/ballestera/", image:"assets/characters/ballestera/ballestera-registry.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
     age:58, heightIn:null, weightLb:null, yearsActive:null,
@@ -102,7 +92,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Remedie", civilian:"Mandy Ledger", classification:"Anti-Hero", role:"Anti-Hero",
-    registryOrder:11, location:"Boston, Massachusetts", locationKey:"Boston",
+    registryOrder:10, location:"Boston, Massachusetts", locationKey:"Boston",
     origin:"Human / Wearable Technology", originType:"Human / Technology", 
     affiliation:"Ledger technology company / Independent", page:"characters/remedie/", image:"assets/characters/remedie/remedie-registry.webp", mark:"assets/characters/remedie/remedie-emblem.svg?v=1",
     age:28, heightIn:66, weightLb:160, yearsActive:null,
@@ -112,7 +102,7 @@ window.OLDROOT_CHARACTERS = [
   },
   {
     codename:"Flying Saucer", civilian:"Nikki Knotts", classification:"Hero", role:"Hero",
-    registryOrder:14, location:"Seattle, Washington", locationKey:"Seattle",
+    registryOrder:13, location:"Seattle, Washington", locationKey:"Seattle",
     origin:"Human", originType:"Human / Technology",
     affiliation:"Independent vigilante; future agency partnership", page:"characters/flying-saucer/", image:"assets/characters/flying-saucer/flying-saucer-harbor.webp", mark:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=2",
     age:19, heightIn:64, weightLb:140, yearsActive:null,

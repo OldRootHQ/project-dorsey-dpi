@@ -22,8 +22,7 @@
 
   const establishedLocations=Object.entries(locations).filter(([,loc])=>loc&&loc.dossierUrl&&!loc.reference&&String(loc.id||"").startsWith("LOC-"));
   const upcoming=Array.isArray(config.upcoming)?config.upcoming:[];
-  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio");
-  const selectedCharacters=pickRandom(homeSpotlightPool,3);
+  const selectedCharacters=pickRandom(characters,3);
   const selectedLocations=pickRandom(establishedLocations,3);
   const selectedUpcoming=pickRandom(upcoming,3);
 
@@ -80,7 +79,7 @@
   }
 
   window.OLDROOT_HOME_STATE={
-    characterPool:homeSpotlightPool.map(c=>c.codename),
+    characterPool:characters.map(c=>c.codename),
     selectedCharacters:selectedCharacters.map(c=>c.codename),
     locationPool:establishedLocations.map(([key])=>key),
     selectedLocations:selectedLocations.map(([key])=>key),
