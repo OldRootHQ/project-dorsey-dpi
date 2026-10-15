@@ -1,3 +1,10 @@
+## OR-WEB-0099 · October 15, 2026 · Issue #1 Title Reveal and Character Retirement
+
+- Officially announced **OldRoot Issue #1: Under Observation** as **IN DEVELOPMENT** across the homepage, Marketplace book-one listing and product record, and a publishing Dispatch. No cover art, release date, featured cast, synopsis or plot connections are inferred.
+- Retired an existing character from current OldRoot continuity, removing its live registry, OPI, spotlight, sticker product, dedicated dossier, imagery and location-specific lore. Removed obsolete public announcements and broken paths, adjusted indexed sitemap records, and retired the Hilo-only location record.
+- Prepared a homepage community vote section titled **Who should get the next issue?** pending a verified real poll endpoint; no fabricated votes/results.
+- Updated current-site regression coverage for counts, remaining routes and spoiler-safe announcement. Internal patch record only; public Dispatch carries the legitimate publishing announcement, not website maintenance.
+
 # OldRoot Website Patch Log
 
 This file is the internal release ledger for website changes. Do not automatically mirror maintenance, SEO, infrastructure, UI polish, or cleanup into public Dispatches (`news.html`). Reserve Dispatches for character reveals, new canon, publishing announcements, and other reader-facing creative milestones.
@@ -5,8 +12,8 @@ This file is the internal release ledger for website changes. Do not automatical
 ## OR-WEB-0098 · October 15, 2026 · Dispatch Editorial Policy and Homepage Spotlight
 
 - Removed the OR-WEB-0097 housekeeping announcement from the public Dispatches page; historical technical notes stay in this internal patch ledger only.
-- Stopped Kokio from appearing in the homepage randomized character spotlight, without deleting or changing Kokio's official dossier, the full Character Registry, lore, location links, or sticker product.
-- Updated regression checks so the public note stays absent and the homepage spotlight excludes Kokio.
+- Stopped retired character from appearing in the homepage randomized character spotlight, without deleting or changing retired character's official dossier, the full Character Registry, lore, location links, or sticker product.
+- Updated regression checks so the public note stays absent and the homepage spotlight excludes retired character.
 - Established an explicit editorial policy: routine website maintenance does not generate a public Dispatch.
 
 ## OR-WEB-0097 · October 15, 2026 · OldRoot-First Public Editorial Cleanup
@@ -62,7 +69,7 @@ This file is the internal release ledger for website changes. Do not automatical
 
 ## OR-WEB-0091 · October 11, 2026 · Marketplace Sticker Collection Wave 2
 
-- Expanded the Marketplace sticker collection from four to **ten approved character-emblem sticker concepts**. Wave 2 includes **Remedie, Agent Emerald, Aftermark, Kincast, Anchorage and Deuce**; Wave 1 (Gila Monster, Commotion, Latch and Kokio) remains unchanged.
+- Expanded the Marketplace sticker collection from four to **ten approved character-emblem sticker concepts**. Wave 2 includes **Remedie, Agent Emerald, Aftermark, Kincast, Anchorage and Deuce**; Wave 1 (Gila Monster, Commotion, Latch and retired character) remains unchanged.
 - Created six dedicated sticker product pages with each character's existing approved emblem, accessible click-to-enlarge artwork, distinct character dossier links, and continuity between product pages. **No new emblems were invented or altered**.
 - Extended the five-item Featured Finds rotation to sample three sticker concepts from all ten, while retaining two book records and the existing non-repeating refresh behavior. Preserved the functional no-JavaScript sticker fallback URLs.
 - Kept all ten sticker listings clearly labeled as **digital previews / samples pending**, with no finalized sticker dimensions, finish, prices, stock, payment links, or active checkout.
@@ -94,7 +101,7 @@ This file is the internal release ledger for website changes. Do not automatical
 
 ## OR-WEB-0087 · October 10, 2026 · Sticker Product Pages & Click-to-View Artwork
 
-- Created dedicated Marketplace product detail pages for all four first-wave stickers: **Gila Monster, Commotion, Latch, Kokio**, matching the existing book product layout and branding.
+- Created dedicated Marketplace product detail pages for all four first-wave stickers: **Gila Monster, Commotion, Latch, retired character**, matching the existing book product layout and branding.
 - Sticker gallery cards now open these product pages when clicked; character dossier links remain available separately. The five-item rotating Featured Finds still presents three random sticker designs and two book records, but now links sticker finds to their appropriate product pages.
 - Added large clickable gallery imagery to each sticker page using the official approved emblem and OldRoot's existing keyboard-accessible image viewer. Supports button click or keyboard activation, Escape/close dismissal, and focus return. Gallery presentation remains labeled as a **digital design preview**, not an actual photograph of manufactured stickers.
 - Made sample/purchase states explicit: **Sample Pending**, price not announced, physical size and finish unknown, disabled sample button, no functioning or fake checkout.
@@ -105,7 +112,7 @@ This file is the internal release ledger for website changes. Do not automatical
 
 - Rebranded the publishing Library into **Marketplace**, a single front door for the existing Library book records and emerging OldRoot merchandise. Main listing lives at `marketplace.html`; old `library.html` remains a non-indexed legacy entry with a canonical link to Marketplace.
 - Added a new five-item rotating Featured Finds showcase **before** Library. It picks three approved sticker previews and two of ten existing book records; selection changes on refresh/re-entry using session storage to avoid identical consecutive displays. Feature cards link to real character dossiers or book detail pages, never fake purchase actions.
-- Kept the existing eight-title Library spotlight slider, all ten placeholder title records, and their routes unchanged under the Library section. Added a first-wave sticker gallery for **Gila Monster, Commotion, Latch, Kokio** with transparent approved web emblems and prominent sample-stage notices.
+- Kept the existing eight-title Library spotlight slider, all ten placeholder title records, and their routes unchanged under the Library section. Added a first-wave sticker gallery for **Gila Monster, Commotion, Latch, retired character** with transparent approved web emblems and prominent sample-stage notices.
 - Updated visible navigation and footer link labels sitewide from Library to Marketplace, repaired homepage entry links and sitemap/canonical metadata, and retained the existing bag infrastructure pending real payment and print supplier configuration.
 - Established **no payment processing, published sticker inventory, or live commerce promise**. The first real sale remains gated on owner merchant setup, approved physical samples, true vendor listings, pricing and shipping.
 
@@ -126,12 +133,12 @@ This file is the internal release ledger for website changes. Do not automatical
 - The approved emblem motif is the headless messy suit and loosened red tie. The exact separate approved emblem file was not supplied in this website room; the dossier labels the existing concept and does not invent a different insignia. Original artwork can be integrated when available.
 - Updated site-cache key, sitemap metadata test coverage, character-count expectations, and release-order tests.
 
-## OR-WEB-0083 · October 10, 2026 · Kokio Official Hatchets & Hibiscus Emblem
+## OR-WEB-0083 · October 10, 2026 · retired character Official Hatchets & Hibiscus Emblem
 
-- Added the creator-approved Kokio emblem: symmetrical crossed stone ritual hatchets with **small tiki face glyphs**, decorative red geometric glyphs, and a large white hibiscus with green leaves and crimson ribbons. No sunset sphere or palm-tree background.
+- Added the creator-approved retired character emblem: symmetrical crossed stone ritual hatchets with **small tiki face glyphs**, decorative red geometric glyphs, and a large white hibiscus with green leaves and crimson ribbons. No sunset sphere or palm-tree background.
 - Optimized the alpha-transparent artwork for badges and embedded it in the site's established 720 × 720 SVG emblem wrapper; verified the exact Git blob SHA matches the locally built asset.
-- Integrated the emblem into Kokio's dossier Character Mark and established-emblem fact row, the Character Registry **below the portrait beside the identity text**, Start Here, Hilo's Known Characters card, homepage character spotlight, and OPI Analytics.
-- Preserved all existing Kokio illustrations and established canon, including the Takaro ritual-bond origin and eleven locked OPI categories. Updated data cache keys and corresponding Dispatch; added artwork and placement QA.
+- Integrated the emblem into retired character's dossier Character Mark and established-emblem fact row, the Character Registry **below the portrait beside the identity text**, Start Here, Hilo's Known Characters card, homepage character spotlight, and OPI Analytics.
+- Preserved all existing retired character illustrations and established canon, including the retired mythic entity ritual-bond origin and eleven locked OPI categories. Updated data cache keys and corresponding Dispatch; added artwork and placement QA.
 
 ## OR-WEB-0082 · October 10, 2026 · Latch Official Smiley Emblem
 
@@ -143,7 +150,7 @@ This file is the internal release ledger for website changes. Do not automatical
 ## OR-WEB-0081 · October 10, 2026 · Origin-Only Character Records
 
 - Retired the separate Power Classification filter and display labels from the Character Registry and OPI Analytics. Registry filters now emphasize origin, role, and location; Origin is the default OPI chart color category.
-- Replaced the two unresolved Origin-filter placeholders with **Demi-God** and **God**. Kept Kokio’s established Demi-God/Takaro origin without assigning any existing character the God origin. Added an Inborn Anomaly origin filter for Kincast, whose twin-shadow condition began at birth, and a Human origin filter for technology users and unenhanced humans.
+- Replaced the two unresolved Origin-filter placeholders with **Demi-God** and **God**. Kept retired character’s established Demi-God/retired mythic entity origin without assigning any existing character the God origin. Added an Inborn Anomaly origin filter for Kincast, whose twin-shadow condition began at birth, and a Human origin filter for technology users and unenhanced humans.
 - Removed `powerClass` and the redundant, empty `ascendantStatus` fields from all 11 structured character records. Narrative `origin` and detailed `originType` now drive public origin reporting; all baseline and conditional OPI values, creator-assigned official OPI values, roles, biographies, and artwork are preserved.
 - Replaced power-class labels in character summaries and dossier fact rows with established origin descriptions, and migrated obsolete classification links to the Lore Index Origin reference. Historical patch and dispatch entries are retained as release records.
 - Updated homepage spotlight captions and fallback labels alongside cache keys and browser regression coverage for the Origin-only system and Demi-God/God origin options.
@@ -300,7 +307,7 @@ This file is the internal release ledger for website changes. Do not automatical
 
 ## OR-WEB-0061 · October 8, 2026 · Cinematic Character Archives Across All Published Dossiers
 
-- Launched a shared cinematic dossier system for every currently published character: **Gila Monster, Commotion, Aftermark, Kincast, Anchorage, Agent Emerald, Latch, and Kokio**.
+- Launched a shared cinematic dossier system for every currently published character: **Gila Monster, Commotion, Aftermark, Kincast, Anchorage, Agent Emerald, Latch, and retired character**.
 - Created `dossier-experience.css` and `dossier-experience.js` with eight canon-informed atmospheric identities, large editorial cover compositions using original approved feature art, legible identity panels, and a polished shared OldRoot interface.
 - Added chapter indexes based entirely on each existing biography's headings, prominent illustrated story-record interludes using existing official images, improved dossier typography and section hierarchy, and curated, accessible galleries of the original art.
 - Added an interactive OPI category inspector that reads and explains existing official baseline values without recalculating or revising scores; conditional measurements remain separately disclosed where canon provides them.
@@ -501,27 +508,27 @@ This file is the internal release ledger for website changes. Do not automatical
 ## OR-WEB-0036 · October 3, 2026 · Power Classification Corrections
 
 - Reclassified Anchorage from Superhuman to **E&A Human**, using the existing OldRoot Power Classification taxonomy.
-- Reclassified Kokio from Superhuman to **Demi-God**, using the existing OldRoot Power Classification taxonomy.
+- Reclassified retired character from Superhuman to **Demi-God**, using the existing OldRoot Power Classification taxonomy.
 - Propagated both corrections across Character Registry cards, dossiers, homepage Character Spotlight labels, Start Here, OPI Analytics data, and regression coverage.
 - Preserved Anchorage's Villain, Non-Ascendant, Baltimore, and pre-Genesis experimental-enhancement records.
-- Preserved Kokio's Hero role, human species record, Hilo base, Takaro ritual origin, and exact OPI values; this change affects Power Classification only.
+- Preserved retired character's Hero role, human species record, Hilo base, retired mythic entity ritual origin, and exact OPI values; this change affects Power Classification only.
 - OR-WEB-0009 remains in the historical ledger as the earlier Anchorage classification state and is superseded by this correction.
 
-## OR-WEB-0035 · October 3, 2026 · Kokio Dossier Visual Refinement
+## OR-WEB-0035 · October 3, 2026 · retired character Dossier Visual Refinement
 
-- Replaced Kokio's Registry Data sidebar portrait with the stronger creator-supplied barrier combat image.
+- Replaced retired character's Registry Data sidebar portrait with the stronger creator-supplied barrier combat image.
 - Preserved the seated ceremonial image as supporting dossier artwork and kept the primary dual-hatchet combat image as the dossier feature.
 - Added regression coverage so the Registry Data panel keeps the approved combat reference.
 
 ## OR-WEB-0034 · October 3, 2026 · Character Release
 
-- Promoted Kalani Kane from the development seed list into the public registry under her canon hero alias, Kokio.
-- Added a complete Kokio dossier preserving her Hilo home base, family and Duke Decker relationships, shared ritual origin, Takaro bond, physical/mystical combat system, dual ritual hatchets, durability limits, locked visual identity, and intentionally open canon boundaries.
-- Integrated six creator-supplied Kokio illustrations as optimized WebP assets with full-image lightbox access.
-- Added Kokio's exact creator-approved eleven-category OPI values without publishing a canonical overall OPI score.
-- Added Hilo / eastern Hawaiʻi Island as an established public location and connected it to Kokio across the World Index.
-- Removed Kalani from Upcoming Characters while leaving Duke in development.
-- Added Kokio and Hilo to sitemap, public counts, discovery surfaces, regression coverage, and automated visual QA.
+- Promoted retired character from the development seed list into the public registry under her canon hero alias, retired character.
+- Added a complete retired character dossier preserving her Hilo home base, family and Duke Decker relationships, shared ritual origin, retired mythic entity bond, physical/mystical combat system, dual ritual hatchets, durability limits, locked visual identity, and intentionally open canon boundaries.
+- Integrated six creator-supplied retired character illustrations as optimized WebP assets with full-image lightbox access.
+- Added retired character's exact creator-approved eleven-category OPI values without publishing a canonical overall OPI score.
+- Added Hilo / eastern Hawaiʻi Island as an established public location and connected it to retired character across the World Index.
+- Removed retired character from Upcoming Characters while leaving Duke in development.
+- Added retired character and Hilo to sitemap, public counts, discovery surfaces, regression coverage, and automated visual QA.
 - Cleaned the stray escaped newline left in the Character Registry stylesheet during the prior Latch release.
 
 ## OR-WEB-0033 · October 3, 2026 · Character Release
