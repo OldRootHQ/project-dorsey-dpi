@@ -17,7 +17,7 @@ test('Kokio is promoted across public character discovery surfaces', async ({ pa
     pool: window.OLDROOT_HOME_STATE.characterPool,
     upcomingPool: window.OLDROOT_HOME_STATE.upcomingPool
   }));
-  expect(kokioHome.pool).toContain('Kokio');
+  expect(kokioHome.pool).not.toContain('Kokio'); // Kokio remains in the registry, not the homepage rotation
   expect(kokioHome.upcomingPool).not.toContain('Kokio');
   expect(kokioHome.spotlight.image).toBe('assets/characters/kokio/kokio-combat-01.webp');
   expect(kokioHome.spotlight.teaser).toContain('Hilo warrior');
