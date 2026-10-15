@@ -176,3 +176,34 @@ test('OldRootHQ custom domain is configured and legacy project URLs are absent f
   expect(read('robots.txt')).toContain('https://oldroothq.com/sitemap.xml');
   expect(read('sitemap.xml')).toContain('<loc>https://oldroothq.com/</loc>');
 });
+
+test('OldRoot is clearly identifiable to search crawlers as a superhero universe', async () => {
+  const home = read('index.html');
+  const start = read('start-here.html');
+  const registry = read('characters.html');
+  const kincast = read('characters/kincast/index.html');
+  const robots = read('robots.txt');
+
+  expect(home).toContain('<title>OldRoot — Original Superhero Universe | OldRoot Studios</title>');
+  expect(home).toContain('OldRoot is an original superhero universe created by OldRoot Studios.');
+  expect(home).toContain('Gila Monster, Kincast, Ballestera and Anchorage');
+  expect(start).toContain('<title>What Is OldRoot? Start Here | OldRoot Universe</title>');
+  expect(registry).toContain('<title>OldRoot Characters — Superheroes, Villains & Dossiers</title>');
+  expect(kincast).toContain('<title>Kincast (Micah & Naomi Ellison) | OldRoot Universe</title>');
+  expect(kincast).toContain('<meta name="description" content="Meet Kincast, the shared superhero identity');
+  expect(home).not.toContain('name="robots" content="noindex"');
+
+  const structuredMatch = home.match(/<script type="application\\/ld\\+json">([^<]+)<\\/script>/);
+  expect(structuredMatch).not.toBeNull();
+  const website = JSON.parse(structuredMatch[1]);
+  expect(website['@type']).toBe('WebSite');
+  expect(website.name).toBe('OldRoot Studios');
+  expect(website.alternateName).toBe('OldRoot');
+  expect(website.publisher.name).toBe('OldRoot Studios');
+  expect(website.about.name).toBe('OldRoot');
+  expect(website.about.genre).toBe('Superhero fiction');
+
+  expect(robots).toContain('User-agent: OAI-SearchBot\\nAllow: /');
+  expect(robots).toContain('User-agent: *\\nAllow: /');
+  expect(robots).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
+});

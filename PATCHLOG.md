@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0096 · October 15, 2026 · OldRoot Universe Search Discoverability
+
+- Strengthened **OldRootHQ.com's** homepage search title and HTML descriptions to explicitly identify **OldRoot as an original superhero universe by OldRoot Studios**, rather than leaving its identity at the generic studio name.
+- Aligned social-sharing titles and descriptions with this public identity, retained existing canonical domain URLs, and clarified the distinction between the **OldRoot** fiction universe and the **OldRoot Studios** imprint in homepage `WebSite` structured data.
+- Sharpened search-facing entry points for **Start Here**, the **Character Registry**, and **Kincast's public dossier**, including the shared superhero identity of Micah and Naomi Ellison. Preserved existing character canon, typography, hero slogan and layout.
+- Explicitly allowed **OAI-SearchBot** in `robots.txt` for ChatGPT search discovery, while retaining the existing wildcard crawl permission and sitemap. No search bot permission guarantees third-party indexing or access.
+- Added regression coverage of homepage text, SEO metadata, schema identity and search-crawler permission. Google Search Console sitemap and indexing remain external asynchronous processes; no claim that indexing has completed.
+
 ## OR-WEB-0095 · October 14, 2026 · OldRootHQ.com Custom Domain Migration
 
 - Prepared the newly registered **oldroothq.com** as the official OldRoot Studios web address after the user configured Namecheap A/CNAME records and GitHub Pages reported **DNS check successful**.
