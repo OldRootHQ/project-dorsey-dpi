@@ -24,7 +24,7 @@ test('creative interest form routes to the existing inquiry inbox and requests c
   await expect(form).toHaveAttribute('action',INBOX);
   await expect(form).toHaveAttribute('method','POST');
   await expect(form.locator('input[name="_subject"]')).toHaveValue('OldRoot Creative Collaboration Interest');
-  await expect(form.locator('input[name="_next"]')).toHaveValue('https://oldroothq.github.io/project-dorsey-dpi/work-with-oldroot.html?sent=1');
+  await expect(form.locator('input[name="_next"]')).toHaveValue('https://oldroothq.com/work-with-oldroot.html?sent=1');
   await expect(form.locator('input[name="name"]')).toHaveAttribute('required','');
   await expect(form.locator('input[name="email"]')).toHaveAttribute('required','');
   await expect(form.locator('textarea[name="message"]')).toHaveAttribute('required','');

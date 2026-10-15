@@ -2,6 +2,14 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0095 · October 14, 2026 · OldRootHQ.com Custom Domain Migration
+
+- Prepared the newly registered **oldroothq.com** as the official OldRoot Studios web address after the user configured Namecheap A/CNAME records and GitHub Pages reported **DNS check successful**.
+- Migrated public HTML canonical URLs, Open Graph/social share references, schema website URLs, XML sitemap and robots sitemap path from the GitHub Pages project URL to **https://oldroothq.com/**.
+- Replaced legacy project-prefixed absolute local navigation and stylesheet links in the 404 experience so site-root paths work correctly under the custom domain. Preserved relative dossier, image, lore, organization and Marketplace routes; did not enable checkout or change canonical character facts.
+- Updated test expectations for the new canonical base and for root-relative links; added a custom-domain CNAME and legacy public URL regression check.
+- The domain's GitHub Pages SSL certificate and **Enforce HTTPS** are provisioned in GitHub separately. A successful DNS check is not itself proof that HTTPS is live.
+
 ## OR-WEB-0094 · October 13, 2026 · Flying Saucer Official Sticker Emblem and Marketplace Release
 
 - Replaced Flying Saucer's original Triple Strike character mark with the newly creator-approved **white die-cut sticker-style version**, retaining three amber-gold mechanical discs and fractured lilac detailing. All seven cinematic illustrations and her canon remain unchanged.
