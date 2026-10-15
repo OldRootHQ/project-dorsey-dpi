@@ -17,7 +17,9 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.editorial-hero .hero-actions a')).toHaveCount(2);
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
-  expect(state.characterPool).toHaveLength(12);
+  expect(state.characterPool).toHaveLength(11);
+  expect(state.characterPool).not.toContain('Kokio');
+  expect(state.selectedCharacters).not.toContain('Kokio');
   expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
   expect(state.upcomingPool).toHaveLength(7);
   expect(state.selectedCharacters).toHaveLength(3);

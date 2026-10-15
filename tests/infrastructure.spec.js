@@ -229,7 +229,7 @@ test('public OldRoot surfaces do not advertise outside infrastructure brands', a
 
   scan();
   expect(problems).toEqual([]);
-  expect(read('news.html')).toContain('id="or-web-0097"');
+  expect(read('news.html')).not.toContain('id="or-web-0097"');
   expect(read('robots.txt')).toContain('User-agent: *');
   expect(read('robots.txt')).toContain('Allow: /');
   expect(read('robots.txt')).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
