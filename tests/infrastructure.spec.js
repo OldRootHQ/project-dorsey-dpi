@@ -193,7 +193,7 @@ test('OldRoot is clearly identifiable to search crawlers as a superhero universe
   expect(kincast).toContain('<meta name="description" content="Meet Kincast, the shared superhero identity');
   expect(home).not.toContain('name="robots" content="noindex"');
 
-  const structuredMatch = home.match(/<script type="application\\/ld\\+json">([^<]+)<\\/script>/);
+  const structuredMatch = home.match(/<script type="application\/ld\+json">([^<]+)<\/script>/);
   expect(structuredMatch).not.toBeNull();
   const website = JSON.parse(structuredMatch[1]);
   expect(website['@type']).toBe('WebSite');
@@ -203,7 +203,7 @@ test('OldRoot is clearly identifiable to search crawlers as a superhero universe
   expect(website.about.name).toBe('OldRoot');
   expect(website.about.genre).toBe('Superhero fiction');
 
-  expect(robots).toContain('User-agent: OAI-SearchBot\\nAllow: /');
-  expect(robots).toContain('User-agent: *\\nAllow: /');
+  expect(robots).toContain('User-agent: OAI-SearchBot\nAllow: /');
+  expect(robots).toContain('User-agent: *\nAllow: /');
   expect(robots).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
 });
