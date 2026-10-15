@@ -24,7 +24,8 @@ Foundational material canon uses **Abyron — Element 126 / Ax / Ax-126**. The o
 
 
 ## Official public domain
+
 - Production website: **https://oldroothq.com/**
-- GitHub Pages source: `OldRootHQ/project-dorsey-dpi` (branch `main`, root)
-- `CNAME` holds the registered apex domain. DNS A records for `@` point to GitHub Pages; `www` CNAME points to `oldroothq.github.io`.
-- Never restore `https://oldroothq.github.io/project-dorsey-dpi/` as a canonical URL or `/project-dorsey-dpi/` as a root-relative path. Maintain the domain's HTTPS setting in GitHub Pages.
+- Site content publishes from the default release branch, `main`, at its root.
+- The `CNAME` file holds the official domain; DNS routes the apex domain and `www` alias to the site host.
+- Keep HTTPS enforced. Do not restore retired project-prefix URLs to public navigation, canonical metadata or social previews.

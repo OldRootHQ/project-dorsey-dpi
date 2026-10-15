@@ -2,21 +2,28 @@
 
 This file is the release ledger for meaningful public website changes. Each deployed site update should add an entry here and, when visitor-facing, a short matching note in `news.html`.
 
+## OR-WEB-0097 · October 15, 2026 · OldRoot-First Public Editorial Cleanup
+
+- Removed outside platform names from live Dispatches entries, preserving the history of releases in language centered on OldRoot and its reader-facing improvements.
+- Simplified `robots.txt` to its universal crawl allowance plus sitemap so it remains equally welcoming to all compliant search engines without singling out a particular tool.
+- Retained secure custom-domain delivery, canonical indexing metadata, public navigation, character records, site artwork, and the production deployment workflow.
+- Kept technical brand/hosting identifiers out of the public site documentation and patch ledger while preserving internal tooling. Added public-surface regressions to ensure platform promotion does not return.
+
 ## OR-WEB-0096 · October 15, 2026 · OldRoot Universe Search Discoverability
 
 - Strengthened **OldRootHQ.com's** homepage search title and HTML descriptions to explicitly identify **OldRoot as an original superhero universe by OldRoot Studios**, rather than leaving its identity at the generic studio name.
 - Aligned social-sharing titles and descriptions with this public identity, retained existing canonical domain URLs, and clarified the distinction between the **OldRoot** fiction universe and the **OldRoot Studios** imprint in homepage `WebSite` structured data.
 - Sharpened search-facing entry points for **Start Here**, the **Character Registry**, and **Kincast's public dossier**, including the shared superhero identity of Micah and Naomi Ellison. Preserved existing character canon, typography, hero slogan and layout.
-- Explicitly allowed **OAI-SearchBot** in `robots.txt` for ChatGPT search discovery, while retaining the existing wildcard crawl permission and sitemap. No search bot permission guarantees third-party indexing or access.
+- Documented search-crawler access in `robots.txt`, while retaining the wildcard crawl permission and sitemap. Crawl permission never guarantees external indexing or access.
 - Added regression coverage of homepage text, SEO metadata, schema identity and search-crawler permission. Google Search Console sitemap and indexing remain external asynchronous processes; no claim that indexing has completed.
 
 ## OR-WEB-0095 · October 14, 2026 · OldRootHQ.com Custom Domain Migration
 
-- Prepared the newly registered **oldroothq.com** as the official OldRoot Studios web address after the user configured Namecheap A/CNAME records and GitHub Pages reported **DNS check successful**.
-- Migrated public HTML canonical URLs, Open Graph/social share references, schema website URLs, XML sitemap and robots sitemap path from the GitHub Pages project URL to **https://oldroothq.com/**.
+- Prepared the newly registered **oldroothq.com** as the official OldRoot Studios web address after the user configured Namecheap A/CNAME records and the hosting service reported **DNS check successful**.
+- Migrated public HTML canonical URLs, Open Graph/social share references, schema website URLs, XML sitemap and robots sitemap path from the previous project URL to **https://oldroothq.com/**.
 - Replaced legacy project-prefixed absolute local navigation and stylesheet links in the 404 experience so site-root paths work correctly under the custom domain. Preserved relative dossier, image, lore, organization and Marketplace routes; did not enable checkout or change canonical character facts.
 - Updated test expectations for the new canonical base and for root-relative links; added a custom-domain CNAME and legacy public URL regression check.
-- The domain's GitHub Pages SSL certificate and **Enforce HTTPS** are provisioned in GitHub separately. A successful DNS check is not itself proof that HTTPS is live.
+- The site's free SSL certificate and **Enforce HTTPS** are provisioned through hosting settings separately. A successful DNS check is not itself proof that HTTPS is live.
 
 ## OR-WEB-0094 · October 13, 2026 · Flying Saucer Official Sticker Emblem and Marketplace Release
 
@@ -76,7 +83,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Kept the character dossier link **inside** each sticker detail page so visitor-facing shopping navigation is unambiguous.
 - The Featured Finds sticker rotation already led to sticker product pages and remains unchanged. The books section, product images, image viewer, first-wave roster, and non-purchasable samples status are preserved.
 - Added assertions that each sticker tile has exactly one link and tested navigation by artwork and product title. Bumped the Marketplace stylesheet cache key; no content/layout restructuring or payment functionality was introduced.
-- Release gate: full Site QA pass, GitHub merge and Pages deployment verification.
+- Release gate: full Site QA pass, protected branch merge and deployment verification.
 
 ## OR-WEB-0087 · October 10, 2026 · Sticker Product Pages & Click-to-View Artwork
 
@@ -560,7 +567,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 ## 2026-09-26 — OR-WEB-0002 — Automated site smoke-test gate
 
 ### Changed
-- Added a GitHub Actions smoke-test workflow for website changes.
+- Added an automated smoke-test workflow for website changes.
 - Added Chromium tests for the Locations globe covering all five public location nodes, keyboard selection, controlled zoom limits, Earth/Space modes, St. Dorsey schematic status, mobile touch behavior, and world-atlas failure fallback.
 - Added JavaScript syntax checks for the site's shared scripts before browser tests run.
 
@@ -727,7 +734,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Cleanup
 - Removed the temporary `anchorage-art-pending.svg` asset.
-- Replaced the generic uploaded `ChatGPT Image...` repository filenames with organized Anchorage-specific asset paths while retaining the original image blobs unchanged.
+- Replaced temporary uploaded image filenames with organized Anchorage-specific asset paths while retaining the original image blobs unchanged.
 
 ### Validation
 - Browser coverage verifies the Anchorage registry, homepage, dossier, OPI data, and Baltimore artwork references load successfully.
@@ -941,7 +948,7 @@ This file is the release ledger for meaningful public website changes. Each depl
 
 ### Cleanup
 - Removed the former `assets/characters/aftermark-full.png` filler image after replacing every active reference.
-- Removed the generic root-level Agent Emerald `ChatGPT Image...` upload names and the duplicate copied upload after organizing the creator sources under `assets/characters/agent-emerald/source/`.
+- Removed the generic root-level Agent Emerald temporary upload names and the duplicate copied upload after organizing the creator sources under `assets/characters/agent-emerald/source/`.
 - Organized the new Aftermark creator sources under `assets/characters/aftermark/source/`.
 - Created stable, optimized WebP production derivatives for all active Agent Emerald and Aftermark artwork.
 
@@ -1090,9 +1097,9 @@ This file is the release ledger for meaningful public website changes. Each depl
 - Marked cart, checkout, order-confirmation, and generic unrevealed Library title placeholders as noindex.
 - Added measured intrinsic width/height attributes to WebP artwork used in public HTML to reduce layout shift without changing presentation.
 - Moved World Index topology data into the repository as the primary source, pinned the remote world-atlas fallback, pinned D3/TopoJSON CDN versions, and added a graceful map-engine unavailable state.
-- Upgraded the existing GitHub Actions QA workflow rather than adding a competing pipeline.
+- Upgraded the existing continuous-integration QA workflow rather than adding a competing pipeline.
 - Added production-infrastructure smoke tests for metadata, sitemap/noindex boundaries, internal links, local topology, and image markup.
-- Added full-page desktop/mobile visual QA captures for core OldRoot surfaces and a 14-day GitHub Actions artifact.
+- Added full-page desktop/mobile visual QA captures for core OldRoot surfaces and a 14-day CI test artifact.
 - Repaired stale smoke-test cache assertions left from earlier stylesheet/navigation versions.
 
 ### Validation

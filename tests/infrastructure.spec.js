@@ -203,7 +203,34 @@ test('OldRoot is clearly identifiable to search crawlers as a superhero universe
   expect(website.about.name).toBe('OldRoot');
   expect(website.about.genre).toBe('Superhero fiction');
 
-  expect(robots).toContain('User-agent: OAI-SearchBot\nAllow: /');
+  expect(robots).toBe('User-agent: *\nAllow: /\n\nSitemap: https://oldroothq.com/sitemap.xml\n');
   expect(robots).toContain('User-agent: *\nAllow: /');
   expect(robots).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
+});
+
+test('public OldRoot surfaces do not advertise outside infrastructure brands', async () => {
+  const forbidden = /chat[\s-]?gpt|openai|github(?:\.io)?|oai-searchbot/i;
+  const exclusions = new Set(['.git', '.github', 'node_modules', 'tests']);
+  const extensions = /\.(html|js|css|xml|txt|md)$/i;
+  const problems = [];
+
+  function scan(directory = ROOT) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      if (exclusions.has(entry.name)) continue;
+      const filename = path.join(directory, entry.name);
+      if (entry.isDirectory()) {
+        scan(filename);
+      } else if (entry.isFile() && extensions.test(entry.name)) {
+        const body = fs.readFileSync(filename, 'utf8');
+        if (forbidden.test(body)) problems.push(path.relative(ROOT, filename));
+      }
+    }
+  }
+
+  scan();
+  expect(problems).toEqual([]);
+  expect(read('news.html')).toContain('id="or-web-0097"');
+  expect(read('robots.txt')).toContain('User-agent: *');
+  expect(read('robots.txt')).toContain('Allow: /');
+  expect(read('robots.txt')).toContain('Sitemap: https://oldroothq.com/sitemap.xml');
 });
