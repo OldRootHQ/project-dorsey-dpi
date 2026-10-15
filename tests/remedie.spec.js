@@ -18,7 +18,7 @@ test('Remedie is a published Boston anti-hero with exact Prime categories', asyn
     Senses:19.4,Offense:21.6,Intellect:9.4,Combat:14.8,Mobility:17.9,Stamina:10.8
   });
   expect(record.officialOPI).toBeUndefined();
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
 test('Remedie has a full cinematic story, accurate power constraints and seven approved images', async ({ page }) => {
@@ -53,7 +53,7 @@ test('Remedie has a full cinematic story, accurate power constraints and seven a
 
 test('Remedie registry is discoverable under the anti-hero filter but not future Hero status', async ({page}) => {
   await page.goto(BASE + '/characters.html', {waitUntil:'domcontentloaded'});
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   await expect(page.locator('.character-card[href="characters/remedie/"]')).toHaveCount(1);
   await page.locator('#filterToggle').click();
   await page.locator('[data-filter-group="role"][value="anti-hero"]').check();
