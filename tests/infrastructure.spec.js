@@ -170,7 +170,7 @@ test('OldRootHQ custom domain is configured and legacy project URLs are absent f
   for (const file of new Set(tree)) {
     const html = read(file);
     if (html.includes('https://oldroothq.github.io/project-dorsey-dpi')) failures.push(file + ': legacy public URL');
-    if (/["'(]\\/project-dorsey-dpi\\//.test(html)) failures.push(file + ': legacy root-relative project path');
+    if (html.includes('"/project-dorsey-dpi/') || html.includes("'/project-dorsey-dpi/")) failures.push(file + ': legacy root-relative project path');
   }
   expect(failures).toEqual([]);
   expect(read('robots.txt')).toContain('https://oldroothq.com/sitemap.xml');
