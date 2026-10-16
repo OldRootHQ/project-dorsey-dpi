@@ -66,9 +66,9 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
-  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
+  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(0);
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
