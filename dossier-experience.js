@@ -29,9 +29,7 @@
     "amari-razman": { color:"#c2a0a5", secondary:"#5a3545", aura:"The Quiet Pursuit", sig:"Brooklyn / Field Tracker", icon:"⌖",
       guidance:"Read the record of an unenhanced operative trusted to locate people who would rather disappear." },
     "latch": { color:"#c9c39c", secondary:"#536048", aura:"Field Records", sig:"Operations / Strategy", icon:"⟟",
-      guidance:"The life of an operative told through service, loss, recruitment and resolve." },
-    "kokio": { color:"#f0b17f", secondary:"#943a35", aura:"Ritual and Resolve", sig:"Hilo / Mythic Heritage", icon:"✦",
-      guidance:"A photographer's history, an ancient bond and the cost of extraordinary power." }
+      guidance:"The life of an operative told through service, loss, recruitment and resolve." }
   };
   const slug = location.pathname.match(/\/characters\/([^/]+)\//)?.[1] || "";
   const profile = profiles[slug];
@@ -115,8 +113,7 @@
     "agent-emerald":["Identity & Family","Allies & Training","Origin","Dunamis Dynamics & VX-11"],
     "latch":["Early Life","Military Career","Capture & Eye Injury","Recruitment by the Organizer","Post-Genesis Role"],
     "ballestera":["Teaching Years","Death of Her Son","Grief Turned to Chemistry","A Desert Refuge","Gila Monster Connection"],
-    "amari-razman":["Field Background","Tracking & Reconnaissance","Post-Genesis Recruitment","Working with Latch"],
-    "kokio":["Family History","Shared Origin","The Tiki Ritual System","Takaro & the Ritual Vision"]
+    "amari-razman":["Field Background","Tracking & Reconnaissance","Post-Genesis Recruitment","Working with Latch"]
   };
   const headings=[...main.querySelectorAll(".lore-column > .wiki-section h2, .lore-column > .wiki-section h3")];
   const thread=document.createElement("section");

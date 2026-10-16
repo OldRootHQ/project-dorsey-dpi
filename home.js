@@ -22,7 +22,7 @@
 
   const establishedLocations=Object.entries(locations).filter(([,loc])=>loc&&loc.dossierUrl&&!loc.reference&&String(loc.id||"").startsWith("LOC-"));
   const upcoming=Array.isArray(config.upcoming)?config.upcoming:[];
-  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio");
+  const homeSpotlightPool=characters;
   const selectedCharacters=pickRandom(homeSpotlightPool,3);
   const selectedLocations=pickRandom(establishedLocations,3);
   const selectedUpcoming=pickRandom(upcoming,3);
