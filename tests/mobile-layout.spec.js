@@ -7,7 +7,6 @@ const pages = [
   '/characters/anchorage/',
   '/characters/commotion/',
   '/characters/agent-emerald/',
-  '/characters/kokio/',
   '/characters/amari-razman/',
   '/characters/ballestera/',
   '/locations.html',
