@@ -8,11 +8,10 @@ const dossiers=[
   ['kincast','KINCAST'],
   ['anchorage','ANCHORAGE'],
   ['agent-emerald','AGENT EMERALD'],
-  ['latch','LATCH'],
-  ['kokio','KOKIO']
+  ['latch','LATCH']
 ];
 
-test('all eight canonical dossiers gain cinematic chapters, original art and OPI inspector', async ({ page }) => {
+test('all active cinematic dossiers gain cinematic chapters, original art and OPI inspector', async ({ page }) => {
   const pageErrors=[];
   page.on('pageerror', err=>pageErrors.push(err.message));
   for(const [slug,heading] of dossiers){

@@ -46,7 +46,7 @@ test("Max's dossier uses civilian biography, grounded engineering and no fabrica
 test('Max is connected in Start Here and Remedie dossier', async ({ page }) => {
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a.discovery-card[href="characters/max-corbett/"]')).toHaveCount(1);
-  await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
   await page.goto(BASE + '/characters/remedie/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a[href="../max-corbett/"]')).not.toHaveCount(0);
   expect(fs.readFileSync('sitemap.xml','utf8')).toContain('/characters/max-corbett/');
