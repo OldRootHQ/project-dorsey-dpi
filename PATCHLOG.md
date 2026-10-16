@@ -2,6 +2,13 @@
 
 This file is the internal release ledger for website changes. Do not automatically mirror maintenance, SEO, infrastructure, UI polish, or cleanup into public Dispatches (`news.html`). Reserve Dispatches for character reveals, new canon, publishing announcements, and other reader-facing creative milestones.
 
+## OR-WEB-0099 · October 16, 2026 · Issue #1 Under Observation Announcement
+
+- Added a prominent homepage announcement for OldRoot's first issue, officially titled **Under Observation**, marked **In Development**.
+- Revealed no characters, location, storyline, or other story associations. No Kincast tie-in is present in the announcement.
+- Created responsive graphic typography and decorative first-issue art using CSS only; no placeholder cover artwork or invented release date.
+- Added announcement and mobile layout regression coverage. This website update is logged internally only, with no housekeeping Dispatch created.
+
 ## OR-WEB-0098 · October 15, 2026 · Dispatch Editorial Policy and Homepage Spotlight
 
 - Removed the OR-WEB-0097 housekeeping announcement from the public Dispatches page; historical technical notes stay in this internal patch ledger only.

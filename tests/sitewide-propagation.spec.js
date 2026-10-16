@@ -56,6 +56,8 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
   await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0094');
+  await expect(page.locator('#issue-one-announcement')).toContainText('UNDER');
+  await expect(page.locator('#issue-one-announcement')).not.toContainText('Kincast');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');

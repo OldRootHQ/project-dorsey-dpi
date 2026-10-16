@@ -57,3 +57,20 @@ test('OldRoot After Dark homepage remains contained on phone width', async ({ pa
   expect(layout.rootMapWidth).toBeLessThan(layout.viewport);
   expect(layout.heroActionsVisible).toBe(true);
 });
+
+test('Issue #1 announcement is prominent and reveals no unreleased story connection', async ({ page }) => {
+  await page.goto('http://127.0.0.1:8000/', { waitUntil: 'domcontentloaded' });
+  const announcement = page.locator('#issue-one-announcement');
+  await expect(announcement).toBeVisible();
+  await expect(announcement.locator('h2')).toHaveText('UNDEROBSERVATION');
+  await expect(announcement).toContainText('ISSUE #1');
+  await expect(announcement).toContainText('IN DEVELOPMENT');
+  await expect(announcement).not.toContainText('Kincast');
+  await expect(announcement.locator('a')).toHaveCount(0);
+  const desktop = await announcement.boundingBox();
+  expect(desktop.height).toBeGreaterThan(250);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(announcement).toBeVisible();
+  const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+  expect(overflow).toBeLessThanOrEqual(2);
+});
