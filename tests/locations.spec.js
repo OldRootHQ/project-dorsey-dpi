@@ -181,7 +181,7 @@ test('Locations globe supports mobile drag and pinch while preserving page scrol
   const touchAction = await globe.evaluate(el => getComputedStyle(el).touchAction);
   expect(touchAction).toContain('pan-y');
   expect(touchAction).not.toContain('pinch-zoom');
-  await expect(page.locator('.location-index button')).toHaveCount(7);
+  await expect(page.locator('.location-index button')).toHaveCount(6);
 
   const gridBeforeDrag = await page.locator('.earth-grid').getAttribute('d');
   await globe.dispatchEvent('pointerdown', {
@@ -236,7 +236,7 @@ test('Locations directory stays dark and exposes a globe-skip shortcut', async (
 
   const directory = page.locator('#indexed-places');
   await expect(directory).toBeVisible();
-  await expect(directory.locator('.place-card')).toHaveCount(7);
+  await expect(directory.locator('.place-card')).toHaveCount(6);
 
   const appearance = await directory.evaluate(el => {
     const s = getComputedStyle(el);

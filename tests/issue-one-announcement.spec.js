@@ -23,7 +23,7 @@ test('Issue #1 is announced prominently without revealing its featured cast', as
   await expect(page.locator('button.product-disabled')).toBeDisabled();
 
   await page.goto(BASE + '/marketplace.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('[data-feature-id="book-1"]')).toContainText('Under Observation');
+  await expect(page.locator('#marketplace-library .library-card[href="library/oldroot-book-1/"]')).toContainText('Under Observation');
   await expect(page.locator('main')).toContainText('Under Observation');
 
   await page.goto(BASE + '/news.html', { waitUntil: 'domcontentloaded' });

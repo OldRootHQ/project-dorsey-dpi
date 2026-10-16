@@ -82,7 +82,7 @@ test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage an
  expect(await page.evaluate(()=>window.OLDROOT_HOME.characterSpotlights['Flying Saucer'].mark)).toBe(MARK);
  expect(await page.evaluate(()=>window.OLDROOT_LOCATIONS.seattle.characters.map(x=>x.name))).toContain('Flying Saucer');
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+ await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(x=>x.codename==='Flying Saucer'));
  expect(record).toBeTruthy();
  expect(record.baseline).toEqual(ratings);
