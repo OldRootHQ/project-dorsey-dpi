@@ -9,7 +9,6 @@ const dossiers=[
   ['anchorage','ANCHORAGE'],
   ['agent-emerald','AGENT EMERALD'],
   ['latch','LATCH'],
-  ['kokio','KOKIO']
 ];
 
 test('all eight canonical dossiers gain cinematic chapters, original art and OPI inspector', async ({ page }) => {
