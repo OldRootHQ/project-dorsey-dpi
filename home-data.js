@@ -76,13 +76,6 @@ window.OLDROOT_HOME = {
       teaser:"An ordinary man recruited to stand beside people who are anything but ordinary.",
       links:[["Character Dossier →","characters/latch/"],["Genesis →","events.html#genesis"]]
     },
-    "Kokio": {
-      key:"kokio", image:"assets/characters/kokio/kokio-combat-01.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
-      alt:"Kokio wielding two glowing ritual hatchets in close combat",
-      meta:"DEMI-GOD · HERO · HILO / HAWAIʻI ISLAND",
-      teaser:"A Hilo warrior carrying power from something far older than the world around her.",
-      links:[["Character Dossier →","characters/kokio/"],["Hilo / Hawaiʻi Island →","locations/hilo/"],["OPI Analytics →","dpi.html"]]
-    },
     "Ballestera": {
       key:"ballestera", image:"assets/characters/ballestera/ballestera-featured.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
       alt:"Ballestera studies a poison bottle by lamplight in her hidden southern Arizona RV laboratory",
@@ -100,8 +93,7 @@ window.OLDROOT_HOME = {
     sanjuan:{teaser:"Rain-slick streets and impossible spatial echoes make Santurce difficult to predict.",className:"place-san-juan"},
     stdorsey:{teaser:"Ground zero for an accidental Abyron catastrophe—and later home to Hampton’s massive Dorsey New General expansion.",className:"place-st-dorsey"},
     baltimore:{teaser:"Heroes, mercenaries, shadows, and a criminal ecosystem learning to adapt.",className:"place-baltimore"},
-    seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"},
-    hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"}
+    seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"}
   },
   upcoming: [
     {name:"Mark Hampton",status:"NO OPI LISTING"},
@@ -114,9 +106,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
-    title:"Flying Saucer joins the OldRoot sticker collection.",
-    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
-    href:"news.html#or-web-0094"
+    meta:"ISSUE #1 · OLDROOT STUDIOS / IN DEVELOPMENT",
+    title:"Under Observation — Issue #1 in development.",
+    body:"OldRoot’s first official issue has a name: Under Observation. Its story and featured cast remain a secret until the studio is ready to reveal more.",
+    href:"news.html#under-observation-announcement"
   }
 };

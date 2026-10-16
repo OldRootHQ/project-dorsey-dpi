@@ -10,10 +10,10 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
 
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
   const sharedLocationData = await page.evaluate(() => window.OLDROOT_LOCATIONS);
-  expect(Object.keys(sharedLocationData)).toHaveLength(9);
-  expect(Object.values(sharedLocationData).filter(loc => loc.dossierUrl && !loc.reference)).toHaveLength(7);
+  expect(Object.keys(sharedLocationData)).toHaveLength(8);
+  expect(Object.values(sharedLocationData).filter(loc => loc.dossierUrl && !loc.reference)).toHaveLength(6);
   await expect(page.locator('#locationName')).toHaveText('Tucson, Arizona');
   await expect(page.locator('[data-location="tucson"]')).toHaveAttribute('aria-pressed', 'true');
 
@@ -21,7 +21,6 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
     ['chicago', 'Chicago, Illinois', /characters\/commotion\//],
     ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//],
     ['seattle', 'Seattle / Puget Sound', /characters\/agent-emerald\//],
-    ['hilo', 'Hilo, Hawaiʻi Island', /characters\/kokio\//]
   ];
 
   for (const [key, name, characterHref] of cases) {
@@ -123,7 +122,7 @@ test('Tucson globe surfaces Ballestera as a Nogales-area regional connection, no
   await expect(page.locator('#locationRegional a')).toHaveAttribute('href', 'characters/ballestera/');
 
   // Regional story links never create invented globe locations or move city pins.
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
   await expect(page.locator('#techGlobe .location-node[data-key="ballestera"]')).toHaveCount(0);
   const data = await page.evaluate(() => window.OLDROOT_LOCATIONS);
   expect(data.tucson.regionalConnections).toHaveLength(1);
@@ -154,7 +153,7 @@ test('Locations globe prefers local world topology when the remote fallback is u
   await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
   await expect(page.locator('#globeLoading')).toBeHidden();
   await expect(page.locator('.earth-land')).toHaveAttribute('d', /.+/);
   await assertNoPageErrors(page, errors);
@@ -167,7 +166,7 @@ test('Locations globe keeps location records usable when both topology sources f
   await page.route('**/world-atlas@2.0.2/countries-110m.json', route => route.abort());
 
   await page.goto('http://127.0.0.1:8000/locations.html');
-  await expect(page.locator('#techGlobe .location-node')).toHaveCount(9);
+  await expect(page.locator('#techGlobe .location-node')).toHaveCount(8);
   await expect(page.locator('#globeLoading')).toContainText('MAP DETAIL UNAVAILABLE');
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationName')).toHaveText('Baltimore, Maryland');
@@ -182,7 +181,7 @@ test('Locations globe supports mobile drag and pinch while preserving page scrol
   const touchAction = await globe.evaluate(el => getComputedStyle(el).touchAction);
   expect(touchAction).toContain('pan-y');
   expect(touchAction).not.toContain('pinch-zoom');
-  await expect(page.locator('.location-index button')).toHaveCount(7);
+  await expect(page.locator('.location-index button')).toHaveCount(6);
 
   const gridBeforeDrag = await page.locator('.earth-grid').getAttribute('d');
   await globe.dispatchEvent('pointerdown', {
@@ -237,7 +236,7 @@ test('Locations directory stays dark and exposes a globe-skip shortcut', async (
 
   const directory = page.locator('#indexed-places');
   await expect(directory).toBeVisible();
-  await expect(directory.locator('.place-card')).toHaveCount(7);
+  await expect(directory.locator('.place-card')).toHaveCount(6);
 
   const appearance = await directory.evaluate(el => {
     const s = getComputedStyle(el);

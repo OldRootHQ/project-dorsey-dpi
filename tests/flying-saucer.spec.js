@@ -54,7 +54,7 @@ test('Nikki joins the 14-person registry with her emblem below her portrait, not
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   await page.setViewportSize(viewport);
   await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   const card=page.locator('.character-card[href="characters/flying-saucer/"]');
   await expect(card).toHaveAttribute('data-release-order','14');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
@@ -71,7 +71,7 @@ test('Nikki joins the 14-person registry with her emblem below her portrait, not
 test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage and OPI',async({page})=>{
  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.discovery-card[href="characters/flying-saucer/"] .start-character-mark')).toHaveAttribute('src',MARK);
- await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+ await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
  await page.goto(BASE+'/locations/seattle/',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.known-character-card[href="../../characters/flying-saucer/"]')).toHaveCount(1);
  await page.goto(BASE+'/characters/agent-emerald/',{waitUntil:'domcontentloaded'});
@@ -82,7 +82,7 @@ test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage an
  expect(await page.evaluate(()=>window.OLDROOT_HOME.characterSpotlights['Flying Saucer'].mark)).toBe(MARK);
  expect(await page.evaluate(()=>window.OLDROOT_LOCATIONS.seattle.characters.map(x=>x.name))).toContain('Flying Saucer');
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+ await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(x=>x.codename==='Flying Saucer'));
  expect(record).toBeTruthy();
  expect(record.baseline).toEqual(ratings);
