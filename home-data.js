@@ -93,8 +93,7 @@ window.OLDROOT_HOME = {
     sanjuan:{teaser:"Rain-slick streets and impossible spatial echoes make Santurce difficult to predict.",className:"place-san-juan"},
     stdorsey:{teaser:"Ground zero for an accidental Abyron catastrophe—and later home to Hampton’s massive Dorsey New General expansion.",className:"place-st-dorsey"},
     baltimore:{teaser:"Heroes, mercenaries, shadows, and a criminal ecosystem learning to adapt.",className:"place-baltimore"},
-    seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"},
-    hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"}
+    seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"}
   },
   upcoming: [
     {name:"Mark Hampton",status:"NO OPI LISTING"},
