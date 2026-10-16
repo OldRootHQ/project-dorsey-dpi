@@ -40,7 +40,7 @@ test('community poll is transparent about voting not being live', async ({ page 
   await expect(poll).toContainText('Who deserves the');
   await expect(poll).toContainText('next issue');
   await expect(poll.locator('li')).toHaveCount(10);
-  await expect(poll.locator('li')).not.toContainText(['Kincast']);
+  await expect(poll).not.toContainText('Kincast');
   await expect(poll).toContainText('Voting opens soon');
   await expect(poll.locator('button, input[type="radio"], iframe')).toHaveCount(0);
 });
@@ -50,7 +50,7 @@ test('retired character has no public links, registry record, or live search ent
   const dataFiles = ['data.js','home-data.js','location-data.js','marketplace.js','dossier-experience.js','dossier-experience.css','sitemap.xml'];
   for (const file of [...pages,...dataFiles]) {
     const content = fs.readFileSync(file, 'utf8');
-    expect(content, file).not.toMatch(/kokio|kalani|takaro|characters\\/kokio|stickers\\/kokio/i);
+    expect(content, file).not.toMatch(/kokio|kalani|takaro/i);
   }
   expect(fs.existsSync('characters/kokio/index.html')).toBe(false);
   expect(fs.existsSync('stickers/kokio/index.html')).toBe(false);
