@@ -7,7 +7,7 @@ This file is the internal release ledger for website changes. Do not automatical
 - Officially announced Issue #1 as **Under Observation**, currently **in development**; added a prominent homepage reveal, the title on the first library/product record, and a featured publishing announcement. No cover art, cast, story or release date disclosed.
 - Retired an entire character and related public artwork/merchandise/dossier records, including the location dossier that existed solely for that character. Updated registry, powers, locations, navigation, sitemap and storefront without fabricating replacement canon.
 - Historical patch details remain in the internal ledger with the retired character identity redacted. Avoid publishing development housekeeping as Dispatches.
-- The community poll requires hosted vote storage and a creator-approved list of candidates before opening to visitors.
+- Added a community-poll homepage section asking which character should receive the next issue; voting stays explicitly unopened until the creator approves candidates and a real external voting service is configured. No local-only votes or invented results.
 
 ## OR-WEB-0098 · October 15, 2026 · Dispatch Editorial Policy and Homepage Spotlight
 

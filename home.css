@@ -109,3 +109,15 @@
 .issue-reveal-mark small{font:900 11px/1.4 Arial,sans-serif;letter-spacing:.14em;color:#d6e8d6}
 .issue-reveal-bottom{padding-top:21px;margin-top:16px;border-top:1px solid rgba(216,245,215,.26);font-size:9px}
 @media(max-width:760px){.issue-reveal{margin:15px 0 23px;padding:24px 19px}.issue-reveal-content{grid-template-columns:1fr;min-height:0}.issue-reveal-mark{position:absolute;top:45px;right:-48px;width:155px;opacity:.23;pointer-events:none}.issue-reveal-copy{position:relative;z-index:1}.issue-reveal-copy h2{font-size:clamp(46px,12vw,83px);letter-spacing:-.075em}.issue-reveal-copy p{margin-top:23px}.issue-reveal-top,.issue-reveal-bottom{font-size:9px;gap:10px}}
+
+/* Reader-choice poll staging — real shared votes must use a verified provider before launch. */
+.community-vote{position:relative;display:grid;grid-template-columns:minmax(0,1.65fr) minmax(170px,.6fr);gap:25px;align-items:center;padding:clamp(27px,3vw,46px);margin:25px 0 30px;border:1px solid rgba(193,226,198,.28);border-radius:22px;background:linear-gradient(120deg,#0e271f,#132b26);color:#f5f5e8;overflow:hidden}
+.community-vote .lead-kicker{color:#aadbc1;font:900 11px/1.4 Arial,sans-serif;letter-spacing:.2em}
+.community-vote h2{max-width:830px;margin:16px 0 22px;font:900 clamp(39px,6vw,83px)/.9 Arial,sans-serif;letter-spacing:-.06em;color:#faf9e9}
+.community-vote p{max-width:650px;margin:0 0 23px;color:#d5e1d8;font-size:clamp(14px,1.2vw,17px);line-height:1.57}
+.community-vote p em{color:#e3f5d1}
+.community-vote-status{display:inline-flex;max-width:100%;padding:12px 15px;border:1px dashed rgba(222,247,210,.52);color:#d9efd2;border-radius:5px;font:900 10px/1.5 Arial,sans-serif;letter-spacing:.08em}
+.community-vote-seal{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:200px;border:1px solid rgba(214,244,216,.23);border-radius:50%;text-align:center;transform:rotate(-6deg)}
+.community-vote-seal strong{font:900 138px/.95 Arial,sans-serif;color:#bce0c6}
+.community-vote-seal span{font:900 10px/1.5 Arial,sans-serif;letter-spacing:.13em;color:#d0e8d1}
+@media(max-width:700px){.community-vote{display:block;padding:25px 20px}.community-vote-seal{display:none}.community-vote h2{font-size:clamp(39px,10vw,62px)}.community-vote-status{font-size:9px}}
