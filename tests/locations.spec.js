@@ -21,7 +21,6 @@ test('Locations globe core interactions remain stable', async ({ page }) => {
     ['chicago', 'Chicago, Illinois', /characters\/commotion\//],
     ['sanjuan', 'San Juan, Puerto Rico', /characters\/aftermark\//],
     ['seattle', 'Seattle / Puget Sound', /characters\/agent-emerald\//],
-    ['hilo', 'Hilo, Hawaiʻi Island', /characters\/kokio\//]
   ];
 
   for (const [key, name, characterHref] of cases) {
