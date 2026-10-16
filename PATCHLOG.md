@@ -527,7 +527,7 @@ This file is the internal release ledger for website changes. Do not automatical
 - Integrated six creator-supplied [retired character] illustrations as optimized WebP assets with full-image lightbox access.
 - Added [retired character]'s exact creator-approved eleven-category OPI values without publishing a canonical overall OPI score.
 - Added Hilo / eastern Hawaiʻi Island as an established public location and connected it to [retired character] across the World Index.
-- Removed Kalani from Upcoming Characters while leaving Duke in development.
+- Removed [retired identity] from Upcoming Characters while leaving Duke in development.
 - Added [retired character] and Hilo to sitemap, public counts, discovery surfaces, regression coverage, and automated visual QA.
 - Cleaned the stray escaped newline left in the Character Registry stylesheet during the prior Latch release.
 

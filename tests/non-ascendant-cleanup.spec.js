@@ -31,7 +31,6 @@ test('Character source preserves origin meaning and OPI without negative status 
       'Senses', 'Offense', 'Intellect', 'Combat', 'Mobility', 'Stamina'
     ]);
   }
-  expect(chars.find(c => c.codename === 'Kokio').originType).toBe('Demi-God / Supernatural Ritual');
   expect(chars.find(c => c.codename === 'Gila Monster').originType).toBe('Biotechnology');
   expect(chars.find(c => c.codename === 'Anchorage').originType).toBe('Experimental Enhancement');
   await expect(page.locator('body')).not.toContainText('Non-Ascendant');

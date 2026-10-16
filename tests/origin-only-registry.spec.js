@@ -55,7 +55,6 @@ test('OPI uses origin, preserves all eleven capability values and excludes retir
   await page.locator('#filter-open').click();
   await expect(page.locator('[data-filter-key="powerClass"]')).toHaveCount(0);
   await expect(page.locator('[data-filter-key="originType"][value="Demi-God / Supernatural Ritual"]')).toHaveCount(0);
-  await page.locator('#filter-close').click();
   await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
