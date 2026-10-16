@@ -76,13 +76,6 @@ window.OLDROOT_HOME = {
       teaser:"An ordinary man recruited to stand beside people who are anything but ordinary.",
       links:[["Character Dossier →","characters/latch/"],["Genesis →","events.html#genesis"]]
     },
-    "Kokio": {
-      key:"kokio", image:"assets/characters/kokio/kokio-combat-01.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
-      alt:"Kokio wielding two glowing ritual hatchets in close combat",
-      meta:"DEMI-GOD · HERO · HILO / HAWAIʻI ISLAND",
-      teaser:"A Hilo warrior carrying power from something far older than the world around her.",
-      links:[["Character Dossier →","characters/kokio/"],["Hilo / Hawaiʻi Island →","locations/hilo/"],["OPI Analytics →","dpi.html"]]
-    },
     "Ballestera": {
       key:"ballestera", image:"assets/characters/ballestera/ballestera-featured.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
       alt:"Ballestera studies a poison bottle by lamplight in her hidden southern Arizona RV laboratory",
