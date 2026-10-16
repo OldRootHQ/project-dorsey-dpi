@@ -56,6 +56,8 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
   await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0094');
+  await expect(page.locator('#issue-one-announcement')).toContainText('UNDER');
+  await expect(page.locator('#issue-one-announcement')).not.toContainText('Kincast');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
@@ -108,7 +110,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
   });
   expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=5"]')).toHaveCount(1);
+  await expect(page.locator('link[href="home.css?v=6"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
