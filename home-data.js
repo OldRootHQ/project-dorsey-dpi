@@ -107,9 +107,9 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
-    title:"Flying Saucer joins the OldRoot sticker collection.",
-    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
-    href:"news.html#or-web-0094"
+    meta:"ISSUE #1 · OLDROOT STUDIOS / IN DEVELOPMENT",
+    title:"Under Observation — Issue #1 in development.",
+    body:"OldRoot’s first official issue has a name: Under Observation. Its story and featured cast remain a secret until the studio is ready to reveal more.",
+    href:"news.html#under-observation-announcement"
   }
 };

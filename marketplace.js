@@ -14,7 +14,7 @@
     {id:"deuce",title:"Deuce",asset:"assets/characters/deuce/deuce-emblem.svg",href:"stickers/deuce/"},
     {id:"flying-saucer",title:"Flying Saucer",asset:"assets/characters/flying-saucer/flying-saucer-emblem.svg?v=2",href:"stickers/flying-saucer/"}
   ].map(p=>({...p,kind:"sticker"}));
-  const books = Array.from({length:10},(_,i)=>({id:"book-"+(i+1),title:"OldRoot Book "+(i+1),number:i+1,href:"library/oldroot-book-"+(i+1)+"/",kind:"book"}));
+  const books = Array.from({length:10},(_,i)=>({id:"book-"+(i+1),title:i===0?"Under Observation":"OldRoot Book "+(i+1),number:i+1,href:"library/oldroot-book-"+(i+1)+"/",kind:"book"}));
   const shuffle=arr=>{const out=[...arr];for(let i=out.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[out[i],out[j]]=[out[j],out[i]];}return out;};
   const getPrevious=()=>{try{return JSON.parse(sessionStorage.getItem("oldroot-marketplace-features-v1")||"null")}catch{return null}};
   const save=ids=>{try{sessionStorage.setItem("oldroot-marketplace-features-v1",JSON.stringify(ids));}catch{}};
