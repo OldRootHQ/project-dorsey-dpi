@@ -76,13 +76,6 @@ window.OLDROOT_HOME = {
       teaser:"An ordinary man recruited to stand beside people who are anything but ordinary.",
       links:[["Character Dossier →","characters/latch/"],["Genesis →","events.html#genesis"]]
     },
-    "Kokio": {
-      key:"kokio", image:"assets/characters/kokio/kokio-combat-01.webp", mark:"assets/characters/kokio/kokio-emblem.svg?v=1",
-      alt:"Kokio wielding two glowing ritual hatchets in close combat",
-      meta:"DEMI-GOD · HERO · HILO / HAWAIʻI ISLAND",
-      teaser:"A Hilo warrior carrying power from something far older than the world around her.",
-      links:[["Character Dossier →","characters/kokio/"],["Hilo / Hawaiʻi Island →","locations/hilo/"],["OPI Analytics →","dpi.html"]]
-    },
     "Ballestera": {
       key:"ballestera", image:"assets/characters/ballestera/ballestera-featured.webp", mark:"assets/characters/ballestera/ballestera-emblem.svg?v=1",
       alt:"Ballestera studies a poison bottle by lamplight in her hidden southern Arizona RV laboratory",
@@ -113,10 +106,10 @@ window.OLDROOT_HOME = {
     {name:"White Magma",status:"IN DEVELOPMENT"}
   ],
   latestDispatch: {
-    label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
-    title:"Flying Saucer joins the OldRoot sticker collection.",
-    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
-    href:"news.html#or-web-0094"
+    label:"ISSUE #1 / IN DEVELOPMENT",
+    meta:"OLDROOT STUDIOS · PUBLISHING ANNOUNCEMENT",
+    title:"Under Observation — Issue #1 is in development.",
+    body:"The first OldRoot issue has a title: Under Observation. Story details, cover art, cast and release date remain unannounced.",
+    href:"library/oldroot-book-1/"
   }
 };

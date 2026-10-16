@@ -10,7 +10,6 @@ Static public website for the OldRoot universe, including character dossiers, lo
 - Anchorage / Gilmer Simpson
 - Agent Emerald / Remington James “Remy” Hampton
 - Latch / Latch Boswell
-- Kokio / Kalani Kane
 - Amari Razman / Amari Razman
 - Ballestera / Veronica Devoodas
 - Remedie / Mandy Ledger

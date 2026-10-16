@@ -18,9 +18,9 @@ test('homepage samples the universe while complete registries remain intact', as
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(11);
-  expect(state.characterPool).not.toContain('Kokio');
-  expect(state.selectedCharacters).not.toContain('Kokio');
-  expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
+  expect(state.characterPool).toHaveLength(11);
+  expect(state.selectedCharacters).toHaveLength(3);
+  expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle']);
   expect(state.upcomingPool).toHaveLength(7);
   expect(state.selectedCharacters).toHaveLength(3);
   expect(state.selectedLocations).toHaveLength(3);
@@ -55,7 +55,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#explore-oldroot')).toContainText('Characters');
   await expect(page.locator('#explore-oldroot')).toContainText('World');
   await expect(page.locator('#explore-oldroot')).toContainText('Lore & Systems');
-  await expect(page.locator('#homeLatestDispatch')).toContainText('OR-WEB-0094');
+  await expect(page.locator('#homeLatestDispatch')).toContainText('Under Observation');
   await expect(page.locator('#character-spotlight')).toContainText('Faces from across OldRoot.');
   await expect(page.locator('#world-spotlight')).toContainText('Places where the story is already moving.');
   await expect(page.locator('#explore-oldroot')).toContainText('Find your way in.');
@@ -66,22 +66,22 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
-  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
+  expect((await page.locator('.character-card').allTextContents()).join(' ')).not.toContain('retired character');
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
   await expect(page.locator('text=Meet the expanding cast.')).toHaveCount(1);
 
   await page.goto(BASE + '/locations.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.location-index button')).toHaveCount(7);
+  await expect(page.locator('.location-index button')).toHaveCount(6);
   await page.locator('[data-location="baltimore"]').click();
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
 test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', async ({ page }) => {
@@ -108,7 +108,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
   });
   expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=5"]')).toHaveCount(1);
+  await expect(page.locator('link[href="home.css?v=6"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
