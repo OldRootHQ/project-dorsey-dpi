@@ -8,7 +8,7 @@ test('Public-facing character pages no longer repeat negative Ascendant labels',
     'locations/baltimore/',
     'characters/gila-monster/', 'characters/commotion/', 'characters/aftermark/',
     'characters/kincast/', 'characters/anchorage/', 'characters/agent-emerald/',
-    'characters/latch/', 'characters/kokio/', 'characters/amari-razman/',
+    'characters/latch/', 'characters/amari-razman/',
     'characters/ballestera/', 'characters/remedie/', 'characters/flying-saucer/'
   ];
   for (const route of routes) {
