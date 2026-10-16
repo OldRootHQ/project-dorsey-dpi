@@ -20,7 +20,7 @@ test('homepage samples the universe while complete registries remain intact', as
   expect(state.characterPool).toHaveLength(11);
   expect(state.characterPool).not.toContain('Kokio');
   expect(state.selectedCharacters).not.toContain('Kokio');
-  expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo']);
+  expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle']);
   expect(state.upcomingPool).toHaveLength(7);
   expect(state.selectedCharacters).toHaveLength(3);
   expect(state.selectedLocations).toHaveLength(3);
@@ -66,12 +66,12 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
-  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(1);
+  await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(0);
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
   await expect(page.locator('text=Meet the expanding cast.')).toHaveCount(1);
 
