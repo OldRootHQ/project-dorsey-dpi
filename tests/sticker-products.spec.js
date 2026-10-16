@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const BASE='http://127.0.0.1:8000';
-const products=["gila-monster","commotion","latch","kokio","remedie","agent-emerald","aftermark","kincast","anchorage","deuce","flying-saucer"];
-const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','kokio':'Kokio','remedie':'Remedie','agent-emerald':'Agent Emerald','aftermark':'Aftermark','kincast':'Kincast','anchorage':'Anchorage','deuce':'Deuce','flying-saucer':'Flying Saucer'};
+const products=["gila-monster","commotion","latch","remedie","agent-emerald","aftermark","kincast","anchorage","deuce","flying-saucer"];
+const titles={'gila-monster':'Gila Monster','commotion':'Commotion','latch':'Latch','remedie':'Remedie','agent-emerald':'Agent Emerald','aftermark':'Aftermark','kincast':'Kincast','anchorage':'Anchorage','deuce':'Deuce','flying-saucer':'Flying Saucer'};
 
 test('Market stickers open product pages, with character links still present',async({page})=>{
   await page.goto(BASE+'/marketplace.html',{waitUntil:'domcontentloaded'});
@@ -20,7 +20,7 @@ test('Rotating sticker features open matching sticker products without changing 
   await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]')).toHaveCount(3);
   await expect(page.locator('#marketplaceFeaturedGrid [data-feature-kind="book"]')).toHaveCount(2);
   const hrefs=await page.locator('#marketplaceFeaturedGrid [data-feature-kind="sticker"]').evaluateAll(xs=>xs.map(el=>el.getAttribute('href')));
-  for(const href of hrefs)expect(href).toMatch(/^stickers\/(gila-monster|commotion|latch|kokio|remedie|agent-emerald|aftermark|kincast|anchorage|deuce|flying-saucer)\/$/);
+  for(const href of hrefs)expect(href).toMatch(/^stickers\/(gila-monster|commotion|latch|remedie|agent-emerald|aftermark|kincast|anchorage|deuce|flying-saucer)\/$/);
 });
 for(const slug of products){
   test(slug+' shows a clickable picture, functional lightbox and disabled purchasing',async({page})=>{
