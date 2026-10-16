@@ -6,7 +6,6 @@
     {id:"gila-monster",title:"Gila Monster",asset:"assets/characters/gila-monster/gila-monster-emblem.svg",href:"stickers/gila-monster/"},
     {id:"commotion",title:"Commotion",asset:"assets/characters/commotion/commotion-emblem.svg",href:"stickers/commotion/"},
     {id:"latch",title:"Latch",asset:"assets/characters/latch/latch-emblem.svg",href:"stickers/latch/"},
-    {id:"kokio",title:"Kokio",asset:"assets/characters/kokio/kokio-emblem.svg",href:"stickers/kokio/"},
     {id:"remedie",title:"Remedie",asset:"assets/characters/remedie/remedie-emblem.svg",href:"stickers/remedie/"},
     {id:"agent-emerald",title:"Agent Emerald",asset:"assets/characters/agent-emerald/agent-emerald-emblem.svg",href:"stickers/agent-emerald/"},
     {id:"aftermark",title:"Aftermark",asset:"assets/characters/aftermark/aftermark-emblem.svg",href:"stickers/aftermark/"},
