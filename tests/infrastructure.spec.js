@@ -9,7 +9,7 @@ const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 const indexable = [
   'index.html','characters.html',
   'characters/gila-monster/index.html','characters/commotion/index.html','characters/aftermark/index.html',
-  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/kokio/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html',
+  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html',
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
   'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
@@ -19,7 +19,7 @@ const indexable = [
 const noindex = [
   '404.html','cart.html','checkout.html','order-confirmation.html','library.html',
   ...Array.from({ length: 10 }, (_, i) => `library/oldroot-book-${i + 1}/index.html`),
-  ...["gila-monster","commotion","latch","kokio","remedie","agent-emerald","aftermark","kincast","anchorage","deuce","flying-saucer"].map(slug=>`stickers/${slug}/index.html`)
+  ...["gila-monster","commotion","latch","remedie","agent-emerald","aftermark","kincast","anchorage","deuce","flying-saucer"].map(slug=>`stickers/${slug}/index.html`)
 ];
 
 function read(file) {
