@@ -43,6 +43,12 @@ test('community poll is transparent about voting not being live', async ({ page 
   await expect(poll).not.toContainText('Kincast');
   await expect(poll).toContainText('Voting opens soon');
   await expect(poll.locator('button, input[type="radio"], iframe')).toHaveCount(0);
+  await page.addInitScript(() => { window.OLDROOT_POLL_URL = 'https://strawpoll.com/polls/NPgxkN9dQn2'; });
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.locator('#community-poll iframe')).toHaveAttribute('src', 'https://strawpoll.com/embed/polls/NPgxkN9dQn2');
+  await expect(page.locator('#communityPollStatus')).toContainText('Voting is open');
+  await expect(page.locator('#community-poll a.community-poll-open-link')).toHaveAttribute('href', 'https://strawpoll.com/polls/NPgxkN9dQn2');
+
 });
 
 test('retired character has no public links, registry record, or live search entry', async ({ page }) => {

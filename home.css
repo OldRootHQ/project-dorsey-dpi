@@ -127,3 +127,7 @@
 .home-after-dark .community-poll-note{margin:12px 0 0;font:400 12px/1.6 Arial,Helvetica,sans-serif;color:#b4bdaf}
 @media(max-width:780px){.home-after-dark .issue-one-announcement{grid-template-columns:1fr;padding:30px 24px}.home-after-dark .issue-one-motif{min-height:135px;overflow:hidden}.home-after-dark .issue-one-ring{width:185px}.home-after-dark .ring-b{width:130px}.home-after-dark .ring-c{width:55px}.home-after-dark .community-poll{grid-template-columns:1fr}}
 @media(max-width:440px){.home-after-dark .issue-one-announcement h2{font-size:clamp(38px,11.2vw,55px)}.home-after-dark .community-poll-candidates{grid-template-columns:1fr 1fr}.home-after-dark .community-poll{padding:23px 18px}.home-after-dark .community-poll-content{padding:17px 13px}}
+
+.home-after-dark .community-poll-frame{display:block;min-height:520px;width:100%;max-width:100%;margin:13px 0 15px;border:0;border-radius:10px;background:#ecede4}
+.home-after-dark .community-poll-open-link{display:inline-flex;padding:12px 16px;border-radius:10px;background:#d2bb88;color:#132019;font:800 12px/1.3 Arial,Helvetica,sans-serif;text-decoration:none}
+.home-after-dark .community-poll-open-link:focus-visible{outline:3px solid white;outline-offset:3px}
