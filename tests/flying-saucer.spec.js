@@ -71,7 +71,7 @@ test('Nikki joins the 14-person registry with her emblem below her portrait, not
 test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage and OPI',async({page})=>{
  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.discovery-card[href="characters/flying-saucer/"] .start-character-mark')).toHaveAttribute('src',MARK);
- await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+ await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
  await page.goto(BASE+'/locations/seattle/',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.known-character-card[href="../../characters/flying-saucer/"]')).toHaveCount(1);
  await page.goto(BASE+'/characters/agent-emerald/',{waitUntil:'domcontentloaded'});

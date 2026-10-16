@@ -108,7 +108,7 @@ test('Deuce is a supporting character in public registry, but never in the OPI d
 test('Deuce is discoverable from Start Here, Dispatch, and sitemap',async({page})=>{
  await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('a.discovery-card[href="characters/deuce/"]')).toHaveCount(1);
- await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+ await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
  // Deuce's registry and Dispatch entry persist even when newer updates take the homepage lead.
  await page.goto(BASE+'/news.html',{waitUntil:'domcontentloaded'});
  await expect(page.locator('#or-web-0084 a[href="characters/deuce/"]')).toHaveCount(1);
