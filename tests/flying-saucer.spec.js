@@ -50,11 +50,11 @@ test('Flying Saucer dossier includes canon, original visuals and no spoiler reve
  }
 });
 
-test('Nikki joins the 14-person registry with her emblem below her portrait, not over it',async({page})=>{
+test('Nikki joins the 13-person registry with her emblem below her portrait, not over it',async({page})=>{
  for(const viewport of [{width:1440,height:900},{width:390,height:844}]){
   await page.setViewportSize(viewport);
   await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(13);
   const card=page.locator('.character-card[href="characters/flying-saucer/"]');
   await expect(card).toHaveAttribute('data-release-order','14');
   await expect(card.locator('.character-card-mark')).toHaveAttribute('src',MARK);
@@ -82,7 +82,7 @@ test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage an
  expect(await page.evaluate(()=>window.OLDROOT_HOME.characterSpotlights['Flying Saucer'].mark)).toBe(MARK);
  expect(await page.evaluate(()=>window.OLDROOT_LOCATIONS.seattle.characters.map(x=>x.name))).toContain('Flying Saucer');
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+ await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(x=>x.codename==='Flying Saucer'));
  expect(record).toBeTruthy();
  expect(record.baseline).toEqual(ratings);

@@ -86,7 +86,7 @@ test('Deuce supporting character dossier is linked, illustrated, canon-faithful,
 
 test('Deuce is a supporting character in public registry, but never in the OPI dataset',async({page})=>{
  await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('.character-card')).toHaveCount(14);
+ await expect(page.locator('.character-card')).toHaveCount(13);
  const card=page.locator('.character-card[href="characters/deuce/"]');
  await expect(card).toHaveCount(1);
  await expect(card).toContainText('Mono Russo');

@@ -236,7 +236,7 @@ test('Locations directory stays dark and exposes a globe-skip shortcut', async (
 
   const directory = page.locator('#indexed-places');
   await expect(directory).toBeVisible();
-  await expect(directory.locator('.place-card')).toHaveCount(7);
+  await expect(directory.locator('.place-card')).toHaveCount(6);
 
   const appearance = await directory.evaluate(el => {
     const s = getComputedStyle(el);
