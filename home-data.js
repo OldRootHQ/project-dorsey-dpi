@@ -106,10 +106,10 @@ window.OLDROOT_HOME = {
     {name:"White Magma",status:"IN DEVELOPMENT"}
   ],
   latestDispatch: {
-    label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
-    title:"Flying Saucer joins the OldRoot sticker collection.",
-    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
-    href:"news.html#or-web-0094"
+    label:"ISSUE #1 / IN DEVELOPMENT",
+    meta:"OLDROOT STUDIOS · PUBLISHING ANNOUNCEMENT",
+    title:"Under Observation — Issue #1 is in development.",
+    body:"The first OldRoot issue has a title: Under Observation. Story details, cover art, cast and release date remain unannounced.",
+    href:"library/oldroot-book-1/"
   }
 };
