@@ -1,3 +1,11 @@
+## OR-WEB-0099 · October 16, 2026 · Issue #1 Announcement, Reader Poll Preview, Kokio Retirement
+
+- Announced OldRoot Issue #1 **Under Observation** on the homepage without revealing any character connection.
+- Added accessible 'Who should get the next issue?' homepage ballot preview; browser storage only, explicitly not a shared community tally or production voting backend.
+- Removed Kokio from public character registry, homepage configuration, OPI records, Start Here, location connections, Marketplace, Dispatches, sitemap and README.
+- Retired Kokio character/sticker pages and associated public art assets; internal historical patch records remain.
+- Updated affected regression expectations and cache keys. Routine maintenance was not published as a Dispatch.
+
 # OldRoot Website Patch Log
 
 This file is the internal release ledger for website changes. Do not automatically mirror maintenance, SEO, infrastructure, UI polish, or cleanup into public Dispatches (`news.html`). Reserve Dispatches for character reveals, new canon, publishing announcements, and other reader-facing creative milestones.
