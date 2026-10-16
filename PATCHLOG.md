@@ -2,6 +2,14 @@
 
 This file is the internal release ledger for website changes. Do not automatically mirror maintenance, SEO, infrastructure, UI polish, or cleanup into public Dispatches (`news.html`). Reserve Dispatches for character reveals, new canon, publishing announcements, and other reader-facing creative milestones.
 
+## OR-WEB-0099 · October 16, 2026 · Under Observation Issue #1 Announcement and Public Roster Cleanup
+
+- Creator confirmed complete public retirement of Kokio; removed registry, OPI, homepage, world/location connections, index page, Hilo-only dossier, sticker/product assets, live Dispatches references, and sitemap URLs.
+- Introduced **Under Observation** as the official title of **OldRoot Issue #1**, **in development**. Home announcement, Marketplace Book 1 record, publishing Dispatch, and Latest Dispatch all refer only to the issue title and development status; its cast, plot and release date are intentionally withheld.
+- Staged a visible Community Poll for who should get the next OldRoot issue. Proposed candidates are previews only; real voting is not enabled until a shared poll provider is connected. No fictitious counts or locally counted votes.
+- Retired outdated Kokio-only tests; updated affected registry, location, shop, navigation and visual QA, with a new spoiler-boundary/public-removal regression check.
+- This internal patch log records the website maintenance. **No public Dispatch for the retirement itself.**
+
 ## OR-WEB-0098 · October 15, 2026 · Dispatch Editorial Policy and Homepage Spotlight
 
 - Removed the OR-WEB-0097 housekeeping announcement from the public Dispatches page; historical technical notes stay in this internal patch ledger only.
