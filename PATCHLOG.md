@@ -1,3 +1,10 @@
+## OR-WEB-0100 · October 18, 2026 · Post-Retirement QA and Navigation Repair
+
+- Reconciled Site QA browser expectations with Kokio's approved removal: the public registry now has **13 characters**, OPI Analytics has **11 records**, and the active Marketplace contains **10 sticker previews**.
+- Repaired two stale public links left after the removal: Latch's sticker product pagination now points to Remedie, and the legacy non-indexed Library sticker preview replaces the deleted Kokio design with Flying Saucer's approved mark and live sticker product link.
+- Refreshed test expectations for the homepage CSS cache key and the number of static pages after two retired routes.
+- Preserved Flying Saucer's new transparent Triple Strike art, seven illustrations, full-size sticker master, and buy-disabled Marketplace preview. No character lore, OPI ratings, poll results, checkout, prices or production status were changed.
+
 ## OR-WEB-0099 · October 16, 2026 · Issue #1 Announcement, Reader Poll Preview, Kokio Retirement
 
 - Announced OldRoot Issue #1 **Under Observation** on the homepage without revealing any character connection.

@@ -71,7 +71,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(0);
 
   await page.goto(BASE + '/start-here.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
+  await expect(page.locator('.start-stat-panel')).toContainText('13 active records');
   await expect(page.locator('a[href="characters/anchorage/"]')).toHaveCount(1);
   await expect(page.locator('text=Meet the expanding cast.')).toHaveCount(1);
 
@@ -81,7 +81,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
 test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', async ({ page }) => {
@@ -108,7 +108,7 @@ test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', a
   });
   expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=5"]')).toHaveCount(1);
+  await expect(page.locator('link[href="home.css?v=6"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {

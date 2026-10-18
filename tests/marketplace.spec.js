@@ -14,7 +14,7 @@ test('Marketplace has five varied items before the preserved Library and sticker
   expect(order.indexOf('marketplace-library')).toBeLessThan(order.indexOf('marketplace-stickers'));
   await expect(page.locator('.library-card')).toHaveCount(10);
   await expect(page.locator('.feature-slide')).toHaveCount(8);
-  await expect(page.locator('[data-market-sticker]')).toHaveCount(11);
+  await expect(page.locator('[data-market-sticker]')).toHaveCount(10);
   await expect(page.locator('main button:has-text("Buy"),main button:has-text("Checkout"),main button:has-text("Add to bag")')).toHaveCount(0);
   await expect(page.locator('main')).toContainText('No purchases or payments are available yet');
 });
