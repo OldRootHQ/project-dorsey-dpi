@@ -26,7 +26,13 @@
 </style>
 </head>
 <body class="oldroot-after-dark">
-<header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary"><a href="index.html">Home</a><a href="marketplace.html">Marketplace</a><a href="characters.html">Characters</a></nav></div></header>
+<header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
+        <div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-characters-menu">Characters <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-characters-menu" data-nav-menu role="menu"><a role="menuitem" href="characters.html">Character Registry</a><a role="menuitem" href="dpi.html">OPI Analytics</a></div></div>
+        <div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-world-menu">World <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-world-menu" data-nav-menu role="menu"><a role="menuitem" href="locations.html">Locations</a><a role="menuitem" href="events.html">Events</a><a role="menuitem" href="organizations.html">Organizations</a></div></div>
+        <div class="nav-group"><button type="button" class="nav-menu-button" data-nav-toggle aria-expanded="false" aria-haspopup="true" aria-controls="nav-lore-menu">Lore <span class="nav-caret" aria-hidden="true">⌄</span></button><div class="nav-dropdown" id="nav-lore-menu" data-nav-menu role="menu"><a role="menuitem" href="start-here.html">Start Here</a><a role="menuitem" href="lore.html">Lore Index</a></div></div>
+        <a href="marketplace.html">Marketplace</a><a href="news.html">Dispatches</a>
+      </nav></div></header>
 <main class="poll-owner" id="main-content">
 <section class="poll-owner-head"><span class="poll-owner-kicker">OLDROOT STUDIOS / PRIVATE OPERATIONS</span><h1>Reader's Choice Results</h1><p>Owner-only totals. This page does not display real voting data without the private access token issued during backend setup.</p></section>
 <section class="poll-owner-card"><form id="pollResultsLogin" autocomplete="off"><label for="pollAdminToken">Owner access token</label><div class="poll-owner-auth"><input id="pollAdminToken" name="adminToken" type="password" required spellcheck="false" autocomplete="off" placeholder="Enter your private token"/><button type="submit">View private results</button></div></form>

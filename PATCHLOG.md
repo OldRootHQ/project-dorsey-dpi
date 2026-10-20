@@ -4,7 +4,7 @@
 - Added a separately deployable **Cloudflare Workers + D1 community vote service**, including shared vote storage, one browser-ID vote, server-side pseudonymized IP/day throttling, restricted candidates, and admin-only aggregate results. These basic anti-abuse controls are not proof of one-person-one-vote.
 - Added an **unlisted, noindex owner dashboard** at `poll-results.html` with authenticated total votes, per-character counts, percentages and a chart that auto-refreshes every 30 seconds. Secrets are never placed in public JavaScript or stored by the owner dashboard.
 - **Live community voting is not switched on yet**: the owner must deploy D1 + the Worker, set the private backend secrets and connect the deployed API URL in `poll-config.js`. Until then the homepage truthfully displays a disabled ballot and records no votes.
-- Refreshed poll assets and homepage stylesheet versions, added responsive, availability, owner-security and backend contract tests, and preserved the Issue #1 `Under Observation` announcement.
+- Refreshed poll assets and homepage stylesheet versions, reused the site's standard grouped navigation in the owner dashboard, added responsive, availability, owner-security and backend contract tests, and preserved the Issue #1 `Under Observation` announcement.
 
 ## OR-WEB-0100 · October 18, 2026 · Post-Retirement QA and Navigation Repair
 

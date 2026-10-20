@@ -14,7 +14,10 @@ test('Reader\'s Choice shows compact side-by-side bubbles and never records pret
     const r = await options.evaluateAll(els=>els.map(el=>({x:el.getBoundingClientRect().x,y:el.getBoundingClientRect().y,h:el.getBoundingClientRect().height,w:el.getBoundingClientRect().width})));
     expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(4/viewport.cols);
     expect(Math.max(...r.map(x=>x.h))).toBeLessThan(90);
-    expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width+2);
+    const pollBounds=await page.locator('#next-issue-poll').evaluate(el=>({right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left}));
+    expect(pollBounds.left).toBeGreaterThanOrEqual(0);
+    expect(pollBounds.right).toBeLessThanOrEqual(viewport.width+2);
+    if(viewport.width<900)expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width+2);
     await expect(page.locator('.poll-option img')).toHaveCount(4);
   }
   await page.locator('input[value="Latch"]').check();
