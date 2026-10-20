@@ -17,7 +17,7 @@ const indexable = [
 ];
 
 const noindex = [
-  '404.html','cart.html','checkout.html','order-confirmation.html','library.html',
+  '404.html','cart.html','checkout.html','order-confirmation.html','library.html','poll-results.html',
   ...Array.from({ length: 10 }, (_, i) => `library/oldroot-book-${i + 1}/index.html`),
   ...["gila-monster","commotion","latch","remedie","agent-emerald","aftermark","kincast","anchorage","deuce","flying-saucer"].map(slug=>`stickers/${slug}/index.html`)
 ];

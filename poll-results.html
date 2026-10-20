@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Reader's Choice Results — OldRoot Owner Access</title>
+<meta name="description" content="Private OldRoot Studios Reader's Choice vote administration. Access requires the owner token."/>
+<meta name="robots" content="noindex,nofollow,noarchive"/>
+<meta name="referrer" content="no-referrer"/>
+<meta name="theme-color" content="#06110d"/>
+<link rel="stylesheet" href="brand.css?v=17"/><link rel="stylesheet" href="site.css?v=33"/>
+<style>
+.poll-owner{max-width:1000px;margin:35px auto 80px;padding:0 20px;color:#f0f5e9}
+.poll-owner-head,.poll-owner-card{background:linear-gradient(135deg,#14261e,#0b1513);border:1px solid rgba(175,209,182,.28);border-radius:18px;padding:clamp(18px,4vw,35px)}
+.poll-owner-head{margin-bottom:18px}.poll-owner-kicker{font:850 11px/1.4 Arial,sans-serif;letter-spacing:.18em;color:#a7d4ab}
+.poll-owner h1{font-size:clamp(30px,5.6vw,62px);line-height:1.1;margin:12px 0;color:#f0f5e9}.poll-owner p{color:#c0d1c4;line-height:1.55}
+.poll-owner label{display:block;margin:0 0 10px;font-weight:750}.poll-owner-auth{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;margin-top:18px}
+.poll-owner input{min-width:215px;flex:1;background:#081510;color:#f4f8f2;border:1px solid #69926f;padding:13px 15px;border-radius:10px;font-size:16px}
+.poll-owner button{border-radius:10px;padding:11px 17px;cursor:pointer;background:#c5e9bd;color:#0b2014;font-weight:800;border:0;min-height:45px}
+.poll-owner button:hover{background:#e0f3d7}.poll-owner button:focus-visible,.poll-owner input:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.poll-owner-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+.poll-owner-toolbar button{background:#253e31;color:#e6f5e6;border:1px solid #72947a}
+.poll-owner-total{font-size:clamp(43px,8vw,79px);line-height:1.1;display:block;color:#f1f5e9;margin:15px 0 6px}
+.result-row{margin:22px 0}.result-label{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:15px;margin-bottom:9px;flex-wrap:wrap}.result-label span{color:#cbdbca;font-variant-numeric:tabular-nums}
+.result-track{height:18px;border-radius:100px;border:1px solid #4e795d;overflow:hidden;background:#0b1a13}.result-fill{height:100%;background:linear-gradient(90deg,#76ac81,#d1edbf);border-radius:100px;transition:width .35s ease}
+#pollAdminStatus{min-height:1.4em;white-space:normal}#pollResultsUpdated{font-size:12px}
+</style>
+</head>
+<body class="oldroot-after-dark">
+<header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary"><a href="index.html">Home</a><a href="marketplace.html">Marketplace</a><a href="characters.html">Characters</a></nav></div></header>
+<main class="poll-owner" id="main-content">
+<section class="poll-owner-head"><span class="poll-owner-kicker">OLDROOT STUDIOS / PRIVATE OPERATIONS</span><h1>Reader's Choice Results</h1><p>Owner-only totals. This page does not display real voting data without the private access token issued during backend setup.</p></section>
+<section class="poll-owner-card"><form id="pollResultsLogin" autocomplete="off"><label for="pollAdminToken">Owner access token</label><div class="poll-owner-auth"><input id="pollAdminToken" name="adminToken" type="password" required spellcheck="false" autocomplete="off" placeholder="Enter your private token"/><button type="submit">View private results</button></div></form>
+<p id="pollAdminStatus" role="status" aria-live="polite">Checking vote service…</p>
+<div class="poll-owner-toolbar"><div><span class="poll-owner-kicker">TOTAL CONFIRMED VOTES</span><strong class="poll-owner-total" id="pollResultsTotal">—</strong></div><div><button id="pollResultsRefresh" type="button">Refresh results</button> <button id="pollResultsLogout" type="button">Clear access</button></div></div>
+<div id="pollResultsChart" aria-label="Private candidate vote shares" aria-live="polite"></div><p id="pollResultsUpdated"></p>
+<p>Visitor totals remain hidden until OldRoot Studios chooses to publish the results. Browser-level duplicate prevention and an IP-based rate cap help reduce repeated votes, but are not proof of unique human voters.</p></section>
+</main>
+<footer class="oldroot-footer"><div class="footer-bottom">© 2026 OldRoot Studios · Private management surface · <a href="index.html">Back to the homepage</a></div></footer>
+<script src="poll-config.js?v=1"></script><script src="poll-results.js?v=1"></script><script src="nav.js?v=5"></script>
+</body></html>

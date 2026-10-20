@@ -1,0 +1,13 @@
+name = "oldroot-reader-poll"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+
+# Replace this placeholder after creating a D1 database in YOUR Cloudflare account.
+[[d1_databases]]
+binding = "DB"
+database_name = "oldroot-votes"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[vars]
+ALLOWED_ORIGIN = "https://oldroothq.com"
+POLL_OPEN = "true"
