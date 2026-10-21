@@ -166,3 +166,15 @@ body.home-living-comic .footer-bottom{color:#dec7ab!important}
  .lc-face-flag{font-size:7px;padding:3px}
 }
 @media(prefers-reduced-motion:reduce){.lc-face,.lc-face img,.lc-button{transition:none!important}}
+
+
+/* Preserve the poll's dark, accessible contrast while the shell goes light. */
+body.home-living-comic .oldroot-reader-poll{
+  background:#24201e!important;color:#f6eadd!important;
+  border-color:#b78460!important;
+}
+body.home-living-comic .oldroot-reader-poll .poll-intro h2,
+body.home-living-comic .oldroot-reader-poll .poll-intro p{color:#f6eadd!important}
+body.home-living-comic .oldroot-reader-poll .poll-intro .lead-kicker{color:#e0b28a!important}
+/* Mobile brushes stay within viewport, never create horizontal scroll. */
+@media(max-width:720px){body.home-living-comic .lc-hero{overflow:clip;padding-inline:6px}}
