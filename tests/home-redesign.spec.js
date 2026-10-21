@@ -1,59 +1,58 @@
 const { test, expect } = require('@playwright/test');
-
 const BASE = 'http://127.0.0.1:8000';
 
-test('OldRoot After Dark homepage prototype is active on desktop', async ({ page }) => {
-  await page.setViewportSize({ width: 1440, height: 1000 });
+test('Living Comic homepage leads with eight approved-identity panels', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  await expect(page.locator('body')).toHaveClass(/home-living-comic/);
+  await expect(page.locator('.lc-hero')).toBeVisible();
+  await expect(page.locator('.lc-hero')).toContainText('EXTRAORDINARY PEOPLE.');
+  await expect(page.locator('.lc-hero')).toContainText('UNFORGETTABLE STORIES.');
+  await expect(page.locator('.lc-face')).toHaveCount(8);
+  await expect(page.locator('.lc-face img')).toHaveCount(7);
+  await expect(page.locator('.lc-face--pending')).toContainText('Liontone');
+  await expect(page.locator('.lc-face-name')).toHaveText([
+    'Kincast','Anchorage','Flying Saucer','Liontone',
+    'Latch','Remedie','Gila Monster','Agent Emerald'
+  ]);
+  await expect(page.locator('.lc-hero-actions a')).toHaveCount(3);
+  await expect(page.locator('.editorial-hero')).toHaveCount(0);
 
-  await expect(page.locator('body')).toHaveClass(/home-after-dark/);
-  await expect(page.locator('body')).toHaveAttribute('data-home-prototype', 'after-dark');
-  await expect(page.locator('.hero-root-map')).toHaveCount(1);
-  await expect(page.locator('.hero-signal-row')).toHaveCount(0);
-  await expect(page.locator('.hero-actions a')).toHaveCount(2);
+  const checked = await page.locator('.lc-face img').evaluateAll(images =>
+    images.map(img => ({ src: img.getAttribute('src'), loaded: img.complete && img.naturalWidth > 0 }))
+  );
+  expect(checked.every(item => item.loaded), JSON.stringify(checked)).toBe(true);
 
-  const visual = await page.evaluate(() => {
-    const body = getComputedStyle(document.body);
-    const hero = document.querySelector('.editorial-hero').getBoundingClientRect();
-    const featured = document.querySelector('.home-featured');
-    const featuredStyle = getComputedStyle(featured);
-    const art = document.querySelector('.home-character-slide.active .home-character-art').getBoundingClientRect();
-    const card = document.querySelector('.discovery-card');
-    const cardStyle = getComputedStyle(card);
-    return {
-      bodyBackground: body.backgroundImage,
-      heroHeight: hero.height,
-      featuredBackground: featuredStyle.backgroundImage,
-      artHeight: art.height,
-      cardBackground: cardStyle.backgroundImage,
-      cardColor: cardStyle.color
-    };
-  });
+  const cols = await page.locator('.lc-face-grid').evaluate(el =>
+    getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length
+  );
+  expect(cols).toBe(4);
 
-  expect(visual.bodyBackground).toContain('gradient');
-  expect(visual.heroHeight).toBeGreaterThanOrEqual(600);
-  expect(visual.featuredBackground).toContain('gradient');
-  expect(visual.artHeight).toBeGreaterThan(500);
-  expect(visual.cardBackground).toContain('gradient');
-  expect(visual.cardColor).not.toBe('rgb(21, 21, 21)');
+  await expect(page.locator('#techGlobe')).toHaveCount(0);
+  await expect(page.locator('#issue-one')).toContainText('IN DEVELOPMENT');
 });
 
-test('OldRoot After Dark homepage remains contained on phone width', async ({ page }) => {
+test('Living Comic eight-panel homepage reflows within a phone viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(BASE + '/', { waitUntil: 'networkidle' });
-
   const layout = await page.evaluate(() => ({
     viewport: innerWidth,
     htmlWidth: document.documentElement.scrollWidth,
     bodyWidth: document.body.scrollWidth,
-    heroWidth: document.querySelector('.editorial-hero').getBoundingClientRect().width,
-    rootMapWidth: document.querySelector('.hero-root-map').getBoundingClientRect().width,
-    heroActionsVisible: [...document.querySelectorAll('.editorial-hero .hero-actions a')].every(link => link.getBoundingClientRect().width > 0)
+    cols: getComputedStyle(document.querySelector('.lc-face-grid')).gridTemplateColumns.split(' ').filter(Boolean).length,
+    ctaCount: [...document.querySelectorAll('.lc-hero-actions a')].filter(a => a.getBoundingClientRect().width > 0).length,
   }));
-
   expect(layout.htmlWidth).toBeLessThanOrEqual(layout.viewport + 2);
   expect(layout.bodyWidth).toBeLessThanOrEqual(layout.viewport + 2);
-  expect(layout.heroWidth).toBeLessThanOrEqual(layout.viewport);
-  expect(layout.rootMapWidth).toBeLessThan(layout.viewport);
-  expect(layout.heroActionsVisible).toBe(true);
+  expect(layout.cols).toBe(2);
+  expect(layout.ctaCount).toBe(3);
+});
+
+test('Locations retains the original interactive globe while adopting editorial shell', async ({ page }) => {
+  await page.goto(BASE + '/locations.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('body')).toHaveClass(/locations-living-comic/);
+  await expect(page.locator('#techGlobe')).toBeVisible();
+  await expect(page.locator('#earthView')).toBeVisible();
+  await expect(page.locator('#zoomInGlobe')).toBeVisible();
+  await expect(page.locator('.locations-cosmic-copy')).toContainText('Every hero has a hometown');
 });
