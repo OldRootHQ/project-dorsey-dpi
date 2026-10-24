@@ -1,0 +1,180 @@
+/* OLDROOT HQ 2.0 — THE LIVING COMIC
+   Editorial homepage study. Scoped to body.home-living-comic only.
+   Source of truth: approved character artwork; no canon redesigns. */
+body.home-living-comic{
+  --lc-paper:#f1e5cf;
+  --lc-paper-light:#fff7e8;
+  --lc-espresso:#24201e;
+  --lc-copper:#ba8054;
+  --lc-edge:#2c2420;
+  --lc-muted:#66594f;
+  --home-text:#24201e;
+  --home-muted:#66594f;
+  --home-faint:#756659;
+  --home-line:rgba(36,32,30,.20);
+  --home-line-soft:rgba(36,32,30,.16);
+  --home-panel:rgba(255,247,232,.94);
+  --home-panel-strong:#fff7e8;
+  --home-panel-soft:#ead9bd;
+  color:var(--lc-espresso)!important;
+  background:var(--lc-paper)!important;
+  font-family:Arial,Helvetica,sans-serif;
+}
+body.home-living-comic::before,
+body.home-living-comic::after{display:none!important}
+body.home-living-comic .site-shell{max-width:1460px;padding:clamp(12px,2.3vw,32px)}
+body.home-living-comic .masthead{
+  background:rgba(247,236,218,.97)!important;
+  border-bottom:3px solid var(--lc-espresso)!important;
+  box-shadow:0 3px 0 var(--lc-copper)!important;
+}
+body.home-living-comic .mast-inner{max-width:1460px;padding-block:10px}
+body.home-living-comic .brand{
+  background:none!important;border:0!important;box-shadow:none!important;
+  color:var(--lc-espresso)!important;border-radius:0!important;
+  font-family:Impact,"Arial Narrow",Arial,sans-serif;
+  font-size:clamp(25px,2.7vw,39px)!important;
+  font-weight:900!important;font-style:italic;letter-spacing:-.07em;
+  padding:4px 10px 5px 0;transform:skew(-7deg);
+}
+body.home-living-comic .site-nav>a,
+body.home-living-comic .nav-menu-button{
+  color:#302925!important;font-weight:900;
+  border-radius:3px!important;
+}
+body.home-living-comic .site-nav>a:hover,
+body.home-living-comic .nav-menu-button:hover{background:#e4c9a8!important}
+body.home-living-comic .site-nav>a.active{color:#171311!important;box-shadow:inset 0 -3px var(--lc-copper)}
+body.home-living-comic .site-nav .nav-dropdown{background:#fff8ed!important;color:var(--lc-espresso)!important;border-color:var(--lc-copper)!important}
+body.home-living-comic .site-nav .nav-dropdown a{color:var(--lc-espresso)!important}
+body.home-living-comic a:focus-visible,body.home-living-comic button:focus-visible{outline:3px solid #ad5c27;outline-offset:4px}
+body.home-living-comic .editorial-hero,
+body.home-living-comic .hero-root-map{display:none!important}
+/* Brand-first opening: ink graphic energy, not a tree or washed-out glow */
+.lc-hero{position:relative;margin:7px 0 32px;color:var(--lc-espresso);isolation:isolate}
+.lc-hero::before,.lc-hero::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  background:var(--lc-espresso);height:11px;width:170px;
+  clip-path:polygon(0 30%,96% 0,100% 50%,24% 100%);
+}
+.lc-hero::before{top:16px;left:-37px;transform:rotate(-17deg)}
+.lc-hero::after{top:140px;right:-35px;transform:rotate(20deg)}
+.lc-hero-top{text-align:center;padding:clamp(12px,2vw,30px) 10px 22px}
+.lc-eyebrow{font-weight:900;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lc-muted)}
+.lc-wordmark{display:block;margin:5px 0 0;font-family:Impact,"Arial Narrow",Arial,Helvetica,sans-serif;
+  font-size:clamp(68px,13.8vw,210px);line-height:.88;letter-spacing:-.072em;
+  text-transform:uppercase;font-style:italic;font-weight:950;transform:skew(-5deg);
+  color:#211c19;text-shadow:4px 5px 0 #c28b61;
+}
+.lc-wordmark::after{content:"";display:block;width:42%;height:6px;background:var(--lc-copper);
+  margin:-2px auto 0;transform:skew(-28deg) rotate(-1deg)}
+.lc-tagline{margin:16px 0 0;font:900 clamp(15px,2.35vw,32px)/1.08 Impact,"Arial Narrow",Arial,sans-serif;
+  text-transform:uppercase;letter-spacing:.035em}
+.lc-tagline span{color:#a46843}
+.lc-summary{max-width:720px;margin:12px auto 0;font-size:clamp(13px,1.2vw,16px);line-height:1.55;color:#50443b}
+.lc-face-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(7px,1.15vw,16px);margin:22px auto 0}
+.lc-face{--panel-shade:#a06f42;position:relative;min-width:0;aspect-ratio:1.32/1;
+  overflow:hidden;display:block;border:clamp(3px,.4vw,6px) solid #171411;
+  background:#24201e;color:#fff7ea;text-decoration:none;
+  box-shadow:5px 5px 0 #f7ecdb,9px 9px 0 #28201d;
+  clip-path:polygon(0 0,100% 1.5%,98.8% 100%,1% 98.5%);
+  transition:transform .18s ease,filter .18s ease;
+}
+.lc-face:nth-child(2n){clip-path:polygon(1% 1%,99.8% 0,100% 98.5%,0 100%)}
+.lc-face:hover{transform:translateY(-4px) rotate(-.4deg);filter:saturate(1.12)}
+.lc-face img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 29%;
+  filter:contrast(1.12) saturate(.9);transition:transform .24s ease}
+.lc-face:hover img{transform:scale(1.045)}
+.lc-face::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 44%,rgba(8,6,5,.83) 100%),
+   linear-gradient(125deg,transparent 67%,color-mix(in srgb,var(--panel-shade),transparent 45%) 100%)}
+.lc-face::after{content:"";position:absolute;z-index:2;left:-10%;top:0;
+  height:9px;width:75%;background:#fff8ec;transform:skew(-26deg) rotate(-4deg);
+  box-shadow:0 3px 0 #171411}
+.lc-face-name{position:absolute;z-index:3;bottom:9px;left:10px;right:8px;
+  display:inline-block;font:900 clamp(15px,1.85vw,27px)/.97 Impact,"Arial Narrow",Arial,sans-serif;
+  font-style:italic;letter-spacing:.02em;text-transform:uppercase;
+  text-shadow:2px 3px 0 rgba(0,0,0,.78)}
+.lc-face-name::before{content:"";display:block;width:43px;height:4px;background:var(--panel-shade);
+  margin-bottom:7px;transform:skew(-20deg)}
+.lc-face-flag{position:absolute;z-index:3;top:13px;right:8px;padding:5px 7px;background:#f6ebd9;
+  color:#241d19;transform:rotate(5deg);font-size:8px;letter-spacing:.09em;font-weight:900;text-transform:uppercase}
+.lc-face--pending{background:linear-gradient(135deg,#073b2c,#183c31 48%,#22201d)}
+.lc-face--pending .lc-pending-pattern{position:absolute;inset:0;background:
+  repeating-linear-gradient(125deg,transparent 0 20px,rgba(240,206,124,.06) 20px 24px);
+  display:grid;place-items:center;text-align:center;padding:18px;
+  font:900 clamp(12px,1.7vw,22px)/1.2 Impact,Arial,sans-serif;color:#f9e5c8;
+  text-transform:uppercase;letter-spacing:.09em}
+.lc-face--pending .lc-pending-pattern span{display:block;margin:42px auto 0;font:700 10px/1.3 Arial,sans-serif;
+  max-width:175px;letter-spacing:.07em}
+.lc-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px auto 0}
+.lc-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--lc-espresso);color:var(--lc-paper-light)!important;
+  font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+  border:3px solid #181411;padding:14px 20px;text-decoration:none;
+  box-shadow:4px 4px 0 var(--lc-copper);transition:transform .15s ease}
+.lc-button:nth-child(2){background:var(--lc-paper-light);color:var(--lc-espresso)!important}
+.lc-button:hover{transform:translate(-2px,-2px)}
+/* Lower sections: legible editorial surfaces, fewer competing treatments */
+body.home-living-comic .oldroot-issue-launch{
+  background:var(--lc-espresso)!important;
+  border:4px solid #151311!important;border-radius:4px!important;
+  box-shadow:8px 8px 0 var(--lc-copper)!important;
+}
+body.home-living-comic .issue-launch-serial,
+body.home-living-comic .issue-launch-eyebrow{color:#ebbf93}
+body.home-living-comic .oldroot-reader-poll,
+body.home-living-comic .home-featured,
+body.home-living-comic .home-world-section,
+body.home-living-comic .section-band,
+body.home-living-comic .home-library-section,
+body.home-living-comic .dispatch-lead{
+  background:rgba(255,248,235,.68)!important;
+  border:2px solid rgba(43,34,27,.32)!important;
+  border-radius:3px!important;
+  color:var(--lc-espresso)!important;
+  box-shadow:5px 5px 0 rgba(36,32,30,.10)!important;
+}
+body.home-living-comic .home-section-heading h2,
+body.home-living-comic .section-band h2,
+body.home-living-comic .dispatch-copy h2,
+body.home-living-comic .home-library-copy h3{color:var(--lc-espresso)!important}
+body.home-living-comic .home-section-heading p,
+body.home-living-comic .section-band p,
+body.home-living-comic .home-library-copy p{color:var(--lc-muted)!important}
+body.home-living-comic .home-rotation-note{color:var(--lc-muted)}
+body.home-living-comic .oldroot-footer{
+  background:#211c19!important;color:#f1e5cf!important;border-radius:0!important;
+  border-color:#bc8663!important;box-shadow:none!important;
+}
+body.home-living-comic .oldroot-footer a{color:#f1e5cf!important}
+body.home-living-comic .footer-bottom{color:#dec7ab!important}
+@media(max-width:980px){.lc-face-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .lc-face-name{font-size:clamp(13px,1.85vw,19px)}}
+@media(max-width:720px){.lc-wordmark{font-size:clamp(58px,15.2vw,115px)}
+ .lc-face-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .lc-face{aspect-ratio:1.12/1;box-shadow:3px 3px 0 #f7ecdb,6px 6px 0 #28201d}
+ .lc-face-name{font-size:clamp(19px,4vw,28px)}
+ .lc-hero-top{padding:14px 2px 17px}
+ .lc-tagline{font-size:clamp(17px,4.2vw,25px)}
+ .lc-summary{font-size:14px}
+ .lc-hero-actions{gap:10px}
+ .lc-button{flex:1 1 150px;padding:13px 10px;font-size:11px}
+}
+@media(max-width:410px){.lc-face-grid{gap:7px}.lc-face-name{left:7px;bottom:6px}
+ .lc-face-flag{font-size:7px;padding:3px}
+}
+@media(prefers-reduced-motion:reduce){.lc-face,.lc-face img,.lc-button{transition:none!important}}
+
+
+/* Preserve the poll's dark, accessible contrast while the shell goes light. */
+body.home-living-comic .oldroot-reader-poll{
+  background:#24201e!important;color:#f6eadd!important;
+  border-color:#b78460!important;
+}
+body.home-living-comic .oldroot-reader-poll .poll-intro h2,
+body.home-living-comic .oldroot-reader-poll .poll-intro p{color:#f6eadd!important}
+body.home-living-comic .oldroot-reader-poll .poll-intro .lead-kicker{color:#e0b28a!important}
+/* Mobile brushes stay within viewport, never create horizontal scroll. */
+@media(max-width:720px){body.home-living-comic .lc-hero{overflow:clip;padding-inline:6px}}
