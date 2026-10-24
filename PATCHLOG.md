@@ -656,7 +656,7 @@ This file is the internal release ledger for website changes. Do not automatical
 ## 2026-09-30 — OR-WEB-0006 — Anchorage villain import
 
 ### Added
-- Added Anchorage / Gilmer Simpson as the first Villain-classified character in the public Character Registry.
+- Added Anchorage / Antwuan Cole as the first Villain-classified character in the public Character Registry.
 - Added a complete Anchorage dossier covering his pre-transformation life, forced experimentation, chosen loyalty to his unnamed creators, identity psychology, personality, criminal code, Baltimore underworld role, powers, suppression limits, combat style, movement limitations, and current visual-canon notes.
 - Added Anchorage to Baltimore as a known villain and recurring underworld presence without changing Kincast's established status as Baltimore's primary hero.
 - Added Anchorage to OPI Analytics with the creator-supplied eleven category values: Strength 32.7, Durability 37.4, Speed 2.5, Agility 2.4, Regeneration 11.8, Senses 5.5, Offense 26.3, Intellect 6.7, Combat 17.1, Mobility 1.6, and Stamina 9.7.
