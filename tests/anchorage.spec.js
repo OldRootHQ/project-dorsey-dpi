@@ -56,7 +56,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   expect(framing.abductionObjectFit).toBe('contain');
   expect(framing.abductionObjectPosition).toBe('50% 50%');
   expect(framing.abductionCenterDelta).toBeLessThanOrEqual(2);
-  await expect(page.locator('.info-list')).toContainText('Gilmer Simpson');
+  await expect(page.locator('.info-list')).toContainText('Antwuan Cole');
   await expect(page.locator('.info-list')).toContainText('Active');
   await expect(page.locator('.info-list')).toContainText('Pre-Genesis experimental enhancement');
   await expect(page.locator('.info-list')).not.toContainText('Non-Ascendant');
@@ -73,7 +73,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   const kincast = records.find(c => c.codename === 'Kincast');
 
   expect(anchorage).toBeTruthy();
-  expect(anchorage.civilian).toBe('Gilmer Simpson');
+  expect(anchorage.civilian).toBe('Antwuan Cole');
   expect(anchorage.classification).toBe('Villain');
   expect(anchorage.role).toBe('Villain');
   expect(anchorage).not.toHaveProperty('powerClass');
