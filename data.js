@@ -40,7 +40,7 @@ window.OLDROOT_CHARACTERS = [
     conditional:[]
   },
   {
-    codename:"Anchorage", civilian:"Gilmer Simpson", classification:"Villain", role:"Villain",
+    codename:"Anchorage", civilian:"Antwuan Cole", classification:"Villain", role:"Villain",
     registryOrder:5, location:"Baltimore, Maryland", locationKey:"Baltimore",
     origin:"Pre-Genesis experimental enhancement", originType:"Experimental Enhancement", 
     affiliation:"Unnamed creators (organization undefined)", page:"characters/anchorage/", image:"assets/characters/anchorage/anchorage-registry.png", mark:"assets/characters/anchorage/anchorage-emblem.svg?v=1",
