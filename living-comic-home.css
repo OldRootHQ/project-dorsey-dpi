@@ -178,3 +178,138 @@ body.home-living-comic .oldroot-reader-poll .poll-intro p{color:#f6eadd!importan
 body.home-living-comic .oldroot-reader-poll .poll-intro .lead-kicker{color:#e0b28a!important}
 /* Mobile brushes stay within viewport, never create horizontal scroll. */
 @media(max-width:720px){body.home-living-comic .lc-hero{overflow:clip;padding-inline:6px}}
+
+
+/* OCT 2026 APPROVED HOMEPAGE — background architecture and 2 × 4 placement.
+   Imported art is never colorized, replaced, or re-drawn by CSS. */
+body.home-living-comic{
+  --lc-paper:#f1e5cf;--lc-paper-light:#fff8eb;
+  --lc-espresso:#29211e;--lc-copper:#a88a6c;--lc-edge:#211b18;
+  --lc-muted:#60544b;--home-text:#29211e;
+  --home-panel:#fff8eb;--home-panel-strong:#fff8eb;
+}
+body.home-living-comic .lc-hero{
+  margin:0 0 34px;padding:clamp(12px,2.5vw,34px);
+  border:3px solid #29211e;box-shadow:8px 8px 0 #b99d7c;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(41,33,30,.075) .9px,transparent 1.1px) right 18px top 18px/16px 16px no-repeat,
+    radial-gradient(ellipse at 90% 0%,rgba(208,173,86,.13),transparent 34%),
+    linear-gradient(135deg,#fff9ed 0%,#f2e4cf 74%,#ebd9bf 100%);
+}
+body.home-living-comic .lc-hero::before{
+  top:9px;left:-15px;width:85px;height:6px;
+  background:#35674b;transform:skew(-25deg) rotate(-6deg);
+}
+body.home-living-comic .lc-hero::after{
+  top:auto;bottom:-13px;right:3%;height:5px;width:115px;
+  background:#d0ad56;transform:skew(-24deg) rotate(-3deg);
+}
+body.home-living-comic .lc-hero-top{
+  display:grid;grid-template-columns:minmax(0,1.22fr) minmax(240px,.78fr);
+  align-items:center;gap:clamp(22px,4vw,58px);
+  text-align:left;padding:clamp(24px,3vw,46px) 10px 28px;
+}
+body.home-living-comic .lc-hero-copy{min-width:0}
+body.home-living-comic .lc-eyebrow{
+  display:inline-block;background:#d0ad56;
+  padding:5px 11px;transform:skew(-8deg);
+  letter-spacing:.14em;color:#24201d;
+}
+body.home-living-comic .lc-tagline{
+  font:950 clamp(37px,5.3vw,83px)/.92 Impact,"Arial Narrow",Arial,sans-serif;
+  margin:18px 0 0;letter-spacing:-.012em;
+  color:#211c19;text-transform:uppercase;
+}
+body.home-living-comic .lc-tagline span{
+  display:block;margin-top:9px;color:#29211e;
+}
+body.home-living-comic .lc-summary{
+  max-width:610px;margin:21px 0 0;
+  font-size:clamp(14px,1.35vw,19px);font-weight:560;
+  line-height:1.5;color:#55473d;
+}
+body.home-living-comic .lc-wordmark{
+  width:100%;height:clamp(170px,22vw,310px);
+  min-width:0;margin:0;padding:0;transform:none;
+  background:transparent url("assets/branding/oldroot-primary.png") center/contain no-repeat;
+  font-size:0!important;line-height:0;letter-spacing:0;
+  color:transparent!important;text-shadow:none!important;
+  border:0!important;
+}
+body.home-living-comic .lc-wordmark::after{display:none!important}
+body.home-living-comic .lc-face-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(8px,1.2vw,17px);margin:10px auto 0;
+}
+body.home-living-comic .lc-face{
+  aspect-ratio:4/5;background:var(--panel-shade)!important;
+  border:4px solid #171514;border-radius:1px;
+  box-shadow:4px 4px 0 #fff7e8,7px 7px 0 #29211e;
+  clip-path:none!important;
+}
+body.home-living-comic .lc-face:nth-child(2n){clip-path:none!important}
+body.home-living-comic .lc-face img{
+  object-fit:cover;object-position:center 35%;
+  filter:none!important;mix-blend-mode:normal!important;
+}
+body.home-living-comic .lc-face::before{
+  background:linear-gradient(180deg,transparent 64%,rgba(15,12,11,.88) 100%);
+}
+body.home-living-comic .lc-face::after{display:none!important}
+body.home-living-comic .lc-face-name{
+  bottom:11px;left:11px;right:11px;
+  font:900 clamp(14px,2vw,27px)/.98 Impact,"Arial Narrow",Arial,sans-serif;
+  text-transform:uppercase;color:#fff9eb;
+}
+body.home-living-comic .lc-face-name::before{
+  width:40px;height:4px;background:#fff9eb;
+}
+body.home-living-comic .lc-face--pending{
+  background:var(--panel-shade)!important;
+}
+body.home-living-comic .lc-face--pending .lc-pending-pattern{
+  background:
+    repeating-linear-gradient(-32deg,transparent 0 23px,rgba(0,0,0,.08) 23px 25px);
+  color:#fff9ed;padding:23px;
+  font-size:clamp(20px,2.35vw,37px);
+}
+body.home-living-comic .lc-face--pending .lc-pending-pattern span{
+  background:rgba(16,14,12,.72);padding:7px;
+  max-width:190px;color:#fff9ed;font-size:9px;
+}
+body.home-living-comic .lc-face-flag{background:#fff7e9;color:#29211e}
+body.home-living-comic .lc-button{
+  box-shadow:4px 4px 0 #ad9478!important;border-radius:2px!important;
+}
+body.home-living-comic .lc-hero-actions{margin:30px 0 5px}
+body.home-living-comic .oldroot-issue-launch{
+  background:
+    repeating-linear-gradient(165deg,transparent 0 80px,rgba(208,173,86,.04) 81px 82px),
+    #29211e!important;
+  box-shadow:7px 7px 0 #b99d7c!important;
+  border:4px solid #1c1715!important;
+}
+body.home-living-comic :is(.home-world-section,.home-featured,.home-library-section,
+  .section-band,.dispatch-lead){
+  background:linear-gradient(135deg,#fff8eb,#ead9c1)!important;
+  border:2px solid rgba(41,33,30,.30)!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.15)!important;
+}
+body.home-living-comic .oldroot-reader-poll{
+  background:#28211e!important;color:#f8eddb!important;
+  border:3px solid #1c1715!important;
+}
+@media(max-width:900px){
+ body.home-living-comic .lc-hero-top{grid-template-columns:1fr;text-align:center;gap:6px}
+ body.home-living-comic .lc-summary{margin-inline:auto}
+ body.home-living-comic .lc-wordmark{height:170px;max-width:390px;margin:auto}
+ body.home-living-comic .lc-tagline{font-size:clamp(39px,7.2vw,62px)}
+}
+@media(max-width:720px){
+ body.home-living-comic .lc-hero{padding:12px;box-shadow:4px 4px 0 #b99d7c}
+ body.home-living-comic .lc-hero-top{padding:16px 4px 20px}
+ body.home-living-comic .lc-face-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ body.home-living-comic .lc-face{aspect-ratio:4/5;box-shadow:3px 3px 0 #fff7e8,5px 5px 0 #29211e}
+ body.home-living-comic .lc-wordmark{height:134px}
+ body.home-living-comic .lc-face-name{font-size:clamp(15px,4.1vw,27px)}
+}
