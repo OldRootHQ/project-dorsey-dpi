@@ -9,11 +9,13 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
   await expect(page.locator('.lc-hero')).toContainText('EXTRAORDINARY PEOPLE.');
   await expect(page.locator('.lc-hero')).toContainText('UNFORGETTABLE STORIES.');
   await expect(page.locator('.lc-face')).toHaveCount(8);
-  await expect(page.locator('.lc-face img')).toHaveCount(7);
-  await expect(page.locator('.lc-face--pending')).toContainText('Liontone');
+  await expect(page.locator('.lc-face img')).toHaveCount(6);
+  await expect(page.locator('.lc-face--pending')).toHaveCount(2);
+  await expect(page.locator('.lc-face--pending').nth(0)).toContainText('Isiah Ivory');
+  await expect(page.locator('.lc-face--pending').nth(1)).toContainText('Liontone');
   await expect(page.locator('.lc-face-name')).toHaveText([
-    'Kincast','Anchorage','Flying Saucer','Liontone',
-    'Latch','Remedie','Gila Monster','Agent Emerald'
+    'Kincast','Anchorage','Isiah Ivory','Liontone',
+    'Agent Emerald','Remedie','Flying Saucer','Gila Monster'
   ]);
   await expect(page.locator('.lc-hero-actions a')).toHaveCount(3);
   await expect(page.locator('.editorial-hero')).toHaveCount(0);
@@ -27,6 +29,15 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
     getComputedStyle(el).gridTemplateColumns.split(' ').filter(Boolean).length
   );
   expect(cols).toBe(4);
+  // Approved palette deliberately avoids adjacent green and warm-orange panels.
+  const shades = await page.locator('.lc-face').evaluateAll(elements =>
+    elements.map(el => el.style.getPropertyValue('--panel-shade').trim().toLowerCase())
+  );
+  expect(shades).toEqual([
+    '#c57a45','#174b9a','#a51f30','#34814b',
+    '#123f30','#e3ae38','#7843ab','#e97627'
+  ]);
+  await expect(page.locator('.lc-face-flag')).toHaveCount(2);
 
   await expect(page.locator('#techGlobe')).toHaveCount(0);
   await expect(page.locator('#issue-one')).toContainText('IN DEVELOPMENT');
