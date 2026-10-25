@@ -1178,3 +1178,102 @@ html body.oldroot-after-dark .location-dossier-page :is(.location-photo,.locatio
  html body.oldroot-after-dark *,html body.oldroot-after-dark *::before,
  html body.oldroot-after-dark *::after{scroll-behavior:auto!important;animation-duration:.01ms!important}
 }
+
+
+/* Living Comic section-specific finishing layer.
+   Dark espresso is reserved for intentional features and operational consoles. */
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.org-dossier-hero,.discovery-card,.known-character-card,.powder-statement,
+     .market-sticker-card,.market-feature-card,.marketplace-next-note,
+     .product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,
+     .checkout-form,.checkout-summary,.confirmation-card){
+  color:#29211e!important;
+  border:2px solid rgba(41,33,30,.26)!important;border-radius:4px!important;
+  background:linear-gradient(138deg,#fff9ec,#ebdac2)!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.org-dossier-hero,.powder-hero) h1{
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark .org-dossier-hero{
+  background:linear-gradient(135deg,#fff9ec,#ead7b9)!important;
+  border:3px solid #29211e!important;
+  box-shadow:7px 7px 0 #b99b78!important;
+}
+html body.oldroot-after-dark .org-dossier-hero h1,
+html body.oldroot-after-dark .org-dossier-hero p{color:#29211e!important}
+html body.oldroot-after-dark .powder-page .powder-hero{
+  background:
+    radial-gradient(circle at 86% 28%,rgba(238,128,51,.14),transparent 39%),
+    linear-gradient(125deg,#30221c,#191716)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #ad9072!important;
+}
+html body.oldroot-after-dark .powder-page .powder-hero h1,
+html body.oldroot-after-dark .powder-page .powder-hero p{color:#f6ead8!important}
+html body.oldroot-after-dark .powder-page .powder-hero .powder-lead{color:#eccc9e!important}
+html body.oldroot-after-dark .powder-page .powder-index a{
+  color:#29211e!important;background:#efe0c9!important;
+  border:2px solid #8c7058!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .marketplace-featured{
+  background:linear-gradient(135deg,#30241e,#1f1a18)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #b59b7c!important;
+}
+html body.oldroot-after-dark .marketplace-featured h2,
+html body.oldroot-after-dark .marketplace-featured .marketplace-section-top p{
+  color:#f9ead4!important;
+}
+html body.oldroot-after-dark .marketplace-featured .marketplace-kicker{color:#d0ad56!important}
+html body.oldroot-after-dark .marketplace-head-links a{
+  color:#29211e!important;background:#f8eddc!important;
+  border:2px solid #29211e!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero{
+  background:linear-gradient(128deg,#29211e,#181614)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #b49b7d!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero h1,
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero-content>p{
+  color:#f6e8d6!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero-content>p strong{color:#fffaf1!important}
+html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section,.work-interest,.work-transparency,
+  .work-discipline-card,.work-values-grid,.work-principles,.work-process,.work-form-wrap){
+  background:linear-gradient(135deg,#fff8eb,#ecdec8)!important;
+  border:2px solid rgba(41,33,30,.26)!important;border-radius:4px!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;color:#29211e!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section-heading h2,
+  .work-interest-heading h2,.work-discipline-card h3){color:#29211e!important}
+html body.oldroot-after-dark .mail-console{
+  background:linear-gradient(135deg,#30241e,#1b1816)!important;
+  border:3px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #ae9578!important;
+}
+html body.oldroot-after-dark .mail-console .mail-topbar{
+  background:#29211e!important;
+}
+html body.oldroot-after-dark .shell .hero,
+html body.oldroot-after-dark .shell .panel,
+html body.oldroot-after-dark .shell .analytics-toolbar{
+  background:linear-gradient(135deg,#fff8eb,#eadbc6)!important;
+  color:#29211e!important;
+  border:2px solid rgba(41,33,30,.25)!important;border-radius:4px!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark .shell .hero h1,
+html body.oldroot-after-dark .shell .panel h2{color:#29211e!important}
+html body.oldroot-after-dark .shell .hero p,
+html body.oldroot-after-dark .shell .panel-head p{color:#5c5046!important}
+@media(max-width:760px){
+ html body.oldroot-after-dark .marketplace-featured,
+ html body.oldroot-after-dark .work-with-oldroot-page .work-hero,
+ html body.oldroot-after-dark .mail-console,
+ html body.oldroot-after-dark .powder-page .powder-hero{
+   box-shadow:4px 4px 0 #b49b7d!important;
+ }
+}
