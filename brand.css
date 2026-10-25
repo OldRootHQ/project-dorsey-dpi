@@ -1277,3 +1277,35 @@ html body.oldroot-after-dark .shell .panel-head p{color:#5c5046!important}
    box-shadow:4px 4px 0 #b49b7d!important;
  }
 }
+
+
+/* Supporting-character dossiers (Deuce, Max Corbett and other legacy records)
+   also inherit the new print-paper treatment without changing any art or copy. */
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity,.wiki-section,.character-infobox,.character-links,
+     .character-network,.max-gallery-section){
+  background:linear-gradient(135deg,#fff9ec,#eddfca)!important;
+  color:#29211e!important;border:2px solid rgba(41,33,30,.26)!important;
+  border-radius:4px!important;box-shadow:5px 5px 0 #c2ab8b!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .character-identity{
+  border:3px solid #29211e!important;
+  box-shadow:7px 7px 0 #b49b7d!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:#29211e!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-subtitle,.character-thesis,.wiki-section p,.wiki-section li,
+     .character-portrait figcaption,.info-row dt){
+  color:#60534a!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .logo-slot{
+  background:#ead8bc!important;color:#29211e!important;
+  border-color:#b89a75!important;border-radius:4px!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .character-feature-art{
+  border:3px solid #29211e!important;box-shadow:6px 6px 0 #b49b7d!important;
+}
