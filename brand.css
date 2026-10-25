@@ -1309,3 +1309,31 @@ html body.oldroot-after-dark .character-shell:not([data-dossier]) .logo-slot{
 html body.oldroot-after-dark .character-shell:not([data-dossier]) .character-feature-art{
   border:3px solid #29211e!important;box-shadow:6px 6px 0 #b49b7d!important;
 }
+
+
+/* Contrast islands: the interactive globe and comic showcase panels deliberately
+   stay espresso-dark while the surrounding document becomes café-light. */
+html body.oldroot-after-dark
+ :is(.world-console,.location-terminal,.dossier-opi-station,.dossier-art-archive,
+     .marketplace-featured,.powder-hero,.work-hero,.mail-console){
+  --after-text:#f6ead7;--after-muted:#d3c8b6;--after-faint:#baa996;
+  --after-line:rgba(243,235,221,.20);
+}
+html body.oldroot-after-dark .world-console{
+  --cream:#f3ebdd;--parchment:#e7dccb;--old-gold:#d0ad56;
+}
+html body.oldroot-after-dark .world-console
+ :is(.location-terminal,.terminal-note,.terminal-regional,.globe-hud,.globe-tooltip){
+  color:#f3ebdd;
+}
+/* Dropdown menus must not be clipped by horizontal mobile navigation. */
+@media(max-width:760px){
+ html body.oldroot-after-dark .site-nav{
+  overflow:visible!important;flex-wrap:wrap!important;
+  justify-content:flex-start!important;gap:4px!important;
+ }
+ html body.oldroot-after-dark .nav-group{position:relative}
+ html body.oldroot-after-dark .site-nav .nav-dropdown{
+  z-index:70;max-width:min(94vw,350px);
+ }
+}
