@@ -952,3 +952,229 @@ main [id]:target{
   .site-nav .nav-group .nav-dropdown.oldroot-mega,
   .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{transition:none}
 }
+
+
+/* ==========================================================
+   OLDROOT 2.0 / SITEWIDE LIVING COMIC TAKEOVER — DRAFT ONLY
+   Source: approved café / espresso / warm-paper art direction.
+   Applies to ALL pages through their existing brand.css import.
+   IMPORTANT: Do not change canon artwork, lore, scripts, or globe.
+   ========================================================== */
+:root{
+  --or-paper:#f1e5cf;--or-paper-light:#fff8eb;--or-paper-deep:#dcc7aa;
+  --or-espresso:#29211e;--or-ink:#171514;--or-cafe:#946e56;
+  --or-sand:#c9aa87;--or-forest:#35674b;--or-gold:#d0ad56;
+  --or-line:rgba(41,33,30,.24);--or-shadow:6px 6px 0 rgba(41,33,30,.12);
+}
+html body.oldroot-after-dark{
+  --root-green:#35674b;--deep-root:#29211e;--cream:#f1e5cf;
+  --parchment:#ead9c2;--paper:#f1e5cf;--paper-bright:#fff8eb;
+  --bark:#6b4d3c;--cafe:#946e56;--old-gold:#d0ad56;
+  --ink:#171514;--green-shadow:rgba(41,33,30,.15);
+  --after-text:#29211e;--after-muted:#655850;--after-faint:#77675d;
+  --after-line:rgba(41,33,30,.18);--after-panel:#fff8eb;
+  color:var(--or-ink)!important;
+  background:
+    radial-gradient(ellipse at 7% 0%,rgba(207,173,114,.18),transparent 34rem),
+    radial-gradient(ellipse at 91% 36%,rgba(53,103,75,.065),transparent 30rem),
+    radial-gradient(circle at 1px 1px,rgba(41,33,30,.065) .7px,transparent .95px),
+    linear-gradient(180deg,#f8ecdb 0%,#f0dfc6 54%,#f7ead6 100%) fixed!important;
+  background-size:auto,auto,19px 19px,auto!important;
+}
+html body.oldroot-after-dark::before,
+html body.oldroot-after-dark::after{display:none!important;animation:none!important}
+html body.oldroot-after-dark .masthead{
+  background:rgba(247,236,218,.98)!important;
+  border:0!important;border-bottom:3px solid var(--or-espresso)!important;
+  box-shadow:0 4px 0 rgba(148,110,86,.35)!important;
+  backdrop-filter:blur(14px);
+}
+html body.oldroot-after-dark .mast-inner{max-width:1500px}
+html body.oldroot-after-dark .brand{
+  display:inline-block!important;flex:0 0 clamp(136px,18vw,205px)!important;
+  width:clamp(136px,18vw,205px)!important;height:64px!important;
+  min-width:0!important;overflow:hidden!important;font-size:0!important;
+  color:transparent!important;letter-spacing:0!important;font-style:normal!important;
+  transform:none!important;text-shadow:none!important;border:0!important;
+  background:transparent url("assets/branding/oldroot-primary.png") left center/contain no-repeat!important;
+  filter:none!important;
+}
+html body.oldroot-after-dark .brand:hover{filter:drop-shadow(0 2px 3px rgba(41,33,30,.2))!important}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:var(--or-espresso)!important;background:transparent!important;
+  border-radius:2px!important;font-weight:850!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:var(--or-ink)!important;background:rgba(201,170,135,.25)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown{
+  background:#fff8eb!important;color:var(--or-espresso)!important;
+  border:2px solid var(--or-espresso)!important;
+  box-shadow:5px 5px 0 var(--or-sand)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a{
+  color:var(--or-espresso)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a:hover,
+html body.oldroot-after-dark .site-nav .nav-dropdown a.active{
+  color:#fff8eb!important;background:var(--or-espresso)!important;
+}
+html body.oldroot-after-dark .site-shell,
+html body.oldroot-after-dark .character-shell{position:relative;z-index:1}
+html body.oldroot-after-dark .oldroot-footer{
+  background:#28211e!important;color:#f5e8d3!important;
+  border:3px solid #1b1715!important;border-radius:3px!important;
+  box-shadow:7px 7px 0 #9f8064!important;
+}
+html body.oldroot-after-dark .oldroot-footer a,
+html body.oldroot-after-dark .oldroot-footer .footer-brand strong{color:#f5e8d3!important}
+html body.oldroot-after-dark .oldroot-footer .footer-brand span,
+html body.oldroot-after-dark .oldroot-footer .footer-bottom{color:#d5c3aa!important}
+html body.oldroot-after-dark .oldroot-footer .footer-links b{color:#d0ad56!important}
+html body.oldroot-after-dark :is(a,button,input,select,textarea):focus-visible{
+  outline:3px solid #517f61!important;outline-offset:3px!important;
+}
+/* Editorial pages share warm ink, not the previous green-on-black atmosphere. */
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.lead-story,.content-block,.section-band,
+     .lore-entry,.lore-toolbar,.lore-empty,.event-main,.event-fact,.origin-lane,
+     .org-card,.org-registry-tools,.registry-tools,.character-card,.dispatch-card,
+     .dispatch-lead,.dispatch-tools,.library-card,.library-head,.library-section,
+     .location-dossier-hero,.location-section,.location-facts,.related-records,
+     .start-statement,.start-stat-panel,.start-stat,.world-breadcrumb,
+     .location-dossier-list,.organization-hero,.org-dossier-panel){
+  color:var(--or-espresso)!important;
+  background:
+    radial-gradient(circle at 94% 8%,rgba(208,173,86,.085),transparent 14rem),
+    linear-gradient(135deg,#fff9ef,#f0e2cd)!important;
+  border:2px solid var(--or-line)!important;border-radius:4px!important;
+  box-shadow:var(--or-shadow)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border:3px solid var(--or-espresso)!important;
+  box-shadow:7px 7px 0 var(--or-sand)!important;
+  background:
+    linear-gradient(112deg,transparent 0 75%,rgba(53,103,75,.09) 75% 76%,transparent 76%),
+    radial-gradient(circle at 92% 6%,rgba(208,173,86,.16),transparent 19rem),
+    linear-gradient(135deg,#fff9ef,#ead7b8)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:var(--or-espresso)!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:#574b43!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:#75563e!important;
+}
+/* Buttons and index navigation adopt restrained forest / gold highlighting. */
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a){
+  border:2px solid var(--or-espresso)!important;border-radius:2px!important;
+  background:var(--or-espresso)!important;color:#fff8eb!important;
+  box-shadow:3px 3px 0 var(--or-sand)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a):hover{
+  background:#35674b!important;color:#fff8eb!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.lore-filter-row button,.org-filters button,.dispatch-filters button,
+     .filter-toggle,.filter-clear,.filter-apply){
+  border:1px solid #8f725b!important;border-radius:3px!important;
+  background:#f8ecda!important;color:#29211e!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.lore-filter-row button.active,.org-filters button.active,
+     .dispatch-filters button.active,.filter-apply){
+  background:#35674b!important;color:#fff9eb!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(input[type="search"],input[type="text"],select,textarea){
+  color:#29211e!important;background:#fffaf0!important;
+  border:1px solid #a68c74!important;accent-color:#35674b;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(input[type="search"],input[type="text"],textarea)::placeholder{
+  color:#6d6157!important;
+}
+/* Keep the character art intact; only the dossier's surrounding paper changes. */
+html body.oldroot-after-dark .character-shell[data-dossier]::before{display:none!important}
+html body.oldroot-after-dark .character-shell[data-dossier] .dossier-cinematic-hero{
+  border:4px solid #241e1b!important;border-radius:4px!important;
+  box-shadow:8px 8px 0 #ad9072!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox,.character-links,.dossier-chapter-index,
+     .character-network,.dossier-story-thread){
+  background:
+    radial-gradient(circle at 94% 0%,rgba(208,173,86,.10),transparent 15rem),
+    linear-gradient(135deg,#fff9ef,#f0e1cc)!important;
+  border:2px solid var(--or-line)!important;border-radius:4px!important;
+  color:#29211e!important;box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,
+     .character-network-head h2,.dossier-chapter-index h2,
+     .dossier-story-thread h2,.dossier-thread-heading h2){
+  color:#29211e!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:#574b43!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  background:#f0e0c8!important;color:#29211e!important;
+  border:1px solid #ba9e81!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:#29211e!important}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox) h2{
+  border-bottom-color:#ba9b67!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-opi-station,.dossier-art-archive){
+  border:3px solid #29211e!important;border-radius:4px!important;
+  box-shadow:6px 6px 0 #b19677!important;
+}
+/* Location interiors retain their distinct photos and artwork. */
+html body.oldroot-after-dark .location-dossier-page .location-dossier-hero{
+  border:3px solid #29211e!important;
+}
+html body.oldroot-after-dark .location-dossier-page :is(.location-photo,.location-art,.place-art) img{
+  filter:none!important;
+}
+@media(max-width:760px){
+ html body.oldroot-after-dark .brand{height:50px!important}
+ html body.oldroot-after-dark .mast-inner{padding:10px 14px}
+ html body.oldroot-after-dark :is(.site-shell,.character-shell){padding-inline:14px}
+ html body.oldroot-after-dark .site-nav{max-width:100%;overflow-x:auto!important;flex-wrap:nowrap}
+ html body.oldroot-after-dark .site-nav>a,
+ html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{min-height:40px}
+ html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+  :is(.page-head,.editorial-hero,.location-dossier-hero){box-shadow:4px 4px 0 var(--or-sand)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html body.oldroot-after-dark *,html body.oldroot-after-dark *::before,
+ html body.oldroot-after-dark *::after{scroll-behavior:auto!important;animation-duration:.01ms!important}
+}
