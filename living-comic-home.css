@@ -368,3 +368,79 @@ body.home-living-comic .oldroot-reader-poll{
     object-position:center top;
   }
 }
+
+
+/* RELEASE QA / contrast islands
+   Legacy After Dark components deliberately retain dark surfaces on our
+   paper-light homepage. Text needs matching light ink, not global espresso. */
+body.home-living-comic .home-character-track,
+body.home-living-comic .home-character-track .home-character-slide{
+  background:#29211e!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy h3{
+  color:#fff7e8!important;text-shadow:none!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy p{
+  color:#e2d1ba!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy>span{
+  color:#e4ba6d!important;
+}
+body.home-living-comic .home-world-grid a{
+  background:linear-gradient(130deg,#29211e,#382f28)!important;
+  color:#fff6e8!important;
+  border:2px solid #8e755b!important;
+  box-shadow:4px 4px 0 #c3a47d!important;
+}
+body.home-living-comic .home-world-grid a h3{
+  color:#fff6e8!important;
+}
+body.home-living-comic .home-world-grid a p,
+body.home-living-comic .home-world-grid a small{
+  color:#e3d3be!important;
+}
+body.home-living-comic .home-world-grid a span{
+  color:#e9c476!important;
+}
+body.home-living-comic .home-world-grid a:hover,
+body.home-living-comic .home-world-grid a:focus-visible{
+  background:linear-gradient(130deg,#3b2c24,#302721)!important;
+  border-color:#d0ad56!important;
+}
+/* Discovery/navigation cards: warm paper and strong ink, like the mockup. */
+body.home-living-comic .section-band .discovery-card,
+body.home-living-comic #homeUpcomingGrid .discovery-card{
+  background:linear-gradient(135deg,#fff7e7,#ead9bf)!important;
+  border:2px solid #72604d!important;
+  color:#29211e!important;
+  box-shadow:4px 4px 0 rgba(41,33,30,.12)!important;
+}
+body.home-living-comic .section-band .discovery-card h3,
+body.home-living-comic #homeUpcomingGrid .discovery-card h3{
+  color:#29211e!important;
+}
+body.home-living-comic .section-band .discovery-card p,
+body.home-living-comic #homeUpcomingGrid .discovery-card p{
+  color:#5d5047!important;
+}
+body.home-living-comic .section-band .discovery-card span,
+body.home-living-comic #homeUpcomingGrid .discovery-card span{
+  color:#35674b!important;
+}
+body.home-living-comic .section-band .discovery-card b,
+body.home-living-comic #homeUpcomingGrid .discovery-card b{
+  color:#6f472b!important;
+}
+body.home-living-comic .section-band .discovery-card:hover,
+body.home-living-comic .section-band .discovery-card:focus-visible{
+  background:#fff9ed!important;border-color:#35674b!important;
+}
+/* Ensure actual navigation link labels on pale panels are never washed out. */
+body.home-living-comic .home-section-link,
+body.home-living-comic .section-band-head>a{
+  color:#60442f!important;
+}
+body.home-living-comic .home-character-tabs button,
+body.home-living-comic .home-carousel-controls button{
+  color:#29211e!important;
+}
