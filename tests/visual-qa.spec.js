@@ -55,6 +55,22 @@ for (const [mode, width, height] of viewports) {
         }
         await page.evaluate(() => window.scrollTo(0, 0));
         await page.waitForTimeout(150);
+        const selected = page.locator('.home-character-slide.active .home-character-art img');
+        if (await selected.count()) {
+          await selected.first().scrollIntoViewIfNeeded();
+          await expect.poll(() => selected.first().evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+          await page.evaluate(() => window.scrollTo(0, 0));
+        }
+      }
+      if (name === 'characters') {
+        // Lazy-loaded registry art belongs to the scrollable page, not to blank
+        // screenshot placeholders. Prime it before the full-page visual capture.
+        const portraits = page.locator('.character-card .character-thumb');
+        for (let n = 0, total = await portraits.count(); n < total; n++) {
+          await portraits.nth(n).scrollIntoViewIfNeeded();
+          await portraits.nth(n).evaluate(img => img.decode().catch(() => {}));
+        }
+        await page.evaluate(() => window.scrollTo(0, 0));
       }
       await page.waitForTimeout(250);
       await page.screenshot({
