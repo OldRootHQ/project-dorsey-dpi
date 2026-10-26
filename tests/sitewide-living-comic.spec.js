@@ -101,3 +101,46 @@ test('OPI profile sidebar retains its readable tactical dark contrast', async ({
   await expect(detailPanel).toHaveCSS('color', 'rgb(227, 231, 220)');
   await expect(detailPanel.locator('.name')).toHaveCSS('color', 'rgb(240, 234, 223)');
 });
+
+
+for (const [label, width, height] of [['desktop', 1440, 900], ['mobile', 390, 844]]) {
+  test(`Publisher header and essential footer links survive homepage rendering (${label})`, async ({ page }) => {
+    await page.setViewportSize({ width, height });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    const header = page.locator('header.masthead');
+    await expect(header).toBeVisible();
+    await expect(header.locator('a.brand')).toBeVisible();
+    await expect(header.locator('nav.site-nav')).toHaveCount(1);
+    const headerPosition = await header.evaluate(el => {
+      const rect = el.getBoundingClientRect();
+      const logo = getComputedStyle(el.querySelector('a.brand')).backgroundImage;
+      return { y: rect.y, height: rect.height, logo };
+    });
+    expect(headerPosition.y).toBeGreaterThanOrEqual(-1);
+    expect(headerPosition.y).toBeLessThanOrEqual(2);
+    expect(headerPosition.height).toBeGreaterThan(45);
+    expect(headerPosition.logo).toContain('assets/approved-home/primary-logo.webp');
+    if (width > 760) {
+      await expect(header.locator('nav.site-nav > a[href="index.html"]')).toBeVisible();
+      await expect(header.locator('nav.site-nav > a[href="news.html"]')).toBeVisible();
+      await expect(header.locator('[aria-controls="nav-characters-menu"]')).toBeVisible();
+      await expect(header.locator('[aria-controls="nav-world-menu"]')).toBeVisible();
+      await expect(header.locator('[aria-controls="nav-lore-menu"]')).toBeVisible();
+    } else {
+      const toggle = header.locator('.mobile-nav-toggle');
+      await expect(toggle).toBeVisible();
+      await toggle.click();
+      await expect(header.locator('.site-nav')).toBeVisible();
+      await toggle.click();
+    }
+    const footer = page.locator('footer.oldroot-footer');
+    await expect(footer).toBeVisible();
+    await expect(footer.locator('.footer-links a[href="contact.html"]')).toHaveText('Contact Us');
+    await expect(footer.locator('.footer-links a[href="work-with-oldroot.html"]')).toHaveText('Work with OldRoot');
+    for (const target of ['start-here.html','characters.html','locations.html','lore.html',
+      'marketplace.html','news.html','about.html','dpi.html']) {
+      await expect(footer.locator(`.footer-links a[href="${target}"]`)).toHaveCount(1);
+    }
+    await expect(footer.locator('.footer-bottom')).toContainText('2026');
+  });
+}
