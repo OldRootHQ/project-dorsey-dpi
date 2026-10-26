@@ -39,3 +39,12 @@
 3. Confirm no illegible dark-on-dark areas, no overflow and the enlarged masthead does not clip navigation on mobile.
 4. Creator explicitly approves actual revised screenshots.
 5. Only then consider merging draft PR #86 to the default branch; verify oldroothq.com after merge.
+
+
+## Palette refinement — HQ 2.2 (creator-approved, 26 October 2026)
+
+- Previous café/cream and repeated gold UI highlights are superseded by a **fresh lime-green family taken as inspiration from the approved OldRoot mark** and **sharp comic white**. This is a CSS interface refinement, not a change to the approved logo artwork.
+- Tokens: `--or-lime: #BEF37A`, `--or-lime-bright: #C9FF82`, `--or-lime-pale: #E1F7CB`, `--or-comic-white: #FAFFFC`, with cool readable secondary text `#C9D9CF`.
+- Use bright lime for selected navigation, micro-labels, panel edges, active states and contact actions. Use comic white for main headings and body anchors. Keep textured carbon panels dark. Do **not** blanket large text regions with neon green.
+- The black/green logo plaque, cosmic nebula, eight hero artworks and original logo files are left untouched. **No graffiti in the main background.**
+- Test actual rendered CSS on desktop and phone before release; ensure no stale gold/cream UI styling or faded contrast on Locations, Marketplace, dossiers and footer.
