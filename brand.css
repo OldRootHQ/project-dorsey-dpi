@@ -1382,3 +1382,62 @@ html body.oldroot-after-dark .shell .panel.detail-panel{
   border:2px solid #b99b78!important;
   box-shadow:6px 6px 0 rgba(41,33,30,.16)!important;
 }
+
+
+/* HQ 2.0 footer publication links and approved publisher logo */
+/* The footer is not an afterthought. Preserve existing route links and give
+   the approved publisher art and contact destination clear visibility. */
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::after{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links b{
+  color:#e0ba72!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a{
+  color:#f8edd9!important;
+  text-decoration:none;
+  text-underline-offset:4px;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:focus-visible{
+  color:#ffdf8c!important;
+  text-decoration:underline;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]{
+  justify-content:center;
+  padding:8px 12px;
+  min-height:40px;
+  width:max-content;
+  max-width:100%;
+  color:#211d1a!important;
+  background:#ead1a3!important;
+  border:1px solid #d0ad56!important;
+  border-radius:3px;
+  font-weight:900;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:focus-visible{
+  background:#fff2d4!important;
+  color:#171310!important;
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .oldroot-footer .footer-links{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 14px;
+  }
+  html body.oldroot-after-dark .oldroot-footer .footer-links>div{
+    min-width:0;
+    gap:5px;
+  }
+  html body.oldroot-after-dark .oldroot-footer .footer-links a{
+    min-height:38px;
+    padding:7px 0;
+    font-size:12px;
+  }
+}
+@media(max-width:340px){
+  html body.oldroot-after-dark .oldroot-footer .footer-links{
+    grid-template-columns:1fr;
+  }
+}
