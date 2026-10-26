@@ -358,3 +358,13 @@ body.home-living-comic .oldroot-reader-poll{
   body.home-living-comic .lc-hero-top::before,
   body.home-living-comic .lc-hero-top::after{display:none}
 }
+
+
+/* Portrait-specific crop fidelity. The second-row approved masters are tall
+   transparent characters: anchor their faces at the top in short desktop panels
+   rather than clipping helmets, foreheads or hairstyles. Do not alter files. */
+@media(min-width:901px){
+  body.home-living-comic .lc-face:nth-child(n+5) img{
+    object-position:center top;
+  }
+}
