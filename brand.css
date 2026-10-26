@@ -1337,3 +1337,26 @@ html body.oldroot-after-dark .world-console
   z-index:70;max-width:min(94vw,350px);
  }
 }
+
+/* HQ 2.0 publisher masthead: shared across every route; approved original logo.
+   The homepage concept uses espresso navigation with restrained gold trim. */
+html body.oldroot-after-dark .masthead{
+  background:#211d1a!important;
+  border-bottom:3px solid #d0ad56!important;
+  box-shadow:0 3px 0 rgba(62,46,33,.22)!important;
+}
+html body.oldroot-after-dark .brand{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:#fff6e8!important;
+  background:transparent!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:#eac96c!important;
+  background:rgba(208,173,86,.12)!important;
+}
