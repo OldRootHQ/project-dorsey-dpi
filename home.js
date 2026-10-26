@@ -120,6 +120,27 @@
   if(dispatch&&latest){
     const label=dispatch.querySelector("[data-dispatch-label]"),meta=dispatch.querySelector("[data-dispatch-meta]"),title=dispatch.querySelector("[data-dispatch-title]"),body=dispatch.querySelector("[data-dispatch-body]"),link=dispatch.querySelector("[data-dispatch-link]");
     if(label)label.textContent=latest.label;if(meta)meta.textContent=latest.meta;if(title)title.textContent=latest.title;if(body)body.textContent=latest.body;if(link)link.href=latest.href;
+    // Every dispatch visual belongs to its own story, not to the rotating
+    // character spotlight. Remove old art when a new dispatch lacks an image.
+    const art=dispatch.querySelector(".dispatch-art");
+    if(art){
+      let picture=art.querySelector(".dispatch-feature-art");
+      if(latest.image){
+        if(!picture){
+          picture=document.createElement("img");
+          picture.className="dispatch-feature-art";
+          picture.decoding="async";
+          art.prepend(picture);
+        }
+        picture.alt=latest.imageAlt||"Featured OldRoot dispatch artwork";
+        if(picture.getAttribute("src")!==latest.image)picture.src=latest.image;
+        picture.addEventListener("error",()=>art.classList.add("dispatch-art--missing-image"),{once:true});
+        art.classList.remove("dispatch-art--missing-image");
+      }else{
+        picture?.remove();
+        art.classList.add("dispatch-art--missing-image");
+      }
+    }
   }
 
   window.OLDROOT_HOME_STATE={
