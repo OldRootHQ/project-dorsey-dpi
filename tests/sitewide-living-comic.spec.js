@@ -92,3 +92,12 @@ test('Marketplace uses high-contrast type on paper and dark showcase panels', as
   await expect(page.locator('.library-feature .library-section-head h2')).toHaveCSS('color', 'rgb(255, 245, 231)');
   await expect(page.locator('.library-feature .feature-slide.active .feature-copy h3')).toHaveCSS('color', 'rgb(255, 245, 231)');
 });
+
+
+test('OPI profile sidebar retains its readable tactical dark contrast', async ({ page }) => {
+  await page.goto(BASE + '/dpi.html', { waitUntil: 'networkidle' });
+  const detailPanel = page.locator('.shell .panel.detail-panel');
+  await expect(detailPanel).toBeVisible();
+  await expect(detailPanel).toHaveCSS('color', 'rgb(227, 231, 220)');
+  await expect(detailPanel.locator('.name')).toHaveCSS('color', 'rgb(240, 234, 223)');
+});
