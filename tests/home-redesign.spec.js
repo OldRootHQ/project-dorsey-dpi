@@ -126,3 +126,23 @@ for (const [mode, width] of [['desktop', 1440], ['mobile', 390]]) {
     expect(leadAfterRefresh).not.toBe(leadBeforeRefresh);
   });
 }
+
+
+for(const [mode,width] of [['desktop',1440],['mobile',390]]){
+  test(`Latest Dispatch displays the approved sticker instead of a green empty panel (${mode})`,async({page})=>{
+    await page.setViewportSize({width,height:900});
+    await page.goto(BASE+'/',{waitUntil:'networkidle'});
+    const dispatch=page.locator('#homeLatestDispatch');
+    await expect(dispatch).toBeVisible();
+    await expect(dispatch.locator('[data-dispatch-title]')).toContainText('Flying Saucer');
+    const image=dispatch.locator('.dispatch-feature-art');
+    await expect(image).toBeVisible();
+    await expect(image).toHaveAttribute('src','assets/characters/flying-saucer/flying-saucer-sticker-master.png');
+    await expect(image).toHaveAttribute('alt',/Flying Saucer.*Triple Strike/);
+    await expect.poll(()=>image.evaluate(el=>el.complete&&el.naturalWidth>0&&el.naturalHeight>0)).toBe(true);
+    const box=await image.boundingBox();
+    expect(box.width).toBeGreaterThan(120);
+    expect(box.height).toBeGreaterThan(120);
+    await expect(dispatch.locator('a[data-dispatch-link]')).toHaveAttribute('href','news.html#or-web-0094');
+  });
+}
