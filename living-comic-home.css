@@ -762,7 +762,7 @@ html body.home-living-comic :is(.lc-face img,.home-character-art img,
 /* HQ 2.1 horizontally contained home canvas: the editorial border strokes
    must never grow the document beyond the screen on desktop or mobile. */
 html body.home-living-comic{overflow-x:clip!important}
-html body.home-living-comic .site-shell{max-width:100vw;min-width:0}
+html body.home-living-comic .site-shell{max-width:100vw;min-width:0;overflow-x:clip!important}
 
 
 /* HQ 2.1 contain legacy tendril overhang.
