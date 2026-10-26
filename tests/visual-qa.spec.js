@@ -7,7 +7,7 @@ const pages = [
   ['characters','/characters.html'],
   ['gila','/characters/gila-monster/'],
   ['latch','/characters/latch/'],
-  ['kokio','/characters/kokio/'],
+  ['anchorage','/characters/anchorage/'],
   ['amari-razman','/characters/amari-razman/'],
   ['ballestera','/characters/ballestera/'],
   ['locations','/locations.html'],
@@ -37,7 +37,8 @@ for (const [mode, width, height] of viewports) {
     page.on('pageerror', error => errors.push(error.message));
 
     for (const [name, url] of pages) {
-      await page.goto(BASE + url, { waitUntil: 'domcontentloaded' });
+      const response = await page.goto(BASE + url, { waitUntil: 'domcontentloaded' });
+      expect(response?.status(), `Visual QA requires published route ${url}`).toBe(200);
       if (name === 'home') {
         // Capture the approved portrait ensemble only after the async art loader
         // has installed all eight transparent images, including mobile below-fold slots.
