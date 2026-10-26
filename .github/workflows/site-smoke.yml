@@ -43,6 +43,7 @@ jobs:
           node --check marketplace.js
           node --check lightbox.js
           node --check nav.js
+          node --check approved-home-loader.js
           node --check tests/infrastructure.spec.js
           node --check tests/visual-qa.spec.js
 
