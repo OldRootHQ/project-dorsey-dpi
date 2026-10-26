@@ -1360,3 +1360,14 @@ html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
   color:#eac96c!important;
   background:rgba(208,173,86,.12)!important;
 }
+
+
+/* HQ 2.0 readable registry metadata against warm café-paper cards. */
+html body.oldroot-after-dark .character-card .meta-pill{
+  background:#f1dfc4!important;
+  color:#29211e!important;
+  border:1px solid #9f846a!important;
+}
+html body.oldroot-after-dark .character-card .class{
+  color:#35674b!important;
+}
