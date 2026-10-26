@@ -114,7 +114,7 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
 });
 
 
-test('character registry filter control is integrated into the finalized dark atmosphere', async ({ page }) => {
+test('character registry filter remains readable in the new Living Comic cafe interface', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
 
   const state = await page.locator('#filterToggle').evaluate(el => {
@@ -122,6 +122,7 @@ test('character registry filter control is integrated into the finalized dark at
     const sliders = getComputedStyle(el.querySelector('.filter-sliders'));
     return {
       background: s.backgroundImage,
+      backgroundColor: s.backgroundColor,
       color: s.color,
       borderColor: s.borderTopColor,
       rootVisible: s.backgroundImage.includes('root-corner.svg'),
@@ -130,7 +131,8 @@ test('character registry filter control is integrated into the finalized dark at
   });
 
   expect(state.rootVisible).toBe(false);
-  expect(state.background).toContain('linear-gradient');
+  // The approved editorial theme uses a legible flat paper control, not the old dark gradient.
+  expect(state.backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
   expect(state.color).not.toBe('rgb(23, 52, 40)');
 
   const cardRoot = await page.locator('.character-card').first().evaluate(el => {
