@@ -22,8 +22,18 @@
 
   const establishedLocations=Object.entries(locations).filter(([,loc])=>loc&&loc.dossierUrl&&!loc.reference&&String(loc.id||"").startsWith("LOC-"));
   const upcoming=Array.isArray(config.upcoming)?config.upcoming:[];
-  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio");
+  // Preserve the old rotating public registry feature, including a newly shuffled
+  // trio per refresh. In this tab, avoid immediately repeating the last lead.
+  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio" && c.page &&
+    (config.characterSpotlights?.[c.codename]?.image || c.image));
   const selectedCharacters=pickRandom(homeSpotlightPool,3);
+  let previousLead="";
+  try{previousLead=sessionStorage.getItem("oldroot-home-spotlight-last")||""}catch(_){}
+  if(selectedCharacters.length>1 && selectedCharacters[0].codename===previousLead){
+    const alternate=selectedCharacters.findIndex((c,n)=>n>0 && c.codename!==previousLead);
+    if(alternate>0)[selectedCharacters[0],selectedCharacters[alternate]]=[selectedCharacters[alternate],selectedCharacters[0]];
+  }
+  if(selectedCharacters.length)try{sessionStorage.setItem("oldroot-home-spotlight-last",selectedCharacters[0].codename)}catch(_){}
   const selectedLocations=pickRandom(establishedLocations,3);
   const selectedUpcoming=pickRandom(upcoming,3);
 
@@ -46,12 +56,45 @@
       const links=(spot.links?.length?spot.links:[["Character Dossier →",c.page]]).filter(([,href])=>href);
       return '<div class="home-character-slide '+(n===0?"active":"")+'" data-home-slide="'+esc(key)+'">'+
         '<div class="home-character-art '+esc(spot.artClass||"")+'">'+
-        (image?'<img decoding="async" src="'+esc(image)+'" alt="'+esc(spot.alt||c.codename+" visual reference")+'" loading="'+(n===0?"eager":"lazy")+'" data-lightbox data-full-src="'+esc(image)+'" data-caption="'+esc(c.codename)+' · spotlight visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0"/>':"")+
+        (image?'<img decoding="async" src="'+esc(image)+'" alt="'+esc(spot.alt||c.codename+" visual reference")+'" loading="'+"eager"+'" data-lightbox data-full-src="'+esc(image)+'" data-caption="'+esc(c.codename)+' · spotlight visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0"/>':"")+
         '</div><div class="home-character-copy">'+
         (mark?'<img class="home-character-mark" src="'+esc(mark)+'" alt="" aria-hidden="true" loading="lazy"/>':"")+
         '<span>'+esc(meta)+'</span><h3>'+esc(c.codename)+'</h3><p>'+esc(teaser)+'</p>'+
         '<div class="home-character-links">'+links.map(([label,href])=>'<a href="'+esc(href)+'">'+esc(label)+'</a>').join("")+'</div></div></div>'
     }).join("");
+    // Verify every selected featured portrait, not only the first slide.
+    // A failed featured source gets the approved alternate; no empty hero box.
+    const approvedPortraitFallbacks={
+      "Kincast":"assets/approved-home/kincast.webp",
+      "Anchorage":"assets/approved-home/anchorage.webp",
+      "Agent Emerald":"assets/approved-home/agent-emerald.webp",
+      "Remedie":"assets/approved-home/remedie.webp",
+      "Flying Saucer":"assets/approved-home/flying-saucer.webp",
+      "Gila Monster":"assets/approved-home/gila-monster.webp"
+    };
+    [...track.querySelectorAll(".home-character-slide")].forEach((slide,n)=>{
+      const image=slide.querySelector(".home-character-art img");
+      if(!image)return;
+      const character=selectedCharacters[n];
+      const sources=[
+        approvedPortraitFallbacks[character.codename],
+        character.image
+      ].filter(url=>url && url!==image.getAttribute("src"));
+      let fallbackIndex=0;
+      function tryNextPortrait(){
+        if(fallbackIndex>=sources.length){
+          slide.dataset.artError="true";
+          return;
+        }
+        const replacement=sources[fallbackIndex++];
+        image.src=replacement;
+        image.dataset.fullSrc=replacement;
+        slide.classList.toggle("home-character-slide--portrait-fallback",
+          replacement===approvedPortraitFallbacks[character.codename]);
+      }
+      image.addEventListener("error",tryNextPortrait);
+      if(image.complete && !image.naturalWidth)tryNextPortrait();
+    });
     track.setAttribute("aria-busy","false");
   }
 
