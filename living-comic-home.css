@@ -231,7 +231,7 @@ body.home-living-comic .lc-summary{
 body.home-living-comic .lc-wordmark{
   width:100%;height:clamp(170px,22vw,310px);
   min-width:0;margin:0;padding:0;transform:none;
-  background:transparent url("assets/branding/oldroot-primary.png") center/contain no-repeat;
+  background:transparent url("assets/approved-home/primary-logo.webp") center/contain no-repeat;
   font-size:0!important;line-height:0;letter-spacing:0;
   color:transparent!important;text-shadow:none!important;
   border:0!important;
