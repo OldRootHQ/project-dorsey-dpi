@@ -46,6 +46,7 @@
         portrait.alt = name + ', approved OldRoot homepage portrait';
         portrait.decoding = 'async';
         portrait.loading = index < 4 ? 'eager' : 'lazy';
+        portrait.src = url;
         panel.insertBefore(portrait, panel.firstChild);
       }
       panel.querySelector('.lc-pending-pattern')?.remove();
