@@ -877,11 +877,7 @@ html body.home-living-comic .dispatch-lead .dispatch-copy a{
   color:var(--or-lime)!important;
 }
 html body.home-living-comic .dispatch-lead .dispatch-art{border-color:var(--or-lime)!important}
-html body.home-living-comic .lc-face img,
-html body.home-living-comic .home-character-art img,
-html body.home-living-comic .dispatch-feature-art{
-  filter:none!important; /* preserve character/sticker master colors */
-}
+/* Artwork presentation filters remain owned by their original components. */
 @media(max-width:760px){
   html body.home-living-comic .lc-face{
     box-shadow:3px 3px 0 var(--or-lime),5px 5px 0 #020705!important;
