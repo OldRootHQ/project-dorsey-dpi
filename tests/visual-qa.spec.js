@@ -60,6 +60,11 @@ for (const [mode, width, height] of viewports) {
         if (await selected.count()) {
           await selected.first().scrollIntoViewIfNeeded();
           await expect.poll(() => selected.first().evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
+          await selected.first().evaluate(img => img.decode().catch(() => {}));
+          await page.locator('.home-featured').screenshot({
+            path: `artifacts/visual-qa/${mode}-rotating-character-spotlight.png`,
+            animations: 'disabled'
+          });
           await page.evaluate(() => window.scrollTo({top: 0, left: 0, behavior: 'instant'}));
         }
       }
