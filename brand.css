@@ -1771,12 +1771,12 @@ html body.oldroot-after-dark .masthead .brand::before{
 @media(max-width:760px){
   html body.oldroot-after-dark .masthead .brand{
     width:226px!important;flex-basis:226px!important;
-    height:66px!important;background-size:86px auto!important;
+    height:60px!important;background-size:79px auto!important;
   }
   html body.oldroot-after-dark .masthead .brand::after{
-    left:89px;top:15px;font-size:17px;letter-spacing:0;
+    left:83px;top:12px;font-size:17px;letter-spacing:0;
   }
   html body.oldroot-after-dark .masthead .brand::before{
-    left:90px;top:37px;font-size:8px;letter-spacing:.07em;
+    left:84px;top:34px;font-size:8px;letter-spacing:.07em;
   }
 }
