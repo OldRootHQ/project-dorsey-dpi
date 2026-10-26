@@ -83,3 +83,12 @@ test('Character registry metadata pills have accessible paper-and-ink contrast',
   await expect(pill).toHaveCSS('color', 'rgb(41, 33, 30)');
   await expect(pill).toHaveCSS('background-color', 'rgb(241, 223, 196)');
 });
+
+
+test('Marketplace uses high-contrast type on paper and dark showcase panels', async ({ page }) => {
+  await page.goto(BASE + '/marketplace.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('#marketplace-library-title')).toHaveCSS('color', 'rgb(41, 33, 30)');
+  await expect(page.locator('#marketplace-stickers-title')).toHaveCSS('color', 'rgb(41, 33, 30)');
+  await expect(page.locator('.library-feature .library-section-head h2')).toHaveCSS('color', 'rgb(255, 245, 231)');
+  await expect(page.locator('.library-feature .feature-slide.active .feature-copy h3')).toHaveCSS('color', 'rgb(255, 245, 231)');
+});
