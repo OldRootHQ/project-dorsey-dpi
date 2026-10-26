@@ -58,6 +58,10 @@ for (const [mode, width, height] of [
         featureBackground:background('.home-featured'),
         libraryBackground:background('.home-library-section'),
         portraitSources:[...document.querySelectorAll('.lc-face-grid .lc-face img')].map(el => el.getAttribute('src')),
+        offenders:[...document.querySelectorAll('body *')].map(el=>({
+          tag:el.tagName.toLowerCase(),cls:el.className?.toString().slice(0,65),
+          right:Math.round(el.getBoundingClientRect().right)
+        })).filter(el=>el.right>innerWidth+3).sort((a,b)=>b.right-a.right).slice(0,12),
         width:document.documentElement.scrollWidth,
         viewport:innerWidth
       };
@@ -69,7 +73,7 @@ for (const [mode, width, height] of [
     expect(visuals.libraryBackground).toContain('repeating-linear-gradient');
     expect(visuals.heroBackground).toContain('gradient');
     expect(visuals.portraitSources).toHaveLength(8);
-    expect(visuals.width).toBeLessThanOrEqual(visuals.viewport+3);
+    expect(visuals.width, JSON.stringify(visuals.offenders)).toBeLessThanOrEqual(visuals.viewport+3);
     await expect(page.locator('.oldroot-footer a[href="contact.html"]')).toBeVisible();
   });
 }
