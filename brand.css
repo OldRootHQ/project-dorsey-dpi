@@ -1638,3 +1638,89 @@ html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::af
 @media(prefers-reduced-motion:reduce){
   html body.oldroot-after-dark{scroll-behavior:auto}
 }
+
+
+/* COSMIC-CARBON HIGH-SPECIFICITY CONSOLIDATION
+   Legacy Living Comic paper rules intentionally had strong !important
+   specificity. These overrides retire ONLY their light treatment, not content. */
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.lead-story,.content-block,.section-band,
+     .lore-entry,.lore-toolbar,.lore-empty,.event-main,.event-fact,.origin-lane,
+     .org-card,.org-registry-tools,.registry-tools,.character-card,.dispatch-card,
+     .dispatch-lead,.dispatch-tools,.library-card,.library-head,.library-section,
+     .location-dossier-hero,.location-section,.location-facts,.related-records,
+     .start-statement,.start-stat-panel,.start-stat,.world-breadcrumb,
+     .location-dossier-list,.organization-hero,.org-dossier-panel){
+  color:#f8f3e7!important;
+  background:var(--or-composite)!important;
+  border:1px solid #61836b!important;
+  border-radius:9px!important;
+  box-shadow:0 16px 35px rgba(0,0,0,.36)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border:2px solid #79936e!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.43),inset 0 1px rgba(248,255,246,.08)!important;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(40,116,64,.25),transparent 38%),
+    var(--or-composite)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:#f8f3e7!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:#d2dfd2!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:#e0bd6b!important;
+}
+/* Dossier content is now carbon. The selected art and cover art are unchanged. */
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox,.character-links,.dossier-chapter-index,
+     .character-network,.dossier-story-thread){
+  background:var(--or-composite)!important;
+  color:#faf4e8!important;
+  border:1px solid #5e7b65!important;border-radius:9px!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.39)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,
+     .character-network-head h2,.dossier-chapter-index h2,
+     .dossier-story-thread h2,.dossier-thread-heading h2){
+  color:#faf4e8!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:#cfdbd0!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity,.wiki-section,.character-infobox,.character-links,
+     .character-network,.max-gallery-section){
+  background:var(--or-composite)!important;
+  color:#f8f2e8!important;
+  border:1px solid #607c69!important;
+  border-radius:9px!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.34)!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:#f9f3e7!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-subtitle,.character-thesis,.wiki-section p,.wiki-section li,
+     .character-portrait figcaption,.info-row dt){
+  color:#cdd9cd!important;
+}
+/* The OPI terminal, existing character artwork and globe are special systems:
+   only their frames adapt; charts, icons and interactive maps remain intact. */
