@@ -103,3 +103,27 @@ body.locations-living-comic button:focus-visible{outline:3px solid #bb7148;outli
  body.locations-living-comic .locations-cosmic-copy h1{font-size:clamp(54px,15vw,84px)!important}
  body.locations-living-comic .world-console{padding:8px!important;box-shadow:3px 3px 0 #b98761!important}
 }
+
+
+/* HQ 2.0 accessible indexed-place directory: light editorial cards rather than
+   legacy dark-green tiles carrying dark global text variables. Globe untouched. */
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card{
+  color:#29211e!important;
+  background:linear-gradient(142deg,#fff9ee,#e8d9c4)!important;
+  border:2px solid #514032!important;
+  box-shadow:4px 4px 0 #c7ae8f!important;
+}
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card h3{
+  color:#29211e!important;
+}
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card p{
+  color:#594c42!important;
+}
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card>span{
+  color:#35674b!important;
+}
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card:hover,
+body.locations-living-comic .locations-page .location-dossier-cards a.place-card:focus-visible{
+  background:linear-gradient(142deg,#fffdf5,#ead2af)!important;
+  border-color:#35674b!important;
+}
