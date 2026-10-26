@@ -122,3 +122,19 @@ body.oldroot-after-dark .marketplace-page .library-shelf-wrap .title-count{
   background:rgba(19,42,30,.94)!important;
   border:1px solid rgba(208,173,86,.45)!important;
 }
+
+
+/* HQ 2.1 cosmic marketplace headings sit on the dark nebula, not paper. */
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading h2{
+  color:#faf4e8!important;
+}
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading p{
+  color:#d0dcd1!important;
+}
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-kicker,
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-count-label{
+  color:#e8ca7c!important;border-color:#9e9a64!important;
+}
+html body.oldroot-after-dark .marketplace-page
+ :is(.market-sticker-card,.market-feature-card,.marketplace-next-note)
+ :is(h2,h3,p,span){color:#f5eee0!important}
