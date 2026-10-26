@@ -55,3 +55,31 @@ test('The interactive world globe stays in the locations index', async ({ page }
   await expect(page.locator('#earthView')).toBeVisible();
   await expect(page.locator('#zoomInGlobe')).toBeVisible();
 });
+
+
+test('Approved art remains visible below the mobile fold', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+  await expect(page.locator('.lc-face img')).toHaveCount(8);
+  await expect(page.locator('.lc-face[data-approved-art="true"]')).toHaveCount(8);
+  const readiness = await page.locator('.lc-face img').evaluateAll(images =>
+    images.map(img => ({ source: img.getAttribute('src'), loaded: img.complete && img.naturalWidth > 0 }))
+  );
+  expect(readiness.every(image => image.loaded), JSON.stringify(readiness)).toBe(true);
+});
+
+test('Indexed place cards use readable ink on café-paper, not dark ink on dark green', async ({ page }) => {
+  await page.goto(BASE + '/locations.html', { waitUntil: 'networkidle' });
+  const firstCard = page.locator('.location-dossier-cards a.place-card').first();
+  await expect(firstCard).toBeVisible();
+  await expect(firstCard.locator('h3')).toHaveCSS('color', 'rgb(41, 33, 30)');
+  await expect(firstCard.locator('p')).toHaveCSS('color', 'rgb(89, 76, 66)');
+});
+
+test('Character registry metadata pills have accessible paper-and-ink contrast', async ({ page }) => {
+  await page.goto(BASE + '/characters.html', { waitUntil: 'networkidle' });
+  const pill = page.locator('.character-card .meta-pill').first();
+  await expect(pill).toBeVisible();
+  await expect(pill).toHaveCSS('color', 'rgb(41, 33, 30)');
+  await expect(pill).toHaveCSS('background-color', 'rgb(241, 223, 196)');
+});
