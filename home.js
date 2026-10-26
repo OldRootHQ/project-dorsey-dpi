@@ -153,15 +153,15 @@
   };
 
   const buttons=[...document.querySelectorAll("[data-home-character]")],slides=[...document.querySelectorAll("[data-home-slide]")],prev=document.querySelector("#homeCharacterPrev"),next=document.querySelector("#homeCharacterNext"),pause=document.querySelector("#homeCharacterPause"),feature=document.querySelector(".home-featured");
-  let index=0,timer=null,scrollFrame=0,paused=false;
+  let index=0,timer=null,scrollFrame=0,paused=false,manualNavigationUntil=0;
   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
   buttons.forEach((b,n)=>{const key=b.dataset.homeCharacter||String(n),panel=slides[n];b.id="homeCharacterTab-"+key;b.setAttribute("aria-controls","homeCharacterPanel-"+key);b.tabIndex=n===0?0:-1;if(panel){panel.id="homeCharacterPanel-"+key;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",b.id);panel.tabIndex=0}});
   function setPauseState(value){paused=value;if(pause){pause.setAttribute("aria-pressed",String(paused));pause.textContent=paused?"Play":"Pause"}}
   function paint(i){if(!slides.length)return;index=(i+slides.length)%slides.length;buttons.forEach((b,n)=>{const active=n===index;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active));b.tabIndex=active?0:-1});slides.forEach((s,n)=>{const active=n===index;s.classList.toggle("active",active);s.setAttribute("aria-hidden",String(!active));s.inert=!active});if(counter)counter.textContent=(index+1)+" / "+slides.length}
-  function show(i,behavior="smooth"){if(!slides.length)return;const nextIndex=(i+slides.length)%slides.length;paint(nextIndex);const slide=slides[nextIndex];if(track&&slide)track.scrollTo({left:slide.offsetLeft,behavior:reduced?"auto":behavior})}
+  function show(i,behavior="smooth"){if(!slides.length)return;const nextIndex=(i+slides.length)%slides.length;manualNavigationUntil=performance.now()+550;paint(nextIndex);const slide=slides[nextIndex];if(track&&slide)track.scrollTo({left:slide.offsetLeft,behavior:reduced?"auto":behavior})}
   function stop(){clearInterval(timer);timer=null}
   function restart(){stop();if(reduced||paused||document.hidden||slides.length<2)return;timer=setInterval(()=>show(index+1),7000)}
-  function syncFromScroll(){cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{if(!track||!slides.length)return;let nearest=0,distance=Infinity;slides.forEach((slide,n)=>{const d=Math.abs(slide.offsetLeft-track.scrollLeft);if(d<distance){distance=d;nearest=n}});paint(nearest)})}
+  function syncFromScroll(){cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{if(!track||!slides.length||performance.now()<manualNavigationUntil)return;let nearest=0,distance=Infinity;slides.forEach((slide,n)=>{const d=Math.abs(slide.offsetLeft-track.scrollLeft);if(d<distance){distance=d;nearest=n}});paint(nearest)})}
   buttons.forEach((b,n)=>{b.addEventListener("click",()=>{show(n);restart()});b.addEventListener("keydown",event=>{let target=null;if(event.key==="ArrowRight"||event.key==="ArrowDown")target=(n+1)%buttons.length;else if(event.key==="ArrowLeft"||event.key==="ArrowUp")target=(n-1+buttons.length)%buttons.length;else if(event.key==="Home")target=0;else if(event.key==="End")target=buttons.length-1;if(target!==null){event.preventDefault();show(target);buttons[target].focus();restart()}})});
   prev?.addEventListener("click",()=>{show(index-1);restart()});next?.addEventListener("click",()=>{show(index+1);restart()});pause?.addEventListener("click",()=>{setPauseState(!paused);restart()});
   track?.addEventListener("scroll",syncFromScroll,{passive:true});track?.addEventListener("pointerdown",stop);track?.addEventListener("pointerup",restart);track?.addEventListener("touchend",restart,{passive:true});
