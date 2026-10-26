@@ -14,7 +14,8 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
   await expect(page.locator('.hero-signal-row')).toHaveCount(0);
   await expect(page.locator('#homePublicCharacterCount, #homeEstablishedPlaceCount, #homeOpiAxisCount')).toHaveCount(0);
-  await expect(page.locator('.editorial-hero .hero-actions a')).toHaveCount(2);
+  await expect(page.locator('.lc-face-grid .lc-face')).toHaveCount(8);
+  await expect(page.locator('.lc-hero-actions a')).toHaveCount(3);
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
   expect(state.characterPool).toHaveLength(11);
@@ -84,31 +85,34 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
-test('homepage hero uses the compact OR-WEB-0046 scale on desktop and mobile', async ({ page }) => {
+test('Living Comic homepage keeps a four-column desktop and two-column mobile roster', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
 
   const desktop = await page.evaluate(() => {
-    const hero = document.querySelector('.editorial-hero').getBoundingClientRect();
-    const title = getComputedStyle(document.querySelector('.editorial-hero h1'));
-    return { heroHeight: hero.height, titleSize: parseFloat(title.fontSize) };
+    const hero = document.querySelector('.lc-hero-top').getBoundingClientRect();
+    const grid = document.querySelector('.lc-face-grid');
+    const title = getComputedStyle(document.querySelector('.lc-tagline'));
+    return {
+      heroHeight: hero.height,
+      columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+      titleSize: parseFloat(title.fontSize)
+    };
   });
-  expect(desktop.heroHeight).toBeLessThan(650);
-  expect(desktop.titleSize).toBeLessThanOrEqual(112.5);
+  expect(desktop.heroHeight).toBeLessThan(550);
+  expect(desktop.columns).toBe(4);
+  expect(desktop.titleSize).toBeLessThanOrEqual(84);
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  const mobile = await page.evaluate(() => {
-    const title = getComputedStyle(document.querySelector('.editorial-hero h1'));
-    return {
-      titleSize: parseFloat(title.fontSize),
-      width: document.documentElement.scrollWidth,
-      viewport: innerWidth
-    };
-  });
-  expect(mobile.titleSize).toBeLessThanOrEqual(60.5);
+  const mobile = await page.evaluate(() => ({
+    columns: getComputedStyle(document.querySelector('.lc-face-grid')).gridTemplateColumns.split(' ').length,
+    width: document.documentElement.scrollWidth,
+    viewport: innerWidth
+  }));
+  expect(mobile.columns).toBe(2);
   expect(mobile.width).toBeLessThanOrEqual(mobile.viewport + 2);
-  await expect(page.locator('link[href="home.css?v=7"]')).toHaveCount(1);
+  await expect(page.locator('link[href="living-comic-home.css?v=1"]')).toHaveCount(1);
 });
 
 test('every masthead exposes an explicit Home tab with the correct relative path', async () => {
