@@ -984,9 +984,9 @@ html body.oldroot-after-dark{
 html body.oldroot-after-dark::before,
 html body.oldroot-after-dark::after{display:none!important;animation:none!important}
 html body.oldroot-after-dark .masthead{
-  background:rgba(247,236,218,.98)!important;
-  border:0!important;border-bottom:3px solid var(--or-espresso)!important;
-  box-shadow:0 4px 0 rgba(148,110,86,.35)!important;
+  background:#201d1a!important;
+  border:0!important;border-bottom:3px solid var(--or-gold)!important;
+  box-shadow:0 3px 0 rgba(41,33,30,.35)!important;
   backdrop-filter:blur(14px);
 }
 html body.oldroot-after-dark .mast-inner{max-width:1500px}
@@ -1002,14 +1002,14 @@ html body.oldroot-after-dark .brand{
 html body.oldroot-after-dark .brand:hover{filter:drop-shadow(0 2px 3px rgba(41,33,30,.2))!important}
 html body.oldroot-after-dark .site-nav>a,
 html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
-  color:var(--or-espresso)!important;background:transparent!important;
+  color:#fff6e7!important;background:transparent!important;
   border-radius:2px!important;font-weight:850!important;
 }
 html body.oldroot-after-dark .site-nav>a:hover,
 html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
 html body.oldroot-after-dark .site-nav>a.active,
 html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
-  color:var(--or-ink)!important;background:rgba(201,170,135,.25)!important;
+  color:#fffaf0!important;background:rgba(208,173,86,.2)!important;
 }
 html body.oldroot-after-dark .site-nav .nav-dropdown{
   background:#fff8eb!important;color:var(--or-espresso)!important;
