@@ -68,6 +68,17 @@ for (const [mode, width, height] of viewports) {
           await page.evaluate(() => window.scrollTo({top: 0, left: 0, behavior: 'instant'}));
         }
       }
+      if (name === 'home') {
+        const dispatchPicture = page.locator('#homeLatestDispatch .dispatch-feature-art');
+        await expect.poll(() => dispatchPicture.evaluate(img =>
+          img.complete && img.naturalWidth > 0 && img.naturalHeight > 0
+        )).toBe(true);
+        await dispatchPicture.evaluate(img => img.decode().catch(() => {}));
+        await page.locator('#homeLatestDispatch').screenshot({
+          path: `artifacts/visual-qa/${mode}-dispatch-artwork.png`,
+          animations: 'disabled'
+        });
+      }
       if (name === 'characters') {
         // Lazy-loaded registry art belongs to the scrollable page, not to blank
         // screenshot placeholders. Prime it before the full-page visual capture.
