@@ -42,7 +42,7 @@ Corresponding `-master.png` files must also be preserved **byte-for-byte** in th
 
 ## Recovery checkpoint — 25 October 2026
 
-**All eight exact approved homepage portrait PNGs, the Main.Web.Logo primary graphic, and the official IN DEVELOPMENT sticker were recovered from the source Google Docs (Word media export).** Every PNG listed below matched the SHA-256 hash in the approval document byte-for-byte. Transparent WebP derivatives were produced separately. The files have **not** been uploaded into GitHub yet; this is not a live-art milestone.
+**All eight exact approved homepage portrait PNGs, the Main.Web.Logo primary graphic, and the official IN DEVELOPMENT sticker were recovered from the source Google Docs (Word media export).** Every PNG listed below matched the SHA-256 hash in the approval document byte-for-byte. Transparent WebP derivatives were produced separately. The files have **not** been uploaded into the source repository yet; this is not a live-art milestone.
 
 | Master asset | Approved PNG SHA-256 |
 | --- | --- |
