@@ -518,3 +518,242 @@ body.home-living-comic .dispatch-lead .dispatch-copy a:hover,
 body.home-living-comic .dispatch-lead .dispatch-copy a:focus-visible{
   color:#28563d!important;
 }
+
+
+/* ==========================================================================
+   OLDROOT HQ 2.1 / COSMIC-CARBON HOMEPAGE
+   Living Comic portrait ensemble, issue #1 and rotating character logic stay.
+   Atmosphere is COSMIC ONLY: no graffiti on the page-wide background.
+   ========================================================================== */
+html body.home-living-comic{
+  --lc-paper:#071510;
+  --lc-paper-light:#f8f1e5;
+  --lc-espresso:#f7f0e5;
+  --lc-copper:#d3b36a;
+  --lc-edge:#6f8f77;
+  --lc-muted:#c6d6cc;
+  --home-text:#f6f1e7;
+  --home-muted:#c9d9cc;
+  --home-faint:#afc1b4;
+  --home-line:rgba(168,202,172,.26);
+  --home-line-soft:rgba(168,202,172,.17);
+  --home-panel:#13241d;
+  --home-panel-strong:#1a3025;
+  --home-panel-soft:#101d17;
+  color:#f8f3e8!important;
+  background-color:#040c09!important;
+  background-image:
+    linear-gradient(180deg,rgba(2,7,5,.20),rgba(2,7,5,.48)),
+    url("assets/branding/oldroot-cosmic-field.svg")!important;
+  background-size:cover,cover!important;
+  background-position:center top,center center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-attachment:fixed,fixed!important;
+}
+html body.home-living-comic .lc-hero{
+  color:#fff6e8!important;
+  background:
+    radial-gradient(ellipse at 12% 20%,rgba(43,126,81,.22),transparent 60%),
+    linear-gradient(122deg,rgba(5,17,13,.94),rgba(12,36,25,.93) 58%,rgba(4,12,9,.96))!important;
+  border:2px solid #608367!important;
+  border-radius:9px!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.55),inset 0 1px rgba(245,252,244,.1)!important;
+}
+html body.home-living-comic .lc-hero::before{
+  background:#d1ab5f!important;
+}
+html body.home-living-comic .lc-hero::after{
+  background:#2f9a62!important;
+}
+html body.home-living-comic .lc-hero-top{
+  position:relative;isolation:isolate;
+  grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);
+  gap:clamp(18px,3.2vw,48px);
+  margin:0 0 16px;
+}
+html body.home-living-comic .lc-hero-top::before,
+html body.home-living-comic .lc-hero-top::after{
+  display:none!important;
+}
+html body.home-living-comic .lc-eyebrow{
+  background:#173d28!important;
+  border:1px solid #71a67c;
+  box-shadow:3px 3px 0 #070e0b;
+  color:#f2e8d4!important;
+}
+html body.home-living-comic .lc-tagline{
+  color:#fff9ea!important;
+  text-shadow:0 3px 15px rgba(0,0,0,.24)!important;
+}
+html body.home-living-comic .lc-tagline span{
+  color:#d8b767!important;
+}
+html body.home-living-comic .lc-summary{
+  color:#d7e1d6!important;
+  font-weight:600;
+}
+/* Strong, deliberate publisher plaque. Actual approved transparent logo, not
+   a recreated brand graphic. The two micro-stripes are controlled print distress,
+   NOT graffiti or words sprayed into the backdrop. */
+html body.home-living-comic .lc-wordmark{
+  display:grid!important;
+  place-content:center;
+  min-height:230px;
+  height:clamp(215px,24vw,345px);
+  width:100%;
+  padding:26px!important;
+  border:2px solid #c6ac62!important;
+  border-radius:7px!important;
+  background:
+    url("assets/approved-home/primary-logo.webp") center / 92% auto no-repeat,
+    radial-gradient(ellipse at 64% 18%,rgba(43,106,68,.30),transparent 62%),
+    linear-gradient(155deg,#020907,#082014 52%,#020907)!important;
+  box-shadow:0 0 0 6px rgba(3,12,8,.85),0 18px 36px rgba(0,0,0,.45),
+    inset 0 1px rgba(238,231,199,.22)!important;
+}
+html body.home-living-comic .lc-roster-heading h2,
+html body.home-living-comic .lc-roster-heading span{
+  color:#f9f1de!important;
+}
+html body.home-living-comic .lc-roster-heading span{
+  color:#d4b86d!important;
+}
+html body.home-living-comic .lc-face{
+  border:4px solid #08110d!important;
+  box-shadow:4px 4px 0 #d0b367,7px 7px 0 #020705!important;
+}
+html body.home-living-comic .lc-button{
+  background:#133a25!important;
+  border:1px solid #8ea77e!important;
+  color:#f7f2e5!important;
+  box-shadow:4px 4px 0 #020907!important;
+}
+html body.home-living-comic .lc-button:nth-child(2){
+  background:#242d28!important;color:#f7f2e5!important;
+}
+html body.home-living-comic .lc-button:hover,
+html body.home-living-comic .lc-button:focus-visible{
+  background:#205b36!important;border-color:#d2b567!important;
+}
+/* Dark carbon composite on all supporting content systems, preserving
+   individual visual artwork and interactive UI states. */
+html body.home-living-comic
+ :is(.oldroot-reader-poll,.home-featured,.home-world-section,.section-band,
+     .home-library-section,.dispatch-lead){
+  background:var(--or-composite)!important;
+  color:#f9f4e8!important;
+  border:1px solid rgba(153,187,151,.48)!important;
+  border-radius:9px!important;
+  box-shadow:0 15px 40px rgba(0,0,0,.48),inset 0 1px rgba(244,255,241,.06)!important;
+}
+html body.home-living-comic
+ :is(.home-section-heading h2,.section-band h2,.home-library-copy h3,
+     .home-section-heading .lead-kicker,.home-library-section h2){
+  color:#f9f1df!important;
+  text-shadow:none!important;
+}
+html body.home-living-comic
+ :is(.home-section-heading p,.section-band p,.home-library-copy p,.home-rotation-note){
+  color:#cbd9cd!important;
+}
+html body.home-living-comic
+ :is(.home-section-link,.section-band-head>a,.home-secondary-links>a){
+  color:#dfc47c!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button,.home-carousel-controls button){
+  background:#0c291b!important;
+  border:1px solid #6e9972!important;
+  color:#f7f3e8!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button.active,.home-character-tabs button[aria-selected="true"]){
+  background:#275b37!important;color:#fff9e8!important;
+  border-color:#d6b96a!important;
+}
+html body.home-living-comic .home-character-track{
+  border-color:#5f8365!important;
+  background:#07140e!important;
+}
+html body.home-living-comic .home-character-track .home-character-slide{
+  background:var(--or-composite)!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy :is(h3,p,span){
+  color:#f3eddf!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy>span{
+  color:#e2c474!important;
+}
+html body.home-living-comic .home-world-grid a,
+html body.home-living-comic .section-band .discovery-card,
+html body.home-living-comic #homeUpcomingGrid .discovery-card{
+  background:var(--or-composite)!important;
+  color:#f4f1e9!important;
+  border:1px solid #6a8a75!important;
+  border-radius:6px!important;
+  box-shadow:0 9px 18px rgba(0,0,0,.28)!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) :is(h3,b){
+  color:#fff5e6!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) :is(p,small){
+  color:#cbdad0!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) span{
+  color:#e0c274!important;
+}
+html body.home-living-comic .home-library-teaser{
+  background:linear-gradient(140deg,#101d18,#1d2c26)!important;
+  border-color:#55755f!important;
+}
+html body.home-living-comic .home-library-copy h3{color:#f9f2e5!important}
+html body.home-living-comic .home-library-copy p{color:#cad8cd!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy{
+  background:var(--or-composite)!important;
+  color:#f8f1e3!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy h2{
+  color:#fbf5e8!important;text-shadow:none!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy p{
+  color:#d5ded3!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta{
+  color:#d7bd74!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:#e8cd82!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-art{
+  border-color:#c5a553!important;
+}
+/* Protect cover art and approved character paint jobs. Never recolor masters. */
+html body.home-living-comic :is(.lc-face img,.home-character-art img,
+ .dispatch-feature-art,.oldroot-issue-launch img){
+  mix-blend-mode:normal!important;
+}
+@media(max-width:900px){
+  html body.home-living-comic .lc-hero-top{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  html body.home-living-comic .lc-wordmark{
+    height:clamp(175px,48vw,270px);
+    min-height:175px;
+    background-size:88% auto,auto,auto!important;
+  }
+}
+@media(max-width:760px){
+  html body.home-living-comic{
+    background-size:auto,auto 100%!important;
+    background-attachment:scroll,scroll!important;
+  }
+  html body.home-living-comic .lc-hero{padding:12px}
+  html body.home-living-comic .lc-face{
+    box-shadow:3px 3px 0 #d0b367,5px 5px 0 #020705!important;
+  }
+  html body.home-living-comic .lc-summary{font-size:14px}
+}
