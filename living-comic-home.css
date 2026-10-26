@@ -784,3 +784,106 @@ html body.home-living-comic .home-character-track{
   overflow-x:auto!important;
   overflow-y:hidden!important;
 }
+
+
+/* ==========================================================================
+   HQ 2.2 / LIME-WHITE HOMEPAGE
+   Replace editorial cream and gold UI notes with OldRoot fresh lime + crisp
+   comic white. Keep the nebula, carbon weave, portraits, and dark logo plaque.
+   ========================================================================== */
+html body.home-living-comic{
+  --lc-paper-light:var(--or-lime-pale);
+  --lc-espresso:var(--or-comic-white);
+  --lc-copper:var(--or-lime);
+  --lc-edge:#7CB77C;
+  --lc-muted:var(--or-ink-muted);
+  --home-text:var(--or-comic-white);
+  --home-muted:var(--or-ink-muted);
+  --home-faint:#AFC9B8;
+  --home-line:rgba(178,245,139,.33);
+  --home-line-soft:rgba(178,245,139,.2);
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .lc-hero{color:var(--or-comic-white)!important;border-color:#83BB82!important}
+html body.home-living-comic .lc-hero::before{background:var(--or-lime)!important}
+html body.home-living-comic .lc-hero::after{background:#54AD6E!important}
+html body.home-living-comic .lc-eyebrow{
+  color:var(--or-lime-pale)!important;border-color:var(--or-lime)!important;
+  background:#123621!important;
+}
+html body.home-living-comic .lc-tagline{color:var(--or-comic-white)!important}
+html body.home-living-comic .lc-tagline span{color:var(--or-lime)!important}
+html body.home-living-comic .lc-summary{color:#D7E8D9!important}
+html body.home-living-comic .lc-wordmark{
+  border-color:var(--or-lime)!important;
+  box-shadow:0 0 0 6px rgba(3,12,8,.85),0 18px 36px rgba(0,0,0,.45),
+   inset 0 1px rgba(226,255,208,.23)!important;
+}
+html body.home-living-comic .lc-roster-heading h2,
+html body.home-living-comic .home-section-heading h2,
+html body.home-living-comic .section-band h2,
+html body.home-living-comic .home-library-copy h3,
+html body.home-living-comic .home-library-section h2{color:var(--or-comic-white)!important}
+html body.home-living-comic .lc-roster-heading span,
+html body.home-living-comic .home-section-heading .lead-kicker{color:var(--or-lime)!important}
+html body.home-living-comic .lc-face{
+  box-shadow:4px 4px 0 var(--or-lime),7px 7px 0 #020705!important;
+}
+html body.home-living-comic .lc-button{
+  border-color:var(--or-lime)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .lc-button:hover,
+html body.home-living-comic .lc-button:focus-visible{
+  color:var(--or-lime-bright)!important;border-color:#D6F9AC!important;
+}
+html body.home-living-comic
+ :is(.home-section-link,.section-band-head>a,.home-secondary-links>a){
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button,.home-carousel-controls button){
+  color:var(--or-comic-white)!important;
+  border-color:#81B989!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button.active,.home-character-tabs button[aria-selected="true"]){
+  color:var(--or-comic-white)!important;
+  border-color:var(--or-lime)!important;
+  box-shadow:0 0 0 1px rgba(190,243,122,.15)!important;
+}
+html body.home-living-comic .home-character-track{border-color:#7EBA83!important}
+html body.home-living-comic .home-character-track .home-character-copy :is(h3,p,span){
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy>span{
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card){
+  color:var(--or-comic-white)!important;
+  border-color:#6FA578!important;
+}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card)
+ :is(h3,b){color:var(--or-comic-white)!important}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card)
+ span{color:var(--or-lime)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy{color:var(--or-comic-white)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy h2{color:var(--or-comic-white)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta,
+html body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-art{border-color:var(--or-lime)!important}
+html body.home-living-comic .lc-face img,
+html body.home-living-comic .home-character-art img,
+html body.home-living-comic .dispatch-feature-art{
+  filter:none!important; /* preserve character/sticker master colors */
+}
+@media(max-width:760px){
+  html body.home-living-comic .lc-face{
+    box-shadow:3px 3px 0 var(--or-lime),5px 5px 0 #020705!important;
+  }
+}
