@@ -24,7 +24,7 @@ for (const route of routes) {
       return {
         paper: root.getPropertyValue('--or-paper').trim(),
         ink: root.getPropertyValue('--or-ink').trim(),
-        header: header.backgroundColor,
+        header: header.backgroundImage,
         background: body.backgroundImage,
         brokenImages: [...document.querySelectorAll('img')]
           .filter(img => img.hasAttribute('src') && img.getAttribute('src').trim() !== '' && img.complete && img.naturalWidth === 0)
@@ -33,7 +33,7 @@ for (const route of routes) {
     });
     expect(theme.paper).toBe('#f1e5cf');
     expect(theme.ink).toBe('#171514');
-    expect(theme.header).not.toBe('rgba(0, 0, 0, 0)');
+    expect(theme.header).toContain('gradient');
     expect(theme.background).toContain('oldroot-cosmic-field.svg');
     expect(theme.brokenImages).toEqual([]);
   });
