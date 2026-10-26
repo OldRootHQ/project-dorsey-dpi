@@ -85,3 +85,40 @@
   background:url("assets/approved-home/in-development-sticker.webp") center/contain no-repeat;
   pointer-events:none;
 }
+
+
+/* HQ 2.0 Marketplace contrast: headings outside dark showcases use espresso;
+   copy inside retained dark Library panels uses light ink for legibility. */
+body.oldroot-after-dark .marketplace-page .marketplace-division-heading h2{
+  color:#29211e!important;
+}
+body.oldroot-after-dark .marketplace-page .marketplace-division-heading p{
+  color:#594c42!important;
+}
+body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-kicker{
+  color:#835a39!important;
+}
+body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-count-label{
+  color:#835a39!important;
+  border-color:#b8955e!important;
+}
+body.oldroot-after-dark .marketplace-page .library-feature .library-section-head h2,
+body.oldroot-after-dark .marketplace-page .library-shelf-wrap .library-section-head h2,
+body.oldroot-after-dark .marketplace-page .library-feature .feature-copy h3{
+  color:#fff5e7!important;
+}
+body.oldroot-after-dark .marketplace-page .library-feature .feature-copy p{
+  color:#e3d7c6!important;
+}
+body.oldroot-after-dark .marketplace-page .library-feature .feature-copy .library-status,
+body.oldroot-after-dark .marketplace-page .library-feature .feature-copy .library-format,
+body.oldroot-after-dark .marketplace-page .library-feature .library-section-head .lead-kicker,
+body.oldroot-after-dark .marketplace-page .library-shelf-wrap .library-section-head .lead-kicker{
+  color:#e9c27d!important;
+}
+body.oldroot-after-dark .marketplace-page .library-feature .feature-counter,
+body.oldroot-after-dark .marketplace-page .library-shelf-wrap .title-count{
+  color:#f9e8ce!important;
+  background:rgba(19,42,30,.94)!important;
+  border:1px solid rgba(208,173,86,.45)!important;
+}
