@@ -127,3 +127,18 @@ body.locations-living-comic .locations-page .location-dossier-cards a.place-card
   background:linear-gradient(142deg,#fffdf5,#ead2af)!important;
   border-color:#35674b!important;
 }
+
+
+/* HQ 2.1 carbon directory cards — readable labels on real composite surfaces. */
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card,
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card:hover,
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card:focus-visible{
+  background:var(--or-composite)!important;
+  color:#f7f3e8!important;
+  border:1px solid #6a8d73!important;
+  border-radius:8px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.35)!important;
+}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card h3{color:#fcf6e9!important}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card p{color:#cfdbd0!important}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card>span{color:#e6c97b!important}
