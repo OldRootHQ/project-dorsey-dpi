@@ -110,6 +110,8 @@ window.OLDROOT_HOME = {
     meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
     title:"Flying Saucer joins the OldRoot sticker collection.",
     body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
+    image:"assets/characters/flying-saucer/flying-saucer-sticker-master.png",
+    imageAlt:"Flying Saucer’s approved Triple Strike sticker emblem",
     href:"news.html#or-web-0094"
   }
 };
