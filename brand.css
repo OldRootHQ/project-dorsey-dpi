@@ -1780,3 +1780,180 @@ html body.oldroot-after-dark .masthead .brand::before{
     left:84px;top:34px;font-size:8px;letter-spacing:.07em;
   }
 }
+
+
+/* ==========================================================================
+   HQ 2.2 / LIVING LIME + COMIC WHITE
+   Creator-approved palette shift: remove residual café as a UI language.
+   Green = OldRoot mark's bright fresh lime family; white = graphic comic ink.
+   Keep emerald nebula, dark carbon, existing art and high-contrast controls.
+   No words/graffiti added to the background.
+   ========================================================================== */
+html body.oldroot-after-dark{
+  --or-lime:#BEF37A;
+  --or-lime-bright:#C9FF82;
+  --or-lime-pale:#E1F7CB;
+  --or-comic-white:#FAFFFC;
+  --or-ink-muted:#C9D9CF;
+  --or-gold:var(--or-lime);
+  --or-ivory:var(--or-comic-white);
+  --or-secondary:var(--or-ink-muted);
+  --or-silver:#D7E7DD;
+  --or-carbon-edge:#557E65;
+  accent-color:var(--or-lime);
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .masthead{
+  border-bottom-color:var(--or-lime)!important;
+  box-shadow:0 4px 0 rgba(39,101,65,.65),0 14px 36px rgba(0,0,0,.45)!important;
+}
+html body.oldroot-after-dark .masthead .brand::after{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .masthead .brand::before{
+  color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:var(--or-lime-bright)!important;
+  background:rgba(26,84,51,.48)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown,
+html body.oldroot-after-dark .site-nav .nav-dropdown a{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a:hover,
+html body.oldroot-after-dark .site-nav .nav-dropdown a:focus-visible{
+  color:var(--or-lime-bright)!important;
+}
+/* Structural strokes: carbon remains matte, edging shifts from café/gold to
+   precise OldRoot-green. No texture replacement and no art recoloring. */
+html body.oldroot-after-dark
+ :is(.character-card,.org-card,.lore-entry,.dispatch-card,.location-section,
+     .location-facts,.character-identity,.character-infobox,.wiki-section,
+     .character-links,.character-network,.dossier-chapter-index,
+     .dossier-story-thread,.page-head,.editorial-hero,.location-dossier-hero,
+     .organization-hero,.work-section,.work-interest,.work-form-wrap,
+     .library-card,.section-band,.content-block){
+  border-color:rgba(155,219,142,.58)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border-color:#8ABF81!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(h1,h2,h3,h4,strong,b){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(p,li,dt,dd,small,figcaption){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,.character-network-head h2,
+     .dossier-chapter-index h2,.dossier-story-thread h2,.dossier-thread-heading h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-card .meta-pill{
+  color:var(--or-lime-pale)!important;
+  background:#193D29!important;
+  border-color:#6CB573!important;
+}
+html body.oldroot-after-dark .character-card .class{color:var(--or-lime)!important}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-links,.location-section,.lore-entry,
+     .discovery-card,.dispatch-card,.work-section,.shell .hero,.shell .panel)
+ a:not(.button){color:var(--or-lime)!important}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  border-color:#6DAE78!important;
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:var(--or-comic-white)!important}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a){
+  background:#173B2A!important;
+  border-color:#A0DE91!important;
+  color:var(--or-comic-white)!important;
+  box-shadow:3px 3px 0 #06160D!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a):hover{
+  background:#265F3C!important;
+  color:var(--or-lime-bright)!important;
+}
+html body.oldroot-after-dark .oldroot-footer{
+  border-color:#6DAF78!important;
+  border-top-color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links b,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:focus-visible{
+  color:var(--or-lime-bright)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a:not([href$="contact.html"]){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]{
+  background:var(--or-lime)!important;
+  color:#0B2515!important;
+  border-color:#D8FBA8!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:focus-visible{
+  background:var(--or-lime-bright)!important;
+  color:#07170D!important;
+}
+html body.oldroot-after-dark :is(a,button,input,select,textarea):focus-visible{
+  outline-color:var(--or-lime-bright)!important;
+}
