@@ -140,6 +140,9 @@ for(const [mode,width] of [['desktop',1440],['mobile',390]]){
     await expect(image).toHaveAttribute('src','assets/characters/flying-saucer/flying-saucer-sticker-master.png');
     await expect(image).toHaveAttribute('alt',/Flying Saucer.*Triple Strike/);
     await expect.poll(()=>image.evaluate(el=>el.complete&&el.naturalWidth>0&&el.naturalHeight>0)).toBe(true);
+    await expect(dispatch.locator('.dispatch-copy')).toHaveCSS('color','rgb(41, 33, 30)');
+    await expect(dispatch.locator('.dispatch-copy h2')).toHaveCSS('color','rgb(41, 33, 30)');
+    await expect(dispatch.locator('.dispatch-copy p')).toHaveCSS('color','rgb(89, 76, 66)');
     const box=await image.boundingBox();
     expect(box.width).toBeGreaterThan(120);
     expect(box.height).toBeGreaterThan(120);
