@@ -1,6 +1,7 @@
 /* OldRoot HQ 2.0 — approved-art staging loader.
  * Imports creator-approved files only when they actually exist.
- * Keep existing images and honest pending states if assets aren't in the repo yet.
+ * The approved homepage artwork is present in initial HTML, even without JS.
+ * This optional loader verifies image readiness and maintains preview-state hooks.
  * The source PNG masters remain untouched under assets/approved-home/.
  */
 (() => {
@@ -42,7 +43,7 @@
       if (portrait) {
         // Eight optimized spotlights form one editorial feature; load all for screenshots and mobile scrolling.
         portrait.loading = 'eager';
-        portrait.src = url;
+        if (portrait.getAttribute('src') !== url) portrait.src = url;
       } else {
         portrait = document.createElement('img');
         portrait.alt = name + ', approved OldRoot homepage portrait';
