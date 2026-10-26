@@ -1441,3 +1441,200 @@ html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html
     grid-template-columns:1fr;
   }
 }
+
+
+/* ==========================================================================
+   OLDROOT HQ 2.1 / COSMIC-CARBON GLOBAL SYSTEM
+   Approved creator direction: green-black nebula, matte carbon composite,
+   deep-green/black OldRoot branding. NO GRAFFITI ON THE BACKGROUND.
+   Presentation only; editorial records, art, forms and UX remain canonical.
+   ========================================================================== */
+html body.oldroot-after-dark{
+  --or-cosmos:#030b09;
+  --or-forest:#0b261b;
+  --or-carbon:#151e1c;
+  --or-carbon-edge:#4a6257;
+  --or-gold:#d6b35e;
+  --or-silver:#c8d8cf;
+  --or-ivory:#f5f1e7;
+  --or-secondary:#c7d5cc;
+  --or-composite:
+    repeating-linear-gradient(42deg,rgba(192,216,204,.043) 0 2px,transparent 2px 7px,rgba(0,0,0,.12) 7px 9px,transparent 9px 14px),
+    repeating-linear-gradient(138deg,rgba(192,216,204,.035) 0 2px,transparent 2px 7px,rgba(0,0,0,.15) 7px 9px,transparent 9px 14px),
+    linear-gradient(145deg,rgba(36,54,47,.97),rgba(13,24,20,.98));
+  background-color:#030b09!important;
+  background-image:
+    linear-gradient(180deg,rgba(2,8,6,.22),rgba(2,8,6,.45) 55%,rgba(2,8,6,.61)),
+    url("assets/branding/oldroot-cosmic-field.svg")!important;
+  background-position:center top,center center!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-attachment:fixed,fixed!important;
+  color:var(--or-ivory);
+}
+/* Previous root/tendril effects are suppressed so the nebula is never covered
+   by roots, graffiti, animated smears or a second wallpaper treatment. */
+html body.oldroot-after-dark::before,
+html body.oldroot-after-dark::after{
+  display:none!important;
+  animation:none!important;
+}
+/* The publisher masthead is a marquee, not a tiny navigation afterthought. */
+html body.oldroot-after-dark .masthead{
+  background:linear-gradient(105deg,#06100d,#0a271b 70%,#040b09)!important;
+  border-bottom:3px solid #c7a855!important;
+  box-shadow:0 5px 0 rgba(13,42,27,.7),0 12px 32px rgba(0,0,0,.4)!important;
+}
+html body.oldroot-after-dark .mast-inner{
+  min-height:96px;
+  max-width:1510px;
+  padding:8px clamp(16px,2.3vw,34px)!important;
+  gap:clamp(14px,2vw,32px);
+}
+html body.oldroot-after-dark .brand{
+  display:block!important;
+  width:clamp(218px,22vw,298px)!important;
+  height:clamp(65px,6.1vw,86px)!important;
+  flex:0 0 clamp(218px,22vw,298px)!important;
+  max-width:100%;
+  border:0!important;
+  background:transparent url("assets/approved-home/primary-logo.webp") center center / contain no-repeat!important;
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.55));
+  transform:none!important;
+}
+html body.oldroot-after-dark .brand:hover{filter:drop-shadow(0 3px 3px #000) brightness(1.12)}
+html body.oldroot-after-dark .site-nav{align-items:center;gap:3px}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:#f3eee3!important;
+  background:transparent!important;
+  font-size:clamp(10px,.84vw,12px)!important;
+  font-weight:850!important;
+  letter-spacing:.03em;
+  min-height:42px;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:#eacf7c!important;
+  background:rgba(22,74,46,.40)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown{
+  background:#0c1c15!important;
+  border:1px solid #53755c!important;
+  color:#f5f1e7!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a{color:#f5f1e7!important}
+
+/* Unified matte-carbon architecture across dossiers, lore, locations,
+   studio services, registry, marketplace and the analytical interface. */
+html body.oldroot-after-dark
+ :is(.character-shell .wiki-section,.character-shell .character-infobox,
+     .character-shell .character-identity,.character-shell .character-links,
+     .character-shell .character-network,.character-shell .dossier-chapter-index,
+     .character-shell .dossier-story-thread,.character-shell .max-gallery-section,
+     .location-dossier-page .location-section,.location-dossier-page .location-facts,
+     .location-dossier-cards a.place-card,.org-card,.lore-entry,.dispatch-card,
+     .character-card,.market-sticker-card,.market-feature-card,.marketplace-next-note,
+     .product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,
+     .checkout-form,.checkout-summary,.confirmation-card,.discovery-card,
+     .work-with-oldroot-page .work-section,.work-with-oldroot-page .work-interest,
+     .work-with-oldroot-page .work-transparency,.work-with-oldroot-page .work-discipline-card,
+     .work-with-oldroot-page .work-values-grid,.work-with-oldroot-page .work-principles,
+     .work-with-oldroot-page .work-process,.work-with-oldroot-page .work-form-wrap,
+     .shell .hero,.shell .panel:not(.detail-panel),.shell .analytics-toolbar){
+  background:var(--or-composite)!important;
+  color:var(--or-ivory)!important;
+  border:1px solid rgba(146,183,153,.46)!important;
+  border-radius:9px!important;
+  box-shadow:0 13px 29px rgba(0,0,0,.36),inset 0 1px rgba(246,252,247,.07)!important;
+}
+/* Copy directly on carbon requires high contrast. Never paint images/illustrations. */
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(h1,h2,h3,h4,strong,b){
+  color:#faf4e7!important;
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(p,li,dt,dd,small,figcaption){
+  color:#cbd8ce!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-links,.location-section,.lore-entry,
+     .discovery-card,.dispatch-card,.work-section,.shell .hero,.shell .panel) a:not(.button){
+  color:#e9ca7c;
+}
+/* Framed utility links and filters remain visually distinct from carbon. */
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  color:#f9f2e6!important;
+  background:#1a3529!important;
+  border:1px solid #6d9175!important;
+}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:#f7f0de!important}
+html body.oldroot-after-dark .character-card .meta-pill{
+  background:#1a382b!important;color:#e2d1a6!important;border-color:#5c8163!important;
+}
+html body.oldroot-after-dark .character-card .class{color:#d7b968!important}
+
+/* Specialized modules keep their existing contrast systems, mechanisms and art.
+   Neither the interactive globe nor the dark OPI profile receives a new overlay. */
+html body.oldroot-after-dark .shell .panel.detail-panel,
+html body.oldroot-after-dark :is(.world-console,.dossier-opi-station,.dossier-art-archive){
+  box-shadow:0 12px 34px rgba(0,0,0,.42)!important;
+}
+html body.oldroot-after-dark .oldroot-footer{
+  background:
+    linear-gradient(115deg,rgba(4,13,10,.96),rgba(8,28,20,.97))!important;
+  border:1px solid #60765f!important;
+  border-top:3px solid #cfaa59!important;
+  border-radius:9px!important;
+  box-shadow:0 20px 50px rgba(0,0,0,.44)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::before{
+  background:linear-gradient(135deg,#05110c,#0b3020)!important;
+  border-color:#668368!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::after{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+@media(max-width:1060px){
+  html body.oldroot-after-dark .mast-inner{min-height:82px}
+  html body.oldroot-after-dark .brand{
+    width:clamp(194px,22vw,255px)!important;
+    height:70px!important;
+    flex-basis:clamp(194px,22vw,255px)!important;
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark{
+    background-attachment:scroll,scroll!important;
+    background-size:auto,auto 100%!important;
+  }
+  html body.oldroot-after-dark .mast-inner{min-height:74px;padding:8px 14px!important}
+  html body.oldroot-after-dark .brand{
+    width:clamp(190px,51vw,236px)!important;
+    height:64px!important;
+    flex-basis:clamp(190px,51vw,236px)!important;
+  }
+  html body.oldroot-after-dark .site-nav>a,
+  html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.oldroot-after-dark{scroll-behavior:auto}
+}
