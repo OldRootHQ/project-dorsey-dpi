@@ -313,3 +313,48 @@ body.home-living-comic .oldroot-reader-poll{
  body.home-living-comic .lc-wordmark{height:134px}
  body.home-living-comic .lc-face-name{font-size:clamp(15px,4.1vw,27px)}
 }
+
+
+/* Approved concept fidelity pass — compact editorial splash on desktop.
+   Left: typographic hook. Right: espresso comic-logo panel. Portrait art stays untouched. */
+@media(min-width:901px){
+  body.home-living-comic .lc-hero-top{
+    position:relative;isolation:isolate;overflow:hidden;
+    grid-template-columns:minmax(0,1.32fr) minmax(260px,.68fr);
+    padding:clamp(18px,2vw,28px) clamp(12px,2vw,26px) clamp(16px,2vw,26px);
+    margin:-8px -8px 16px;
+  }
+  body.home-living-comic .lc-hero-top::before{
+    content:"";position:absolute;z-index:-1;
+    inset:0 0 0 auto;width:42%;
+    background:#29211e;
+    clip-path:polygon(12% 0,100% 0,100% 100%,0 100%);
+    pointer-events:none;
+  }
+  body.home-living-comic .lc-hero-top::after{
+    content:"";position:absolute;z-index:-1;top:-10%;bottom:-10%;
+    right:40.9%;width:5px;background:#d0ad56;transform:skew(-11deg);
+    pointer-events:none;
+  }
+  body.home-living-comic .lc-eyebrow{
+    background:#35674b;color:#fff8ec;
+    transform:none;letter-spacing:.03em;padding:6px 11px;
+  }
+  body.home-living-comic .lc-tagline{
+    font-size:clamp(38px,5.1vw,73px);line-height:.92;
+    max-width:690px;margin-top:12px;
+  }
+  body.home-living-comic .lc-tagline span{
+    font-size:clamp(23px,2.6vw,36px);line-height:1.06;
+    color:#654336!important;margin-top:7px;
+  }
+  body.home-living-comic .lc-summary{margin-top:6px;font-size:clamp(13px,1.1vw,16px)}
+  body.home-living-comic .lc-face{aspect-ratio:1.18/1}
+  body.home-living-comic .lc-face img{object-position:center 27%}
+  body.home-living-comic .lc-face-name{font-size:clamp(14px,1.7vw,23px)}
+}
+/* Mobile retains the stacked typography and two-column portrait layout. */
+@media(max-width:900px){
+  body.home-living-comic .lc-hero-top::before,
+  body.home-living-comic .lc-hero-top::after{display:none}
+}
