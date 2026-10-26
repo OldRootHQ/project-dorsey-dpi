@@ -27,7 +27,7 @@ for (const route of routes) {
         header: header.backgroundColor,
         background: body.backgroundImage,
         brokenImages: [...document.querySelectorAll('img')]
-          .filter(img => img.complete && img.naturalWidth === 0)
+          .filter(img => img.hasAttribute('src') && img.getAttribute('src').trim() !== '' && img.complete && img.naturalWidth === 0)
           .map(img => img.getAttribute('src')),
       };
     });
