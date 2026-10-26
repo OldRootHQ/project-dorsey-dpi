@@ -76,21 +76,21 @@ test('Indexed place cards use readable light type on carbon composite', async ({
   await expect(firstCard.locator('p')).toHaveCSS('color', 'rgb(207, 219, 208)');
 });
 
-test('Character registry metadata pills have accessible carbon-and-gold contrast', async ({ page }) => {
+test('Character registry metadata pills have accessible carbon-and-lime contrast', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'networkidle' });
   const pill = page.locator('.character-card .meta-pill').first();
   await expect(pill).toBeVisible();
-  await expect(pill).toHaveCSS('color', 'rgb(226, 209, 166)');
-  await expect(pill).toHaveCSS('background-color', 'rgb(26, 56, 43)');
+  await expect(pill).toHaveCSS('color', 'rgb(225, 247, 203)');
+  await expect(pill).toHaveCSS('background-color', 'rgb(25, 61, 41)');
 });
 
 
 test('Marketplace uses high-contrast type on cosmic canvas and dark showcase panels', async ({ page }) => {
   await page.goto(BASE + '/marketplace.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#marketplace-library-title')).toHaveCSS('color', 'rgb(250, 244, 232)');
-  await expect(page.locator('#marketplace-stickers-title')).toHaveCSS('color', 'rgb(250, 244, 232)');
-  await expect(page.locator('.library-feature .library-section-head h2')).toHaveCSS('color', 'rgb(255, 245, 231)');
-  await expect(page.locator('.library-feature .feature-slide.active .feature-copy h3')).toHaveCSS('color', 'rgb(255, 245, 231)');
+  await expect(page.locator('#marketplace-library-title')).toHaveCSS('color', 'rgb(250, 255, 252)');
+  await expect(page.locator('#marketplace-stickers-title')).toHaveCSS('color', 'rgb(250, 255, 252)');
+  await expect(page.locator('.library-feature .library-section-head h2')).toHaveCSS('color', 'rgb(250, 255, 252)');
+  await expect(page.locator('.library-feature .feature-slide.active .feature-copy h3')).toHaveCSS('color', 'rgb(250, 255, 252)');
 });
 
 
