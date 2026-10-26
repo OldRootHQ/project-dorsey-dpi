@@ -493,3 +493,28 @@ body.home-living-comic .dispatch-lead .dispatch-art--missing-image{
     height:calc(100% - 41px);
   }
 }
+
+
+/* HQ 2.0 Dispatch café copy contrast, paired with the approved sticker art. */
+body.home-living-comic .dispatch-lead .dispatch-copy{
+  background:linear-gradient(145deg,#fff7e7,#e9d9be)!important;
+  color:#29211e!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy h2{
+  color:#29211e!important;
+  text-shadow:none!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy p{
+  color:#594c42!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta{
+  color:#835c36!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:#674024!important;
+  font-weight:900;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy a:hover,
+body.home-living-comic .dispatch-lead .dispatch-copy a:focus-visible{
+  color:#28563d!important;
+}
