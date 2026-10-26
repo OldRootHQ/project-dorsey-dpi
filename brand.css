@@ -1371,3 +1371,14 @@ html body.oldroot-after-dark .character-card .meta-pill{
 html body.oldroot-after-dark .character-card .class{
   color:#35674b!important;
 }
+
+
+/* HQ 2.0 OPI detail tactical contrast: this live capability readout remains
+   dark to retain its established light labels, pale numbers and chart accents.
+   Only its outer color surface is restored; interactive analytics code untouched. */
+html body.oldroot-after-dark .shell .panel.detail-panel{
+  color:#e3e7dc!important;
+  background:linear-gradient(150deg,#10261d,#091a13)!important;
+  border:2px solid #b99b78!important;
+  box-shadow:6px 6px 0 rgba(41,33,30,.16)!important;
+}
