@@ -142,3 +142,93 @@ html body.locations-living-comic .locations-page .location-dossier-cards a.place
 html body.locations-living-comic .locations-page .location-dossier-cards a.place-card h3{color:#fcf6e9!important}
 html body.locations-living-comic .locations-page .location-dossier-cards a.place-card p{color:#cfdbd0!important}
 html body.locations-living-comic .locations-page .location-dossier-cards a.place-card>span{color:#e6c97b!important}
+
+
+/* HQ 2.2 / LIME-WHITE LOCATIONS
+   Keep interactive globe untouched; apply palette to headings, directory and
+   surrounding controls that previously retained cream/brown from HQ 2.0. */
+html body.locations-living-comic .locations-page .locations-cosmic-head{
+  background:
+    radial-gradient(circle at 88% 8%,rgba(69,135,77,.22),transparent 34%),
+    var(--or-composite)!important;
+  border:2px solid #80B78B!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.37)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .locations-cosmic-copy h1{
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .locations-cosmic-copy .front-label{
+  color:var(--or-lime)!important;
+}
+html body.locations-living-comic .locations-cosmic-copy p{
+  color:var(--or-ink-muted)!important;
+}
+html body.locations-living-comic .location-jumpbar{
+  background:var(--or-composite)!important;
+  border-color:#77AD80!important;
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-jumpbar :is(b,small){
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-jumpbar a{
+  background:#19402C!important;
+  border-color:#8CD48B!important;
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-dossier-list{
+  background:var(--or-composite)!important;
+  color:var(--or-comic-white)!important;
+  border:2px solid #76AF7F!important;
+  box-shadow:0 16px 32px rgba(0,0,0,.36)!important;
+}
+html body.locations-living-comic .location-dossier-list .home-section-heading h2{
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-dossier-list .lead-kicker{
+  color:var(--or-lime)!important;
+}
+html body.locations-living-comic .location-directory-meta{
+  background:#133422!important;border-color:#7FB686!important;
+}
+html body.locations-living-comic .location-directory-meta strong{
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-directory-meta span{
+  color:var(--or-lime-pale)!important;
+}
+html body.locations-living-comic .world-console{
+  border-color:#5D9270!important;
+  box-shadow:0 16px 32px rgba(0,0,0,.38)!important;
+}
+html body.locations-living-comic .console-kicker{
+  color:var(--or-lime)!important;
+}
+html body.locations-living-comic .world-controls button{
+  border-color:#81BB8D!important;
+}
+html body.locations-living-comic .world-controls button:is(:hover,.active){
+  background:var(--or-lime)!important;color:#071A10!important;
+}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card h3{
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card>span{
+  color:var(--or-lime)!important;
+}
+html body.locations-living-comic .oldroot-footer,
+html body.locations-living-comic .oldroot-footer a{
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .oldroot-footer{
+  background:linear-gradient(115deg,#05130D,#0A2919)!important;
+  border-color:#6DAF78!important;
+  border-top:3px solid var(--or-lime)!important;
+  border-radius:9px!important;
+}
+html body.locations-living-comic .footer-bottom{color:var(--or-ink-muted)!important}
+html body.locations-living-comic a:focus-visible,
+html body.locations-living-comic button:focus-visible{
+  outline-color:var(--or-lime)!important;
+}
