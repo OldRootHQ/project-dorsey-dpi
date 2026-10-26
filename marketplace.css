@@ -138,3 +138,37 @@ html body.oldroot-after-dark .marketplace-page .marketplace-division-heading .ma
 html body.oldroot-after-dark .marketplace-page
  :is(.market-sticker-card,.market-feature-card,.marketplace-next-note)
  :is(h2,h3,p,span){color:#f5eee0!important}
+
+
+/* HQ 2.2 / LIME-WHITE MARKETPLACE — preserve product logos and previews. */
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading h2{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-kicker,
+html body.oldroot-after-dark .marketplace-page .marketplace-division-heading .marketplace-count-label{
+  color:var(--or-lime)!important;
+  border-color:#7EBA83!important;
+}
+html body.oldroot-after-dark .marketplace-page
+ :is(.library-feature,.library-shelf-wrap) .library-section-head h2,
+html body.oldroot-after-dark .marketplace-page .library-feature .feature-copy h3{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .marketplace-page .library-feature .feature-copy p{
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark .marketplace-page .library-feature
+ :is(.library-status,.library-format,.lead-kicker),
+html body.oldroot-after-dark .marketplace-page .library-shelf-wrap .lead-kicker{
+  color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .marketplace-page .library-feature .feature-counter,
+html body.oldroot-after-dark .marketplace-page .library-shelf-wrap .title-count{
+  color:var(--or-comic-white)!important;border-color:#77B380!important;
+}
+html body.oldroot-after-dark .marketplace-page
+ :is(.market-sticker-card,.market-feature-card,.marketplace-next-note)
+ :is(h2,h3,p,span){color:var(--or-comic-white)!important}
+html body.oldroot-after-dark .marketplace-page .marketplace-next-note span{
+  color:var(--or-lime)!important;
+}
