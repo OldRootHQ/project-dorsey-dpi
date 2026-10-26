@@ -1724,3 +1724,59 @@ html body.oldroot-after-dark .character-shell:not([data-dossier])
 }
 /* The OPI terminal, existing character artwork and globe are special systems:
    only their frames adapt; charts, icons and interactive maps remain intact. */
+
+
+/* HQ 2.1 masthead publisher lockup: the original approved illustrated logo
+   has a tall 4:3 canvas; 'contain' in a slim navbar rendered it tiny. Give
+   the unchanged art a deliberate signet + a strong typographic studio label. */
+html body.oldroot-after-dark .masthead .brand{
+  position:relative!important;
+  display:block!important;
+  width:clamp(298px,30vw,400px)!important;
+  flex:0 0 clamp(298px,30vw,400px)!important;
+  height:91px!important;
+  background:transparent url("assets/approved-home/primary-logo.webp") left center / 118px auto no-repeat!important;
+  overflow:visible!important;
+  text-decoration:none!important;
+}
+html body.oldroot-after-dark .masthead .brand::after{
+  content:"OLDROOT STUDIOS";
+  position:absolute;left:125px;top:20px;
+  color:#fff5e3!important;
+  white-space:nowrap;
+  font:900 clamp(21px,2.05vw,30px)/1 Impact,"Arial Narrow",Arial,sans-serif;
+  letter-spacing:.012em;
+  text-shadow:0 2px 8px rgba(0,0,0,.66);
+}
+html body.oldroot-after-dark .masthead .brand::before{
+  content:"THE LIVING COMIC / HQ";
+  position:absolute;left:127px;top:53px;
+  color:#dcb96e!important;
+  white-space:nowrap;
+  font:850 10px/1 Arial,sans-serif;
+  letter-spacing:.13em;
+}
+@media(max-width:1100px){
+  html body.oldroot-after-dark .masthead .brand{
+    width:282px!important;flex-basis:282px!important;
+    height:79px!important;background-size:102px auto!important;
+  }
+  html body.oldroot-after-dark .masthead .brand::after{
+    left:109px;top:19px;font-size:21px;
+  }
+  html body.oldroot-after-dark .masthead .brand::before{
+    left:110px;top:46px;font-size:9px;
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .masthead .brand{
+    width:226px!important;flex-basis:226px!important;
+    height:66px!important;background-size:86px auto!important;
+  }
+  html body.oldroot-after-dark .masthead .brand::after{
+    left:89px;top:15px;font-size:17px;letter-spacing:0;
+  }
+  html body.oldroot-after-dark .masthead .brand::before{
+    left:90px;top:37px;font-size:8px;letter-spacing:.07em;
+  }
+}
