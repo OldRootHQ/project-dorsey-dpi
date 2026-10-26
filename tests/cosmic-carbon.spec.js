@@ -61,7 +61,7 @@ for (const [mode, width, height] of [
         offenders:[...document.querySelectorAll('body *')].map(el=>({
           tag:el.tagName.toLowerCase(),cls:el.className?.toString().slice(0,65),
           right:Math.round(el.getBoundingClientRect().right)
-        })).filter(el=>el.right>innerWidth+3).sort((a,b)=>b.right-a.right).slice(0,12),
+        })).filter(el=>el.right>innerWidth+3 && el.right<innerWidth+140).sort((a,b)=>a.right-b.right).slice(0,30),
         width:document.documentElement.scrollWidth,
         viewport:innerWidth
       };
