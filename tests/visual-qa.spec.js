@@ -38,6 +38,14 @@ for (const [mode, width, height] of viewports) {
 
     for (const [name, url] of pages) {
       await page.goto(BASE + url, { waitUntil: 'domcontentloaded' });
+      if (name === 'home') {
+        // Capture the approved portrait ensemble only after the async art loader
+        // has installed all eight transparent images, including mobile below-fold slots.
+        await page.waitForFunction(() => {
+          const portraits = [...document.querySelectorAll('.lc-face img')];
+          return portraits.length === 8 && portraits.every(img => img.complete && img.naturalWidth > 0);
+        }, null, { timeout: 20000 });
+      }
       await page.waitForTimeout(250);
       await page.screenshot({
         path: `artifacts/visual-qa/${mode}-${name}.png`,
