@@ -53,13 +53,13 @@ for (const [mode, width, height] of viewports) {
         for (let i = 0; i < 8; i++) {
           await page.locator('.lc-face').nth(i).scrollIntoViewIfNeeded();
         }
-        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.evaluate(() => window.scrollTo({top: 0, left: 0, behavior: 'instant'}));
         await page.waitForTimeout(150);
         const selected = page.locator('.home-character-slide.active .home-character-art img');
         if (await selected.count()) {
           await selected.first().scrollIntoViewIfNeeded();
           await expect.poll(() => selected.first().evaluate(img => img.complete && img.naturalWidth > 0)).toBe(true);
-          await page.evaluate(() => window.scrollTo(0, 0));
+          await page.evaluate(() => window.scrollTo({top: 0, left: 0, behavior: 'instant'}));
         }
       }
       if (name === 'characters') {
@@ -70,7 +70,37 @@ for (const [mode, width, height] of viewports) {
           await portraits.nth(n).scrollIntoViewIfNeeded();
           await portraits.nth(n).evaluate(img => img.decode().catch(() => {}));
         }
-        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.evaluate(() => window.scrollTo({top: 0, left: 0, behavior: 'instant'}));
+      }
+      // The shared header is position:sticky and document-level smooth scrolling
+      // can leave it stranded midway through a full-page screenshot. Force a real
+      // top-of-document capture and confirm the visible brand/navigation first.
+      await page.evaluate(() => {
+        document.documentElement.style.scrollBehavior = 'auto';
+        document.body.style.scrollBehavior = 'auto';
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      });
+      await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+      const masthead = page.locator('header.masthead');
+      await expect(masthead).toBeVisible();
+      const bounds = await masthead.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds.y).toBeGreaterThanOrEqual(-1);
+      expect(bounds.y).toBeLessThanOrEqual(1);
+      // Separate review crops make the publisher masthead and contact footer
+      // impossible to accidentally omit from creator preview handoffs.
+      if (name === 'home') {
+        await page.screenshot({
+          path: `artifacts/visual-qa/${mode}-home-masthead.png`,
+          animations: 'disabled'
+        });
+        await expect(page.locator('.oldroot-footer')).toBeVisible();
+        await page.locator('.oldroot-footer').screenshot({
+          path: `artifacts/visual-qa/${mode}-home-footer.png`,
+          animations: 'disabled'
+        });
+        await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
       }
       await page.waitForTimeout(250);
       await page.screenshot({
