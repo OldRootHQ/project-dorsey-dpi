@@ -9,19 +9,23 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
   await expect(page.locator('.lc-hero')).toContainText('EXTRAORDINARY PEOPLE.');
   await expect(page.locator('.lc-hero')).toContainText('UNFORGETTABLE STORIES.');
   await expect(page.locator('.lc-face')).toHaveCount(8);
-  const portraitCount = await page.locator('.lc-face img').count();
-  const pendingCount = await page.locator('.lc-face--pending').count();
-  // Assets may still be awaiting upload in the protected draft.
-  // Partial uploads are a failure: either both pending or all eight imported.
-  expect([6, 8]).toContain(portraitCount);
-  expect(pendingCount).toBe(8 - portraitCount);
-  if (pendingCount === 2) {
-    await expect(page.locator('.lc-face--pending').nth(0)).toContainText('Isiah Ivory');
-    await expect(page.locator('.lc-face--pending').nth(1)).toContainText('Liontone');
-  } else {
-    await expect(page.locator('.lc-face[data-approved-art="true"]')).toHaveCount(8);
-    await expect(page.locator('.lc-wordmark[data-approved-logo="true"]')).toHaveCount(1);
-  }
+  await expect(page.locator('.lc-face img')).toHaveCount(8);
+  await expect(page.locator('.lc-face--pending')).toHaveCount(0);
+  await expect(page.locator('.lc-face[data-approved-art="true"]')).toHaveCount(8);
+  await expect(page.locator('.lc-wordmark[data-approved-logo="true"]')).toHaveCount(1);
+  const directSources = await page.locator('.lc-face img').evaluateAll(images =>
+    images.map(img => img.getAttribute('src'))
+  );
+  expect(directSources).toEqual([
+    'assets/approved-home/kincast.webp',
+    'assets/approved-home/anchorage.webp',
+    'assets/approved-home/isiah-ivory.webp',
+    'assets/approved-home/liontone.webp',
+    'assets/approved-home/agent-emerald.webp',
+    'assets/approved-home/remedie.webp',
+    'assets/approved-home/flying-saucer.webp',
+    'assets/approved-home/gila-monster.webp'
+  ]);
   await expect(page.locator('.lc-face-name')).toHaveText([
     'Kincast','Anchorage','Isiah Ivory','Liontone',
     'Agent Emerald','Remedie','Flying Saucer','Gila Monster'
@@ -46,7 +50,7 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
     '#c57a45','#174b9a','#a51f30','#34814b',
     '#123f30','#e3ae38','#7843ab','#e97627'
   ]);
-  await expect(page.locator('.lc-face-flag')).toHaveCount(pendingCount);
+  await expect(page.locator('.lc-face-flag')).toHaveCount(0);
 
   await expect(page.locator('#techGlobe')).toHaveCount(0);
   await expect(page.locator('#issue-one')).toContainText('IN DEVELOPMENT');
