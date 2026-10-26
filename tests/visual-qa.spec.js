@@ -45,6 +45,16 @@ for (const [mode, width, height] of viewports) {
           const portraits = [...document.querySelectorAll('.lc-face img')];
           return portraits.length === 8 && portraits.every(img => img.complete && img.naturalWidth > 0);
         }, null, { timeout: 20000 });
+        // Full-page Chromium capture can defer rasterizing below-fold portraits
+        // even after image data is ready. Visit the real mobile scroll positions.
+        await page.evaluate(async () => {
+          await Promise.all([...document.querySelectorAll('.lc-face img')].map(img => img.decode().catch(() => {})));
+        });
+        for (let i = 0; i < 8; i++) {
+          await page.locator('.lc-face').nth(i).scrollIntoViewIfNeeded();
+        }
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(150);
       }
       await page.waitForTimeout(250);
       await page.screenshot({
