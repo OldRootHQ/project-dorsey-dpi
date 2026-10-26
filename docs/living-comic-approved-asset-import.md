@@ -15,7 +15,7 @@ Two rows by four columns (desktop):
 
 Kincast and Gila are diagonally separated. Liontone and Agent Emerald are not neighboring slots. Do not number portraits.
 
-## Correct asset paths once uploaded to the repository
+## Verified approved-art paths on the draft branch
 
 | Spotlight slot | Approved transparent WebP |
 | --- | --- |
@@ -32,8 +32,8 @@ Kincast and Gila are diagonally separated. Liontone and Agent Emerald are not ne
 Corresponding `-master.png` files must also be preserved **byte-for-byte** in the same folder; never manipulate or compress the original master copies. The optimized WebP files are derivatives for web performance, not new illustration designs.
 
 ## Safety checks
-- Existing code references older repository portraits for six slots; these must be replaced only after the exact approved images have been uploaded.
-- Isiah Ivory and Liontone show honest ART IMPORT PENDING placeholders in the draft. Never substitute another character's art.
+- All eight exact approved portraits and the primary logo are now uploaded to the draft. The original existing dossier and registry artwork remain intact.
+- Isiah Ivory and Liontone have original pending markup as a fallback only; the approved-art loader now replaces that markup with verified art in the draft. Never substitute another character's artwork.
 - Background colors belong in CSS, behind transparent artwork. No permanent gradients, splatters, or color overlays should be baked into the masters.
 - The public site contains additional characters beyond the eight-portrait homepage feature; **retain every published character, lore, location, organization and OPI record**.
 - Preserve the interactive `#techGlobe` element and its JS on Locations.
@@ -42,7 +42,7 @@ Corresponding `-master.png` files must also be preserved **byte-for-byte** in th
 
 ## Recovery checkpoint — 25 October 2026
 
-**All eight exact approved homepage portrait PNGs, the Main.Web.Logo primary graphic, and the official IN DEVELOPMENT sticker were recovered from the source Google Docs (Word media export).** Every PNG listed below matched the SHA-256 hash in the approval document byte-for-byte. Transparent WebP derivatives were produced separately. The files have **not** been uploaded into the source repository yet; this is not a live-art milestone.
+**All eight exact approved homepage portrait PNGs, the Main.Web.Logo primary graphic, and the official IN DEVELOPMENT sticker were recovered from the source Google Docs (Word media export).** Every PNG listed below matched the SHA-256 hash in the approval document byte-for-byte. Transparent WebP derivatives were produced separately. **All 20 verified approved-art files are now committed to the draft branch:** eight transparent PNG portrait masters, their eight optimized WebP derivatives, the primary-logo master and derivative, and the IN DEVELOPMENT sticker master and derivative. No live deployment occurred.
 
 | Master asset | Approved PNG SHA-256 |
 | --- | --- |
@@ -57,10 +57,10 @@ Corresponding `-master.png` files must also be preserved **byte-for-byte** in th
 | `primary-logo-master.png` | `3dd60053694e1d735dbbfaa91867b2f473bf361a22a237860624a02dfb7df785` |
 | `in-development-sticker-master.png` | `11b34e81066677bf4e142a05f07f5f85645ff51c142e03bb6d0d41bb95383461` |
 
-**Draft integration:** The homepage now loads `approved-home-loader.js`, which preflights `assets/approved-home/*.webp` before swapping any picture. Existing draft images remain in place when files do not exist. Isiah Ivory and Liontone remain honestly marked ART IMPORT PENDING until their exact images are actually in the repo. No public or private character records are created automatically.
+**Draft integration:** The homepage now loads `approved-home-loader.js`, which preflights `assets/approved-home/*.webp` before swapping any picture. Existing draft images remain in place when files do not exist. Isiah Ivory and Liontone now render their exact imported artwork; pending text remains in source as a fallback only if an asset load fails. No public or private character records are created automatically.
 
-**Next asset action:** Unzip the verified art bundle and add its `assets/approved-home/` contents to **`design/living-comic-cafe-cream-home`**, not `main`; retain masters and derivatives. The included manifest records hashes, dimensions, alpha, and derivative paths. After a complete import, Playwright should see eight `data-approved-art` panels and the approved logo. Review desktop and phone crops before release.
+**Completed asset action:** All required PNG/WebP files were added to **`design/living-comic-cafe-cream-home`**, not `main`. Verified Git blob SHA-1 values in the branch exactly match the local approved bundle for all 20 files. Browser checks confirm eight `data-approved-art` panels and the approved logo. Desktop/phone visual review and final creator launch approval remain required.
 
-**Primary logo and variants:** Use `primary-logo.webp` for the homepage hero once available. Secondary wordmarks, publisher seal, and SlimeTree are archived in `assets/approved-home/variants/` with **no automatic placement approved**.
+**Primary logo and variants:** The imported `primary-logo.webp` is now displayed for the homepage hero and shared navigation. Secondary wordmarks, publisher seal, and SlimeTree are archived in `assets/approved-home/variants/` with **no automatic placement approved**.
 
 **Release gate remains closed:** draft PR only, unmerged and not authorized for deployment.
