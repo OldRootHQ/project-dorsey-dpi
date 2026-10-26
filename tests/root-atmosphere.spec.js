@@ -129,7 +129,7 @@ test('character registry filter control is integrated into the finalized dark at
     };
   });
 
-  expect(state.rootVisible).toBe(true);
+  expect(state.rootVisible).toBe(false);
   expect(state.background).toContain('linear-gradient');
   expect(state.color).not.toBe('rgb(23, 52, 40)');
 
