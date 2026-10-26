@@ -40,12 +40,14 @@
     loadVerifiedDerivative(filename, (url) => {
       let portrait = panel.querySelector('img');
       if (portrait) {
+        // Eight optimized spotlights form one editorial feature; load all for screenshots and mobile scrolling.
+        portrait.loading = 'eager';
         portrait.src = url;
       } else {
         portrait = document.createElement('img');
         portrait.alt = name + ', approved OldRoot homepage portrait';
         portrait.decoding = 'async';
-        portrait.loading = index < 4 ? 'eager' : 'lazy';
+        portrait.loading = 'eager';
         portrait.src = url;
         panel.insertBefore(portrait, panel.firstChild);
       }
