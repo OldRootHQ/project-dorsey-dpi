@@ -80,3 +80,49 @@ test('Locations retains the original interactive globe while adopting editorial 
   await expect(page.locator('#zoomInGlobe')).toBeVisible();
   await expect(page.locator('.locations-cosmic-copy')).toContainText('Every hero has a hometown');
 });
+
+
+for (const [mode, width] of [['desktop', 1440], ['mobile', 390]]) {
+  test(`Rotating character spotlight has visible art, tabs, arrows and a fresh refresh lead (${mode})`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    const slides = page.locator('#homeCharacterTrack .home-character-slide');
+    const tabs = page.locator('#homeCharacterTabs button[role="tab"]');
+    await expect(slides).toHaveCount(3);
+    await expect(tabs).toHaveCount(3);
+    await expect(slides.locator('.home-character-art img')).toHaveCount(3);
+    const names = await tabs.allTextContents();
+    expect(new Set(names).size).toBe(3);
+    await expect(slides.nth(0)).toHaveClass(/active/);
+    await expect(slides.nth(0).locator('.home-character-copy h3')).toHaveText(names[0]);
+    await expect(page.locator('#homeCharacterCounter')).toHaveText('1 / 3');
+
+    // Each approved featured image must decode rather than leave an empty panel.
+    await expect.poll(async () => slides.locator('.home-character-art img').evaluateAll(
+      images => images.every(img => img.complete && img.naturalWidth > 0 && img.naturalHeight > 0)
+    )).toBe(true);
+
+    const pause = page.locator('#homeCharacterPause');
+    await pause.click();
+    await expect(pause).toHaveAttribute('aria-pressed', 'true');
+
+    await page.locator('#homeCharacterNext').click();
+    await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 3');
+    await expect(slides.nth(1)).toHaveClass(/active/);
+    await expect(slides.nth(1).locator('.home-character-copy h3')).toHaveText(names[1]);
+
+    await tabs.nth(2).click();
+    await expect(slides.nth(2)).toHaveClass(/active/);
+    await expect(page.locator('#homeCharacterCounter')).toHaveText('3 / 3');
+
+    await page.locator('#homeCharacterPrev').click();
+    await expect(slides.nth(1)).toHaveClass(/active/);
+    await expect(page.locator('#homeCharacterCounter')).toHaveText('2 / 3');
+
+    const leadBeforeRefresh = names[0];
+    await page.reload({ waitUntil: 'networkidle' });
+    await expect(tabs).toHaveCount(3);
+    const leadAfterRefresh = (await tabs.first().textContent()).trim();
+    expect(leadAfterRefresh).not.toBe(leadBeforeRefresh);
+  });
+}
