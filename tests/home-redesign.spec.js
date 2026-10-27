@@ -149,3 +149,42 @@ for(const [mode,width] of [['desktop',1440],['mobile',390]]){
     await expect(dispatch.locator('a[data-dispatch-link]')).toHaveAttribute('href','news.html#or-web-0094');
   });
 }
+
+
+for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
+  test(`Approved eight-character portrait grid preserves head-safe top crop (${mode})`,async({page})=>{
+    await page.setViewportSize({width,height});
+    await page.goto(BASE+'/',{waitUntil:'networkidle'});
+    const portraits=page.locator('.lc-face-grid .lc-face');
+    await expect(portraits).toHaveCount(8);
+    const inspected=await portraits.evaluateAll(cards=>cards.map(card=>{
+      const img=card.querySelector('img');
+      const style=getComputedStyle(img);
+      return {
+        id:card.dataset.portrait,
+        src:img.getAttribute('src'),
+        naturalWidth:img.naturalWidth,
+        naturalHeight:img.naturalHeight,
+        fit:style.objectFit,
+        position:style.objectPosition,
+        translate:style.translate
+      };
+    }));
+    expect(inspected.map(x=>x.id)).toEqual([
+      'kincast','anchorage','isiah-ivory','liontone',
+      'agent-emerald','remedie','flying-saucer','gila-monster'
+    ]);
+    for(const portrait of inspected){
+      expect(portrait.src).toBe(`assets/approved-home/${portrait.id}.webp`);
+      expect(portrait.naturalWidth).toBeGreaterThan(0);
+      expect(portrait.naturalHeight).toBeGreaterThan(0);
+      expect(portrait.fit).toBe('cover');
+      expect(portrait.position.split(' ').at(-1)).toMatch(/^(top|0%)$/);
+    }
+    for(const id of ['isiah-ivory','liontone']){
+      const portrait=inspected.find(x=>x.id===id);
+      if(mode==='desktop')expect(portrait.translate).toMatch(/7px$/);
+      else expect(portrait.translate).toBe('none');
+    }
+  });
+}
