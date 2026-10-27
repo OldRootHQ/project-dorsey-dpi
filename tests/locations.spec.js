@@ -242,10 +242,10 @@ test('Locations keeps an interactive globe and a directory shortcut inside the L
   const appearance = await directory.evaluate(el => {
     const area = getComputedStyle(el);
     const heading = getComputedStyle(el.querySelector('h2'));
-    return { background: area.backgroundColor, heading: heading.color };
+    return { background: area.backgroundImage, heading: heading.color };
   });
-  expect(appearance.background).not.toBe('rgba(0, 0, 0, 0)');
-  expect(appearance.heading).not.toBe('rgb(23, 52, 40)');
+  expect(appearance.background).toContain('repeating-linear-gradient');
+  expect(appearance.heading).toBe('rgb(250, 255, 252)');
 
   await jump.click();
   await expect(page).toHaveURL(/#indexed-places$/);
