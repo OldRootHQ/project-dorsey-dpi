@@ -181,6 +181,17 @@ for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
       expect(portrait.fit).toBe('cover');
       expect(portrait.position.split(' ').at(-1)).toMatch(/^(top|0%)$/);
     }
+    const remy=inspected.find(x=>x.id==='agent-emerald');
+    expect(remy.naturalWidth).toBeGreaterThanOrEqual(1024);
+    expect(remy.naturalHeight).toBeGreaterThanOrEqual(1536);
+    await expect(page.locator('.lc-face-grid [data-portrait="agent-emerald"] img')).toHaveCSS(
+      'scale',mode==='desktop'?'1.12':'1.08'
+    );
+    await expect(page.locator('.lc-face-grid [data-portrait="agent-emerald"] img')).toHaveCSS(
+      'transform-origin',mode==='desktop'
+        ? /.+ 0px$/
+        : /.+ 0px$/
+    );
     for(const id of ['isiah-ivory','liontone']){
       const portrait=inspected.find(x=>x.id===id);
       if(mode==='desktop')expect(portrait.translate).toMatch(/7px$/);
