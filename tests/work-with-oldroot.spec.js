@@ -2,7 +2,7 @@ const {test,expect}=require('@playwright/test');
 const fs=require('fs');
 const BASE='http://127.0.0.1:8000';
 const URL=BASE+'/work-with-oldroot.html';
-const INBOX='https://formsubmit.co/oldrootinquiries@gmail.com';
+const INBOX='https://formsubmit.co/contact@oldroothq.com';
 
 test('Work with OldRoot publicly describes unpaid co-writing and illustration interest without advertising employment',async({page})=>{
   await page.goto(URL,{waitUntil:'domcontentloaded'});
@@ -18,7 +18,7 @@ test('Work with OldRoot publicly describes unpaid co-writing and illustration in
   await expect(page.locator('.work-interest-heading')).toContainText('not an audition');
 });
 
-test('creative interest form routes to the existing inquiry inbox and requests consent',async({page})=>{
+test('creative interest form routes to the verified OldRoot inbox and requests consent',async({page})=>{
   await page.goto(URL,{waitUntil:'domcontentloaded'});
   const form=page.locator('#workInterestForm');
   await expect(form).toHaveAttribute('action',INBOX);
