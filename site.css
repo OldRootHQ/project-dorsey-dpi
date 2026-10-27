@@ -2851,3 +2851,26 @@ body.oldroot-after-dark:not(.home-after-dark) .library-card:hover .card-view{
   }
 }
 
+
+
+/* HQ 2.4: replace unreadable registry carbon caption with soft avocado panel. */
+html body.oldroot-after-dark .site-shell .content-block.registry-explainer{
+  background:linear-gradient(125deg,#D5E5B7 0%,#B7CF8A 65%,#A9C985 100%)!important;
+  border:1px solid #DCEAC6!important;
+  color:#1C3723!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.65)!important;
+  backdrop-filter:none!important;
+}
+html body.oldroot-after-dark .site-shell .registry-explainer::before{
+  display:none!important;
+}
+html body.oldroot-after-dark .site-shell .registry-explainer::after{
+  opacity:0!important;
+}
+html body.oldroot-after-dark .site-shell .registry-explainer .registry-note{
+  margin:0!important;
+  color:#1B3520!important;
+  font-weight:700!important;
+  font-size:13px!important;
+  line-height:1.65!important;
+}
