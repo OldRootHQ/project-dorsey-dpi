@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const LIME = 'rgb(190, 243, 122)';
+const LIME = 'rgb(183, 207, 138)';
 const WHITE = 'rgb(250, 255, 252)';
 
 for(const [name,route] of [
@@ -13,7 +13,7 @@ for(const [name,route] of [
   ['dispatches','/news.html'],
   ['marketplace','/marketplace.html']
 ]){
-  test(`HQ 2.2 logo-lime variables and unchanged cosmic-carbon base reach ${name}`,async({page})=>{
+  test(`HQ 2.4 soft-avocado variables and unchanged cosmic-carbon base reach ${name}`,async({page})=>{
     await page.goto(BASE+route,{waitUntil:'networkidle'});
     const style=await page.evaluate(()=>{
       const body=getComputedStyle(document.body);
@@ -25,7 +25,7 @@ for(const [name,route] of [
         before:getComputedStyle(document.body,'::before').display
       };
     });
-    expect(style.lime).toBe('#BEF37A');
+    expect(style.lime).toBe('#B7CF8A');
     expect(style.white).toBe('#FAFFFC');
     expect(style.background).toContain('oldroot-cosmic-field.svg');
     expect(style.carbon).toContain('repeating-linear-gradient');
@@ -36,7 +36,7 @@ for(const [name,route] of [
 }
 
 for(const [name,width,height] of [['desktop',1440,900],['mobile',390,844]]){
-  test(`HQ 2.2 homepage accents, image masters and contact CTA (${name})`,async({page})=>{
+  test(`HQ 2.4 homepage accents, image masters and contact CTA (${name})`,async({page})=>{
     await page.setViewportSize({width,height});
     await page.goto(BASE+'/',{waitUntil:'networkidle'});
     await expect(page.locator('.lc-tagline span')).toHaveCSS('color',LIME);
