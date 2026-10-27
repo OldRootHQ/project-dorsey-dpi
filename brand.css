@@ -2041,3 +2041,57 @@ html body.oldroot-after-dark .oldroot-mega-heading,
 html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{
   color:var(--or-comic-white)!important;
 }
+
+
+/* ==========================================================================
+   HQ 2.5 / MASTHEAD ACCENT CLEANUP
+   Replace the last inherited gold lines, carets and mobile nav highlights.
+   Scope to the masthead: logos, OPI charts and gold globe markers stay intact.
+   ========================================================================== */
+html body.oldroot-after-dark .masthead{
+  --old-gold:var(--or-avocado);
+}
+html body.oldroot-after-dark .masthead .site-nav>a::after,
+html body.oldroot-after-dark .masthead .nav-menu-button::after{
+  background:linear-gradient(90deg,var(--or-avocado),var(--or-avocado-light))!important;
+}
+html body.oldroot-after-dark .masthead .site-nav>a.active::before,
+html body.oldroot-after-dark .masthead .nav-menu-button.active::before{
+  background:var(--or-avocado)!important;
+  box-shadow:0 0 10px rgba(183,207,138,.55)!important;
+}
+html body.oldroot-after-dark .masthead .nav-caret{
+  color:var(--or-avocado)!important;
+}
+html body.oldroot-after-dark .masthead .mobile-nav-icon i{
+  background-color:var(--or-avocado)!important;
+}
+html body.oldroot-after-dark .masthead .mobile-nav-toggle{
+  border-color:rgba(183,207,138,.50)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .masthead .mobile-nav-toggle:is(:hover,:focus-visible,[aria-expanded="true"]){
+  border-color:var(--or-avocado)!important;
+  background:rgba(183,207,138,.17)!important;
+}
+html body.oldroot-after-dark .masthead .nav-dropdown:not(.oldroot-mega){
+  border-color:rgba(183,207,138,.60)!important;
+}
+html body.oldroot-after-dark .masthead .nav-dropdown::before{
+  background:linear-gradient(90deg,var(--or-avocado-light),transparent)!important;
+}
+html body.oldroot-after-dark .masthead .site-nav .nav-dropdown a.active{
+  box-shadow:inset 3px 0 0 var(--or-avocado)!important;
+}
+html body.oldroot-after-dark .masthead .site-nav .nav-dropdown a:is(:hover,:focus-visible):not(.oldroot-mega-link){
+  background:rgba(183,207,138,.18)!important;
+}
+html body.oldroot-after-dark .masthead .site-nav>.nav-group>.nav-menu-button[aria-expanded="true"]{
+  color:var(--or-avocado-light)!important;
+  background:rgba(183,207,138,.16)!important;
+}
+
+html body.oldroot-after-dark .masthead :is(a,button):focus-visible{
+  outline:2px solid var(--or-avocado-light)!important;
+  outline-offset:3px!important;
+}
