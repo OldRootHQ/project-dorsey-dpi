@@ -909,3 +909,19 @@ html body.home-living-comic .lc-face-grid .lc-face img{
       translate:none;
   }
 }
+
+
+/* Remy-specific optical zoom, creator refinement.
+   The approved Agent Emerald master is 1024x1536 pixels, so a modest 12%
+   CSS-only scale at card resolution retains ample source detail. Its top edge
+   stays anchored, keeping helmet/hair visible and cropping excess at bottom.
+   Other seven approved portraits remain at scale 1. */
+html body.home-living-comic .lc-face-grid [data-portrait="agent-emerald"] img{
+  scale:1.12;
+  transform-origin:50% 0%;
+}
+@media(max-width:760px){
+  html body.home-living-comic .lc-face-grid [data-portrait="agent-emerald"] img{
+    scale:1.08;
+  }
+}
