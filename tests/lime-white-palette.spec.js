@@ -40,7 +40,12 @@ for(const [name,width,height] of [['desktop',1440,900],['mobile',390,844]]){
     await page.setViewportSize({width,height});
     await page.goto(BASE+'/',{waitUntil:'networkidle'});
     await expect(page.locator('.lc-tagline span')).toHaveCSS('color',LIME);
-    await expect(page.locator('.lc-wordmark')).toHaveCSS('border-top-color',LIME);
+    if (width <= 900) {
+      // On mobile the approved logo floats naturally without its old plaque frame.
+      await expect(page.locator('.lc-wordmark')).toHaveCSS('border-top-width', '0px');
+    } else {
+      await expect(page.locator('.lc-wordmark')).toHaveCSS('border-top-color',LIME);
+    }
     await expect(page.locator('.masthead .brand')).toBeVisible();
     await expect(page.locator('.lc-roster-heading h2')).toHaveCSS('color',WHITE);
     await expect(page.locator('.oldroot-footer .footer-links a[href="contact.html"]')).toHaveCSS('background-color',LIME);
