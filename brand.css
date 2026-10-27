@@ -2090,3 +2090,8 @@ html body.oldroot-after-dark .masthead .site-nav>.nav-group>.nav-menu-button[ari
   color:var(--or-avocado-light)!important;
   background:rgba(183,207,138,.16)!important;
 }
+
+html body.oldroot-after-dark .masthead :is(a,button):focus-visible{
+  outline:2px solid var(--or-avocado-light)!important;
+  outline-offset:3px!important;
+}
