@@ -222,41 +222,30 @@ test('Locations globe supports mobile drag and pinch while preserving page scrol
 });
 
 
-test('Locations directory stays dark and exposes a globe-skip shortcut', async ({ page }) => {
+test('Locations keeps an interactive globe and a directory shortcut inside the Living Comic shell', async ({ page }) => {
   await page.goto('http://127.0.0.1:8000/locations.html', { waitUntil: 'domcontentloaded' });
 
   const jump = page.locator('.location-jumpbar a');
   await expect(jump).toHaveAttribute('href', '#indexed-places');
   await expect(jump).toContainText('Jump to Indexed Places');
 
-  await expect(page.locator('.location-cosmic-panel')).toBeVisible();
-  await expect(page.locator('.location-cosmic-image')).toHaveAttribute('src', 'assets/locations/oldroot-galaxy-mark.svg');
-  await expect(page.locator('.location-cosmic-panel')).not.toContainText('UNRESOLVED HORIZON');
-  await expect.poll(() => page.locator('.location-cosmic-image').evaluate(img => img.naturalWidth)).toBeGreaterThan(0);
+  // The redesign hides the secondary emblem while keeping the interactive Earth view.
+  await expect(page.locator('.location-cosmic-panel')).toBeHidden();
+  await expect(page.locator('.locations-cosmic-head')).toBeVisible();
+  await expect(page.locator('#techGlobe')).toBeVisible();
+  await expect(page.locator('#earthView')).toBeVisible();
 
   const directory = page.locator('#indexed-places');
   await expect(directory).toBeVisible();
   await expect(directory.locator('.place-card')).toHaveCount(7);
 
   const appearance = await directory.evaluate(el => {
-    const s = getComputedStyle(el);
+    const area = getComputedStyle(el);
     const heading = getComputedStyle(el.querySelector('h2'));
-    const card = getComputedStyle(el.querySelector('.place-card'));
-    const cardTitle = getComputedStyle(el.querySelector('.place-card h3'));
-    return {
-      background: s.backgroundImage,
-      color: s.color,
-      headingColor: heading.color,
-      cardBackground: card.backgroundImage,
-      cardTitleColor: cardTitle.color
-    };
+    return { background: area.backgroundImage, heading: heading.color };
   });
-
-  expect(appearance.background).toContain('linear-gradient');
-  expect(appearance.cardBackground).toContain('linear-gradient');
-  expect(appearance.color).not.toBe('rgb(21, 21, 21)');
-  expect(appearance.headingColor).not.toBe('rgb(23, 52, 40)');
-  expect(appearance.cardTitleColor).not.toBe('rgb(23, 52, 40)');
+  expect(appearance.background).toContain('repeating-linear-gradient');
+  expect(appearance.heading).toBe('rgb(250, 255, 252)');
 
   await jump.click();
   await expect(page).toHaveURL(/#indexed-places$/);

@@ -29,7 +29,7 @@ permissions:
 
 jobs:
   site-qa:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -43,6 +43,7 @@ jobs:
           node --check marketplace.js
           node --check lightbox.js
           node --check nav.js
+          node --check approved-home-loader.js
           node --check tests/infrastructure.spec.js
           node --check tests/visual-qa.spec.js
 
@@ -91,5 +92,20 @@ jobs:
         with:
           name: oldroot-visual-qa
           path: artifacts/visual-qa
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Upload compact creator previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: oldroot-creator-preview
+          path: |
+            artifacts/visual-qa/desktop-home.png
+            artifacts/visual-qa/mobile-home.png
+            artifacts/visual-qa/desktop-home-masthead.png
+            artifacts/visual-qa/mobile-home-masthead.png
+            artifacts/visual-qa/desktop-characters.png
+            artifacts/visual-qa/desktop-lore.png
           if-no-files-found: ignore
           retention-days: 14

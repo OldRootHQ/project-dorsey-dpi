@@ -22,8 +22,18 @@
 
   const establishedLocations=Object.entries(locations).filter(([,loc])=>loc&&loc.dossierUrl&&!loc.reference&&String(loc.id||"").startsWith("LOC-"));
   const upcoming=Array.isArray(config.upcoming)?config.upcoming:[];
-  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio");
+  // Preserve the old rotating public registry feature, including a newly shuffled
+  // trio per refresh. In this tab, avoid immediately repeating the last lead.
+  const homeSpotlightPool=characters.filter(c=>c && c.codename!=="Kokio" && c.page &&
+    (config.characterSpotlights?.[c.codename]?.image || c.image));
   const selectedCharacters=pickRandom(homeSpotlightPool,3);
+  let previousLead="";
+  try{previousLead=sessionStorage.getItem("oldroot-home-spotlight-last")||""}catch(_){}
+  if(selectedCharacters.length>1 && selectedCharacters[0].codename===previousLead){
+    const alternate=selectedCharacters.findIndex((c,n)=>n>0 && c.codename!==previousLead);
+    if(alternate>0)[selectedCharacters[0],selectedCharacters[alternate]]=[selectedCharacters[alternate],selectedCharacters[0]];
+  }
+  if(selectedCharacters.length)try{sessionStorage.setItem("oldroot-home-spotlight-last",selectedCharacters[0].codename)}catch(_){}
   const selectedLocations=pickRandom(establishedLocations,3);
   const selectedUpcoming=pickRandom(upcoming,3);
 
@@ -46,12 +56,45 @@
       const links=(spot.links?.length?spot.links:[["Character Dossier →",c.page]]).filter(([,href])=>href);
       return '<div class="home-character-slide '+(n===0?"active":"")+'" data-home-slide="'+esc(key)+'">'+
         '<div class="home-character-art '+esc(spot.artClass||"")+'">'+
-        (image?'<img decoding="async" src="'+esc(image)+'" alt="'+esc(spot.alt||c.codename+" visual reference")+'" loading="'+(n===0?"eager":"lazy")+'" data-lightbox data-full-src="'+esc(image)+'" data-caption="'+esc(c.codename)+' · spotlight visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0"/>':"")+
+        (image?'<img decoding="async" src="'+esc(image)+'" alt="'+esc(spot.alt||c.codename+" visual reference")+'" loading="'+"eager"+'" data-lightbox data-full-src="'+esc(image)+'" data-caption="'+esc(c.codename)+' · spotlight visual reference" title="View '+esc(c.codename)+' artwork" tabindex="0"/>':"")+
         '</div><div class="home-character-copy">'+
         (mark?'<img class="home-character-mark" src="'+esc(mark)+'" alt="" aria-hidden="true" loading="lazy"/>':"")+
         '<span>'+esc(meta)+'</span><h3>'+esc(c.codename)+'</h3><p>'+esc(teaser)+'</p>'+
         '<div class="home-character-links">'+links.map(([label,href])=>'<a href="'+esc(href)+'">'+esc(label)+'</a>').join("")+'</div></div></div>'
     }).join("");
+    // Verify every selected featured portrait, not only the first slide.
+    // A failed featured source gets the approved alternate; no empty hero box.
+    const approvedPortraitFallbacks={
+      "Kincast":"assets/approved-home/kincast.webp",
+      "Anchorage":"assets/approved-home/anchorage.webp",
+      "Agent Emerald":"assets/approved-home/agent-emerald.webp",
+      "Remedie":"assets/approved-home/remedie.webp",
+      "Flying Saucer":"assets/approved-home/flying-saucer.webp",
+      "Gila Monster":"assets/approved-home/gila-monster.webp"
+    };
+    [...track.querySelectorAll(".home-character-slide")].forEach((slide,n)=>{
+      const image=slide.querySelector(".home-character-art img");
+      if(!image)return;
+      const character=selectedCharacters[n];
+      const sources=[
+        approvedPortraitFallbacks[character.codename],
+        character.image
+      ].filter(url=>url && url!==image.getAttribute("src"));
+      let fallbackIndex=0;
+      function tryNextPortrait(){
+        if(fallbackIndex>=sources.length){
+          slide.dataset.artError="true";
+          return;
+        }
+        const replacement=sources[fallbackIndex++];
+        image.src=replacement;
+        image.dataset.fullSrc=replacement;
+        slide.classList.toggle("home-character-slide--portrait-fallback",
+          replacement===approvedPortraitFallbacks[character.codename]);
+      }
+      image.addEventListener("error",tryNextPortrait);
+      if(image.complete && !image.naturalWidth)tryNextPortrait();
+    });
     track.setAttribute("aria-busy","false");
   }
 
@@ -77,6 +120,27 @@
   if(dispatch&&latest){
     const label=dispatch.querySelector("[data-dispatch-label]"),meta=dispatch.querySelector("[data-dispatch-meta]"),title=dispatch.querySelector("[data-dispatch-title]"),body=dispatch.querySelector("[data-dispatch-body]"),link=dispatch.querySelector("[data-dispatch-link]");
     if(label)label.textContent=latest.label;if(meta)meta.textContent=latest.meta;if(title)title.textContent=latest.title;if(body)body.textContent=latest.body;if(link)link.href=latest.href;
+    // Every dispatch visual belongs to its own story, not to the rotating
+    // character spotlight. Remove old art when a new dispatch lacks an image.
+    const art=dispatch.querySelector(".dispatch-art");
+    if(art){
+      let picture=art.querySelector(".dispatch-feature-art");
+      if(latest.image){
+        if(!picture){
+          picture=document.createElement("img");
+          picture.className="dispatch-feature-art";
+          picture.decoding="async";
+          art.prepend(picture);
+        }
+        picture.alt=latest.imageAlt||"Featured OldRoot dispatch artwork";
+        if(picture.getAttribute("src")!==latest.image)picture.src=latest.image;
+        picture.addEventListener("error",()=>art.classList.add("dispatch-art--missing-image"),{once:true});
+        art.classList.remove("dispatch-art--missing-image");
+      }else{
+        picture?.remove();
+        art.classList.add("dispatch-art--missing-image");
+      }
+    }
   }
 
   window.OLDROOT_HOME_STATE={
@@ -89,15 +153,15 @@
   };
 
   const buttons=[...document.querySelectorAll("[data-home-character]")],slides=[...document.querySelectorAll("[data-home-slide]")],prev=document.querySelector("#homeCharacterPrev"),next=document.querySelector("#homeCharacterNext"),pause=document.querySelector("#homeCharacterPause"),feature=document.querySelector(".home-featured");
-  let index=0,timer=null,scrollFrame=0,paused=false;
+  let index=0,timer=null,scrollFrame=0,paused=false,manualNavigationUntil=0;
   const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
   buttons.forEach((b,n)=>{const key=b.dataset.homeCharacter||String(n),panel=slides[n];b.id="homeCharacterTab-"+key;b.setAttribute("aria-controls","homeCharacterPanel-"+key);b.tabIndex=n===0?0:-1;if(panel){panel.id="homeCharacterPanel-"+key;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",b.id);panel.tabIndex=0}});
   function setPauseState(value){paused=value;if(pause){pause.setAttribute("aria-pressed",String(paused));pause.textContent=paused?"Play":"Pause"}}
   function paint(i){if(!slides.length)return;index=(i+slides.length)%slides.length;buttons.forEach((b,n)=>{const active=n===index;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active));b.tabIndex=active?0:-1});slides.forEach((s,n)=>{const active=n===index;s.classList.toggle("active",active);s.setAttribute("aria-hidden",String(!active));s.inert=!active});if(counter)counter.textContent=(index+1)+" / "+slides.length}
-  function show(i,behavior="smooth"){if(!slides.length)return;const nextIndex=(i+slides.length)%slides.length;paint(nextIndex);const slide=slides[nextIndex];if(track&&slide)track.scrollTo({left:slide.offsetLeft,behavior:reduced?"auto":behavior})}
+  function show(i,behavior="smooth"){if(!slides.length)return;const nextIndex=(i+slides.length)%slides.length;manualNavigationUntil=performance.now()+550;paint(nextIndex);const slide=slides[nextIndex];if(track&&slide)track.scrollTo({left:slide.offsetLeft,behavior:reduced?"auto":behavior})}
   function stop(){clearInterval(timer);timer=null}
   function restart(){stop();if(reduced||paused||document.hidden||slides.length<2)return;timer=setInterval(()=>show(index+1),7000)}
-  function syncFromScroll(){cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{if(!track||!slides.length)return;let nearest=0,distance=Infinity;slides.forEach((slide,n)=>{const d=Math.abs(slide.offsetLeft-track.scrollLeft);if(d<distance){distance=d;nearest=n}});paint(nearest)})}
+  function syncFromScroll(){cancelAnimationFrame(scrollFrame);scrollFrame=requestAnimationFrame(()=>{if(!track||!slides.length||performance.now()<manualNavigationUntil)return;let nearest=0,distance=Infinity;slides.forEach((slide,n)=>{const d=Math.abs(slide.offsetLeft-track.scrollLeft);if(d<distance){distance=d;nearest=n}});paint(nearest)})}
   buttons.forEach((b,n)=>{b.addEventListener("click",()=>{show(n);restart()});b.addEventListener("keydown",event=>{let target=null;if(event.key==="ArrowRight"||event.key==="ArrowDown")target=(n+1)%buttons.length;else if(event.key==="ArrowLeft"||event.key==="ArrowUp")target=(n-1+buttons.length)%buttons.length;else if(event.key==="Home")target=0;else if(event.key==="End")target=buttons.length-1;if(target!==null){event.preventDefault();show(target);buttons[target].focus();restart()}})});
   prev?.addEventListener("click",()=>{show(index-1);restart()});next?.addEventListener("click",()=>{show(index+1);restart()});pause?.addEventListener("click",()=>{setPauseState(!paused);restart()});
   track?.addEventListener("scroll",syncFromScroll,{passive:true});track?.addEventListener("pointerdown",stop);track?.addEventListener("pointerup",restart);track?.addEventListener("touchend",restart,{passive:true});

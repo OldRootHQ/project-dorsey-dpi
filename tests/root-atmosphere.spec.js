@@ -4,7 +4,7 @@ const path = require('path');
 
 const BASE = 'http://127.0.0.1:8000';
 
-test('Root Atmosphere renders as a dark decorative layer without blocking content', async ({ page }) => {
+test('Cosmic canvas replaces animated root wallpaper without blocking content', async ({ page }) => {
   await page.goto(BASE + '/index.html', { waitUntil: 'domcontentloaded' });
 
   const atmosphere = await page.evaluate(() => {
@@ -18,6 +18,7 @@ test('Root Atmosphere renders as a dark decorative layer without blocking conten
       bodyBackground: getComputedStyle(body).backgroundImage,
       bodyColor: getComputedStyle(body).color,
       rootBackground: before.backgroundImage,
+      rootDisplay:before.display,
       rootOpacity: Number(before.opacity),
       rootPointerEvents: before.pointerEvents,
       grainPointerEvents: after.pointerEvents,
@@ -26,9 +27,8 @@ test('Root Atmosphere renders as a dark decorative layer without blocking conten
     };
   });
 
-  expect(atmosphere.bodyBackground).toContain('linear-gradient');
-  expect(atmosphere.rootBackground).toContain('root-network.svg');
-  expect(atmosphere.rootOpacity).toBeGreaterThan(0.3);
+  expect(atmosphere.bodyBackground).toContain('oldroot-cosmic-field.svg');
+  expect(atmosphere.rootDisplay).toBe('none');
   expect(atmosphere.rootPointerEvents).toBe('none');
   expect(atmosphere.grainPointerEvents).toBe('none');
   expect(atmosphere.cardRoot).toContain('root-corner.svg');
@@ -74,13 +74,13 @@ test('Root Atmosphere remains viewport-safe and less intense on phones', async (
       viewport: innerWidth,
       html: document.documentElement.scrollWidth,
       body: document.body.scrollWidth,
-      opacity: Number(getComputedStyle(document.body, '::before').opacity),
+      display: getComputedStyle(document.body, '::before').display,
       animation: getComputedStyle(document.body, '::before').animationName
     }));
 
     expect(state.html, url).toBeLessThanOrEqual(state.viewport + 2);
     expect(state.body, url).toBeLessThanOrEqual(state.viewport + 2);
-    expect(state.opacity, url).toBeLessThanOrEqual(0.35);
+    expect(state.display, url).toBe('none');
     expect(state.animation, url).toBe('none');
   }
 });
@@ -114,7 +114,7 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
 });
 
 
-test('character registry filter control is integrated into the finalized dark atmosphere', async ({ page }) => {
+test('character registry filter remains readable in the new Living Comic cafe interface', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
 
   const state = await page.locator('#filterToggle').evaluate(el => {
@@ -122,6 +122,7 @@ test('character registry filter control is integrated into the finalized dark at
     const sliders = getComputedStyle(el.querySelector('.filter-sliders'));
     return {
       background: s.backgroundImage,
+      backgroundColor: s.backgroundColor,
       color: s.color,
       borderColor: s.borderTopColor,
       rootVisible: s.backgroundImage.includes('root-corner.svg'),
@@ -129,8 +130,9 @@ test('character registry filter control is integrated into the finalized dark at
     };
   });
 
-  expect(state.rootVisible).toBe(true);
-  expect(state.background).toContain('linear-gradient');
+  expect(state.rootVisible).toBe(false);
+  // The approved editorial theme uses a legible flat paper control, not the old dark gradient.
+  expect(state.backgroundColor).not.toBe('rgba(0, 0, 0, 0)');
   expect(state.color).not.toBe('rgb(23, 52, 40)');
 
   const cardRoot = await page.locator('.character-card').first().evaluate(el => {

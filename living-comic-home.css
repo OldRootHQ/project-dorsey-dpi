@@ -1,0 +1,1117 @@
+/* OLDROOT HQ 2.0 — THE LIVING COMIC
+   Editorial homepage study. Scoped to body.home-living-comic only.
+   Source of truth: approved character artwork; no canon redesigns. */
+body.home-living-comic{
+  --lc-paper:#f1e5cf;
+  --lc-paper-light:#fff7e8;
+  --lc-espresso:#24201e;
+  --lc-copper:#ba8054;
+  --lc-edge:#2c2420;
+  --lc-muted:#66594f;
+  --home-text:#24201e;
+  --home-muted:#66594f;
+  --home-faint:#756659;
+  --home-line:rgba(36,32,30,.20);
+  --home-line-soft:rgba(36,32,30,.16);
+  --home-panel:rgba(255,247,232,.94);
+  --home-panel-strong:#fff7e8;
+  --home-panel-soft:#ead9bd;
+  color:var(--lc-espresso)!important;
+  background:var(--lc-paper)!important;
+  font-family:Arial,Helvetica,sans-serif;
+}
+body.home-living-comic::before,
+body.home-living-comic::after{display:none!important}
+body.home-living-comic .site-shell{max-width:1460px;padding:clamp(12px,2.3vw,32px)}
+body.home-living-comic .masthead{
+  background:rgba(247,236,218,.97)!important;
+  border-bottom:3px solid var(--lc-espresso)!important;
+  box-shadow:0 3px 0 var(--lc-copper)!important;
+}
+body.home-living-comic .mast-inner{max-width:1460px;padding-block:10px}
+body.home-living-comic .brand{
+  background:none!important;border:0!important;box-shadow:none!important;
+  color:var(--lc-espresso)!important;border-radius:0!important;
+  font-family:Impact,"Arial Narrow",Arial,sans-serif;
+  font-size:clamp(25px,2.7vw,39px)!important;
+  font-weight:900!important;font-style:italic;letter-spacing:-.07em;
+  padding:4px 10px 5px 0;transform:skew(-7deg);
+}
+body.home-living-comic .site-nav>a,
+body.home-living-comic .nav-menu-button{
+  color:#302925!important;font-weight:900;
+  border-radius:3px!important;
+}
+body.home-living-comic .site-nav>a:hover,
+body.home-living-comic .nav-menu-button:hover{background:#e4c9a8!important}
+body.home-living-comic .site-nav>a.active{color:#171311!important;box-shadow:inset 0 -3px var(--lc-copper)}
+body.home-living-comic .site-nav .nav-dropdown{background:#fff8ed!important;color:var(--lc-espresso)!important;border-color:var(--lc-copper)!important}
+body.home-living-comic .site-nav .nav-dropdown a{color:var(--lc-espresso)!important}
+body.home-living-comic a:focus-visible,body.home-living-comic button:focus-visible{outline:3px solid #ad5c27;outline-offset:4px}
+body.home-living-comic .editorial-hero,
+body.home-living-comic .hero-root-map{display:none!important}
+/* Brand-first opening: ink graphic energy, not a tree or washed-out glow */
+.lc-hero{position:relative;margin:7px 0 32px;color:var(--lc-espresso);isolation:isolate}
+.lc-hero::before,.lc-hero::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  background:var(--lc-espresso);height:11px;width:170px;
+  clip-path:polygon(0 30%,96% 0,100% 50%,24% 100%);
+}
+.lc-hero::before{top:16px;left:-37px;transform:rotate(-17deg)}
+.lc-hero::after{top:140px;right:-35px;transform:rotate(20deg)}
+.lc-hero-top{text-align:center;padding:clamp(12px,2vw,30px) 10px 22px}
+.lc-eyebrow{font-weight:900;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--lc-muted)}
+.lc-wordmark{display:block;margin:5px 0 0;font-family:Impact,"Arial Narrow",Arial,Helvetica,sans-serif;
+  font-size:clamp(68px,13.8vw,210px);line-height:.88;letter-spacing:-.072em;
+  text-transform:uppercase;font-style:italic;font-weight:950;transform:skew(-5deg);
+  color:#211c19;text-shadow:4px 5px 0 #c28b61;
+}
+.lc-wordmark::after{content:"";display:block;width:42%;height:6px;background:var(--lc-copper);
+  margin:-2px auto 0;transform:skew(-28deg) rotate(-1deg)}
+.lc-tagline{margin:16px 0 0;font:900 clamp(15px,2.35vw,32px)/1.08 Impact,"Arial Narrow",Arial,sans-serif;
+  text-transform:uppercase;letter-spacing:.035em}
+.lc-tagline span{color:#a46843}
+.lc-summary{max-width:720px;margin:12px auto 0;font-size:clamp(13px,1.2vw,16px);line-height:1.55;color:#50443b}
+.lc-face-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(7px,1.15vw,16px);margin:22px auto 0}
+.lc-face{--panel-shade:#a06f42;position:relative;min-width:0;aspect-ratio:1.32/1;
+  overflow:hidden;display:block;border:clamp(3px,.4vw,6px) solid #171411;
+  background:#24201e;color:#fff7ea;text-decoration:none;
+  box-shadow:5px 5px 0 #f7ecdb,9px 9px 0 #28201d;
+  clip-path:polygon(0 0,100% 1.5%,98.8% 100%,1% 98.5%);
+  transition:transform .18s ease,filter .18s ease;
+}
+.lc-face:nth-child(2n){clip-path:polygon(1% 1%,99.8% 0,100% 98.5%,0 100%)}
+.lc-face:hover{transform:translateY(-4px) rotate(-.4deg);filter:saturate(1.12)}
+.lc-face img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 29%;
+  filter:contrast(1.12) saturate(.9);transition:transform .24s ease}
+.lc-face:hover img{transform:scale(1.045)}
+.lc-face::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent 44%,rgba(8,6,5,.83) 100%),
+   linear-gradient(125deg,transparent 67%,color-mix(in srgb,var(--panel-shade),transparent 45%) 100%)}
+.lc-face::after{content:"";position:absolute;z-index:2;left:-10%;top:0;
+  height:9px;width:75%;background:#fff8ec;transform:skew(-26deg) rotate(-4deg);
+  box-shadow:0 3px 0 #171411}
+.lc-face-name{position:absolute;z-index:3;bottom:9px;left:10px;right:8px;
+  display:inline-block;font:900 clamp(15px,1.85vw,27px)/.97 Impact,"Arial Narrow",Arial,sans-serif;
+  font-style:italic;letter-spacing:.02em;text-transform:uppercase;
+  text-shadow:2px 3px 0 rgba(0,0,0,.78)}
+.lc-face-name::before{content:"";display:block;width:43px;height:4px;background:var(--panel-shade);
+  margin-bottom:7px;transform:skew(-20deg)}
+.lc-face-flag{position:absolute;z-index:3;top:13px;right:8px;padding:5px 7px;background:#f6ebd9;
+  color:#241d19;transform:rotate(5deg);font-size:8px;letter-spacing:.09em;font-weight:900;text-transform:uppercase}
+.lc-face--pending{background:linear-gradient(135deg,#073b2c,#183c31 48%,#22201d)}
+.lc-face--pending .lc-pending-pattern{position:absolute;inset:0;background:
+  repeating-linear-gradient(125deg,transparent 0 20px,rgba(240,206,124,.06) 20px 24px);
+  display:grid;place-items:center;text-align:center;padding:18px;
+  font:900 clamp(12px,1.7vw,22px)/1.2 Impact,Arial,sans-serif;color:#f9e5c8;
+  text-transform:uppercase;letter-spacing:.09em}
+.lc-face--pending .lc-pending-pattern span{display:block;margin:42px auto 0;font:700 10px/1.3 Arial,sans-serif;
+  max-width:175px;letter-spacing:.07em}
+.lc-hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:24px auto 0}
+.lc-button{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--lc-espresso);color:var(--lc-paper-light)!important;
+  font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.08em;
+  border:3px solid #181411;padding:14px 20px;text-decoration:none;
+  box-shadow:4px 4px 0 var(--lc-copper);transition:transform .15s ease}
+.lc-button:nth-child(2){background:var(--lc-paper-light);color:var(--lc-espresso)!important}
+.lc-button:hover{transform:translate(-2px,-2px)}
+/* Lower sections: legible editorial surfaces, fewer competing treatments */
+body.home-living-comic .oldroot-issue-launch{
+  background:var(--lc-espresso)!important;
+  border:4px solid #151311!important;border-radius:4px!important;
+  box-shadow:8px 8px 0 var(--lc-copper)!important;
+}
+body.home-living-comic .issue-launch-serial,
+body.home-living-comic .issue-launch-eyebrow{color:#ebbf93}
+body.home-living-comic .oldroot-reader-poll,
+body.home-living-comic .home-featured,
+body.home-living-comic .home-world-section,
+body.home-living-comic .section-band,
+body.home-living-comic .home-library-section,
+body.home-living-comic .dispatch-lead{
+  background:rgba(255,248,235,.68)!important;
+  border:2px solid rgba(43,34,27,.32)!important;
+  border-radius:3px!important;
+  color:var(--lc-espresso)!important;
+  box-shadow:5px 5px 0 rgba(36,32,30,.10)!important;
+}
+body.home-living-comic .home-section-heading h2,
+body.home-living-comic .section-band h2,
+body.home-living-comic .dispatch-copy h2,
+body.home-living-comic .home-library-copy h3{color:var(--lc-espresso)!important}
+body.home-living-comic .home-section-heading p,
+body.home-living-comic .section-band p,
+body.home-living-comic .home-library-copy p{color:var(--lc-muted)!important}
+body.home-living-comic .home-rotation-note{color:var(--lc-muted)}
+body.home-living-comic .oldroot-footer{
+  background:#211c19!important;color:#f1e5cf!important;border-radius:0!important;
+  border-color:#bc8663!important;box-shadow:none!important;
+}
+body.home-living-comic .oldroot-footer a{color:#f1e5cf!important}
+body.home-living-comic .footer-bottom{color:#dec7ab!important}
+@media(max-width:980px){.lc-face-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .lc-face-name{font-size:clamp(13px,1.85vw,19px)}}
+@media(max-width:720px){.lc-wordmark{font-size:clamp(58px,15.2vw,115px)}
+ .lc-face-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .lc-face{aspect-ratio:1.12/1;box-shadow:3px 3px 0 #f7ecdb,6px 6px 0 #28201d}
+ .lc-face-name{font-size:clamp(19px,4vw,28px)}
+ .lc-hero-top{padding:14px 2px 17px}
+ .lc-tagline{font-size:clamp(17px,4.2vw,25px)}
+ .lc-summary{font-size:14px}
+ .lc-hero-actions{gap:10px}
+ .lc-button{flex:1 1 150px;padding:13px 10px;font-size:11px}
+}
+@media(max-width:410px){.lc-face-grid{gap:7px}.lc-face-name{left:7px;bottom:6px}
+ .lc-face-flag{font-size:7px;padding:3px}
+}
+@media(prefers-reduced-motion:reduce){.lc-face,.lc-face img,.lc-button{transition:none!important}}
+
+
+/* Preserve the poll's dark, accessible contrast while the shell goes light. */
+body.home-living-comic .oldroot-reader-poll{
+  background:#24201e!important;color:#f6eadd!important;
+  border-color:#b78460!important;
+}
+body.home-living-comic .oldroot-reader-poll .poll-intro h2,
+body.home-living-comic .oldroot-reader-poll .poll-intro p{color:#f6eadd!important}
+body.home-living-comic .oldroot-reader-poll .poll-intro .lead-kicker{color:#e0b28a!important}
+/* Mobile brushes stay within viewport, never create horizontal scroll. */
+@media(max-width:720px){body.home-living-comic .lc-hero{overflow:clip;padding-inline:6px}}
+
+
+/* OCT 2026 APPROVED HOMEPAGE — background architecture and 2 × 4 placement.
+   Imported art is never colorized, replaced, or re-drawn by CSS. */
+body.home-living-comic{
+  --lc-paper:#f1e5cf;--lc-paper-light:#fff8eb;
+  --lc-espresso:#29211e;--lc-copper:#a88a6c;--lc-edge:#211b18;
+  --lc-muted:#60544b;--home-text:#29211e;
+  --home-panel:#fff8eb;--home-panel-strong:#fff8eb;
+}
+body.home-living-comic .lc-hero{
+  margin:0 0 34px;padding:clamp(12px,2.5vw,34px);
+  border:3px solid #29211e;box-shadow:8px 8px 0 #b99d7c;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(41,33,30,.075) .9px,transparent 1.1px) right 18px top 18px/16px 16px no-repeat,
+    radial-gradient(ellipse at 90% 0%,rgba(208,173,86,.13),transparent 34%),
+    linear-gradient(135deg,#fff9ed 0%,#f2e4cf 74%,#ebd9bf 100%);
+}
+body.home-living-comic .lc-hero::before{
+  top:9px;left:-15px;width:85px;height:6px;
+  background:#35674b;transform:skew(-25deg) rotate(-6deg);
+}
+body.home-living-comic .lc-hero::after{
+  top:auto;bottom:-13px;right:3%;height:5px;width:115px;
+  background:#d0ad56;transform:skew(-24deg) rotate(-3deg);
+}
+body.home-living-comic .lc-hero-top{
+  display:grid;grid-template-columns:minmax(0,1.22fr) minmax(240px,.78fr);
+  align-items:center;gap:clamp(22px,4vw,58px);
+  text-align:left;padding:clamp(24px,3vw,46px) 10px 28px;
+}
+body.home-living-comic .lc-hero-copy{min-width:0}
+body.home-living-comic .lc-eyebrow{
+  display:inline-block;background:#d0ad56;
+  padding:5px 11px;transform:skew(-8deg);
+  letter-spacing:.14em;color:#24201d;
+}
+body.home-living-comic .lc-tagline{
+  font:950 clamp(37px,5.3vw,83px)/.92 Impact,"Arial Narrow",Arial,sans-serif;
+  margin:18px 0 0;letter-spacing:-.012em;
+  color:#211c19;text-transform:uppercase;
+}
+body.home-living-comic .lc-tagline span{
+  display:block;margin-top:9px;color:#29211e;
+}
+body.home-living-comic .lc-summary{
+  max-width:610px;margin:21px 0 0;
+  font-size:clamp(14px,1.35vw,19px);font-weight:560;
+  line-height:1.5;color:#55473d;
+}
+body.home-living-comic .lc-wordmark{
+  width:100%;height:clamp(170px,22vw,310px);
+  min-width:0;margin:0;padding:0;transform:none;
+  background:transparent url("assets/approved-home/primary-logo.webp") center/contain no-repeat;
+  font-size:0!important;line-height:0;letter-spacing:0;
+  color:transparent!important;text-shadow:none!important;
+  border:0!important;
+}
+body.home-living-comic .lc-wordmark::after{display:none!important}
+body.home-living-comic .lc-face-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(8px,1.2vw,17px);margin:10px auto 0;
+}
+body.home-living-comic .lc-face{
+  aspect-ratio:4/5;background:var(--panel-shade)!important;
+  border:4px solid #171514;border-radius:1px;
+  box-shadow:4px 4px 0 #fff7e8,7px 7px 0 #29211e;
+  clip-path:none!important;
+}
+body.home-living-comic .lc-face:nth-child(2n){clip-path:none!important}
+body.home-living-comic .lc-face img{
+  object-fit:cover;object-position:center 35%;
+  filter:none!important;mix-blend-mode:normal!important;
+}
+body.home-living-comic .lc-face::before{
+  background:linear-gradient(180deg,transparent 64%,rgba(15,12,11,.88) 100%);
+}
+body.home-living-comic .lc-face::after{display:none!important}
+body.home-living-comic .lc-face-name{
+  bottom:11px;left:11px;right:11px;
+  font:900 clamp(14px,2vw,27px)/.98 Impact,"Arial Narrow",Arial,sans-serif;
+  text-transform:uppercase;color:#fff9eb;
+}
+body.home-living-comic .lc-face-name::before{
+  width:40px;height:4px;background:#fff9eb;
+}
+body.home-living-comic .lc-face--pending{
+  background:var(--panel-shade)!important;
+}
+body.home-living-comic .lc-face--pending .lc-pending-pattern{
+  background:
+    repeating-linear-gradient(-32deg,transparent 0 23px,rgba(0,0,0,.08) 23px 25px);
+  color:#fff9ed;padding:23px;
+  font-size:clamp(20px,2.35vw,37px);
+}
+body.home-living-comic .lc-face--pending .lc-pending-pattern span{
+  background:rgba(16,14,12,.72);padding:7px;
+  max-width:190px;color:#fff9ed;font-size:9px;
+}
+body.home-living-comic .lc-face-flag{background:#fff7e9;color:#29211e}
+body.home-living-comic .lc-button{
+  box-shadow:4px 4px 0 #ad9478!important;border-radius:2px!important;
+}
+body.home-living-comic .lc-hero-actions{margin:30px 0 5px}
+body.home-living-comic .oldroot-issue-launch{
+  background:
+    repeating-linear-gradient(165deg,transparent 0 80px,rgba(208,173,86,.04) 81px 82px),
+    #29211e!important;
+  box-shadow:7px 7px 0 #b99d7c!important;
+  border:4px solid #1c1715!important;
+}
+body.home-living-comic :is(.home-world-section,.home-featured,.home-library-section,
+  .section-band,.dispatch-lead){
+  background:linear-gradient(135deg,#fff8eb,#ead9c1)!important;
+  border:2px solid rgba(41,33,30,.30)!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.15)!important;
+}
+body.home-living-comic .oldroot-reader-poll{
+  background:#28211e!important;color:#f8eddb!important;
+  border:3px solid #1c1715!important;
+}
+@media(max-width:900px){
+ body.home-living-comic .lc-hero-top{grid-template-columns:1fr;text-align:center;gap:6px}
+ body.home-living-comic .lc-summary{margin-inline:auto}
+ body.home-living-comic .lc-wordmark{height:170px;max-width:390px;margin:auto}
+ body.home-living-comic .lc-tagline{font-size:clamp(39px,7.2vw,62px)}
+}
+@media(max-width:720px){
+ body.home-living-comic .lc-hero{padding:12px;box-shadow:4px 4px 0 #b99d7c}
+ body.home-living-comic .lc-hero-top{padding:16px 4px 20px}
+ body.home-living-comic .lc-face-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ body.home-living-comic .lc-face{aspect-ratio:4/5;box-shadow:3px 3px 0 #fff7e8,5px 5px 0 #29211e}
+ body.home-living-comic .lc-wordmark{height:134px}
+ body.home-living-comic .lc-face-name{font-size:clamp(15px,4.1vw,27px)}
+}
+
+
+/* Approved concept fidelity pass — compact editorial splash on desktop.
+   Left: typographic hook. Right: espresso comic-logo panel. Portrait art stays untouched. */
+@media(min-width:901px){
+  body.home-living-comic .lc-hero-top{
+    position:relative;isolation:isolate;overflow:hidden;
+    grid-template-columns:minmax(0,1.32fr) minmax(260px,.68fr);
+    padding:clamp(18px,2vw,28px) clamp(12px,2vw,26px) clamp(16px,2vw,26px);
+    margin:-8px -8px 16px;
+  }
+  body.home-living-comic .lc-hero-top::before{
+    content:"";position:absolute;z-index:-1;
+    inset:0 0 0 auto;width:42%;
+    background:#29211e;
+    clip-path:polygon(12% 0,100% 0,100% 100%,0 100%);
+    pointer-events:none;
+  }
+  body.home-living-comic .lc-hero-top::after{
+    content:"";position:absolute;z-index:-1;top:-10%;bottom:-10%;
+    right:40.9%;width:5px;background:#d0ad56;transform:skew(-11deg);
+    pointer-events:none;
+  }
+  body.home-living-comic .lc-eyebrow{
+    background:#35674b;color:#fff8ec;
+    transform:none;letter-spacing:.03em;padding:6px 11px;
+  }
+  body.home-living-comic .lc-tagline{
+    font-size:clamp(38px,5.1vw,73px);line-height:.92;
+    max-width:690px;margin-top:12px;
+  }
+  body.home-living-comic .lc-tagline span{
+    font-size:clamp(23px,2.6vw,36px);line-height:1.06;
+    color:#654336!important;margin-top:7px;
+  }
+  body.home-living-comic .lc-summary{margin-top:6px;font-size:clamp(13px,1.1vw,16px)}
+  body.home-living-comic .lc-face{aspect-ratio:1.18/1}
+  body.home-living-comic .lc-face img{object-position:center 27%}
+  body.home-living-comic .lc-face-name{font-size:clamp(14px,1.7vw,23px)}
+}
+/* Mobile retains the stacked typography and two-column portrait layout. */
+@media(max-width:900px){
+  body.home-living-comic .lc-hero-top::before,
+  body.home-living-comic .lc-hero-top::after{display:none}
+}
+
+
+/* Portrait-specific crop fidelity. The second-row approved masters are tall
+   transparent characters: anchor their faces at the top in short desktop panels
+   rather than clipping helmets, foreheads or hairstyles. Do not alter files. */
+@media(min-width:901px){
+  body.home-living-comic .lc-face:nth-child(n+5) img{
+    object-position:center top;
+  }
+}
+
+
+/* RELEASE QA / contrast islands
+   Legacy After Dark components deliberately retain dark surfaces on our
+   paper-light homepage. Text needs matching light ink, not global espresso. */
+body.home-living-comic .home-character-track,
+body.home-living-comic .home-character-track .home-character-slide{
+  background:#29211e!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy h3{
+  color:#fff7e8!important;text-shadow:none!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy p{
+  color:#e2d1ba!important;
+}
+body.home-living-comic .home-character-track .home-character-slide .home-character-copy>span{
+  color:#e4ba6d!important;
+}
+body.home-living-comic .home-world-grid a{
+  background:linear-gradient(130deg,#29211e,#382f28)!important;
+  color:#fff6e8!important;
+  border:2px solid #8e755b!important;
+  box-shadow:4px 4px 0 #c3a47d!important;
+}
+body.home-living-comic .home-world-grid a h3{
+  color:#fff6e8!important;
+}
+body.home-living-comic .home-world-grid a p,
+body.home-living-comic .home-world-grid a small{
+  color:#e3d3be!important;
+}
+body.home-living-comic .home-world-grid a span{
+  color:#e9c476!important;
+}
+body.home-living-comic .home-world-grid a:hover,
+body.home-living-comic .home-world-grid a:focus-visible{
+  background:linear-gradient(130deg,#3b2c24,#302721)!important;
+  border-color:#d0ad56!important;
+}
+/* Discovery/navigation cards: warm paper and strong ink, like the mockup. */
+body.home-living-comic .section-band .discovery-card,
+body.home-living-comic #homeUpcomingGrid .discovery-card{
+  background:linear-gradient(135deg,#fff7e7,#ead9bf)!important;
+  border:2px solid #72604d!important;
+  color:#29211e!important;
+  box-shadow:4px 4px 0 rgba(41,33,30,.12)!important;
+}
+body.home-living-comic .section-band .discovery-card h3,
+body.home-living-comic #homeUpcomingGrid .discovery-card h3{
+  color:#29211e!important;
+}
+body.home-living-comic .section-band .discovery-card p,
+body.home-living-comic #homeUpcomingGrid .discovery-card p{
+  color:#5d5047!important;
+}
+body.home-living-comic .section-band .discovery-card span,
+body.home-living-comic #homeUpcomingGrid .discovery-card span{
+  color:#35674b!important;
+}
+body.home-living-comic .section-band .discovery-card b,
+body.home-living-comic #homeUpcomingGrid .discovery-card b{
+  color:#6f472b!important;
+}
+body.home-living-comic .section-band .discovery-card:hover,
+body.home-living-comic .section-band .discovery-card:focus-visible{
+  background:#fff9ed!important;border-color:#35674b!important;
+}
+/* Ensure actual navigation link labels on pale panels are never washed out. */
+body.home-living-comic .home-section-link,
+body.home-living-comic .section-band-head>a{
+  color:#60442f!important;
+}
+body.home-living-comic .home-character-tabs button,
+body.home-living-comic .home-carousel-controls button{
+  color:#29211e!important;
+}
+
+
+/* HQ 2.0 dispatch artwork repair: a real approved visual beside the story.
+   This is the latest Dispatch feature, not a fourth rotating character slide. */
+body.home-living-comic .dispatch-lead .dispatch-art{
+  position:relative;
+  isolation:isolate;
+  min-height:clamp(350px,34vw,500px);
+  background:
+    radial-gradient(circle at 48% 42%,rgba(221,177,90,.22),transparent 66%),
+    linear-gradient(135deg,#33251f,#171713)!important;
+  border-right:3px solid #d0ad56;
+}
+body.home-living-comic .dispatch-lead .dispatch-feature-art{
+  position:absolute;
+  inset:16px 18px 36px;
+  display:block;
+  width:calc(100% - 36px);
+  height:calc(100% - 52px);
+  max-width:none;
+  object-fit:contain;
+  object-position:center center;
+  filter:drop-shadow(0 14px 20px rgba(0,0,0,.30));
+  z-index:1;
+}
+body.home-living-comic .dispatch-lead .dispatch-art>span{
+  color:#f4d087!important;
+  text-shadow:0 2px 8px #171411;
+  z-index:2;
+}
+body.home-living-comic .dispatch-lead .dispatch-art::after{
+  color:rgba(255,248,231,.055);
+  z-index:0;
+}
+body.home-living-comic .dispatch-lead .dispatch-art--missing-image{
+  background:linear-gradient(135deg,#30241e,#1e1a17)!important;
+}
+@media(max-width:820px){
+  body.home-living-comic .dispatch-lead .dispatch-art{
+    min-height:320px;
+    border-right:0;
+    border-bottom:3px solid #d0ad56;
+  }
+  body.home-living-comic .dispatch-lead .dispatch-feature-art{
+    inset:10px 14px 31px;
+    width:calc(100% - 28px);
+    height:calc(100% - 41px);
+  }
+}
+
+
+/* HQ 2.0 Dispatch café copy contrast, paired with the approved sticker art. */
+body.home-living-comic .dispatch-lead .dispatch-copy{
+  background:linear-gradient(145deg,#fff7e7,#e9d9be)!important;
+  color:#29211e!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy h2{
+  color:#29211e!important;
+  text-shadow:none!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy p{
+  color:#594c42!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta{
+  color:#835c36!important;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:#674024!important;
+  font-weight:900;
+}
+body.home-living-comic .dispatch-lead .dispatch-copy a:hover,
+body.home-living-comic .dispatch-lead .dispatch-copy a:focus-visible{
+  color:#28563d!important;
+}
+
+
+/* ==========================================================================
+   OLDROOT HQ 2.1 / COSMIC-CARBON HOMEPAGE
+   Living Comic portrait ensemble, issue #1 and rotating character logic stay.
+   Atmosphere is COSMIC ONLY: no graffiti on the page-wide background.
+   ========================================================================== */
+html body.home-living-comic{
+  --lc-paper:#071510;
+  --lc-paper-light:#f8f1e5;
+  --lc-espresso:#f7f0e5;
+  --lc-copper:#d3b36a;
+  --lc-edge:#6f8f77;
+  --lc-muted:#c6d6cc;
+  --home-text:#f6f1e7;
+  --home-muted:#c9d9cc;
+  --home-faint:#afc1b4;
+  --home-line:rgba(168,202,172,.26);
+  --home-line-soft:rgba(168,202,172,.17);
+  --home-panel:#13241d;
+  --home-panel-strong:#1a3025;
+  --home-panel-soft:#101d17;
+  color:#f8f3e8!important;
+  background-color:#040c09!important;
+  background-image:
+    linear-gradient(180deg,rgba(2,7,5,.20),rgba(2,7,5,.48)),
+    url("assets/branding/oldroot-cosmic-field.svg")!important;
+  background-size:cover,cover!important;
+  background-position:center top,center center!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-attachment:fixed,fixed!important;
+}
+html body.home-living-comic .lc-hero{
+  color:#fff6e8!important;
+  background:
+    radial-gradient(ellipse at 12% 20%,rgba(43,126,81,.22),transparent 60%),
+    linear-gradient(122deg,rgba(5,17,13,.94),rgba(12,36,25,.93) 58%,rgba(4,12,9,.96))!important;
+  border:2px solid #608367!important;
+  border-radius:9px!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.55),inset 0 1px rgba(245,252,244,.1)!important;
+}
+html body.home-living-comic .lc-hero::before{
+  background:#d1ab5f!important;
+}
+html body.home-living-comic .lc-hero::after{
+  background:#2f9a62!important;
+}
+html body.home-living-comic .lc-hero-top{
+  position:relative;isolation:isolate;
+  grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);
+  gap:clamp(18px,3.2vw,48px);
+  margin:0 0 16px;
+}
+html body.home-living-comic .lc-hero-top::before,
+html body.home-living-comic .lc-hero-top::after{
+  display:none!important;
+}
+html body.home-living-comic .lc-eyebrow{
+  background:#173d28!important;
+  border:1px solid #71a67c;
+  box-shadow:3px 3px 0 #070e0b;
+  color:#f2e8d4!important;
+}
+html body.home-living-comic .lc-tagline{
+  color:#fff9ea!important;
+  text-shadow:0 3px 15px rgba(0,0,0,.24)!important;
+}
+html body.home-living-comic .lc-tagline span{
+  color:#d8b767!important;
+}
+html body.home-living-comic .lc-summary{
+  color:#d7e1d6!important;
+  font-weight:600;
+}
+/* Strong, deliberate publisher plaque. Actual approved transparent logo, not
+   a recreated brand graphic. The two micro-stripes are controlled print distress,
+   NOT graffiti or words sprayed into the backdrop. */
+html body.home-living-comic .lc-wordmark{
+  display:grid!important;
+  place-content:center;
+  min-height:230px;
+  height:clamp(215px,24vw,345px);
+  width:100%;
+  padding:26px!important;
+  border:2px solid #c6ac62!important;
+  border-radius:7px!important;
+  background:
+    url("assets/approved-home/primary-logo.webp") center / 92% auto no-repeat,
+    radial-gradient(ellipse at 64% 18%,rgba(43,106,68,.30),transparent 62%),
+    linear-gradient(155deg,#020907,#082014 52%,#020907)!important;
+  box-shadow:0 0 0 6px rgba(3,12,8,.85),0 18px 36px rgba(0,0,0,.45),
+    inset 0 1px rgba(238,231,199,.22)!important;
+}
+html body.home-living-comic .lc-roster-heading h2,
+html body.home-living-comic .lc-roster-heading span{
+  color:#f9f1de!important;
+}
+html body.home-living-comic .lc-roster-heading span{
+  color:#d4b86d!important;
+}
+html body.home-living-comic .lc-face{
+  border:4px solid #08110d!important;
+  box-shadow:4px 4px 0 #d0b367,7px 7px 0 #020705!important;
+}
+html body.home-living-comic .lc-button{
+  background:#133a25!important;
+  border:1px solid #8ea77e!important;
+  color:#f7f2e5!important;
+  box-shadow:4px 4px 0 #020907!important;
+}
+html body.home-living-comic .lc-button:nth-child(2){
+  background:#242d28!important;color:#f7f2e5!important;
+}
+html body.home-living-comic .lc-button:hover,
+html body.home-living-comic .lc-button:focus-visible{
+  background:#205b36!important;border-color:#d2b567!important;
+}
+/* Dark carbon composite on all supporting content systems, preserving
+   individual visual artwork and interactive UI states. */
+html body.home-living-comic
+ :is(.oldroot-reader-poll,.home-featured,.home-world-section,.section-band,
+     .home-library-section,.dispatch-lead){
+  background:var(--or-composite)!important;
+  color:#f9f4e8!important;
+  border:1px solid rgba(153,187,151,.48)!important;
+  border-radius:9px!important;
+  box-shadow:0 15px 40px rgba(0,0,0,.48),inset 0 1px rgba(244,255,241,.06)!important;
+}
+html body.home-living-comic
+ :is(.home-section-heading h2,.section-band h2,.home-library-copy h3,
+     .home-section-heading .lead-kicker,.home-library-section h2){
+  color:#f9f1df!important;
+  text-shadow:none!important;
+}
+html body.home-living-comic
+ :is(.home-section-heading p,.section-band p,.home-library-copy p,.home-rotation-note){
+  color:#cbd9cd!important;
+}
+html body.home-living-comic
+ :is(.home-section-link,.section-band-head>a,.home-secondary-links>a){
+  color:#dfc47c!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button,.home-carousel-controls button){
+  background:#0c291b!important;
+  border:1px solid #6e9972!important;
+  color:#f7f3e8!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button.active,.home-character-tabs button[aria-selected="true"]){
+  background:#275b37!important;color:#fff9e8!important;
+  border-color:#d6b96a!important;
+}
+html body.home-living-comic .home-character-track{
+  border-color:#5f8365!important;
+  background:#07140e!important;
+}
+html body.home-living-comic .home-character-track .home-character-slide{
+  background:var(--or-composite)!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy :is(h3,p,span){
+  color:#f3eddf!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy>span{
+  color:#e2c474!important;
+}
+html body.home-living-comic .home-world-grid a,
+html body.home-living-comic .section-band .discovery-card,
+html body.home-living-comic #homeUpcomingGrid .discovery-card{
+  background:var(--or-composite)!important;
+  color:#f4f1e9!important;
+  border:1px solid #6a8a75!important;
+  border-radius:6px!important;
+  box-shadow:0 9px 18px rgba(0,0,0,.28)!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) :is(h3,b){
+  color:#fff5e6!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) :is(p,small){
+  color:#cbdad0!important;
+}
+html body.home-living-comic :is(.home-world-grid a,.section-band .discovery-card,
+ #homeUpcomingGrid .discovery-card) span{
+  color:#e0c274!important;
+}
+html body.home-living-comic .home-library-teaser{
+  background:linear-gradient(140deg,#101d18,#1d2c26)!important;
+  border-color:#55755f!important;
+}
+html body.home-living-comic .home-library-copy h3{color:#f9f2e5!important}
+html body.home-living-comic .home-library-copy p{color:#cad8cd!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy{
+  background:var(--or-composite)!important;
+  color:#f8f1e3!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy h2{
+  color:#fbf5e8!important;text-shadow:none!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy p{
+  color:#d5ded3!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta{
+  color:#d7bd74!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:#e8cd82!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-art{
+  border-color:#c5a553!important;
+}
+/* Protect cover art and approved character paint jobs. Never recolor masters. */
+html body.home-living-comic :is(.lc-face img,.home-character-art img,
+ .dispatch-feature-art,.oldroot-issue-launch img){
+  mix-blend-mode:normal!important;
+}
+@media(max-width:900px){
+  html body.home-living-comic .lc-hero-top{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+  html body.home-living-comic .lc-wordmark{
+    height:clamp(175px,48vw,270px);
+    min-height:175px;
+    background-size:88% auto,auto,auto!important;
+  }
+}
+@media(max-width:760px){
+  html body.home-living-comic{
+    background-size:auto,auto 100%!important;
+    background-attachment:scroll,scroll!important;
+  }
+  html body.home-living-comic .lc-hero{padding:12px}
+  html body.home-living-comic .lc-face{
+    box-shadow:3px 3px 0 #d0b367,5px 5px 0 #020705!important;
+  }
+  html body.home-living-comic .lc-summary{font-size:14px}
+}
+
+
+/* HQ 2.1 horizontally contained home canvas: the editorial border strokes
+   must never grow the document beyond the screen on desktop or mobile. */
+html body.home-living-comic{overflow-x:clip!important}
+html body.home-living-comic .site-shell{max-width:100vw;min-width:0;overflow-x:clip!important}
+
+
+/* HQ 2.1 contain legacy tendril overhang.
+   Root-corner accents used to protrude 42px beyond feature modules; new
+   cosmic canvas keeps all decoration clipped inside the carbon surfaces. */
+html body.home-living-comic
+ :is(.home-featured,.home-world-section,.home-library-section,.section-band){
+  overflow:clip!important;
+}
+html body.home-living-comic
+ :is(.home-featured,.home-world-section,.home-library-section,.section-band)::after{
+  right:0!important;
+  bottom:0!important;
+  max-width:100%!important;
+}
+html body.home-living-comic .lc-hero{overflow:clip!important}
+html body.home-living-comic .home-character-track{
+  max-width:100%;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+}
+
+
+/* ==========================================================================
+   HQ 2.2 / LIME-WHITE HOMEPAGE
+   Replace editorial cream and gold UI notes with OldRoot fresh lime + crisp
+   comic white. Keep the nebula, carbon weave, portraits, and dark logo plaque.
+   ========================================================================== */
+html body.home-living-comic{
+  --lc-paper-light:var(--or-lime-pale);
+  --lc-espresso:var(--or-comic-white);
+  --lc-copper:var(--or-lime);
+  --lc-edge:#7CB77C;
+  --lc-muted:var(--or-ink-muted);
+  --home-text:var(--or-comic-white);
+  --home-muted:var(--or-ink-muted);
+  --home-faint:#AFC9B8;
+  --home-line:rgba(178,245,139,.33);
+  --home-line-soft:rgba(178,245,139,.2);
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .lc-hero{color:var(--or-comic-white)!important;border-color:#83BB82!important}
+html body.home-living-comic .lc-hero::before{background:var(--or-lime)!important}
+html body.home-living-comic .lc-hero::after{background:#54AD6E!important}
+html body.home-living-comic .lc-eyebrow{
+  color:var(--or-lime-pale)!important;border-color:var(--or-lime)!important;
+  background:#123621!important;
+}
+html body.home-living-comic .lc-tagline{color:var(--or-comic-white)!important}
+html body.home-living-comic .lc-tagline span{color:var(--or-lime)!important}
+html body.home-living-comic .lc-summary{color:#D7E8D9!important}
+html body.home-living-comic .lc-wordmark{
+  border-color:var(--or-lime)!important;
+  box-shadow:0 0 0 6px rgba(3,12,8,.85),0 18px 36px rgba(0,0,0,.45),
+   inset 0 1px rgba(226,255,208,.23)!important;
+}
+html body.home-living-comic .lc-roster-heading h2,
+html body.home-living-comic .home-section-heading h2,
+html body.home-living-comic .section-band h2,
+html body.home-living-comic .home-library-copy h3,
+html body.home-living-comic .home-library-section h2{color:var(--or-comic-white)!important}
+html body.home-living-comic .lc-roster-heading span,
+html body.home-living-comic .home-section-heading .lead-kicker{color:var(--or-lime)!important}
+html body.home-living-comic .lc-face{
+  box-shadow:4px 4px 0 var(--or-lime),7px 7px 0 #020705!important;
+}
+html body.home-living-comic .lc-button{
+  border-color:var(--or-lime)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .lc-button:hover,
+html body.home-living-comic .lc-button:focus-visible{
+  color:var(--or-lime-bright)!important;border-color:#D6F9AC!important;
+}
+html body.home-living-comic
+ :is(.home-section-link,.section-band-head>a,.home-secondary-links>a){
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button,.home-carousel-controls button){
+  color:var(--or-comic-white)!important;
+  border-color:#81B989!important;
+}
+html body.home-living-comic
+ :is(.home-character-tabs button.active,.home-character-tabs button[aria-selected="true"]){
+  color:var(--or-comic-white)!important;
+  border-color:var(--or-lime)!important;
+  box-shadow:0 0 0 1px rgba(190,243,122,.15)!important;
+}
+html body.home-living-comic .home-character-track{border-color:#7EBA83!important}
+html body.home-living-comic .home-character-track .home-character-copy :is(h3,p,span){
+  color:var(--or-comic-white)!important;
+}
+html body.home-living-comic .home-character-track .home-character-copy>span{
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card){
+  color:var(--or-comic-white)!important;
+  border-color:#6FA578!important;
+}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card)
+ :is(h3,b){color:var(--or-comic-white)!important}
+html body.home-living-comic
+ :is(.home-world-grid a,.section-band .discovery-card,#homeUpcomingGrid .discovery-card)
+ span{color:var(--or-lime)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy{color:var(--or-comic-white)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy h2{color:var(--or-comic-white)!important}
+html body.home-living-comic .dispatch-lead .dispatch-copy .dispatch-meta,
+html body.home-living-comic .dispatch-lead .dispatch-copy a{
+  color:var(--or-lime)!important;
+}
+html body.home-living-comic .dispatch-lead .dispatch-art{border-color:var(--or-lime)!important}
+/* Artwork presentation filters remain owned by their original components. */
+@media(max-width:760px){
+  html body.home-living-comic .lc-face{
+    box-shadow:3px 3px 0 var(--or-lime),5px 5px 0 #020705!important;
+  }
+}
+
+
+/* HQ 2.2 head-safe portrait alignment
+   The approved images have different native aspect ratios. Old shared 27%/35%
+   framing chopped the tall originals' hair and hood on wide desktop cards.
+   Preserve their unchanged source bytes, keep faces at a shared upper anchor
+   and take unavoidable cropping from the BOTTOM of each card. */
+html body.home-living-comic .lc-face-grid .lc-face img{
+  object-fit:cover!important;
+  object-position:center top!important;
+}
+/* The original Isiah/Liontone masters have ink touching their top boundary.
+   A few pixels of panel-color headroom protects hood/hair at desktop widths,
+   without moving Kincast downward or covering any artwork with a mask. */
+@media(min-width:901px){
+  html body.home-living-comic .lc-face-grid
+    :is([data-portrait="isiah-ivory"],[data-portrait="liontone"]) img{
+      translate:0 7px;
+  }
+}
+@media(max-width:900px){
+  html body.home-living-comic .lc-face-grid
+    :is([data-portrait="isiah-ivory"],[data-portrait="liontone"]) img{
+      translate:none;
+  }
+}
+
+
+/* Remy-specific optical zoom, creator refinement.
+   The approved Agent Emerald master is 1024x1536 pixels, so a modest 12%
+   CSS-only scale at card resolution retains ample source detail. Its top edge
+   stays anchored, keeping helmet/hair visible and cropping excess at bottom.
+   Other seven approved portraits remain at scale 1. */
+html body.home-living-comic .lc-face-grid [data-portrait="agent-emerald"] img{
+  scale:1.12;
+  transform-origin:50% 0%;
+}
+@media(max-width:760px){
+  html body.home-living-comic .lc-face-grid [data-portrait="agent-emerald"] img{
+    scale:1.08;
+  }
+}
+
+
+/* =======================================================================
+   HQ 2.3 / UNDER OBSERVATION STREET-INK FEATURE
+   The ONLY graffiti statement in OldRoot HQ. Decorative spray is strictly
+   contained to #issue-one, leaving the cosmic nebula and other panels clean.
+   No official character/comic artwork or issue-status wording is changed.
+   ======================================================================= */
+html body.home-living-comic #issue-one{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border:3px solid #9DE47E!important;
+  border-radius:5px!important;
+  color:#FAFFFC!important;
+  background:
+    linear-gradient(90deg,rgba(2,10,8,.91) 0%,rgba(3,16,12,.80) 42%,rgba(4,16,13,.46) 100%),
+    url("assets/branding/issue-01-graffiti-accents.svg") center / cover no-repeat,
+    radial-gradient(ellipse at 83% 29%,#1d5634 0%,#0b281a 48%,#030a08 100%)!important;
+  box-shadow:8px 8px 0 #BDF584,0 15px 36px rgba(0,0,0,.44)!important;
+  padding:clamp(27px,4vw,56px)!important;
+}
+html body.home-living-comic #issue-one::before{
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  inset:0 auto 0 0;
+  width:9px;
+  z-index:0;
+  background:repeating-linear-gradient(180deg,#D4FF9A 0 69px,#26593C 69px 84px,#FAFFFC 84px 93px);
+  box-shadow:5px 0 0 rgba(23,92,50,.23);
+}
+html body.home-living-comic #issue-one::after{
+  content:"";
+  position:absolute;
+  top:0;right:-40px;
+  width:clamp(150px,29%,370px);
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(124deg,transparent 0 46px,rgba(204,255,153,.055) 47px 49px,transparent 50px 80px);
+  transform:skew(-8deg);
+}
+html body.home-living-comic #issue-one .issue-street-art{
+  position:absolute;inset:0;z-index:1;
+  overflow:hidden;pointer-events:none;
+}
+html body.home-living-comic #issue-one .issue-street-art__tag{
+  position:absolute;right:6%;top:12%;
+  max-width:44%;
+  color:#C9FF82;
+  font:italic 900 clamp(16px,2.4vw,31px)/1 Impact,"Arial Narrow",sans-serif;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  text-shadow:2px 2px 0 #0B1D12, -1px -1px 0 rgba(255,255,255,.45);
+  transform:rotate(-11deg) skew(-5deg);
+  opacity:.84;
+}
+html body.home-living-comic #issue-one .issue-street-art__tag::after{
+  content:"";display:block;width:86%;height:4px;margin:6px auto 0;
+  background:linear-gradient(90deg,transparent,#C9FF82 12% 62%,transparent);
+  transform:skew(-24deg);
+}
+html body.home-living-comic #issue-one .issue-street-art__file{
+  position:absolute;bottom:6%;right:6%;
+  color:#FAFFFC;
+  font:900 clamp(9px,1.0vw,12px)/1.3 "Courier New",monospace;
+  letter-spacing:.16em;
+  border:1px solid rgba(250,255,252,.65);
+  padding:6px 10px;
+  transform:rotate(5deg);
+  opacity:.66;
+}
+html body.home-living-comic #issue-one .issue-street-art__slashes{
+  position:absolute;left:52%;bottom:13%;
+  width:70px;height:12px;
+  border-top:4px solid #C9FF82;
+  border-bottom:2px solid #FAFFFC;
+  transform:rotate(-24deg);
+  opacity:.56;
+}
+html body.home-living-comic #issue-one .issue-launch-serial,
+html body.home-living-comic #issue-one .issue-launch-body{
+  position:relative;z-index:2;
+}
+html body.home-living-comic #issue-one .issue-launch-serial{
+  color:#C9FF82!important;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+html body.home-living-comic #issue-one .issue-launch-serial span{
+  color:#FAFFFC!important;
+}
+html body.home-living-comic #issue-one .issue-launch-eyebrow,
+html body.home-living-comic #issue-one .issue-launch-body h2 span{
+  color:#C9FF82!important;
+  letter-spacing:.14em;
+}
+html body.home-living-comic #issue-one .issue-launch-body h2{
+  color:#FAFFFC!important;
+  max-width:750px;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.95;
+  text-shadow:3px 4px 0 rgba(0,0,0,.63);
+}
+html body.home-living-comic #issue-one .issue-launch-body p{
+  color:#E2F0E6!important;
+  max-width:540px;
+  line-height:1.65;
+}
+html body.home-living-comic #issue-one .issue-launch-body a{
+  background:#BEF37A!important;
+  border:2px solid #FAFFFC!important;
+  border-radius:2px!important;
+  color:#0A1C0D!important;
+  font-weight:900;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+  padding:12px 18px;
+  box-shadow:4px 4px 0 #0A120C;
+  transition:transform .15s ease,background .15s ease;
+}
+html body.home-living-comic #issue-one .issue-launch-body a:hover{
+  background:#DAFFA9!important;
+  transform:translate(-2px,-2px);
+}
+html body.home-living-comic #issue-one .issue-launch-body a:focus-visible{
+  outline:3px solid #FAFFFC!important;
+  outline-offset:3px;
+}
+html body.home-living-comic #issue-one .issue-launch-stamp{
+  position:relative;
+  z-index:2;
+  min-width:clamp(165px,18vw,230px);
+  border:4px dashed #C9FF82!important;
+  background:rgba(2,13,8,.66);
+  color:#FAFFFC;
+  box-shadow:0 0 0 5px rgba(20,77,43,.36);
+  transform:rotate(-10deg);
+}
+html body.home-living-comic #issue-one .issue-launch-stamp b{
+  color:#FAFFFC!important;
+  font-size:clamp(72px,7.7vw,116px);
+  text-shadow:5px 5px 0 #215436;
+}
+html body.home-living-comic #issue-one .issue-launch-stamp span{
+  color:#C9FF82!important;
+}
+@media(max-width:900px){
+  html body.home-living-comic #issue-one .issue-street-art__tag{
+    top:8%;right:4%;opacity:.56;max-width:45%;
+  }
+  html body.home-living-comic #issue-one .issue-launch-body>div:first-child{
+    max-width:70%;
+  }
+}
+@media(max-width:680px){
+  html body.home-living-comic #issue-one{
+    padding:23px 20px 52px!important;
+    background:
+      linear-gradient(90deg,rgba(2,10,8,.88),rgba(3,16,12,.65)),
+      url("assets/branding/issue-01-graffiti-accents.svg") 60% center / auto 100% no-repeat,
+      linear-gradient(130deg,#06170E,#133624)!important;
+  }
+  html body.home-living-comic #issue-one::before{width:5px}
+  html body.home-living-comic #issue-one .issue-launch-body>div:first-child{max-width:100%}
+  html body.home-living-comic #issue-one .issue-street-art__tag{
+    top:auto;right:20px;bottom:14px;
+    max-width:82%;font-size:14px;opacity:.74;
+    transform:rotate(-5deg);
+  }
+  html body.home-living-comic #issue-one .issue-street-art__tag::after{
+    height:2px;margin-top:2px;
+  }
+  html body.home-living-comic #issue-one .issue-street-art__file,
+  html body.home-living-comic #issue-one .issue-street-art__slashes{display:none}
+  html body.home-living-comic #issue-one .issue-launch-body h2{
+    font-size:clamp(32px,8vw,49px);
+    line-height:1.03;
+  }
+  html body.home-living-comic #issue-one .issue-launch-serial{
+    font-size:10px;letter-spacing:.07em;
+  }
+  html body.home-living-comic #issue-one .issue-launch-body a{padding:11px 13px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.home-living-comic #issue-one .issue-launch-body a{transition:none}
+}

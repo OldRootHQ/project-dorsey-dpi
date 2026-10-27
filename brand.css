@@ -952,3 +952,1008 @@ main [id]:target{
   .site-nav .nav-group .nav-dropdown.oldroot-mega,
   .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{transition:none}
 }
+
+
+/* ==========================================================
+   OLDROOT 2.0 / SITEWIDE LIVING COMIC TAKEOVER — DRAFT ONLY
+   Source: approved café / espresso / warm-paper art direction.
+   Applies to ALL pages through their existing brand.css import.
+   IMPORTANT: Do not change canon artwork, lore, scripts, or globe.
+   ========================================================== */
+:root{
+  --or-paper:#f1e5cf;--or-paper-light:#fff8eb;--or-paper-deep:#dcc7aa;
+  --or-espresso:#29211e;--or-ink:#171514;--or-cafe:#946e56;
+  --or-sand:#c9aa87;--or-forest:#35674b;--or-gold:#d0ad56;
+  --or-line:rgba(41,33,30,.24);--or-shadow:6px 6px 0 rgba(41,33,30,.12);
+}
+html body.oldroot-after-dark{
+  --root-green:#35674b;--deep-root:#29211e;--cream:#f1e5cf;
+  --parchment:#ead9c2;--paper:#f1e5cf;--paper-bright:#fff8eb;
+  --bark:#6b4d3c;--cafe:#946e56;--old-gold:#d0ad56;
+  --ink:#171514;--green-shadow:rgba(41,33,30,.15);
+  --after-text:#29211e;--after-muted:#655850;--after-faint:#77675d;
+  --after-line:rgba(41,33,30,.18);--after-panel:#fff8eb;
+  color:var(--or-ink)!important;
+  background:
+    radial-gradient(ellipse at 7% 0%,rgba(207,173,114,.18),transparent 34rem),
+    radial-gradient(ellipse at 91% 36%,rgba(53,103,75,.065),transparent 30rem),
+    radial-gradient(circle at 1px 1px,rgba(41,33,30,.065) .7px,transparent .95px),
+    linear-gradient(180deg,#f8ecdb 0%,#f0dfc6 54%,#f7ead6 100%) fixed!important;
+  background-size:auto,auto,19px 19px,auto!important;
+}
+html body.oldroot-after-dark::before,
+html body.oldroot-after-dark::after{display:none!important;animation:none!important}
+html body.oldroot-after-dark .masthead{
+  background:#201d1a!important;
+  border:0!important;border-bottom:3px solid var(--or-gold)!important;
+  box-shadow:0 3px 0 rgba(41,33,30,.35)!important;
+  backdrop-filter:blur(14px);
+}
+html body.oldroot-after-dark .mast-inner{max-width:1500px}
+html body.oldroot-after-dark .brand{
+  display:inline-block!important;flex:0 0 clamp(136px,18vw,205px)!important;
+  width:clamp(136px,18vw,205px)!important;height:64px!important;
+  min-width:0!important;overflow:hidden!important;font-size:0!important;
+  color:transparent!important;letter-spacing:0!important;font-style:normal!important;
+  transform:none!important;text-shadow:none!important;border:0!important;
+  background:transparent url("assets/branding/oldroot-primary.png") left center/contain no-repeat!important;
+  filter:none!important;
+}
+html body.oldroot-after-dark .brand:hover{filter:drop-shadow(0 2px 3px rgba(41,33,30,.2))!important}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:#fff6e7!important;background:transparent!important;
+  border-radius:2px!important;font-weight:850!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:#fffaf0!important;background:rgba(208,173,86,.2)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown{
+  background:#fff8eb!important;color:var(--or-espresso)!important;
+  border:2px solid var(--or-espresso)!important;
+  box-shadow:5px 5px 0 var(--or-sand)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a{
+  color:var(--or-espresso)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a:hover,
+html body.oldroot-after-dark .site-nav .nav-dropdown a.active{
+  color:#fff8eb!important;background:var(--or-espresso)!important;
+}
+html body.oldroot-after-dark .site-shell,
+html body.oldroot-after-dark .character-shell{position:relative;z-index:1}
+html body.oldroot-after-dark .oldroot-footer{
+  background:#28211e!important;color:#f5e8d3!important;
+  border:3px solid #1b1715!important;border-radius:3px!important;
+  box-shadow:7px 7px 0 #9f8064!important;
+}
+html body.oldroot-after-dark .oldroot-footer a,
+html body.oldroot-after-dark .oldroot-footer .footer-brand strong{color:#f5e8d3!important}
+html body.oldroot-after-dark .oldroot-footer .footer-brand span,
+html body.oldroot-after-dark .oldroot-footer .footer-bottom{color:#d5c3aa!important}
+html body.oldroot-after-dark .oldroot-footer .footer-links b{color:#d0ad56!important}
+html body.oldroot-after-dark :is(a,button,input,select,textarea):focus-visible{
+  outline:3px solid #517f61!important;outline-offset:3px!important;
+}
+/* Editorial pages share warm ink, not the previous green-on-black atmosphere. */
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.lead-story,.content-block,.section-band,
+     .lore-entry,.lore-toolbar,.lore-empty,.event-main,.event-fact,.origin-lane,
+     .org-card,.org-registry-tools,.registry-tools,.character-card,.dispatch-card,
+     .dispatch-lead,.dispatch-tools,.library-card,.library-head,.library-section,
+     .location-dossier-hero,.location-section,.location-facts,.related-records,
+     .start-statement,.start-stat-panel,.start-stat,.world-breadcrumb,
+     .location-dossier-list,.organization-hero,.org-dossier-panel){
+  color:var(--or-espresso)!important;
+  background:
+    radial-gradient(circle at 94% 8%,rgba(208,173,86,.085),transparent 14rem),
+    linear-gradient(135deg,#fff9ef,#f0e2cd)!important;
+  border:2px solid var(--or-line)!important;border-radius:4px!important;
+  box-shadow:var(--or-shadow)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border:3px solid var(--or-espresso)!important;
+  box-shadow:7px 7px 0 var(--or-sand)!important;
+  background:
+    linear-gradient(112deg,transparent 0 75%,rgba(53,103,75,.09) 75% 76%,transparent 76%),
+    radial-gradient(circle at 92% 6%,rgba(208,173,86,.16),transparent 19rem),
+    linear-gradient(135deg,#fff9ef,#ead7b8)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:var(--or-espresso)!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:#574b43!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:#75563e!important;
+}
+/* Buttons and index navigation adopt restrained forest / gold highlighting. */
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a){
+  border:2px solid var(--or-espresso)!important;border-radius:2px!important;
+  background:var(--or-espresso)!important;color:#fff8eb!important;
+  box-shadow:3px 3px 0 var(--or-sand)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a):hover{
+  background:#35674b!important;color:#fff8eb!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.lore-filter-row button,.org-filters button,.dispatch-filters button,
+     .filter-toggle,.filter-clear,.filter-apply){
+  border:1px solid #8f725b!important;border-radius:3px!important;
+  background:#f8ecda!important;color:#29211e!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.lore-filter-row button.active,.org-filters button.active,
+     .dispatch-filters button.active,.filter-apply){
+  background:#35674b!important;color:#fff9eb!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(input[type="search"],input[type="text"],select,textarea){
+  color:#29211e!important;background:#fffaf0!important;
+  border:1px solid #a68c74!important;accent-color:#35674b;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(input[type="search"],input[type="text"],textarea)::placeholder{
+  color:#6d6157!important;
+}
+/* Keep the character art intact; only the dossier's surrounding paper changes. */
+html body.oldroot-after-dark .character-shell[data-dossier]::before{display:none!important}
+html body.oldroot-after-dark .character-shell[data-dossier] .dossier-cinematic-hero{
+  border:4px solid #241e1b!important;border-radius:4px!important;
+  box-shadow:8px 8px 0 #ad9072!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox,.character-links,.dossier-chapter-index,
+     .character-network,.dossier-story-thread){
+  background:
+    radial-gradient(circle at 94% 0%,rgba(208,173,86,.10),transparent 15rem),
+    linear-gradient(135deg,#fff9ef,#f0e1cc)!important;
+  border:2px solid var(--or-line)!important;border-radius:4px!important;
+  color:#29211e!important;box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,
+     .character-network-head h2,.dossier-chapter-index h2,
+     .dossier-story-thread h2,.dossier-thread-heading h2){
+  color:#29211e!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:#574b43!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  background:#f0e0c8!important;color:#29211e!important;
+  border:1px solid #ba9e81!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:#29211e!important}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox) h2{
+  border-bottom-color:#ba9b67!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.dossier-opi-station,.dossier-art-archive){
+  border:3px solid #29211e!important;border-radius:4px!important;
+  box-shadow:6px 6px 0 #b19677!important;
+}
+/* Location interiors retain their distinct photos and artwork. */
+html body.oldroot-after-dark .location-dossier-page .location-dossier-hero{
+  border:3px solid #29211e!important;
+}
+html body.oldroot-after-dark .location-dossier-page :is(.location-photo,.location-art,.place-art) img{
+  filter:none!important;
+}
+@media(max-width:760px){
+ html body.oldroot-after-dark .brand{height:50px!important}
+ html body.oldroot-after-dark .mast-inner{padding:10px 14px}
+ html body.oldroot-after-dark :is(.site-shell,.character-shell){padding-inline:14px}
+ html body.oldroot-after-dark .site-nav{max-width:100%;overflow-x:auto!important;flex-wrap:nowrap}
+ html body.oldroot-after-dark .site-nav>a,
+ html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{min-height:40px}
+ html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+  :is(.page-head,.editorial-hero,.location-dossier-hero){box-shadow:4px 4px 0 var(--or-sand)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html body.oldroot-after-dark *,html body.oldroot-after-dark *::before,
+ html body.oldroot-after-dark *::after{scroll-behavior:auto!important;animation-duration:.01ms!important}
+}
+
+
+/* Living Comic section-specific finishing layer.
+   Dark espresso is reserved for intentional features and operational consoles. */
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.org-dossier-hero,.discovery-card,.known-character-card,.powder-statement,
+     .market-sticker-card,.market-feature-card,.marketplace-next-note,
+     .product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,
+     .checkout-form,.checkout-summary,.confirmation-card){
+  color:#29211e!important;
+  border:2px solid rgba(41,33,30,.26)!important;border-radius:4px!important;
+  background:linear-gradient(138deg,#fff9ec,#ebdac2)!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.org-dossier-hero,.powder-hero) h1{
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark .org-dossier-hero{
+  background:linear-gradient(135deg,#fff9ec,#ead7b9)!important;
+  border:3px solid #29211e!important;
+  box-shadow:7px 7px 0 #b99b78!important;
+}
+html body.oldroot-after-dark .org-dossier-hero h1,
+html body.oldroot-after-dark .org-dossier-hero p{color:#29211e!important}
+html body.oldroot-after-dark .powder-page .powder-hero{
+  background:
+    radial-gradient(circle at 86% 28%,rgba(238,128,51,.14),transparent 39%),
+    linear-gradient(125deg,#30221c,#191716)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #ad9072!important;
+}
+html body.oldroot-after-dark .powder-page .powder-hero h1,
+html body.oldroot-after-dark .powder-page .powder-hero p{color:#f6ead8!important}
+html body.oldroot-after-dark .powder-page .powder-hero .powder-lead{color:#eccc9e!important}
+html body.oldroot-after-dark .powder-page .powder-index a{
+  color:#29211e!important;background:#efe0c9!important;
+  border:2px solid #8c7058!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .marketplace-featured{
+  background:linear-gradient(135deg,#30241e,#1f1a18)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #b59b7c!important;
+}
+html body.oldroot-after-dark .marketplace-featured h2,
+html body.oldroot-after-dark .marketplace-featured .marketplace-section-top p{
+  color:#f9ead4!important;
+}
+html body.oldroot-after-dark .marketplace-featured .marketplace-kicker{color:#d0ad56!important}
+html body.oldroot-after-dark .marketplace-head-links a{
+  color:#29211e!important;background:#f8eddc!important;
+  border:2px solid #29211e!important;border-radius:3px!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero{
+  background:linear-gradient(128deg,#29211e,#181614)!important;
+  border:4px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #b49b7d!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero h1,
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero-content>p{
+  color:#f6e8d6!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page .work-hero-content>p strong{color:#fffaf1!important}
+html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section,.work-interest,.work-transparency,
+  .work-discipline-card,.work-values-grid,.work-principles,.work-process,.work-form-wrap){
+  background:linear-gradient(135deg,#fff8eb,#ecdec8)!important;
+  border:2px solid rgba(41,33,30,.26)!important;border-radius:4px!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;color:#29211e!important;
+}
+html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section-heading h2,
+  .work-interest-heading h2,.work-discipline-card h3){color:#29211e!important}
+html body.oldroot-after-dark .mail-console{
+  background:linear-gradient(135deg,#30241e,#1b1816)!important;
+  border:3px solid #171514!important;border-radius:4px!important;
+  box-shadow:7px 7px 0 #ae9578!important;
+}
+html body.oldroot-after-dark .mail-console .mail-topbar{
+  background:#29211e!important;
+}
+html body.oldroot-after-dark .shell .hero,
+html body.oldroot-after-dark .shell .panel,
+html body.oldroot-after-dark .shell .analytics-toolbar{
+  background:linear-gradient(135deg,#fff8eb,#eadbc6)!important;
+  color:#29211e!important;
+  border:2px solid rgba(41,33,30,.25)!important;border-radius:4px!important;
+  box-shadow:5px 5px 0 rgba(41,33,30,.12)!important;
+}
+html body.oldroot-after-dark .shell .hero h1,
+html body.oldroot-after-dark .shell .panel h2{color:#29211e!important}
+html body.oldroot-after-dark .shell .hero p,
+html body.oldroot-after-dark .shell .panel-head p{color:#5c5046!important}
+@media(max-width:760px){
+ html body.oldroot-after-dark .marketplace-featured,
+ html body.oldroot-after-dark .work-with-oldroot-page .work-hero,
+ html body.oldroot-after-dark .mail-console,
+ html body.oldroot-after-dark .powder-page .powder-hero{
+   box-shadow:4px 4px 0 #b49b7d!important;
+ }
+}
+
+
+/* Supporting-character dossiers (Deuce, Max Corbett and other legacy records)
+   also inherit the new print-paper treatment without changing any art or copy. */
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity,.wiki-section,.character-infobox,.character-links,
+     .character-network,.max-gallery-section){
+  background:linear-gradient(135deg,#fff9ec,#eddfca)!important;
+  color:#29211e!important;border:2px solid rgba(41,33,30,.26)!important;
+  border-radius:4px!important;box-shadow:5px 5px 0 #c2ab8b!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .character-identity{
+  border:3px solid #29211e!important;
+  box-shadow:7px 7px 0 #b49b7d!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:#29211e!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-subtitle,.character-thesis,.wiki-section p,.wiki-section li,
+     .character-portrait figcaption,.info-row dt){
+  color:#60534a!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .logo-slot{
+  background:#ead8bc!important;color:#29211e!important;
+  border-color:#b89a75!important;border-radius:4px!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier]) .character-feature-art{
+  border:3px solid #29211e!important;box-shadow:6px 6px 0 #b49b7d!important;
+}
+
+
+/* Contrast islands: the interactive globe and comic showcase panels deliberately
+   stay espresso-dark while the surrounding document becomes café-light. */
+html body.oldroot-after-dark
+ :is(.world-console,.location-terminal,.dossier-opi-station,.dossier-art-archive,
+     .marketplace-featured,.powder-hero,.work-hero,.mail-console){
+  --after-text:#f6ead7;--after-muted:#d3c8b6;--after-faint:#baa996;
+  --after-line:rgba(243,235,221,.20);
+}
+html body.oldroot-after-dark .world-console{
+  --cream:#f3ebdd;--parchment:#e7dccb;--old-gold:#d0ad56;
+}
+html body.oldroot-after-dark .world-console
+ :is(.location-terminal,.terminal-note,.terminal-regional,.globe-hud,.globe-tooltip){
+  color:#f3ebdd;
+}
+/* Dropdown menus must not be clipped by horizontal mobile navigation. */
+@media(max-width:760px){
+ html body.oldroot-after-dark .site-nav{
+  overflow:visible!important;flex-wrap:wrap!important;
+  justify-content:flex-start!important;gap:4px!important;
+ }
+ html body.oldroot-after-dark .nav-group{position:relative}
+ html body.oldroot-after-dark .site-nav .nav-dropdown{
+  z-index:70;max-width:min(94vw,350px);
+ }
+}
+
+/* HQ 2.0 publisher masthead: shared across every route; approved original logo.
+   The homepage concept uses espresso navigation with restrained gold trim. */
+html body.oldroot-after-dark .masthead{
+  background:#211d1a!important;
+  border-bottom:3px solid #d0ad56!important;
+  box-shadow:0 3px 0 rgba(62,46,33,.22)!important;
+}
+html body.oldroot-after-dark .brand{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:#fff6e8!important;
+  background:transparent!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:#eac96c!important;
+  background:rgba(208,173,86,.12)!important;
+}
+
+
+/* HQ 2.0 readable registry metadata against warm café-paper cards. */
+html body.oldroot-after-dark .character-card .meta-pill{
+  background:#f1dfc4!important;
+  color:#29211e!important;
+  border:1px solid #9f846a!important;
+}
+html body.oldroot-after-dark .character-card .class{
+  color:#35674b!important;
+}
+
+
+/* HQ 2.0 OPI detail tactical contrast: this live capability readout remains
+   dark to retain its established light labels, pale numbers and chart accents.
+   Only its outer color surface is restored; interactive analytics code untouched. */
+html body.oldroot-after-dark .shell .panel.detail-panel{
+  color:#e3e7dc!important;
+  background:linear-gradient(150deg,#10261d,#091a13)!important;
+  border:2px solid #b99b78!important;
+  box-shadow:6px 6px 0 rgba(41,33,30,.16)!important;
+}
+
+
+/* HQ 2.0 footer publication links and approved publisher logo */
+/* The footer is not an afterthought. Preserve existing route links and give
+   the approved publisher art and contact destination clear visibility. */
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::after{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links b{
+  color:#e0ba72!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a{
+  color:#f8edd9!important;
+  text-decoration:none;
+  text-underline-offset:4px;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:focus-visible{
+  color:#ffdf8c!important;
+  text-decoration:underline;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]{
+  justify-content:center;
+  padding:8px 12px;
+  min-height:40px;
+  width:max-content;
+  max-width:100%;
+  color:#211d1a!important;
+  background:#ead1a3!important;
+  border:1px solid #d0ad56!important;
+  border-radius:3px;
+  font-weight:900;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:focus-visible{
+  background:#fff2d4!important;
+  color:#171310!important;
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .oldroot-footer .footer-links{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 14px;
+  }
+  html body.oldroot-after-dark .oldroot-footer .footer-links>div{
+    min-width:0;
+    gap:5px;
+  }
+  html body.oldroot-after-dark .oldroot-footer .footer-links a{
+    min-height:38px;
+    padding:7px 0;
+    font-size:12px;
+  }
+}
+@media(max-width:340px){
+  html body.oldroot-after-dark .oldroot-footer .footer-links{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ==========================================================================
+   OLDROOT HQ 2.1 / COSMIC-CARBON GLOBAL SYSTEM
+   Approved creator direction: green-black nebula, matte carbon composite,
+   deep-green/black OldRoot branding. NO GRAFFITI ON THE BACKGROUND.
+   Presentation only; editorial records, art, forms and UX remain canonical.
+   ========================================================================== */
+html body.oldroot-after-dark{
+  --or-cosmos:#030b09;
+  --or-forest:#0b261b;
+  --or-carbon:#151e1c;
+  --or-carbon-edge:#4a6257;
+  --or-gold:#d6b35e;
+  --or-silver:#c8d8cf;
+  --or-ivory:#f5f1e7;
+  --or-secondary:#c7d5cc;
+  --or-composite:
+    repeating-linear-gradient(42deg,rgba(192,216,204,.043) 0 2px,transparent 2px 7px,rgba(0,0,0,.12) 7px 9px,transparent 9px 14px),
+    repeating-linear-gradient(138deg,rgba(192,216,204,.035) 0 2px,transparent 2px 7px,rgba(0,0,0,.15) 7px 9px,transparent 9px 14px),
+    linear-gradient(145deg,rgba(36,54,47,.97),rgba(13,24,20,.98));
+  background-color:#030b09!important;
+  background-image:
+    linear-gradient(180deg,rgba(2,8,6,.22),rgba(2,8,6,.45) 55%,rgba(2,8,6,.61)),
+    url("assets/branding/oldroot-cosmic-field.svg")!important;
+  background-position:center top,center center!important;
+  background-size:cover,cover!important;
+  background-repeat:no-repeat,no-repeat!important;
+  background-attachment:fixed,fixed!important;
+  color:var(--or-ivory);
+}
+/* Previous root/tendril effects are suppressed so the nebula is never covered
+   by roots, graffiti, animated smears or a second wallpaper treatment. */
+html body.oldroot-after-dark::before,
+html body.oldroot-after-dark::after{
+  display:none!important;
+  animation:none!important;
+}
+/* The publisher masthead is a marquee, not a tiny navigation afterthought. */
+html body.oldroot-after-dark .masthead{
+  background:linear-gradient(105deg,#06100d,#0a271b 70%,#040b09)!important;
+  border-bottom:3px solid #c7a855!important;
+  box-shadow:0 5px 0 rgba(13,42,27,.7),0 12px 32px rgba(0,0,0,.4)!important;
+}
+html body.oldroot-after-dark .mast-inner{
+  min-height:96px;
+  max-width:1510px;
+  padding:8px clamp(16px,2.3vw,34px)!important;
+  gap:clamp(14px,2vw,32px);
+}
+html body.oldroot-after-dark .brand{
+  display:block!important;
+  width:clamp(218px,22vw,298px)!important;
+  height:clamp(65px,6.1vw,86px)!important;
+  flex:0 0 clamp(218px,22vw,298px)!important;
+  max-width:100%;
+  border:0!important;
+  background:transparent url("assets/approved-home/primary-logo.webp") center center / contain no-repeat!important;
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.55));
+  transform:none!important;
+}
+html body.oldroot-after-dark .brand:hover{filter:drop-shadow(0 3px 3px #000) brightness(1.12)}
+html body.oldroot-after-dark .site-nav{align-items:center;gap:3px}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:#f3eee3!important;
+  background:transparent!important;
+  font-size:clamp(10px,.84vw,12px)!important;
+  font-weight:850!important;
+  letter-spacing:.03em;
+  min-height:42px;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:#eacf7c!important;
+  background:rgba(22,74,46,.40)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown{
+  background:#0c1c15!important;
+  border:1px solid #53755c!important;
+  color:#f5f1e7!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a{color:#f5f1e7!important}
+
+/* Unified matte-carbon architecture across dossiers, lore, locations,
+   studio services, registry, marketplace and the analytical interface. */
+html body.oldroot-after-dark
+ :is(.character-shell .wiki-section,.character-shell .character-infobox,
+     .character-shell .character-identity,.character-shell .character-links,
+     .character-shell .character-network,.character-shell .dossier-chapter-index,
+     .character-shell .dossier-story-thread,.character-shell .max-gallery-section,
+     .location-dossier-page .location-section,.location-dossier-page .location-facts,
+     .location-dossier-cards a.place-card,.org-card,.lore-entry,.dispatch-card,
+     .character-card,.market-sticker-card,.market-feature-card,.marketplace-next-note,
+     .product-gallery,.product-buybox,.product-panel,.cart-main,.cart-summary,
+     .checkout-form,.checkout-summary,.confirmation-card,.discovery-card,
+     .work-with-oldroot-page .work-section,.work-with-oldroot-page .work-interest,
+     .work-with-oldroot-page .work-transparency,.work-with-oldroot-page .work-discipline-card,
+     .work-with-oldroot-page .work-values-grid,.work-with-oldroot-page .work-principles,
+     .work-with-oldroot-page .work-process,.work-with-oldroot-page .work-form-wrap,
+     .shell .hero,.shell .panel:not(.detail-panel),.shell .analytics-toolbar){
+  background:var(--or-composite)!important;
+  color:var(--or-ivory)!important;
+  border:1px solid rgba(146,183,153,.46)!important;
+  border-radius:9px!important;
+  box-shadow:0 13px 29px rgba(0,0,0,.36),inset 0 1px rgba(246,252,247,.07)!important;
+}
+/* Copy directly on carbon requires high contrast. Never paint images/illustrations. */
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(h1,h2,h3,h4,strong,b){
+  color:#faf4e7!important;
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(p,li,dt,dd,small,figcaption){
+  color:#cbd8ce!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-links,.location-section,.lore-entry,
+     .discovery-card,.dispatch-card,.work-section,.shell .hero,.shell .panel) a:not(.button){
+  color:#e9ca7c;
+}
+/* Framed utility links and filters remain visually distinct from carbon. */
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  color:#f9f2e6!important;
+  background:#1a3529!important;
+  border:1px solid #6d9175!important;
+}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:#f7f0de!important}
+html body.oldroot-after-dark .character-card .meta-pill{
+  background:#1a382b!important;color:#e2d1a6!important;border-color:#5c8163!important;
+}
+html body.oldroot-after-dark .character-card .class{color:#d7b968!important}
+
+/* Specialized modules keep their existing contrast systems, mechanisms and art.
+   Neither the interactive globe nor the dark OPI profile receives a new overlay. */
+html body.oldroot-after-dark .shell .panel.detail-panel,
+html body.oldroot-after-dark :is(.world-console,.dossier-opi-station,.dossier-art-archive){
+  box-shadow:0 12px 34px rgba(0,0,0,.42)!important;
+}
+html body.oldroot-after-dark .oldroot-footer{
+  background:
+    linear-gradient(115deg,rgba(4,13,10,.96),rgba(8,28,20,.97))!important;
+  border:1px solid #60765f!important;
+  border-top:3px solid #cfaa59!important;
+  border-radius:9px!important;
+  box-shadow:0 20px 50px rgba(0,0,0,.44)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::before{
+  background:linear-gradient(135deg,#05110c,#0b3020)!important;
+  border-color:#668368!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-brand.oldroot-signature::after{
+  background-image:url("assets/approved-home/primary-logo.webp")!important;
+}
+@media(max-width:1060px){
+  html body.oldroot-after-dark .mast-inner{min-height:82px}
+  html body.oldroot-after-dark .brand{
+    width:clamp(194px,22vw,255px)!important;
+    height:70px!important;
+    flex-basis:clamp(194px,22vw,255px)!important;
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark{
+    background-attachment:scroll,scroll!important;
+    background-size:auto,auto 100%!important;
+  }
+  html body.oldroot-after-dark .mast-inner{min-height:74px;padding:8px 14px!important}
+  html body.oldroot-after-dark .brand{
+    width:clamp(190px,51vw,236px)!important;
+    height:64px!important;
+    flex-basis:clamp(190px,51vw,236px)!important;
+  }
+  html body.oldroot-after-dark .site-nav>a,
+  html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{font-size:12px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.oldroot-after-dark{scroll-behavior:auto}
+}
+
+
+/* COSMIC-CARBON HIGH-SPECIFICITY CONSOLIDATION
+   Legacy Living Comic paper rules intentionally had strong !important
+   specificity. These overrides retire ONLY their light treatment, not content. */
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.lead-story,.content-block,.section-band,
+     .lore-entry,.lore-toolbar,.lore-empty,.event-main,.event-fact,.origin-lane,
+     .org-card,.org-registry-tools,.registry-tools,.character-card,.dispatch-card,
+     .dispatch-lead,.dispatch-tools,.library-card,.library-head,.library-section,
+     .location-dossier-hero,.location-section,.location-facts,.related-records,
+     .start-statement,.start-stat-panel,.start-stat,.world-breadcrumb,
+     .location-dossier-list,.organization-hero,.org-dossier-panel){
+  color:#f8f3e7!important;
+  background:var(--or-composite)!important;
+  border:1px solid #61836b!important;
+  border-radius:9px!important;
+  box-shadow:0 16px 35px rgba(0,0,0,.36)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border:2px solid #79936e!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.43),inset 0 1px rgba(248,255,246,.08)!important;
+  background:
+    radial-gradient(circle at 80% 0%,rgba(40,116,64,.25),transparent 38%),
+    var(--or-composite)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:#f8f3e7!important;text-shadow:none!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:#d2dfd2!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:#e0bd6b!important;
+}
+/* Dossier content is now carbon. The selected art and cover art are unchanged. */
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section,.character-infobox,.character-links,.dossier-chapter-index,
+     .character-network,.dossier-story-thread){
+  background:var(--or-composite)!important;
+  color:#faf4e8!important;
+  border:1px solid #5e7b65!important;border-radius:9px!important;
+  box-shadow:0 16px 40px rgba(0,0,0,.39)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,
+     .character-network-head h2,.dossier-chapter-index h2,
+     .dossier-story-thread h2,.dossier-thread-heading h2){
+  color:#faf4e8!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:#cfdbd0!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity,.wiki-section,.character-infobox,.character-links,
+     .character-network,.max-gallery-section){
+  background:var(--or-composite)!important;
+  color:#f8f2e8!important;
+  border:1px solid #607c69!important;
+  border-radius:9px!important;
+  box-shadow:0 16px 36px rgba(0,0,0,.34)!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:#f9f3e7!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-subtitle,.character-thesis,.wiki-section p,.wiki-section li,
+     .character-portrait figcaption,.info-row dt){
+  color:#cdd9cd!important;
+}
+/* The OPI terminal, existing character artwork and globe are special systems:
+   only their frames adapt; charts, icons and interactive maps remain intact. */
+
+
+/* HQ 2.1 masthead publisher lockup: the original approved illustrated logo
+   has a tall 4:3 canvas; 'contain' in a slim navbar rendered it tiny. Give
+   the unchanged art a deliberate signet + a strong typographic studio label. */
+html body.oldroot-after-dark .masthead .brand{
+  position:relative!important;
+  display:block!important;
+  width:clamp(298px,30vw,400px)!important;
+  flex:0 0 clamp(298px,30vw,400px)!important;
+  height:91px!important;
+  background:transparent url("assets/approved-home/primary-logo.webp") left center / 118px auto no-repeat!important;
+  overflow:visible!important;
+  text-decoration:none!important;
+}
+html body.oldroot-after-dark .masthead .brand::after{
+  content:"OLDROOT STUDIOS";
+  position:absolute;left:125px;top:20px;
+  color:#fff5e3!important;
+  white-space:nowrap;
+  font:900 clamp(21px,2.05vw,30px)/1 Impact,"Arial Narrow",Arial,sans-serif;
+  letter-spacing:.012em;
+  text-shadow:0 2px 8px rgba(0,0,0,.66);
+}
+html body.oldroot-after-dark .masthead .brand::before{
+  content:"THE LIVING COMIC / HQ";
+  position:absolute;left:127px;top:53px;
+  color:#dcb96e!important;
+  white-space:nowrap;
+  font:850 10px/1 Arial,sans-serif;
+  letter-spacing:.13em;
+}
+@media(max-width:1100px){
+  html body.oldroot-after-dark .masthead .brand{
+    width:282px!important;flex-basis:282px!important;
+    height:79px!important;background-size:102px auto!important;
+  }
+  html body.oldroot-after-dark .masthead .brand::after{
+    left:109px;top:19px;font-size:21px;
+  }
+  html body.oldroot-after-dark .masthead .brand::before{
+    left:110px;top:46px;font-size:9px;
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .masthead .brand{
+    width:226px!important;flex-basis:226px!important;
+    height:60px!important;background-size:79px auto!important;
+  }
+  html body.oldroot-after-dark .masthead .brand::after{
+    left:83px;top:12px;font-size:17px;letter-spacing:0;
+  }
+  html body.oldroot-after-dark .masthead .brand::before{
+    left:84px;top:34px;font-size:8px;letter-spacing:.07em;
+  }
+}
+
+
+/* ==========================================================================
+   HQ 2.2 / LIVING LIME + COMIC WHITE
+   Creator-approved palette shift: remove residual café as a UI language.
+   Green = OldRoot mark's bright fresh lime family; white = graphic comic ink.
+   Keep emerald nebula, dark carbon, existing art and high-contrast controls.
+   No words/graffiti added to the background.
+   ========================================================================== */
+html body.oldroot-after-dark{
+  --or-lime:#BEF37A;
+  --or-lime-bright:#C9FF82;
+  --or-lime-pale:#E1F7CB;
+  --or-comic-white:#FAFFFC;
+  --or-ink-muted:#C9D9CF;
+  --or-gold:var(--or-lime);
+  --or-ivory:var(--or-comic-white);
+  --or-secondary:var(--or-ink-muted);
+  --or-silver:#D7E7DD;
+  --or-carbon-edge:#557E65;
+  accent-color:var(--or-lime);
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .masthead{
+  border-bottom-color:var(--or-lime)!important;
+  box-shadow:0 4px 0 rgba(39,101,65,.65),0 14px 36px rgba(0,0,0,.45)!important;
+}
+html body.oldroot-after-dark .masthead .brand::after{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .masthead .brand::before{
+  color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .site-nav>a,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .site-nav>a:hover,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button:hover,
+html body.oldroot-after-dark .site-nav>a.active,
+html body.oldroot-after-dark .site-nav>.nav-group>.nav-menu-button.active{
+  color:var(--or-lime-bright)!important;
+  background:rgba(26,84,51,.48)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown,
+html body.oldroot-after-dark .site-nav .nav-dropdown a{
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown a:hover,
+html body.oldroot-after-dark .site-nav .nav-dropdown a:focus-visible{
+  color:var(--or-lime-bright)!important;
+}
+/* Structural strokes: carbon remains matte, edging shifts from café/gold to
+   precise OldRoot-green. No texture replacement and no art recoloring. */
+html body.oldroot-after-dark
+ :is(.character-card,.org-card,.lore-entry,.dispatch-card,.location-section,
+     .location-facts,.character-identity,.character-infobox,.wiki-section,
+     .character-links,.character-network,.dossier-chapter-index,
+     .dossier-story-thread,.page-head,.editorial-hero,.location-dossier-hero,
+     .organization-hero,.work-section,.work-interest,.work-form-wrap,
+     .library-card,.section-band,.content-block){
+  border-color:rgba(155,219,142,.58)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head,.editorial-hero,.location-dossier-hero,.organization-hero){
+  border-color:#8ABF81!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(h1,h2,h3,h4,strong,b){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-infobox,.character-identity,.character-links,
+     .character-network,.dossier-chapter-index,.dossier-story-thread,
+     .location-section,.location-facts,.lore-entry,.org-card,.dispatch-card,
+     .character-card,.discovery-card,.work-section,.work-interest,
+     .work-transparency,.work-discipline-card,.work-principles,.work-process,
+     .work-form-wrap,.shell .hero,.shell .panel)
+ :is(p,li,dt,dd,small,figcaption){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head h1,.editorial-hero h1,.section-band h2,.section-band-head h2,
+     .location-dossier-hero h1,.organization-hero h1,.character-card h3,
+     .org-card h3,.lore-entry h2,.lore-entry h3,.dispatch-card h3,
+     .event-main h2,.start-statement h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.page-head p,.editorial-hero p,.section-band p,.lore-entry p,.org-card p,
+     .character-card p,.location-dossier-hero p,.location-section p,
+     .event-main p,.dispatch-card p,.start-statement p){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic)
+ :is(.front-label,.editorial-kicker,.section-band-head span,.lead-kicker,
+     .lore-letter,.event-label,.dispatch-meta,.console-kicker){
+  color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section h2,.wiki-section h3,.infobox-title,.character-network-head h2,
+     .dossier-chapter-index h2,.dossier-story-thread h2,.dossier-thread-heading h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-shell[data-dossier]
+ :is(.wiki-section p,.wiki-section li,.info-row,.character-network-head p,
+     .dossier-chapter-index p,.dossier-story-thread p){
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark .character-shell:not([data-dossier])
+ :is(.character-identity h1,.wiki-section h2,.wiki-section h3,
+     .character-kicker,.infobox-title,.character-network h2){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-card .meta-pill{
+  color:var(--or-lime-pale)!important;
+  background:#193D29!important;
+  border-color:#6CB573!important;
+}
+html body.oldroot-after-dark .character-card .class{color:var(--or-lime)!important}
+html body.oldroot-after-dark
+ :is(.wiki-section,.character-links,.location-section,.lore-entry,
+     .discovery-card,.dispatch-card,.work-section,.shell .hero,.shell .panel)
+ a:not(.button){color:var(--or-lime)!important}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop){
+  border-color:#6DAE78!important;
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .character-shell
+ :is(.dossier-index-scroll a,.character-network-grid a,.dossier-thread-stop)
+ :is(b,strong,small,span,i){color:var(--or-comic-white)!important}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a){
+  background:#173B2A!important;
+  border-color:#A0DE91!important;
+  color:var(--or-comic-white)!important;
+  box-shadow:3px 3px 0 #06160D!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic)
+ :is(.hero-actions a,.editorial-button,.dossier-link,.quick-link,
+     .location-explore,.org-open,.library-view-link,.location-jumpbar a):hover{
+  background:#265F3C!important;
+  color:var(--or-lime-bright)!important;
+}
+html body.oldroot-after-dark .oldroot-footer{
+  border-color:#6DAF78!important;
+  border-top-color:var(--or-lime)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links b,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a:focus-visible{
+  color:var(--or-lime-bright)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a:not([href$="contact.html"]){
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]{
+  background:var(--or-lime)!important;
+  color:#0B2515!important;
+  border-color:#D8FBA8!important;
+}
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:hover,
+html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html"]:focus-visible{
+  background:var(--or-lime-bright)!important;
+  color:#07170D!important;
+}
+html body.oldroot-after-dark :is(a,button,input,select,textarea):focus-visible{
+  outline-color:var(--or-lime-bright)!important;
+}
