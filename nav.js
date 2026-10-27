@@ -3,6 +3,20 @@
 
   const nav = document.querySelector(".site-nav");
   const main = document.querySelector("main");
+  // Use the original approved red sticker asset, never a generated substitute.
+  // Resolve against this script so nested dossier routes and branch previews work.
+  const mastBrand = document.querySelector(".masthead .brand");
+  if (mastBrand && !mastBrand.querySelector(".mast-development-sticker")) {
+    const sticker = document.createElement("img");
+    sticker.className = "mast-development-sticker";
+    sticker.src = new URL("assets/approved-home/in-development-sticker.webp", document.currentScript?.src || document.baseURI).href;
+    sticker.alt = "";
+    sticker.setAttribute("aria-hidden", "true");
+    sticker.decoding = "async";
+    sticker.draggable = false;
+    mastBrand.append(sticker);
+  }
+
 
   if (main && !main.id) main.id = "main-content";
   if (main && !document.querySelector(".skip-link")) {
