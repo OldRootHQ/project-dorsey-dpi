@@ -925,3 +925,193 @@ html body.home-living-comic .lc-face-grid [data-portrait="agent-emerald"] img{
     scale:1.08;
   }
 }
+
+
+/* =======================================================================
+   HQ 2.3 / UNDER OBSERVATION STREET-INK FEATURE
+   The ONLY graffiti statement in OldRoot HQ. Decorative spray is strictly
+   contained to #issue-one, leaving the cosmic nebula and other panels clean.
+   No official character/comic artwork or issue-status wording is changed.
+   ======================================================================= */
+html body.home-living-comic #issue-one{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  border:3px solid #9DE47E!important;
+  border-radius:5px!important;
+  color:#FAFFFC!important;
+  background:
+    linear-gradient(90deg,rgba(2,10,8,.91) 0%,rgba(3,16,12,.80) 42%,rgba(4,16,13,.46) 100%),
+    url("assets/branding/issue-01-graffiti-accents.svg") center / cover no-repeat,
+    radial-gradient(ellipse at 83% 29%,#1d5634 0%,#0b281a 48%,#030a08 100%)!important;
+  box-shadow:8px 8px 0 #BDF584,0 15px 36px rgba(0,0,0,.44)!important;
+  padding:clamp(27px,4vw,56px)!important;
+}
+html body.home-living-comic #issue-one::before{
+  content:"";
+  pointer-events:none;
+  position:absolute;
+  inset:0 auto 0 0;
+  width:9px;
+  z-index:0;
+  background:repeating-linear-gradient(180deg,#D4FF9A 0 69px,#26593C 69px 84px,#FAFFFC 84px 93px);
+  box-shadow:5px 0 0 rgba(23,92,50,.23);
+}
+html body.home-living-comic #issue-one::after{
+  content:"";
+  position:absolute;
+  top:0;right:-40px;
+  width:clamp(150px,29%,370px);
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(124deg,transparent 0 46px,rgba(204,255,153,.055) 47px 49px,transparent 50px 80px);
+  transform:skew(-8deg);
+}
+html body.home-living-comic #issue-one .issue-street-art{
+  position:absolute;inset:0;z-index:1;
+  overflow:hidden;pointer-events:none;
+}
+html body.home-living-comic #issue-one .issue-street-art__tag{
+  position:absolute;right:6%;top:12%;
+  max-width:44%;
+  color:#C9FF82;
+  font:italic 900 clamp(16px,2.4vw,31px)/1 Impact,"Arial Narrow",sans-serif;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  text-shadow:2px 2px 0 #0B1D12, -1px -1px 0 rgba(255,255,255,.45);
+  transform:rotate(-11deg) skew(-5deg);
+  opacity:.84;
+}
+html body.home-living-comic #issue-one .issue-street-art__tag::after{
+  content:"";display:block;width:86%;height:4px;margin:6px auto 0;
+  background:linear-gradient(90deg,transparent,#C9FF82 12% 62%,transparent);
+  transform:skew(-24deg);
+}
+html body.home-living-comic #issue-one .issue-street-art__file{
+  position:absolute;bottom:6%;right:6%;
+  color:#FAFFFC;
+  font:900 clamp(9px,1.0vw,12px)/1.3 "Courier New",monospace;
+  letter-spacing:.16em;
+  border:1px solid rgba(250,255,252,.65);
+  padding:6px 10px;
+  transform:rotate(5deg);
+  opacity:.66;
+}
+html body.home-living-comic #issue-one .issue-street-art__slashes{
+  position:absolute;left:52%;bottom:13%;
+  width:70px;height:12px;
+  border-top:4px solid #C9FF82;
+  border-bottom:2px solid #FAFFFC;
+  transform:rotate(-24deg);
+  opacity:.56;
+}
+html body.home-living-comic #issue-one .issue-launch-serial,
+html body.home-living-comic #issue-one .issue-launch-body{
+  position:relative;z-index:2;
+}
+html body.home-living-comic #issue-one .issue-launch-serial{
+  color:#C9FF82!important;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+html body.home-living-comic #issue-one .issue-launch-serial span{
+  color:#FAFFFC!important;
+}
+html body.home-living-comic #issue-one .issue-launch-eyebrow,
+html body.home-living-comic #issue-one .issue-launch-body h2 span{
+  color:#C9FF82!important;
+  letter-spacing:.14em;
+}
+html body.home-living-comic #issue-one .issue-launch-body h2{
+  color:#FAFFFC!important;
+  max-width:750px;
+  font-weight:900;
+  text-transform:uppercase;
+  line-height:.95;
+  text-shadow:3px 4px 0 rgba(0,0,0,.63);
+}
+html body.home-living-comic #issue-one .issue-launch-body p{
+  color:#E2F0E6!important;
+  max-width:540px;
+  line-height:1.65;
+}
+html body.home-living-comic #issue-one .issue-launch-body a{
+  background:#BEF37A!important;
+  border:2px solid #FAFFFC!important;
+  border-radius:2px!important;
+  color:#0A1C0D!important;
+  font-weight:900;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:.045em;
+  padding:12px 18px;
+  box-shadow:4px 4px 0 #0A120C;
+  transition:transform .15s ease,background .15s ease;
+}
+html body.home-living-comic #issue-one .issue-launch-body a:hover{
+  background:#DAFFA9!important;
+  transform:translate(-2px,-2px);
+}
+html body.home-living-comic #issue-one .issue-launch-body a:focus-visible{
+  outline:3px solid #FAFFFC!important;
+  outline-offset:3px;
+}
+html body.home-living-comic #issue-one .issue-launch-stamp{
+  position:relative;
+  z-index:2;
+  min-width:clamp(165px,18vw,230px);
+  border:4px dashed #C9FF82!important;
+  background:rgba(2,13,8,.66);
+  color:#FAFFFC;
+  box-shadow:0 0 0 5px rgba(20,77,43,.36);
+  transform:rotate(-10deg);
+}
+html body.home-living-comic #issue-one .issue-launch-stamp b{
+  color:#FAFFFC!important;
+  font-size:clamp(72px,7.7vw,116px);
+  text-shadow:5px 5px 0 #215436;
+}
+html body.home-living-comic #issue-one .issue-launch-stamp span{
+  color:#C9FF82!important;
+}
+@media(max-width:900px){
+  html body.home-living-comic #issue-one .issue-street-art__tag{
+    top:8%;right:4%;opacity:.56;max-width:45%;
+  }
+  html body.home-living-comic #issue-one .issue-launch-body>div:first-child{
+    max-width:70%;
+  }
+}
+@media(max-width:680px){
+  html body.home-living-comic #issue-one{
+    padding:23px 20px 52px!important;
+    background:
+      linear-gradient(90deg,rgba(2,10,8,.88),rgba(3,16,12,.65)),
+      url("assets/branding/issue-01-graffiti-accents.svg") 60% center / auto 100% no-repeat,
+      linear-gradient(130deg,#06170E,#133624)!important;
+  }
+  html body.home-living-comic #issue-one::before{width:5px}
+  html body.home-living-comic #issue-one .issue-launch-body>div:first-child{max-width:100%}
+  html body.home-living-comic #issue-one .issue-street-art__tag{
+    top:auto;right:20px;bottom:14px;
+    max-width:82%;font-size:14px;opacity:.74;
+    transform:rotate(-5deg);
+  }
+  html body.home-living-comic #issue-one .issue-street-art__tag::after{
+    height:2px;margin-top:2px;
+  }
+  html body.home-living-comic #issue-one .issue-street-art__file,
+  html body.home-living-comic #issue-one .issue-street-art__slashes{display:none}
+  html body.home-living-comic #issue-one .issue-launch-body h2{
+    font-size:clamp(32px,8vw,49px);
+    line-height:1.03;
+  }
+  html body.home-living-comic #issue-one .issue-launch-serial{
+    font-size:10px;letter-spacing:.07em;
+  }
+  html body.home-living-comic #issue-one .issue-launch-body a{padding:11px 13px;font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  html body.home-living-comic #issue-one .issue-launch-body a{transition:none}
+}
