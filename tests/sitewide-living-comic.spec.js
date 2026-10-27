@@ -80,7 +80,7 @@ test('Character registry metadata pills have accessible carbon-and-lime contrast
   await page.goto(BASE + '/characters.html', { waitUntil: 'networkidle' });
   const pill = page.locator('.character-card .meta-pill').first();
   await expect(pill).toBeVisible();
-  await expect(pill).toHaveCSS('color', 'rgb(225, 247, 203)');
+  await expect(pill).toHaveCSS('color', 'rgb(230, 239, 212)');
   await expect(pill).toHaveCSS('background-color', 'rgb(25, 61, 41)');
 });
 
