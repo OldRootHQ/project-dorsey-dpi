@@ -257,7 +257,7 @@ html body.locations-living-comic .location-directory-meta strong{
   color:var(--or-avocado-light)!important;
 }
 html body.locations-living-comic .location-terminal{
-  border:1px solid rgba(183,207,138,.64)!important;
+  border:1px solid var(--or-avocado)!important;
   background:
     radial-gradient(circle at 100% 0%,rgba(183,207,138,.09),transparent 15rem),
     linear-gradient(145deg,#0b2519,#06190f)!important;
