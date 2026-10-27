@@ -2060,10 +2060,11 @@ html body.oldroot-after-dark .masthead .nav-menu-button.active::before{
   background:var(--or-avocado)!important;
   box-shadow:0 0 10px rgba(183,207,138,.55)!important;
 }
-html body.oldroot-after-dark .masthead .nav-caret,
-html body.oldroot-after-dark .masthead .mobile-nav-icon i{
+html body.oldroot-after-dark .masthead .nav-caret{
   color:var(--or-avocado)!important;
-  background-color:var(--or-avocado);
+}
+html body.oldroot-after-dark .masthead .mobile-nav-icon i{
+  background-color:var(--or-avocado)!important;
 }
 html body.oldroot-after-dark .masthead .mobile-nav-toggle{
   border-color:rgba(183,207,138,.50)!important;
