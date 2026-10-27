@@ -1957,3 +1957,87 @@ html body.oldroot-after-dark .oldroot-footer .footer-links a[href$="contact.html
 html body.oldroot-after-dark :is(a,button,input,select,textarea):focus-visible{
   outline-color:var(--or-lime-bright)!important;
 }
+
+
+/* ========================================================================
+   HQ 2.4 / SOFT AVOCADO FINISHING PASS
+   Approved #B7CF8A replaces residual café / gold UI, not artwork or the
+   globe's original internal gold pin and SVG system.
+   ======================================================================== */
+html body.oldroot-after-dark{
+  --or-avocado:#B7CF8A;
+  --or-avocado-light:#D5E5B7;
+  --or-avocado-deep:#6F8F57;
+  --or-lime:var(--or-avocado);
+  --or-lime-bright:var(--or-avocado-light);
+  --or-lime-pale:#E6EFD4;
+  --or-carbon-edge:#78977D;
+}
+
+/* The existing approved red sticker sits directly on the small image logo;
+   the original wordmark, logo image and masthead lettering are untouched. */
+html body.oldroot-after-dark .masthead .brand .mast-development-sticker{
+  display:block;
+  position:absolute;
+  z-index:4;
+  top:5px;
+  left:67px;
+  width:49px;
+  max-width:none;
+  height:auto;
+  transform:rotate(-10deg);
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.65));
+  pointer-events:none;
+  user-select:none;
+}
+@media(max-width:1100px){
+  html body.oldroot-after-dark .masthead .brand .mast-development-sticker{
+    top:4px;left:58px;width:43px;
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .masthead .brand .mast-development-sticker{
+    top:1px;left:43px;width:35px;
+  }
+}
+
+/* All navigation mega-panels share the light avocado accent language. */
+html body.oldroot-after-dark .oldroot-mega[data-mega-theme]{
+  --mega-tint:var(--or-avocado);
+  --mega-glow:rgba(183,207,138,.20);
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega{
+  border-color:rgba(183,207,138,.60)!important;
+  border-top:2px solid var(--or-avocado)!important;
+  background:
+    radial-gradient(circle at 8% 10%,rgba(183,207,138,.12),transparent 43%),
+    linear-gradient(133deg,#10281b 0%,#081b13 62%,#06160f 100%)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega::before{
+  background:linear-gradient(90deg,transparent,var(--or-avocado-light),transparent)!important;
+}
+html body.oldroot-after-dark .oldroot-mega-intro{
+  border-color:rgba(183,207,138,.35)!important;
+  background:linear-gradient(135deg,rgba(183,207,138,.19),rgba(24,62,36,.25) 75%)!important;
+}
+html body.oldroot-after-dark .oldroot-mega-kicker,
+html body.oldroot-after-dark .oldroot-mega-signature{
+  color:var(--or-avocado-light)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{
+  border-color:rgba(183,207,138,.25)!important;
+  background:linear-gradient(130deg,rgba(183,207,138,.10),rgba(11,40,24,.36))!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link::before{
+  color:var(--or-avocado-light)!important;
+}
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link:is(:hover,:focus-visible,.active){
+  border-color:var(--or-avocado)!important;
+  background:linear-gradient(120deg,rgba(183,207,138,.29),rgba(77,122,77,.21))!important;
+  box-shadow:inset 3px 0 0 var(--or-avocado)!important;
+}
+/* Preserve cream headings and white link labels for accessibility. */
+html body.oldroot-after-dark .oldroot-mega-heading,
+html body.oldroot-after-dark .site-nav .nav-dropdown.oldroot-mega a.oldroot-mega-link{
+  color:var(--or-comic-white)!important;
+}
