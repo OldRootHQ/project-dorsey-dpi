@@ -232,3 +232,96 @@ html body.locations-living-comic a:focus-visible,
 html body.locations-living-comic button:focus-visible{
   outline-color:var(--or-lime)!important;
 }
+
+
+/* HQ 2.4 / SOFT AVOCADO WORLD INDEX CHROME
+   Do not recolor .globe-stage, #techGlobe, earth geometry, SVG nodes,
+   clusters, or gold location pins. These edits are OUTSIDE the globe. */
+html body.locations-living-comic .world-console{
+  border-color:rgba(183,207,138,.75)!important;
+  background:
+    radial-gradient(circle at 96% 6%,rgba(183,207,138,.11),transparent 42%),
+    linear-gradient(135deg,#071b12,#07160e 64%,#031009)!important;
+}
+html body.locations-living-comic .world-console::before{
+  background-image:
+    linear-gradient(rgba(183,207,138,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(183,207,138,.07) 1px,transparent 1px)!important;
+}
+html body.locations-living-comic .world-console-bar .console-kicker,
+html body.locations-living-comic .terminal-id,
+html body.locations-living-comic .location-terminal dt,
+html body.locations-living-comic .location-terminal dd a,
+html body.locations-living-comic .globe-scope-note strong,
+html body.locations-living-comic .location-directory-meta strong{
+  color:var(--or-avocado-light)!important;
+}
+html body.locations-living-comic .location-terminal{
+  border:1px solid rgba(183,207,138,.64)!important;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(183,207,138,.09),transparent 15rem),
+    linear-gradient(145deg,#0b2519,#06190f)!important;
+}
+html body.locations-living-comic .terminal-status span{
+  background:var(--or-avocado)!important;
+  box-shadow:0 0 0 4px rgba(183,207,138,.16)!important;
+}
+html body.locations-living-comic .terminal-rule{
+  background:linear-gradient(90deg,var(--or-avocado),rgba(183,207,138,.20),transparent)!important;
+}
+html body.locations-living-comic .location-terminal .terminal-note{
+  border-color:rgba(183,207,138,.26)!important;
+  background:rgba(183,207,138,.08)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.locations-living-comic .location-terminal .terminal-regional{
+  border:1px solid var(--or-avocado-deep)!important;
+  border-left:3px solid var(--or-avocado-deep)!important;
+  background:linear-gradient(130deg,#D5E5B7,#B7CF8A)!important;
+  box-shadow:0 7px 20px rgba(0,0,0,.20)!important;
+}
+html body.locations-living-comic .terminal-regional-heading{
+  color:#27472C!important;
+}
+html body.locations-living-comic .terminal-regional p,
+html body.locations-living-comic .terminal-regional a{
+  color:#1D3923!important;
+  opacity:1!important;
+}
+html body.locations-living-comic .terminal-regional a:focus-visible{
+  outline:2px solid #27472C!important;
+}
+html body.locations-living-comic .location-index button{
+  border-color:rgba(183,207,138,.24)!important;
+  background:linear-gradient(135deg,rgba(28,55,35,.70),rgba(5,22,13,.75))!important;
+}
+html body.locations-living-comic .location-index button span{
+  color:var(--or-avocado)!important;
+}
+html body.locations-living-comic .location-index button:is(:hover,.active),
+html body.locations-living-comic .location-index button[class*="place-"].active{
+  border-color:var(--or-avocado)!important;
+  background:linear-gradient(135deg,rgba(183,207,138,.22),rgba(47,85,54,.30))!important;
+  box-shadow:inset 0 -2px 0 var(--or-avocado),0 0 17px rgba(183,207,138,.10)!important;
+}
+html body.locations-living-comic .world-controls button{
+  border-color:rgba(183,207,138,.57)!important;
+}
+html body.locations-living-comic .world-controls button:is(:hover,.active){
+  background:linear-gradient(130deg,var(--or-avocado-light),var(--or-avocado))!important;
+  color:#173621!important;
+}
+html body.locations-living-comic .location-jumpbar{
+  border-color:rgba(183,207,138,.58)!important;
+  background:linear-gradient(135deg,#102b1c,#071e14)!important;
+}
+html body.locations-living-comic .location-jumpbar a{
+  border-color:var(--or-avocado)!important;
+}
+html body.locations-living-comic .location-dossier-list,
+html body.locations-living-comic .location-directory-meta{
+  border-color:rgba(183,207,138,.58)!important;
+}
+html body.locations-living-comic .locations-page .location-dossier-cards a.place-card{
+  border-color:rgba(183,207,138,.38)!important;
+}
