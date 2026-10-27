@@ -883,3 +883,29 @@ html body.home-living-comic .dispatch-lead .dispatch-art{border-color:var(--or-l
     box-shadow:3px 3px 0 var(--or-lime),5px 5px 0 #020705!important;
   }
 }
+
+
+/* HQ 2.2 head-safe portrait alignment
+   The approved images have different native aspect ratios. Old shared 27%/35%
+   framing chopped the tall originals' hair and hood on wide desktop cards.
+   Preserve their unchanged source bytes, keep faces at a shared upper anchor
+   and take unavoidable cropping from the BOTTOM of each card. */
+html body.home-living-comic .lc-face-grid .lc-face img{
+  object-fit:cover!important;
+  object-position:center top!important;
+}
+/* The original Isiah/Liontone masters have ink touching their top boundary.
+   A few pixels of panel-color headroom protects hood/hair at desktop widths,
+   without moving Kincast downward or covering any artwork with a mask. */
+@media(min-width:901px){
+  html body.home-living-comic .lc-face-grid
+    :is([data-portrait="isiah-ivory"],[data-portrait="liontone"]) img{
+      translate:0 7px;
+  }
+}
+@media(max-width:900px){
+  html body.home-living-comic .lc-face-grid
+    :is([data-portrait="isiah-ivory"],[data-portrait="liontone"]) img{
+      translate:none;
+  }
+}
