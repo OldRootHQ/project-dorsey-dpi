@@ -1115,3 +1115,30 @@ html body.home-living-comic #issue-one .issue-launch-stamp span{
 @media(prefers-reduced-motion:reduce){
   html body.home-living-comic #issue-one .issue-launch-body a{transition:none}
 }
+
+
+/* HQ 2.6 / MOBILE LOGO UNFRAMED
+   Keep the creator-approved transparent logo file completely unchanged.
+   On stacked layouts it should live directly in the green hero, without
+   the dark publisher plaque, edge rule, padding or artificial frame shadow.
+   Desktop (>900px) retains its existing publisher plaque treatment. */
+@media(max-width:900px){
+  html body.home-living-comic .lc-hero-top .lc-wordmark{
+    display:block!important;
+    width:100%!important;
+    max-width:450px!important;
+    height:clamp(175px,48vw,250px)!important;
+    min-height:0!important;
+    margin:0 auto!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background-image:url("assets/approved-home/primary-logo.webp")!important;
+    background-position:center!important;
+    background-size:contain!important;
+    background-repeat:no-repeat!important;
+    background-color:transparent!important;
+    box-shadow:none!important;
+    outline:0!important;
+  }
+}
