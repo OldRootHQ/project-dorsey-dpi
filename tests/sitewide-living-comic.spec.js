@@ -72,7 +72,7 @@ test('Indexed place cards use readable light type on carbon composite', async ({
   await page.goto(BASE + '/locations.html', { waitUntil: 'networkidle' });
   const firstCard = page.locator('.location-dossier-cards a.place-card').first();
   await expect(firstCard).toBeVisible();
-  await expect(firstCard.locator('h3')).toHaveCSS('color', 'rgb(252, 246, 233)');
+  await expect(firstCard.locator('h3')).toHaveCSS('color', 'rgb(250, 255, 252)');
   await expect(firstCard.locator('p')).toHaveCSS('color', 'rgb(207, 219, 208)');
 });
 
