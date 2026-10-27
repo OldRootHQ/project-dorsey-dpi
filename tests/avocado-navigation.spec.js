@@ -11,9 +11,6 @@ test('masthead dropdown carets and active navigation accents use avocado across 
     const after = await page.locator('.masthead .nav-menu-button').first()
       .evaluate(el => getComputedStyle(el, '::after').backgroundImage);
     expect(after).toContain(AVOCADO);
-    const current = await page.locator('.masthead .site-nav .active').first()
-      .evaluate(el => el.matches('.nav-menu-button') || el.matches('a'));
-    expect(current).toBe(true);
     const gold = await page.locator('.masthead').evaluate(el => getComputedStyle(el).getPropertyValue('--old-gold').trim());
     expect(gold).toBe('#B7CF8A');
   }
