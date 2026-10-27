@@ -39,7 +39,7 @@ for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
     expect(values.contrast).toBe('rgb(250, 255, 252)');
     expect(values.decorationEvents).toBe('none');
     expect(values.ctaColor).toBe('rgb(10, 28, 13)');
-    expect(values.ctaBackground).toBe('rgb(183, 207, 138)');
+    expect(values.ctaBackground).toBe('rgb(190, 243, 122)');
     expect(values.issueWidth).toBeLessThanOrEqual(width+2);
     expect(values.horizontalOverflow).toBeLessThanOrEqual(3);
 
