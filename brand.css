@@ -1249,13 +1249,16 @@ html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section,.work-int
 }
 html body.oldroot-after-dark .work-with-oldroot-page :is(.work-section-heading h2,
   .work-interest-heading h2,.work-discipline-card h3){color:#29211e!important}
-html body.oldroot-after-dark .mail-console{
-  background:linear-gradient(135deg,#30241e,#1b1816)!important;
-  border:3px solid #171514!important;border-radius:4px!important;
-  box-shadow:7px 7px 0 #ae9578!important;
+/* HQ 2.7: Studio contact terminal adopts the approved soft-avocado palette. */
+html body.oldroot-after-dark .contact-page .mail-console{
+  background:linear-gradient(137deg,#D5E5B7 0%,#B7CF8A 68%,#A9C985 100%)!important;
+  border:2px solid #DCEAC6!important;
+  border-radius:12px!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.30)!important;
 }
-html body.oldroot-after-dark .mail-console .mail-topbar{
-  background:#29211e!important;
+html body.oldroot-after-dark .contact-page .mail-console .mail-topbar{
+  background:#153B28!important;
+  color:#E6EFD4!important;
 }
 html body.oldroot-after-dark .shell .hero,
 html body.oldroot-after-dark .shell .panel,
@@ -1272,7 +1275,6 @@ html body.oldroot-after-dark .shell .panel-head p{color:#5c5046!important}
 @media(max-width:760px){
  html body.oldroot-after-dark .marketplace-featured,
  html body.oldroot-after-dark .work-with-oldroot-page .work-hero,
- html body.oldroot-after-dark .mail-console,
  html body.oldroot-after-dark .powder-page .powder-hero{
    box-shadow:4px 4px 0 #b49b7d!important;
  }
