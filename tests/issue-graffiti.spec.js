@@ -11,10 +11,16 @@ for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
     await page.goto(BASE+'/',{waitUntil:'networkidle'});
     const issue = page.locator('#issue-one');
     await expect(issue).toBeVisible();
-    await expect(issue.locator('#issue-one-heading')).toContainText('UNDER OBSERVATION');
+    await expect(issue.locator('#issue-one-heading')).toHaveText(/ISSUE #1\s+IN DEVELOPMENT/);
     await expect(issue).toContainText('IN DEVELOPMENT');
+    // First issue stays unnamed publicly; the teaser must not reveal its lead character.
+    await expect(issue).not.toContainText('UNDER OBSERVATION');
+    await expect(issue).not.toContainText('KINCAST');
+    await expect(issue.locator('.issue-street-art__file')).toHaveText('OLDROOT / ISSUE 001');
+    await expect(issue.locator('.issue-launch-stamp')).toContainText('IN');
+    await expect(issue.locator('.issue-launch-stamp')).toContainText('DEVELOPMENT');
     await expect(issue.locator('.issue-street-art')).toHaveAttribute('aria-hidden','true');
-    await expect(issue.locator('.issue-street-art__tag')).toContainText("WHO'S WATCHING?");
+    await expect(issue.locator('.issue-street-art__tag')).toContainText('IN THE WORKS');
     await expect(issue.locator('.issue-launch-body a')).toHaveAttribute('href','marketplace.html');
 
     const values = await page.evaluate(()=>{
