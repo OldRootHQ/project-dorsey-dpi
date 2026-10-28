@@ -2905,20 +2905,21 @@ html body.oldroot-after-dark .contact-page .mail-message>span{
   color:#24492D!important;
   font-weight:900;
 }
-html body.oldroot-after-dark .contact-page .mail-row input{
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input{
+  border:0!important;
   background:transparent!important;
   color:#173621!important;
   caret-color:#173621;
 }
-html body.oldroot-after-dark .contact-page .mail-row input::placeholder,
-html body.oldroot-after-dark .contact-page .mail-message textarea::placeholder{
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input::placeholder,
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-message textarea::placeholder{
   color:#4B654E!important;
   opacity:1;
 }
-html body.oldroot-after-dark .contact-page .mail-row input[readonly]{
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input[readonly]{
   color:#31553A!important;
 }
-html body.oldroot-after-dark .contact-page .mail-message textarea{
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-message textarea{
   border:1px solid #6F8F57!important;
   background:#F0F6E5!important;
   color:#173621!important;
