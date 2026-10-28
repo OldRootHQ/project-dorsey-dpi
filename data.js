@@ -109,5 +109,16 @@ window.OLDROOT_CHARACTERS = [
     summary:"Seattle pizza courier and emerging human vigilante. Wields six loaded high-velocity mechanical discs plus two manually reloaded reserves, and burst-assisted parkour equipment.",
     officialOPI:null, suppressAggregate:true,
     baseline:{Strength:5.5,Durability:5.4,Speed:7.3,Agility:9.2,Regeneration:4.7,Senses:6.4,Offense:14.1,Intellect:6.7,Combat:11.2,Mobility:11.0,Stamina:8.5}, conditional:[]
+  },
+  {
+    codename:"Liontone", civilian:"Captain Marlon McKenzie", classification:"Hero", role:"Hero",
+    registryOrder:15, location:"Jamaica", locationKey:"Jamaica",
+    origin:"Biogenetically Enhanced", originType:"Military Enhancement",
+    affiliation:"Jamaica Defence Force", page:"characters/liontone/", image:"assets/approved-home/liontone.webp",
+    age:38, heightIn:76, weightLb:240, yearsActive:null,
+    summary:"Jamaican enhanced special-operations commander and national guardian known for disciplined, principled protection.",
+    suppressAggregate:true, officialOPI:null,
+    baseline:{Strength:13.1,Durability:12.7,Speed:11.8,Agility:13.2,Regeneration:11.1,Senses:11.8,Offense:17.4,Intellect:10.5,Combat:18.8,Mobility:7.9,Stamina:14.1},
+    conditional:[]
   }
 ];
