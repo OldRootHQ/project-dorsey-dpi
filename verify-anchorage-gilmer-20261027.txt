@@ -1,0 +1,9 @@
+OLDROOT HQ - PUBLISHING VERIFICATION
+
+ANCHORAGE CANONICAL CIVILIAN NAME: Gilmer "Gil" Simpson
+
+Diagnostic revision: e4b1b3f + verification marker 2026-10-27.
+
+If you can read this page at oldroothq.com, your browser has reached the new GitHub Pages content. If the existing Anchorage page still displays Antwuan Cole, it may be cached or another script/path is supplying outdated text.
+
+This diagnostic file does not change public navigation, the website design, or DNS.
