@@ -12,6 +12,7 @@ for(const width of [390, 1440]){
       const topbar=getComputedStyle(el.querySelector('.mail-topbar'));
       const label=getComputedStyle(el.querySelector('.mail-row span'));
       const message=getComputedStyle(el.querySelector('textarea'));
+      const name=getComputedStyle(el.querySelector('input[name="name"]'));
       const button=getComputedStyle(el.querySelector('.mail-actions button'));
       return {
         background:css.backgroundImage,
@@ -19,6 +20,9 @@ for(const width of [390, 1440]){
         topbar:topbar.backgroundColor,
         label:label.color,
         textarea:message.backgroundColor,
+        nameBackground:name.backgroundColor,
+        nameBorder:name.borderTopWidth,
+        nameInk:name.color,
         ink:message.color,
         button:button.backgroundColor,
         buttonInk:button.color,
@@ -33,6 +37,9 @@ for(const width of [390, 1440]){
     expect(theme.topbar).toBe('rgb(21, 59, 40)');
     expect(theme.label).toBe('rgb(36, 73, 45)');
     expect(theme.textarea).toBe('rgb(240, 246, 229)');
+    expect(theme.nameBackground).toBe('rgba(0, 0, 0, 0)');
+    expect(theme.nameBorder).toBe('0px');
+    expect(theme.nameInk).toBe('rgb(23, 54, 33)');
     expect(theme.ink).toBe('rgb(23, 54, 33)');
     expect(theme.button).toBe('rgb(21, 59, 40)');
     expect(theme.buttonInk).toBe('rgb(239, 247, 223)');
