@@ -127,8 +127,8 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     const relative = path.relative(root, file).replace(/\\/g, '/');
 
     if (!html.includes('oldroot-after-dark')) failures.push(relative + ': theme class missing');
-    if (!html.includes('brand.css?v=17')) failures.push(relative + ': brand cache key stale');
-    if (html.includes('site.css') && !html.includes('site.css?v=33')) failures.push(relative + ': site cache key stale');
+    if (!html.includes(relative === 'contact.html' ? 'brand.css?v=18' : 'brand.css?v=17')) failures.push(relative + ': brand cache key stale');
+    if (html.includes('site.css') && !html.includes(relative === 'contact.html' ? 'site.css?v=34' : 'site.css?v=33')) failures.push(relative + ': site cache key stale');
     if (html.includes('character.css') && !html.includes('character.css?v=27')) failures.push(relative + ': character cache key stale');
     if (html.includes('locations.css') && !(html.includes('locations.css?v=10') || (relative === 'locations.html' && html.includes('locations.css?v=11')))) failures.push(relative + ': locations cache key stale');
     if (html.includes('styles.css') && !html.includes('styles.css?v=17')) failures.push(relative + ': OPI cache key stale');

@@ -2874,3 +2874,90 @@ html body.oldroot-after-dark .site-shell .registry-explainer .registry-note{
   font-size:13px!important;
   line-height:1.65!important;
 }
+
+
+/* ==========================================================================
+   HQ 2.7 / SOFT AVOCADO CONTACT FORM
+   Retire the old café/brown terminal styling; the approved green is a real
+   panel surface, not only a border accent. Preserve form fields and routing.
+   ========================================================================== */
+html body.oldroot-after-dark .contact-page .mail-console{
+  background:linear-gradient(137deg,#D5E5B7 0%,#B7CF8A 68%,#A9C985 100%)!important;
+  border:2px solid #DCEAC6!important;
+  border-radius:12px!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.30)!important;
+  color:#1B3523!important;
+}
+html body.oldroot-after-dark .contact-page .mail-topbar{
+  background:#153B28!important;
+  border-bottom:2px solid #6F8F57!important;
+  color:#E6EFD4!important;
+}
+html body.oldroot-after-dark .contact-page .oldroot-mail-form{
+  background:transparent!important;
+  color:#1B3523!important;
+}
+html body.oldroot-after-dark .contact-page .mail-row{
+  border-bottom:1px solid rgba(29,65,38,.28)!important;
+}
+html body.oldroot-after-dark .contact-page .mail-row span,
+html body.oldroot-after-dark .contact-page .mail-message>span{
+  color:#24492D!important;
+  font-weight:900;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input{
+  border:0!important;
+  background:transparent!important;
+  color:#173621!important;
+  caret-color:#173621;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input::placeholder,
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-message textarea::placeholder{
+  color:#4B654E!important;
+  opacity:1;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-row input[readonly]{
+  color:#31553A!important;
+}
+html body.oldroot-after-dark:not(.home-living-comic):not(.locations-living-comic) .contact-page .mail-message textarea{
+  border:1px solid #6F8F57!important;
+  background:#F0F6E5!important;
+  color:#173621!important;
+  border-radius:9px!important;
+  caret-color:#173621;
+}
+html body.oldroot-after-dark .contact-page .mail-row input:focus,
+html body.oldroot-after-dark .contact-page .mail-message textarea:focus{
+  box-shadow:0 0 0 3px rgba(41,89,47,.22)!important;
+}
+html body.oldroot-after-dark .contact-page .mail-direct{
+  color:#264A30!important;
+}
+html body.oldroot-after-dark .contact-page .mail-direct a{
+  color:#204B2B!important;
+  font-weight:900;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+html body.oldroot-after-dark .contact-page .mail-actions button{
+  border:1px solid #153B28!important;
+  border-radius:9px!important;
+  background:#153B28!important;
+  color:#EFF7DF!important;
+  box-shadow:0 3px 0 rgba(17,49,28,.27)!important;
+}
+html body.oldroot-after-dark .contact-page .mail-actions button:is(:hover,:focus-visible){
+  background:#285739!important;
+  border-color:#285739!important;
+  color:#FFF!important;
+}
+html body.oldroot-after-dark .contact-page .mail-success{
+  background:#214B2D!important;
+  border:1px solid #4E8650!important;
+  color:#F1F9E8!important;
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark .contact-page .mail-console{
+    box-shadow:0 10px 28px rgba(0,0,0,.28)!important;
+  }
+}
