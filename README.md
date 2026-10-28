@@ -7,7 +7,7 @@ Static public website for the OldRoot universe, including character dossiers, lo
 - Commotion / Ja’Kori Benson
 - Aftermark / Nicolás “Nico” Vélez Rosado
 - Kincast / Micah Ellison & Naomi Ellison
-- Anchorage / Gilmer “Gil” Simpson
+- Anchorage / Antwuan Cole
 - Agent Emerald / Remington James “Remy” Hampton
 - Latch / Latch Boswell
 - Amari Razman / Amari Razman
