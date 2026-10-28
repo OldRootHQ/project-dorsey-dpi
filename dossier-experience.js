@@ -7,6 +7,56 @@
   const identity = main?.querySelector(":scope > .character-identity");
   const featured = main?.querySelector(":scope > .character-feature-art");
   const grid = main?.querySelector(":scope > .dossier-grid");
+  
+  // Fit ALL character names into the available identity heading width.
+  // Long names get smaller only as needed; short names retain their designed size.
+  // This runs before dossier enhancement so supporting-character pages benefit too.
+  const title = identity?.querySelector("h1");
+  if (title) {
+    let framePending = false;
+    const fitTitle = () => {
+      framePending = false;
+      // Reset to authored responsive CSS on every measurement, so growing a
+      // viewport restores the original larger title rather than staying small.
+      title.style.removeProperty("font-size");
+      title.style.setProperty("white-space", "nowrap", "important");
+      title.style.setProperty("text-wrap", "nowrap", "important");
+      title.style.setProperty("overflow-wrap", "normal", "important");
+      title.style.setProperty("word-break", "normal", "important");
+
+      const available = title.getBoundingClientRect().width - 5;
+      if (available <= 0) return;
+      const natural = parseFloat(getComputedStyle(title).fontSize);
+      const range = document.createRange();
+      range.selectNodeContents(title);
+      let contentWidth = range.getBoundingClientRect().width;
+      if (!contentWidth || !Number.isFinite(natural)) return;
+      if (contentWidth > available) {
+        let fitted = natural * available / contentWidth;
+        // Measure again after setting the font to account for subpixel rounding.
+        for (let attempt = 0; attempt < 3; attempt++) {
+          title.style.setProperty("font-size", fitted.toFixed(2) + "px", "important");
+          contentWidth = range.getBoundingClientRect().width;
+          if (contentWidth <= available) break;
+          fitted *= available / contentWidth * .995;
+        }
+      }
+    };
+    const scheduleFit = () => {
+      if (framePending) return;
+      framePending = true;
+      requestAnimationFrame(fitTitle);
+    };
+    fitTitle();
+    if (typeof ResizeObserver !== "undefined") {
+      new ResizeObserver(scheduleFit).observe(title.parentElement);
+    }
+    window.addEventListener("resize", scheduleFit, { passive: true });
+    document.fonts?.ready.then(scheduleFit);
+    // Dossier enhancement moves identity into a new responsive hero.
+    requestAnimationFrame(scheduleFit);
+  }
+
   if (!main || !identity || !featured || !grid || main.dataset.dossierEnhanced) return;
   main.dataset.dossierEnhanced = "true";
 
