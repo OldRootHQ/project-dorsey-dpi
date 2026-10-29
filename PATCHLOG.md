@@ -6,7 +6,7 @@
 - Added Liontone to Start Here and homepage rotation, refreshed public images in the Registry and OPI records, linked character discovery and search metadata, and published a character introduction in Dispatches.
 - Indexed **Montego Bay / Jamaica as LOC-008**, distinguishing Marlon's hometown from classified or unspecified JDF operational locations; linked the record into the World Index interactive globe and directory. The map marker represents a public city center, not a fictional base.
 - Preserved the classified enhancement program's undisclosed specifics, unnamed late wife, unspecified family backstory and unrevealed squad members. The prior public claim about a specific enhancement partnership was removed.
-- Updated release tests, location counts and cache keys. The existing Issue #1 teaser, Marketplace, and still-inactive Cloudflare poll were left untouched.
+- Updated release tests, location counts and cache keys, including inherited contact-page stylesheet assertions from an unrelated earlier release. The existing Issue #1 teaser, Marketplace, and still-inactive Cloudflare poll were left untouched.
 
 ## OR-WEB-0101 · October 19, 2026 · Compact Reader's Choice + Private Vote Backend (Pending Activation)
 

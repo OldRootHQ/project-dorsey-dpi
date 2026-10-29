@@ -108,7 +108,7 @@ test('Root Atmosphere remains a single removable visual dependency', async () =>
 
   for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf8');
-    expect(html, path.relative(root, file)).toContain('brand.css?v=17');
+    expect(html, path.relative(root, file)).toContain(path.relative(root, file).replace(/\\\\/g, '/') === 'contact.html' ? 'brand.css?v=18' : 'brand.css?v=17');
     expect(html, path.relative(root, file)).not.toContain('brand.css?v=13');
   }
 });

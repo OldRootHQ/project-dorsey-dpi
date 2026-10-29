@@ -142,7 +142,7 @@ test('every masthead uses the grouped navigation and loads the controller', asyn
     if (!html.includes('>OPI Analytics</a>')) failures.push(relative + ': missing OPI link');
     if (!html.includes('>Start Here</a>') || !html.includes('>Lore Index</a>')) failures.push(relative + ': incomplete Lore menu');
     if (!html.includes(expectedScript)) failures.push(relative + ': missing nav controller');
-    if (!html.includes('brand.css?v=17')) failures.push(relative + ': stale brand stylesheet');
+    if (!html.includes(relative === 'contact.html' ? 'brand.css?v=18' : 'brand.css?v=17')) failures.push(relative + ': stale brand stylesheet');
   }
 
   expect(failures).toEqual([]);
