@@ -9,9 +9,9 @@ const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 const indexable = [
   'index.html','characters.html',
   'characters/gila-monster/index.html','characters/commotion/index.html','characters/aftermark/index.html',
-  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html',
+  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html', 'characters/liontone/index.html',
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
-  'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html',
+  'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html', 'locations/montego-bay/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
   'start-here.html','lore.html','lore/abyron/index.html','lore/abyron-powder/index.html','lore/abyron-discovery/index.html','lore/genesis/index.html','marketplace.html','news.html','dpi.html','about.html','work-with-oldroot.html','contact.html','donate.html'
 ];
@@ -51,6 +51,8 @@ test('public records expose complete search and social metadata', async () => {
           ? BASE + 'assets/characters/remedie/remedie-featured.webp'
           : file === 'characters/max-corbett/index.html'
             ? BASE + 'assets/characters/max-corbett/max-registry.webp'
+          : file === 'characters/liontone/index.html'
+            ? BASE + 'assets/characters/liontone/liontone-ruins.webp'
           : file === 'characters/flying-saucer/index.html'
             ? BASE + 'assets/characters/flying-saucer/flying-saucer-sunset-jump.webp'
             : SOCIAL;
@@ -98,7 +100,7 @@ test('World Index topology is local-first with a pinned remote fallback', async 
   const html = read('locations.html');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/d3@7.9.0');
   expect(html).toContain('https://cdn.jsdelivr.net/npm/topojson-client@3.1.0');
-  expect(html).toContain('location-data.js?v=4');
+  expect(html).toContain('location-data.js?v=5');
   expect(html).toContain('locations.js?v=6');
 });
 

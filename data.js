@@ -114,7 +114,7 @@ window.OLDROOT_CHARACTERS = [
     codename:"Liontone", civilian:"Captain Marlon McKenzie", classification:"Hero", role:"Hero",
     registryOrder:15, location:"Jamaica", locationKey:"Jamaica",
     origin:"Biogenetically Enhanced", originType:"Military Enhancement",
-    affiliation:"Jamaica Defence Force", page:"characters/liontone/", image:"assets/approved-home/liontone.webp",
+    affiliation:"Jamaica Defence Force", page:"characters/liontone/", image:"assets/characters/liontone/liontone-ruins.webp",
     age:38, heightIn:76, weightLb:240, yearsActive:null,
     summary:"Jamaican enhanced special-operations commander and national guardian known for disciplined, principled protection.",
     suppressAggregate:true, officialOPI:null,

@@ -69,6 +69,13 @@ window.OLDROOT_HOME = {
       teaser:"Nineteen, fearless, and fast. A pizza courier with a pair of disc shooters, an impossible level of confidence, and a very real heart.",
       links:[["Character Dossier →","characters/flying-saucer/"],["Agent Emerald →","characters/agent-emerald/"],["Seattle →","locations/seattle/"]]
     },
+    "Liontone": {
+      key:"liontone", image:"assets/characters/liontone/liontone-ruins.webp",
+      alt:"Liontone walks through a ruined battlefield in his emerald-green and gold guardian uniform with his shield and knife",
+      meta:"BIOGENETIC ENHANCEMENT · HERO · JAMAICA",
+      teaser:"A celebrated JDF captain whose strength is matched by his duty to his team, his family and his country.",
+      links:[["Character Dossier →","characters/liontone/"],["Montego Bay / Jamaica →","locations/montego-bay/"],["Eleven OPI Ratings →","dpi.html"]]
+    },
     "Latch": {
       key:"latch", image:"assets/characters/latch/latch-featured.webp", mark:"assets/characters/latch/latch-emblem.svg?v=1",
       alt:"Latch moving through a damaged operational environment with a rifle",
@@ -94,7 +101,8 @@ window.OLDROOT_HOME = {
     stdorsey:{teaser:"Ground zero for an accidental Abyron catastrophe—and later home to Hampton’s massive Dorsey New General expansion.",className:"place-st-dorsey"},
     baltimore:{teaser:"Heroes, mercenaries, shadows, and a criminal ecosystem learning to adapt.",className:"place-baltimore"},
     seattle:{teaser:"Technology, wealth, rain, and private ambition converge around Puget Sound.",className:"place-seattle"},
-    hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"}
+    hilo:{teaser:"Rainforest, volcanic terrain, and ancient ritual history meet on Hawaiʻi Island.",className:"place-hilo"},
+    montegobay:{teaser:"Jamaica enters the world through Captain Marlon McKenzie—Liontone.",className:"place-montego-bay"}
   },
   upcoming: [
     {name:"Mark Hampton",status:"NO OPI LISTING"},
@@ -107,11 +115,11 @@ window.OLDROOT_HOME = {
   ],
   latestDispatch: {
     label:"LATEST DISPATCH / OCTOBER 2026",
-    meta:"OR-WEB-0094 · Flying Saucer / Triple Strike Sticker",
-    title:"Flying Saucer joins the OldRoot sticker collection.",
-    body:"Nikki Knotts’s newly approved white-outlined Triple Strike emblem replaces her original badge and debuts as OldRoot’s eleventh digital sticker concept. Explore the full-resolution preview in Marketplace; orders remain closed until samples are approved.",
-    image:"assets/characters/flying-saucer/flying-saucer-sticker-master.png",
-    imageAlt:"Flying Saucer’s approved Triple Strike sticker emblem",
-    href:"news.html#or-web-0094"
+    meta:"OR-WEB-0102 · Liontone / Jamaica's National Guardian",
+    title:"Liontone takes his place in OldRoot.",
+    body:"Captain Marlon McKenzie brings the Jamaica Defence Force, Montego Bay, a golden lion and an unwavering sense of duty into OldRoot's expanding hero registry. Explore his full dossier, combat artwork and eleven established OPI categories.",
+    image:"assets/characters/liontone/liontone-ruins.webp",
+    imageAlt:"Liontone in his emerald-and-gold guardian armor walking through battlefield ruins",
+    href:"news.html#or-web-0102"
   }
 };

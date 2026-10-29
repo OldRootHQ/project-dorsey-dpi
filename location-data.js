@@ -116,6 +116,21 @@ window.OLDROOT_LOCATIONS = {
       coords: [-155.09, 19.7074],
       labelOffset: [11, -10]
     },
+    montegobay: {
+      id: "LOC-008",
+      name: "Montego Bay, Jamaica",
+      shortName: "Montego Bay",
+      type: "Established hometown / national guardian",
+      region: "Jamaica",
+      status: "Established",
+      character: "Liontone",
+      characterUrl: "characters/liontone/",
+      characters: [{ name: "Liontone", url: "characters/liontone/", role: "Hero / JDF Captain" }],
+      dossierUrl: "locations/montego-bay/",
+      note: "Montego Bay is Liontone's established hometown; his military responsibilities extend across Jamaica.",
+      coords: [-77.91883, 18.47116],
+      labelOffset: [11, -10]
+    },
     australia: {
       id: "REF-002",
       name: "Australia",

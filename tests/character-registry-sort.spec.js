@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Latch', 'Max Corbett', 'Remedie'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Latch', 'Liontone', 'Max Corbett', 'Remedie'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer', 'Liontone'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
@@ -35,7 +35,8 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Remedie': 11,
     'Deuce': 12,
     'Max Corbett': 13,
-    'Flying Saucer': 14
+    'Flying Saucer': 14,
+    'Liontone': 15
   });
 });
 

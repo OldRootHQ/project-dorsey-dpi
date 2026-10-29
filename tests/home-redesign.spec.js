@@ -134,11 +134,11 @@ for(const [mode,width] of [['desktop',1440],['mobile',390]]){
     await page.goto(BASE+'/',{waitUntil:'networkidle'});
     const dispatch=page.locator('#homeLatestDispatch');
     await expect(dispatch).toBeVisible();
-    await expect(dispatch.locator('[data-dispatch-title]')).toContainText('Flying Saucer');
+    await expect(dispatch.locator('[data-dispatch-title]')).toContainText('Liontone');
     const image=dispatch.locator('.dispatch-feature-art');
     await expect(image).toBeVisible();
-    await expect(image).toHaveAttribute('src','assets/characters/flying-saucer/flying-saucer-sticker-master.png');
-    await expect(image).toHaveAttribute('alt',/Flying Saucer.*Triple Strike/);
+    await expect(image).toHaveAttribute('src','assets/characters/liontone/liontone-ruins.webp');
+    await expect(image).toHaveAttribute('alt',/Liontone.*guardian armor/);
     await expect.poll(()=>image.evaluate(el=>el.complete&&el.naturalWidth>0&&el.naturalHeight>0)).toBe(true);
     await expect(dispatch.locator('.dispatch-copy')).toHaveCSS('color','rgb(250, 255, 252)');
     await expect(dispatch.locator('.dispatch-copy h2')).toHaveCSS('color','rgb(250, 255, 252)');
@@ -146,7 +146,7 @@ for(const [mode,width] of [['desktop',1440],['mobile',390]]){
     const box=await image.boundingBox();
     expect(box.width).toBeGreaterThan(120);
     expect(box.height).toBeGreaterThan(120);
-    await expect(dispatch.locator('a[data-dispatch-link]')).toHaveAttribute('href','news.html#or-web-0094');
+    await expect(dispatch.locator('a[data-dispatch-link]')).toHaveAttribute('href','news.html#or-web-0102');
   });
 }
 

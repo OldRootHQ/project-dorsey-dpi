@@ -16,6 +16,12 @@ Static public website for the OldRoot universe, including character dossiers, lo
 - Deuce / Mono Russo — supporting character (no OPI)
 - Max Corbett — supporting character, Boston-area mechatronics/exoskeleton controls engineer (no OPI or emblem)
 
+- Flying Saucer / Nikki Knotts — human, disc-technology-assisted vigilante, Seattle
+- Liontone / Captain Marlon McKenzie — biogenetically enhanced JDF captain, Jamaica
+
+## Established World Index
+- Montego Bay / Jamaica — Liontone’s hometown and national-service connection (LOC-008)
+
 ## Canon note
 The analytics layer uses the eleven established OPI categories. Any displayed baseline mean is an analytics-only visualization statistic, not a canonical overall power score.
 

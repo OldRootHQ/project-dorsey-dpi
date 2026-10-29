@@ -1,3 +1,13 @@
+## OR-WEB-0102 · October 28, 2026 · Liontone / Captain Marlon McKenzie Publication Completion
+
+- Completed the existing Liontone character rollout without duplicating the preliminary profile: expanded the dossier using the author-provided vital information, public biography, military service, personality, shield-and-knife fighting style, relationships and visual details.
+- Imported **both creator-supplied illustrations** as 1000 × 1250 optimized WebP files. The ruins illustration serves the character portrait, registry and rotating homepage spotlight; the rainy harbor fight is a full-size clickable illustration in the dossier. Existing approved-home assets remain intact.
+- Confirmed the exact **11 OPI attributes**: Strength 13.1, Durability 12.7, Speed 11.8, Agility 13.2, Regeneration 11.1, Senses 11.8, Offense 17.4, Intellect 10.5, Combat 18.8, Mobility 7.9, Stamina 14.1. No canonical aggregate score or unsupported standalone emblem was invented; regeneration specifics remain provisional.
+- Added Liontone to Start Here and homepage rotation, refreshed public images in the Registry and OPI records, linked character discovery and search metadata, and published a character introduction in Dispatches.
+- Indexed **Montego Bay / Jamaica as LOC-008**, distinguishing Marlon's hometown from classified or unspecified JDF operational locations; linked the record into the World Index interactive globe and directory. The map marker represents a public city center, not a fictional base.
+- Preserved the classified enhancement program's undisclosed specifics, unnamed late wife, unspecified family backstory and unrevealed squad members. The prior public claim about a specific enhancement partnership was removed.
+- Updated release tests, location counts and cache keys. The existing Issue #1 teaser, Marketplace, and still-inactive Cloudflare poll were left untouched.
+
 ## OR-WEB-0101 · October 19, 2026 · Compact Reader's Choice + Private Vote Backend (Pending Activation)
 
 - Replaced oversized homepage poll choices with **four compact official-emblem vote bubbles side by side on desktop, two per row on phones**; the lineup remains Gila Monster, Latch, Anchorage and Flying Saucer.
