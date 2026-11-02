@@ -9,6 +9,8 @@ on:
       - 'poll.js'
       - 'index.html'
       - 'tests/poll.spec.js'
+      - 'tests/worker-vote-contract.test.mjs'
+      - 'poll-backend/src/worker.js'
       - '.github/workflows/poll-connection-qa.yml'
   workflow_dispatch:
 
@@ -27,6 +29,9 @@ jobs:
           node --check poll-results.js
           node --check poll.js
           node --check tests/poll.spec.js
+          node --check tests/worker-vote-contract.test.mjs
+      - name: Verify isolated Worker vote lifecycle (no real votes)
+        run: node --test tests/worker-vote-contract.test.mjs
       - name: Install browser runner
         run: |
           npm install --no-save @playwright/test@1.55.0
