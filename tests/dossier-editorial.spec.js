@@ -29,7 +29,7 @@ for (const slug of publishedCharacters) {
       if (slug === 'liontone') {
         // Liontone has an authored wordmark instead of the generic archive placeholder.
         await expect(mark).toContainText('Jamaica’s guardian');
-        await expect(mark).toContainText('LIONTONE');
+        await expect(mark).toContainText('Jamaica Defence Force');
       } else {
         await expect(mark).toContainText('OldRoot Archive');
       }
