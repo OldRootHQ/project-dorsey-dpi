@@ -6,8 +6,8 @@ compatibility_date = "2026-10-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "oldroot-votes"
-database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+database_id = "30064e03-b5fd-48ee-9c4d-51da05a36f07"
 
 [vars]
 ALLOWED_ORIGIN = "https://oldroothq.com"
-POLL_OPEN = "true"
+POLL_OPEN = "false"

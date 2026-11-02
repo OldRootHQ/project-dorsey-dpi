@@ -1,29 +1,42 @@
-# OldRoot Reader's Choice — real voting backend
+# OldRoot Reader's Choice — Cloudflare Worker + D1
 
-The OldRoot website is static static site. Real community votes **cannot** be reliably counted or privately administered using localStorage. This independent Cloudflare Worker + D1 service stores shared votes; no third-party script is inserted into the existing homepage.
+The OldRoot website is static; real Reader's Choice ballots are recorded through the separately deployed `oldroot-reader-poll` Cloudflare Worker and `oldroot-votes` D1 database. This does NOT require changes to Namecheap, website DNS, or the existing static website host.
 
-## Before turning on voting
+## Active ballot: six characters (v2)
 
-1. Create or sign into **your own Cloudflare account**. This does not require migrating `oldroothq.com` away from its current hosting.
-2. Install Wrangler locally (`npm install -g wrangler`) and run `wrangler login`.
-3. Create D1 storage: `wrangler d1 create oldroot-votes`. Paste its `database_id` into `wrangler.toml`.
-4. From this directory, run `wrangler d1 execute oldroot-votes --remote --file=./schema.sql`.
-5. Set **two different random, secret values**, at least 32 characters each, using:
-   - `wrangler secret put VOTE_PEPPER`
-   - `wrangler secret put ADMIN_TOKEN`
-   Generate them using a secure password manager; do not commit, paste into chat, or email them. `ADMIN_TOKEN` is the credential for your private results dashboard.
-6. Run `wrangler deploy`. Copy the deployed HTTPS Worker base URL, e.g. `https://oldroot-reader-poll.<your-subdomain>.workers.dev`, **without** `/api`.
-7. Edit the public repo's `poll-config.js` and fill in that URL as `apiBase`. Do not put the admin token or pepper there.
-8. Visit `https://oldroothq.com/` and cast a test vote on a separate browser/device. Visit the unlisted `https://oldroothq.com/poll-results.html`, enter your `ADMIN_TOKEN`, and verify the count. **Remove test votes** only through your private database console if needed before launch.
+1. Gila Monster
+2. Agent Emerald
+3. Kincast
+4. Isiah Ivory
+5. Liontone
+6. Remedie
 
-## Behavior and limits
+**Important deployment order (while `POLL_OPEN=false`):**
 
-- Visitors choose one of Gila Monster, Latch, Anchorage, Flying Saucer. POST `/api/vote` stores one vote per random browser ID and rejects repeats. No public `/results` endpoint exists.
-- Votes are saved in Cloudflare D1 with HMAC pseudonymous browser and IP identifiers, no raw IP addresses, emails or names. At most 8 accepted votes per IP each UTC day. This is **basic** anti-abuse, not fraud-proof identification: users can clear browser IDs or use another device or address. Shared networks may hit the daily cap.
-- The admin dashboard uses an owner bearer token, held only in page memory. GET `/api/admin/results` returns totals and category counts only when authorized. There is no public link from the homepage to this dashboard.
-- Cross-origin requests are allowed only from `ALLOWED_ORIGIN` (`https://oldroothq.com`). Secret values are set using `wrangler secret`, not stored in source control.
-- The homepage button remains deliberately disabled until the Worker is connected and `/api/status` confirms voting is open. Local preview selections are **not** counted as community votes.
-- Close voting by setting `POLL_OPEN=false` in `wrangler.toml` and redeploying, then optionally announce the winner or publish results separately. Results stay private by default.
-- For stronger protection before a large public contest, add Cloudflare Turnstile and bot/rate-limit rules, and consider login-based identity verification.
+1. Keep `POLL_OPEN` **false** in the live Worker's Cloudflare dashboard.
+2. In Cloudflare D1 -> `oldroot-votes` -> Console, execute the statements in `schema-v2.sql`. They add a `votes_v2` table plus indexes. No old data is deleted: the original `votes` table remains untouched. Do NOT rerun the historical `schema.sql` for this update.
+3. Verify the new table exists with `SELECT COUNT(*) AS votes FROM votes_v2;` (a new ballot should show zero).
+4. Edit `oldroot-reader-poll` Worker code in Cloudflare to match `src/worker.js`, then Deploy. **Keep the existing D1 binding `DB`, secrets `ADMIN_TOKEN` and `VOTE_PEPPER`, and the text variables `ALLOWED_ORIGIN=https://oldroothq.com` and `POLL_OPEN=false`.** The Worker is deployed separately, not by source control Pages.
+5. Validate `/api/status` returns `{"open":false}`; validate unauthenticated `/api/admin/results` returns `{"error":"Unauthorized"}`.
+6. Merge and deploy the website ballot / owner dashboard from the same change. The frontend remains disabled while `POLL_OPEN=false`.
+7. On `https://oldroothq.com/poll-results.html`, enter `ADMIN_TOKEN` (from password manager) to confirm **six** result rows with correct zero counts. Never paste the real token into source control, messages, console logs, or website source files.
+8. After testing and explicit owner approval, set `POLL_OPEN=true` in Cloudflare. Only then can the homepage collect actual votes.
 
-The Worker project is **not deployed by a static site deployment**. It must be connected to the owner's Cloudflare account separately. Never show the private token to website visitors.
+The site's `poll-config.js` contains the Worker URL, which is public. It must NEVER include either secret.
+
+## Historical data
+
+The original `votes` table enforced the earlier four-character ballot. This update uses a separate `votes_v2` table so the old table is preserved without carrying obsolete votes into the new contest. No destructive migration or dropping tables is required. Later Admin Mode can manage multiple ballots from one admin interface.
+
+## Safeguards and limitations
+
+- One pseudonymous browser ID per vote; same-browser repeats are blocked, and a daily per-IP limit reduces abuse. This is not identity verification or fraud-proof protection.
+- The Worker HMAC-hashes browser IDs and IP addresses using `VOTE_PEPPER`; raw IPs are not written to D1.
+- Owner-only results require a `Bearer ADMIN_TOKEN`; the unlisted owner webpage is not itself private, but its data is protected by authentication.
+- Allowed cross-origin browser requests come from `https://oldroothq.com`.
+- For high-stakes/large public contests, use stronger controls such as Cloudflare Turnstile, worker-side additional bot/rate limits, and/or authenticated voter accounts.
+- Do not publish final results, cast live test votes, or open voting until the owner has checked the complete system.
+
+## Wrangler deployments later
+
+`wrangler.toml` is synchronized to the D1 binding and defaults to `POLL_OPEN="false"`. CLI deployment from `poll-backend` uses `wrangler deploy`, but should only be used after verifying the actual remote environment and secrets. Changes to source control do not deploy the Cloudflare Worker.
