@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const BASE = 'http://127.0.0.1:8000';
-const characters = ['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer'];
+const characters = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie'];
 const LIVE_API='https://oldroot-reader-poll.mmerancio02.workers.dev';
 
 test("Reader's Choice shows compact side-by-side bubbles and remains closed by backend switch", async ({page}) => {
@@ -10,23 +10,24 @@ test("Reader's Choice shows compact side-by-side bubbles and remains closed by b
     headers:{'Access-Control-Allow-Origin':'http://127.0.0.1:8000'},
     body:JSON.stringify({open:false})
   }));
-  for (const viewport of [{width:1440,height:900,cols:4},{width:390,height:844,cols:2}]) {
+  for (const viewport of [{width:1440,height:900,cols:3},{width:390,height:844,cols:2}]) {
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/', {waitUntil:'domcontentloaded'});
     const options = page.locator('#oldrootPollForm label.poll-option');
-    await expect(options).toHaveCount(4);
+    await expect(options).toHaveCount(6);
+    expect(await options.locator('input[name="nextIssue"]').evaluateAll(els=>els.map(el=>el.value))).toEqual(characters);
     await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
     await expect(page.locator('#oldrootPollStatus')).toContainText('Community voting is currently closed.');
     const r = await options.evaluateAll(els=>els.map(el=>({x:el.getBoundingClientRect().x,y:el.getBoundingClientRect().y,h:el.getBoundingClientRect().height,w:el.getBoundingClientRect().width})));
-    expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(4/viewport.cols);
+    expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(6/viewport.cols);
     expect(Math.max(...r.map(x=>x.h))).toBeLessThan(90);
     const pollBounds=await page.locator('#next-issue-poll').evaluate(el=>({right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left}));
     expect(pollBounds.left).toBeGreaterThanOrEqual(0);
     expect(pollBounds.right).toBeLessThanOrEqual(viewport.width+2);
     if(viewport.width<900)expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width+2);
-    await expect(page.locator('.poll-option img')).toHaveCount(4);
+    await expect(page.locator('.poll-option img')).toHaveCount(6);
   }
-  await page.locator('input[value="Latch"]').check();
+  await page.locator('input[value="Isiah Ivory"]').check();
   await expect(page.locator('input[value="Latch"]')).toBeChecked();
 });
 
@@ -45,10 +46,10 @@ test('Reader\'s Choice submits confirmed votes only when live backend responds',
   });
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   await expect(page.locator('#oldrootPollSubmit')).toBeEnabled();
-  await page.locator('input[value="Flying Saucer"]').check();
+  await page.locator('input[value="Remedie"]').check();
   await page.locator('#oldrootPollSubmit').click();
   await expect(page.locator('#oldrootPollStatus')).toContainText('Vote confirmed');
-  expect(received.choice).toBe('Flying Saucer');
+  expect(received.choice).toBe('Remedie');
   expect(received.voterId).toMatch(/^[a-f0-9-]{36}$/i);
   await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
 });
@@ -84,9 +85,11 @@ test('private dashboard loads totals only with owner token and never persists it
       return route.fulfill({status:200,headers:baseHeaders,body:JSON.stringify({
         total:3,votes:[
           {choice:'Gila Monster',count:2},
-          {choice:'Latch',count:1},
-          {choice:'Anchorage',count:0},
-          {choice:'Flying Saucer',count:0}
+          {choice:'Agent Emerald',count:0},
+          {choice:'Kincast',count:0},
+          {choice:'Isiah Ivory',count:0},
+          {choice:'Liontone',count:0},
+          {choice:'Remedie',count:1}
         ],updatedAt:new Date().toISOString()
       })});
     }
@@ -98,7 +101,7 @@ test('private dashboard loads totals only with owner token and never persists it
   await page.locator('#pollResultsLogin button[type="submit"]').click();
   await expect(page.locator('#pollAdminStatus')).toHaveText('Private results connected.');
   await expect(page.locator('#pollResultsTotal')).toHaveText('3');
-  await expect(page.locator('.result-row')).toHaveCount(4);
+  await expect(page.locator('.result-row')).toHaveCount(6);
   expect(authorizedCalls).toBeGreaterThan(0);
   await expect(page.locator('#pollAdminToken')).toHaveValue('');
   expect(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/admin|token/i.test(k)))).toEqual([]);
@@ -113,6 +116,19 @@ test('worker only exposes private totals behind owner secret and stores no raw I
   expect(src).toContain("'Authorization'");
   expect(src).toContain('safeEq(provided,env.ADMIN_TOKEN)');
   expect(src).toContain("await hmac(env.VOTE_PEPPER,'ip:'+ip)");
-  expect(src).toContain("'INSERT OR IGNORE INTO votes");
+  expect(src).toContain("'INSERT OR IGNORE INTO votes_v2");
   expect(src).not.toContain('Access-Control-Allow-Origin\':\'*');
+});
+
+test('six-candidate voting schema is isolated and does not delete older records', async () => {
+  const sql=fs.readFileSync('poll-backend/schema-v2.sql','utf8');
+  const worker=fs.readFileSync('poll-backend/src/worker.js','utf8');
+  expect(sql).toContain('CREATE TABLE IF NOT EXISTS votes_v2');
+  for(const choice of characters){
+    expect(sql).toContain("'" + choice + "'");
+    expect(worker).toContain("'" + choice + "'");
+  }
+  expect(sql).not.toMatch(/DROP TABLE|DELETE FROM|TRUNCATE/i);
+  expect(worker).toContain('FROM votes_v2 GROUP BY choice');
+  expect(worker).toContain('INSERT OR IGNORE INTO votes_v2');
 });
