@@ -49,6 +49,7 @@ test('Liontone has an uncluttered top service record and legible text on desktop
       };
     });
     expect(geometry.copySize).toBeGreaterThanOrEqual(width < 620 ? 15 : 16);
+    expect(geometry.copyColor).toBe('rgb(217, 231, 220)');
     expect(geometry.infoSize).toBeGreaterThanOrEqual(14);
     expect(geometry.dpiSize).toBeGreaterThanOrEqual(13);
     expect(geometry.docWidth).toBeLessThanOrEqual(geometry.viewport + 2);
