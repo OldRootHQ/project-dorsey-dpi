@@ -2,15 +2,21 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const BASE = 'http://127.0.0.1:8000';
 const characters = ['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer'];
+const LIVE_API='https://oldroot-reader-poll.mmerancio02.workers.dev';
 
-test('Reader\'s Choice shows compact side-by-side bubbles and never records pretend votes', async ({page}) => {
+test("Reader's Choice shows compact side-by-side bubbles and remains closed by backend switch", async ({page}) => {
+  await page.route(LIVE_API+'/api/status',route=>route.fulfill({
+    status:200,contentType:'application/json',
+    headers:{'Access-Control-Allow-Origin':'http://127.0.0.1:8000'},
+    body:JSON.stringify({open:false})
+  }));
   for (const viewport of [{width:1440,height:900,cols:4},{width:390,height:844,cols:2}]) {
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/', {waitUntil:'domcontentloaded'});
     const options = page.locator('#oldrootPollForm label.poll-option');
     await expect(options).toHaveCount(4);
     await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
-    await expect(page.locator('#oldrootPollStatus')).toContainText('No votes are being collected');
+    await expect(page.locator('#oldrootPollStatus')).toContainText('Community voting is currently closed.');
     const r = await options.evaluateAll(els=>els.map(el=>({x:el.getBoundingClientRect().x,y:el.getBoundingClientRect().y,h:el.getBoundingClientRect().height,w:el.getBoundingClientRect().width})));
     expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(4/viewport.cols);
     expect(Math.max(...r.map(x=>x.h))).toBeLessThan(90);
@@ -51,11 +57,54 @@ test('owner poll dashboard is noindex, totals require authorization, and token i
   await page.goto(BASE+'/poll-results.html',{waitUntil:'domcontentloaded'});
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
   await expect(page.locator('#pollResultsTotal')).toHaveText('—');
-  await expect(page.locator('#pollAdminStatus')).toContainText('not been deployed');
+  await expect(page.locator('#pollAdminStatus')).toContainText('Checking vote service');
   expect(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/admin|token/i.test(k)))).toEqual([]);
   const src=fs.readFileSync('poll-results.js','utf8');
   expect(src).not.toMatch(/localStorage|sessionStorage/);
   expect(src).toContain("setInterval(load, 30000)");
+});
+
+test('private dashboard loads totals only with owner token and never persists it', async ({page}) => {
+  const sampleToken='test-owner-token-never-a-real-secret';
+  let authorizedCalls=0;
+  await page.route(LIVE_API+'/**',route=>{
+    const url=route.request().url();
+    const baseHeaders={
+      'Access-Control-Allow-Origin':'http://127.0.0.1:8000',
+      'Access-Control-Allow-Headers':'Authorization, Content-Type',
+      'Access-Control-Allow-Methods':'GET, OPTIONS',
+      'Content-Type':'application/json'
+    };
+    if(route.request().method()==='OPTIONS')return route.fulfill({status:204,headers:baseHeaders});
+    if(url.endsWith('/api/admin/results')){
+      if(route.request().headers()['authorization']!=='Bearer '+sampleToken){
+        return route.fulfill({status:401,headers:baseHeaders,body:JSON.stringify({error:'Unauthorized'})});
+      }
+      authorizedCalls++;
+      return route.fulfill({status:200,headers:baseHeaders,body:JSON.stringify({
+        total:3,votes:[
+          {choice:'Gila Monster',count:2},
+          {choice:'Latch',count:1},
+          {choice:'Anchorage',count:0},
+          {choice:'Flying Saucer',count:0}
+        ],updatedAt:new Date().toISOString()
+      })});
+    }
+    return route.fulfill({status:404,headers:baseHeaders,body:'{}'});
+  });
+  await page.goto(BASE+'/poll-results.html',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#pollResultsTotal')).toHaveText('—');
+  await page.locator('#pollAdminToken').fill(sampleToken);
+  await page.locator('#pollResultsLogin button[type="submit"]').click();
+  await expect(page.locator('#pollAdminStatus')).toHaveText('Private results connected.');
+  await expect(page.locator('#pollResultsTotal')).toHaveText('3');
+  await expect(page.locator('.result-row')).toHaveCount(4);
+  expect(authorizedCalls).toBeGreaterThan(0);
+  await expect(page.locator('#pollAdminToken')).toHaveValue('');
+  expect(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/admin|token/i.test(k)))).toEqual([]);
+  await page.locator('#pollResultsLogout').click();
+  await expect(page.locator('#pollResultsTotal')).toHaveText('—');
+  await expect(page.locator('.result-row')).toHaveCount(0);
 });
 
 test('worker only exposes private totals behind owner secret and stores no raw IP', async () => {

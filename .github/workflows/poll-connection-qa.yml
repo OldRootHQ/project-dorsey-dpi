@@ -1,0 +1,44 @@
+name: Poll Connection QA
+
+on:
+  pull_request:
+    paths:
+      - 'poll-config.js'
+      - 'poll-results.html'
+      - 'poll-results.js'
+      - 'poll.js'
+      - 'index.html'
+      - 'tests/poll.spec.js'
+      - '.github/workflows/poll-connection-qa.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  poll:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check JavaScript syntax
+        run: |
+          node --check poll-config.js
+          node --check poll-results.js
+          node --check poll.js
+          node --check tests/poll.spec.js
+      - name: Install browser runner
+        run: |
+          npm install --no-save @playwright/test@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Start local static website
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 >/tmp/poll-http.log 2>&1 &
+          for i in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8000/index.html > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/poll-http.log
+          exit 1
+      - name: Test public closed poll, owner access and backend protections
+        run: npx playwright test tests/poll.spec.js --reporter=line --workers=1
