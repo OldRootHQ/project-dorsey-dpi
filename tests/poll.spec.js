@@ -28,7 +28,7 @@ test("Reader's Choice shows compact side-by-side bubbles and remains closed by b
     await expect(page.locator('.poll-option img')).toHaveCount(6);
   }
   await page.locator('input[value="Isiah Ivory"]').check();
-  await expect(page.locator('input[value="Latch"]')).toBeChecked();
+  await expect(page.locator('input[value="Isiah Ivory"]')).toBeChecked();
 });
 
 test('Reader\'s Choice submits confirmed votes only when live backend responds', async ({page}) => {
