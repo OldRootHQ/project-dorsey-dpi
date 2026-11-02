@@ -2,7 +2,7 @@
 
 - Reconciled the Character Registry hero-filter sorting assertions with Liontone's published addition, checking both newest-added and release-order expectations.
 - Corrected the dossier editorial assertion to recognize Liontone's intentional “Jamaica’s guardian / LIONTONE” text wordmark instead of treating the absence of the generic “OldRoot Archive” fallback as a failure.
-- Merged pull request #97 after its complete GitHub Actions Site QA run passed **292 / 292 tests**. Only test assertions changed; no public artwork, canon, navigation, layouts, or behavior changed.
+- Merged pull request #97 after its complete automated Site QA run passed **292 / 292 tests**. Only test assertions changed; no public artwork, canon, navigation, layouts, or behavior changed.
 - Kept this operational maintenance in the internal patch ledger; no public Dispatch was created.
 
 ## OR-WEB-0102 · October 28, 2026 · Liontone / Captain Marlon McKenzie Publication Completion
