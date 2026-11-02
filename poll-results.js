@@ -19,7 +19,7 @@
   } catch (_) {}
   let token = '';
   let timer = null;
-  const candidates = ['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer'];
+  const candidates = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie'];
   const say = text => { state.textContent = text; };
 
   function render(data) {
