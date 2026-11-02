@@ -35,6 +35,19 @@ export default {
     if (url.pathname==='/api/status' && request.method==='GET'){
       return respond({open:Boolean(env.DB && env.VOTE_PEPPER && env.ADMIN_TOKEN && env.POLL_OPEN==='true')});
     }
+    if (url.pathname==='/api/my-vote' && request.method==='POST'){
+      if (!headers) return respond({error:'Browser origin required'},403);
+      if (!env.DB || !env.VOTE_PEPPER)return respond({error:'Vote service unavailable'},503);
+      if ((Number(request.headers.get('Content-Length'))||0)>2048)return respond({error:'Request too large'},413);
+      let body;
+      try{body=JSON.parse(await request.text());}catch{return respond({error:'Invalid JSON'},400);}
+      if (!body || typeof body.voterId!=='string' || !/^[0-9a-f-]{36}$/i.test(body.voterId))return respond({error:'Invalid voter'},400);
+      try{
+        const voter=await hmac(env.VOTE_PEPPER,'voter:'+body.voterId);
+        const existing=await env.DB.prepare('SELECT choice FROM votes_v2 WHERE voter_hash=? LIMIT 1').bind(voter).first();
+        return respond({hasVote:Boolean(existing),choice:existing?.choice||null});
+      }catch(error){console.error('Vote lookup failure',String(error));return respond({error:'Service unavailable'},503);}
+    }
     if (url.pathname==='/api/admin/results' && request.method==='GET'){
       const authorization=request.headers.get('Authorization')||'';
       const provided=authorization.startsWith('Bearer ')?authorization.slice(7):'';
@@ -56,13 +69,19 @@ export default {
       const voter=await hmac(env.VOTE_PEPPER,'voter:'+body.voterId);
       const ipHash=await hmac(env.VOTE_PEPPER,'ip:'+ip);
       try{
-        const existing=await env.DB.prepare('SELECT id FROM votes_v2 WHERE voter_hash=? LIMIT 1').bind(voter).first();
-        if(existing)return respond({status:'already_recorded'},409);
+        const existing=await env.DB.prepare('SELECT choice FROM votes_v2 WHERE voter_hash=? LIMIT 1').bind(voter).first();
+        if(existing){
+          await env.DB.prepare('UPDATE votes_v2 SET choice=?, ip_hash=? WHERE voter_hash=?').bind(body.choice,ipHash,voter).run();
+          return respond({status:existing.choice===body.choice?'unchanged':'updated',choice:body.choice,previousChoice:existing.choice});
+        }
         const day=new Date().toISOString().slice(0,10);
         const daily=await env.DB.prepare('SELECT COUNT(*) AS n FROM votes_v2 WHERE ip_hash=? AND created_at>=?').bind(ipHash,day+'T00:00:00Z').first();
         if(Number(daily?.n||0)>=LIMIT_PER_IP_PER_DAY)return respond({error:'Rate limited'},429);
         const insert=await env.DB.prepare('INSERT OR IGNORE INTO votes_v2 (voter_hash,ip_hash,choice) VALUES (?,?,?)').bind(voter,ipHash,body.choice).run();
-        return insert.meta.changes===1?respond({status:'recorded'},201):respond({status:'already_recorded'},409);
+        if(insert.meta.changes===1)return respond({status:'recorded',choice:body.choice},201);
+        // A simultaneous first submission may win the unique-key race; replace that same row.
+        await env.DB.prepare('UPDATE votes_v2 SET choice=?, ip_hash=? WHERE voter_hash=?').bind(body.choice,ipHash,voter).run();
+        return respond({status:'updated',choice:body.choice},200);
       }catch(error){console.error('Vote service storage failure',String(error));return respond({error:'Service unavailable'},503);}
     }
     return respond({error:'Not found'},404);
