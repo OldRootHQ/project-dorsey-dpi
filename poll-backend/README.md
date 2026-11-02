@@ -28,9 +28,11 @@ The site's `poll-config.js` contains the Worker URL, which is public. It must NE
 
 The original `votes` table enforced the earlier four-character ballot. This update uses a separate `votes_v2` table so the old table is preserved without carrying obsolete votes into the new contest. No destructive migration or dropping tables is required. Later Admin Mode can manage multiple ballots from one admin interface.
 
+The current Worker supports `POST /api/my-vote` with `{ "voterId": "..." }` to retrieve the browser's saved choice, and `POST /api/vote` to create a first vote or update that same row. The vote-change feature requires no additional D1 migration; it uses the existing unique `voter_hash` constraint in `votes_v2`. Deploy the updated Worker before publishing the matching website frontend.
+
 ## Safeguards and limitations
 
-- One pseudonymous browser ID per vote; same-browser repeats are blocked, and a daily per-IP limit reduces abuse. This is not identity verification or fraud-proof protection.
+- One pseudonymous browser ID per active vote. A reader can change their selection while voting is open; the Worker updates that browser's existing `votes_v2` row, so the old choice loses one count and the new choice gains one. A daily per-IP limit applies to first-time votes. This is not identity verification or fraud-proof protection.
 - The Worker HMAC-hashes browser IDs and IP addresses using `VOTE_PEPPER`; raw IPs are not written to D1.
 - Owner-only results require a `Bearer ADMIN_TOKEN`; the unlisted owner webpage is not itself private, but its data is protected by authentication.
 - Allowed cross-origin browser requests come from `https://oldroothq.com`.
