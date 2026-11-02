@@ -4,7 +4,7 @@ const BASE = 'http://127.0.0.1:8000';
 const characters = ['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer'];
 const LIVE_API='https://oldroot-reader-poll.mmerancio02.workers.dev';
 
-test('Reader's Choice shows compact side-by-side bubbles and remains closed by backend switch', async ({page}) => {
+test("Reader's Choice shows compact side-by-side bubbles and remains closed by backend switch", async ({page}) => {
   await page.route(LIVE_API+'/api/status',route=>route.fulfill({
     status:200,contentType:'application/json',
     headers:{'Access-Control-Allow-Origin':'http://127.0.0.1:8000'},
