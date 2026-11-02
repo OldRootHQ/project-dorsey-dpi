@@ -13,7 +13,7 @@ for(const [name,route] of [
   ['dispatches','/news.html'],
   ['marketplace','/marketplace.html']
 ]){
-  test(`HQ 2.4 soft-avocado variables and unchanged cosmic-carbon base reach ${name}`,async({page})=>{
+  test(`HQ 2.4 soft-avocado variables and clean matte-carbon base reach ${name}`,async({page})=>{
     await page.goto(BASE+route,{waitUntil:'networkidle'});
     const style=await page.evaluate(()=>{
       const body=getComputedStyle(document.body);
@@ -28,7 +28,8 @@ for(const [name,route] of [
     expect(style.lime).toBe('#B7CF8A');
     expect(style.white).toBe('#FAFFFC');
     expect(style.background).toContain('oldroot-cosmic-field.svg');
-    expect(style.carbon).toContain('repeating-linear-gradient');
+    expect(style.carbon).toContain('linear-gradient');
+    expect(style.carbon).not.toContain('repeating-linear-gradient');
     expect(style.before).toBe('none'); // no background graffiti / old roots
     await expect(page.locator('.masthead .brand')).toBeVisible();
     await expect(page.locator('.masthead')).toHaveCSS('border-bottom-color',LIME);
