@@ -69,8 +69,10 @@ for (const [mode, width, height] of [
     expect(visuals.logoWidth).toBeGreaterThanOrEqual(mode==='desktop'?218:180);
     expect(visuals.logoBackground).toContain('approved-home/primary-logo.webp');
     expect(visuals.heroLogoBackground).toContain('approved-home/primary-logo.webp');
-    expect(visuals.featureBackground).toContain('repeating-linear-gradient');
-    expect(visuals.libraryBackground).toContain('repeating-linear-gradient');
+    expect(visuals.featureBackground).toContain('linear-gradient');
+    expect(visuals.libraryBackground).toContain('linear-gradient');
+    expect(visuals.featureBackground).not.toContain('repeating-linear-gradient');
+    expect(visuals.libraryBackground).not.toContain('repeating-linear-gradient');
     expect(visuals.heroBackground).toContain('gradient');
     expect(visuals.portraitSources).toHaveLength(8);
     expect(visuals.width, JSON.stringify(visuals.offenders)).toBeLessThanOrEqual(visuals.viewport+3);
