@@ -1,3 +1,12 @@
+## OR-WEB-0104 · November 1, 2026 · Liontone Readability & Matte-Carbon Panels
+
+- Replaced the intersecting cross-hatched / flannel-style carbon panel gradients with a smooth matte-dark treatment through the shared surface token. Kept the existing cosmic background, artwork, page structures and navigation.
+- Reworked Liontone's redundant boxed codename into a typographic Jamaica service-record treatment, without creating an unofficial emblem or changing approved canon.
+- Improved readability on Liontone's identity, lore chapters, profile facts, OPI categories, text links and captions; addressed the older higher-specificity color overrides and mobile/desktop layouts.
+- Preserved Liontone's original artwork, full-size image viewer, 11 official OPI values and character connections.
+- Updated related visual regression contracts. The final pre-merge Site QA run passed **295 / 295 tests**; Contact Theme QA also passed.
+- Kept this styling maintenance in the internal patch ledger, with no public Dispatch.
+
 ## OR-WEB-0103 · November 1, 2026 · Site QA Regression Expectation Repair
 
 - Reconciled the Character Registry hero-filter sorting assertions with Liontone's published addition, checking both newest-added and release-order expectations.
