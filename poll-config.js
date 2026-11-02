@@ -1,4 +1,6 @@
-/* OR-WEB-0101: Set apiBase only after deploying the Cloudflare D1 vote service.
-   Example: apiBase: 'https://oldroot-vote.example.workers.dev'
-   A blank apiBase intentionally keeps public voting closed instead of recording fake local votes. */
-window.OLDROOT_POLL_CONFIG = Object.freeze({ apiBase: '' });
+/* OR-WEB-0101: Live Cloudflare voting API.
+   Public voting remains OFF until Cloudflare's POLL_OPEN is explicitly set to true.
+   The URL is public; never place ADMIN_TOKEN or VOTE_PEPPER in website files. */
+window.OLDROOT_POLL_CONFIG = Object.freeze({
+  apiBase: 'https://oldroot-reader-poll.mmerancio02.workers.dev'
+});
