@@ -26,7 +26,13 @@ for (const slug of publishedCharacters) {
 
     const mark = page.locator('.logo-slot');
     if (await mark.count() && !(await mark.evaluate(el => el.classList.contains('has-logo')))) {
-      await expect(mark).toContainText('OldRoot Archive');
+      if (slug === 'liontone') {
+        // Liontone has an authored wordmark instead of the generic archive placeholder.
+        await expect(mark).toContainText('Jamaica’s guardian');
+        await expect(mark).toContainText('LIONTONE');
+      } else {
+        await expect(mark).toContainText('OldRoot Archive');
+      }
     }
   });
 }
