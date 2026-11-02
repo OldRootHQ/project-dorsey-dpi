@@ -1,0 +1,247 @@
+/* OR-WEB-0104 · Liontone editorial legibility / matte service-record design.
+   Presentation only. Canon, artwork, lightbox behavior and OPI values are unchanged. */
+html body.oldroot-after-dark .character-shell.liontone-dossier {
+  --liontone-paper:#f4fff3;
+  --liontone-copy:#d9e7dc;
+  --liontone-quiet:#b7d1be;
+  --liontone-signal:#c8f3a4;
+  --liontone-rule:rgba(182,224,184,.27);
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity {
+  grid-template-columns:minmax(0,1fr) minmax(220px,.46fr);
+  gap:clamp(26px,3.5vw,58px);
+  padding:clamp(28px,4vw,58px)!important;
+  background:linear-gradient(135deg,#1d3628 0%,#11271e 48%,#0b1b15 100%)!important;
+  border:1px solid rgba(184,232,173,.49)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.26)!important;
+  align-items:center;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity::after {
+  content:none!important;
+  display:none!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity > div:first-child {
+  min-width:0;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-kicker {
+  color:var(--liontone-signal)!important;
+  font-size:11px;
+  line-height:1.65;
+  letter-spacing:.105em;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity h1 {
+  color:var(--liontone-paper)!important;
+  line-height:.96;
+  letter-spacing:-.057em;
+  margin:13px 0 12px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-subtitle {
+  color:#e8f8df!important;
+  font-size:clamp(18px,1.6vw,22px);
+  line-height:1.42;
+  font-weight:750;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-thesis {
+  color:var(--liontone-copy)!important;
+  max-width:680px;
+  font-size:clamp(15px,1.2vw,17px);
+  line-height:1.72;
+  margin-top:18px;
+  font-style:normal;
+}
+/* No invented crest, duplicate codename or dashed logo placeholder.
+   This is a clean typographic service record, not an official emblem. */
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .logo-slot.guardian-service-record {
+  width:100%;
+  min-height:0!important;
+  display:flex;
+  justify-content:flex-start;
+  align-items:center;
+  text-align:left;
+  padding:6px 0 6px clamp(18px,2.5vw,34px);
+  border:0!important;
+  border-left:2px solid var(--liontone-signal)!important;
+  border-radius:0!important;
+  background:none!important;
+  box-shadow:none!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .guardian-service-record>div {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:flex-start;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .guardian-service-record span {
+  margin:0;
+  color:var(--liontone-signal)!important;
+  font:850 11px/1.45 var(--font-sans);
+  letter-spacing:.13em;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .guardian-service-record strong {
+  display:block;
+  color:var(--liontone-paper)!important;
+  font:880 clamp(21px,2.5vw,34px)/1.12 var(--font-display);
+  letter-spacing:-.035em;
+  text-transform:none;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .guardian-service-record small {
+  display:block;
+  color:var(--liontone-copy)!important;
+  font:650 clamp(12px,1vw,14px)/1.6 var(--font-sans);
+  letter-spacing:.005em;
+}
+/* Quiet, smooth surfaces and distinct reading hierarchy. */
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier])
+ :is(.wiki-section,.character-infobox,.character-network,.character-links) {
+  background:linear-gradient(155deg,#172b20,#0d1e17)!important;
+  border:1px solid var(--liontone-rule)!important;
+  border-radius:12px!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.22)!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section {
+  padding:clamp(22px,2.6vw,36px);
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section h2,
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .infobox-title,
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-network h2 {
+  color:var(--liontone-paper)!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section h2 {
+  font-size:clamp(26px,2.6vw,36px);
+  line-height:1.17;
+  border-bottom:1px solid var(--liontone-rule)!important;
+  padding-bottom:16px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section h2::after {
+  width:54px;
+  height:3px;
+  background:var(--liontone-signal);
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section :is(p,li) {
+  color:var(--liontone-copy)!important;
+  font-size:16px!important;
+  line-height:1.76!important;
+  font-weight:480;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section :is(strong,b) {
+  color:var(--liontone-paper)!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section a {
+  color:var(--liontone-signal)!important;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-infobox {
+  padding:clamp(16px,2vw,25px);
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-portrait figcaption,
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dossier-illustration figcaption {
+  color:var(--liontone-copy)!important;
+  font-size:12px;
+  line-height:1.5;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .info-row {
+  border-top-color:var(--liontone-rule);
+  grid-template-columns:minmax(100px,.65fr) minmax(0,1.35fr);
+  gap:14px;
+  padding:12px 0;
+  color:var(--liontone-copy)!important;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .info-row dt {
+  color:var(--liontone-quiet)!important;
+  font-size:11px;
+  line-height:1.5;
+  letter-spacing:.065em;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .info-row dd {
+  color:var(--liontone-paper)!important;
+  font-size:14px;
+  line-height:1.55;
+  font-weight:650;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-note {
+  color:var(--liontone-copy)!important;
+  font-size:13px!important;
+  line-height:1.65;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-row {
+  min-height:32px;
+  grid-template-columns:minmax(106px,.88fr) minmax(0,1.6fr) 44px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-name {
+  color:var(--liontone-copy)!important;
+  font-size:13px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-value {
+  color:var(--liontone-paper)!important;
+  font-size:13px;
+  font-variant-numeric:tabular-nums;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-track {
+  background:#395142;
+  height:10px;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-fill {
+  background:linear-gradient(90deg,#6cae78,var(--liontone-signal));
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-pill {
+  background:#223a2a!important;
+  border:1px solid var(--liontone-rule)!important;
+  color:var(--liontone-paper)!important;
+  font-size:11px;
+  line-height:1.5;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-network-head p,
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-network-grid a i {
+  color:var(--liontone-copy)!important;
+  font-size:12px;
+  line-height:1.5;
+}
+html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) :is(.quick-link,.character-links a) {
+  font-size:11px;
+  line-height:1.4;
+}
+@media (max-width:920px) {
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity {
+    grid-template-columns:minmax(0,1fr);
+    gap:24px;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .guardian-service-record {
+    width:100%;
+    border-left:0!important;
+    border-top:2px solid var(--liontone-signal)!important;
+    padding:19px 0 0;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-infobox {
+    position:static;
+  }
+}
+@media (max-width:620px) {
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity {
+    padding:25px 20px!important;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .character-identity h1 {
+    margin-top:10px;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section {
+    padding:24px 19px;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section :is(p,li) {
+    font-size:15px!important;
+    line-height:1.72!important;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .info-row {
+    grid-template-columns:minmax(86px,.7fr) minmax(0,1.3fr);
+    gap:10px;
+  }
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .dpi-row {
+    grid-template-columns:minmax(90px,1fr) minmax(0,1.25fr) 36px;
+    gap:8px;
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  html body.oldroot-after-dark .character-shell.liontone-dossier:not([data-dossier]) .wiki-section {
+    content-visibility:visible;
+  }
+}
