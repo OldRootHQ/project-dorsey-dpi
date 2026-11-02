@@ -100,6 +100,8 @@
 .oldroot-reader-poll .poll-intro{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
 .oldroot-reader-poll .poll-intro h2{font-size:clamp(24px,3vw,35px);line-height:1.1;margin:7px 0 8px;color:#f1f8ef}
 .oldroot-reader-poll .poll-intro p{color:#cad9cc;font-size:14px;line-height:1.5;margin:0}
+.oldroot-reader-poll .poll-intro .poll-question{font-size:18px;font-weight:750;line-height:1.35;margin:0 0 4px;color:#f1f8ef}
+.oldroot-reader-poll .poll-intro .poll-footnote{font-size:11px;line-height:1.45;margin:0;color:#aabbac}
 .oldroot-reader-poll .poll-privacy-tag{border:1px solid #53795d;padding:7px 10px;color:#b8dabc;border-radius:999px;font:800 10px/1.3 var(--font-sans);letter-spacing:.06em;white-space:nowrap}
 .oldroot-reader-poll fieldset.poll-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;border:0;margin:16px 0 12px;padding:0;min-width:0}
 .oldroot-reader-poll .poll-options legend{font:800 11px/1.4 var(--font-sans);letter-spacing:.08em;color:#a8cab0;margin-bottom:10px}
