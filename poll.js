@@ -7,7 +7,7 @@
   const note = document.getElementById('oldrootPollDisclosure');
   if (!form || !status || !submit) return;
 
-  const names = new Set(['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer']);
+  const names = new Set(['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie']);
   const rawBase = window.OLDROOT_POLL_CONFIG && window.OLDROOT_POLL_CONFIG.apiBase;
   let apiBase = '';
   if (typeof rawBase === 'string' && rawBase.trim()) {
