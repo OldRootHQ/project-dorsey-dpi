@@ -3,7 +3,7 @@
    Basic duplicate protection: one pseudonymous browser ID, + per-IP daily throttle.
    These controls discourage accidental/repeated votes, NOT determined attackers.
 */
-const CHOICES = Object.freeze(['Gila Monster', 'Latch', 'Anchorage', 'Flying Saucer']);
+const CHOICES = Object.freeze(['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie']);
 const LIMIT_PER_IP_PER_DAY = 8;
 const encoder = new TextEncoder();
 
@@ -40,7 +40,7 @@ export default {
       const provided=authorization.startsWith('Bearer ')?authorization.slice(7):'';
       if (!env.ADMIN_TOKEN||!safeEq(provided,env.ADMIN_TOKEN))return respond({error:'Unauthorized'},401);
       if (!env.DB)return respond({error:'Database unavailable'},503);
-      const data=await env.DB.prepare('SELECT choice, COUNT(*) AS count FROM votes GROUP BY choice').all();
+      const data=await env.DB.prepare('SELECT choice, COUNT(*) AS count FROM votes_v2 GROUP BY choice').all();
       const counts=new Map(data.results.map(r=>[r.choice,Number(r.count)]));
       return respond({total:[...counts.values()].reduce((n,v)=>n+v,0),votes:CHOICES.map(choice=>({choice,count:counts.get(choice)||0})),updatedAt:new Date().toISOString()});
     }
@@ -56,12 +56,12 @@ export default {
       const voter=await hmac(env.VOTE_PEPPER,'voter:'+body.voterId);
       const ipHash=await hmac(env.VOTE_PEPPER,'ip:'+ip);
       try{
-        const existing=await env.DB.prepare('SELECT id FROM votes WHERE voter_hash=? LIMIT 1').bind(voter).first();
+        const existing=await env.DB.prepare('SELECT id FROM votes_v2 WHERE voter_hash=? LIMIT 1').bind(voter).first();
         if(existing)return respond({status:'already_recorded'},409);
         const day=new Date().toISOString().slice(0,10);
-        const daily=await env.DB.prepare('SELECT COUNT(*) AS n FROM votes WHERE ip_hash=? AND created_at>=?').bind(ipHash,day+'T00:00:00Z').first();
+        const daily=await env.DB.prepare('SELECT COUNT(*) AS n FROM votes_v2 WHERE ip_hash=? AND created_at>=?').bind(ipHash,day+'T00:00:00Z').first();
         if(Number(daily?.n||0)>=LIMIT_PER_IP_PER_DAY)return respond({error:'Rate limited'},429);
-        const insert=await env.DB.prepare('INSERT OR IGNORE INTO votes (voter_hash,ip_hash,choice) VALUES (?,?,?)').bind(voter,ipHash,body.choice).run();
+        const insert=await env.DB.prepare('INSERT OR IGNORE INTO votes_v2 (voter_hash,ip_hash,choice) VALUES (?,?,?)').bind(voter,ipHash,body.choice).run();
         return insert.meta.changes===1?respond({status:'recorded'},201):respond({status:'already_recorded'},409);
       }catch(error){console.error('Vote service storage failure',String(error));return respond({error:'Service unavailable'},503);}
     }
