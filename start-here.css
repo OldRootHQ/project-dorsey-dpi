@@ -49,6 +49,37 @@ html body.oldroot-after-dark.start-here-page .site-shell .discovery-card:is(:hov
   background:linear-gradient(150deg,#214332,#10291D)!important;
   border-color:var(--or-avocado-light)!important;
 }
+/* Prevent min-content grid sizing from pushing long lore labels beyond the
+   viewport. Unlike clipping, these rules retain all text and focus rings. */
+html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid{
+  grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+}
+html body.oldroot-after-dark.start-here-page .site-shell :is(.start-intro-grid,.origin-lanes,.discovery-grid)>*{
+  min-width:0;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .origin-lanes{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+  grid-template-columns:minmax(0,1fr);
+}
+html body.oldroot-after-dark.start-here-page .site-shell :is(.origin-lane,.start-statement,.discovery-card,.start-stat){
+  overflow-wrap:anywhere;
+}
+@media(max-width:1040px){
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark.start-here-page .site-shell .origin-lanes,
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+    grid-template-columns:minmax(0,1fr);
+  }
+}
 /* One purposeful avocado feature breaks up the dark cards without reviving
    parchment, café brown, gold accents, or low-contrast labels. */
 html body.oldroot-after-dark.start-here-page .site-shell .start-stat-panel{
