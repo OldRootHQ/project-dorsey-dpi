@@ -4,7 +4,7 @@
 - Audited all 68 published HTML pages and 21 existing stylesheets for missing local links/assets, repeated HTML anchors, absent image alternatives, theme and navigation presence, and external platform references. Local file references and image alternatives were intact.
 - Removed one duplicate historical OR-WEB-0075 Dispatch card that reused the same HTML anchor. No new public Dispatch was created; other historical Dispatch entries remain intact.
 - Reconciled the homepage CSS cache-key regression with the already published `home.css?v=9` to repair the single known failure in the previous main-branch Site QA run (294/295 passed).
-- Added desktop/mobile Start Here palette and overflow checks, plus automated all-page anchor/link/image and stylesheet-asset integrity tests. Kept this release as internal presentation and maintenance work only.
+- Added desktop/mobile Start Here palette and overflow checks, included the page in full-page visual captures and creator preview artifacts, plus automated all-page anchor/link/image and stylesheet-asset integrity tests. Kept this release as internal presentation and maintenance work only.
 
 ## OR-WEB-0104 · November 1, 2026 · Liontone Readability & Matte-Carbon Panels
 
