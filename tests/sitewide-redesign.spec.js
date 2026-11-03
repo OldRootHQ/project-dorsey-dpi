@@ -140,7 +140,7 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (html.includes('locations.js') && !(html.includes('location-data.js?v=3') || (relative === 'locations.html' && html.includes('location-data.js?v=5')))) failures.push(relative + ': shared location data missing');
     if (relative === 'dpi.html' && !html.includes('data.js?v=38')) failures.push(relative + ': OPI data cache key stale');
     if (relative === 'dpi.html' && !html.includes('app.js?v=17')) failures.push(relative + ': OPI app cache key stale');
-    if (relative === 'index.html' && !html.includes('home.css?v=8')) failures.push(relative + ': homepage stylesheet cache key stale');
+    if (relative === 'index.html' && !html.includes('home.css?v=9')) failures.push(relative + ': homepage stylesheet cache key stale');
     if (relative === 'index.html' && !html.includes('home-data.js?v=37')) failures.push(relative + ': homepage data cache key stale');
     if (relative === 'index.html' && !html.includes('home.js?v=5')) failures.push(relative + ': homepage runtime cache key stale');
   }
