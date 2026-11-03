@@ -1,6 +1,7 @@
 ## OR-WEB-0105 · November 2, 2026 · Start Here Palette & Sitewide Integrity
 
 - Corrected the Start Here entry experience, especially “The world in sixty seconds,” with a scoped HQ 2.4 treatment: matte emerald-carbon panels, comic-white headings, soft-avocado labels and a deliberately light avocado Genesis statistics panel. Retired inherited café/gold accents without altering the narrative, artwork, cards, links or sitewide theme.
+- Updated the working brand guide to distinguish the approved HQ 2.4 production palette from the historical café/parchment palette; labeled the older cosmic-carbon draft as historical to prevent future styling regressions.
 - Audited all 68 published HTML pages and 21 existing stylesheets for missing local links/assets, repeated HTML anchors, absent image alternatives, theme and navigation presence, and external platform references. Local file references and image alternatives were intact.
 - Removed one duplicate historical OR-WEB-0075 Dispatch card that reused the same HTML anchor. No new public Dispatch was created; other historical Dispatch entries remain intact.
 - Reconciled the homepage CSS cache-key regression with the already published `home.css?v=9` to repair the single known failure in the previous main-branch Site QA run (294/295 passed).
