@@ -29,7 +29,11 @@ for (const [mode, width] of [['desktop', 1440], ['phone', 390]]) {
         discoveryHeading: get('.discovery-card h3').color,
         viewport: innerWidth,
         docWidth: document.documentElement.scrollWidth,
-        bodyWidth: document.body.scrollWidth
+        bodyWidth: document.body.scrollWidth,
+        offenders: [...document.querySelectorAll('body *')].map(el => {
+          const r = el.getBoundingClientRect();
+          return { tag: el.tagName.toLowerCase(), cls: String(el.className || '').slice(0, 90), right: Math.round(r.right), width: Math.round(r.width) };
+        }).filter(el => el.right > innerWidth + 2).sort((a, b) => b.right - a.right).slice(0, 16)
       };
     });
 
@@ -47,11 +51,11 @@ for (const [mode, width] of [['desktop', 1440], ['phone', 390]]) {
     expect(styles.statBackground).toContain('183, 207, 138');
     expect(styles.statLabel).toBe('rgb(36, 73, 45)');
     expect(styles.statValue).toBe('rgb(23, 54, 33)');
-    expect(styles.docWidth).toBeLessThanOrEqual(styles.viewport + 2);
-    expect(styles.bodyWidth).toBeLessThanOrEqual(styles.viewport + 2);
+    expect(styles.docWidth, JSON.stringify(styles.offenders)).toBeLessThanOrEqual(styles.viewport + 2);
+    expect(styles.bodyWidth, JSON.stringify(styles.offenders)).toBeLessThanOrEqual(styles.viewport + 2);
 
     await expect(page.locator('.start-stat')).toHaveCount(3);
-    await expect(page.locator('.start-statement')).toContainText('Genesis opened the door');
+    await expect(page.locator('.start-statement').first()).toContainText('Genesis opened the door');
     await expect(page.locator('.discovery-card[href="characters.html"]')).toBeVisible();
   });
 }
