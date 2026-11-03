@@ -52,6 +52,6 @@ for (const [mode, width] of [['desktop', 1440], ['phone', 390]]) {
 
     await expect(page.locator('.start-stat')).toHaveCount(3);
     await expect(page.locator('.start-statement')).toContainText('Genesis opened the door');
-    await expect(page.locator('.discovery-card[href="characters/liontone/"]')).toBeVisible();
+    await expect(page.locator('.discovery-card[href="characters.html"]')).toBeVisible();
   });
 }
