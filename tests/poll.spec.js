@@ -54,6 +54,22 @@ test('Reader\'s Choice submits confirmed votes only when live backend responds',
   await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
 });
 
+test('Reader\'s Choice acknowledges a confirmed change to a previous browser vote', async ({page}) => {
+  await page.route('**/poll-config.js*', route => route.fulfill({status:200,contentType:'text/javascript',body:"window.OLDROOT_POLL_CONFIG={apiBase:'https://poll.test.invalid'};"}));
+  await page.route('https://poll.test.invalid/**', route => {
+    const headers = {'Access-Control-Allow-Origin':'*','Content-Type':'application/json'};
+    if (route.request().url().endsWith('/api/status')) return route.fulfill({status:200,headers,body:JSON.stringify({open:true})});
+    if (route.request().url().endsWith('/api/vote')) return route.fulfill({status:200,headers,body:JSON.stringify({status:'updated',choice:'Remedie',previousChoice:'Gila Monster'})});
+    return route.fulfill({status:404,headers,body:'{}'});
+  });
+  await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
+  await expect(page.locator('#oldrootPollSubmit')).toBeEnabled();
+  await page.locator('input[value="Remedie"]').check();
+  await page.locator('#oldrootPollSubmit').click();
+  await expect(page.locator('#oldrootPollStatus')).toContainText('vote was updated successfully');
+  await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
+});
+
 test('owner poll dashboard is noindex, totals require authorization, and token is not stored', async ({page}) => {
   await page.goto(BASE+'/poll-results.html',{waitUntil:'domcontentloaded'});
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content',/noindex/);
