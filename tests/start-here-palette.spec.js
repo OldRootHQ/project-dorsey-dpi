@@ -30,6 +30,11 @@ for (const [mode, width] of [['desktop', 1440], ['phone', 390]]) {
         viewport: innerWidth,
         docWidth: document.documentElement.scrollWidth,
         bodyWidth: document.body.scrollWidth,
+        nestedOverflow: [...document.querySelectorAll('body *')].map(el => {
+          const style = getComputedStyle(el);
+          return { tag: el.tagName.toLowerCase(), cls: String(el.className || '').slice(0, 70), scroll: el.scrollWidth, client: el.clientWidth, overflow: style.overflowX };
+        }).filter(el => el.scroll > el.client + 2 && el.client > 0 && !['hidden', 'clip', 'auto', 'scroll'].includes(el.overflow))
+          .sort((a, b) => (b.scroll - b.client) - (a.scroll - a.client)).slice(0, 16),
         offenders: [...document.querySelectorAll('body *')].map(el => {
           const r = el.getBoundingClientRect();
           return { tag: el.tagName.toLowerCase(), cls: String(el.className || '').slice(0, 90), right: Math.round(r.right), width: Math.round(r.width) };
@@ -51,7 +56,7 @@ for (const [mode, width] of [['desktop', 1440], ['phone', 390]]) {
     expect(styles.statBackground).toContain('183, 207, 138');
     expect(styles.statLabel).toBe('rgb(36, 73, 45)');
     expect(styles.statValue).toBe('rgb(23, 54, 33)');
-    expect(styles.docWidth, JSON.stringify(styles.offenders)).toBeLessThanOrEqual(styles.viewport + 2);
+    expect(styles.docWidth, JSON.stringify({offenders:styles.offenders,nested:styles.nestedOverflow,body:styles.bodyWidth})).toBeLessThanOrEqual(styles.viewport + 2);
     expect(styles.bodyWidth, JSON.stringify(styles.offenders)).toBeLessThanOrEqual(styles.viewport + 2);
 
     await expect(page.locator('.start-stat')).toHaveCount(3);
