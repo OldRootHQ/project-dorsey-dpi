@@ -1,5 +1,7 @@
 # OldRoot HQ 2.1 — Cosmic Carbon Visual System (Draft)
 
+> **Historical proposal.** The PR #86 approval gate below applies to that original draft, not to the currently published website. The current production visual standard is `BRAND.md` (HQ 2.4 soft avocado, comic white and smooth matte carbon); the latest surface refinement is recorded in OR-WEB-0104.
+
 **Status:** Protected, unmerged work on PR #86. Do not merge or deploy without creator approval.
 
 ## Approved creator decisions — 26 October 2026
