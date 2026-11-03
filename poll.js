@@ -55,7 +55,7 @@
       if (!open) {
         say('Community voting is currently closed.');
       } else {
-        say('One vote per browser. Results remain private until OldRoot announces the winner.');
+        say('One active vote per browser. Results remain private until OldRoot announces the winner.');
       }
     } catch (_) {
       open = false;
@@ -80,8 +80,13 @@
         cache: 'no-store'
       });
       const result = await response.json();
-      if (response.ok && result.status === 'recorded') {
-        say('Vote confirmed! Thanks for supporting the next OldRoot issue.');
+      if (response.ok && ['recorded', 'updated', 'unchanged'].includes(result.status)) {
+        const messages = {
+          recorded: 'Vote confirmed! Thanks for supporting the next OldRoot issue.',
+          updated: 'Your vote was updated successfully. Thanks for supporting OldRoot!',
+          unchanged: 'Your vote is already recorded for this character. Thank you!'
+        };
+        say(messages[result.status]);
         open = false; // Prevent an accidental second submission in this session.
       } else if (response.status === 409) {
         say('A vote has already been recorded from this browser. Thank you!');

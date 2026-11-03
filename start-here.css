@@ -1,0 +1,121 @@
+/* OR-WEB-0105 · Start Here / current OldRoot HQ 2.4 visual language
+   Scoped to the entry page so existing lore, character, globe and commerce
+   treatments remain untouched. Matte carbon + soft avocado + comic white. */
+html body.oldroot-after-dark.start-here-page .site-shell .section-band{
+  position:relative;
+  background:var(--or-composite)!important;
+  border:1px solid rgba(183,207,138,.52)!important;
+  color:var(--or-comic-white)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.36)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .section-band::before,
+html body.oldroot-after-dark.start-here-page .site-shell .section-band::after{
+  display:none!important;
+  content:none!important; /* Retire the inherited café line and 42px off-edge root graphic. */
+}
+html body.oldroot-after-dark.start-here-page .site-shell .section-band-head span{
+  color:var(--or-avocado)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .section-band-head h2{
+  color:var(--or-comic-white)!important;
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .section-band-head p{
+  color:var(--or-ink-muted)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-statement,
+html body.oldroot-after-dark.start-here-page .site-shell .origin-lane,
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card{
+  background:linear-gradient(150deg,rgba(27,44,36,.98),rgba(12,27,20,.99))!important;
+  border:1px solid rgba(183,207,138,.46)!important;
+  border-radius:10px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.30)!important;
+  color:var(--or-comic-white)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-statement h2,
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card h3{
+  color:var(--or-comic-white)!important;
+  text-shadow:none!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-statement p,
+html body.oldroot-after-dark.start-here-page .site-shell .origin-lane p,
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card p{
+  color:#D9E7DC!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .origin-lane b,
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card span,
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card b{
+  color:var(--or-avocado)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .discovery-card:is(:hover,:focus-visible){
+  background:linear-gradient(150deg,#214332,#10291D)!important;
+  border-color:var(--or-avocado-light)!important;
+}
+/* Prevent min-content grid sizing from pushing long lore labels beyond the
+   viewport. Unlike clipping, these rules retain all text and focus rings. */
+html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid{
+  grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+}
+html body.oldroot-after-dark.start-here-page .site-shell :is(.start-intro-grid,.origin-lanes,.discovery-grid)>*{
+  min-width:0;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .origin-lanes{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+  grid-template-columns:minmax(0,1fr);
+}
+html body.oldroot-after-dark.start-here-page .site-shell :is(.origin-lane,.start-statement,.discovery-card,.start-stat){
+  overflow-wrap:anywhere;
+}
+@media(max-width:1040px){
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid{
+    grid-template-columns:minmax(0,1fr);
+  }
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark.start-here-page .site-shell .origin-lanes,
+  html body.oldroot-after-dark.start-here-page .site-shell .start-intro-grid>.origin-lanes{
+    grid-template-columns:minmax(0,1fr);
+  }
+}
+/* One purposeful avocado feature breaks up the dark cards without reviving
+   parchment, café brown, gold accents, or low-contrast labels. */
+html body.oldroot-after-dark.start-here-page .site-shell .start-stat-panel{
+  background:linear-gradient(135deg,#D5E5B7 0%,#B7CF8A 66%,#A9C985 100%)!important;
+  border:1px solid #DCEAC6!important;
+  color:#173621!important;
+  border-radius:10px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.28)!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-stat{
+  background:rgba(250,255,252,.48)!important;
+  border:1px solid rgba(36,73,45,.27)!important;
+  color:#173621!important;
+  border-radius:8px!important;
+  box-shadow:none!important;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-stat span{
+  color:#24492D!important;
+  font-size:10px;
+  line-height:1.25;
+}
+html body.oldroot-after-dark.start-here-page .site-shell .start-stat strong{
+  display:block;
+  color:#173621!important;
+  font-size:clamp(19px,2vw,27px);
+  line-height:1.13;
+  overflow-wrap:anywhere;
+}
+@media(max-width:760px){
+  html body.oldroot-after-dark.start-here-page .site-shell .start-statement,
+  html body.oldroot-after-dark.start-here-page .site-shell .start-stat-panel{
+    padding:20px;
+  }
+  html body.oldroot-after-dark.start-here-page .site-shell .start-stat{
+    padding:14px;
+  }
+}

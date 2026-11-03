@@ -107,5 +107,7 @@ jobs:
             artifacts/visual-qa/mobile-home-masthead.png
             artifacts/visual-qa/desktop-characters.png
             artifacts/visual-qa/desktop-lore.png
+            artifacts/visual-qa/desktop-start-here.png
+            artifacts/visual-qa/mobile-start-here.png
           if-no-files-found: ignore
           retention-days: 14

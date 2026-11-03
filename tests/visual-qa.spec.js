@@ -12,6 +12,7 @@ const pages = [
   ['ballestera','/characters/ballestera/'],
   ['locations','/locations.html'],
   ['hilo','/locations/hilo/'],
+  ['start-here','/start-here.html'],
   ['lore','/lore.html'],
   ['abyron','/lore/abyron/'],
   ['abyron-discovery','/lore/abyron-discovery/'],
