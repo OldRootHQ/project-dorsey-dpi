@@ -219,7 +219,7 @@
     }
 
     const compact=(svg.clientWidth||980)<600;
-    const W=Math.max(320,svg.clientWidth||980),H=Math.max(400,svg.clientHeight||610);
+    const W=Math.max(240,svg.clientWidth||980),H=Math.max(400,svg.clientHeight||610);
     svg.setAttribute("viewBox","0 0 "+W+" "+H);
     const m=compact?{top:36,right:15,bottom:58,left:48}:{top:48,right:42,bottom:76,left:88},iw=W-m.left-m.right,ih=H-m.top-m.bottom;
     const xExt=extentFor(data,xKey),yExt=extentFor(data,yKey);
