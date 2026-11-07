@@ -46,9 +46,11 @@ test('first-time visitor sees the approved OldRoot welcome, then can enter once'
   await expect(page.locator('main')).toHaveJSProperty('inert', false);
   await expect.poll(() => page.evaluate(k => localStorage.getItem(k), key)).toBe('yes');
 
-  // Turn off the first-visitor setup hook before checking return behavior.
-  await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
-  await expect(modal).toBeHidden();
+  // A new tab inherits the dismissal, without the one-time test init hook.
+  const returning = await page.context().newPage();
+  await returning.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
+  await expect(returning.locator('#oldrootWelcome')).toBeHidden();
+  await returning.close();
 });
 
 test('welcome is scrollable and accessible on phone, with an explicit reopen link', async ({ page }) => {
