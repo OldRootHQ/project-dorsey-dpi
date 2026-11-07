@@ -10,6 +10,9 @@
   const compareToggle=$("#compare-toggle"),compareTray=$("#compare-tray"),compareContent=$("#compare-content"),compareClear=$("#compare-clear");
   const unscoredPanel=$("#unscored-panel"),unscoredList=$("#unscored-list"),unscoredCount=$("#unscored-count");
   const chartNote=$("#chart-note"),mobileLegend=$("#mobile-chart-legend"),NS="http://www.w3.org/2000/svg";
+  const mobileBack=$("#mobile-back-to-chart"),mobileZoomIn=$("#mobile-zoom-in"),mobileZoomOut=$("#mobile-zoom-out"),mobileZoomReset=$("#mobile-zoom-reset");
+  const onMobile=()=>window.matchMedia("(max-width:760px)").matches;
+  let plotDimensions=null,mobilePlotBox=null,mobileTouchGesture=null,suppressTouchClickUntil=0;
 
   const dpiMetrics=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
   const OPI_MAX=100; // Universal category/official score display ceiling; ratings are never rescaled.
@@ -125,6 +128,7 @@
     });
   }
   function applyDraft(){
+    document.body.classList.remove("opi-mobile-detail");
     Object.values(filterState).forEach(s=>s.clear());
     Object.entries(draftState()).forEach(([k,set])=>set.forEach(v=>filterState[k].add(v)));
     updateActiveFilters();render();
@@ -205,7 +209,7 @@
       unscoredList.innerHTML=unscored.map(c=>'<button type="button" class="unscored-record" data-unscored-character="'+esc(c.codename)+'"><span><b>'+esc(c.codename)+'</b><small>'+esc(c.civilian)+'</small></span><strong>NUMERIC PROFILE NOT ESTABLISHED</strong></button>').join("");
       unscoredList.querySelectorAll("[data-unscored-character]").forEach(button=>button.onclick=()=>{
         const c=chars.find(item=>item.codename===button.dataset.unscoredCharacter);
-        if(c)select(c);
+        if(c){select(c);openMobileDetail();}
       });
     }
     noResults.classList.toggle("show",data.length===0);svg.innerHTML="";
@@ -221,6 +225,8 @@
     const compact=(svg.clientWidth||980)<600;
     const W=Math.max(240,svg.clientWidth||980),H=Math.max(400,svg.clientHeight||610);
     svg.setAttribute("viewBox","0 0 "+W+" "+H);
+    plotDimensions={W,H};
+    if(mobilePlotBox&&(mobilePlotBox.baseW!==W||mobilePlotBox.baseH!==H))mobilePlotBox=null;
     const m=compact?{top:36,right:15,bottom:58,left:48}:{top:48,right:42,bottom:76,left:88},iw=W-m.left-m.right,ih=H-m.top-m.bottom;
     const xExt=extentFor(data,xKey),yExt=extentFor(data,yKey);
     const sx=v=>m.left+((v-xExt[0])/(xExt[1]-xExt[0]))*iw;
@@ -263,7 +269,7 @@
       const label=labelBy.value==="codename"?c.codename:labelBy.value==="civilian"?c.civilian:"";
       if(label)g.appendChild(node("text",{x:cx,y:cy-r-10,"text-anchor":"middle",class:"point-label"},label.toUpperCase()));
       g.addEventListener("mousemove",e=>showTip(e,c));g.addEventListener("mouseenter",e=>showTip(e,c));g.addEventListener("mouseleave",()=>tip.classList.remove("show"));
-      g.addEventListener("click",()=>pointAction(c));g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pointAction(c)}});
+      g.addEventListener("click",()=>{if(onMobile()&&Date.now()<suppressTouchClickUntil)return;pointAction(c)});g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();pointAction(c)}});
       svg.appendChild(g);
     });
 
@@ -274,6 +280,7 @@
       svg.appendChild(lg);
     }
 
+    if(onMobile())applyMobilePlotBox();
     if(selectedCharacter&&filtered.includes(selectedCharacter))select(selectedCharacter);else select(filtered[0]);
     renderCompare();
   }
@@ -283,9 +290,13 @@
     if(compareMode){
       if(compareSet.has(c.codename))compareSet.delete(c.codename);else if(compareSet.size<4)compareSet.add(c.codename);
       render();
-    }else select(c);
+    }else {
+      select(c);
+      openMobileDetail();
+    }
   }
   function showTip(e,c){
+    if(onMobile())return;
     const xKey=xMetric.value,yKey=yMetric.value;
     tip.innerHTML='<strong>'+esc(c.codename)+'</strong><small>'+esc(c.civilian)+'</small>'+
       '<div class="trow"><span>'+esc(defs[xKey].label)+'</span><b>'+esc(formatMetric(xKey,valueFor(c,xKey)))+'</b></div>'+
@@ -341,15 +352,135 @@
     compareContent.querySelectorAll("[data-remove-compare]").forEach(b=>b.onclick=()=>{compareSet.delete(b.dataset.removeCompare);render()});
   }
 
-  search.addEventListener("input",()=>{updateFilterOptionCounts();render()});
-  [xMetric,yMetric,colorBy,sizeBy,labelBy].forEach(e=>e.addEventListener("change",render));
-  swapAxes.onclick=()=>{const x=xMetric.value;xMetric.value=yMetric.value;yMetric.value=x;render()};
+
+  // The mobile plot is a navigable map: zoom and pan its SVG viewBox without
+  // changing the underlying coordinates, categories, values or desktop behavior.
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  function currentPlotBox(){
+    if(!plotDimensions)return null;
+    const {W,H}=plotDimensions;
+    return mobilePlotBox||{x:0,y:0,w:W,h:H,baseW:W,baseH:H};
+  }
+  function applyMobilePlotBox(){
+    if(!onMobile()||!plotDimensions)return;
+    const b=currentPlotBox();
+    svg.setAttribute("viewBox",[b.x,b.y,b.w,b.h].join(" "));
+    if(mobileZoomOut)mobileZoomOut.disabled=b.w>=plotDimensions.W-.1;
+    if(mobileZoomReset)mobileZoomReset.disabled=b.w>=plotDimensions.W-.1;
+    if(mobileZoomIn)mobileZoomIn.disabled=b.w<=plotDimensions.W/7.99;
+  }
+  function setMobilePlotBox(x,y,w){
+    if(!onMobile()||!plotDimensions)return;
+    const {W,H}=plotDimensions;
+    const nextW=clamp(w,W/8,W),nextH=nextW*H/W;
+    mobilePlotBox=nextW>=W-.01?null:{
+      x:clamp(x,0,W-nextW),y:clamp(y,0,H-nextH),
+      w:nextW,h:nextH,baseW:W,baseH:H
+    };
+    applyMobilePlotBox();
+  }
+  function mobilePoint(clientX,clientY){
+    const rect=svg.getBoundingClientRect(),{W,H}=plotDimensions;
+    return {x:clamp((clientX-rect.left)/rect.width,0,1)*W,y:clamp((clientY-rect.top)/rect.height,0,1)*H};
+  }
+  function mobileZoomBy(factor){
+    if(!onMobile()||!plotDimensions)return;
+    const b=currentPlotBox(),{W,H}=plotDimensions;
+    const points=[...svg.querySelectorAll("circle.point")].map(el=>({
+      x:Number(el.getAttribute("cx")),y:Number(el.getAttribute("cy"))
+    })).filter(p=>p.x>=b.x&&p.x<=b.x+b.w&&p.y>=b.y&&p.y<=b.y+b.h);
+    const median=(arr,fallback)=>{
+      if(!arr.length)return fallback;
+      const sorted=arr.sort((a,z)=>a-z);
+      return sorted[Math.floor(sorted.length/2)];
+    };
+    const anchorX=median(points.map(p=>p.x),b.x+b.w/2);
+    const anchorY=median(points.map(p=>p.y),b.y+b.h/2);
+    const w=clamp(b.w/factor,W/8,W),h=w*H/W;
+    setMobilePlotBox(anchorX-w/2,anchorY-h/2,w);
+  }
+  function touchDistance(a,b){return Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)}
+  function beginMobileGesture(touches){
+    if(!onMobile()||!plotDimensions)return;
+    const b=currentPlotBox();
+    if(touches.length>=2){
+      const middle=mobilePoint((touches[0].clientX+touches[1].clientX)/2,(touches[0].clientY+touches[1].clientY)/2);
+      mobileTouchGesture={
+        type:"pinch",distance:Math.max(1,touchDistance(touches[0],touches[1])),
+        box:{...b},
+        anchorX:b.x+middle.x/plotDimensions.W*b.w,
+        anchorY:b.y+middle.y/plotDimensions.H*b.h
+      };
+    }else if(touches.length===1&&b.w<plotDimensions.W-.01){
+      mobileTouchGesture={type:"pan",box:{...b},clientX:touches[0].clientX,clientY:touches[0].clientY};
+    }else mobileTouchGesture=null;
+  }
+  // Touch listeners are attached once to the stable SVG. Changing the viewBox
+  // never replaces point elements during a pinch, preserving the gesture.
+  svg.addEventListener("touchstart",event=>{
+    if(!onMobile())return;
+    beginMobileGesture(event.touches);
+  },{passive:true});
+  svg.addEventListener("touchmove",event=>{
+    if(!onMobile()||!plotDimensions)return;
+    if(event.touches.length>=2){
+      if(!mobileTouchGesture||mobileTouchGesture.type!=="pinch")beginMobileGesture(event.touches);
+      const g=mobileTouchGesture;
+      if(!g)return;
+      event.preventDefault();
+      const mid=mobilePoint((event.touches[0].clientX+event.touches[1].clientX)/2,(event.touches[0].clientY+event.touches[1].clientY)/2);
+      const ratio=touchDistance(event.touches[0],event.touches[1])/g.distance;
+      const w=clamp(g.box.w/ratio,plotDimensions.W/8,plotDimensions.W);
+      const h=w*plotDimensions.H/plotDimensions.W;
+      setMobilePlotBox(g.anchorX-(mid.x/plotDimensions.W)*w,g.anchorY-(mid.y/plotDimensions.H)*h,w);
+      suppressTouchClickUntil=Date.now()+550;
+    }else if(event.touches.length===1&&mobileTouchGesture?.type==="pan"){
+      event.preventDefault();
+      const g=mobileTouchGesture,rect=svg.getBoundingClientRect();
+      const dx=(event.touches[0].clientX-g.clientX)/rect.width*g.box.w;
+      const dy=(event.touches[0].clientY-g.clientY)/rect.height*g.box.h;
+      setMobilePlotBox(g.box.x-dx,g.box.y-dy,g.box.w);
+      suppressTouchClickUntil=Date.now()+550;
+    }
+  },{passive:false});
+  svg.addEventListener("touchend",event=>{
+    if(!onMobile())return;
+    if(event.touches.length===1)beginMobileGesture(event.touches);
+    else mobileTouchGesture=null;
+  },{passive:true});
+  svg.addEventListener("touchcancel",()=>{mobileTouchGesture=null},{passive:true});
+  if(mobileZoomIn)mobileZoomIn.onclick=()=>mobileZoomBy(1.7);
+  if(mobileZoomOut)mobileZoomOut.onclick=()=>mobileZoomBy(1/1.7);
+  if(mobileZoomReset)mobileZoomReset.onclick=()=>{mobilePlotBox=null;applyMobilePlotBox()};
+  function openMobileDetail(){
+    if(!onMobile()||compareMode)return;
+    document.body.classList.add("opi-mobile-detail");
+    tip.classList.remove("show");
+    requestAnimationFrame(()=>{
+      mobileBack?.focus({preventScroll:true});
+      document.querySelector(".detail-panel")?.scrollIntoView({block:"start",behavior:"instant"});
+    });
+  }
+  function closeMobileDetail(){
+    document.body.classList.remove("opi-mobile-detail");
+    requestAnimationFrame(()=>document.querySelector(".chart-panel")?.scrollIntoView({block:"start",behavior:"instant"}));
+  }
+  if(mobileBack)mobileBack.onclick=closeMobileDetail;
+
+  search.addEventListener("input",()=>{document.body.classList.remove("opi-mobile-detail");updateFilterOptionCounts();render()});
+  [xMetric,yMetric].forEach(e=>e.addEventListener("change",()=>{mobilePlotBox=null;document.body.classList.remove("opi-mobile-detail");render()}));
+  [colorBy,sizeBy,labelBy].forEach(e=>e.addEventListener("change",render));
+  swapAxes.onclick=()=>{const x=xMetric.value;xMetric.value=yMetric.value;yMetric.value=x;mobilePlotBox=null;document.body.classList.remove("opi-mobile-detail");render()};
   filterOpen.onclick=()=>{const opening=filterDrawer.hidden;filterDrawer.hidden=!opening;filterOpen.setAttribute("aria-expanded",String(opening));if(opening)updateFilterOptionCounts()};
   filterApply.onclick=()=>{applyDraft();filterDrawer.hidden=true;filterOpen.setAttribute("aria-expanded","false")};
-  filterClear.onclick=()=>{filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());updateActiveFilters();updateFilterOptionCounts();render()};
-  compareToggle.onclick=()=>{compareMode=!compareMode;compareToggle.classList.toggle("active",compareMode);compareToggle.setAttribute("aria-pressed",String(compareMode));renderCompare();render()};
+  filterClear.onclick=()=>{document.body.classList.remove("opi-mobile-detail");filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());updateActiveFilters();updateFilterOptionCounts();render()};
+  compareToggle.onclick=()=>{document.body.classList.remove("opi-mobile-detail");compareMode=!compareMode;compareToggle.classList.toggle("active",compareMode);compareToggle.setAttribute("aria-pressed",String(compareMode));renderCompare();render()};
   compareClear.onclick=()=>{compareSet.clear();render()};
-  reset.onclick=()=>{search.value="";filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());xMetric.value="Offense";yMetric.value="Durability";colorBy.value="originType";sizeBy.value="fixed";labelBy.value="codename";compareSet.clear();compareMode=false;compareToggle.classList.remove("active");compareToggle.setAttribute("aria-pressed","false");updateActiveFilters();updateFilterOptionCounts();render()};
-  window.addEventListener("resize",()=>requestAnimationFrame(render));
+  reset.onclick=()=>{mobilePlotBox=null;document.body.classList.remove("opi-mobile-detail");search.value="";filterGroups.querySelectorAll("input").forEach(i=>i.checked=false);Object.values(filterState).forEach(s=>s.clear());xMetric.value="Offense";yMetric.value="Durability";colorBy.value="originType";sizeBy.value="fixed";labelBy.value="codename";compareSet.clear();compareMode=false;compareToggle.classList.remove("active");compareToggle.setAttribute("aria-pressed","false");updateActiveFilters();updateFilterOptionCounts();render()};
+  window.addEventListener("resize",()=>requestAnimationFrame(()=>{
+    if(!onMobile()){mobilePlotBox=null;document.body.classList.remove("opi-mobile-detail")}
+    if(document.body.classList.contains("opi-mobile-detail"))return;
+    render();
+  }));
   updateFilterOptionCounts();render();
 })();

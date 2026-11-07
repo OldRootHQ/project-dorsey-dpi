@@ -131,7 +131,7 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (html.includes('site.css') && !html.includes(relative === 'contact.html' ? 'site.css?v=34' : 'site.css?v=33')) failures.push(relative + ': site cache key stale');
     if (html.includes('character.css') && !html.includes('character.css?v=27')) failures.push(relative + ': character cache key stale');
     if (html.includes('locations.css') && !(html.includes('locations.css?v=10') || (relative === 'locations.html' && html.includes('locations.css?v=11')))) failures.push(relative + ': locations cache key stale');
-    if (html.includes('styles.css') && !html.includes(relative === 'dpi.html' ? 'styles.css?v=18' : 'styles.css?v=17')) failures.push(relative + ': OPI cache key stale');
+    if (html.includes('styles.css') && !html.includes(relative === 'dpi.html' ? 'styles.css?v=19' : 'styles.css?v=17')) failures.push(relative + ': OPI cache key stale');
     if (html.includes('shop.css') && !html.includes('shop.css?v=2')) failures.push(relative + ': shop cache key stale');
     if (html.includes('lightbox.js') && !html.includes('lightbox.js?v=9')) failures.push(relative + ': lightbox cache key stale');
     if (html.includes('nav.js') && !html.includes('nav.js?v=5')) failures.push(relative + ': nav cache key stale');
@@ -139,7 +139,7 @@ test('all static pages opt into After Dark and current stylesheet cache keys', a
     if (html.includes('locations.js') && !(html.includes('locations.js?v=5') || (relative === 'locations.html' && html.includes('locations.js?v=6')))) failures.push(relative + ': locations script cache key stale');
     if (html.includes('locations.js') && !(html.includes('location-data.js?v=3') || (relative === 'locations.html' && html.includes('location-data.js?v=5')))) failures.push(relative + ': shared location data missing');
     if (relative === 'dpi.html' && !html.includes('data.js?v=38')) failures.push(relative + ': OPI data cache key stale');
-    if (relative === 'dpi.html' && !html.includes('app.js?v=18')) failures.push(relative + ': OPI app cache key stale');
+    if (relative === 'dpi.html' && !html.includes('app.js?v=19')) failures.push(relative + ': OPI app cache key stale');
     if (relative === 'index.html' && !html.includes('home.css?v=9')) failures.push(relative + ': homepage stylesheet cache key stale');
     if (relative === 'index.html' && !html.includes('home-data.js?v=37')) failures.push(relative + ': homepage data cache key stale');
     if (relative === 'index.html' && !html.includes('home.js?v=6')) failures.push(relative + ': homepage runtime cache key stale');
