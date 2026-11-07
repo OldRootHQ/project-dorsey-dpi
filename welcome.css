@@ -1,0 +1,125 @@
+/* OldRoot Studios — A Universe in the Making.
+   Isolated welcome overlay; does not restyle the underlying website. */
+.or-welcome-open{overflow:hidden!important}
+#oldrootWelcome[hidden]{display:none!important}
+#oldrootWelcome,
+#oldrootWelcome *{box-sizing:border-box}
+#oldrootWelcome{
+  position:fixed;inset:0;z-index:2147483000;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(12px,2.5vh,28px);
+  background:rgba(0,0,0,.72);
+  -webkit-backdrop-filter:blur(9px) brightness(.66);
+  backdrop-filter:blur(9px) brightness(.66);
+  font-family:Arial,Helvetica,sans-serif;
+  animation:or-welcome-reveal .28s ease-out both;
+}
+#oldrootWelcome .or-welcome-card{
+  position:relative;isolation:isolate;
+  width:min(1188px,100%);max-height:calc(100dvh - 24px);
+  overflow-x:hidden;overflow-y:auto;
+  overscroll-behavior:contain;
+  border:2px solid #87ed13;border-radius:30px;
+  background:#030503;color:#f7f8f6;
+  box-shadow:0 0 0 1px rgba(177,255,88,.12),0 22px 75px rgba(0,0,0,.75),0 0 34px rgba(87,185,9,.18);
+  padding:0 clamp(26px,5.2vw,76px) 24px;
+  text-align:center;
+  scrollbar-color:#4e9318 #060a06;
+}
+/* Just two low-key green corner marks—no cityscape or generated scenery. */
+#oldrootWelcome .or-welcome-card::before,
+#oldrootWelcome .or-welcome-card::after{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  width:310px;height:205px;opacity:.75;
+  background:
+    repeating-linear-gradient(141deg,transparent 0 13px,rgba(85,181,12,.14) 14px 18px,transparent 19px 28px),
+    radial-gradient(ellipse at 0 0,rgba(45,118,9,.62),rgba(25,59,4,.21) 44%,transparent 75%);
+}
+#oldrootWelcome .or-welcome-card::before{top:0;left:0;clip-path:polygon(0 0,100% 0,36% 23%,85% 0,30% 43%,51% 37%,0 100%)}
+#oldrootWelcome .or-welcome-card::after{right:0;bottom:0;transform:rotate(180deg);clip-path:polygon(0 0,100% 0,36% 23%,85% 0,30% 43%,51% 37%,0 100%)}
+#oldrootWelcome .or-welcome-close{
+  position:absolute;top:21px;right:22px;z-index:3;
+  display:grid;place-items:center;width:43px;height:43px;
+  padding:0;border:1px solid #9ad927;border-radius:5px;
+  background:#050805;color:white;
+  font:400 34px/1 Arial,sans-serif;cursor:pointer;
+}
+#oldrootWelcome .or-welcome-close:hover{color:#c4fa70;background:#13240c}
+#oldrootWelcome .or-welcome-logo{
+  display:block;width:min(450px,74%);max-width:100%;height:auto;
+  margin:-24px auto -33px;
+  object-fit:contain;
+  filter:drop-shadow(0 6px 12px rgba(0,0,0,.38));
+}
+#oldrootWelcome .or-welcome-title{
+  margin:0 auto 12px;
+  font:900 clamp(34px,3.7vw,55px)/1.08 Arial,Helvetica,sans-serif;
+  letter-spacing:-.052em;color:#f7f8f6;
+}
+#oldrootWelcome .or-welcome-title span{color:#a6e600}
+#oldrootWelcome .or-welcome-kicker{
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  max-width:905px;margin:0 auto 13px;
+  color:#d4d6d1;font:600 14px/1.3 Arial,sans-serif;
+  letter-spacing:.38em;white-space:nowrap;
+}
+#oldrootWelcome .or-welcome-kicker::before,
+#oldrootWelcome .or-welcome-kicker::after{content:"";display:block;flex:1;height:2px;background:linear-gradient(90deg,transparent,#6cba06)}
+#oldrootWelcome .or-welcome-kicker::after{transform:scaleX(-1)}
+#oldrootWelcome .or-welcome-copy{
+  max-width:950px;margin:0 auto;
+  color:#f2f4f1;font:400 clamp(15px,1.32vw,18px)/1.4 Arial,Helvetica,sans-serif;
+}
+#oldrootWelcome .or-welcome-copy p{margin:0 auto 9px}
+#oldrootWelcome .or-welcome-copy strong{font-weight:800}
+#oldrootWelcome .or-welcome-callout{
+  display:table;max-width:100%;margin:13px auto 12px!important;
+  padding:6px 40px;
+  border:2px solid #8eea0c;
+  color:#f5f719;
+  font:800 clamp(17px,1.6vw,22px)/1.2 Arial,sans-serif;
+  clip-path:polygon(5% 0,95% 0,100% 50%,95% 100%,5% 100%,0 50%);
+}
+#oldrootWelcome .or-welcome-signoff{
+  margin:14px auto 21px;
+  color:#97ec20;
+  font:900 clamp(21px,2.1vw,29px)/1.2 Arial,sans-serif;
+  letter-spacing:-.03em;
+}
+#oldrootWelcome .or-welcome-enter{
+  display:block;width:min(597px,100%);min-height:68px;
+  margin:0 auto 16px;padding:13px 30px;
+  border:3px solid #eef3cc;
+  clip-path:polygon(4% 0,97% 0,100% 45%,96% 100%,0 100%,4% 0);
+  background:linear-gradient(180deg,#b6f733 0%,#7cda06 100%);
+  color:#071100;
+  box-shadow:inset 0 -7px 0 rgba(0,0,0,.10);
+  font:950 clamp(25px,2.8vw,38px)/1.1 Impact,"Arial Black",Arial,sans-serif;
+  font-style:italic;letter-spacing:.005em;
+  cursor:pointer;transition:filter .15s ease,transform .15s ease;
+}
+#oldrootWelcome .or-welcome-enter:hover{filter:brightness(1.12);transform:translateY(-2px)}
+#oldrootWelcome .or-welcome-footnote{
+  margin:0 auto;color:#d5d7d0;
+  font:500 clamp(10px,1.03vw,14px)/1.4 Arial,Helvetica,sans-serif;
+  letter-spacing:.34em;
+}
+#oldrootWelcome button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes or-welcome-reveal{from{opacity:0}to{opacity:1}}
+@media(max-width:760px){
+  #oldrootWelcome{padding:12px;align-items:center}
+  #oldrootWelcome .or-welcome-card{border-radius:19px;padding:24px 20px 24px;max-height:calc(100dvh - 24px)}
+  #oldrootWelcome .or-welcome-card::before,#oldrootWelcome .or-welcome-card::after{width:140px;height:115px}
+  #oldrootWelcome .or-welcome-close{top:11px;right:11px;width:35px;height:35px;font-size:27px}
+  #oldrootWelcome .or-welcome-logo{width:min(300px,90%);margin:-33px auto -20px}
+  #oldrootWelcome .or-welcome-title{font-size:clamp(27px,7.3vw,38px);margin-bottom:13px}
+  #oldrootWelcome .or-welcome-kicker{gap:7px;font-size:10px;letter-spacing:.17em;margin-bottom:15px}
+  #oldrootWelcome .or-welcome-copy{font-size:14px;line-height:1.49}
+  #oldrootWelcome .or-welcome-copy p{margin-bottom:11px}
+  #oldrootWelcome .or-welcome-callout{display:block;font-size:17px;padding:7px 14px;margin:15px auto!important}
+  #oldrootWelcome .or-welcome-signoff{font-size:22px;margin:17px auto 19px}
+  #oldrootWelcome .or-welcome-enter{min-height:56px;font-size:26px;margin-bottom:13px}
+  #oldrootWelcome .or-welcome-footnote{font-size:9px;letter-spacing:.14em}
+  #oldrootWelcome .or-welcome-desktop-break{display:none}
+}
+@media(prefers-reduced-motion:reduce){#oldrootWelcome{animation:none}#oldrootWelcome .or-welcome-enter{transition:none}}
