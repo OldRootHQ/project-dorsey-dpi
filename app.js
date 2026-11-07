@@ -9,9 +9,10 @@
   const colorBy=$("#color-by"),sizeBy=$("#size-by"),labelBy=$("#label-by");
   const compareToggle=$("#compare-toggle"),compareTray=$("#compare-tray"),compareContent=$("#compare-content"),compareClear=$("#compare-clear");
   const unscoredPanel=$("#unscored-panel"),unscoredList=$("#unscored-list"),unscoredCount=$("#unscored-count");
-  const chartNote=$("#chart-note"),NS="http://www.w3.org/2000/svg";
+  const chartNote=$("#chart-note"),mobileLegend=$("#mobile-chart-legend"),NS="http://www.w3.org/2000/svg";
 
   const dpiMetrics=["Strength","Durability","Speed","Agility","Regeneration","Senses","Offense","Intellect","Combat","Mobility","Stamina"];
+  const OPI_MAX=100; // Universal category/official score display ceiling; ratings are never rescaled.
   const defs={
     ...Object.fromEntries(dpiMetrics.map(k=>[k,{label:k,group:"OPI",kind:"dpi",format:v=>v.toFixed(1)}])),
     officialOPI:{label:"Official OPI",group:"OPI",kind:"dpi",format:v=>v.toFixed(2)},
@@ -145,7 +146,7 @@
 
   function extentFor(data,key){
     const vals=data.map(c=>valueFor(c,key)).filter(Number.isFinite),kind=defs[key].kind;
-    if(kind==="dpi")return[0,50];
+    if(kind==="dpi")return[0,OPI_MAX];
     if(kind==="height")return[Math.min(60,Math.floor(Math.min(...vals)-2)),Math.max(80,Math.ceil(Math.max(...vals)+2))];
     if(kind==="weight")return[Math.max(0,Math.floor((Math.min(...vals)-20)/10)*10),Math.ceil((Math.max(...vals)+20)/10)*10];
     if(kind==="age")return[Math.max(0,Math.floor(Math.min(...vals)-3)),Math.ceil(Math.max(...vals)+3)];
@@ -154,7 +155,7 @@
     let lo=Math.min(...vals),hi=Math.max(...vals);if(lo===hi){lo-=1;hi+=1}const pad=(hi-lo)*.12;return[lo-pad,hi+pad];
   }
   function ticks([lo,hi],kind,n=6){
-    if(kind==="dpi")return[0,10,20,30,40,50];
+    if(kind==="dpi")return[0,20,40,60,80,OPI_MAX];
     const step=(hi-lo)/(n-1);return Array.from({length:n},(_,i)=>lo+step*i);
   }
   function tickText(key,v){
@@ -208,6 +209,7 @@
       });
     }
     noResults.classList.toggle("show",data.length===0);svg.innerHTML="";
+    if(mobileLegend){mobileLegend.hidden=true;mobileLegend.innerHTML="";}
     if(!data.length){
       if(filtered.length){
         const choice=selectedCharacter&&filtered.includes(selectedCharacter)?selectedCharacter:filtered[0];
@@ -216,9 +218,10 @@
       renderCompare();return
     }
 
-    const W=Math.max(760,svg.clientWidth||980),H=Math.max(540,svg.clientHeight||610);
+    const compact=(svg.clientWidth||980)<600;
+    const W=Math.max(320,svg.clientWidth||980),H=Math.max(400,svg.clientHeight||610);
     svg.setAttribute("viewBox","0 0 "+W+" "+H);
-    const m={top:48,right:42,bottom:76,left:88},iw=W-m.left-m.right,ih=H-m.top-m.bottom;
+    const m=compact?{top:36,right:15,bottom:58,left:48}:{top:48,right:42,bottom:76,left:88},iw=W-m.left-m.right,ih=H-m.top-m.bottom;
     const xExt=extentFor(data,xKey),yExt=extentFor(data,yKey);
     const sx=v=>m.left+((v-xExt[0])/(xExt[1]-xExt[0]))*iw;
     const sy=v=>m.top+ih-((v-yExt[0])/(yExt[1]-yExt[0]))*ih;
@@ -230,9 +233,16 @@
     svg.appendChild(node("text",{x:m.left+iw/2,y:H-20,"text-anchor":"middle",class:"axis-label"},defs[xKey].label));
 
     const cmap=colorMap(data);
+    // On narrow screens keep the plot unobstructed and show the color key below it.
+    if(mobileLegend&&compact&&colorBy.value!=="none"){
+      const values=[...new Set(data.map(paletteValue))];
+      mobileLegend.hidden=false;
+      mobileLegend.innerHTML='<strong>COLOR / '+esc(colorBy.options[colorBy.selectedIndex].text.toUpperCase())+'</strong>'+
+        values.map(v=>'<span class="mobile-legend-item"><i style="background:'+cmap[v]+'"></i>'+esc(v)+'</span>').join("");
+    }
 
     // Tactical plot legend
-    if(colorBy.value!=="none"){
+    if(colorBy.value!=="none"&&!compact){
       const legendValues=[...new Set(data.map(paletteValue))];
       const lx=m.left+12,ly=m.top+12,lw=Math.min(210,Math.max(132,...legendValues.map(v=>String(v).length*6+48))),lh=30+legendValues.length*18;
       svg.appendChild(node("rect",{x:lx,y:ly,width:lw,height:lh,rx:8,class:"chart-legend-bg"}));
@@ -257,10 +267,12 @@
       svg.appendChild(g);
     });
 
-    const legendValues=[...new Set(data.map(paletteValue))];
-    const lg=node("g",{class:"chart-legend"});let lx=m.left;
-    legendValues.slice(0,8).forEach(v=>{lg.appendChild(node("circle",{cx:lx,cy:24,r:5,fill:cmap[v]}));lg.appendChild(node("text",{x:lx+10,y:27,class:"legend-text"},v));lx+=Math.min(195,Math.max(88,v.length*6.4+28))});
-    svg.appendChild(lg);
+    if(!compact){
+      const legendValues=[...new Set(data.map(paletteValue))];
+      const lg=node("g",{class:"chart-legend"});let lx=m.left;
+      legendValues.slice(0,8).forEach(v=>{lg.appendChild(node("circle",{cx:lx,cy:24,r:5,fill:cmap[v]}));lg.appendChild(node("text",{x:lx+10,y:27,class:"legend-text"},v));lx+=Math.min(195,Math.max(88,v.length*6.4+28))});
+      svg.appendChild(lg);
+    }
 
     if(selectedCharacter&&filtered.includes(selectedCharacter))select(selectedCharacter);else select(filtered[0]);
     renderCompare();
@@ -312,7 +324,7 @@
       '<div class="top-baseline"><span>Highest baseline category</span><b>'+esc(top[0])+' · '+top[1].toFixed(1)+'</b></div>'+
       (c.page?'<a class="dossier-link" href="'+esc(c.page)+'">Open character dossier →</a>':"")+
       '<div class="section-label">Baseline OPI</div>'+
-      Object.entries(c.baseline).map(([k,v])=>'<div class="stat"><div class="stat-name">'+k+'</div><div class="track"><div class="fill" style="width:'+(v/50*100)+'%"></div></div><div class="stat-val">'+v.toFixed(1)+'</div></div>').join("")+
+      Object.entries(c.baseline).map(([k,v])=>'<div class="stat"><div class="stat-name">'+k+'</div><div class="track"><div class="fill" style="width:'+(v/OPI_MAX*100)+'%"></div></div><div class="stat-val">'+v.toFixed(1)+'</div></div>').join("")+
       '<div class="section-label">Conditional modifiers</div>'+conditional;
   }
 

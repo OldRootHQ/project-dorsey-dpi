@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark" />
   <title>OPI Analytics — OldRoot</title><meta name="description" content="Explore OldRoot Power Index analytics, compare measurable character capabilities, and display creator-established official OPI values without inferring missing scores."/><link rel="canonical" href="https://oldroothq.com/dpi.html"/><meta name="theme-color" content="#06110d"/><meta property="og:type" content="website"/><meta property="og:site_name" content="OldRoot Studios"/><meta property="og:title" content="OPI Analytics — OldRoot"/><meta property="og:description" content="Explore OldRoot Power Index analytics and compare measurable character capabilities without a single overall power score."/><meta property="og:url" content="https://oldroothq.com/dpi.html"/><meta property="og:image" content="https://oldroothq.com/assets/branding/oldroot-primary.png"/><meta property="og:image:alt" content="OldRoot Studios"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="OPI Analytics — OldRoot"/><meta name="twitter:description" content="Explore OldRoot Power Index analytics and compare measurable character capabilities without a single overall power score."/><meta name="twitter:image" content="https://oldroothq.com/assets/branding/oldroot-primary.png"/>
   <link rel="stylesheet" href="brand.css?v=17" />
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=18" />
 </head>
 <body class="oldroot-after-dark">
   <header class="masthead"><div class="mast-inner"><a class="brand" href="index.html">OLDROOT</a><nav class="site-nav" aria-label="Primary">
@@ -55,7 +55,7 @@
     <section class="grid">
       <article class="panel chart-panel">
         <div class="panel-head">
-          <div><h2>Character comparison scatter plot</h2><p>Axes can use OPI, physical profile, career data, or analytics-only derived variables. Missing values are never guessed.</p></div>
+          <div><h2>Character comparison scatter plot</h2><p>OPI category axes use the 0–100 scale. Physical profile, career, and derived analytics retain their own measurement units. Missing values are never guessed.</p></div>
           <div class="plot-count" id="plot-count">5 plotted</div>
         </div>
 
@@ -79,6 +79,7 @@
         </div>
 
         <div class="chart-wrap"><svg id="chart" role="img" aria-label="Interactive character comparison scatter plot"></svg><div id="no-results" class="no-results">No characters have values for this filtered comparison.</div></div>
+        <div class="mobile-chart-legend" id="mobile-chart-legend" aria-label="Chart color legend" hidden></div>
         <div class="chart-note" id="chart-note"></div>
       </article>
 
@@ -95,7 +96,7 @@
 
   <div id="tooltip" class="tooltip"></div>
   <script src="data.js?v=38"></script>
-  <script src="app.js?v=17"></script>
+  <script src="app.js?v=18"></script>
   <script src="lightbox.js?v=9"></script>
   <script src="nav.js?v=5"></script>
 </body>

@@ -492,3 +492,16 @@ body.oldroot-after-dark::after{
 @media(max-width:640px){
   .detail-mark{width:62px;height:62px}
 }
+
+
+/* OPI 0–100 mobile plot: show legible axis ticks and move the color key out of the SVG. */
+.mobile-chart-legend{display:flex;flex-wrap:wrap;gap:7px 12px;align-items:center;padding:11px 8px 4px;color:#c9d5ce}
+.mobile-chart-legend[hidden]{display:none}
+.mobile-chart-legend>strong{flex-basis:100%;color:#81998d;font-size:9px;font-weight:900;letter-spacing:.1em}
+.mobile-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:10px;line-height:1.35}
+.mobile-legend-item i{display:inline-block;flex:none;width:9px;height:9px;border-radius:50%;border:1px solid #07140f}
+@media(max-width:600px){
+  #chart .tick{font-size:11px}
+  #chart .axis-label{font-size:10px}
+  #chart .point-label{font-size:10px;stroke-width:3px}
+}
