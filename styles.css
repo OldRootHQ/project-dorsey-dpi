@@ -492,3 +492,51 @@ body.oldroot-after-dark::after{
 @media(max-width:640px){
   .detail-mark{width:62px;height:62px}
 }
+
+
+/* OPI 0–100 mobile plot: show legible axis ticks and move the color key out of the SVG. */
+.mobile-chart-legend{display:flex;flex-wrap:wrap;gap:7px 12px;align-items:center;padding:11px 8px 4px;color:#c9d5ce}
+.mobile-chart-legend[hidden]{display:none}
+.mobile-chart-legend>strong{flex-basis:100%;color:#81998d;font-size:9px;font-weight:900;letter-spacing:.1em}
+.mobile-legend-item{display:inline-flex;align-items:center;gap:6px;font-size:10px;line-height:1.35}
+.mobile-legend-item i{display:inline-block;flex:none;width:9px;height:9px;border-radius:50%;border:1px solid #07140f}
+@media(max-width:600px){
+  #chart .tick{font-size:11px}
+  #chart .axis-label{font-size:10px}
+  #chart .point-label{font-size:10px;stroke-width:3px}
+}
+
+
+/* OR-OPI-MOBILE — isolated phone navigation; desktop remains untouched. */
+.mobile-plot-tools,.mobile-back-to-chart{display:none}
+@media(max-width:760px){
+  .grid .detail-panel{display:none}
+  body.opi-mobile-detail .grid .chart-panel{display:none}
+  body.opi-mobile-detail .grid .detail-panel{display:block}
+  body.opi-mobile-detail .mobile-back-to-chart{
+    display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+    margin:0 0 17px;padding:10px 14px;border:1px solid rgba(197,162,74,.68);
+    border-radius:10px;background:#1b3b2b;color:#f0e8c6;
+    font:850 11px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.04em;
+    cursor:pointer
+  }
+  .mobile-back-to-chart:focus-visible{outline:2px solid #e2c277;outline-offset:3px}
+  .mobile-plot-tools{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:10px;margin:14px 0 9px;padding:10px 11px;
+    border:1px solid #335746;background:#102b1f;border-radius:10px
+  }
+  .mobile-plot-hint{font:800 9px/1.5 Arial,Helvetica,sans-serif;letter-spacing:.075em;color:#bcd6c6}
+  .mobile-zoom-actions{display:flex;align-items:center;gap:8px}
+  .mobile-zoom-actions button{
+    display:inline-grid;place-items:center;min-height:42px;min-width:42px;
+    padding:6px 12px;border:1px solid #547b62;border-radius:9px;
+    background:#1c4330;color:#f5e7c7;font:900 18px/1 Arial,Helvetica,sans-serif;
+    cursor:pointer
+  }
+  .mobile-zoom-actions button:last-child{font-size:10px;letter-spacing:.04em}
+  .mobile-zoom-actions button:disabled{opacity:.4;cursor:default}
+  .mobile-zoom-actions button:focus-visible{outline:2px solid #e2c277;outline-offset:3px}
+  #chart{touch-action:none;user-select:none;-webkit-user-select:none}
+  #chart [role="button"]{cursor:pointer}
+}
