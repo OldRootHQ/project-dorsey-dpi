@@ -17,6 +17,10 @@ test('first-time visitor sees the approved OldRoot welcome, then can enter once'
   await expect(modal).toContainText('Graphic-Action Novels');
   await expect(modal).toContainText('OldRoot is far from finished.');
   await expect(modal).toContainText('Welcome to the beginning of OldRoot.');
+  const continueButton = modal.locator('.or-welcome-enter');
+  await expect(continueButton).toHaveText('Continue to website');
+  await expect(continueButton).toHaveCSS('background-color', 'rgb(13, 24, 15)');
+  await expect(continueButton).toHaveCSS('clip-path', 'none');
   await expect(page.locator('main')).toHaveJSProperty('inert', true);
 
   const logo = modal.locator('.or-welcome-logo');
