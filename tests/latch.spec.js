@@ -89,12 +89,12 @@ test('Latch publishes his locked DPI profile and analytics-only baseline mean 12
   await expect(page.locator('#count')).toHaveText('1 CHARACTER');
   await expect(page.locator('#plot-count')).toContainText('1 plotted');
   await expect(page.locator('#detail')).toContainText('Latch Boswell');
-  await expect(page.locator('#detail')).toContainText('Baseline mean');
+  await expect(page.locator('#detail .mean')).toContainText('baseline mean');
   await expect(page.locator('#detail')).toContainText('12.58');
 
   await page.locator('#compare-toggle').click();
   await page.locator('#chart g[role="button"]').click();
-  await expect(page.locator('#compare-content')).toContainText('Baseline mean');
+  await expect(page.locator('#compare-content')).toContainText('Baseline Mean');
   await expect(page.locator('#compare-content')).toContainText('12.58');
 });
 
