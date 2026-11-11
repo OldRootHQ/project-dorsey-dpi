@@ -41,7 +41,7 @@ test('Remedie has a full cinematic story, accurate power constraints and seven a
   await expect(shell).toContainText('Counter-Punch');
   await expect(shell).toContainText('Counter-Combo');
   await expect(shell).toContainText('20 cumulative seconds');
-  await expect(shell).toContainText('15.4 Senses');
+  await expect(shell.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('15.4');
   await expect(shell).toContainText('does not automatically detect an incoming hit');
   await expect(shell.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../'+ 'assets/characters/remedie/remedie-emblem.svg?v=1' +'');
   const imgs = shell.locator('img[src*="assets/characters/remedie/"]');
