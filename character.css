@@ -823,6 +823,6 @@ body.oldroot-after-dark .character-identity{
   .character-logo{width:min(46vw,180px)}
 }
 
-/* Patch 1.0 — per-category OPI performance labels, independent of character origin. */
-.dpi-name .dpi-band{display:block;margin-top:3px;color:var(--root-green,#257753);font:700 9px/1.25 Arial,Helvetica,sans-serif;letter-spacing:.025em}
-body.oldroot-after-dark .dpi-name .dpi-band{color:#9fc9a9}
+/* Patch 1.0 — neutral category labels; data-band keeps source text interoperable with the dossier inspector. */
+.dpi-name[data-band]::after{content:attr(data-band);display:block;margin-top:3px;color:var(--root-green,#257753);font:700 9px/1.25 Arial,Helvetica,sans-serif;letter-spacing:.025em}
+body.oldroot-after-dark .dpi-name[data-band]::after{color:#9fc9a9}
