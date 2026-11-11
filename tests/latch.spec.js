@@ -8,7 +8,7 @@ test('Latch is promoted across public character discovery surfaces', async ({ pa
   await expect(card).toHaveCount(1);
   await expect(card).toContainText('Latch Boswell');
   await expect(card).toContainText('Human · Unenhanced');
-  await expect(card).toContainText('Official OPI 10.15');
+  await expect(card).toContainText('Baseline mean 12.58');
   await expect(card).toHaveAttribute('data-release-order', '7');
 
   await page.goto(BASE + '/', { waitUntil: 'domcontentloaded' });
@@ -53,7 +53,7 @@ test('Latch dossier preserves supplied art package and narrative boundaries', as
 
   await expect(page.locator('body')).not.toContainText('intentionally open writer decisions');
   await expect(page.locator('body')).toContainText('The destroyed eye is permanent and Latch wears an eyepatch.');
-  await expect(page.locator('body')).toContainText('Official OPI · 10.15');
+  await expect(page.locator('body')).toContainText('Baseline mean · 12.58');
 });
 
 test('Latch is connected to Australia on the World Index without inventing a city', async ({ page }) => {
@@ -68,21 +68,18 @@ test('Latch is connected to Australia on the World Index without inventing a cit
   await expect(page.locator('a[href="../../locations.html#australia"]')).toHaveCount(2);
 });
 
-test('Latch publishes his locked DPI profile and official OPI 10.15', async ({ page }) => {
+test('Latch publishes his locked DPI profile and analytics-only baseline mean 12.58', async ({ page }) => {
   await page.goto(BASE + '/dpi.html', { waitUntil: 'networkidle' });
   const latch = await page.evaluate(() => window.OLDROOT_CHARACTERS.find(c => c.codename === 'Latch'));
   expect(latch).toBeTruthy();
   expect(latch.age).toBe(36);
   expect(latch.location).toBe('Australia');
   expect(latch).not.toHaveProperty('powerClass');
-  expect(latch.officialOPI).toBe(10.15);
-  expect(latch.baseline).toEqual({
-    Strength:9.7,Durability:7.7,Speed:9.3,Agility:8.4,Regeneration:5.3,Senses:7.9,
-    Offense:15.4,Intellect:12.3,Combat:18.6,Mobility:6.0,Stamina:11.1
-  });
+  expect(latch).not.toHaveProperty('officialOPI');
+  expect(latch.baseline).toEqual({Strength:15.7,Durability:8.2,Speed:12.0,Agility:10.7,Regeneration:5.5,Senses:9.0,Offense:17.8,Intellect:15.4,Combat:19.8,Mobility:9.3,Stamina:15.0});
 
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await expect(page.locator('[data-unscored-character="Latch"]')).toHaveCount(0);
@@ -92,13 +89,13 @@ test('Latch publishes his locked DPI profile and official OPI 10.15', async ({ p
   await expect(page.locator('#count')).toHaveText('1 CHARACTER');
   await expect(page.locator('#plot-count')).toContainText('1 plotted');
   await expect(page.locator('#detail')).toContainText('Latch Boswell');
-  await expect(page.locator('#detail')).toContainText('Official OPI');
-  await expect(page.locator('#detail')).toContainText('10.15');
+  await expect(page.locator('#detail')).toContainText('Baseline mean');
+  await expect(page.locator('#detail')).toContainText('12.58');
 
   await page.locator('#compare-toggle').click();
   await page.locator('#chart g[role="button"]').click();
-  await expect(page.locator('#compare-content')).toContainText('Official OPI');
-  await expect(page.locator('#compare-content')).toContainText('10.15');
+  await expect(page.locator('#compare-content')).toContainText('Baseline mean');
+  await expect(page.locator('#compare-content')).toContainText('12.58');
 });
 
 test('Latch dossier remains contained at phone width', async ({ page }) => {

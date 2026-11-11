@@ -14,8 +14,8 @@ test('Remedie is a published Boston anti-hero with exact Prime categories', asyn
   expect(record).not.toHaveProperty('ascendantStatus');
   expect(record).not.toHaveProperty('powerClass');
   expect(record.baseline).toEqual({
-    Strength:16.4,Durability:14.7,Speed:12.3,Agility:12.5,Regeneration:5.2,
-    Senses:19.4,Offense:21.6,Intellect:9.4,Combat:14.8,Mobility:17.9,Stamina:10.8
+    Strength:19.9,Durability:16.3,Speed:14.2,Agility:13.3,Regeneration:5.5,
+    Senses:15.4,Offense:23.4,Intellect:13.0,Combat:22.6,Mobility:24.1,Stamina:20.5
   });
   expect(record.officialOPI).toBeUndefined();
   await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
@@ -41,8 +41,8 @@ test('Remedie has a full cinematic story, accurate power constraints and seven a
   await expect(shell).toContainText('Counter-Punch');
   await expect(shell).toContainText('Counter-Combo');
   await expect(shell).toContainText('20 cumulative seconds');
-  await expect(shell).toContainText('19.4 Senses');
-  await expect(shell).toContainText('not combat autopilot');
+  await expect(shell).toContainText('15.4 Senses');
+  await expect(shell).toContainText('does not automatically detect an incoming hit');
   await expect(shell.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../'+ 'assets/characters/remedie/remedie-emblem.svg?v=1' +'');
   const imgs = shell.locator('img[src*="assets/characters/remedie/"]');
   expect(await imgs.count()).toBeGreaterThanOrEqual(9);

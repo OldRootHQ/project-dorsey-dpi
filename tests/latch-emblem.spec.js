@@ -50,7 +50,7 @@ test('Latch mark propagates to Start Here, homepage and OPI Analytics',async({pa
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
   const profile=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Latch'));
   expect(profile.mark).toBe(MARK);
-  expect(profile.officialOPI).toBe(10.15);
+  expect(profile).not.toHaveProperty('officialOPI');
   await page.locator('#search').fill('Latch');
   await expect(page.locator('.detail-mark')).toHaveAttribute('src',MARK);
 });

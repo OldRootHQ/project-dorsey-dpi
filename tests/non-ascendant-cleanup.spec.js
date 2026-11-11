@@ -26,6 +26,10 @@ test('Character source preserves origin meaning and OPI without negative status 
     expect(c).not.toHaveProperty('ascendantStatus');
     expect(c).not.toHaveProperty('powerClass');
     expect(c.origin).not.toMatch(/Non[\s-]?Ascendant/i);
+    if (c.opiExcluded) {
+      expect(c).not.toHaveProperty('baseline');
+      continue;
+    }
     expect(Object.keys(c.baseline)).toEqual([
       'Strength', 'Durability', 'Speed', 'Agility', 'Regeneration',
       'Senses', 'Offense', 'Intellect', 'Combat', 'Mobility', 'Stamina'

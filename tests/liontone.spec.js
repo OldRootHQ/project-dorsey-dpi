@@ -11,12 +11,12 @@ test('Liontone approved art and all eleven OPI ratings are preserved without an 
     expect(b.toString('ascii',8,12)).toBe('WEBP');
   }
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
   const entry=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Liontone'));
   expect(entry).toBeTruthy();
   expect(entry.baseline).toEqual(official);
-  expect(entry.officialOPI).toBeNull();
-  expect(entry.suppressAggregate).toBe(true);
+  expect(entry).not.toHaveProperty('officialOPI');
+  expect(entry).not.toHaveProperty('suppressAggregate');
   expect(entry.image).toBe('assets/characters/liontone/liontone-ruins.webp');
   expect(entry.mark).toBeUndefined();
 });

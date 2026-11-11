@@ -66,7 +66,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   await expect(page.locator('.wiki-section', { hasText: 'OldRoot Power Index' })).toContainText('their arithmetic mean is an analytics reference');
 
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
   const anchorage = records.find(c => c.codename === 'Anchorage');
@@ -86,19 +86,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   expect(anchorage.age).toBe(37);
   expect(anchorage.heightIn).toBe(82);
   expect(anchorage.weightLb).toBeNull();
-  expect(anchorage.baseline).toEqual({
-    Strength:32.7,
-    Durability:37.4,
-    Speed:2.5,
-    Agility:2.4,
-    Regeneration:11.8,
-    Senses:5.5,
-    Offense:26.3,
-    Intellect:6.7,
-    Combat:17.1,
-    Mobility:1.6,
-    Stamina:9.7
-  });
+  expect(anchorage.baseline).toEqual({Strength:78.6,Durability:55.5,Speed:4.3,Agility:4.7,Regeneration:16.0,Senses:8.1,Offense:40.0,Intellect:7.7,Combat:41.7,Mobility:3.5,Stamina:11.2});
   expect(anchorage.conditional).toEqual([]);
 
   expect(kincast).toBeTruthy();
@@ -107,19 +95,7 @@ test('Anchorage imports as a Baltimore experimental villain without invented sch
   expect(kincast.location).toBe('Baltimore, Maryland');
   expect(kincast).not.toHaveProperty('ascendantStatus');
   expect(kincast.originType).toBe('Inborn Anomaly / Metaphysical');
-  expect(kincast.baseline).toEqual({
-    Strength:16.8,
-    Durability:28.2,
-    Speed:20.8,
-    Agility:25.2,
-    Regeneration:5.9,
-    Senses:22.0,
-    Offense:29.3,
-    Intellect:14.6,
-    Combat:31.6,
-    Mobility:21.3,
-    Stamina:16.4
-  });
+  expect(kincast.baseline).toEqual({Strength:24.2,Durability:65.1,Speed:15.5,Agility:27.4,Regeneration:7.1,Senses:33.3,Offense:44.1,Intellect:14.6,Combat:42.6,Mobility:28.5,Stamina:19.0});
 
   await page.locator('#filter-open').click();
   await expect(page.locator('[data-filter-key="role"][value="Villain"]')).toHaveCount(1);

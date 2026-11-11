@@ -12,28 +12,32 @@ test('OPI Analytics has fixed 0–100 category axes without modifying creator ra
   expect(ticks).not.toContain('50');
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
   expect(records).toHaveLength(12);
-  for (const character of records) {
+  const scored = records.filter(c => !c.opiExcluded);
+  expect(scored).toHaveLength(11);
+  for (const character of scored) {
     expect(Object.keys(character.baseline)).toEqual(CATEGORIES);
     for (const number of Object.values(character.baseline)) expect(number).toBeGreaterThanOrEqual(0);
     for (const number of Object.values(character.baseline)) expect(number).toBeLessThanOrEqual(100);
   }
-  expect(records.find(c => c.codename === 'Gila Monster').baseline.Durability).toBe(23.3);
-  expect(records.find(c => c.codename === 'Anchorage').baseline.Durability).toBe(37.4);
-  expect(records.find(c => c.codename === 'Latch').officialOPI).toBe(10.15);
-  expect(records.find(c => c.codename === 'Amari Razman').officialOPI).toBe(10.02);
-  expect(records.find(c => c.codename === 'Liontone').suppressAggregate).toBe(true);
-  expect(records.find(c => c.codename === 'Ballestera').suppressAggregate).toBe(true);
-  expect(records.find(c => c.codename === 'Flying Saucer').suppressAggregate).toBe(true);
+  expect(records.find(c => c.codename === 'Gila Monster').baseline.Durability).toBe(40.0);
+  expect(records.find(c => c.codename === 'Anchorage').baseline.Durability).toBe(55.5);
+  const amari = records.find(c => c.codename === 'Amari Razman');
+  expect(amari.opiExcluded).toBe(true);
+  expect(amari).not.toHaveProperty('baseline');
+  for (const c of scored) {
+    expect(c).not.toHaveProperty('officialOPI');
+    expect(c).not.toHaveProperty('suppressAggregate');
+  }
   expect(records.find(c => c.codename === 'Agent Emerald').conditional).toEqual([
     {category:'Senses',condition:'Precision Pill Active',value:16.1}
   ]);
 });
 
-test('Every published OPI dossier uses the 0–100 percentage while retaining all 11 original values', async ({ page }) => {
+test('Every scored OPI dossier matches the approved Patch 1.0 values and 0–100 bars', async ({ page }) => {
   test.setTimeout(90000);
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
-  for (const character of records) {
+  for (const character of records.filter(c => !c.opiExcluded)) {
     await page.goto(BASE + '/' + character.page, { waitUntil: 'domcontentloaded' });
     const rows = await page.locator('.dpi-row').evaluateAll(elements => elements.map(row => ({
       category: row.querySelector('.dpi-name').textContent.trim(),
@@ -52,19 +56,19 @@ test('Every published OPI dossier uses the 0–100 percentage while retaining al
 test('Gila totals and averages agree on registry, dossier and Analytics', async ({ page }) => {
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
   const card = page.locator('.character-card').filter({has:page.locator('h3', {hasText:'Gila Monster'})});
-  await expect(card).toContainText('Baseline mean 18.31');
+  await expect(card).toContainText('Baseline mean 23.13');
   await expect(card).not.toContainText('17.67');
   await page.goto(BASE + '/characters/gila-monster/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.dpi-summary')).toContainText('Baseline total · 201.4');
-  await expect(page.locator('.dpi-summary')).toContainText('Baseline mean · 18.31');
-  await expect(page.locator('.character-infobox')).toContainText('18.31 · analytics only');
+  await expect(page.locator('.dpi-summary')).toContainText('Baseline total · 254.4');
+  await expect(page.locator('.dpi-summary')).toContainText('Baseline mean · 23.13');
+  await expect(page.locator('.character-infobox')).toContainText('23.13 · analytics only');
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
   const sum = await page.evaluate(() => {
     const c = window.OLDROOT_CHARACTERS.find(c => c.codename === 'Gila Monster');
     return Object.values(c.baseline).reduce((a,b) => a + b, 0);
   });
-  expect(sum).toBeCloseTo(201.4, 4);
-  expect(sum / 11).toBeCloseTo(18.31, 2);
+  expect(sum).toBeCloseTo(254.4, 4);
+  expect(sum / 11).toBeCloseTo(23.13, 2);
 });
 
 test('0–100 chart remains readable and inside the viewport on desktop and phones', async ({ page }) => {
@@ -149,7 +153,7 @@ test('pinch gestures zoom the mobile graph and finger drag pans without changing
   expect(state.afterPan.w).toBeCloseTo(state.afterPinch.w,4);
   expect(state.afterPan.x!==state.afterPinch.x||state.afterPan.y!==state.afterPinch.y).toBe(true);
   const gila=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Gila Monster'));
-  expect(gila.baseline.Durability).toBe(23.3);
+  expect(gila.baseline.Durability).toBe(40.0);
 });
 
 test('mobile OPI navigation does not overflow a narrow phone, and desktop layout restores on resize', async ({ page }) => {
