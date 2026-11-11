@@ -18,7 +18,7 @@ test('Remedie is a published Boston anti-hero with exact Prime categories', asyn
     Senses:15.4,Offense:23.4,Intellect:13.0,Combat:22.6,Mobility:24.1,Stamina:20.5
   });
   expect(record.officialOPI).toBeUndefined();
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
 test('Remedie has a full cinematic story, accurate power constraints and seven approved images', async ({ page }) => {
