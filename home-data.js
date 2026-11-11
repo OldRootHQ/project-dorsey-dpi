@@ -11,9 +11,9 @@ window.OLDROOT_HOME = {
     "Amari Razman": {
       key:"amari-razman", image:"assets/characters/amari-razman/amari-dossier-04.webp",
       alt:"Amari Razman overlooking the Brooklyn skyline at sunset",
-      meta:"HUMAN · FIELD TRACKER · BROOKLYN · OPI 10.02",
+      meta:"HUMAN · FIELD TRACKER · BROOKLYN",
       teaser:"No superpowers—just a disciplined operative who finds the people who do not want to be found.",
-      links:[["Character Dossier →","characters/amari-razman/"],["Latch Boswell →","characters/latch/"],["Official OPI 10.02 →","dpi.html"]]
+      links:[["Character Dossier →","characters/amari-razman/"],["Latch Boswell →","characters/latch/"]]
     },
     "Gila Monster": {
       key:"gila", image:"assets/characters/gila-monster/gila-featured.webp", mark:"assets/characters/gila-monster/gila-monster-emblem.svg?v=2",
@@ -92,8 +92,7 @@ window.OLDROOT_HOME = {
     }
   },
   // The supporting cast also appears in the rotating public character spotlight.
-  // Amari's eleven creator-approved OPI ratings are now established.
-  characterSupportNotes: { "Amari Razman": "Official OPI 10.02" },
+  characterSupportNotes: {},
   locationSpotlights: {
     tucson:{teaser:"Desert nights, police corruption, and something moving beneath the city.",className:"place-tucson"},
     chicago:{teaser:"Human skill, family ties, and street-level chaos can matter here as much as raw power.",className:"place-chicago"},
