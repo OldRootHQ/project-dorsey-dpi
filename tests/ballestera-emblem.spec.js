@@ -57,8 +57,8 @@ test('Ballestera emblem reaches Start Here, homepage spotlight and OPI without c
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(x=>x.codename==='Ballestera'));
  expect(record.mark).toBe(MARK);
- expect(record.suppressAggregate).toBe(true);
- expect(record.officialOPI).toBeNull();
+ expect(record).not.toHaveProperty('suppressAggregate');
+ expect(record).not.toHaveProperty('officialOPI');
  expect(Object.keys(record.baseline)).toHaveLength(11);
  await page.locator('#search').fill('Ballestera');
  await expect(page.locator('.detail-mark')).toHaveAttribute('src',MARK);

@@ -48,7 +48,8 @@ test('OPI uses origin, preserves all eleven capability values and excludes retir
     expect(c).not.toHaveProperty('ascendantStatus');
     expect(c.origin).toBeTruthy();
     expect(c.originType).toBeTruthy();
-    expect(Object.keys(c.baseline)).toHaveLength(11);
+    if (c.opiExcluded) expect(c).not.toHaveProperty('baseline');
+    else expect(Object.keys(c.baseline)).toHaveLength(11);
   }
   expect(records.filter(c => /(^|[ /\-])God(?![a-z])/i.test(c.originType) && !c.originType.startsWith('Demi-God'))).toHaveLength(0);
   expect(records.find(c => c.codename === 'Kincast').origin).toContain('Inborn');

@@ -4,7 +4,7 @@ const crypto=require('crypto');
 const BASE='http://127.0.0.1:8000';
 const ASSETS='assets/characters/flying-saucer/';
 const MARK=ASSETS+'flying-saucer-emblem.svg?v=2';
-const ratings={Strength:5.5,Durability:5.4,Speed:7.3,Agility:9.2,Regeneration:4.7,Senses:6.4,Offense:14.1,Intellect:6.7,Combat:11.2,Mobility:11.0,Stamina:8.5};
+const ratings={Strength:6.1,Durability:7.2,Speed:11.6,Agility:14.1,Regeneration:5.4,Senses:8.1,Offense:18.7,Intellect:9.0,Combat:17.9,Mobility:13.7,Stamina:11.2};
 
 test('Triple Strike has genuine alpha and all seven illustrations are real WebP files',async()=>{
  const svg=fs.readFileSync(ASSETS+'flying-saucer-emblem.svg','utf8');
@@ -37,7 +37,7 @@ test('Flying Saucer dossier includes canon, original visuals and no spoiler reve
  await expect(page.locator('.character-feature-art img')).toHaveAttribute('src','../../'+ASSETS+'flying-saucer-sunset-jump.webp');
  await expect(page.locator('.dossier-illustration img')).toHaveCount(6);
  const publicText=await page.locator('main').innerText();
- for(const phrase of ['Nikki Knotts','Trank Knotts','Agent Emerald','Seattle','pizza','Deuce','eight','disc','11.0']){
+ for(const phrase of ['Nikki Knotts','Trank Knotts','Agent Emerald','Seattle','pizza','Deuce','eight','disc','13.7']){
    expect(publicText.toLowerCase()).toContain(phrase.toLowerCase());
  }
  for(const spoiler of ['hidden cult','ritualized conditioning','secret military','enforcer','exosuit upgrade']){
@@ -82,12 +82,12 @@ test('Nikki propagates to Start Here, Seattle, Agent Emerald, Deuce, homepage an
  expect(await page.evaluate(()=>window.OLDROOT_HOME.characterSpotlights['Flying Saucer'].mark)).toBe(MARK);
  expect(await page.evaluate(()=>window.OLDROOT_LOCATIONS.seattle.characters.map(x=>x.name))).toContain('Flying Saucer');
  await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
- await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+ await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
  const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(x=>x.codename==='Flying Saucer'));
  expect(record).toBeTruthy();
  expect(record.baseline).toEqual(ratings);
- expect(record.suppressAggregate).toBe(true);
- expect(record.officialOPI).toBeNull();
+ expect(record).not.toHaveProperty('suppressAggregate');
+ expect(record).not.toHaveProperty('officialOPI');
  expect(record.mark).toBe(MARK);
 });
 

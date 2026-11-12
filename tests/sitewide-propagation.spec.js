@@ -82,7 +82,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
 });
 
 test('Living Comic homepage keeps a four-column desktop and two-column mobile roster', async ({ page }) => {

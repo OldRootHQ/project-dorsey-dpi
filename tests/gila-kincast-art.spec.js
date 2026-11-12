@@ -37,9 +37,9 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   await expect(page.locator('.dossier-illustration img')).toHaveCount(2);
   await expect(page.locator('.character-infobox img')).toHaveAttribute('src', /assets\/characters\/gila-monster\//);
   await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('22.2');
-  await expect(page.locator('.conditional-box')).toContainText('Senses — Nocturnal: 31.7');
-  await expect(page.locator('.dpi-summary')).toContainText('Baseline total · 201.4');
-  await expect(page.locator('.dpi-summary')).toContainText('Baseline mean · 18.31');
+  await expect(page.locator('.conditional-box')).toContainText('Senses — Nocturnal: 34.5');
+  await expect(page.locator('.dpi-summary')).toContainText('Baseline total · 254.4');
+  await expect(page.locator('.dpi-summary')).toContainText('Baseline mean · 23.13');
 
   await page.goto(`${BASE}/characters/kincast/`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.character-feature-art img')).toHaveAttribute('src', '../../assets/characters/kincast/kincast-primary.webp');
@@ -51,7 +51,7 @@ test('Gila Monster and Kincast final artwork is integrated across core surfaces'
   const gilaRecord = records.find(c => c.codename === 'Gila Monster');
   expect(gilaRecord.image).toBe('assets/characters/gila-monster/gila-registry.webp');
   expect(gilaRecord.baseline.Senses).toBe(22.2);
-  expect(gilaRecord.conditional.find(c => c.category === 'Senses' && c.condition === 'Nocturnal').value).toBe(31.7);
+  expect(gilaRecord.conditional.find(c => c.category === 'Senses' && c.condition === 'Nocturnal').value).toBe(34.5);
   expect(records.find(c => c.codename === 'Kincast').image).toBe('assets/characters/kincast/kincast-registry.webp');
 
   await page.goto(`${BASE}/locations/tucson/`, { waitUntil: 'domcontentloaded' });

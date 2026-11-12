@@ -50,9 +50,9 @@ test('Agent Emerald canon is propagated as the technology-driven human with crea
   await expect(page.locator('.logo-slot.has-logo .character-logo')).toHaveAttribute('src','../../assets/characters/agent-emerald/agent-emerald-emblem.svg?v=1');
   await expect(page.locator('.character-infobox')).toContainText('Executive Vice President of Advanced Systems & Prototyping');
   await expect(page.locator('.character-infobox')).toContainText('Human · Technology / Training');
-  await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('11.7');
+  await expect(page.locator('.dpi-row').filter({ hasText: 'Senses' }).locator('.dpi-value')).toHaveText('12.0');
   await expect(page.locator('.conditional-box')).toContainText('Senses — Precision Pill Active: 16.1');
-  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('50.0 — Theoretical ceiling');
+  await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('90.0–100.0 — Zenith');
   await expect(page.locator('.wiki-section').filter({ hasText: 'OldRoot Power Index' })).toContainText('analytics mean is a reference calculation');
 
   const values = await page.locator('.dpi-row').evaluateAll(rows => Object.fromEntries(rows.map(row => [
@@ -60,17 +60,17 @@ test('Agent Emerald canon is propagated as the technology-driven human with crea
     Number(row.querySelector('.dpi-value').textContent.trim())
   ])));
   expect(values).toEqual({
-    Strength:7.7,
-    Durability:10.9,
-    Speed:8.1,
-    Agility:12.0,
+    Strength:12.6,
+    Durability:13.1,
+    Speed:12.4,
+    Agility:19.5,
     Regeneration:5.5,
-    Senses:11.7,
-    Offense:18.5,
-    Intellect:14.8,
-    Combat:19.0,
-    Mobility:15.3,
-    Stamina:9.2
+    Senses:12.0,
+    Offense:27.3,
+    Intellect:17.5,
+    Combat:26.8,
+    Mobility:20.8,
+    Stamina:11.9
   });
 
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
@@ -91,17 +91,17 @@ test('Agent Emerald canon is propagated as the technology-driven human with crea
   expect(remy.heightIn).toBe(73);
   expect(remy.weightLb).toBe(185);
   expect(remy.baseline).toEqual({
-    Strength:7.7,
-    Durability:10.9,
-    Speed:8.1,
-    Agility:12.0,
+    Strength:12.6,
+    Durability:13.1,
+    Speed:12.4,
+    Agility:19.5,
     Regeneration:5.5,
-    Senses:11.7,
-    Offense:18.5,
-    Intellect:14.8,
-    Combat:19.0,
-    Mobility:15.3,
-    Stamina:9.2
+    Senses:12.0,
+    Offense:27.3,
+    Intellect:17.5,
+    Combat:26.8,
+    Mobility:20.8,
+    Stamina:11.9
   });
   expect(remy.conditional).toEqual([{ category:'Senses', condition:'Precision Pill Active', value:16.1 }]);
 

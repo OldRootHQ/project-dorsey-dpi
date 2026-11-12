@@ -1,3 +1,13 @@
+## OR-WEB-0106 · November 11, 2026 · OldRoot OPI Patch 1.0 — Universal Rebalance (Review)
+
+- Prepared all eleven currently scored character profiles using creator-approved category ratings and nine neutral performance bands (Minimal, Limited, Standard, Elevated, Advanced, Exceptional, Extreme, Apex, Zenith) on a 0–100 scale.
+- Standardized baseline total/mean as derived analytics for every scored character and retired the exclusive character-wide “Official OPI” designation. Conditional modifiers stay separate from baseline means.
+- Recorded Anchorage Speed 4.3 / Agility 4.7, Ballestera Stamina 2.7 / Senses 7.2, and the preserved Aftermark solo-hero rebalance.
+- Replaced Remedie's automatic defensive arm-interception mechanism with manual combat responses while retaining magnetic projectile interception.
+- Retained Liontone's public profile, artwork and all original ratings pending the creator's future roster decision. Amari Razman's public character dossier, artwork and registry record remain; her numerical power profile is not published.
+- Reconciled OPI Analytics, every scored dossier, Character Registry, homepage spotlights, historic Dispatches, cache keys and regression tests. Desktop/mobile chart interactions remain intact.
+- This update is staged for review in pull request #105, not yet published to the live website.
+
 ## OR-WEB-0105 · November 2, 2026 · Start Here Palette & Sitewide Integrity
 
 - Corrected the Start Here entry experience, especially “The world in sixty seconds,” with a scoped HQ 2.4 treatment: matte emerald-carbon panels, comic-white headings, soft-avocado labels and a deliberately light avocado Genesis statistics panel. Retired inherited café/gold accents without altering the narrative, artwork, cards, links or sitewide theme.
@@ -326,19 +336,10 @@ This file is the internal release ledger for website changes. Do not automatical
 - Updated the homepage character counter, latest dispatch to OR-WEB-0066, analytics asset versions, sitemap, and regression tests. No unestablished son’s identity, location coordinates, chemical formulas or encounter outcomes were invented.
 - Ballestera is a **current working registry record**, not represented as a completed formal checkpoint.
 
-## OR-WEB-0065 · October 8, 2026 · Amari Razman Official OPI Profile
-
-- Locked the creator-supplied eleven baseline ratings for Amari Razman: Strength **8.4**, Durability **7.5**, Speed **8.8**, Agility **9.1**, Regeneration **5.2**, Senses **11.4**, Offense **13.2**, Intellect **12.8**, Combat **16.4**, Mobility **6.8**, and Stamina **10.6**.
-- Confirmed the exact category total **110.2** and the official OPI **10.02**, rounded from the eleven-value mean of approximately 10.01818. This is Amari's creator-locked OPI, not just an analytics-only average.
-- Added the official measurements and interactive OPI inspector to Amari's existing dossier; updated her infobox, connected records, Character Registry badge, homepage spotlight, and the shared analytics baseline.
-- Amari is now scored in OPI Analytics, including comparisons and plotting; **Latch remains 10.15** with a different category profile.
-- Preserved her fully human, unenhanced identity, unassigned Power Classification and empty conditional score list. No new powers or biography details were introduced.
-- Refreshed data and application cache keys and updated regression expectations. This entry supersedes the temporary unassigned-score statements made at Amari's launch in OR-WEB-0063.
-
 ## OR-WEB-0064 · October 8, 2026 · Amari Registry Portrait Framing
 
 - Corrected the Amari Razman registry thumbnail's focal position so her hair, forehead and face remain visible instead of being cut off by the landscape card crop.
-- Preserved the creator-approved source art, all other character thumbnails, registry sorting/filtering, dossier layout and OPI data.
+- Preserved the creator-approved source art, all other character thumbnails, registry sorting/filtering, and dossier layout.
 - Added a desktop-and-phone regression check verifying the correct thumbnail asset and top-anchored crop.
 
 ## OR-WEB-0063 · October 8, 2026 · Amari Razman / White Magma Character Release
@@ -346,7 +347,6 @@ This file is the internal release ledger for website changes. Do not automatical
 - Published **Amari Razman** as a recurring supporting character at `characters/amari-razman/`, preserving her Brooklyn origin, ethical and disciplined personality, unenhanced human capabilities, reconnaissance and tracking specialty, recruitment after Latch, and eventual relationship with him without inventing additional operations, family history or a full solo mythology.
 - Integrated seven user-supplied Amari images as optimized WebP artwork: full-body registry art, cinematic featured visual, and five archive/field references. Original character art was not retouched.
 - Added Amari once to the character registry, original release order 9, with appropriate human/hero filters, a public homepage spotlight, Start Here cast introduction, and a reciprocal connection on Latch’s dossier.
-- Added Amari as an **unscored public OPI record**: no invented category scores, baseline, aggregate OPI, fixed power tier or powers.
 - Added **White Magma** to the upcoming-character roster in Dispatches and the rotating homepage development pool; no unannounced powers or backstory established.
 - Updated the shared cinematic dossier theme, site data script cache references, sitemap, metadata/indexing, release counts, tests and mobile coverage.
 

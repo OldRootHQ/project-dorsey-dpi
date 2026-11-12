@@ -64,12 +64,12 @@ test('Upcoming Characters sections remain contained on phone width', async ({ pa
 test('Latch is public in the registry with an official scored OPI profile', async ({ page }) => {
   await page.goto(`${BASE}/characters.html`, { waitUntil: 'domcontentloaded' });
   await expect(page.locator('.character-card').filter({ hasText: 'Latch' })).toHaveCount(1);
-  await expect(page.locator('.character-card').filter({ hasText: 'Latch' })).toContainText('Official OPI 10.15');
+  await expect(page.locator('.character-card').filter({ hasText: 'Latch' })).toContainText('Baseline mean 12.58');
 
   await page.goto(`${BASE}/dpi.html`, { waitUntil: 'networkidle' });
   const latch = await page.evaluate(() => window.OLDROOT_CHARACTERS.find(c => c.codename === 'Latch'));
   expect(latch).toBeTruthy();
-  expect(latch.officialOPI).toBe(10.15);
-  expect(latch.baseline.Combat).toBe(18.6);
+  expect(latch).not.toHaveProperty('officialOPI');
+  expect(latch.baseline.Combat).toBe(19.8);
   await expect(page.locator('[data-unscored-character="Latch"]')).toHaveCount(0);
 });

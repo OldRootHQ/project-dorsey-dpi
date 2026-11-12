@@ -540,3 +540,17 @@ body.oldroot-after-dark::after{
   #chart{touch-action:none;user-select:none;-webkit-user-select:none}
   #chart [role="button"]{cursor:pointer}
 }
+
+/* Patch 1.0 — neutral universal OPI labels, without changing desktop/mobile chart navigation. */
+.opi-band-guide{padding:14px 18px;margin:0 0 14px;background:linear-gradient(135deg,#0f2b20,#10241c);border-color:#315343}
+.opi-band-guide-head{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#dcece1;font:800 10px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.09em}
+.opi-band-guide-head span{color:#b4d0b9;font-size:9px}
+.opi-band-list{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:5px;margin:12px 0}
+.opi-band-list>div{min-width:0;border:1px solid #345644;background:#173b2a;border-radius:8px;padding:9px 5px;text-align:center}
+.opi-band-list b{display:block;font-size:10px;line-height:1.3;color:#e8f2ea;word-break:normal}
+.opi-band-list small{display:block;margin-top:4px;color:#b6cfbc;font:600 9px/1.3 Arial,Helvetica,sans-serif;white-space:nowrap}
+.opi-band-guide p{margin:0;font-size:11px;line-height:1.5;color:#b7cbbd}
+.stat .opi-band-label,.conditional .opi-band-label,.compare-table .opi-band-label{display:block;margin-top:3px;color:#8fbea3;font:700 9px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.025em}
+.stat{grid-template-columns:103px minmax(0,1fr) 39px}
+.compare-table td .opi-band-label{font-size:9px}
+@media(max-width:760px){.opi-band-list{grid-template-columns:repeat(3,minmax(0,1fr))}.opi-band-guide{padding:13px}.stat{grid-template-columns:94px minmax(0,1fr) 39px}}

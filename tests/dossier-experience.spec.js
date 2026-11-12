@@ -46,7 +46,7 @@ test('all eight canonical dossiers gain cinematic chapters, original art and OPI
 test('all eight dossiers preserve the authored profile, OPI baselines and source images', async () => {
   for(const [slug] of dossiers){
     const source=fs.readFileSync('characters/'+slug+'/index.html','utf8');
-    expect(source).toContain('character.css?v=27');
+    expect(source).toContain('character.css?v=28');
     expect(source).toContain('dossier-experience.css?v=4');
     expect(source).toContain('dossier-experience.js?v=6');
     expect(source).toContain('class="dossier-grid"');
@@ -90,7 +90,7 @@ test('conditional OPI is an optional disclosed reading, never a changed baseline
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-expanded','true');
   await expect(conditional).toBeVisible();
-  await expect(conditional).toContainText('Senses — Nocturnal: 31.7');
+  await expect(conditional).toContainText('Senses — Nocturnal: 34.5');
   expect(await page.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(scores);
 });
 
@@ -167,55 +167,42 @@ test('art archive and illustrated records are centered, uncropped and balanced o
   }
 });
 
-test('Amari Razman publishes her official eleven-category OPI profile', async ({ page }) => {
+test('Amari remains a public, illustrated character with no OPI profile', async ({ page }) => {
   await page.goto(BASE+'/characters/amari-razman/',{waitUntil:'domcontentloaded'});
   const shell=page.locator('main.character-shell');
   await expect(shell).toHaveAttribute('data-dossier','amari-razman');
   await expect(shell.locator('h1')).toHaveText('AMARI RAZMAN');
   await expect(shell.locator('.dossier-cinematic-hero')).toHaveCount(1);
-  await expect(shell.locator('.dossier-story-thread')).toHaveCount(1);
-  await expect(shell.locator('.dossier-thread-stop')).toHaveCount(4);
-  await expect(shell.locator('.dossier-chapter-index')).toHaveCount(1);
-  await expect(shell.locator('.wiki-section')).toHaveCount(9);
   await expect(shell.locator('.dossier-art-tile')).toHaveCount(7);
-  await expect(shell.locator('.dpi-row')).toHaveCount(11);
-  await expect(shell.locator('.dossier-opi-inspect')).toHaveCount(11);
-  await expect(shell.locator('.dpi-summary')).toContainText('Official OPI · 10.02');
-  await expect(shell.locator('.character-infobox')).toContainText('10.02');
-  const values=await shell.locator('.dpi-grid .dpi-value').allTextContents();
-  expect(values).toEqual(['8.4','7.5','8.8','9.1','5.2','11.4','13.2','12.8','16.4','6.8','10.6']);
-  await shell.locator('.dossier-opi-inspect').first().click();
-  await expect(shell.locator('.dossier-opi-readout')).toContainText('Strength / 8.4');
+  await expect(shell.locator('.dpi-row')).toHaveCount(0);
+  await expect(shell.locator('.dossier-opi-inspect')).toHaveCount(0);
+  await expect(shell).not.toContainText('Official OPI');
   await expect(shell.locator('.character-infobox')).toContainText('January 21, 1993');
-  await expect(shell.locator('#chapter-07')).toContainText('Latch Boswell');
+  await expect(shell).toContainText('Latch Boswell');
   await expect.poll(()=>shell.locator('.character-feature-art-trigger img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
   await shell.locator('.dossier-art-tile').first().click();
   await expect(page.locator('.image-lightbox')).toHaveClass(/open/);
   await page.keyboard.press('Escape');
 });
 
-test('Amari’s public OPI is officially 10.02 and White Magma remains development-only', async ({ page }) => {
+
+test('Amari has no OPI exposure while White Magma remains in development', async ({ page }) => {
   await page.goto(BASE+'/dpi.html',{waitUntil:'networkidle'});
   const amari=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Amari Razman'));
   expect(amari).toBeTruthy();
-  expect(amari.officialOPI).toBe(10.02);
-  expect(amari.baseline).toEqual({
-    Strength:8.4,Durability:7.5,Speed:8.8,Agility:9.1,Regeneration:5.2,Senses:11.4,
-    Offense:13.2,Intellect:12.8,Combat:16.4,Mobility:6.8,Stamina:10.6
-  });
-  expect(Object.values(amari.baseline).reduce((a,b)=>a+b,0)).toBeCloseTo(110.2,8);
-  expect(amari).not.toHaveProperty('powerClass');
-  expect(amari.conditional).toEqual([]);
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
-  await expect(page.locator('#unscored-panel')).toBeHidden();
+  expect(amari.opiExcluded).toBe(true);
+  expect(amari).not.toHaveProperty('baseline');
+  expect(amari).not.toHaveProperty('officialOPI');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await page.locator('#search').fill('Amari Razman');
-  await expect(page.locator('#detail')).toContainText('10.02');
+  await expect(page.locator('#count')).toHaveText('0 CHARACTERS');
   const names=await page.evaluate(()=>window.OLDROOT_CHARACTERS.map(c=>c.codename));
   expect(names).not.toContain('White Magma');
   await page.goto(BASE+'/news.html#upcoming-characters',{waitUntil:'domcontentloaded'});
   await expect(page.locator('#upcoming-characters')).toContainText('White Magma');
 });
+
 
 test("Amari's cinematic presentation fits on phone widths and preserves approved art", async ({ page }) => {
   await page.setViewportSize({width:390,height:844});
@@ -237,33 +224,33 @@ test('Ballestera dossier presents full working canon, original art and eleven in
   await expect(shell.locator('.wiki-section')).toHaveCount(15);
   await expect(shell.locator('.dossier-art-tile')).toHaveCount(8);
   await expect(shell.locator('.dpi-grid .dpi-value')).toHaveCount(11);
-  expect(await shell.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(['0.4','0.6','0.2','0.0','0.3','2.6','5.7','2.9','3.8','0.1','0.2']);
+  expect(await shell.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(['2.1','1.5','3.1','0.8','3.2','7.2','7.1','4.0','6.2','1.6','2.7']);
   await expect(shell).toContainText('The figures below describe individual abilities');
   await expect(shell.locator('.character-infobox')).toContainText('November 5');
   await expect(shell.locator('.character-infobox')).toContainText('Approximately 6–8');
   await expect(shell.locator('#chapter-13')).toContainText('Gila Monster');
   await expect.poll(()=>shell.locator('.character-feature-art-trigger img').evaluate(img=>img.naturalWidth)).toBeGreaterThan(0);
   await shell.locator('.dossier-opi-inspect').first().click();
-  await expect(shell.locator('.dossier-opi-readout')).toContainText('Strength / 0.4');
+  await expect(shell.locator('.dossier-opi-readout')).toContainText('Strength / 2.1');
   await shell.locator('.dossier-art-tile').first().click();
   await expect(page.locator('.image-lightbox')).toHaveClass(/open/);
   await page.keyboard.press('Escape');
 });
 
-test('Ballestera is registrable and plot-safe without any calculated combined score', async ({page})=>{
+test('Ballestera is registrable and plot-safe with the same analytics-only mean as all scored characters', async ({page})=>{
   await page.goto(BASE+'/dpi.html',{waitUntil:'networkidle'});
   const record=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Ballestera'));
   expect(record).toBeTruthy();
   expect(record.classification).toBe('Unaffiliated');
-  expect(record.officialOPI).toBeNull();
-  expect(record.suppressAggregate).toBe(true);
-  expect(record.baseline).toEqual({Strength:0.4,Durability:0.6,Speed:0.2,Agility:0.0,Regeneration:0.3,Senses:2.6,Offense:5.7,Intellect:2.9,Combat:3.8,Mobility:0.1,Stamina:0.2});
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  expect(record).not.toHaveProperty('officialOPI');
+  expect(record).not.toHaveProperty('suppressAggregate');
+  expect(record.baseline).toEqual({Strength:2.1,Durability:1.5,Speed:3.1,Agility:0.8,Regeneration:3.2,Senses:7.2,Offense:7.1,Intellect:4.0,Combat:6.2,Mobility:1.6,Stamina:2.7});
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await page.locator('#search').fill('Ballestera');
-  await expect(page.locator('#detail')).toContainText('Individual categories only');
-  await expect(page.locator('#detail')).not.toContainText('Analytics-only');
-  await expect(page.locator('#detail')).not.toContainText('Baseline mean');
+  await expect(page.locator('#detail')).toContainText('Analytics-only');
+  await expect(page.locator('#detail')).toContainText('Analytics-only');
+  await expect(page.locator('#detail')).toContainText('baseline mean');
 });
 test('Ballestera dossier and artwork fit on a narrow mobile screen', async ({page})=>{
   await page.setViewportSize({width:390,height:844});
