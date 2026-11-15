@@ -20,14 +20,14 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
     'assets/approved-home/kincast.webp',
     'assets/approved-home/anchorage.webp',
     'assets/approved-home/isiah-ivory.webp',
-    'assets/approved-home/liontone.webp',
+    'assets/approved-home/sakuro.webp',
     'assets/approved-home/agent-emerald.webp',
     'assets/approved-home/remedie.webp',
     'assets/approved-home/flying-saucer.webp',
     'assets/approved-home/gila-monster.webp'
   ]);
   await expect(page.locator('.lc-face-name')).toHaveText([
-    'Kincast','Anchorage','Isiah Ivory','Liontone',
+    'Kincast','Anchorage','Isiah Ivory','Sakuro',
     'Agent Emerald','Remedie','Flying Saucer','Gila Monster'
   ]);
   await expect(page.locator('.lc-hero-actions a')).toHaveCount(3);
@@ -47,7 +47,7 @@ test('Living Comic homepage leads with eight approved-identity panels', async ({
     elements.map(el => el.style.getPropertyValue('--panel-shade').trim().toLowerCase())
   );
   expect(shades).toEqual([
-    '#c57a45','#174b9a','#a51f30','#34814b',
+    '#c57a45','#174b9a','#a51f30','#cb7298',
     '#123f30','#e3ae38','#7843ab','#e97627'
   ]);
   await expect(page.locator('.lc-face-flag')).toHaveCount(0);
@@ -171,7 +171,7 @@ for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
       };
     }));
     expect(inspected.map(x=>x.id)).toEqual([
-      'kincast','anchorage','isiah-ivory','liontone',
+      'kincast','anchorage','isiah-ivory','sakuro',
       'agent-emerald','remedie','flying-saucer','gila-monster'
     ]);
     for(const portrait of inspected){
@@ -192,7 +192,7 @@ for (const [mode,width,height] of [['desktop',1440,900],['mobile',390,844]]) {
         ? /.+ 0px$/
         : /.+ 0px$/
     );
-    for(const id of ['isiah-ivory','liontone']){
+    for(const id of ['isiah-ivory']){
       const portrait=inspected.find(x=>x.id===id);
       if(mode==='desktop')expect(portrait.translate).toMatch(/7px$/);
       else expect(portrait.translate).toBe('none');
