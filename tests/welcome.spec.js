@@ -36,7 +36,7 @@ test('first-time visitor sees the approved OldRoot welcome, then can enter once'
     'assets/approved-home/kincast.webp',
     'assets/approved-home/anchorage.webp',
     'assets/approved-home/isiah-ivory.webp',
-    'assets/approved-home/liontone.webp',
+    'assets/approved-home/sakuro.webp',
     'assets/approved-home/agent-emerald.webp',
     'assets/approved-home/remedie.webp',
     'assets/approved-home/flying-saucer.webp',

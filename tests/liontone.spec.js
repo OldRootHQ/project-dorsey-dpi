@@ -11,7 +11,7 @@ test('Liontone approved art and all eleven OPI ratings are preserved without an 
     expect(b.toString('ascii',8,12)).toBe('WEBP');
   }
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
   const entry=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Liontone'));
   expect(entry).toBeTruthy();
   expect(entry.baseline).toEqual(official);
@@ -44,9 +44,9 @@ test('Liontone dossier presents his character bible with both full-size illustra
   await expect(page.getByRole('dialog')).toBeHidden();
 });
 
-test('Liontone connects to registry, Start Here, homepage, indexed Montego Bay and sitemap',async({page})=>{
+test('Liontone remains in registry, Start Here, world index and sitemap despite Sakuro home showcase debut',async({page})=>{
   await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(15);
   await expect(page.locator('.character-card[href="characters/liontone/"]')).toHaveCount(1);
   await page.goto(BASE+'/start-here.html',{waitUntil:'domcontentloaded'});
   await expect(page.locator('.start-stat-panel')).toContainText('14 active records');
@@ -54,6 +54,8 @@ test('Liontone connects to registry, Start Here, homepage, indexed Montego Bay a
   await page.goto(BASE+'/',{waitUntil:'domcontentloaded'});
   const state=await page.evaluate(()=>({characters:window.OLDROOT_HOME_STATE.characterPool,location:window.OLDROOT_HOME_STATE.locationPool,feature:window.OLDROOT_HOME.characterSpotlights.Liontone}));
   expect(state.characters).toContain('Liontone');
+  await expect(page.locator('.lc-face[data-portrait="sakuro"]')).toHaveCount(1);
+  await expect(page.locator('.lc-face[data-portrait="liontone"]')).toHaveCount(0);
   expect(state.location).toContain('montegobay');
   expect(state.feature.image).toBe('assets/characters/liontone/liontone-ruins.webp');
   expect(state.feature.mark).toBeUndefined();

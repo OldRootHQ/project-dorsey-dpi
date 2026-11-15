@@ -11,7 +11,7 @@
     ['Kincast', 'kincast.webp'],
     ['Anchorage', 'anchorage.webp'],
     ['Isiah Ivory', 'isiah-ivory.webp'],
-    ['Liontone', 'liontone.webp'],
+    ['Sakuro', 'sakuro.webp'],
     ['Agent Emerald', 'agent-emerald.webp'],
     ['Remedie', 'remedie.webp'],
     ['Flying Saucer', 'flying-saucer.webp'],

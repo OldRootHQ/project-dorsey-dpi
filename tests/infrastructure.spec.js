@@ -9,7 +9,7 @@ const SOCIAL = BASE + 'assets/branding/oldroot-primary.png';
 const indexable = [
   'index.html','characters.html',
   'characters/gila-monster/index.html','characters/commotion/index.html','characters/aftermark/index.html',
-  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html', 'characters/liontone/index.html',
+  'characters/kincast/index.html','characters/anchorage/index.html','characters/agent-emerald/index.html','characters/latch/index.html','characters/amari-razman/index.html','characters/ballestera/index.html','characters/remedie/index.html','characters/deuce/index.html','characters/max-corbett/index.html', 'characters/flying-saucer/index.html', 'characters/liontone/index.html', 'characters/sakuro/index.html',
   'locations.html','locations/tucson/index.html','locations/chicago/index.html','locations/san-juan/index.html',
   'locations/st-dorsey/index.html','locations/baltimore/index.html','locations/seattle/index.html','locations/hilo/index.html', 'locations/montego-bay/index.html',
   'events.html','organizations.html','organizations/los-moralistas/index.html','organizations/dunamis-dynamics/index.html',
@@ -53,6 +53,8 @@ test('public records expose complete search and social metadata', async () => {
             ? BASE + 'assets/characters/max-corbett/max-registry.webp'
           : file === 'characters/liontone/index.html'
             ? BASE + 'assets/characters/liontone/liontone-ruins.webp'
+          : file === 'characters/sakuro/index.html'
+            ? BASE + 'assets/characters/sakuro/sakuro-profile.webp'
           : file === 'characters/flying-saucer/index.html'
             ? BASE + 'assets/characters/flying-saucer/flying-saucer-sunset-jump.webp'
             : SOCIAL;
