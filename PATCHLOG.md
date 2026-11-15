@@ -1,10 +1,16 @@
+## OR-WEB-0108 · November 15, 2026 · Public Roster Retirement and Website Cleanup
+
+- Retired an approved-for-removal character from the current public website, its OPI and registry data, public art assets, discovery links, ballot choices, Dispatches, and its exclusively character-linked World Index dossier.
+- Preserved unrelated hero profiles, the published Sakuro debut, and established OPI values; removed obsolete front-end and regression references.
+- The separately hosted vote Worker and historical database are independent of GitHub Pages and require their own deployment/retention process.
+
 ## OR-WEB-0106 · November 11, 2026 · OldRoot OPI Patch 1.0 — Universal Rebalance (Review)
 
 - Prepared all eleven currently scored character profiles using creator-approved category ratings and nine neutral performance bands (Minimal, Limited, Standard, Elevated, Advanced, Exceptional, Extreme, Apex, Zenith) on a 0–100 scale.
 - Standardized baseline total/mean as derived analytics for every scored character and retired the exclusive character-wide “Official OPI” designation. Conditional modifiers stay separate from baseline means.
 - Recorded Anchorage Speed 4.3 / Agility 4.7, Ballestera Stamina 2.7 / Senses 7.2, and the preserved Aftermark solo-hero rebalance.
 - Replaced Remedie's automatic defensive arm-interception mechanism with manual combat responses while retaining magnetic projectile interception.
-- Retained Liontone's public profile, artwork and all original ratings pending the creator's future roster decision. Amari Razman's public character dossier, artwork and registry record remain; her numerical power profile is not published.
+- Amari Razman's public character dossier, artwork and registry record remain; her numerical power profile is not published.
 - Reconciled OPI Analytics, every scored dossier, Character Registry, homepage spotlights, historic Dispatches, cache keys and regression tests. Desktop/mobile chart interactions remain intact.
 - This update is staged for review in pull request #105, not yet published to the live website.
 
@@ -19,31 +25,15 @@
 - Repaired a pre-existing Poll Connection QA mismatch: the in-memory D1 test double now models the Worker’s documented vote-change API, including unchanged/updated choices and per-IP limits. The homepage ballot now correctly acknowledges the Worker’s update response. No live Cloudflare configuration, votes, database schema or poll-open switch was changed.
 - Added desktop/mobile Start Here palette and overflow checks, included the page in full-page visual captures and creator preview artifacts, plus automated all-page anchor/link/image and stylesheet-asset integrity tests. Kept this release as internal presentation and maintenance work only.
 
-## OR-WEB-0104 · November 1, 2026 · Liontone Readability & Matte-Carbon Panels
+## OR-WEB-0104 · November 1, 2026 · Matte-Carbon Panel Readability
 
-- Replaced the intersecting cross-hatched / flannel-style carbon panel gradients with a smooth matte-dark treatment through the shared surface token. Kept the existing cosmic background, artwork, page structures and navigation.
-- Reworked Liontone's redundant boxed codename into a typographic Jamaica service-record treatment, without creating an unofficial emblem or changing approved canon.
-- Improved readability on Liontone's identity, lore chapters, profile facts, OPI categories, text links and captions; addressed the older higher-specificity color overrides and mobile/desktop layouts.
-- Preserved Liontone's original artwork, full-size image viewer, 11 official OPI values and character connections.
-- Updated related visual regression contracts. The final pre-merge Site QA run passed **295 / 295 tests**; Contact Theme QA also passed.
-- Kept this styling maintenance in the internal patch ledger, with no public Dispatch.
+- Replaced the intersecting cross-hatched carbon panel gradients with a smooth matte-dark surface token while retaining the cosmic background and shared page structure.
+- Kept related regression contracts in alignment with the sitewide typography and contrast updates.
 
 ## OR-WEB-0103 · November 1, 2026 · Site QA Regression Expectation Repair
 
-- Reconciled the Character Registry hero-filter sorting assertions with Liontone's published addition, checking both newest-added and release-order expectations.
-- Corrected the dossier editorial assertion to recognize Liontone's intentional “Jamaica’s guardian / LIONTONE” text wordmark instead of treating the absence of the generic “OldRoot Archive” fallback as a failure.
-- Merged pull request #97 after its complete automated Site QA run passed **292 / 292 tests**. Only test assertions changed; no public artwork, canon, navigation, layouts, or behavior changed.
-- Kept this operational maintenance in the internal patch ledger; no public Dispatch was created.
-
-## OR-WEB-0102 · October 28, 2026 · Liontone / Captain Marlon McKenzie Publication Completion
-
-- Completed the existing Liontone character rollout without duplicating the preliminary profile: expanded the dossier using the author-provided vital information, public biography, military service, personality, shield-and-knife fighting style, relationships and visual details.
-- Imported **both creator-supplied illustrations** as 1000 × 1250 optimized WebP files. The ruins illustration serves the character portrait, registry and rotating homepage spotlight; the rainy harbor fight is a full-size clickable illustration in the dossier. Existing approved-home assets remain intact.
-- Confirmed the exact **11 OPI attributes**: Strength 13.1, Durability 12.7, Speed 11.8, Agility 13.2, Regeneration 11.1, Senses 11.8, Offense 17.4, Intellect 10.5, Combat 18.8, Mobility 7.9, Stamina 14.1. No canonical aggregate score or unsupported standalone emblem was invented; regeneration specifics remain provisional.
-- Added Liontone to Start Here and homepage rotation, refreshed public images in the Registry and OPI records, linked character discovery and search metadata, and published a character introduction in Dispatches.
-- Indexed **Montego Bay / Jamaica as LOC-008**, distinguishing Marlon's hometown from classified or unspecified JDF operational locations; linked the record into the World Index interactive globe and directory. The map marker represents a public city center, not a fictional base.
-- Preserved the classified enhancement program's undisclosed specifics, unnamed late wife, unspecified family backstory and unrevealed squad members. The prior public claim about a specific enhancement partnership was removed.
-- Updated release tests, location counts and cache keys, including inherited contact-page stylesheet assertions from an unrelated earlier release. The existing Issue #1 teaser, Marketplace, and still-inactive Cloudflare poll were left untouched.
+- Reconciled Character Registry sorting and dossier editorial assertions with the then-current public roster. No character origin, powers, or plot details were changed.
+- Merged pull request #97 after its automated Site QA run.
 
 ## OR-WEB-0101 · October 19, 2026 · Compact Reader's Choice + Private Vote Backend (Pending Activation)
 

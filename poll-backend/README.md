@@ -2,14 +2,13 @@
 
 The OldRoot website is static; real Reader's Choice ballots are recorded through the separately deployed `oldroot-reader-poll` Cloudflare Worker and `oldroot-votes` D1 database. This does NOT require changes to Namecheap, website DNS, or the existing static website host.
 
-## Active ballot: six characters (v2)
+## Website ballot: five active candidates (v2)
 
 1. Gila Monster
 2. Agent Emerald
 3. Kincast
 4. Isiah Ivory
-5. Liontone
-6. Remedie
+5. Remedie
 
 **Important deployment order (while `POLL_OPEN=false`):**
 
@@ -19,12 +18,14 @@ The OldRoot website is static; real Reader's Choice ballots are recorded through
 4. Edit `oldroot-reader-poll` Worker code in Cloudflare to match `src/worker.js`, then Deploy. **Keep the existing D1 binding `DB`, secrets `ADMIN_TOKEN` and `VOTE_PEPPER`, and the text variables `ALLOWED_ORIGIN=https://oldroothq.com` and `POLL_OPEN=false`.** The Worker is deployed separately, not by source control Pages.
 5. Validate `/api/status` returns `{"open":false}`; validate unauthenticated `/api/admin/results` returns `{"error":"Unauthorized"}`.
 6. Merge and deploy the website ballot / owner dashboard from the same change. The frontend remains disabled while `POLL_OPEN=false`.
-7. On `https://oldroothq.com/poll-results.html`, enter `ADMIN_TOKEN` (from password manager) to confirm **six** result rows with correct zero counts. Never paste the real token into source control, messages, console logs, or website source files.
+7. On `https://oldroothq.com/poll-results.html`, enter `ADMIN_TOKEN` (from password manager) to confirm **five** active result rows with correct zero counts. Never paste the real token into source control, messages, console logs, or website source files.
 8. After testing and explicit owner approval, set `POLL_OPEN=true` in Cloudflare. Only then can the homepage collect actual votes.
 
 The site's `poll-config.js` contains the Worker URL, which is public. It must NEVER include either secret.
 
 ## Historical data
+
+Retiring a candidate from the website does **not** delete historical D1 votes. The public owner dashboard filters withdrawn candidates and displays the sum of still-active choices. The independently hosted Worker must be redeployed with the current candidate list before any voting is opened; do not delete production vote tables.
 
 The original `votes` table enforced the earlier four-character ballot. This update uses a separate `votes_v2` table so the old table is preserved without carrying obsolete votes into the new contest. No destructive migration or dropping tables is required. Later Admin Mode can manage multiple ballots from one admin interface.
 
