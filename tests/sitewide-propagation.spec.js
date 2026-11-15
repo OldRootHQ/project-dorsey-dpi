@@ -18,7 +18,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.lc-hero-actions a')).toHaveCount(3);
 
   const state = await page.evaluate(() => window.OLDROOT_HOME_STATE);
-  expect(state.characterPool).toHaveLength(12);
+  expect(state.characterPool).toHaveLength(13);
   expect(state.characterPool).not.toContain('Kokio');
   expect(state.selectedCharacters).not.toContain('Kokio');
   expect(state.locationPool).toEqual(['tucson','chicago','sanjuan','stdorsey','baltimore','seattle','hilo','montegobay']);
@@ -67,7 +67,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('.home-library-teaser')).toHaveCount(1);
 
   await page.goto(BASE + '/characters.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('.character-card')).toHaveCount(14);
+  await expect(page.locator('.character-card')).toHaveCount(15);
   await expect(page.locator('.character-card').filter({ hasText: 'Anchorage' })).toHaveCount(1);
   await expect(page.locator('.character-card').filter({ hasText: 'Kokio' })).toHaveCount(0);
 
@@ -82,7 +82,7 @@ test('homepage samples the universe while complete registries remain intact', as
   await expect(page.locator('#locationCharacter a[href="characters/anchorage/"]')).toHaveCount(1);
 
   await page.goto(BASE + '/dpi.html', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
 });
 
 test('Living Comic homepage keeps a four-column desktop and two-column mobile roster', async ({ page }) => {
