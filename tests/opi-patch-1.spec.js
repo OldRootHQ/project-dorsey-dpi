@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const BASE='http://127.0.0.1:8000';
 const EXPECTED=['Minimal','Limited','Standard','Elevated','Advanced','Exceptional','Extreme','Apex','Zenith'];
 const BOUNDS=[0,3,5,10,20,35,50,70,90];
-test('Patch 1.0 applies one neutral band scale to all 11 scored dossiers',async({page})=>{
+test('Patch 1.0 applies one neutral band scale to all scored dossiers',async({page})=>{
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
   const labels=await page.locator('.opi-band-list b').allTextContents();
   expect(labels).toEqual(EXPECTED);
@@ -16,7 +16,7 @@ test('Patch 1.0 applies one neutral band scale to all 11 scored dossiers',async(
       liontone:c.find(x=>x.codename==='Liontone')
     };
   });
-  expect(evaluated.records).toBe(11);
+  expect(evaluated.records).toBe(12);
   expect(evaluated.amari.opiExcluded).toBe(true);
   expect(evaluated.amari.baseline).toBeUndefined();
   expect(evaluated.gila.conditional.find(x=>x.condition==='Nocturnal').value).toBe(34.5);
