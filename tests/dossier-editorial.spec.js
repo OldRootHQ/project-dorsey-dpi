@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 const BASE = 'http://127.0.0.1:8000';
 const publishedCharacters = [
   'gila-monster', 'commotion', 'aftermark', 'kincast', 'anchorage',
-  'agent-emerald', 'latch', 'amari-razman', 'ballestera', 'remedie', 'flying-saucer', 'liontone'
+  'agent-emerald', 'latch', 'amari-razman', 'ballestera', 'remedie', 'flying-saucer'
 ];
 
 const productionGapPhrases = [
@@ -26,13 +26,7 @@ for (const slug of publishedCharacters) {
 
     const mark = page.locator('.logo-slot');
     if (await mark.count() && !(await mark.evaluate(el => el.classList.contains('has-logo')))) {
-      if (slug === 'liontone') {
-        // Liontone has an authored wordmark instead of the generic archive placeholder.
-        await expect(mark).toContainText('Jamaica’s guardian');
-        await expect(mark).toContainText('Jamaica Defence Force');
-      } else {
-        await expect(mark).toContainText('OldRoot Archive');
-      }
+      await expect(mark).toContainText('OldRoot Archive');
     }
   });
 }

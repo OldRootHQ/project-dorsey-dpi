@@ -2,7 +2,7 @@ const {test,expect} = require('@playwright/test');
 const BASE='http://127.0.0.1:8000';
 const OPI={Strength:12.9,Durability:11.8,Speed:10.4,Agility:14.6,Regeneration:5.5,Senses:16.3,Offense:44.8,Intellect:11.6,Combat:42.4,Mobility:15.6,Stamina:20.4};
 
-test('Sakuro replaces Liontone only in the Eight Originals showcase',async({page})=>{
+test('Sakuro occupies his approved Eight Originals homepage slot',async({page})=>{
   await page.goto(BASE+'/index.html',{waitUntil:'networkidle'});
   const cards=page.locator('.lc-face-grid .lc-face');
   await expect(cards).toHaveCount(8);
@@ -39,7 +39,7 @@ test('Sakuro has one approved profile illustration and the exact revised 0-100 O
   await expect(page.locator('main')).toContainText('288 feet');
 });
 
-test('Sakuro is in public analytics and registry without deleting Liontone',async({page})=>{
+test('Sakuro remains in public analytics and registry after roster retirement',async({page})=>{
   await page.goto(BASE+'/dpi.html',{waitUntil:'domcontentloaded'});
   const hero=await page.evaluate(()=>window.OLDROOT_CHARACTERS.find(c=>c.codename==='Sakuro'));
   expect(hero.civilian).toBe('Kenji Kuroda');
@@ -47,7 +47,7 @@ test('Sakuro is in public analytics and registry without deleting Liontone',asyn
   expect(hero.conditional).toEqual([]);
   await page.goto(BASE+'/characters.html',{waitUntil:'domcontentloaded'});
   await expect(page.locator('.character-card:has(h3:text-is("Sakuro"))')).toHaveCount(1);
-  await expect(page.locator('.character-card:has(h3:text-is("Liontone"))')).toHaveCount(1);
-  await page.goto(BASE+'/characters/liontone/',{waitUntil:'domcontentloaded'});
-  await expect(page.locator('h1')).toHaveText('LIONTONE');
+  await expect(page.locator('.character-card:has(h3:text-is("Liontone"))')).toHaveCount(0);
+  const removed = await page.request.get(BASE+'/characters/liontone/');
+  expect(removed.status()).toBe(404);
 });
