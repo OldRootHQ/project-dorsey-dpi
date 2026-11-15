@@ -3,7 +3,7 @@
    Basic duplicate protection: one pseudonymous browser ID, + per-IP daily throttle.
    These controls discourage accidental/repeated votes, NOT determined attackers.
 */
-const CHOICES = Object.freeze(['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie']);
+const CHOICES = Object.freeze(['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Remedie']);
 const LIMIT_PER_IP_PER_DAY = 8;
 const encoder = new TextEncoder();
 

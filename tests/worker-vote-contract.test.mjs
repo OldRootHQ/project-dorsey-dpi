@@ -7,14 +7,14 @@ import { readFile } from 'node:fs/promises';
 
 const source = await readFile(new URL('../poll-backend/src/worker.js', import.meta.url), 'utf8');
 const worker = (await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'))).default;
-const candidates = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie'];
+const candidates = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Remedie'];
 const origin = 'https://oldroothq.com';
 
 class SimulatedD1 {
   constructor() { this.rows = []; this.queries = []; }
   prepare(statement) {
     // If the Worker accidentally queries the original table, fail this test.
-    assert.match(statement, /\bvotes_v2\b/, 'must use the new six-candidate table');
+    assert.match(statement, /\bvotes_v2\b/, 'must use the new current candidate table');
     this.queries.push(statement);
     return {
       all: async () => {
@@ -93,7 +93,7 @@ test('closed production-like configuration never accepts a vote', async () => {
   assert.equal(db.rows.length, 0);
 });
 
-test('open mode is ONLY simulated: first vote, same-browser update, all six private totals', async () => {
+test('open mode is ONLY simulated: first vote, same-browser update, all five private totals', async () => {
   const db = new SimulatedD1(), env = environment(db, true);
   const voterId = randomUUID();
   const first = await call(env, '/api/vote', { method: 'POST', choice: 'Gila Monster', voterId });
@@ -129,6 +129,7 @@ test('open mode is ONLY simulated: first vote, same-browser update, all six priv
 test('invalid choices and other website origins are blocked before storage', async () => {
   const db = new SimulatedD1(), env = environment(db, true);
   assert.equal((await call(env, '/api/vote', { method: 'POST', choice: 'Flying Saucer' })).status, 400);
+  assert.equal((await call(env, '/api/vote', { method: 'POST', choice: 'Liontone' })).status, 400);
   assert.equal((await call(env, '/api/vote', { method: 'POST', choice: 'Gila Monster', voterId: 'test-only' })).status, 400);
   assert.equal((await call(env, '/api/vote', { method: 'POST', choice: 'Gila Monster', from: 'https://other.example' })).status, 403);
   assert.equal((await call(env, '/api/vote', { method: 'POST', choice: 'Gila Monster', from: null })).status, 403);

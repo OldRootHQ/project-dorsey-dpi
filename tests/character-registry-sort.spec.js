@@ -1,8 +1,8 @@
 const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://127.0.0.1:8000';
-const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Latch', 'Liontone', 'Max Corbett', 'Remedie', 'Sakuro'];
-const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer', 'Liontone', 'Sakuro'];
+const ALPHABETICAL = ['Aftermark', 'Agent Emerald', 'Amari Razman', 'Anchorage', 'Ballestera', 'Commotion', 'Deuce', 'Flying Saucer', 'Gila Monster', 'Kincast', 'Latch', 'Max Corbett', 'Remedie', 'Sakuro'];
+const RELEASE = ['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Anchorage', 'Agent Emerald', 'Latch', 'Amari Razman', 'Ballestera', 'Remedie', 'Deuce', 'Max Corbett', 'Flying Saucer', 'Sakuro'];
 const NEWEST = [...RELEASE].reverse();
 
 async function cardNames(page, visibleOnly = false) {
@@ -36,7 +36,6 @@ test('Character Registry defaults to alphabetical order', async ({ page }) => {
     'Deuce': 12,
     'Max Corbett': 13,
     'Flying Saucer': 14,
-    'Liontone': 15,
     'Sakuro': 16
   });
 });
@@ -63,10 +62,10 @@ test('Character Registry sorting stays active while filters are applied', async 
   await page.locator('#filterApply').click();
 
   await expect(page.locator('#registrySort')).toHaveValue('newest');
-  expect(await cardNames(page, true)).toEqual(['Sakuro', 'Liontone', 'Flying Saucer', 'Amari Razman', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
+  expect(await cardNames(page, true)).toEqual(['Sakuro', 'Flying Saucer', 'Amari Razman', 'Latch', 'Kincast', 'Aftermark', 'Commotion', 'Gila Monster']);
 
   await page.locator('#registrySort').selectOption('release');
-  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Amari Razman', 'Flying Saucer', 'Liontone', 'Sakuro']);
+  expect(await cardNames(page, true)).toEqual(['Gila Monster', 'Commotion', 'Aftermark', 'Kincast', 'Latch', 'Amari Razman', 'Flying Saucer', 'Sakuro']);
 });
 
 test('Character Registry sort controls remain phone-safe', async ({ page }) => {

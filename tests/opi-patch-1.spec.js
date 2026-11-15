@@ -12,18 +12,16 @@ test('Patch 1.0 applies one neutral band scale to all scored dossiers',async({pa
       records:c.filter(x=>!x.opiExcluded).length,
       amari:c.find(x=>x.codename==='Amari Razman'),
       gila:c.find(x=>x.codename==='Gila Monster'),
-      anchorage:c.find(x=>x.codename==='Anchorage'),
-      liontone:c.find(x=>x.codename==='Liontone')
+      anchorage:c.find(x=>x.codename==='Anchorage')
     };
   });
-  expect(evaluated.records).toBe(12);
+  expect(evaluated.records).toBe(11);
   expect(evaluated.amari.opiExcluded).toBe(true);
   expect(evaluated.amari.baseline).toBeUndefined();
   expect(evaluated.gila.conditional.find(x=>x.condition==='Nocturnal').value).toBe(34.5);
   expect(evaluated.gila.conditional.find(x=>x.condition==='Desert').value).toBe(30.1);
   expect(evaluated.anchorage.baseline.Speed).toBe(4.3);
   expect(evaluated.anchorage.baseline.Agility).toBe(4.7);
-  expect(evaluated.liontone.baseline.Strength).toBe(13.1);
   await page.locator('#search').fill('Anchorage');
   await expect(page.locator('#detail')).toContainText('Apex');
 });

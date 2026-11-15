@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const BASE = 'http://127.0.0.1:8000';
-const characters = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie'];
+const characters = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Remedie'];
 const LIVE_API='https://oldroot-reader-poll.mmerancio02.workers.dev';
 
 test("Reader's Choice shows compact side-by-side bubbles and remains closed by backend switch", async ({page}) => {
@@ -14,18 +14,18 @@ test("Reader's Choice shows compact side-by-side bubbles and remains closed by b
     await page.setViewportSize(viewport);
     await page.goto(BASE+'/', {waitUntil:'domcontentloaded'});
     const options = page.locator('#oldrootPollForm label.poll-option');
-    await expect(options).toHaveCount(6);
+    await expect(options).toHaveCount(5);
     expect(await options.locator('input[name="nextIssue"]').evaluateAll(els=>els.map(el=>el.value))).toEqual(characters);
     await expect(page.locator('#oldrootPollSubmit')).toBeDisabled();
     await expect(page.locator('#oldrootPollStatus')).toContainText('Community voting is currently closed.');
     const r = await options.evaluateAll(els=>els.map(el=>({x:el.getBoundingClientRect().x,y:el.getBoundingClientRect().y,h:el.getBoundingClientRect().height,w:el.getBoundingClientRect().width})));
-    expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(6/viewport.cols);
+    expect(new Set(r.map(x=>Math.round(x.y))).size).toBe(Math.ceil(characters.length/viewport.cols));
     expect(Math.max(...r.map(x=>x.h))).toBeLessThan(90);
     const pollBounds=await page.locator('#next-issue-poll').evaluate(el=>({right:el.getBoundingClientRect().right,left:el.getBoundingClientRect().left}));
     expect(pollBounds.left).toBeGreaterThanOrEqual(0);
     expect(pollBounds.right).toBeLessThanOrEqual(viewport.width+2);
     if(viewport.width<900)expect(await page.evaluate(()=>document.documentElement.scrollWidth)).toBeLessThanOrEqual(viewport.width+2);
-    await expect(page.locator('.poll-option img')).toHaveCount(6);
+    await expect(page.locator('.poll-option img')).toHaveCount(5);
   }
   await page.locator('input[value="Isiah Ivory"]').check();
   await expect(page.locator('input[value="Isiah Ivory"]')).toBeChecked();
@@ -104,7 +104,6 @@ test('private dashboard loads totals only with owner token and never persists it
           {choice:'Agent Emerald',count:0},
           {choice:'Kincast',count:0},
           {choice:'Isiah Ivory',count:0},
-          {choice:'Liontone',count:0},
           {choice:'Remedie',count:1}
         ],updatedAt:new Date().toISOString()
       })});
@@ -117,7 +116,7 @@ test('private dashboard loads totals only with owner token and never persists it
   await page.locator('#pollResultsLogin button[type="submit"]').click();
   await expect(page.locator('#pollAdminStatus')).toHaveText('Private results connected.');
   await expect(page.locator('#pollResultsTotal')).toHaveText('3');
-  await expect(page.locator('.result-row')).toHaveCount(6);
+  await expect(page.locator('.result-row')).toHaveCount(5);
   expect(authorizedCalls).toBeGreaterThan(0);
   await expect(page.locator('#pollAdminToken')).toHaveValue('');
   expect(await page.evaluate(()=>Object.keys(localStorage).filter(k=>/admin|token/i.test(k)))).toEqual([]);

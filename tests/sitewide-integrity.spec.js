@@ -50,7 +50,7 @@ test('all published HTML pages have unique anchors, accessible images and valid 
       if (target && !fs.existsSync(target)) problems.push(`${page}: missing ${match[1]}`);
     }
   }
-  expect(pages.length).toBeGreaterThanOrEqual(68);
+  expect(pages.length).toBeGreaterThanOrEqual(67);
   expect(problems).toEqual([]);
 });
 

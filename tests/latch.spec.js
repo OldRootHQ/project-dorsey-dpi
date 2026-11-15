@@ -78,8 +78,8 @@ test('Latch publishes his locked DPI profile and analytics-only baseline mean 12
   expect(latch).not.toHaveProperty('officialOPI');
   expect(latch.baseline).toEqual({Strength:15.7,Durability:8.2,Speed:12.0,Agility:10.7,Regeneration:5.5,Senses:9.0,Offense:17.8,Intellect:15.4,Combat:19.8,Mobility:9.3,Stamina:15.0});
 
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('#unscored-panel')).toBeHidden();
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await expect(page.locator('[data-unscored-character="Latch"]')).toHaveCount(0);

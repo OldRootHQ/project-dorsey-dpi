@@ -2,13 +2,16 @@
 -- Run on the EXISTING oldroot-votes D1 database while POLL_OPEN=false.
 -- The previous votes table is retained for archival/rollback purposes.
 -- All current Reader's Choice submissions and private counts use votes_v2.
+-- This CREATE TABLE affects new installations only: an existing votes_v2 table
+-- retains its original CHECK constraint until separately migrated. The Worker
+-- enforces the active choices independently; do not discard historical votes.
 CREATE TABLE IF NOT EXISTS votes_v2 (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   voter_hash TEXT NOT NULL UNIQUE,
   ip_hash TEXT NOT NULL,
   choice TEXT NOT NULL CHECK(choice IN (
     'Gila Monster', 'Agent Emerald', 'Kincast',
-    'Isiah Ivory', 'Liontone', 'Remedie'
+    'Isiah Ivory', 'Remedie'
   )),
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ','now'))
 );

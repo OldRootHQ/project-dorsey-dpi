@@ -17,10 +17,11 @@ Static public website for the OldRoot universe, including character dossiers, lo
 - Max Corbett — supporting character, Boston-area mechatronics/exoskeleton controls engineer (no OPI or emblem)
 
 - Flying Saucer / Nikki Knotts — human, disc-technology-assisted vigilante, Seattle
-- Liontone / Captain Marlon McKenzie — biogenetically enhanced JDF captain, Jamaica
+- Sakuro / Kenji Kuroda — Japanese florist and cherry-blossom manipulator, San Diego
 
 ## Established World Index
-- Montego Bay / Jamaica — Liontone’s hometown and national-service connection (LOC-008)
+
+The established setting index spans seven public location dossiers.
 
 ## Canon note
 The analytics layer uses the eleven established OPI categories. Any displayed baseline mean is an analytics-only visualization statistic, not a canonical overall power score.

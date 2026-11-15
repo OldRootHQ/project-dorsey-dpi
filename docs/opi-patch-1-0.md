@@ -24,7 +24,6 @@ The labels describe capability only. They do **not** classify a character as hum
 - The baseline uses eleven regular stats. Its total and mean are arithmetic-derived analytics, not additional character scores, canonical fight predictions, or privileged **Official OPI** designations.
 - Conditional ratings are displayed and banded separately and are **excluded** from the baseline arithmetic. Gila Monster's Nocturnal Senses 34.5 and Desert Mobility 30.1 are conditional; Agent Emerald's Precision Pill Senses remains 16.1.
 - Amari Razman remains in the Character Registry and her dossier, but is intentionally excluded from OPI Analytics, and her individual OPI and former aggregate are not published.
-- Liontone remains publicly released, with all existing numerical ratings untouched until the creator approves a replacement decision.
 
 ## Agreed final corrections
 - Anchorage: Speed 4.3; Agility 4.7. All other revised ratings from the creator's workbook remain.
@@ -45,6 +44,6 @@ The labels describe capability only. They do **not** classify a character as hum
 | Ballestera | 39.5 | 3.59 | Includes final 2.7 Stamina |
 | Remedie | 188.2 | 17.11 | Creator-revised baseline |
 | Flying Saucer | 123.0 | 11.18 | Creator-revised baseline |
-| Liontone | 142.4 | 12.95 | All existing stats unchanged |
+| Sakuro | 206.3 | 18.75 | Creator-approved peak baseline (November 15, 2026) |
 
 No character origin, identity, art asset, desktop chart navigation, or mobile pinch/pan mechanic is modified by this update.

@@ -193,7 +193,7 @@ test('Amari has no OPI exposure while White Magma remains in development', async
   expect(amari.opiExcluded).toBe(true);
   expect(amari).not.toHaveProperty('baseline');
   expect(amari).not.toHaveProperty('officialOPI');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await page.locator('#search').fill('Amari Razman');
   await expect(page.locator('#count')).toHaveText('0 CHARACTERS');
@@ -245,8 +245,8 @@ test('Ballestera is registrable and plot-safe with the same analytics-only mean 
   expect(record).not.toHaveProperty('officialOPI');
   expect(record).not.toHaveProperty('suppressAggregate');
   expect(record.baseline).toEqual({Strength:2.1,Durability:1.5,Speed:3.1,Agility:0.8,Regeneration:3.2,Senses:7.2,Offense:7.1,Intellect:4.0,Combat:6.2,Mobility:1.6,Stamina:2.7});
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await page.locator('#search').fill('Ballestera');
   await expect(page.locator('#detail')).toContainText('Analytics-only');
   await expect(page.locator('#detail')).toContainText('Analytics-only');
