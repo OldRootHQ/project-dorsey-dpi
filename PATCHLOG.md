@@ -2,7 +2,7 @@
 
 - Retired an approved-for-removal character from the current public website, its OPI and registry data, public art assets, discovery links, ballot choices, Dispatches, and its exclusively character-linked World Index dossier.
 - Preserved unrelated hero profiles, the published Sakuro debut, and established OPI values; removed obsolete front-end and regression references.
-- The separately hosted vote Worker and historical database are independent of GitHub Pages and require their own deployment/retention process.
+- The separately hosted vote Worker and historical database are independent of static hosting Pages and require their own deployment/retention process.
 
 ## OR-WEB-0106 · November 11, 2026 · OldRoot OPI Patch 1.0 — Universal Rebalance (Review)
 

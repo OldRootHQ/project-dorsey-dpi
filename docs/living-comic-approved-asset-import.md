@@ -20,4 +20,4 @@ Sakuro's second approved illustration for his dossier is `assets/characters/saku
 - The site supplies background color and text; images must not contain baked-in panel backgrounds or labels.
 - Homepage portraits link only to existing published character dossiers.
 - Existing unrelated lore, OPI data, and author-approved character records must remain intact.
-- Run GitHub Site QA and visually inspect the homepage before merging future image updates.
+- Run automated Site QA and visually inspect the homepage before merging future image updates.

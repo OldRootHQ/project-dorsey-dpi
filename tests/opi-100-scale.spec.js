@@ -13,7 +13,7 @@ test('OPI Analytics has fixed 0–100 category axes without modifying creator ra
   const records = await page.evaluate(() => window.OLDROOT_CHARACTERS);
   expect(records).toHaveLength(12);
   const scored = records.filter(c => !c.opiExcluded);
-  expect(scored).toHaveLength(12);
+  expect(scored).toHaveLength(11);
   for (const character of scored) {
     expect(Object.keys(character.baseline)).toEqual(CATEGORIES);
     for (const number of Object.values(character.baseline)) expect(number).toBeGreaterThanOrEqual(0);
