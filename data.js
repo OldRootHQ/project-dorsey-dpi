@@ -116,5 +116,16 @@ window.OLDROOT_CHARACTERS = [
     summary:"Jamaican enhanced special-operations commander and national guardian known for disciplined, principled protection.",
     baseline:{Strength:13.1,Durability:12.7,Speed:11.8,Agility:13.2,Regeneration:11.1,Senses:11.8,Offense:17.4,Intellect:10.5,Combat:18.8,Mobility:7.9,Stamina:14.1},
     conditional:[]
+  },
+  {
+    codename:"Sakuro", civilian:"Kenji Kuroda", classification:"Hero", role:"Hero",
+    registryOrder:16, location:"San Diego, California", locationKey:"San Diego",
+    origin:"Inherited supernatural power", originType:"Inherited / Sakura Manipulation",
+    affiliation:"Independent", page:"characters/sakuro/", image:"assets/characters/sakuro/sakuro-profile.webp",
+    age:27, heightIn:70, weightLb:165, yearsActive:null,
+    summary:"Japanese immigrant florist and supernatural guardian wielding controlled cherry-blossom petals for protection, restraint, and cutting offense.",
+    baseline:{Strength:12.9,Durability:11.8,Speed:10.4,Agility:14.6,Regeneration:5.5,Senses:16.3,Offense:44.8,Intellect:11.6,Combat:42.4,Mobility:15.6,Stamina:20.4},
+    conditional:[]
   }
+
 ];
