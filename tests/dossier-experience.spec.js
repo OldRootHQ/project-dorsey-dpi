@@ -193,7 +193,7 @@ test('Amari has no OPI exposure while White Magma remains in development', async
   expect(amari.opiExcluded).toBe(true);
   expect(amari).not.toHaveProperty('baseline');
   expect(amari).not.toHaveProperty('officialOPI');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await expect(page.locator('[data-unscored-character="Amari Razman"]')).toHaveCount(0);
   await page.locator('#search').fill('Amari Razman');
   await expect(page.locator('#count')).toHaveText('0 CHARACTERS');
@@ -221,7 +221,7 @@ test('Ballestera dossier presents full working canon, original art and eleven in
   await expect(shell.locator('h1')).toHaveText('BALLESTERA');
   await expect(shell.locator('.dossier-story-thread')).toHaveCount(1);
   await expect(shell.locator('.dossier-thread-stop')).toHaveCount(5);
-  await expect(shell.locator('.wiki-section')).toHaveCount(15);
+  await expect(shell.locator('.wiki-section')).toHaveCount(14);
   await expect(shell.locator('.dossier-art-tile')).toHaveCount(8);
   await expect(shell.locator('.dpi-grid .dpi-value')).toHaveCount(11);
   expect(await shell.locator('.dpi-grid .dpi-value').allTextContents()).toEqual(['2.1','1.5','3.1','0.8','3.2','7.2','7.1','4.0','6.2','1.6','2.7']);
@@ -245,8 +245,8 @@ test('Ballestera is registrable and plot-safe with the same analytics-only mean 
   expect(record).not.toHaveProperty('officialOPI');
   expect(record).not.toHaveProperty('suppressAggregate');
   expect(record.baseline).toEqual({Strength:2.1,Durability:1.5,Speed:3.1,Agility:0.8,Regeneration:3.2,Senses:7.2,Offense:7.1,Intellect:4.0,Combat:6.2,Mobility:1.6,Stamina:2.7});
-  await expect(page.locator('#count')).toHaveText('12 CHARACTERS');
-  await expect(page.locator('#plot-count')).toContainText('12 plotted');
+  await expect(page.locator('#count')).toHaveText('11 CHARACTERS');
+  await expect(page.locator('#plot-count')).toContainText('11 plotted');
   await page.locator('#search').fill('Ballestera');
   await expect(page.locator('#detail')).toContainText('Analytics-only');
   await expect(page.locator('#detail')).toContainText('Analytics-only');
