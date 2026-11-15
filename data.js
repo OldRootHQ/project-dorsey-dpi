@@ -108,16 +108,6 @@ window.OLDROOT_CHARACTERS = [
     baseline:{Strength:6.1,Durability:7.2,Speed:11.6,Agility:14.1,Regeneration:5.4,Senses:8.1,Offense:18.7,Intellect:9.0,Combat:17.9,Mobility:13.7,Stamina:11.2}, conditional:[]
   },
   {
-    codename:"Liontone", civilian:"Captain Marlon McKenzie", classification:"Hero", role:"Hero",
-    registryOrder:15, location:"Jamaica", locationKey:"Jamaica",
-    origin:"Biogenetically Enhanced", originType:"Military Enhancement",
-    affiliation:"Jamaica Defence Force", page:"characters/liontone/", image:"assets/characters/liontone/liontone-ruins.webp",
-    age:38, heightIn:76, weightLb:240, yearsActive:null,
-    summary:"Jamaican enhanced special-operations commander and national guardian known for disciplined, principled protection.",
-    baseline:{Strength:13.1,Durability:12.7,Speed:11.8,Agility:13.2,Regeneration:11.1,Senses:11.8,Offense:17.4,Intellect:10.5,Combat:18.8,Mobility:7.9,Stamina:14.1},
-    conditional:[]
-  },
-  {
     codename:"Sakuro", civilian:"Kenji Kuroda", classification:"Hero", role:"Hero",
     registryOrder:16, location:"San Diego, California", locationKey:"San Diego",
     origin:"Inherited supernatural power", originType:"Inherited / Sakura Manipulation",

@@ -19,14 +19,16 @@
   } catch (_) {}
   let token = '';
   let timer = null;
-  const candidates = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Liontone', 'Remedie'];
+  const candidates = ['Gila Monster', 'Agent Emerald', 'Kincast', 'Isiah Ivory', 'Remedie'];
   const say = text => { state.textContent = text; };
 
   function render(data) {
-    const n = Number(data.total);
-    if (!Number.isSafeInteger(n) || n < 0 || !Array.isArray(data.votes)) throw Error('bad result');
+    const reportedTotal = Number(data.total);
+    if (!Number.isSafeInteger(reportedTotal) || reportedTotal < 0 || !Array.isArray(data.votes)) throw Error('bad result');
     const counts = new Map(data.votes.filter(x => candidates.includes(x.choice) && Number.isSafeInteger(x.count) && x.count >= 0).map(x => [x.choice, x.count]));
-    if (candidates.reduce((s,c) => s + (counts.get(c) || 0),0) !== n) throw Error('bad totals');
+    // Historical votes for withdrawn ballot choices must never reappear in the public website's owner dashboard.
+    const n = candidates.reduce((sum, name) => sum + (counts.get(name) || 0), 0);
+    if (n > reportedTotal) throw Error('bad totals');
     total.textContent = n.toLocaleString();
     panel.replaceChildren();
     for (const name of candidates) {
