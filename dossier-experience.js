@@ -61,6 +61,8 @@
   main.dataset.dossierEnhanced = "true";
 
   const profiles = {
+    "sakuro": { color:"#ee94b2", secondary:"#703a58", aura:"Omoiyari", sig:"San Diego / Blossom Manipulation", icon:"✿",
+      guidance:"Meet the florist, the forgotten elder, and the gentle resolve behind the cherry-blossom powers." },
     "remedie": { color:"#e0b244", secondary:"#5a5145", aura:"The Second Chance", sig:"Boston / Exo-Frame / Anti-Hero", icon:"⊙", guidance:"Follow the Ledger family, the twin-arm technology, and the choices that transform vengeance into protection." },
     "gila-monster": { color:"#e18a48", secondary:"#7f2f20", aura:"Desert Nocturne", sig:"Tucson / Investigator", icon:"⌁",
       guidance:"From detective work to an altered life, follow the evidence and the consequences." },
@@ -156,6 +158,7 @@
   // A canon-derived story thread for every published dossier. The headings
   // and excerpts are pulled from actual source sections, never invented events.
   const storyThreads = {
+    "sakuro":["Biography","The four flowers","Omoiyari","Powers & Abilities","Combat Style"],
     "remedie":["Before the Money","Her Mother\'s Death","Her Brother Disappears","Building Remedie","The Gary Revelation","From Revenge to Rescue"],
     "gila-monster":["Biography","Los Moralistas and ASC","Equipment & Combat"],
     "commotion":["Biography","Boxing","Underground fighting","Becoming Commotion"],
